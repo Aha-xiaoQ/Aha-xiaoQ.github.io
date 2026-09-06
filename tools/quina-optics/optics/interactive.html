@@ -1,0 +1,322 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>启娜的光之工坊 · 可交互扫描光谱仪</title><style>
+*{box-sizing:border-box}body{margin:0;overflow:hidden;background:#c1ccd6;color:#152f45;font:16px 'Microsoft YaHei',sans-serif}#stage{width:1920px;height:1080px;position:absolute;transform-origin:0 0;overflow:hidden}#view{position:absolute;inset:0;width:1920px;height:1080px;touch-action:none;cursor:grab}header{position:absolute;left:60px;top:35px;pointer-events:none;display:flex;align-items:center;gap:22px}header img{width:45px;height:45px;image-rendering:pixelated}header b{font-size:24px;letter-spacing:2px}header small{font-size:17px;color:#38566b;margin-left:20px}.headline{position:absolute;top:128px;left:60px;pointer-events:none}.headline h1{font-size:43px;font-weight:600;margin:0 0 15px}.headline p{font-size:20px;margin:0;color:#3b566b}.dock{position:absolute;right:38px;top:275px;width:360px;padding:25px;background:#f8fbf4ed;border:1px solid #fff8;border-radius:6px;box-shadow:0 6px 25px #2034431a}.dock h2{font-size:22px;margin:0 0 20px}.row{margin:18px 0}.row label{display:flex;justify-content:space-between;margin-bottom:10px;font-size:18px}.row output{font-variant-numeric:tabular-nums;color:#216a95}input[type=range]{width:100%;accent-color:#177fa6;cursor:ew-resize}button,select{font:17px 'Microsoft YaHei';padding:11px 13px;border:1px solid #8ca9ba;background:#fffdf7;color:#18384d;border-radius:4px;cursor:pointer}button.active,button:hover{background:#183e57;color:#fff}select{width:100%}.hint{font-size:15px;color:#4b6574;line-height:1.65}#readout{border-top:1px solid #beced6;padding-top:13px;display:flex;justify-content:space-between;font-size:17px;line-height:1.7}#readout b{font-size:26px;color:#12617e;font-weight:600}#chart{height:212px;width:310px;margin-top:16px;background:#fff}#chart text{font:12px 'Microsoft YaHei';fill:#3f5e6e}.toolbar{position:absolute;bottom:36px;left:60px;display:flex;align-items:center;gap:10px;background:#f4f8f2e8;padding:10px;border-radius:6px}.toolbar .tip{font-size:17px;margin:0 12px}#labels{position:absolute;inset:0;pointer-events:none}#labels text{font:20px 'Microsoft YaHei';fill:#13364e;paint-order:stroke;stroke:#eff7f3;stroke-width:5px;stroke-linejoin:round}#help{position:absolute;left:60px;bottom:110px;max-width:630px;background:#f8fbf6f2;padding:20px;font-size:17px;line-height:1.8;display:none}#help a{color:#066d96}#hotspot{position:absolute;width:38px;height:38px;border:3px solid #ffbf53;border-radius:50%;pointer-events:none;display:none;box-shadow:0 0 0 8px #ffbf5340}body.cinema .toolbar{bottom:116px}body.cinema .dock{top:270px;transform:scale(.85);transform-origin:top right}body.cinema .hint{font-size:16px}body.cinema .dock{box-shadow:none}body.cinema #help{bottom:183px}.hidden{visibility:hidden}
+.work-nav{position:absolute;right:38px;top:32px;display:flex;gap:8px;align-items:center}.work-nav a{padding:13px 22px;border:1px solid #718d9e;border-radius:5px;text-decoration:none;color:#183e57;background:#f5fafb;font-size:20px}.work-nav a[aria-current]{background:#183e57;color:white}.work-nav a.cta{background:#ffdb85;border-color:#b58d38;color:#163c52;font-weight:bold}.work-nav a:focus-visible,button:focus-visible{outline:3px solid #168bca;outline-offset:3px}.film .work-nav,body.cinema .work-nav{display:none}#science-note{position:absolute;left:60px;top:270px;display:none;box-shadow:0 4px 18px #17374b20;border-radius:12px}#science-note .close-note{position:absolute;right:8px;top:7px;padding:3px 8px;font-size:17px}body.cinema #science-note{display:none!important}</style><div id="stage"><canvas id="view" aria-label="可拖动旋转的三维扫描光谱仪"></canvas><div style="position:absolute;left:0;right:0;top:0;height:300px;background:linear-gradient(#dbe5ecf5 0%,#dbe5eceb 78%,#dbe5ec00);pointer-events:none"></div><header><img src="assets/q-logo.png" alt="Q"><b>启娜的光之工坊</b><small>交互光学仿真</small></header><nav class="work-nav" aria-label="实验与拆装"><a href="../../index.html">工具首页</a><a href="interactive.html" aria-current="page">光学实验</a><a class="cta" href="../assembly.html?view=axis">拆开转轴 ↗</a></nav><div class="headline"><h1 id="title">用一台仪器，读出光的组成。</h1><p id="subline">依据 Czerny–Turner 扫描光谱仪原理 · 同一模型实时响应</p></div><svg id="labels" viewBox="0 0 1920 1080"></svg><section class="dock" aria-label="实验控制"><h2 id="panelTitle">亲手调一束光</h2><div class="row"><label for="angle">光栅转角 <output id="angleOut"></output></label><input id="angle" type="range" min="7.72" max="13.57" step=".005" value="10.63"></div><div class="row"><label for="slit">双狭缝宽度 <output id="slitOut"></output></label><input id="slit" type="range" min="0.05" max="1.2" step=".01" value=".2"></div><div class="row"><label for="source">入射光源</label><select id="source"><option value="led">白光 LED · 模拟</option><option value="lines">离散谱线 · 模拟</option></select></div><div style="display:flex;gap:10px"><button id="scan">扫描光谱</button><button id="sample" aria-pressed="false">加入样本</button></div><div id="readout"><div>选中波长<br><b id="nmOut"></b></div><div>相对信号<br><b id="signalOut"></b></div></div><svg id="chart" viewBox="0 0 310 212" aria-label="计算的扫描光谱曲线"></svg><div id="metric" class="hint"></div><div class="hint">光源与样本为模拟数据</div></section><div class="toolbar"><span class="tip">拖动旋转 · 滚轮缩放</span><button id="orbit">自动环绕</button><button id="top">俯视光路</button><button id="explode">展开光学部件</button><button id="wire">几何线框</button><button id="reset">复位</button><button id="why-mirror">为什么能准直？</button><button id="why-grating">为什么会分色？</button><button id="about">原型依据</button></div><div id="help">单台 Czerny–Turner 扫描光谱仪：入射狭缝 → 准直凹面镜 → 反射光栅 → 聚焦凹面镜 → 出射狭缝 → 探测器。<br>对应 Thorlabs EDU-SPEBCT1/M 手册图 1b、24、26。按原理与布局建模，非厂商 CAD 复刻。采用一阶光栅方程和理想近轴成像，未模拟完整像差、镀膜效率和噪声。<br><a href="../references/Thorlabs_EDU-SPEBCT1_Manual.pdf" target="_blank" rel="noopener">阅读厂商手册（英文） ↗</a> · <a href="../Quina_Interactive_v009.zip" download>下载离线实验包</a></div><section id="science-note" aria-label="光学原理"><div id="science-diagram"></div><button class="close-note" aria-label="关闭原理说明">×</button></section><div id="hotspot"></div></div>
+<script>/* LUMEN: ideal prism geometric optics + one-axis torsional motion. No dependencies. */
+(function(root){'use strict';
+const PI=Math.PI,rad=x=>x*PI/180,deg=x=>x*180/PI,add=(a,b)=>a.map((x,i)=>x+b[i]),sub=(a,b)=>a.map((x,i)=>x-b[i]),mul=(a,k)=>a.map(x=>x*k),dot=(a,b)=>a.reduce((s,x,i)=>s+x*b[i],0),cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]],len=a=>Math.hypot(...a),norm=a=>mul(a,1/(len(a)||1));
+const rotateY=(a,t)=>[Math.cos(t)*a[0]+Math.sin(t)*a[2],a[1],-Math.sin(t)*a[0]+Math.cos(t)*a[2]];
+const GLASSES={
+'SF11':{name:'N-SF11',B:[1.73759695,.313747346,1.89878101],C:[.013188707,.0623068142,155.23629]},
+'BK7':{name:'N-BK7',B:[1.03961212,.231792344,1.01046945],C:[.00600069867,.0200179144,103.560653]}};
+function refractiveIndex(nm,material='SF11'){if(!GLASSES[material])throw Error('Unknown glass');if(!(nm>=370&&nm<=2500))throw Error('Wavelength outside supported range');let l=(nm/1000)**2,g=GLASSES[material];return Math.sqrt(1+g.B.reduce((s,b,i)=>s+b*l/(l-g.C[i]),0));}
+function interfaceRay(d,outward,n1,n2){let N=outward.slice();if(dot(d,N)>0)N=mul(N,-1);let co=Math.min(1,Math.max(0,-dot(d,N))),eta=n1/n2,k=1-eta*eta*(1-co*co),reflection=norm(add(d,mul(N,2*co)));if(k<0)return{direction:reflection,reflection,tir:true,R:1,T:0};let ct=Math.sqrt(k),rs=(n1*co-n2*ct)/(n1*co+n2*ct),rp=(n2*co-n1*ct)/(n2*co+n1*ct),R=(rs*rs+rp*rp)/2;return{direction:norm(add(mul(d,eta),mul(N,eta*co-ct))),reflection,tir:false,R,T:1-R};}
+const TRI=[[-.88,0,-.508],[.88,0,-.508],[0,0,1.016]];
+function prismPlanes(angle=rad(34),center=[0,2,0],height=1.25){let planes=[];for(let i=0;i<3;i++){let a=TRI[i],b=TRI[(i+1)%3],e=sub(b,a);planes.push({point:add(rotateY(a,angle),center),normal:rotateY(norm([e[2],0,-e[0]]),angle),id:i});}planes.push({point:add(center,[0,height/2,0]),normal:[0,1,0],id:3},{point:add(center,[0,-height/2,0]),normal:[0,-1,0],id:4});return planes;}
+function intersectConvex(o,d,planes){let best=null;for(let q of planes){let den=dot(d,q.normal);if(Math.abs(den)<1e-10)continue;let t=dot(sub(q.point,o),q.normal)/den;if(t<1e-6)continue;let p=add(o,mul(d,t));if(planes.every(v=>dot(sub(p,v.point),v.normal)<1e-6)&&(!best||t<best.t))best={t,point:p,normal:q.normal,id:q.id};}return best;}
+function trace(nm,angle=rad(34),opts={}){const planes=prismPlanes(angle),n=refractiveIndex(nm,opts.material||'SF11');let d=norm(opts.direction||[1,0,0]),p=(opts.origin||[-2.95,2,.42]).slice(),inside=false,I=1,segments=[],events=[];for(let b=0;b<8;b++){let hit=intersectConvex(p,d,planes);if(!hit){segments.push({a:p,b:add(p,mul(d,7)),I,inside});break;}segments.push({a:p.slice(),b:hit.point.slice(),I,inside});let r=interfaceRay(d,hit.normal,inside?n:1,inside?1:n);events.push({...r,point:hit.point,normal:hit.normal,incoming:d.slice(),n1:inside?n:1,n2:inside?1:n});if(!r.tir){inside=!inside;I*=r.T;}d=r.direction;p=add(hit.point,mul(d,1e-5));if(!inside){let t=((opts.screenZ??-3.404)-p[2])/d[2];segments.push({a:p,b:t>0&&t<25?add(p,mul(d,t)):add(p,mul(d,7)),I,inside:false});break;}}let hit=segments.at(-1)?.b;return{nm,n,material:opts.material||'SF11',segments,events,transmission:I,output:d,hit,screenHit:!!hit&&Math.abs(hit[2]-(opts.screenZ??-3.404))<1e-5&&hit[0]>.50&&hit[0]<5.1&&hit[1]>1.58&&hit[1]<2.46,exited:events.length>0&&!inside};}
+function spectrum(angle,mono=false,nm=550,material='SF11'){return(mono?[nm]:Array.from({length:31},(_,i)=>430+i*250/30)).map(w=>trace(w,angle,{material}));}
+function wavelengthRGB(w){let r=0,g=0,b=0;if(w<440){r=(440-w)/60;b=1;}else if(w<490){g=(w-440)/50;b=1;}else if(w<510){g=1;b=(510-w)/20;}else if(w<580){r=(w-510)/70;g=1;}else if(w<645){r=1;g=(645-w)/65;}else r=1;return[r,g,b].map(x=>Math.max(0,x));}
+class Oscillator{constructor(p={}){this.I=p.I??.08;this.k=p.k??.8;this.c=p.c??.035;this.theta=0;this.omega=0;this.t=0;}derivative(x,w){return[w,(-this.k*x-this.c*w)/this.I];}step(dt=1/240){let x=this.theta,w=this.omega,a=this.derivative(x,w),b=this.derivative(x+a[0]*dt/2,w+a[1]*dt/2),c=this.derivative(x+b[0]*dt/2,w+b[1]*dt/2),d=this.derivative(x+c[0]*dt,w+c[1]*dt);this.theta+=dt*(a[0]+2*b[0]+2*c[0]+d[0])/6;this.omega+=dt*(a[1]+2*b[1]+2*c[1]+d[1])/6;this.t+=dt;return this.snapshot();}impulse(j=.032){this.omega+=j/this.I;}energy(){return .5*this.I*this.omega**2+.5*this.k*this.theta**2;}snapshot(){return{theta:this.theta,omega:this.omega,t:this.t,I:this.I,k:this.k,c:this.c};}restore(s){for(let k of['theta','omega','t','I','k','c'])this[k]=s[k];}}
+function simulate(p={},duration=12){let o=new Oscillator(p);o.impulse(.032);let a=[o.snapshot()];for(let i=0;i<duration*240;i++)a.push(o.step());return a;}
+function involuteGear(teeth=64,module=.0375,pressure=20){let rp=teeth*module/2,rb=rp*Math.cos(rad(pressure)),ra=rp+module,rf=rp-1.25*module,inv=r=>{let a=Math.acos(Math.min(1,rb/r));return Math.tan(a)-a;},ip=inv(rp),half=PI/(2*teeth),points=[];for(let i=0;i<teeth;i++){let a=i*2*PI/teeth,emit=(r,t)=>points.push([r*Math.cos(t),r*Math.sin(t)]);emit(rf,a-PI/teeth);emit(rf,a-half-ip);for(let j=0;j<7;j++){let r=Math.max(rb,rf)+(ra-Math.max(rb,rf))*j/6;emit(r,a-half+inv(r)-ip);}for(let j=6;j>=0;j--){let r=Math.max(rb,rf)+(ra-Math.max(rb,rf))*j/6;emit(r,a+half-inv(r)+ip);}emit(rf,a+half+ip);emit(rf,a+PI/teeth);}return{points,pitchRadius:rp,outerRadius:ra,rootRadius:rf,teeth,module};}
+const out={GLASSES,PI,rad,deg,add,sub,mul,dot,cross,len,norm,rotateY,refractiveIndex,interfaceRay,TRI,prismPlanes,intersectConvex,trace,spectrum,wavelengthRGB,Oscillator,simulate,involuteGear};if(typeof module!=='undefined')module.exports=out;root.LumenCore=out;
+})(typeof window!=='undefined'?window:globalThis);
+
+/* Native WebGL2 scene renderer: parametric meshes, GGX lighting, shadow mapping,
+   screen-space glass and tone mapping. No external dependencies. */
+(function(root){'use strict';const C=root.LumenCore,{add,sub,mul,dot,cross,norm}=C;
+const M={identity:()=>new Float32Array([1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]),multiply(a,b){let o=new Float32Array(16);for(let c=0;c<4;c++)for(let r=0;r<4;r++)o[c*4+r]=a[r]*b[c*4]+a[4+r]*b[c*4+1]+a[8+r]*b[c*4+2]+a[12+r]*b[c*4+3];return o;},compose(p=[0,0,0],r=[0,0,0],s=[1,1,1]){let o=M.identity();o[12]=p[0];o[13]=p[1];o[14]=p[2];for(let i=0;i<3;i++){let a=M.identity(),c=Math.cos(r[i]),t=Math.sin(r[i]);if(i===0){a[5]=c;a[6]=t;a[9]=-t;a[10]=c;}if(i===1){a[0]=c;a[2]=-t;a[8]=t;a[10]=c;}if(i===2){a[0]=c;a[1]=t;a[4]=-t;a[5]=c;}o=M.multiply(o,a);}for(let i=0;i<3;i++)for(let j=0;j<4;j++)o[i*4+j]*=s[i];return o;},point(m,p){let w=m[3]*p[0]+m[7]*p[1]+m[11]*p[2]+m[15];return[(m[0]*p[0]+m[4]*p[1]+m[8]*p[2]+m[12])/w,(m[1]*p[0]+m[5]*p[1]+m[9]*p[2]+m[13])/w,(m[2]*p[0]+m[6]*p[1]+m[10]*p[2]+m[14])/w];},direction(m,p){return norm([m[0]*p[0]+m[4]*p[1]+m[8]*p[2],m[1]*p[0]+m[5]*p[1]+m[9]*p[2],m[2]*p[0]+m[6]*p[1]+m[10]*p[2]]);},perspective(fov,aspect,n,f){let t=1/Math.tan(fov/2),o=new Float32Array(16);o[0]=t/aspect;o[5]=t;o[10]=(f+n)/(n-f);o[11]=-1;o[14]=2*f*n/(n-f);return o;},ortho(l,r,b,t,n,f){let o=M.identity();o[0]=2/(r-l);o[5]=2/(t-b);o[10]=-2/(f-n);o[12]=-(r+l)/(r-l);o[13]=-(t+b)/(t-b);o[14]=-(f+n)/(f-n);return o;},lookAt(eye,at){let z=norm(sub(eye,at)),x=norm(cross([0,1,0],z)),y=cross(z,x),o=M.identity();o[0]=x[0];o[4]=x[1];o[8]=x[2];o[1]=y[0];o[5]=y[1];o[9]=y[2];o[2]=z[0];o[6]=z[1];o[10]=z[2];o[12]=-dot(x,eye);o[13]=-dot(y,eye);o[14]=-dot(z,eye);return o;}};
+class Geometry{constructor(){this.data=[];}tri(a,b,c,na=null,nb=null,nc=null){let N=norm(cross(sub(b,a),sub(c,a)));for(const[p,n]of[[a,na||N],[b,nb||N],[c,nc||N]])this.data.push(...p,...n);return this;}quad(a,b,c,d,na,nb,nc,nd){this.tri(a,b,c,na,nb,nc);this.tri(a,c,d,na,nc,nd);return this;}add(g,m=M.identity()){for(let i=0;i<g.data.length;i+=6)this.data.push(...M.point(m,g.data.slice(i,i+3)),...M.direction(m,g.data.slice(i+3,i+6)));return this;}}
+const G={box(w,h,d,r=0){let g=new Geometry(),half=[w/2,h/2,d/2];r=Math.min(r,w/2,h/2,d/2);for(let[axis,sg]of[[0,1],[0,-1],[1,1],[1,-1],[2,1],[2,-1]]){let u=(axis+1)%3,v=(axis+2)%3,coords=k=>r?[-half[k],-half[k]+r*.45,-half[k]+r,half[k]-r,half[k]-r*.45,half[k]]:[-half[k],half[k]],us=coords(u),vs=coords(v),pt=(a,b)=>{let p=[0,0,0];p[axis]=sg*half[axis];p[u]=a;p[v]=b;let q=p.map((x,i)=>Math.max(-half[i]+r,Math.min(half[i]-r,x))),n=r?norm(sub(p,q)):[0,0,0];if(!r)n[axis]=sg;return[add(q,mul(n,r)),n];};for(let i=0;i<us.length-1;i++)for(let j=0;j<vs.length-1;j++){let[a,na]=pt(us[i],vs[j]),[b,nb]=pt(us[i+1],vs[j]),[c,nc]=pt(us[i+1],vs[j+1]),[d,nd]=pt(us[i],vs[j+1]);if(sg>0)g.quad(a,b,c,d,na,nb,nc,nd);else g.quad(a,d,c,b,na,nd,nc,nb);}}return g;},
+lathe(pro,seg=64){let g=new Geometry();for(let i=0;i<pro.length-1;i++){let[r1,y1]=pro[i],[r2,y2]=pro[i+1],dr=r2-r1,dy=y2-y1;for(let j=0;j<seg;j++){let a=j*2*Math.PI/seg,b=(j+1)*2*Math.PI/seg,p=(r,y,t)=>[r*Math.cos(t),y,r*Math.sin(t)],n=t=>norm([dy*Math.cos(t),-dr,dy*Math.sin(t)]);g.quad(p(r1,y1,a),p(r2,y2,a),p(r2,y2,b),p(r1,y1,b),n(a),n(a),n(b),n(b));}}return g;},cylinder(r,h,seg=48){return G.lathe([[0,-h/2],[r,-h/2],[r,h/2],[0,h/2]],seg);},ring(r,inner,h,seg=96,bev=.018){return G.lathe([[inner,-h/2+bev],[inner+bev,-h/2],[r-bev,-h/2],[r,-h/2+bev],[r,h/2-bev],[r-bev,h/2],[inner+bev,h/2],[inner,h/2-bev],[inner,-h/2+bev]],seg);},torus(r,t,seg=96,ts=10){let g=new Geometry();for(let i=0;i<seg;i++)for(let j=0;j<ts;j++){let p=(u,v)=>[(r+t*Math.cos(v))*Math.cos(u),t*Math.sin(v),(r+t*Math.cos(v))*Math.sin(u)],n=(u,v)=>[Math.cos(v)*Math.cos(u),Math.sin(v),Math.cos(v)*Math.sin(u)],a=i*2*Math.PI/seg,b=(i+1)*2*Math.PI/seg,c=j*2*Math.PI/ts,d=(j+1)*2*Math.PI/ts;g.quad(p(a,c),p(a,d),p(b,d),p(b,c),n(a,c),n(a,d),n(b,d),n(b,c));}return g;},
+extrude(points,h,hole=0){let g=new Geometry();for(let i=0;i<points.length;i++){let a=points[i],b=points[(i+1)%points.length],p=(v,y)=>[v[0],y,v[1]],ra=norm([a[0],0,a[1]]),rb=norm([b[0],0,b[1]]),ia=[ra[0]*hole,ra[2]*hole],ib=[rb[0]*hole,rb[2]*hole];g.quad(p(a,-h/2),p(a,h/2),p(b,h/2),p(b,-h/2));g.quad(p(ia,h/2),p(ib,h/2),p(b,h/2),p(a,h/2),[0,1,0],[0,1,0],[0,1,0],[0,1,0]);g.quad(p(ia,-h/2),p(a,-h/2),p(b,-h/2),p(ib,-h/2),[0,-1,0],[0,-1,0],[0,-1,0],[0,-1,0]);if(hole)g.quad(p(ia,-h/2),p(ib,-h/2),p(ib,h/2),p(ia,h/2));}return g;},
+tube(points,r=.02,seg=6){let g=new Geometry();for(let j=0;j<points.length-1;j++){let a=points[j],b=points[j+1],axis=norm(sub(b,a)),t=norm(cross(axis,Math.abs(axis[1])<.95?[0,1,0]:[1,0,0])),s=cross(axis,t);for(let i=0;i<seg;i++){let angle=i*2*Math.PI/seg,angle2=(i+1)*2*Math.PI/seg,n=add(mul(t,Math.cos(angle)),mul(s,Math.sin(angle))),n2=add(mul(t,Math.cos(angle2)),mul(s,Math.sin(angle2)));g.quad(add(a,mul(n,r)),add(a,mul(n2,r)),add(b,mul(n2,r)),add(b,mul(n,r)),n,n2,n2,n);}}return g;}};
+function color(h){if(Array.isArray(h))return h;let n=parseInt(h.replace('#',''),16);return[n>>16&255,n>>8&255,n&255].map(v=>(v/255)**2.2);}
+const VS=`#version 300 es
+precision highp float;layout(location=0)in vec3 p;layout(location=1)in vec3 n;uniform mat4 model,vp,lightVP;out vec3 P,N;out vec4 S;void main(){vec4 w=model*vec4(p,1.);P=w.xyz;N=mat3(transpose(inverse(model)))*n;S=lightVP*w;gl_Position=vp*w;}`;
+const COMMON=`precision highp float;uniform vec3 eye;uniform sampler2D shadowTex;uniform float day,opticalIOR;
+float softbox(vec3 r,vec3 aim,vec3 up,vec2 size,float rough){vec3 z=normalize(aim),x=normalize(cross(z,up)),y=cross(x,z);float d=dot(r,z);vec2 q=abs(vec2(dot(r,x),dot(r,y))/max(d,.001));float edge=.016+rough*.28;return smoothstep(size.x+edge,size.x-edge,q.x)*smoothstep(size.y+edge,size.y-edge,q.y)*smoothstep(.1,.3,d);}
+vec3 env(vec3 r,float rough){vec3 e=mix(vec3(.013,.027,.050),vec3(.40,.43,.48),smoothstep(-.12,.95,r.y));e+=vec3(4.6,3.8,2.7)*softbox(r,vec3(-.9,1.7,1.),vec3(0,1,0),vec2(.62,.28),rough);e+=vec3(1.0,2.0,3.9)*softbox(r,vec3(1.4,.8,-1.3),vec3(0,1,0),vec2(.25,.8),rough);e+=vec3(1.8,1.9,2.1)*softbox(r,vec3(.1,1.,-.3),vec3(0,0,1),vec2(.28,.15),rough);return e*(.86+day*.6);}
+
+float shadow(vec4 ss,vec3 n){vec3 q=ss.xyz/ss.w*.5+.5;if(q.x<0.||q.x>1.||q.y<0.||q.y>1.)return 1.;float b=max(.0010,.0018*(1.-dot(n,normalize(vec3(-5.,10.,6.))))),v=0.;vec2 px=1./vec2(textureSize(shadowTex,0));for(int x=-1;x<=1;x++)for(int y=-1;y<=1;y++)v+=q.z-b<=texture(shadowTex,q.xy+vec2(x,y)*px).r?1.:.25;return v/9.;}
+vec3 fres(float c,vec3 f){return f+(1.-f)*pow(1.-c,5.);}
+vec3 lit(vec3 N,vec3 V,vec3 L,vec3 radiance,vec3 albedo,float metal,float rough){vec3 H=normalize(V+L);float nv=max(dot(N,V),.001),nl=max(dot(N,L),0.),nh=max(dot(N,H),0.),vh=max(dot(V,H),0.),a=rough*rough,a2=a*a,den=nh*nh*(a2-1.)+1.,D=a2/(3.14159*den*den),k=(rough+1.)*(rough+1.)/8.,G=nv/(nv*(1.-k)+k)*nl/(nl*(1.-k)+k);vec3 F=fres(vh,mix(vec3(.04),albedo,metal));return((1.-F)*(1.-metal)*albedo/3.14159+D*G*F/(4.*nv*max(nl,.001)))*radiance*nl;}
+`;
+const FS=`#version 300 es
+${COMMON}
+in vec3 P,N;in vec4 S;out vec4 frag;uniform vec3 base;uniform float metal,rough,emit,alpha;uniform int kind,rayCount;uniform vec4 rayHits[32];uniform float beam;
+vec3 wave(float w){if(w<440.)return vec3((440.-w)/60.,0.,1.);if(w<490.)return vec3(0.,(w-440.)/50.,1.);if(w<510.)return vec3(0.,1.,(510.-w)/20.);if(w<580.)return vec3((w-510.)/70.,1.,0.);if(w<645.)return vec3(1.,(645.-w)/65.,0.);return vec3(1.,0.,0.);}
+void main(){vec3 nn=normalize(N);if(!gl_FrontFacing)nn=-nn;if(kind==4){float sh=shadow(S,nn);vec3 cc=mix(vec3(.095,.12,.16),vec3(.07,.09,.125),smoothstep(0.,12.,length(P.xz)));cc*=.7+.3*sh;cc=mix(cc,vec3(.07,.09,.125),smoothstep(11.,35.,length(P.xz)));frag=vec4(cc,1.);return;}vec3 V=normalize(eye-P),a=base;float ro=max(rough,.10);if(kind==1){float lathe=sin(length(P.xz)*160.);ro+=.013*lathe;}vec3 dxn=dFdx(nn),dyn=dFdy(nn);ro=sqrt(min(.95,ro*ro+min(.18,1.5*max(dot(dxn,dxn),dot(dyn,dyn)))));if(kind==4){a*=.78+.22*exp(-.035*dot(P.xz,P.xz));}vec3 l1=vec3(-4.,8.,5.)-P,l2=vec3(5.,6.,-5.)-P;
+vec3 c=lit(nn,V,normalize(l1),vec3(170.,158.,140.)/max(dot(l1,l1),1.),a,metal,ro)*shadow(S,nn);c+=lit(nn,V,normalize(l2),vec3(60.,110.,165.)/max(dot(l2,l2),1.),a,metal,ro);vec3 F=fres(max(dot(nn,V),0.),mix(vec3(.04),a,metal));c+=env(reflect(-V,nn),ro)*F*(.80-ro*.25);c+=a*(1.-metal)*(.16+.18*max(nn.y,0.))*(.8+day*.5);c+=base*emit;
+if(kind==5){c=vec3(.006,.015,.020);for(int i=0;i<32;i++){if(i>=rayCount)break;float dx=P.x-rayHits[i].x,dy=P.y-rayHits[i].y,q=exp(-dx*dx/.00018-dy*dy/.010);c+=wave(rayHits[i].z)*q*rayHits[i].w*beam*1.8;}float g=pow(.5+.5*cos(P.x*31.4159),60.)*.018;c+=vec3(.1,.22,.26)*g;}
+if(kind==6)c=base*emit;if(kind==4)c=mix(c,vec3(.004,.009,.018),smoothstep(11.,35.,length(P.xz)));frag=vec4(c,alpha);}`;
+const GF=`#version 300 es
+${COMMON}
+in vec3 P,N;in vec4 S;out vec4 frag;uniform sampler2D sceneTex;uniform vec2 resolution;
+void main(){vec3 nn=normalize(N);if(!gl_FrontFacing)nn=-nn;vec3 V=normalize(eye-P);float nv=abs(dot(nn,V));vec2 uv=gl_FragCoord.xy/resolution,off=nn.xz*.006/(.4+nv);vec3 t=vec3(texture(sceneTex,clamp(uv+off*1.015,vec2(.001),vec2(.999))).r,texture(sceneTex,clamp(uv+off,vec2(.001),vec2(.999))).g,texture(sceneTex,clamp(uv+off*.985,vec2(.001),vec2(.999))).b);float f0=pow((opticalIOR-1.)/(opticalIOR+1.),2.),F=f0+(1.-f0)*pow(1.-nv,5.);vec3 c=mix(t*vec3(.985,.991,1.),env(reflect(-V,nn),.09)*.82,F);c+=lit(nn,V,normalize(vec3(-4.,8.,5.)-P),vec3(2.8),vec3(.95),1.,.095)*.11;frag=vec4(c,1.);}`;
+const SF=`#version 300 es
+precision highp float;out vec4 frag;void main(){frag=vec4(vec3(gl_FragCoord.z),1.);}`;
+const QVS=`#version 300 es
+precision highp float;out vec2 uv;void main(){vec2 p=vec2((gl_VertexID<<1)&2,gl_VertexID&2);uv=p;gl_Position=vec4(p*2.-1.,0.,1.);}`;
+const QFS=`#version 300 es
+precision highp float;in vec2 uv;out vec4 frag;uniform sampler2D sceneTex;uniform vec2 resolution;uniform float exposure;
+vec3 aces(vec3 x){return clamp((x*(2.51*x+.03))/(x*(2.43*x+.59)+.14),0.,1.);}
+vec3 sampleRGB(vec2 p){return texture(sceneTex,p).rgb;}
+void main(){vec2 px=1./resolution;vec3 m=sampleRGB(uv),nw=sampleRGB(uv+vec2(-1,-1)*px),ne=sampleRGB(uv+vec2(1,-1)*px),sw=sampleRGB(uv+vec2(-1,1)*px),se=sampleRGB(uv+vec2(1,1)*px);vec3 luma=vec3(.299,.587,.114);float lm=dot(m,luma),lnw=dot(nw,luma),lne=dot(ne,luma),lsw=dot(sw,luma),lse=dot(se,luma);float lo=min(lm,min(min(lnw,lne),min(lsw,lse))),hi=max(lm,max(max(lnw,lne),max(lsw,lse)));vec2 dir=vec2(-((lnw+lne)-(lsw+lse)),((lnw+lsw)-(lne+lse)));float reduce=max((lnw+lne+lsw+lse)*.03125,.0078125);float rcp=1./(min(abs(dir.x),abs(dir.y))+reduce);dir=clamp(dir*rcp,vec2(-6),vec2(6))*px;vec3 a=.5*(sampleRGB(uv+dir*(-.166667))+sampleRGB(uv+dir*.166667));vec3 bb=a*.5+.25*(sampleRGB(uv-dir*.5)+sampleRGB(uv+dir*.5));float lb=dot(bb,luma);vec3 c=(lb<lo||lb>hi)?a:bb;if(hi-lo<max(.024,hi*.12))c=m;vec3 glow=vec3(0);for(int i=0;i<4;i++){float ang=float(i)*1.570796;glow+=max(sampleRGB(uv+vec2(cos(ang),sin(ang))*px*6.)-1.,0.)*.024;}c+=glow;float vig=1.-.23*pow(length((uv-.5)*vec2(1.,.7)),1.4);c=pow(aces(c*exposure)*vig,vec3(1./2.2));frag=vec4(c,1.);}`;
+
+function program(gl,vs,fs){function sh(type,src){let s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s));return s;}let p=gl.createProgram();gl.attachShader(p,sh(gl.VERTEX_SHADER,vs));gl.attachShader(p,sh(gl.FRAGMENT_SHADER,fs));gl.linkProgram(p);if(!gl.getProgramParameter(p,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(p));p.u={};return p;}
+class Renderer{
+constructor(canvas){this.canvas=canvas;const gl=this.gl=canvas.getContext('webgl2',{alpha:false,antialias:true,preserveDrawingBuffer:true,powerPreference:'high-performance'});if(!gl)throw Error('WebGL 2 不可用。请开启浏览器图形加速。');this.float=!!gl.getExtension('EXT_color_buffer_float');this.p=program(gl,VS,FS);this.pg=program(gl,VS,GF);this.ps=program(gl,VS,SF);this.pp=program(gl,QVS,QFS);this.groups=[];this.lightVP=M.multiply(M.ortho(-7.5,7.5,-7.5,7.5,.1,35),M.lookAt([-6,13,9],[0,1,0]));this.shadow=this.target(2048,2048,false);this.resize(1280,720);gl.enable(gl.DEPTH_TEST);gl.disable(gl.CULL_FACE);this.frame=0;}
+u(p,n){return p.u[n]??(p.u[n]=this.gl.getUniformLocation(p,n));}
+target(w,h,hdr){let gl=this.gl,tex=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,tex);let f=hdr&&this.float;gl.texImage2D(gl.TEXTURE_2D,0,f?gl.RGBA16F:gl.RGBA,w,h,0,gl.RGBA,f?gl.HALF_FLOAT:gl.UNSIGNED_BYTE,null);for(let a of[gl.TEXTURE_MIN_FILTER,gl.TEXTURE_MAG_FILTER])gl.texParameteri(gl.TEXTURE_2D,a,gl.LINEAR);for(let a of[gl.TEXTURE_WRAP_S,gl.TEXTURE_WRAP_T])gl.texParameteri(gl.TEXTURE_2D,a,gl.CLAMP_TO_EDGE);let depth=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,depth);gl.texImage2D(gl.TEXTURE_2D,0,gl.DEPTH_COMPONENT24,w,h,0,gl.DEPTH_COMPONENT,gl.UNSIGNED_INT,null);for(let a of[gl.TEXTURE_MIN_FILTER,gl.TEXTURE_MAG_FILTER])gl.texParameteri(gl.TEXTURE_2D,a,gl.NEAREST);for(let a of[gl.TEXTURE_WRAP_S,gl.TEXTURE_WRAP_T])gl.texParameteri(gl.TEXTURE_2D,a,gl.CLAMP_TO_EDGE);let fb=gl.createFramebuffer();gl.bindFramebuffer(gl.FRAMEBUFFER,fb);gl.framebufferTexture2D(gl.FRAMEBUFFER,gl.COLOR_ATTACHMENT0,gl.TEXTURE_2D,tex,0);gl.framebufferTexture2D(gl.FRAMEBUFFER,gl.DEPTH_ATTACHMENT,gl.TEXTURE_2D,depth,0);if(gl.checkFramebufferStatus(gl.FRAMEBUFFER)!==gl.FRAMEBUFFER_COMPLETE)throw Error('Framebuffer incomplete');gl.bindFramebuffer(gl.FRAMEBUFFER,null);return{fb,tex,depth,w,h};}
+resize(w,h){this.shadowKey=null;this.width=w;this.height=h;this.canvas.width=w;this.canvas.height=h;for(let k of['a','b'])if(this[k]){this.gl.deleteFramebuffer(this[k].fb);this.gl.deleteTexture(this[k].tex);this.gl.deleteTexture(this[k].depth);}this.a=this.target(w,h,true);this.b=this.target(w,h,true);}
+mesh(g,mat){let gl=this.gl,vao=gl.createVertexArray(),buf=gl.createBuffer();gl.bindVertexArray(vao);gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(g.data),gl.STATIC_DRAW);gl.enableVertexAttribArray(0);gl.vertexAttribPointer(0,3,gl.FLOAT,false,24,0);gl.enableVertexAttribArray(1);gl.vertexAttribPointer(1,3,gl.FLOAT,false,24,12);gl.bindVertexArray(null);return{vao,buf,count:g.data.length/6,data:g.data,mat};}
+updateMesh(m,g){let gl=this.gl;gl.bindBuffer(gl.ARRAY_BUFFER,m.buf);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(g.data),gl.DYNAMIC_DRAW);m.count=g.data.length/6;m.data=g.data;}
+addGroup(name,parts,p=[0,0,0],explode=[0,0,0]){let group={name,meshes:[],position:p,explode,rotation:[0,0,0],model:M.identity(),visible:true},batch=new Map();for(let v of parts){let k=v.mat.name;if(!batch.has(k))batch.set(k,{g:new Geometry(),mat:v.mat});batch.get(k).g.add(v.geo,M.compose(v.p,v.r,v.s));}for(let v of batch.values())group.meshes.push(this.mesh(v.g,v.mat));this.groups.push(group);return group;}
+setup(p,view,projection,eye,day,rays,beam){let gl=this.gl,u=n=>this.u(p,n);gl.useProgram(p);gl.uniformMatrix4fv(u('vp'),false,M.multiply(projection,view));gl.uniformMatrix4fv(u('lightVP'),false,this.lightVP);gl.uniform3fv(u('eye'),eye);gl.uniform1f(u('day'),day);gl.uniform1f(u('opticalIOR'),rays.length?rays[Math.floor(rays.length/2)].n:1.78);gl.uniform2f(u('resolution'),this.width,this.height);gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,this.shadow.depth);gl.uniform1i(u('shadowTex'),0);gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,this.a.tex);gl.uniform1i(u('sceneTex'),1);gl.uniform1i(u('rayCount'),rays.length);let arr=new Float32Array(128);rays.forEach((r,i)=>arr.set([r.hit[0],r.hit[1],r.nm,r.screenHit===false?0:r.transmission],i*4));gl.uniform4fv(u('rayHits[0]'),arr);gl.uniform1f(u('beam'),beam);}
+drawMesh(m,g,p,shadow=false){if(!m.count)return;let gl=this.gl,u=n=>this.u(p,n),v=m.mat;gl.uniformMatrix4fv(u('model'),false,g.model);if(!shadow){gl.uniform3fv(u('base'),color(v.color));gl.uniform1f(u('metal'),v.metal??0);gl.uniform1f(u('rough'),v.rough??.4);gl.uniform1f(u('emit'),v.emit??0);gl.uniform1f(u('alpha'),v.alpha??1);gl.uniform1i(u('kind'),v.kind??0);}let mesh=m,mode=gl.TRIANGLES;if(this.wireframe&&!shadow&&!v.unlit&&!v.glass&&v.kind!==4&&g.name!=='展示台'&&g.name!=='光学底座'){
+if(!m.wireMesh||m.wireSource!==m.data){if(m.wireMesh){gl.deleteVertexArray(m.wireMesh.vao);gl.deleteBuffer(m.wireMesh.buf);}let lines=new Geometry();for(let i=0;i<m.data.length;i+=18)for(let [a,b] of [[0,6],[6,12],[12,0]])lines.data.push(...m.data.slice(i+a,i+a+6),...m.data.slice(i+b,i+b+6));m.wireMesh=this.mesh(lines,v);m.wireSource=m.data;}mesh=m.wireMesh;mode=gl.LINES;gl.uniform3fv(u('base'),new Float32Array([.18,.72,1.]));gl.uniform1f(u('emit'),.85);gl.uniform1i(u('kind'),6);}
+gl.bindVertexArray(mesh.vao);gl.drawArrays(mode,0,mesh.count);gl.bindVertexArray(null);}
+render({eye,at,explode=0,day=.2,exposure=1,beam=1,rays=[],fov=38}){let gl=this.gl,view=M.lookAt(eye,at),proj=M.perspective(C.rad(fov),this.width/this.height,.1,120);this.vp=M.multiply(proj,view);this.eye=eye;for(let g of this.groups)g.model=M.compose(add(g.position,mul(g.explode,explode)),g.rotation);gl.enable(gl.DEPTH_TEST);gl.depthMask(true);gl.disable(gl.BLEND);let sk=explode.toFixed(6)+this.groups.map(g=>(g.visible?'1':'0')+g.rotation.map(x=>x.toFixed(6)).join(',')).join(';');if(sk!==this.shadowKey){this.shadowKey=sk;gl.bindFramebuffer(gl.FRAMEBUFFER,this.shadow.fb);gl.viewport(0,0,2048,2048);gl.clearColor(1,1,1,1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);gl.useProgram(this.ps);gl.uniformMatrix4fv(this.u(this.ps,'vp'),false,this.lightVP);gl.uniformMatrix4fv(this.u(this.ps,'lightVP'),false,this.lightVP);for(let g of this.groups)if(g.visible)for(let m of g.meshes)if(!m.mat.glass&&!m.mat.unlit&&!m.mat.noShadow)this.drawMesh(m,g,this.ps,true);}
+gl.bindFramebuffer(gl.FRAMEBUFFER,this.a.fb);gl.viewport(0,0,this.width,this.height);gl.clearColor(...(this.wireframe?[.014,.025,.04,1]:[.25,.32,.40,1]));gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);this.setup(this.p,view,proj,eye,day,rays,beam);for(let g of this.groups)if(g.visible)for(let m of g.meshes)if(!m.mat.glass&&!m.mat.unlit)this.drawMesh(m,g,this.p);
+gl.bindFramebuffer(gl.READ_FRAMEBUFFER,this.a.fb);gl.bindFramebuffer(gl.DRAW_FRAMEBUFFER,this.b.fb);gl.blitFramebuffer(0,0,this.width,this.height,0,0,this.width,this.height,gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT,gl.NEAREST);gl.bindFramebuffer(gl.FRAMEBUFFER,this.b.fb);this.setup(this.pg,view,proj,eye,day,rays,beam);for(let g of this.groups)if(g.visible)for(let m of g.meshes)if(m.mat.glass)this.drawMesh(m,g,this.pg);
+gl.bindFramebuffer(gl.READ_FRAMEBUFFER,this.a.fb);gl.bindFramebuffer(gl.DRAW_FRAMEBUFFER,this.b.fb);gl.blitFramebuffer(0,0,this.width,this.height,0,0,this.width,this.height,gl.DEPTH_BUFFER_BIT,gl.NEAREST);gl.bindFramebuffer(gl.FRAMEBUFFER,this.b.fb);this.setup(this.p,view,proj,eye,day,rays,beam);gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE);gl.depthMask(false);for(let g of this.groups)if(g.visible)for(let m of g.meshes)if(m.mat.unlit)this.drawMesh(m,g,this.p);gl.depthMask(true);gl.disable(gl.BLEND);gl.bindFramebuffer(gl.FRAMEBUFFER,null);gl.viewport(0,0,this.width,this.height);gl.disable(gl.DEPTH_TEST);gl.useProgram(this.pp);gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,this.b.tex);gl.uniform1i(this.u(this.pp,'sceneTex'),0);gl.uniform2f(this.u(this.pp,'resolution'),this.width,this.height);gl.uniform1f(this.u(this.pp,'exposure'),exposure);gl.drawArrays(gl.TRIANGLES,0,3);this.frame++;}
+project(p){let q=M.point(this.vp,p);return[(q[0]+1)*this.width/2,(1-q[1])*this.height/2,q[2]];}
+stats(){return{groups:this.groups.length,triangles:this.groups.reduce((s,g)=>s+g.meshes.reduce((v,m)=>v+m.count/3,0),0),meshes:this.groups.reduce((s,g)=>s+g.meshes.length,0),width:this.width,height:this.height,webgl:'WebGL 2',floatColor:this.float};}}
+root.LumenEngine={M,G,Geometry,Renderer,color};})(window);
+
+/* One educational Czerny-Turner scanning spectrometer, all coordinates in mm.
+ * Topology follows Thorlabs MTN021939-D02 figs 1b/24/26; not manufacturer CAD.
+ * Scalar first-order grating + ideal paraxial mirror/slit image model.
+ * Source spectra/sample are synthetic examples, never measured device data.
+ */
+(function (root, factory) {
+  'use strict';
+  const api = factory();
+  if (typeof module === 'object' && module.exports) module.exports = api;
+  else if (typeof define === 'function' && define.amd) define([], () => api);
+  else root.LumenCTCore = api;
+})(typeof window !== 'undefined' ? window : globalThis, function () {
+  'use strict';
+  const H = Math.atan2(50, 100), R = Math.PI / 180;
+  const add = (a,b) => a.map((v,i)=>v+b[i]);
+  const sub = (a,b) => a.map((v,i)=>v-b[i]);
+  const mul = (a,k) => a.map(v=>v*k);
+  const dot = (a,b) => a.reduce((s,v,i)=>s+v*b[i],0);
+  const norm = a => mul(a,1/Math.hypot(...a));
+  function finite(v,n) { if (typeof v !== 'number' || !Number.isFinite(v)) throw new TypeError(n+' must be finite'); return v; }
+  function positive(v,n) { finite(v,n); if(v<=0)throw new RangeError(n+' must be positive'); return v; }
+  function object(o) { if(!o||typeof o!=='object'||Array.isArray(o))throw new TypeError('options must be an object'); }
+  function geometryOptions(o={}) {
+    object(o); const f=positive(o.f??200,'f'), grooves=positive(o.grooves??600,'grooves');
+    const exitOffsetMM=finite(o.exitOffsetMM??0,'exitOffsetMM');
+    return {f,grooves,exitOffsetMM,dNM:1e6/grooves};
+  }
+  function angleForWavelength(nm,o={}) {
+    positive(nm,'nm'); const p=geometryOptions(o), delta=Math.atan(p.exitOffsetMM/p.f);
+    const q=nm/(2*p.dNM*Math.cos(H+delta/2));
+    if(!(q>=0&&q<1))throw new RangeError('Wavelength cannot reach this exit in first diffraction order');
+    return (delta/2+Math.asin(q))/R;
+  }
+  function params(o={}) {
+    const p=geometryOptions(o);
+    p.angleDeg=finite(o.angleDeg??angleForWavelength(o.selectedNM??550,p),'angleDeg');
+    p.phi=p.angleDeg*R;
+    p.entryWidthMM=positive(o.entryWidthMM??o.slitWidthMM??.2,'entryWidthMM');
+    p.exitWidthMM=positive(o.exitWidthMM??o.slitWidthMM??.2,'exitWidthMM');
+    p.mirrorRadiusMM=12.7;
+    p.source=o.source??'led'; if(!['led','lines'].includes(p.source))throw new RangeError('source must be led or lines');
+    p.sample=o.sample??false; if(typeof p.sample!=='boolean')throw new TypeError('sample must be boolean');
+    const betaTarget=H+Math.atan(p.exitOffsetMM/p.f)-p.phi;
+    if(Math.cos(H+p.phi)<=0||Math.cos(betaTarget)<=0)throw new RangeError('Grating must face both optical arms');
+    p.selectedNM=p.dNM*(Math.sin(H+p.phi)-Math.sin(betaTarget));
+    if(!(p.selectedNM>0)&&o.angleDeg!==0)throw new RangeError('This orientation selects no positive first-order wavelength');
+    return p;
+  }
+  function layout(o={}) {
+    const {f,exitOffsetMM}=geometryOptions(o);
+    const collimator=[100,75,-50],grating=[0,75,0],focusing=[100,75,50];
+    const entry=[100-f,75,-50],exit=[100-f,75,50+exitOffsetMM];
+    return {units:'mm',f,mirrorRadiusMM:12.7,
+      source:[entry[0]-130,75,-50],condenser:[entry[0]-40,75,-50],entry,
+      collimator,grating,focusing,exit,
+      detectorLens:[exit[0]-25,75,exit[2]],detector:[exit[0]-55,75,exit[2]],
+      focalPlaneCenter:[100-f,75,50],focalPlaneNormal:[1,0,0],
+      collimatorNormal:norm(sub([1,0,0],norm(sub(grating,collimator)))),
+      focusingNormal:norm(sub(norm(sub(focusing,grating)),[-1,0,0])),
+      opticalHeightMM:75,setupArmAngleDeg:2*H/R};
+  }
+  function wavelengthAtExit(o={}) { return params(o).selectedNM; }
+  function bandpass(o={}) {
+    const p=params(o),delta=Math.atan(p.exitOffsetMM/p.f),alpha=H+p.phi,beta=H+delta-p.phi;
+    const magnification=Math.cos(alpha)/Math.cos(beta);
+    const imageWidthMM=p.entryWidthMM*magnification;
+    const dispersionMMPerNM=p.f/(Math.cos(delta)**2*p.dNM*Math.cos(beta));
+    return {imageWidthMM,magnification,dispersionMMPerNM,
+      resolutionNM:Math.max(imageWidthMM,p.exitWidthMM)/dispersionMMPerNM,
+      supportWidthNM:(imageWidthMM+p.exitWidthMM)/dispersionMMPerNM,
+      peakThroughput:Math.min(p.entryWidthMM,p.exitWidthMM/magnification)/.2};
+  }
+  function trace(nm,p,L) {
+    positive(nm,'nm');
+    const phi=p.phi,n=[Math.cos(phi),0,Math.sin(phi)],t=[-Math.sin(phi),0,Math.cos(phi)];
+    const incoming=norm(sub(L.grating,L.collimator));
+    // Tangential wave-vector relation: i.t - o.t = lambda/d, m=+1.
+    const s=dot(incoming,t)-nm/p.dNM;
+    const base={nm,gratingNormal:n,incoming,points:[L.entry.slice(),L.collimator.slice(),L.grating.slice()],
+      diffracted:null,mirrorHit:null,focalPoint:null,slitOffsetMM:null,passesExit:false,collected:false,throughput:0};
+    if(Math.abs(s)>1)return {...base,reason:'no-propagating-order'};
+    const diffracted=add(mul(n,Math.sqrt(Math.max(0,1-s*s))),mul(t,s));
+    const den=dot(diffracted,L.focusingNormal);
+    const travel=dot(sub(L.focusing,L.grating),L.focusingNormal)/den;
+    if(!(travel>0&&Number.isFinite(travel)))return {...base,diffracted,reason:'misses-mirror-plane'};
+    const mirrorHit=add(L.grating,mul(diffracted,travel));
+    const collected=Math.hypot(...sub(mirrorHit,L.focusing))<=p.mirrorRadiusMM;
+    const delta=Math.atan2(diffracted[2],diffracted[0])-H;
+    const slitOffsetMM=p.f*Math.tan(delta);
+    const focalPoint=[L.focalPlaneCenter[0],75,50+slitOffsetMM];
+    const cosBeta=Math.cos(Math.atan2(diffracted[2],diffracted[0])-phi);
+    const imageWidthMM=p.entryWidthMM*Math.cos(H+phi)/cosBeta;
+    const center=slitOffsetMM,exitCenter=p.exitOffsetMM;
+    const overlapMM=Math.max(0,Math.min(center+imageWidthMM/2,exitCenter+p.exitWidthMM/2)-
+      Math.max(center-imageWidthMM/2,exitCenter-p.exitWidthMM/2));
+    const throughput=collected?p.entryWidthMM*(overlapMM/imageWidthMM)/.2:0;
+    const points=[...base.points,mirrorHit]; if(collected)points.push(focalPoint);
+    return {...base,diffracted,mirrorHit,focalPoint,slitOffsetMM,imageWidthMM,overlapMM,
+      passesExit:collected&&overlapMM>0,collected,throughput,points,
+      reason:collected?'ok':'outside-mirror-aperture'};
+  }
+  function traceWavelength(nm,o={}) { const p=params(o); return trace(nm,p,layout(p)); }
+  const LINES=Object.freeze([{nm:450,power:.55},{nm:546,power:1},{nm:550,power:.85},{nm:610,power:.65},{nm:660,power:.4}].map(Object.freeze));
+  const ledDensity=nm=>(.6*Math.exp(-.5*((nm-450)/12)**2)+.85*Math.exp(-.5*((nm-565)/48)**2))/10;
+  function sourceSpectrum(source='led') {
+    if(source==='lines')return LINES.map(v=>({...v}));
+    if(source!=='led')throw new RangeError('source must be led or lines');
+    const out=[]; const step=.5;
+    for(let nm=400;nm<=700;nm+=step){
+      out.push({nm,power:ledDensity(nm)*step});
+    }
+    return out;
+  }
+  function sampleTransmission(nm,enabled=false) {
+    positive(nm,'nm'); if(typeof enabled!=='boolean')throw new TypeError('enabled must be boolean');
+    return enabled?1-.78*Math.exp(-.5*((nm-580)/18)**2):1;
+  }
+  function detectorSignal(o={}) {
+    const p=params(o),L=layout(p);let signal=0;
+    if(p.source==='lines'){
+      for(const line of LINES)signal+=line.power*sampleTransmission(line.nm,p.sample)*trace(line.nm,p,L).throughput;
+      return signal;
+    }
+    // Integrate the continuous LED density locally, avoiding a wavelength grid
+    // that would make a narrow slit flicker as the grating is rotated.
+    const span=2*bandpass(p).supportWidthNM;
+    const lo=Math.max(400,p.selectedNM-span),hi=Math.min(700,p.selectedNM+span);
+    if(hi<=lo)return 0;
+    const steps=128,h=(hi-lo)/steps;
+    for(let i=0;i<=steps;i++){
+      const nm=lo+i*h,weight=(i===0||i===steps)?1:(i%2?4:2);
+      signal+=weight*ledDensity(nm)*sampleTransmission(nm,p.sample)*trace(nm,p,L).throughput;
+    }
+    signal*=h/3;
+    return signal;
+  }
+  function scanSpectrum(o={}) {
+    object(o); const startNM=positive(o.startNM??400,'startNM'),endNM=positive(o.endNM??700,'endNM');
+    const stepNM=positive(o.stepNM??2,'stepNM');
+    if(endNM<startNM)throw new RangeError('endNM must be at least startNM');
+    const count=Math.floor((endNM-startNM)/stepNM+1e-9)+1;
+    if(count>5001)throw new RangeError('Scan exceeds 5001 samples; request a coarser step');
+    const result=[];
+    for(let i=0;i<count;i++){
+      const nm=startNM+i*stepNM,angleDeg=angleForWavelength(nm,o);
+      result.push({nm,angleDeg,signal:detectorSignal({...o,angleDeg})});
+    }
+    return result;
+  }
+  function simulate(o={}) {
+    const p=params(o),L=layout(p),b=bandpass(p);
+    const wavelengths=o.wavelengths??[430,450,480,510,550,580,610,650,680];
+    if(!Array.isArray(wavelengths)||wavelengths.length>1000)throw new RangeError('wavelengths must be an array of at most 1000 entries');
+    wavelengths.forEach(nm=>positive(nm,'wavelength'));
+    const samples=[...new Set([...wavelengths,...(p.selectedNM>0?[p.selectedNM]:[])])].sort((a,b)=>a-b);
+    return {selectedNM:p.selectedNM,angleDeg:p.angleDeg,layout:L,
+      gratingNormal:[Math.cos(p.phi),0,Math.sin(p.phi)],
+      rays:samples.map(nm=>trace(nm,p,L)),scan:scanSpectrum({...o,...p}),
+      resolutionNM:b.resolutionNM,relativeThroughput:detectorSignal(p),bandpass:b,
+      source:p.source,sample:p.sample,dataKind:'synthetic-model',
+      limitations:['First diffraction order; ideal paraxial mirror imaging',
+        'Finite mirror aperture applied to chief rays; full pupil vignetting and aberrations omitted',
+        'Synthetic source/sample spectra and relative signal, not manufacturer measurements',
+        'Slit-limited local FWHM estimate; diffraction limit, efficiency, polarization and detector noise omitted']};
+  }
+  return {layout,angleForWavelength,wavelengthAtExit,traceWavelength,bandpass,
+    sourceSpectrum,sampleTransmission,detectorSignal,scanSpectrum,simulate};
+});
+
+/* Document-matched educational CT topology. Geometry is illustrative, not vendor CAD. */
+(function(){'use strict';const C=LumenCore,{G,Geometry,M,Renderer}=LumenEngine,F=LumenCTCore,PI=Math.PI;
+const R=new Renderer(document.getElementById('view'));R.resize(1920,1080);const mm=p=>p.map(x=>x/25),L=F.layout();
+const mats={navy:{name:'navy anodized',color:'#173047',metal:.7,rough:.28},black:{name:'black satin',color:'#182127',metal:.2,rough:.52},silver:{name:'satin steel',color:'#bfcad0',metal:.78,rough:.24},gold:{name:'brass',color:'#d4b777',metal:.8,rough:.22},glass:{name:'lens glass',color:'#addef4',glass:true},mirror:{name:'silver mirror',color:'#d2e6ef',metal:.96,rough:.075},blue:{name:'blue anodized',color:'#3c6c8c',metal:.55,rough:.34}};
+const P=(geo,mat,p=[0,0,0],r=[0,0,0])=>({geo,mat:typeof mat==='string'?mats[mat]:mat,p,r,s:[1,1,1]});
+const group=(name,parts,p=[0,0,0],ex=[0,0,0])=>R.addGroup(name,parts,p,ex);const mounts=[];
+function screw(a,p,axis='y'){a.push(P(G.cylinder(.057,.055,6),'silver',p,axis==='x'?[0,0,PI/2]:[0,0,0]));}
+let board=[P(G.box(24,.4,18,.10),'navy',[-1.8,-.1,0]),P(G.box(23.96,.055,17.96,.035),'silver',[-1.8,.12,0]),P(G.box(23.9,.045,17.9,.035),'black',[-1.8,.17,0])];
+for(let x=-13.3;x<10;x+=1)for(let z=-8.5;z<9;z+=1)board.push(P(G.ring(.075,.047,.015,12,.003),'black',[x,.2,z]));
+for(let x of[-12.7,9.1])for(let z of[-7.9,7.9])board.push(P(G.cylinder(.48,.85,36),'black',[x,-.48,z]),P(G.ring(.5,.43,.11,36,.006),'silver',[x,-.3,z]));
+group('光学面包板 / 600 × 450 mm',board);
+function post(name,p,ex=0){let a=[P(G.box(1.55,.22,1.05,.045),'navy',[0,.35,0]),P(G.cylinder(.28,1.25,36),'black',[0,1.05,0]),P(G.cylinder(.18,1.75,36),'silver',[0,1.66,0]),P(G.ring(.31,.19,.1,36,.004),'silver',[0,1.67,0]),P(G.cylinder(.12,.22,24),'gold',[.3,1.26,0],[0,0,PI/2])];for(let x of[-.57,.57])screw(a,[x,.49,0]);let g=group(name+' / 支杆与锁紧',a,[p[0],0,p[2]],[0,ex,0]);mounts.push(g);return g}
+function knob(a,p,rot=[0,0,PI/2],r=.11,h=.45){a.push(P(G.cylinder(r,h,36),'silver',p,rot));for(let i=0;i<16;i++){let t=i*PI/8;a.push(P(G.box(.32,.019,.024),'black',[p[0],p[1]+r*Math.cos(t),p[2]+r*Math.sin(t)]))}}
+function lens(name,center){let p=mm(center);post(name,p);let a=[P(G.ring(.60,.49,.16,64,.006),'black',[0,0,0],[0,0,PI/2]),P(G.ring(.54,.49,.035,64,.003),'silver',[.09,0,0],[0,0,PI/2]),P(G.cylinder(.49,.055,64),'glass',[0,0,0],[0,0,PI/2])];return group(name,a,p,[0,1.4,0])}
+function slit(name,center){let p=mm(center);post(name,p);let a=[P(G.box(.22,.23,1.8,.04),'navy',[0,-.72,0]),P(G.box(.22,.23,1.8,.04),'navy',[0,.72,0]),P(G.box(.22,1.3,.18,.02),'navy',[0,0,-.81]),P(G.box(.22,1.3,.18,.02),'navy',[0,0,.81]),P(G.box(.24,.23,1.87,.03),'silver',[0,.72,0])];for(let y of[-.62,.6])for(let z of[-.73,.73])screw(a,[.14,y,z],'x');knob(a,[0,1.0,.45]);let frame=group(name+' / 外框',a,p,[0,1.8,0]);const blades=[];for(let s of[-1,1])blades.push(group(name+' / 刀口'+s,[P(G.box(.012,1.1,.69),'silver')],[p[0]+.135,p[1],p[2]+s*.35],[0,1.8,0]));return {frame,blades,p}}
+let entry=slit('入射狭缝',L.entry),exit=slit('出射狭缝',L.exit);lens('聚光透镜',L.condenser);lens('探测器耦合透镜',L.detectorLens);
+let sourceP=mm(L.source);post('白光 LED',sourceP);let src=[P(G.cylinder(.42,1.1,48),'black',[0,0,0],[0,0,PI/2]),P(G.ring(.43,.34,.08,48,.008),'silver',[.59,0,0],[0,0,PI/2]),P(G.cylinder(.31,.015,40),{name:'LED emitter',color:'#fff0d2',emit:1.8},[.64,0,0],[0,0,PI/2])];for(let x=-.45;x<.3;x+=.1)src.push(P(G.ring(.47,.4,.034,48,.004),'silver',[x,0,0],[0,0,PI/2]));group('LED 光源',src,sourceP,[0,1.3,0]);
+let dp=mm(L.detector);post('硅光电探测器',dp);group('硅光电探测器',[P(G.cylinder(.39,1.05,48),'black',[0,0,0],[0,0,PI/2]),P(G.ring(.41,.3,.08,48,.007),'silver',[.56,0,0],[0,0,PI/2]),P(G.cylinder(.29,.015,32),'blue',[.605,0,0],[0,0,PI/2]),P(G.cylinder(.10,.22,24),'gold',[-.61,0,0],[0,0,PI/2])],dp,[0,1.3,0]);
+for(let [name,key,nkey]of[['准直凹面镜','collimator','collimatorNormal'],['聚焦凹面镜','focusing','focusingNormal']]){let p=mm(L[key]);post(name,p);let a=[P(G.box(.18,1.58,1.60,.04),'navy',[-.12,0,0]),P(G.ring(.66,.51,.14,64,.01),'black',[0,0,0],[0,0,PI/2])];let surf=new Geometry();const rad=.507;
+for(let i=0;i<24;i++)for(let j=0;j<64;j++){let r0=rad*i/24,r1=rad*(i+1)/24,t0=j*PI/32,t1=(j+1)*PI/32,pt=(r,t)=>[.065-r*r/32,r*Math.cos(t),r*Math.sin(t)];surf.quad(pt(r0,t0),pt(r1,t0),pt(r1,t1),pt(r0,t1))}a.push(P(surf,'mirror'));for(let z of[-.64,.64])knob(a,[-.38,.6,z]);for(let y of[-.62,.62])screw(a,[.02,y,-.66],'x');let g=group(name+' / 镜架与反射面',a,p,[0,2.6,0]);g.rotation[1]=PI-Math.atan2(L[nkey][2],L[nkey][0]);}
+// Precision rotation stage and removable grating carrier.
+let base=[P(G.box(2.8,.28,2.8,.08),'navy',[0,.42,0]),P(G.cylinder(1.28,.36,96),'black',[0,.74,0]),P(G.ring(1.31,1.10,.07,96,.008),'silver',[0,.96,0])];for(let x of[-1.14,1.14])for(let z of[-1.14,1.14])screw(base,[x,.59,z]);for(let i=0;i<120;i++){let t=i*PI/60;let len=i%10===0?.18:.085;base.push(P(G.box(.014,.006,len),'black',[1.20*Math.sin(t),1.0,1.20*Math.cos(t)],[0,t,0]));}knob(base,[1.35,.75,.85],[0,0,PI/2],.18,.7);group('光栅转台 / 固定座与游标',base);
+let table=group('光栅转台 / 旋转台面',[P(G.cylinder(1.05,.24,96),'navy',[0,1.13,0]),P(G.ring(1.09,.93,.08,96,.005),'gold',[0,1.24,0]),P(G.box(.75,1.35,.35,.035),'black',[0,1.96,0])],[0,0,0],[0,.75,0]);
+let gratParts=[P(G.box(.20,1.24,1.24,.025),'navy'),P(G.box(.016,1.0,1.0),'silver',[.115,0,0])];for(let i=0;i<90;i++)gratParts.push(P(G.box(.008,.96,.003),'blue',[.128,0,-.48+i*.96/89]));for(let y of[-.55,.55])for(let z of[-.55,.55])screw(gratParts,[.15,y,z],'x');let grating=group('反射光栅 / 600 线每毫米',gratParts,mm(L.grating),[0,1.7,0]);
+// The stop prevents direct stray light between entrance and exit.
+group('杂散光挡板',[P(G.box(1.1,2.5,.08),'black',[-4.0,1.6,0]),P(G.box(1.5,.15,.7,.035),'navy',[-4,.32,0])]);
+const sample=group('可插拔样本架',[P(G.ring(.61,.47,.12,64,.005),'black',[0,0,0],[0,0,PI/2]),P(G.cylinder(.47,.06,48),{...mats.glass,name:'sample filter',color:'#7bb5cc'},[0,0,0],[0,0,PI/2]),P(G.cylinder(.10,1.55,24),'silver',[0,-1.2,0])],[-7.4,3,-2]);
+let cables=[];for(let [p,end] of [[sourceP,[-11,.3,-6]],[dp,[-9,.3,6]]])cables.push(P(G.tube([C.add(p,[-.65,0,0]),C.add(p,[-1,-.2,.2]),[p[0]-1,.45,p[2]+1],end],.044,8),'black'));group('光源与探测器连接线',cables);
+const rays=group('计算光路',[]);for(let i=0;i<12;i++)rays.meshes.push(R.mesh(new Geometry(),{name:'ray'+i,color:'#ffffff',unlit:true,kind:6,alpha:.65,emit:1.7}));
+let lastKey='',last=null;function draw(o={}){let opts={grooves:600,f:200,entryWidthMM:o.slit??.2,exitWidthMM:o.slit??.2,source:o.source??'led',sample:!!o.sample,angleDeg:o.angle??F.angleForWavelength(o.nm??550)};let nm=F.wavelengthAtExit(opts),phi=opts.angleDeg*PI/180;table.rotation[1]=grating.rotation[1]=-phi;sample.visible=!!o.sample;for(let sl of[entry,exit])for(let i=0;i<2;i++)sl.blades[i].position[2]=sl.p[2]+(i?1:-1)*(.345+opts.entryWidthMM/50);
+let key=[opts.angleDeg,opts.entryWidthMM,opts.source,opts.sample].join('/');if(key!==lastKey){let wave=opts.source==='lines'?F.sourceSpectrum('lines').map(q=>q.nm):[430,455,480,505,530,555,580,605,630,665,nm];last={opts,nm,bandpass:F.bandpass(opts),signal:F.detectorSignal(opts),rays:[]};for(let i=0;i<11;i++){let geo=new Geometry();if(i>=wave.length){R.updateMesh(rays.meshes[i],geo);rays.meshes[i].mat.alpha=0;continue}let wavelength=wave[i],tr=F.traceWavelength(wavelength,opts);last.rays.push(tr);let power=opts.source==='lines'?F.sourceSpectrum('lines').find(q=>q.nm===wavelength).power:(.6*Math.exp(-.5*((wavelength-450)/12)**2)+.85*Math.exp(-.5*((wavelength-565)/48)**2));power*=F.sampleTransmission(wavelength,opts.sample);let points=tr.points.slice(2).map(mm);for(let j=0;j<points.length-1;j++)geo.add(G.tube([points[j],points[j+1]],.013,6));if(tr.passesExit&&tr.throughput>1e-5&&power>1e-5){geo.add(G.tube([points.at(-1),mm(L.detectorLens),mm(L.detector)],.016,6))}R.updateMesh(rays.meshes[i],geo);rays.meshes[i].mat.color=C.wavelengthRGB(wavelength);rays.meshes[i].mat.alpha=Math.min(.85,power*.75);rays.meshes[i].mat.emit=1.7;}let white=new Geometry();white.add(G.tube([L.source,L.condenser,L.entry,L.collimator,L.grating].map(mm),.022,8));R.updateMesh(rays.meshes[11],white);lastKey=key;}
+
+rays.visible=(o.explode??0)<.06;R.wireframe=!!o.wire;let yaw=o.yaw??-.65,elev=o.elev??.68,radius=o.radius??22,at=o.at??[-2,1.7,0];let eye=o.eye??[at[0]+radius*Math.sin(yaw)*Math.cos(elev),at[1]+radius*Math.sin(elev),at[2]+radius*Math.cos(yaw)*Math.cos(elev)];R.render({eye,at,fov:o.fov??40,day:.75,exposure:1.08,explode:o.explode??0});return {...last,camera:{eye,at,yaw,elev,radius},stats:R.stats()};}
+window.CTSCENE={draw,renderer:R,layout:L,mm,ready:true};draw();})();
+</script><script>// Concept diagrams: collimation and diffraction are distinct operations.
+window.opticsLesson = kind => {
+  const frame=(title,body,foot)=>`<svg width="650" height="270" viewBox="0 0 650 270" xmlns="http://www.w3.org/2000/svg"><rect width="650" height="270" rx="12" fill="#f5faf7" fill-opacity=".97"/><g font-family="Microsoft YaHei,sans-serif" fill="#173d54"><text x="22" y="35" font-size="24" font-weight="bold">${title}</text>${body}<text x="22" y="247" font-size="18" fill="#466779">${foot}</text></g></svg>`;
+  if(kind==='collimator') {
+    let rays='';
+    for(const y of [-54,0,54]) {
+      const x=280-y*y/360, h=132+y;
+      rays+=`<path d="M190 132L${x} ${h}" stroke="#dc9e28" stroke-width="3" fill="none"/><path d="M${x} ${h}H35" stroke="#158bbb" stroke-width="3"/><path d="M50 ${h-5}L40 ${h}L50 ${h+5}" fill="none" stroke="#158bbb" stroke-width="2"/>`;
+    }
+    return frame('准直：把散开的光“排整齐”',`${rays}<path d="M266.4 62 Q293.6 132 266.4 202" stroke="#29495f" stroke-width="8" fill="none"/><circle cx="190" cy="132" r="5" fill="#b57a12"/><text x="135" y="211" font-size="17">狭缝在焦点附近</text><text x="319" y="102" font-size="22">曲面各处朝向不同</text><text x="319" y="141" font-size="22">把散开的光反射成</text><text x="319" y="180" font-size="24" fill="#08789f">大致平行的光束</text>`,'金色：入射方向　蓝色：反射方向　· 原理示意');
+  }
+  let grooves='';for(let x=95;x<=260;x+=13)grooves+=`<path d="M${x} 191l24 -21" stroke="#54758a" stroke-width="3"/>`;
+  const colors=['#a535dd','#205fe8','#049ab2','#32a740','#d3bd00','#e2860b','#d74c43'];
+  let rays='';colors.forEach((c,i)=>{const x=225+i*14,y=64+i*13;rays+=`<path d="M181 177L${x} ${y}" stroke="${c}" stroke-width="4"/>`;});
+  return frame('分光：不同颜色，在不同方向变强',`<path d="M35 66L181 177" stroke="#b3a581" stroke-width="9"/><path d="M35 66L181 177" stroke="#fff" stroke-width="5"/>${rays}${grooves}<text x="25" y="55" font-size="17">白光</text><text x="114" y="216" font-size="17">密集细槽</text><text x="354" y="98" font-size="21">光波像水波一样叠加</text><text x="354" y="136" font-size="21">波长不同，增强方向不同</text><text x="354" y="177" font-size="23" fill="#08789f">颜色原本就在白光里</text>`,'这是衍射与干涉形成的分光 · 细槽与角度为示意');
+};
+</script><script>
+(()=>{const $=s=>document.getElementById(s),F=LumenCTCore,C=LumenCore,S={angle:F.angleForWavelength(550),slit:.2,source:'led',sample:false,explode:0,wire:false,yaw:-.65,elev:.68,radius:22,at:[-2,1.4,0]},clamp=(n,a,b)=>Math.max(a,Math.min(b,n));let rotating=false,scanning=false,scanTime=0,cacheKey='',curves=[],reference=[],last,revision=0,manual=false;
+function opts(){return{angleDeg:S.angle,entryWidthMM:S.slit,exitWidthMM:S.slit,source:S.source,sample:S.sample}}
+function chart(){let key=[S.slit,S.source,S.sample].join('/');if(key!==cacheKey){let p=opts();let range=S.source==='lines'?{startNM:540,endNM:556,stepNM:.1}:{startNM:400,endNM:700,stepNM:2};curves=F.scanSpectrum({...p,...range});reference=S.sample?F.scanSpectrum({...p,...range,sample:false}):[];cacheKey=key}let max=Math.max(.01,...curves.map(x=>x.signal),...reference.map(x=>x.signal)),lo=curves[0].nm,hi=curves.at(-1).nm,xy=q=>[30+(q.nm-lo)/(hi-lo)*263,139-q.signal/max*115],path=a=>a.map((q,i)=>(i?'L':'M')+xy(q).join(',')).join(' ');let cursor=30+(last.nm-lo)/(hi-lo)*263;
+const color=nm=>'rgb('+C.wavelengthRGB(nm).map(v=>Math.round(Math.min(1,v)*255)).join(',')+')';
+let stops=Array.from({length:61},(_,i)=>`<stop offset="${i/60}" stop-color="${color(lo+(hi-lo)*i/60)}"/>`).join('');
+let ticks=(hi-lo>100?[400,450,500,550,600,650,700]:[lo,(lo+hi)/2,hi]).map(nm=>`<text x="${30+(nm-lo)/(hi-lo)*263}" y="180" text-anchor="middle">${Math.round(nm)}</text>`).join('');
+$('chart').innerHTML=`<defs><linearGradient id="wavelength-colors">${stops}</linearGradient></defs><path d="M30 12V139H293" fill="none" stroke="#8ea5b0"/><text x="3" y="15">归一化强度</text><rect id="spectrum-band" data-min="${lo}" data-max="${hi}" x="30" y="146" width="263" height="16" rx="2" fill="url(#wavelength-colors)"/>${ticks}<text x="30" y="202">波长 / nm · 颜色为近似示意</text>${reference.length?'<path d="'+path(reference)+'" fill="none" stroke="#9ba7ae" stroke-width="2" stroke-dasharray="4 4"/>':''}<path d="${path(S.scanProgress==null?curves:curves.filter(q=>q.nm<=S.scanProgress))}" fill="none" stroke="#087c9e" stroke-width="2.5"/>${cursor>=30&&cursor<=293?'<path d="M'+cursor+' 12V162" stroke="#283c4f" stroke-width="1.5"/><path id="wavelength-pointer" d="M'+(cursor-4)+' 140L'+cursor+' 146L'+(cursor+4)+' 140Z" fill="#18354a"/>':''}`;}
+
+function draw(){last=CTSCENE.draw(S);$('angle').value=S.angle;$('slit').value=S.slit;$('source').value=S.source;$('angleOut').textContent=S.angle.toFixed(3)+'°';$('slitOut').textContent=S.slit.toFixed(2)+' mm';$('nmOut').textContent=last.nm.toFixed(1)+' nm';$('signalOut').textContent=last.signal.toFixed(3);$('metric').textContent='狭缝限制带宽估算 '+last.bandpass.resolutionNM.toFixed(2)+' nm';$('sample').classList.toggle('active',S.sample);$('sample').setAttribute('aria-pressed',S.sample);$('sample').textContent=S.sample?'移出样本':'加入样本';$('explode').classList.toggle('active',S.explode>.1);$('wire').classList.toggle('active',S.wire);$('orbit').classList.toggle('active',rotating);chart();let labs=[];if(S.explode<.1&&S.radius>12){for(let [key,name,dx,dy]of[['entry','入射狭缝',-75,-55],['collimator','准直凹面镜',20,-55],['grating','反射光栅',-30,-58],['focusing','聚焦凹面镜',20,-48],['detector','探测器',-40,-55]]){let p=CTSCENE.renderer.project(CTSCENE.mm(CTSCENE.layout[key]));if(p[0]>40&&p[0]<1470&&p[1]>240&&p[1]<870)labs.push(`<text x="${p[0]+dx}" y="${p[1]+dy}">${name}</text>`)}}$('labels').innerHTML=labs.join('');revision++;return{...last,revision,state:{...S},curves};}
+function update(p){Object.assign(S,p);return draw()}
+function interact(p){manual=true;scanning=false;S.scanProgress=null;$('scan').textContent='扫描光谱';return update(p)}$('angle').oninput=e=>interact({angle:+e.target.value});$('slit').oninput=e=>interact({slit:+e.target.value});$('source').onchange=e=>interact({source:e.target.value});$('sample').onclick=()=>interact({sample:!S.sample});$('wire').onclick=()=>interact({wire:!S.wire});$('explode').onclick=()=>interact({explode:S.explode>.1?0:1});$('orbit').onclick=()=>{rotating=!rotating;manual=true;draw()};$('top').onclick=()=>interact({elev:1.53,yaw:0,radius:19,at:[-2,1.1,0]});$('reset').onclick=()=>{rotating=false;interact({angle:F.angleForWavelength(550),slit:.2,source:'led',sample:false,explode:0,wire:false,yaw:-.65,elev:.68,radius:22,at:[-2,1.4,0]})};$('scan').onclick=()=>{scanning=!scanning;manual=true;scanTime=performance.now();$('scan').textContent=scanning?'停止扫描':'扫描光谱'};$('about').onclick=()=>{$('help').style.display=$('help').style.display==='block'?'none':'block'};
+let pointer=null;$('view').onpointerdown=e=>{pointer=[e.clientX,e.clientY];manual=true;rotating=false;$('view').setPointerCapture(e.pointerId)};$('view').onpointermove=e=>{if(pointer){S.yaw+=(e.clientX-pointer[0])*.007;S.elev=clamp(S.elev+(e.clientY-pointer[1])*.005,.08,1.55);pointer=[e.clientX,e.clientY];draw()}};$('view').onpointerup=()=>pointer=null;$('view').onwheel=e=>{e.preventDefault();manual=true;update({radius:clamp(S.radius*Math.exp(e.deltaY*.001),5,38)})};
+for(const [id,kind] of [['why-mirror','collimator'],['why-grating','grating']])$(id).onclick=()=>{$('science-diagram').innerHTML=opticsLesson(kind);$('science-note').style.display='block';};document.querySelector('.close-note').onclick=()=>{$('science-note').style.display='none';};
+let prev=0;function tick(t){let dt=Math.min(.05,(t-prev)/1000);prev=t;if(!window.__CAPTURE&&manual&&(rotating||scanning)){if(rotating)S.yaw+=dt*.3;if(scanning){let nm=400+((t-scanTime)/1000*35)%300;S.angle=F.angleForWavelength(nm)}draw()}requestAnimationFrame(tick)}requestAnimationFrame(tick);function fit(){let s=Math.min(innerWidth/1920,innerHeight/1080);$('stage').style.transform=`translate(${(innerWidth-1920*s)/2}px,${(innerHeight-1080*s)/2}px) scale(${s})`}fit();onresize=fit;draw();window.CT={ready:true,state:S,draw,update,interact,evidence:()=>({revision,...last,state:{...S}}),title:(a,b)=>{$('title').textContent=a;$('subline').textContent=b},controls:show=>document.querySelector('.dock').style.visibility=show?'visible':'hidden',highlight:(id)=>{let el=$(id),r=el.getBoundingClientRect(),stage=$('stage').getBoundingClientRect(),scale=stage.width/1920;let h=$('hotspot');h.style.display=id?'block':'none';h.style.left=(r.left-stage.left+r.width/2)/scale-19+'px';h.style.top=(r.top-stage.top+r.height/2)/scale-19+'px'}};
+})();</script></html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="认识 Q咪：戴着黄金像素 Q 的蓝黄小猫宠物。预览动作，下载素材。">
+  <title>Q咪 · 在下_小Q</title>
+  <link rel="stylesheet" href="../../assets/site-brand-tokens.css">
+  <link rel="stylesheet" href="../../assets/site-shell.css">
+  <link rel="stylesheet" href="pet.css">
+  <link rel="stylesheet" href="../../assets/site-i18n.css?v=20260907-i18n-r1">
+  <script src="../../assets/site-i18n-data.js?v=20260907-quina-title-r1"></script>
+  <script src="../../assets/site-i18n.js?v=20260907-i18n-r1" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳到主要内容</a>
+  <header class="site-header"><div class="shell bar">
+    <a class="brand" href="../../index.html"><img src="../../assets/q-logo-pixel-framed.svg" alt="" width="42" height="42">在下_小Q</a>
+    <nav class="site-nav" aria-label="主导航"><a href="../../index.html">首页</a><a href="../index.html" aria-current="page">项目</a><a href="../../games/index.html">游戏</a><a href="../../tools/index.html">工具</a><a href="../../notes/index.html">笔记</a><a href="../../about/index.html">关于</a></nav>
+  </div></header>
+  <main id="main" class="shell pet-main" tabindex="-1">
+    <a class="pet-back" href="../index.html">← 返回项目</a>
+    <section class="pet-intro" aria-labelledby="pet-title">
+      <div class="pet-copy"><p class="eyebrow">Q MIMI</p><h1 id="pet-title">你好，我是 Q咪。</h1><p class="pet-lede">一只蓝黄小猫，戴着小小的黄金像素 Q。</p><p>眨眨眼，挥挥爪，偶尔探头看看。选一个动作，和它打个招呼吧。</p>
+        <div class="actions"><a class="button" href="q-mimi.zip" download>下载宠物素材</a><a class="button button--quiet" href="https://github.com/Aha-xiaoQ/q-mimi">GitHub ↗</a></div>
+      </div>
+      <div class="pet-demo">
+        <div class="pet-stage"><div id="pet-sprite" class="pet-sprite" role="img" aria-label="Q咪，蓝黄配色、戴黄金 Q 吊坠的小猫"></div></div>
+        <div class="pet-controls" hidden id="pet-controls"><label for="pet-action">动作</label><select id="pet-action"><option value="idle">眨眼</option><option value="waving">挥爪</option><option value="jumping">跳跃</option><option value="right">向右跑</option><option value="left">向左跑</option><option value="look">四处看看</option></select><button type="button" id="pet-pause">播放</button></div>
+        <noscript><p>启用 JavaScript 后可切换动作；素材下载不受影响。</p></noscript>
+      </div>
+    </section>
+    <section class="pet-notes" aria-labelledby="pet-use">
+      <h2 id="pet-use">在 Codex 中养一只 Q咪</h2>
+      <p>使用支持 v2 自定义宠物的 Codex 桌面端。下载并解压，将 pet.json 和 spritesheet.webp 放进用户目录下的 .codex/pets/q-mimi 文件夹；若设置过 CODEX_HOME，则放进 CODEX_HOME 下的 pets/q-mimi/。已有同名文件时请先备份。</p>
+      <p>在宠物设置中刷新列表、选择「Q咪」，再输入 /pet 或选择 Wake Pet 唤醒。具体入口随版本可能不同；<a href="https://github.com/Aha-xiaoQ/q-mimi#在-codex-桌面端使用">查看完整安装步骤与常见问题 ↗</a>。</p>
+      <p>网页仅展示动作预览，不会替你安装。实际动作由应用状态触发，不一定与这里的循环播放相同。</p>
+      <h2>使用与授权</h2>
+      <p>Q咪素材采用 <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh-hans">CC BY-NC 4.0（署名—非商业性使用）</a>：允许非商业分享和修改，公开分享时请署名、附许可证链接并注明修改。商业用途请通过 <a href="https://github.com/Aha-xiaoQ/q-mimi/issues">GitHub Issues 联系授权</a>。</p>
+      <p>署名：Q咪 · 在下_小Q（Aha-xiaoQ）。下载包附完整许可证及说明。角色由 AI 辅助生成；授权范围与免责声明见 <a href="https://github.com/Aha-xiaoQ/q-mimi/blob/main/NOTICE.md">素材授权说明</a>。本项目非 OpenAI 官方项目。</p>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="shell footer-inner"><span>在下_小Q</span><a href="https://github.com/Aha-xiaoQ">GitHub ↗</a></div></footer>
+  <script src="pet.js?v=20260907-i18n-r1" defer></script>
+</body>
+</html>

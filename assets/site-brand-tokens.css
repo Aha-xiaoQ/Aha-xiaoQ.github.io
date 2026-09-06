@@ -1,0 +1,44 @@
+/* Keep typography independent of route-specific stylesheet activation.
+   Network failures may still require a readable system fallback. */
+@font-face {
+  font-family: "LXGW WenKai";
+  src: url("fonts/LXGWWenKai-Regular.woff2?v=20260907-i18n-r1") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+}
+@font-face {
+  font-family: "LXGW WenKai";
+  src: url("fonts/LXGWWenKai-Medium.woff2?v=20260907-i18n-r1") format("woff2");
+  font-style: normal;
+  font-weight: 500 700;
+  font-display: block;
+}
+/* One source of truth for brand geometry across homepage and content pages. */
+:root {
+  font-family: "LXGW WenKai", KaiTi, serif;
+  font-synthesis: none;
+  --q-brand-logo-size: 42px;
+  --q-brand-wordmark-size: 17px;
+  --q-brand-gap: 12px;
+  --q-brand-bar-height: 72px;
+  --q-shell-max: 1160px;
+  --q-shell-gutter: 40px;
+  --q-page: min(var(--q-shell-max), calc(100% - var(--q-shell-gutter)));
+}
+
+/* First paint is server-rendered and non-blocking. The browser may paint the
+   solid fallback color before the hero image arrives, but no JavaScript gate
+   hides the page or turns asset decode into a loading screen. */
+#app {
+  visibility: visible;
+  opacity: 1;
+}
+
+@media (max-width: 800px) {
+  :root {
+    --q-brand-logo-size: 34px;
+    --q-brand-wordmark-size: 16px;
+    --q-shell-gutter: 32px;
+  }
+}

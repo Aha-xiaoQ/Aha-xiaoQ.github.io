@@ -1,0 +1,80 @@
+/* Paper-and-wall visual study. Geometry and cloud permissions are unchanged. */
+:root{--wall-ink:#303f38;--wall-muted:#646b60;--wall-accent:#345e4f;--wall-line:#d4d6c9}
+dialog{max-width:min(440px,calc(100vw - 32px));border:1px solid #bcc5b5;border-radius:12px;padding:24px;background:#fffdf3;color:#303f38}dialog::backdrop{background:#17251a66}dialog p{font:14px/1.7 system-ui,sans-serif}header{flex-wrap:wrap}
+body{background:#f1f0e9;color:var(--wall-ink)}
+main{max-width:1700px;padding:28px 36px 36px}
+header{border:0;margin-bottom:26px;padding:0;align-items:center}
+header h1{font-size:32px;letter-spacing:2px}
+header p{color:var(--wall-muted);font:13px/1.7 system-ui,sans-serif;margin:6px 0 0}
+.wall-heading{flex:1}.wall-eyebrow{display:block;font:11px/1.5 system-ui,sans-serif;letter-spacing:3px;color:#637466;margin-bottom:7px}
+.write-link{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:9px 21px;background:var(--wall-accent);color:#fffdf5;text-decoration:none;border-radius:30px;font:14px/1.5 system-ui,sans-serif;white-space:nowrap}
+.desk{grid-template-columns:280px minmax(0,1fr);gap:30px}
+.desk>section{grid-column:2;grid-row:1}
+#composer{position:relative;background:#fffdf3;border:1px solid #dfdfcf;border-top:0;padding:26px 22px 20px;box-shadow:0 7px 16px #393d3010;scroll-margin-top:20px}
+#composer::before{content:'';position:absolute;top:-8px;left:calc(50% - 32px);width:64px;height:17px;background:#cfb994a6;transform:rotate(-3deg);pointer-events:none}
+#composer h2{font-size:23px;margin-bottom:12px}
+label{font:13px/1.6 system-ui,sans-serif;color:#505d52;margin:12px 0 6px}
+input,select,textarea{background:#fffef9;border:1px solid #d4d7c9;color:var(--wall-ink);border-radius:5px;padding:10px;min-width:0}
+input,select{font:15px/1.5 system-ui,sans-serif}
+#message{font:19px/1.9 WenKai,serif;min-height:176px;background:repeating-linear-gradient(transparent 0,transparent 35px,#dfe3d480 35px,#dfe3d480 36px);border:0;border-bottom:1px solid #c8cebf;border-radius:0;padding:4px 0}
+#counter{font:12px/1.6 system-ui,sans-serif;text-align:right;color:#6b7466;margin:7px 0 14px}
+button{font:13px/1.5 system-ui,sans-serif;min-height:40px;padding:8px 12px;color:var(--wall-ink);background:#fafbf6;border:1px solid #d0d5c8;border-radius:6px}
+button:hover:not(:disabled){background:#e7ede2;border-color:#829c8c}
+button.primary{background:var(--wall-accent);border-color:var(--wall-accent);color:white;border-radius:6px;min-height:46px}
+button.primary:hover:not(:disabled){background:#264a3d}
+button:disabled{opacity:.5;cursor:not-allowed}
+:focus-visible{outline:2px solid #426c98;outline-offset:3px}
+#status{font:13px/1.8 system-ui,sans-serif;color:#526443;overflow-wrap:anywhere;margin:12px 0 0}
+#status:empty{min-height:0;margin:0}
+.hint,header p{color:var(--wall-muted)}
+.hint{font:12px/1.8 system-ui,sans-serif}
+.note-finder{margin:0 0 12px;padding:0;border:0;font:13px/1.7 system-ui,sans-serif}
+.note-finder summary{width:fit-content;color:#4b6254;padding:7px 0}
+.note-finder[open]{border-bottom:1px solid var(--wall-line);padding-bottom:14px}
+.note-finder label{margin-top:0}.note-finder input{max-width:420px}
+.toolbar{position:static;background:transparent;gap:7px;margin:0 0 10px;padding:0}
+.toolbar button{border-color:transparent;background:transparent}
+.toolbar button:hover:not(:disabled){background:#e0e7db}
+.toolbar .scope-button{border:1px solid var(--wall-line);background:#fbfcf7}
+.toolbar .scope-button[aria-pressed=true]{background:#345e4f;color:#fff;border-color:#345e4f}
+.toolbar output{font:12px/1.5 system-ui,sans-serif;min-width:40px;color:#5a665b;text-align:center}
+.note-actions{display:flex;flex-wrap:wrap;gap:5px;width:100%;padding-top:7px;border-top:1px solid #d4d6c980}
+.note-tools{width:100%;font:12px/1.6 system-ui,sans-serif;color:#54664e}.note-tools summary{cursor:pointer;padding:7px 0;width:fit-content}.note-tools[open] summary{font-weight:600}.note-tools .note-actions{border-top:0;padding-top:0}
+.action-hint{color:#795124;font:13px/1.7 system-ui,sans-serif;margin:5px 0}.action-hint:empty{display:none}
+#remove{margin-left:0;color:#94534e;border-color:transparent}
+#viewport{border:1px solid #d0d3c4;border-radius:10px;background:#e4e7dc!important;box-shadow:inset 0 2px 12px #3a44300a;isolation:isolate;scroll-margin:20px}
+.wall-plane{border:1px dashed #bdc5b5;background-color:#e9ecdf;background-image:radial-gradient(#a3ad9b50 .65px,transparent .65px);background-size:18px 18px}
+#viewport.placing{outline:2px dashed #4f7860;outline-offset:4px;cursor:crosshair}
+.note:not(.reservation){background:transparent;border:0;border-radius:0;clip-path:none;overflow:visible;box-shadow:none;isolation:isolate;filter:drop-shadow(2px 5px 4px #303b2628)}
+/* Shape only the paper face: the tape must remain outside its clipped edge. */
+.note:not(.reservation)::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background-color:var(--paper,#f7edb8);background-image:linear-gradient(120deg,#ffffff28,transparent 55%,#67552e0a),repeating-linear-gradient(0deg,#ffffff0a 0 1px,transparent 1px 3px);border:1px solid #00000009;border-radius:1px}
+.note.round::before{border-radius:50%}
+.note.heart::before{clip-path:polygon(50% 94%,35% 81%,20% 67%,9% 51%,4% 37%,4% 25%,8% 16%,15% 10%,24% 7%,34% 9%,43% 15%,50% 23%,57% 15%,66% 9%,76% 7%,85% 10%,92% 16%,96% 25%,96% 37%,91% 51%,80% 67%,65% 81%)}
+.note.ticket::before{clip-path:polygon(0 0,100% 0,100% 90%,90% 100%,80% 90%,70% 100%,60% 90%,50% 100%,40% 90%,30% 100%,20% 90%,10% 100%,0 90%)}
+.note:not(.reservation)::after{content:'';position:absolute;top:-9px;left:calc(50% - 28px);width:56px;height:18px;z-index:2;background:#cfb994a6;box-shadow:0 1px 1px #0000000b;transform:rotate(-3deg);pointer-events:none}
+.note.heart:not(.reservation)::after{top:calc(23% - 9px)}
+.note:not(.reservation).selected{filter:drop-shadow(0 0 2px #345e4f) drop-shadow(2px 5px 4px #303b2628);box-shadow:none;outline:2px solid #345e4f;outline-offset:5px}
+.note:not(.reservation).selected::after{background:#8fab8de6;box-shadow:0 0 0 1px #345e4f}
+.note.reservation::before,.note.reservation::after{display:none}
+.note.owned{cursor:grab}.note.dragging{cursor:grabbing;opacity:.85}.note-dragging{cursor:grabbing!important}
+.occupied-slot{position:absolute;display:grid;place-items:center;box-sizing:border-box;border:2px dashed #889786;background:#d8ded140;color:#62715c;font:15px/1.5 system-ui,sans-serif;pointer-events:none}
+.note-dragging .note,.note-dragging .occupied-slot{outline:1px dashed #84917b;outline-offset:12px}
+.note-dragging .note.dragging{outline:3px solid #39704d;outline-offset:12px}
+.note-dragging .note.position-conflict{outline-color:#bb493e}
+.note-editor{width:540px;max-width:calc(100vw - 28px);max-height:90dvh;padding:0;overflow:auto}.note-editor #composer{width:100%;margin:0;box-shadow:none;border:0;display:block;box-sizing:border-box}.note-editor #composer::before{display:none}.note-editor #message{max-height:35dvh}.note-editor button{margin-top:10px}.wall-feedback{font:13px/1.7 system-ui,sans-serif;color:#435f48;min-height:22px;margin:8px 0}.wall-feedback:empty{display:none}
+.note:focus-visible{outline:2px solid #426c98;outline-offset:-5px}
+.note footer{opacity:.85}.note footer time{font-family:system-ui,sans-serif;font-size:10px;letter-spacing:.2px}
+.note.reservation{border:2px dashed #85927c;color:#506148!important;background:#ffffff20!important;border-radius:4px}
+.note.reservation footer{color:#52654c;font-family:system-ui,sans-serif;font-size:12px}
+.selection{font:12px/1.7 system-ui,sans-serif;color:#596750;margin-top:10px}
+.wall-empty{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;pointer-events:none;padding:28px;color:#71806a}
+.wall-empty strong{font:25px/1.8 WenKai,serif;font-weight:400;color:#54664e}
+.wall-empty span{font:12px/1.8 system-ui,sans-serif;margin-top:8px;max-width:230px}
+.wall-empty[hidden]{display:none}
+@media(max-width:850px){
+ main{padding:22px 16px}header{display:flex;gap:12px;margin-bottom:22px}header h1{font-size:25px;letter-spacing:0}.wall-eyebrow{font-size:9px;letter-spacing:2px}.write-link{padding:8px 14px;font-size:12px}
+ .desk{display:flex;flex-direction:column;gap:28px}.desk>section{width:100%;order:0}#composer{width:100%;order:1;padding:24px 22px}
+ .toolbar{gap:4px}.toolbar button{min-height:42px;padding:7px 9px;font-size:12px}.note-actions{gap:1px}
+ #viewport{border-radius:6px}.note-finder{margin-bottom:6px}.desk>section>.hint{margin:7px 0 10px}
+ #composer h2{margin-bottom:6px}#composer>.paper-options{grid-template-columns:1fr 1.2fr}#message{min-height:154px}
+}

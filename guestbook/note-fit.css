@@ -1,0 +1,44 @@
+/* Content-led note geometry; shapes remain proportional as their size changes. */
+#color{height:46px;padding:4px;cursor:pointer}
+#viewport{background-image:radial-gradient(#48414f 1px,transparent 1px);background-size:24px 24px}
+#world{width:1px;height:1px;border:0;background:none;overflow:visible}
+.wall-plane{position:absolute;pointer-events:none;border:1px dashed #82738d;background-color:#29242f;background-image:radial-gradient(#514759 1px,transparent 1px);background-size:24px 24px}
+#viewport{background:#19171f;background-image:none}
+.toolbar{position:sticky;top:0;z-index:5;background:#111116;padding:8px 0}
+#remove{border-color:#ef203e;margin-left:auto}
+.note .content{max-height:none;flex:0 1 auto;font-size:22px;line-height:1.65}
+.note footer{opacity:1;max-height:6em;margin-top:18px;font-size:15px;line-height:1.5}
+.note-author{display:block;font-size:15px;line-height:1.5}
+.note footer time{display:block;font-size:12px;line-height:1.6;margin-top:4px}
+.note.long .content{font-size:18px;text-align:left;line-height:1.7}
+/* Width percentages below resolve against each note, not the containing wall. */
+.note.round,.note.heart{padding:0;align-items:center}
+.note.round .content{width:64%;max-height:50%}
+.note.round footer{width:60%}
+.note.heart{clip-path:polygon(50% 94%,35% 81%,20% 67%,9% 51%,4% 37%,4% 25%,8% 16%,15% 10%,24% 7%,34% 9%,43% 15%,50% 23%,57% 15%,66% 9%,76% 7%,85% 10%,92% 16%,96% 25%,96% 37%,91% 51%,80% 67%,65% 81%)}
+.note.heart .content{width:54%;max-height:33%;font-size:22px}
+.note.heart footer{width:50%;font-size:14px;max-height:5em;margin-top:10px}
+.note.heart.long .content{font-size:18px}
+.note.ticket .content{max-height:none}
+/* Full paper content: no text-box scrollbars and no shrinking body type. */
+.note .content,.note.round .content,.note.heart .content,.note.ticket .content{max-height:none;overflow:visible;flex:0 0 auto;font-size:22px;line-height:1.65}
+.note footer,.note.heart footer{max-height:none;overflow:visible;flex:0 0 auto}
+.note.long .content,.note.heart.long .content{font-size:22px;line-height:1.65}
+.note-finder{margin-bottom:16px;border-bottom:1px solid #68616e;padding-bottom:12px}
+.note-finder summary{cursor:pointer;padding:8px 0}
+.note-results{display:grid;gap:6px;max-height:220px;overflow:auto;margin-bottom:12px}
+.note-results button{text-align:left;overflow-wrap:anywhere}
+.note.reserved-size .content{flex:0 1 auto;overflow:auto;max-height:100%;font-size:22px;line-height:1.65}
+.note.reserved-size footer{flex:0 0 auto;max-height:100px;overflow:auto}
+.note.reserved-size.round .content{max-height:48%}
+.note.reserved-size.heart .content{max-height:30%}
+.note.reservation{background:transparent!important;color:#d5cbdc!important;border:2px dashed #b2a0c2;box-shadow:none;clip-path:none;border-radius:8px;cursor:default}
+.note.reservation .content{font-size:22px;text-align:center;overflow:hidden}
+.note.reservation footer{font-size:14px;color:#b2a0c2;text-align:center;margin-top:8px}
+.paper-options label { white-space: nowrap; }
+#composer>.hint { grid-column: 1 / -1; }
+.paper-options { grid-template-columns: minmax(0, 1fr) minmax(118px, 1.25fr); }
+@media(max-width:850px){
+  #composer>label[for=nick],#composer>#nick { grid-column:1 / -1; }
+  #composer>.paper-options { grid-column:1 / -1; grid-row:auto; }
+}
