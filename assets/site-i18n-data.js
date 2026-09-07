@@ -28,6 +28,8 @@ globalThis.SITE_EN = Object.freeze({
   "往里逛逛": "Explore",
   "重点入口": "Start here",
   "正在做": "Now",
+  "更新网站、发布视频": "Updating the website and publishing videos",
+  "分享混合马里奥与《拆开一束光》的演示视频": "Sharing videos of Mixed Mario and Unpacking a Beam of Light",
   "更新个人网站，整理游戏作品": "Updating this site and collecting my games",
   "整理游戏作品，分享项目与制作过程。": "Collecting games and sharing projects and how they are made.",
   "日期、时间和历史上的今天": "Date and local time",

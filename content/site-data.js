@@ -7,13 +7,13 @@ globalThis.SITE_DATA = {
     "interests": [],
     "now": {
       "label": "正在做",
-      "title": "更新个人网站，整理游戏作品",
-      "summary": "整理游戏作品，分享项目与制作过程。",
-      "updatedAt": "2026-09-06",
+      "title": "更新网站、发布视频",
+      "summary": "混合马里奥与光学实验的演示视频已发布，可以边看边体验。",
+      "updatedAt": "2026-09-07",
       "items": [
         {
-          "label": "游戏作品",
-          "text": "上架第一期生成版与第二期还原版。"
+          "label": "演示视频",
+          "text": "混合马里奥与《拆开一束光》。"
         }
       ]
     },
@@ -87,7 +87,7 @@ globalThis.SITE_DATA = {
       "evidenceIds": [],
       "detailUrl": "games/mario-mix/",
       "localUrl": "games/mario-mix/play.html",
-      "videoUrl": ""
+      "videoUrl": "https://www.bilibili.com/video/BV1g9bx6PEwL/"
     },
     {
       "id": "project-q-mimi",
@@ -196,7 +196,8 @@ globalThis.SITE_DATA = {
       "status": "在线实验",
       "summary": "调节光栅与狭缝，观察光谱变化；拆开转轴、查看轴承内部，让蜗杆与蜗轮联动。光学为近似仿真，机械为自主工程示意；建议在电脑或横屏设备上体验。",
       "url": "tools/quina-optics/",
-      "linkLabel": "进入实验平台 →"
+      "linkLabel": "进入实验平台 →",
+      "videoUrl": "https://www.bilibili.com/video/BV1JQbs61EJ3/"
     }
   ],
   "methods": [],
