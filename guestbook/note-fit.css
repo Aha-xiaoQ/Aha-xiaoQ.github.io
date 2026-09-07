@@ -30,6 +30,9 @@
 .note-results button{text-align:left;overflow-wrap:anywhere}
 .note.reserved-size .content{flex:0 1 auto;overflow:auto;max-height:100%;font-size:22px;line-height:1.65}
 .note.reserved-size footer{flex:0 0 auto;max-height:100px;overflow:auto}
+/* Keep two-line greetings readable inside the existing 260x200 reservation. */
+.note.reserved-size.square{padding:24px}
+.note.reserved-size.square footer{margin-top:10px}
 .note.reserved-size.round .content{max-height:48%}
 .note.reserved-size.heart .content{max-height:30%}
 .note.reservation{background:transparent!important;color:#d5cbdc!important;border:2px dashed #b2a0c2;box-shadow:none;clip-path:none;border-radius:8px;cursor:default}
