@@ -8,8 +8,8 @@ globalThis.SITE_DATA = {
     "now": {
       "label": "正在做",
       "title": "更新网站、发布视频",
-      "summary": "混合马里奥与光学实验的演示视频已发布，可以边看边体验。",
-      "updatedAt": "2026-09-07",
+      "summary": "混合马里奥第二期已上线，可以观看视频或直接试玩。",
+      "updatedAt": "2026-09-09",
       "items": [
         {
           "label": "演示视频",
@@ -63,6 +63,32 @@ globalThis.SITE_DATA = {
     "visibility": "public"
   },
   "items": [
+    {
+      "id": "game-mario-mix-2",
+      "slug": "mario-mix-2",
+      "primaryType": "game",
+      "relatedIds": [],
+      "title": "混合马里奥Ⅱ · 忍者龙剑传 × 坦克大战",
+      "summary": "第二期 · 忍者龙剑传与坦克大战加入冒险，接力闯过 1-2，救回公主。",
+      "lifecycleStatus": "released",
+      "visibility": "public",
+      "accessMode": "online",
+      "createdAt": "2026-09-09",
+      "updatedAt": "2026-09-09",
+      "categories": [
+        "side-scrolling"
+      ],
+      "tags": [
+        "横版闯关",
+        "角色切换",
+        "浏览器游戏"
+      ],
+      "cover": "games/mario-mix-2/cover.jpg",
+      "evidenceIds": [],
+      "detailUrl": "games/mario-mix-2/",
+      "localUrl": "games/mario-mix-2/play.html",
+      "videoUrl": "https://www.bilibili.com/video/BV1erYt69EFP/"
+    },
     {
       "id": "game-mario-mix",
       "slug": "mario-mix",

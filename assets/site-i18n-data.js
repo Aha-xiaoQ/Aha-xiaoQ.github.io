@@ -1,5 +1,8 @@
 /* Visitor-facing English copy. Chinese source content remains authoritative. */
 globalThis.SITE_EN = Object.freeze({
+  "混合马里奥第二期已上线，可以观看视频或直接试玩。": "Mario Mix Episode 2 is live. Watch the video or play in your browser.",
+  "第二期 · 忍者龙剑传与坦克大战加入冒险，接力闯过 1-2，救回公主。": "Episode 2 · Ninja Gaiden and Battle City join the adventure. Relay through 1-2 and rescue the princess.",
+  "混合马里奥Ⅱ · 忍者龙剑传 × 坦克大战": "Mario Mix II · Ninja Gaiden × Battle City",
   "留言墙 · 留一句话 ↗": "Note wall · Leave a note ↗",
   "在下_小Q": "Aha_xiaoQ",
   "在下_": "Aha_",
