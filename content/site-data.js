@@ -83,7 +83,7 @@ globalThis.SITE_DATA = {
         "角色切换",
         "浏览器游戏"
       ],
-      "cover": "games/mario-mix-2/cover.jpg",
+      "cover": "games/mario-mix-2/cover.jpg?v=eba6ccded968930cbdc1",
       "evidenceIds": [],
       "detailUrl": "games/mario-mix-2/",
       "localUrl": "games/mario-mix-2/play.html",
@@ -109,7 +109,7 @@ globalThis.SITE_DATA = {
         "角色切换",
         "浏览器游戏"
       ],
-      "cover": "games/mario-mix/cover.jpg",
+      "cover": "games/mario-mix/cover.jpg?v=eba6ccded968930cbdc1",
       "evidenceIds": [],
       "detailUrl": "games/mario-mix/",
       "localUrl": "games/mario-mix/play.html",
@@ -174,7 +174,7 @@ globalThis.SITE_DATA = {
         "横版闯关",
         "浏览器游戏"
       ],
-      "cover": "assets/games/pipebound-cover.jpg",
+      "cover": "assets/games/pipebound-cover.jpg?v=eba6ccded968930cbdc1",
       "evidenceIds": [
         "evidence-pipebound"
       ],
@@ -203,7 +203,7 @@ globalThis.SITE_DATA = {
         "像素平台",
         "浏览器游戏"
       ],
-      "cover": "assets/games/mario-classic-cover.jpg",
+      "cover": "assets/games/mario-classic-cover.jpg?v=eba6ccded968930cbdc1",
       "evidenceIds": [
         "evidence-mario-classic"
       ],
@@ -216,7 +216,7 @@ globalThis.SITE_DATA = {
   "tools": [
     {
       "id": "quina-optics",
-      "preview": "tools/quina-optics/assets/preview.png?v=20260907-i18n-r1",
+      "preview": "tools/quina-optics/assets/preview.png?v=eba6ccded968930cbdc1",
       "previewAlt": "光学与机械实验平台：扫描光谱仪、光谱曲线与转轴拆装入口",
       "title": "启娜的光之工坊 · 拆开一束光",
       "status": "在线实验",

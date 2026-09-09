@@ -88,7 +88,7 @@
         </section>
 
         <figure class="pixel-scene">
-          <img src="assets/backgrounds/bg-home-pixel-game-r3.webp" alt="像素工作室窗外的月夜与城市" width="600" height="340">
+          <img src="assets/backgrounds/bg-home-pixel-game-r3.webp?v=eba6ccded968930cbdc1" alt="像素工作室窗外的月夜与城市" width="600" height="340">
           <figcaption><span>小Q的像素世界</span><span>创造 · 探索</span></figcaption>
         </figure>
         <section class="paths" id="paths" aria-labelledby="paths-title">
