@@ -83,11 +83,12 @@ globalThis.SITE_DATA = {
         "角色切换",
         "浏览器游戏"
       ],
-      "cover": "games/mario-mix-2/cover.jpg?v=eba6ccded968930cbdc1",
+      "cover": "games/mario-mix-2/cover.jpg?v=dd5b8227f5b3e07a8da6",
       "evidenceIds": [],
       "detailUrl": "games/mario-mix-2/",
       "localUrl": "games/mario-mix-2/play.html",
-      "videoUrl": "https://www.bilibili.com/video/BV1erYt69EFP/"
+      "videoUrl": "https://www.bilibili.com/video/BV1erYt69EFP/",
+      "downloadUrl": "downloads/games/mario-mix-2.zip"
     },
     {
       "id": "game-mario-mix",
@@ -109,11 +110,12 @@ globalThis.SITE_DATA = {
         "角色切换",
         "浏览器游戏"
       ],
-      "cover": "games/mario-mix/cover.jpg?v=eba6ccded968930cbdc1",
+      "cover": "games/mario-mix/cover.jpg?v=dd5b8227f5b3e07a8da6",
       "evidenceIds": [],
       "detailUrl": "games/mario-mix/",
       "localUrl": "games/mario-mix/play.html",
-      "videoUrl": "https://www.bilibili.com/video/BV1g9bx6PEwL/"
+      "videoUrl": "https://www.bilibili.com/video/BV1g9bx6PEwL/",
+      "downloadUrl": "downloads/games/mario-mix.zip"
     },
     {
       "id": "project-q-mimi",
@@ -174,13 +176,14 @@ globalThis.SITE_DATA = {
         "横版闯关",
         "浏览器游戏"
       ],
-      "cover": "assets/games/pipebound-cover.jpg?v=eba6ccded968930cbdc1",
+      "cover": "assets/games/pipebound-cover.jpg?v=dd5b8227f5b3e07a8da6",
       "evidenceIds": [
         "evidence-pipebound"
       ],
       "detailUrl": "games/pipebound/",
       "localUrl": "games/pipebound/play.html",
-      "videoUrl": "https://www.bilibili.com/video/BV1A3t166EKH/"
+      "videoUrl": "https://www.bilibili.com/video/BV1A3t166EKH/",
+      "downloadUrl": "downloads/games/pipebound.zip"
     },
     {
       "id": "game-mario-classic",
@@ -203,20 +206,21 @@ globalThis.SITE_DATA = {
         "像素平台",
         "浏览器游戏"
       ],
-      "cover": "assets/games/mario-classic-cover.jpg?v=eba6ccded968930cbdc1",
+      "cover": "assets/games/mario-classic-cover.jpg?v=dd5b8227f5b3e07a8da6",
       "evidenceIds": [
         "evidence-mario-classic"
       ],
       "detailUrl": "games/mario-classic/",
       "localUrl": "games/mario-classic/play.html",
-      "videoUrl": "https://www.bilibili.com/video/BV1Ujbj6qEeh/"
+      "videoUrl": "https://www.bilibili.com/video/BV1Ujbj6qEeh/",
+      "downloadUrl": "downloads/games/mario-classic.zip"
     }
   ],
   "notes": [],
   "tools": [
     {
       "id": "quina-optics",
-      "preview": "tools/quina-optics/assets/preview.png?v=eba6ccded968930cbdc1",
+      "preview": "tools/quina-optics/assets/preview.png?v=dd5b8227f5b3e07a8da6",
       "previewAlt": "光学与机械实验平台：扫描光谱仪、光谱曲线与转轴拆装入口",
       "title": "启娜的光之工坊 · 拆开一束光",
       "status": "在线实验",

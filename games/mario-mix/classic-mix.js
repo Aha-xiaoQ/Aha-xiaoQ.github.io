@@ -1,3 +1,24 @@
+// GAME-DOWNLOAD-RIGHTS
+/*
+版权与使用说明 / Copyright and use
+本游戏由在下_小Q（Aha_xiaoQ）整理与制作，为非官方同人作品，免费体验，仅供娱乐。
+程序代码中引用或改编的上游部分，继续适用其原有许可证；请保留文件内原有版权及许可全文。
+角色、图像、音乐、音效、名称及其他第三方素材的权利归各自权利人所有。
+本站网站代码的 MIT 许可不覆盖整个游戏、第三方素材或下载包；未明确许可的部分不应推定可以复用。
+免费、署名及本声明不代表已取得第三方授权，也不授予商标、素材再分发或商业使用权。
+如需复用，请逐项核对原许可证及权利人的许可。本说明不限制原许可证或法律已允许的使用。
+如相关权利人有异议，请联系 hfutqdm@163.com；我们将及时核查并移除相关内容或下架下载。
+作品网站：https://aha-xiaoq.github.io/
+
+Unofficial fan game assembled by Aha_xiaoQ, provided free for entertainment.
+Upstream code retains its own licenses and copyright notices. Characters, images,
+music, sound effects and names belong to their respective rights holders.
+The website's MIT grant does not license the entire game, third-party assets or
+this archive. Free access and attribution are not evidence of third-party permission.
+No additional asset, trademark, redistribution or commercial rights are granted.
+Existing license permissions and uses permitted by law are unaffected.
+Rights contact: hfutqdm@163.com. Reported material will be reviewed and removed as appropriate.
+*/
 
 'use strict';
 /* CLASSIC LOCAL 1-1. Browser implementation derived from the prior local build.

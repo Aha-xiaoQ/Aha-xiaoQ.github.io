@@ -1,9 +1,9 @@
-@import url("site-theme.css?v=eba6ccded968930cbdc1");
-body{--scene:url("backgrounds/bg-projects-pixel-game-r3.webp?v=eba6ccded968930cbdc1")}
-body[data-page=games],body[data-page=detail]{--scene:url("backgrounds/bg-games-pixel-game-r3.webp?v=eba6ccded968930cbdc1")}
-body[data-page=tools],body[data-page=method]{--scene:url("backgrounds/bg-tools-pixel-game-r3.webp?v=eba6ccded968930cbdc1")}
-body[data-page=notes]{--scene:url("backgrounds/bg-notes-pixel-game-r3.webp?v=eba6ccded968930cbdc1")}
-body[data-page=about]{--scene:url("backgrounds/bg-about-phone-teardown-r4.webp?v=eba6ccded968930cbdc1")}
+@import url("site-theme.css?v=dd5b8227f5b3e07a8da6");
+body{--scene:url("backgrounds/bg-projects-pixel-game-r3.webp?v=dd5b8227f5b3e07a8da6")}
+body[data-page=games],body[data-page=detail]{--scene:url("backgrounds/bg-games-pixel-game-r3.webp?v=dd5b8227f5b3e07a8da6")}
+body[data-page=tools],body[data-page=method]{--scene:url("backgrounds/bg-tools-pixel-game-r3.webp?v=dd5b8227f5b3e07a8da6")}
+body[data-page=notes]{--scene:url("backgrounds/bg-notes-pixel-game-r3.webp?v=dd5b8227f5b3e07a8da6")}
+body[data-page=about]{--scene:url("backgrounds/bg-about-phone-teardown-r4.webp?v=dd5b8227f5b3e07a8da6")}
 .about-contact{min-width:0}.about-contact h2{font-size:32px;line-height:1.3;margin:0 0 14px;color:var(--paper)}.about-contact p{color:var(--muted);margin:0 0 24px}.about-contact .actions{margin-top:0}
 .page-head{position:relative;isolation:isolate;overflow:hidden;background:var(--accent);border-bottom:4px solid var(--paper)}
 .page-head::after{content:"";position:absolute;inset:0 0 0 38%;z-index:-1;background-image:linear-gradient(90deg,rgba(17,17,22,.3),rgba(17,17,22,.1)),var(--scene);background-size:cover;background-position:center;image-rendering:pixelated;clip-path:polygon(16% 0,100% 0,100% 100%,0 100%)}
@@ -23,7 +23,7 @@ body[data-page=about]{--scene:url("backgrounds/bg-about-phone-teardown-r4.webp?v
 /* Q咪 card: reserve a real grid column, never overlay the project copy. */
 .pet-card-heading{display:grid;grid-template-columns:minmax(0,1fr) 96px;gap:20px;align-items:center;min-width:0}
 .pet-card-heading>div{min-width:0}.pet-card-heading .entry__kind{color:var(--muted);margin-bottom:8px}
-.pet-card-sprite{display:block;width:96px;height:104px;background:url('../projects/q-mimi/spritesheet.webp?v=eba6ccded968930cbdc1') 0 0/768px 1144px no-repeat;animation:q-mimi-card-idle 1.56s steps(6) 2}
+.pet-card-sprite{display:block;width:96px;height:104px;background:url('../projects/q-mimi/spritesheet.webp?v=dd5b8227f5b3e07a8da6') 0 0/768px 1144px no-repeat;animation:q-mimi-card-idle 1.56s steps(6) 2}
 @keyframes q-mimi-card-idle{to{background-position:-576px 0}}
 @media(max-width:480px){.pet-card-heading{grid-template-columns:minmax(0,1fr) 72px;gap:12px}.pet-card-sprite{width:72px;height:78px;background-size:576px 858px;animation-name:q-mimi-card-idle-small}}
 @keyframes q-mimi-card-idle-small{to{background-position:-432px 0}}
