@@ -67,6 +67,13 @@ kbd{background:#302c33;border-color:#565059}.touchkey{background:#353039;border-
 #overlay button.pad-selected{outline:3px solid #fff3a6;outline-offset:4px;box-shadow:0 0 0 6px #1a2438;}
 
 @font-face{font-family:"LXGW WenKai";src:url("../../assets/fonts/LXGWWenKai-Regular.woff2") format("woff2");font-display:swap}html,body{font-family:"LXGW WenKai",KaiTi,serif}.audio-actions{display:grid!important}
+
+/* experience-star:v3 */
+a.experience-star span:last-child{font:inherit;color:inherit}
+a.experience-star{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:9px 14px;border:1px solid #8faab6;border-radius:6px;background:#ffffff08;color:#edf5f8;font:600 13px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;text-decoration:none;white-space:nowrap;flex-shrink:0;touch-action:manipulation;box-sizing:border-box}
+a.experience-star:visited{color:#edf5f8}a.experience-star:hover{color:#fff;background:#ffffff18;border-color:#d9edf5}a.experience-star:focus-visible{outline:2px solid #adcbd5;outline-offset:2px}a.experience-star svg{width:17px;height:17px;flex-shrink:0}
+.experience-actions{display:flex;align-items:center;justify-content:flex-end;gap:12px;flex-shrink:0}
+@media(max-width:690px){header{flex-wrap:wrap;gap:10px}.experience-actions{margin-left:auto;gap:8px}.experience-actions>.experience-star{min-height:44px;padding:10px 12px}.experience-actions>.offline{display:none}}
 </style>
 <!-- Upstream code license from umaim/Mario/LICENSE.
 MIT License
@@ -94,7 +101,7 @@ SOFTWARE.
 </head>
 <body>
 <main class="app">
-<header><div class="brand"><div class="mark">M</div><div><h1>混合马里奥</h1><small>WORLD 1-1 / CLASSIC CROSSOVER</small></div></div><span class="offline">免费试玩</span></header>
+<header><div class="brand"><div class="mark">M</div><div><h1>混合马里奥</h1><small>WORLD 1-1 / CLASSIC CROSSOVER</small></div></div><div class="experience-actions"><span class="offline">免费试玩</span><a class="experience-star" href="https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io" target="_blank" rel="noopener noreferrer" aria-label="Star on GitHub (opens in a new tab)" title="Star on GitHub" onkeydown="event.stopPropagation()" onkeyup="event.stopPropagation()"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="m12 3 2.8 5.7 6.3.9-4.6 4.4 1.1 6.3-5.6-3-5.6 3 1.1-6.3L2.9 9.6l6.3-.9Z"/></svg><span>GitHub Star</span></a></div></header>
 <div class="layout">
 <section class="play-column">
 <div class="screen-shell"><div class="screen-top"><span>01 / MUSHROOM KINGDOM</span><span>256 × 240 · 60 HZ</span></div><div class="stage" id="stage">
