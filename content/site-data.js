@@ -64,6 +64,35 @@ globalThis.SITE_DATA = {
   },
   "items": [
     {
+      "id": "game-mario-mix-3",
+      "slug": "mario-mix-3",
+      "primaryType": "game",
+      "relatedIds": [],
+      "title": "混合马里奥Ⅲ · 泰拉瑞亚",
+      "summary": "第三期 · 泰拉瑞亚旅途的开始，把泰拉瑞亚带进马里奥 1-3，挑战地表、地底、坐骑与武器，面对克苏鲁之眼和独眼巨鹿。",
+      "lifecycleStatus": "active",
+      "visibility": "public",
+      "accessMode": "online",
+      "createdAt": "2026-09-13",
+      "updatedAt": "2026-09-13",
+      "categories": [
+        "side-scrolling"
+      ],
+      "tags": [
+        "横版闯关",
+        "像素平台",
+        "浏览器游戏"
+      ],
+      "cover": "games/mario-mix-3/cover.png?v=video03-r31",
+      "evidenceIds": [
+        "evidence-mario-mix-3"
+      ],
+      "detailUrl": "games/mario-mix-3/",
+      "localUrl": "games/mario-mix-3/play.html",
+      "videoUrl": "https://www.bilibili.com/video/BV1cCYi6xEPz/",
+      "downloadUrl": "downloads/games/mario-mix-3.zip"
+    },
+    {
       "id": "game-mario-mix-2",
       "slug": "mario-mix-2",
       "primaryType": "game",
@@ -259,6 +288,20 @@ globalThis.SITE_DATA = {
         "等待音频加载，或选择静音试玩。"
       ],
       "failureNote": "若音频加载失败，可在游戏中重试。"
+    },
+    {
+      "id": "evidence-mario-mix-3",
+      "type": "playable",
+      "label": "混合马里奥Ⅲ · 泰拉瑞亚 浏览器版本",
+      "url": "games/mario-mix-3/play.html",
+      "sourceItemId": "game-mario-mix-3",
+      "verifiedAt": "2026-09-13",
+      "visibility": "public",
+      "accessNote": "建议使用桌面浏览器；可用键鼠或手柄游玩。",
+      "startSteps": [
+        "点击试玩游戏，按页面提示选择角色并开始。"
+      ],
+      "failureNote": "若浏览器未加载音频，可刷新页面后重试。"
     }
-  ]
+]
 };
