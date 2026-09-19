@@ -1,0 +1,30 @@
+name: Website platform regression
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  path-and-components:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: '22'
+          package-manager-cache: false
+      - name: Path boundary and component regressions (no installation or deployment)
+        run: node --test tests/workshop-r07.test.mjs tests/workshop-r08.test.mjs tests/security/safe-path.test.mjs
+      - name: Shared collection output is up to date
+        run: node scripts/workshop/build.mjs --check
+      - name: Development output is up to date
+        run: node scripts/journal/build.mjs --check

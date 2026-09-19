@@ -1,0 +1,173 @@
+{
+  "placementRecords": 66,
+  "areas": 1,
+  "sectionViews": 7,
+  "views": 8,
+  "geometry": 61,
+  "objects": 8,
+  "pending": [
+    "bridge-axe-finish",
+    "castle-finish",
+    "conditional-section",
+    "conditional-section-runtime",
+    "conditional-sectiondecider",
+    "conditional-sectionfail",
+    "conditional-sectionpass",
+    "enemy-bowser",
+    "enemy-piranha",
+    "hidden-block",
+    "lava-volume",
+    "source-transport-not-simulated"
+  ],
+  "details": [
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r004",
+      "kind": "lava-volume"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r006",
+      "kind": "lava-volume"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r008",
+      "kind": "conditional-section"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "section-mode",
+      "kind": "conditional-section-runtime"
+    },
+    {
+      "roomId": "area-0-section-0-before",
+      "sourceRecord": "r006-plant",
+      "kind": "enemy-piranha"
+    },
+    {
+      "roomId": "area-0-section-0-before",
+      "sourceRecord": "r008",
+      "kind": "hidden-block"
+    },
+    {
+      "roomId": "area-0-section-0-before",
+      "sourceRecord": "r009",
+      "kind": "hidden-block"
+    },
+    {
+      "roomId": "area-0-section-0-before",
+      "sourceRecord": "r010",
+      "kind": "conditional-sectionfail"
+    },
+    {
+      "roomId": "area-0-section-0-before",
+      "sourceRecord": "r011",
+      "kind": "conditional-sectionpass"
+    },
+    {
+      "roomId": "area-0-section-0-before",
+      "sourceRecord": "section-mode",
+      "kind": "conditional-section-runtime"
+    },
+    {
+      "roomId": "area-0-section-0-stretch",
+      "sourceRecord": "section-mode",
+      "kind": "conditional-section-runtime"
+    },
+    {
+      "roomId": "area-0-section-0-after",
+      "sourceRecord": "r004",
+      "kind": "conditional-sectiondecider"
+    },
+    {
+      "roomId": "area-0-section-0-after",
+      "sourceRecord": "section-mode",
+      "kind": "conditional-section-runtime"
+    },
+    {
+      "roomId": "area-0-section-1-before",
+      "sourceRecord": "r003",
+      "kind": "lava-volume"
+    },
+    {
+      "roomId": "area-0-section-1-before",
+      "sourceRecord": "r007",
+      "kind": "lava-volume"
+    },
+    {
+      "roomId": "area-0-section-1-before",
+      "sourceRecord": "r018",
+      "kind": "hidden-block"
+    },
+    {
+      "roomId": "area-0-section-1-before",
+      "sourceRecord": "r019",
+      "kind": "hidden-block"
+    },
+    {
+      "roomId": "area-0-section-1-before",
+      "sourceRecord": "r020",
+      "kind": "conditional-sectionpass"
+    },
+    {
+      "roomId": "area-0-section-1-before",
+      "sourceRecord": "r021",
+      "kind": "conditional-sectionfail"
+    },
+    {
+      "roomId": "area-0-section-1-before",
+      "sourceRecord": "r022",
+      "kind": "conditional-sectionfail"
+    },
+    {
+      "roomId": "area-0-section-1-before",
+      "sourceRecord": "section-mode",
+      "kind": "conditional-section-runtime"
+    },
+    {
+      "roomId": "area-0-section-1-stretch",
+      "sourceRecord": "section-mode",
+      "kind": "conditional-section-runtime"
+    },
+    {
+      "roomId": "area-0-section-1-after",
+      "sourceRecord": "r008",
+      "kind": "conditional-sectiondecider"
+    },
+    {
+      "roomId": "area-0-section-1-after",
+      "sourceRecord": "section-mode",
+      "kind": "conditional-section-runtime"
+    },
+    {
+      "roomId": "area-0-section-2-before",
+      "sourceRecord": "r000-boss",
+      "kind": "enemy-bowser"
+    },
+    {
+      "roomId": "area-0-section-2-before",
+      "sourceRecord": "r000-axe",
+      "kind": "bridge-axe-finish"
+    },
+    {
+      "roomId": "area-0-section-2-before",
+      "sourceRecord": "r000",
+      "kind": "castle-finish"
+    },
+    {
+      "roomId": "area-0-section-2-before",
+      "sourceRecord": "r000-transport",
+      "kind": "source-transport-not-simulated"
+    },
+    {
+      "roomId": "area-0-section-2-before",
+      "sourceRecord": "section-mode",
+      "kind": "conditional-section-runtime"
+    }
+  ],
+  "geometryReview": "reference-transcribed-pending-original-review",
+  "playability": "partition-inspection-not-level-completion",
+  "underwaterAreas": 0,
+  "sourceIssues": 0
+}

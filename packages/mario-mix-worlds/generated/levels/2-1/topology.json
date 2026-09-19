@@ -1,0 +1,105 @@
+{
+  "locations": [
+    {
+      "area": 0,
+      "entry": "Plain"
+    },
+    {
+      "area": 0,
+      "xloc": 1288
+    },
+    {
+      "area": 0,
+      "entry": "PipeVertical"
+    },
+    {
+      "area": 1,
+      "entry": "Vine"
+    },
+    {
+      "area": 2
+    }
+  ],
+  "areas": [
+    {
+      "area": 0,
+      "setting": "Overworld",
+      "underwater": false,
+      "exit": null,
+      "sections": []
+    },
+    {
+      "area": 1,
+      "setting": "Sky",
+      "underwater": false,
+      "exit": 1,
+      "sections": []
+    },
+    {
+      "area": 2,
+      "setting": "Underworld",
+      "underwater": false,
+      "exit": null,
+      "sections": []
+    }
+  ],
+  "links": [
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r034"
+      },
+      "kind": "vine",
+      "target": {
+        "transport": 3
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r041"
+      },
+      "kind": "location",
+      "target": 4
+    },
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r067"
+      },
+      "kind": "world",
+      "target": {
+        "map": "2-2"
+      }
+    },
+    {
+      "from": {
+        "area": 1,
+        "part": "base",
+        "record": "r003"
+      },
+      "kind": "location",
+      "target": true
+    },
+    {
+      "from": {
+        "area": 2,
+        "part": "base",
+        "record": "r006"
+      },
+      "kind": "location",
+      "target": 2
+    }
+  ],
+  "issues": [
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r019",
+      "kind": "source-attribute-review",
+      "field": "Piranha"
+    }
+  ]
+}

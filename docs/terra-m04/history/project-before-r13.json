@@ -1,0 +1,444 @@
+{
+  "schemaVersion": 1,
+  "id": "mario-mix",
+  "title": "混合马里奥",
+  "category": "game",
+  "visibility": "public",
+  "stage": "迭代中 · 协作准备",
+  "updatedAt": "2026-09-16",
+  "summary": "经典关卡遇上不同游戏的角色。保留熟悉的路线，也让每种角色带来自己的动作、武器和闯关方式。",
+  "intro": "这是一个持续制作的非官方跨界游戏系列。你可以先体验已公开的三期作品，再从玩法反馈、测试记录或一项小改动加入。这里的计划与已完成内容分开记录。",
+  "highlights": [
+    "保留各角色的玩法差异，而不是只替换外观。",
+    "先核对三期版本与反馈，再逐步整理代码结构。",
+    "新角色、关卡和完整版范围先讨论，不承诺未确认的日期。"
+  ],
+  "links": [
+    {
+      "label": "体验第三期",
+      "href": "/games/mario-mix-3/play.html"
+    },
+    {
+      "label": "查看全部游戏",
+      "href": "/games/"
+    },
+    {
+      "label": "第一期介绍",
+      "href": "/games/mario-mix/"
+    },
+    {
+      "label": "第二期介绍",
+      "href": "/games/mario-mix-2/"
+    },
+    {
+      "label": "第三期介绍",
+      "href": "/games/mario-mix-3/"
+    },
+    {
+      "label": "第三期源码与指南",
+      "href": "/notes/mario-mix/docs/terra-source/"
+    },
+    {
+      "label": "第三期架构与协作",
+      "href": "/notes/mario-mix/docs/terra-collaboration/"
+    },
+    {
+      "label": "新关卡接入指南",
+      "href": "/notes/mario-mix/docs/terra-chapters/"
+    }
+  ],
+  "participation": {
+    "mode": "preparing",
+    "summary": "欢迎提供复现步骤、试玩反馈和文档建议。大幅改玩法或导入素材前，请先讨论方向与许可。",
+    "issueUrl": "https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/issues/new",
+    "repository": "https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io"
+  },
+  "state": {
+    "adapter": "legacy-a",
+    "path": "collab/project.json",
+    "runtime": "clarity"
+  },
+  "updates": [
+    {
+      "id": "engineering-r05",
+      "date": "2026-09-15",
+      "title": "第一处可测试的游戏源码模块",
+      "status": "local-review",
+      "summary": "增加独立游戏工程、比尔输入模块、对照测试和候选构建。原游戏仍保留；完整试玩与远端协作流程待验收。"
+    },
+    {
+      "id": "collaboration-r04",
+      "date": "2026-09-15",
+      "title": "协作记录接入多项目框架",
+      "status": "local-review",
+      "summary": "项目介绍、任务、开发资料与交接操作分开呈现。原有任务状态和三期游戏保留；这不是新的游戏玩法版本。"
+    },
+    {
+      "id": "terra-m01-source",
+      "date": "2026-09-16",
+      "title": "第三期源码工程开放验收",
+      "status": "local-review",
+      "summary": "在原第三期基础上分离八个可测试模块、资源和构建流程；提供独立源码包与开发指南。尚存兼容区，未替换线上游戏。"
+    },
+    {
+      "id": "terra-m02-architecture",
+      "date": "2026-09-16",
+      "title": "第三期设置模块与协作流程进入验收",
+      "status": "local-review",
+      "summary": "新增7个实际接入模块，统一设置生命周期与输入捕获；增加模块登记、架构检查、小任务流程与候选发布门槛。Windows与设备验收仍待完成。"
+    },
+    {
+      "id": "terra-m03-chapter-sdk",
+      "date": "2026-09-16",
+      "title": "新关卡接入接口进入验收",
+      "status": "local-review",
+      "summary": "新增数据关卡、主线衔接、房间与检查点示例；只新增目录即可在支持范围内接入。新Boss、资源包与持久存档尚待扩展。"
+    }
+  ],
+  "docs": [
+    {
+      "id": "start",
+      "title": "运行与反馈",
+      "summary": "找到三期入口，说明问题发生在哪个版本。",
+      "sections": [
+        {
+          "title": "先体验公开作品",
+          "paragraphs": [
+            "从项目概览进入对应期数。提交问题时请说明期数、角色、关卡、浏览器及操作设备，避免把不同版本的表现混为一谈。"
+          ]
+        },
+        {
+          "title": "本地启动",
+          "paragraphs": [
+            "在完整仓库根目录使用原来的启动命令。A 布局使用 npm run dev，B 布局使用 npm start；不需要为了这一轮页面升级重装游戏。"
+          ],
+          "code": "npm run check\nnpm test\nnpm run test:journal\n# 然后使用原启动命令"
+        },
+        {
+          "title": "反馈应包含什么",
+          "paragraphs": [
+            "写清“做了什么、预期怎样、实际怎样”，并提供尽可能短的复现路径。截图或录屏可以补充表现，但不能替代版本说明。"
+          ]
+        }
+      ],
+      "sources": []
+    },
+    {
+      "id": "architecture",
+      "title": "现有结构与整理方向",
+      "summary": "先看真实文件位置，再了解逐步拆分的计划。",
+      "sections": [
+        {
+          "title": "当前存在的内容",
+          "paragraphs": [
+            "第一期位于 games/mario-mix/，由 HTML 与多个 JavaScript 文件组成。第二、三期入口分别位于 games/mario-mix-2/ 和 games/mario-mix-3/。本轮没有修改游戏运行文件。"
+          ]
+        },
+        {
+          "title": "下一步是建立回归基线",
+          "paragraphs": [
+            "先对齐公开版本与维护者手中版本，再记录移动、跳跃、受伤、隐藏关返回及音频切换。没有回归记录时，不把重构和手感调整放在同一次修改里。"
+          ]
+        },
+        {
+          "title": "目标结构，不是已经完成的迁移",
+          "paragraphs": [
+            "输入映射、角色能力、场景生命周期、音频调度、地图与掉落配置逐步分离。横版角色共用接入约定；俯视坦克保留独立的移动规则。"
+          ]
+        },
+        {
+          "title": "先试一处小拆分",
+          "paragraphs": [
+            "优先从可独立测试的纯输入映射或放置目标计算开始。通过行为对照后再扩展，不直接换引擎。"
+          ]
+        }
+      ],
+      "sources": []
+    },
+    {
+      "id": "reference",
+      "title": "前辈参考与素材边界",
+      "summary": "参考 SMBC 的职责划分，不直接照搬旧引擎。",
+      "sections": [
+        {
+          "title": "参考对象",
+          "paragraphs": [
+            "JayPavlina/super-mario-bros-crossover 的 README 说明，这份代码对应 Flash 游戏 3.1.21，图形与声音素材不包含在内。历史研究固定在提交 83974eb7b3d554b9c8c5da07f64bfd608f3f65fc。"
+          ]
+        },
+        {
+          "title": "取其组织思路",
+          "paragraphs": [
+            "Character、Bill、SoundManager 与 LevelData 提供了角色差异、音频管理、关卡数据等职责划分的参考。本项目继续使用自己的浏览器实现，不搬运 Flash 的大型继承结构。"
+          ]
+        },
+        {
+          "title": "代码与素材分别核验",
+          "paragraphs": [
+            "上游仓库的代码许可并不自动说明第三方角色、图像和音频可以再分发。未核验素材保持待确认，不把“网上能找到”当作许可。"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "参考仓库 README",
+          "href": "https://github.com/JayPavlina/super-mario-bros-crossover/blob/83974eb7b3d554b9c8c5da07f64bfd608f3f65fc/README.md"
+        }
+      ]
+    },
+    {
+      "id": "engineering",
+      "title": "开始参与代码开发",
+      "summary": "源码入口、对照测试、候选试玩和小 PR 的提交方法。",
+      "sections": [
+        {
+          "title": "从一处小改动开始",
+          "paragraphs": [
+            "当前第一处可独立修改的模块是第一期比尔的瞄准与下穿输入意图，源码位于 packages/mario-mix/src/input/。原游戏其余部分保留；第二、三期没有在这一轮完成模块化。"
+          ]
+        },
+        {
+          "title": "先测试，再对照试玩",
+          "paragraphs": [
+            "使用 Node.js 22 或更高版本；本工程没有第三方 npm 依赖。候选试玩使用独立的本地端口，不覆盖线上游戏。先在 Issue 中确认任务范围，提交 PR 时附测试结果和候选构建校验值。"
+          ],
+          "code": "npm run game:check\nnpm run game:test\nnpm run game:audit\nnpm run game:build\nnpm run game:dev"
+        },
+        {
+          "title": "尚需确认的部分",
+          "paragraphs": [
+            "本地测试通过不代表完整游戏通关、实体手柄或音频验收通过。素材和游戏代码授权仍需逐项核对，不能因为有协作工具就认定整个游戏已采用开源许可。"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "贡献流程与首批任务",
+          "href": "/packages/mario-mix/CONTRIBUTING.md"
+        },
+        {
+          "label": "工程阅读入口",
+          "href": "/packages/mario-mix/README.md"
+        },
+        {
+          "label": "源码与构建说明",
+          "href": "/packages/mario-mix/docs/ARCHITECTURE.md"
+        }
+      ]
+    },
+    {
+      "id": "terra-source",
+      "title": "第三期源码与开发指南",
+      "summary": "下载 M03 工程；从一张新关卡，或一个有测试的模块开始贡献。",
+      "sections": [
+        {
+          "title": "先获取可运行源码",
+          "paragraphs": [
+            "下载 M03 源码 ZIP 并解压，先读 START_HERE.md。Node.js22+，不需 npm install。稳定第三期、前两期和未完成城堡均不覆盖。",
+            "源码包含完整第三期底稿及已分离资源、19个独立模块、33个明确标记的兼容片段。它是迁移工程，不是整个游戏已经彻底解耦。"
+          ]
+        },
+        {
+          "title": "制作自己的第一张关卡",
+          "paragraphs": [
+            "在支持的横版表面关卡范围内，只增加 levels/<id>/目录；无需改中央注册表或旧核心。先保持draft，打开预览地址即可用原角色、装备和设置体验。",
+            "新Boss、新物理、分章资产包和持久化跨章存档尚无通用服务。先读能力矩阵，不要将未知配置当作已生效功能。"
+          ],
+          "code": "npm run verify\nnpm run level:new -- --id my-14 --title \"我的 1-4\"\nnpm run level:check\nnpm run dev\n# 浏览器：http://127.0.0.1:4193/play.html?chapter=my-14"
+        },
+        {
+          "title": "验收与提交",
+          "paragraphs": [
+            "示例检验主线结算→进入新章→支路→检查点重试→目标→携带奖励返回。sdk-14、sdk-room只是接入样例，不是正式城堡关。",
+            "119项Node测试、原游戏13阶段离线对照、设置25项和关卡34项已本地通过。独立作者模拟只加目录并实际进入完整候选；尚无真实外部PR，Windows/HTTP/设备/自然通关仍待验收。"
+          ]
+        },
+        {
+          "title": "资源与历史",
+          "paragraphs": [
+            "保留原NOTICE与可选远程素材依赖，不表示获得了全部第三方素材的再分发授权，也不承诺完全离线。",
+            "M01/M02下载保留作为历史。当前源码与M03公开下载包校验一致，不并行维护另一套独立工程。"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "下载 M03 源码工程（ZIP）",
+          "href": "/downloads/source/MarioMix_Terraria_M03_Source.zip"
+        },
+        {
+          "label": "M03 校验与版本",
+          "href": "/downloads/source/MarioMix_Terraria_M03_Source.json"
+        },
+        {
+          "label": "新关卡接入指南",
+          "href": "/notes/mario-mix/docs/terra-chapters/"
+        },
+        {
+          "label": "架构与协作路线",
+          "href": "/notes/mario-mix/docs/terra-collaboration/"
+        },
+        {
+          "label": "支持边界与未完成能力",
+          "href": "/packages/mario-mix-terra/docs/sdk/CAPABILITIES.md"
+        },
+        {
+          "label": "M03 实际验证记录",
+          "href": "/packages/mario-mix-terra/docs/TEST_REPORT_M03.md"
+        },
+        {
+          "label": "M02 历史源码",
+          "href": "/downloads/source/MarioMix_Terraria_M02_Source.zip"
+        },
+        {
+          "label": "M01 历史源码",
+          "href": "/downloads/source/MarioMix_Terraria_M01_Source.zip"
+        }
+      ]
+    },
+    {
+      "id": "terra-collaboration",
+      "title": "架构与协作路线",
+      "summary": "制作一张新关卡，或者改进一个公共模块；按能力范围和测试证据协作。",
+      "sections": [
+        {
+          "title": "从合适的小任务开始",
+          "paragraphs": [
+            "新关卡作者先读“新关卡接入指南”，确认terra-surface-v1范围；支持范围内只新增levels目录，不编辑旧核心。",
+            "不必先理解整个游戏。先读 CONTRIBUTING.md，运行 npm run tasks，选择一个标为ready且没有已认领人的任务。认领由GitHub Issue讨论确认，命令本身不会认领或创建远端记录。",
+            "建议从按键显示与边界测试、Windows验证或素材来源核查入手。新的玩法与平衡调整先讨论，不与结构迁移放在同一个PR。"
+          ]
+        },
+        {
+          "title": "一个模块，一份清楚的约定",
+          "paragraphs": [
+            "architecture/modules.json登记模块职责、注入依赖、测试与审核角色；docs/generated/MODULES.md由同一数据生成。增加模块须登记并补测试。",
+            "输入和模拟模块不直接读取DOM、localStorage、设备或AudioContext；这些依赖放在桥接边缘。设置窗口明确拥有自己的轮询和监听器，退出时清理。",
+            "轻量架构门禁会检查漏登记、声明循环、向UI的反向依赖、桥接接入和旧wrapper预算。它不是完整类型检查器，人工审阅仍不可省略。"
+          ]
+        },
+        {
+          "title": "把改动变成可以合并的PR",
+          "paragraphs": [
+            "认领Issue → 单独分支 → 源码与测试 → verify → 原版对照 → PR说明行为差异。只改需要的文件，不把整体格式化、游戏平衡和UI重绘塞进同一PR。",
+            "维护者审阅通过才能合并。CODEOWNERS用于提示审核责任，不是目录写权限隔离；目前没有凭文档虚构新的维护团队或实际贡献者。"
+          ],
+          "code": "npm run tasks -- --task M02-LABELS\nnpm run verify\nnpm run docs:build\nnpm run pack\nnpm run handoff"
+        },
+        {
+          "title": "合并与发布分开",
+          "paragraphs": [
+            "自动检查只代表源码和构建层通过，不代表Windows、手柄、声音或自然通关已通过。CI配置在包内，本轮没有远程执行结果。",
+            "发布前的审阅记录必须绑定精确候选SHA，填写人工证据与审核人。release:check默认拒绝，没有全部门槛证据不发布；命令不会自动部署。"
+          ]
+        },
+        {
+          "title": "接下来的迁移顺序",
+          "paragraphs": [
+            "M03先补上了数据关卡、原主线衔接、房间往返和会话进度。接下来由独立作者验证接入，然后推进新Boss/行为接口、分章资源生命周期和持久存档。旧库存/原隐藏关迁移任务尚未完成，不把adapter当成彻底解耦。",
+            "全过程以第三期上传底稿为准；原两期独立发布包、在线稳定游戏和未完成城堡关不动。历史任务、M01资料和原始校验值保留。"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "获取源码与启动说明",
+          "href": "/notes/mario-mix/docs/terra-source/"
+        },
+        {
+          "label": "模块登记（JSON）",
+          "href": "/packages/mario-mix-terra/architecture/modules.json"
+        },
+        {
+          "label": "任务源与验收条件（JSON）",
+          "href": "/packages/mario-mix-terra/docs/TASKS.json"
+        },
+        {
+          "label": "人工验收清单",
+          "href": "/packages/mario-mix-terra/docs/ACCEPTANCE.md"
+        },
+        {
+          "label": "M03 交接记录",
+          "href": "/packages/mario-mix-terra/docs/HANDOFF_M03.md"
+        },
+        {
+          "label": "已记录的行为修复",
+          "href": "/packages/mario-mix-terra/docs/BEHAVIOR_CHANGES_M02.md"
+        },
+        {
+          "label": "新关卡接入指南",
+          "href": "/notes/mario-mix/docs/terra-chapters/"
+        }
+      ]
+    },
+    {
+      "id": "terra-chapters",
+      "title": "新关卡接入指南",
+      "summary": "从新建目录到主线接入，先看能力范围，再做一次完整往返。",
+      "sections": [
+        {
+          "title": "一个目录，一张可玩的关卡",
+          "paragraphs": [
+            "M03自动发现 levels 下的 chapter.json，校验ID、出生点、敌人引用、出口和能力版本。无需复制1-3代码，也不需要另写一套游戏循环。",
+            "先预览自建地图，再通过after=legacy-13接到原第三期结算后。草稿只能在显式开发预览中出现；发布前仍须人工审阅。"
+          ],
+          "code": "npm run level:new -- --id my-14 --title \"我的 1-4\"\nnpm run level:check\nnpm run dev\n# ?chapter=my-14 直接进入；?chapters=1 显示接入工作台"
+        },
+        {
+          "title": "本次已经接通的部分",
+          "paragraphs": [
+            "地图、六类现有敌人、金币、检查点、危险区、房间往返与结束目标；共用第三期的角色、武器、操作设置、HUD和结算。",
+            "白名单携带生命、装备和奖励，不传坐标、弹幕、DOM或声音节点。返回原地形与位置；切关下坐骑但保留已获得资格。",
+            "补充房间与主章可以互相进入。目标奖励在本次会话中去重；暂停不运行触发，门需要交互边沿。"
+          ]
+        },
+        {
+          "title": "这不是万能关卡插件",
+          "paragraphs": [
+            "terra-surface-v1目前固定240逻辑像素高，不支持任意新重力、俯视玩法或通用地下世界。全新Boss/角色、分章资源包和持久存档仍需下一轮服务接口。",
+            "需要这些能力时先提交接口提案，而不是让每个作者去修改旧全局函数。SDK示例不包含未完成的城堡素材或关卡。"
+          ]
+        },
+        {
+          "title": "第一个 PR 的完成标准",
+          "paragraphs": [
+            "只新增自己的关卡目录，运行level:check与verify；记录真实浏览器进入、死亡重试、门往返、结算、主线返回和手柄/音频未验收项。",
+            "保持draft=true提交，提供候选SHA与资源来源。真实维护者审阅之后才合并/发布。自动测试和模拟新人实验不等于已经有网友贡献成功。"
+          ]
+        },
+        {
+          "title": "后续需要解决的阻碍",
+          "paragraphs": [
+            "先让一位独立作者完成接入试做；再推进自定义Boss/行为接口、资产生命周期以及版本化跨章存档。旧库存与原隐藏关任务继续保留，不因添加adapter就标完成。"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "获取当前源码",
+          "href": "/notes/mario-mix/docs/terra-source/"
+        },
+        {
+          "label": "一步步新增关卡",
+          "href": "/packages/mario-mix-terra/docs/sdk/ADD_LEVEL.md"
+        },
+        {
+          "label": "接口与字段",
+          "href": "/packages/mario-mix-terra/docs/sdk/CHAPTER_API.md"
+        },
+        {
+          "label": "生命周期与状态传递",
+          "href": "/packages/mario-mix-terra/docs/sdk/LIFECYCLE.md"
+        },
+        {
+          "label": "验收清单",
+          "href": "/packages/mario-mix-terra/docs/sdk/ACCEPTANCE.md"
+        },
+        {
+          "label": "当前任务",
+          "href": "/packages/mario-mix-terra/docs/TASKS.json"
+        }
+      ]
+    }
+  ]
+}

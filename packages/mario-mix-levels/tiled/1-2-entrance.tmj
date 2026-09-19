@@ -1,0 +1,191 @@
+{
+  "type": "map",
+  "version": "1.10",
+  "orientation": "orthogonal",
+  "renderorder": "right-down",
+  "infinite": false,
+  "width": 24,
+  "height": 15,
+  "tilewidth": 16,
+  "tileheight": 16,
+  "tilesets": [],
+  "layers": [
+    {
+      "id": 1,
+      "type": "objectgroup",
+      "name": "collision",
+      "visible": true,
+      "opacity": 1,
+      "draworder": "topdown",
+      "objects": [
+        {
+          "id": 2,
+          "name": "ref-001",
+          "type": "Floor",
+          "x": 0,
+          "y": 208,
+          "width": 384,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-001"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "name": "ref-002",
+          "type": "PipeHorizontal",
+          "x": 160,
+          "y": 176,
+          "width": 32,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-002"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "name": "ref-003",
+          "type": "Pipe",
+          "x": 192,
+          "y": 144,
+          "width": 32,
+          "height": 64,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-003"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "type": "objectgroup",
+      "name": "gameplay",
+      "visible": true,
+      "opacity": 1,
+      "draworder": "topdown",
+      "objects": [
+        {
+          "id": 6,
+          "name": "start",
+          "type": "spawn",
+          "x": 32,
+          "y": 184,
+          "width": 12,
+          "height": 24,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "start"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "marker"
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "name": "portal-0",
+          "type": "portal",
+          "x": 128,
+          "y": 144,
+          "width": 32,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "portal-0"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "marker"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "type": "objectgroup",
+      "name": "reference-markers",
+      "visible": true,
+      "opacity": 1,
+      "draworder": "topdown",
+      "objects": [
+        {
+          "id": 9,
+          "name": "ref-002-link",
+          "type": "PipeRoute",
+          "x": 160,
+          "y": 176,
+          "width": 32,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-002-link"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "marker"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "nextobjectid": 11,
+  "nextlayerid": 12,
+  "properties": [
+    {
+      "name": "scope",
+      "type": "string",
+      "value": "Object-layer export for editing/reference. Tiled reimport is not implemented."
+    }
+  ]
+}

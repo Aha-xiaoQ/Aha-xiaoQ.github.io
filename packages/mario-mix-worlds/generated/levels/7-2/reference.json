@@ -1,0 +1,648 @@
+{
+  "repository": "umaim/Mario",
+  "commit": "980c275358704a49f868567aeec5bdfb347c4781",
+  "path": "Source/settings/maps.js",
+  "gitBlob": "657d750ad65bb06c0e63a3d8958736f9236ec3c0",
+  "range": "Worlds 1–8 gameplay layout transcription",
+  "url": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+  "method": "Manual transcription of gameplay placement records, area locations and section definitions. Pure background scenery omitted; not a byte-identical source export or original-game certification.",
+  "omittedVisuals": [
+    "Pattern",
+    "DecorativeBack",
+    "DecorativeDot",
+    "CustomText"
+  ],
+  "map": {
+    "name": "7-2",
+    "locations": [
+      {
+        "area": 0,
+        "entry": "Walking"
+      },
+      {
+        "area": 1
+      },
+      {
+        "area": 2,
+        "entry": "PipeVertical"
+      }
+    ],
+    "areas": [
+      {
+        "setting": "Overworld",
+        "creation": [
+          {
+            "macro": "Floor",
+            "width": 192,
+            "x": 0,
+            "y": 0
+          },
+          {
+            "thing": "PipeHorizontal",
+            "transport": 1,
+            "x": 80,
+            "y": 16
+          },
+          {
+            "macro": "Pipe",
+            "height": 32,
+            "x": 96,
+            "y": 0
+          }
+        ]
+      },
+      {
+        "setting": "Underwater",
+        "creation": [
+          {
+            "macro": "Floor",
+            "width": 536,
+            "x": 0,
+            "y": 0
+          },
+          {
+            "thing": "Coral",
+            "height": 24,
+            "x": 96,
+            "y": 24
+          },
+          {
+            "macro": "Fill",
+            "thing": "Coin",
+            "xnum": 2,
+            "xwidth": 8,
+            "x": 120,
+            "y": 7
+          },
+          {
+            "thing": "Stone",
+            "width": 24,
+            "x": 152,
+            "y": 32
+          },
+          {
+            "thing": "Blooper",
+            "x": 184,
+            "y": 16
+          },
+          {
+            "macro": "Fill",
+            "thing": "Coin",
+            "xnum": 3,
+            "xwidth": 8,
+            "x": 224,
+            "y": 64
+          },
+          {
+            "thing": "Coral",
+            "height": 40,
+            "x": 272,
+            "y": 40
+          },
+          {
+            "macro": "Fill",
+            "thing": "Coin",
+            "xnum": 3,
+            "xwidth": 8,
+            "x": 296,
+            "y": 7
+          },
+          {
+            "thing": "Stone",
+            "width": 16,
+            "x": 344,
+            "y": 32
+          },
+          {
+            "thing": "Blooper",
+            "x": 376,
+            "y": 32
+          },
+          {
+            "thing": "Coral",
+            "height": 32,
+            "x": 408,
+            "y": 32
+          },
+          {
+            "thing": "Blooper",
+            "x": 448,
+            "y": 24
+          },
+          {
+            "thing": "Stone",
+            "height": 24,
+            "x": 520,
+            "y": 24
+          },
+          {
+            "thing": "Stone",
+            "height": 40,
+            "x": 528,
+            "y": 40
+          },
+          {
+            "macro": "Fill",
+            "thing": "Coin",
+            "xnum": 3,
+            "xwidth": 8,
+            "x": 546,
+            "y": 23
+          },
+          {
+            "macro": "Floor",
+            "width": 480,
+            "x": 576,
+            "y": 0
+          },
+          {
+            "thing": "Stone",
+            "height": 40,
+            "x": 576,
+            "y": 40
+          },
+          {
+            "thing": "Stone",
+            "height": 24,
+            "x": 584,
+            "y": 24
+          },
+          {
+            "thing": "CheepCheep",
+            "x": 616,
+            "y": 24
+          },
+          {
+            "thing": "Stone",
+            "width": 16,
+            "height": 24,
+            "x": 632,
+            "y": 24
+          },
+          {
+            "thing": "Stone",
+            "width": 16,
+            "height": 24,
+            "x": 532,
+            "y": 88
+          },
+          {
+            "thing": "CheepCheep",
+            "x": 640,
+            "y": 48
+          },
+          {
+            "thing": "CheepCheep",
+            "x": 656,
+            "y": 16
+          },
+          {
+            "thing": "Stone",
+            "x": 664,
+            "y": 64,
+            "height": 24
+          },
+          {
+            "thing": "Blooper",
+            "x": 672,
+            "y": 40
+          },
+          {
+            "thing": "Coral",
+            "height": 16,
+            "x": 672,
+            "y": 80
+          },
+          {
+            "thing": "Coral",
+            "height": 24,
+            "x": 720,
+            "y": 24
+          },
+          {
+            "thing": "Blooper",
+            "x": 760,
+            "y": 80
+          },
+          {
+            "thing": "CheepCheep",
+            "x": 760,
+            "y": 56
+          },
+          {
+            "thing": "CheepCheep",
+            "smart": true,
+            "x": 784,
+            "y": 80
+          },
+          {
+            "macro": "Fill",
+            "thing": "Coin",
+            "xnum": 3,
+            "xwidth": 8,
+            "x": 816,
+            "y": 15
+          },
+          {
+            "thing": "Stone",
+            "width": 16,
+            "x": 824,
+            "y": 32
+          },
+          {
+            "thing": "Coral",
+            "height": 32,
+            "x": 824,
+            "y": 64
+          },
+          {
+            "thing": "Blooper",
+            "x": 848,
+            "y": 16
+          },
+          {
+            "macro": "Fill",
+            "thing": "Coin",
+            "xnum": 3,
+            "xwidth": 8,
+            "x": 912,
+            "y": 55
+          },
+          {
+            "thing": "Stone",
+            "width": 16,
+            "x": 928,
+            "y": 40
+          },
+          {
+            "thing": "CheepCheep",
+            "x": 944,
+            "y": 72
+          },
+          {
+            "thing": "Coral",
+            "height": 32,
+            "x": 968,
+            "y": 32
+          },
+          {
+            "thing": "CheepCheep",
+            "smart": true,
+            "x": 1032,
+            "y": 24
+          },
+          {
+            "thing": "Stone",
+            "height": 32,
+            "x": 1040,
+            "y": 32
+          },
+          {
+            "thing": "Stone",
+            "height": 16,
+            "x": 1048,
+            "y": 16
+          },
+          {
+            "thing": "CheepCheep",
+            "x": 1056,
+            "y": 16
+          },
+          {
+            "thing": "Stone",
+            "height": 24,
+            "x": 1056,
+            "y": 88
+          },
+          {
+            "thing": "Stone",
+            "width": 64,
+            "x": 1064,
+            "y": 72
+          },
+          {
+            "thing": "Coin",
+            "x": 1072,
+            "y": 15
+          },
+          {
+            "macro": "Fill",
+            "thing": "Coin",
+            "xnum": 3,
+            "xwidth": 8,
+            "x": 1080,
+            "y": 7
+          },
+          {
+            "thing": "Coin",
+            "x": 1104,
+            "y": 15
+          },
+          {
+            "thing": "CheepCheep",
+            "x": 1100,
+            "y": 40
+          },
+          {
+            "macro": "Floor",
+            "width": 136,
+            "x": 1128,
+            "y": 0
+          },
+          {
+            "thing": "Stone",
+            "height": 16,
+            "x": 1128,
+            "y": 16
+          },
+          {
+            "thing": "Stone",
+            "height": 32,
+            "x": 1136,
+            "y": 32
+          },
+          {
+            "thing": "CheepCheep",
+            "x": 1160,
+            "y": 32
+          },
+          {
+            "thing": "Coral",
+            "height": 16,
+            "x": 1184,
+            "y": 16
+          },
+          {
+            "thing": "Coral",
+            "height": 24,
+            "x": 1200,
+            "y": 24
+          },
+          {
+            "thing": "CheepCheep",
+            "smart": true,
+            "x": 1206,
+            "y": 56
+          },
+          {
+            "thing": "Stone",
+            "height": 64,
+            "x": 1256,
+            "y": 64
+          },
+          {
+            "thing": "Stone",
+            "width": 16,
+            "x": 1264,
+            "y": 64
+          },
+          {
+            "macro": "Fill",
+            "thing": "Coin",
+            "xnum": 3,
+            "ynum": 2,
+            "xwidth": 8,
+            "yheight": -24,
+            "x": 1281,
+            "y": 32
+          },
+          {
+            "thing": "Stone",
+            "width": 16,
+            "x": 1304,
+            "y": 64
+          },
+          {
+            "thing": "Stone",
+            "height": 64,
+            "x": 1320,
+            "y": 64
+          },
+          {
+            "macro": "Floor",
+            "width": 320,
+            "x": 1320,
+            "y": 0
+          },
+          {
+            "thing": "CheepCheep",
+            "x": 1320,
+            "y": 80
+          },
+          {
+            "thing": "CheepCheep",
+            "x": 1344,
+            "y": 16,
+            "smart": true
+          },
+          {
+            "macro": "Fill",
+            "thing": "Stone",
+            "ynum": 2,
+            "yheight": 32,
+            "width": 40,
+            "x": 1384,
+            "y": 32
+          },
+          {
+            "thing": "Coral",
+            "height": 16,
+            "x": 1392,
+            "y": 80
+          },
+          {
+            "thing": "CheepCheep",
+            "x": 1408,
+            "y": 40
+          },
+          {
+            "macro": "Fill",
+            "thing": "Stone",
+            "width": 32,
+            "x": 1448,
+            "y": 32,
+            "yum": 2,
+            "Yheight": 32
+          },
+          {
+            "thing": "CheepCheep",
+            "smart": true,
+            "x": 1472,
+            "y": 72
+          },
+          {
+            "thing": "CheepCheep",
+            "smart": true,
+            "x": 1496,
+            "y": 48
+          },
+          {
+            "thing": "Stone",
+            "width": 40,
+            "x": 1488,
+            "y": 8
+          },
+          {
+            "thing": "Stone",
+            "width": 32,
+            "x": 1496,
+            "y": 16
+          },
+          {
+            "thing": "Stone",
+            "width": 24,
+            "x": 1504,
+            "y": 24
+          },
+          {
+            "thing": "Stone",
+            "width": 16,
+            "x": 1512,
+            "y": 32,
+            "height": 32
+          },
+          {
+            "thing": "Stone",
+            "width": 88,
+            "x": 1512,
+            "y": 88
+          },
+          {
+            "thing": "PipeHorizontal",
+            "x": 1520,
+            "y": 48,
+            "width": 16
+          },
+          {
+            "thing": "Stone",
+            "width": 112,
+            "height": 88,
+            "x": 1528,
+            "y": 88
+          },
+          {
+            "thing": "Blooper",
+            "x": 208,
+            "y": 46
+          },
+          {
+            "thing": "Blooper",
+            "x": 424,
+            "y": 46
+          },
+          {
+            "thing": "Blooper",
+            "x": 624,
+            "y": 54
+          },
+          {
+            "thing": "Blooper",
+            "x": 728,
+            "y": 16
+          },
+          {
+            "thing": "CheepCheep",
+            "x": 816,
+            "y": 24
+          },
+          {
+            "thing": "Blooper",
+            "x": 1208,
+            "y": 38
+          },
+          {
+            "thing": "Blooper",
+            "x": 1392,
+            "y": 14
+          },
+          {
+            "thing": "Blooper",
+            "x": 1440,
+            "y": 14
+          }
+        ],
+        "underwater": true
+      },
+      {
+        "setting": "Overworld",
+        "creation": [
+          {
+            "macro": "Floor",
+            "width": 336,
+            "x": 0,
+            "y": 0
+          },
+          {
+            "macro": "Pipe",
+            "height": 16,
+            "piranha": true,
+            "entrance": 2,
+            "x": 0,
+            "y": 0
+          },
+          {
+            "thing": "Stone",
+            "x": 16,
+            "y": 8
+          },
+          {
+            "thing": "Stone",
+            "height": 16,
+            "x": 24,
+            "y": 16
+          },
+          {
+            "thing": "Stone",
+            "height": 24,
+            "x": 32,
+            "y": 24
+          },
+          {
+            "thing": "Stone",
+            "height": 32,
+            "x": 40,
+            "y": 32
+          },
+          {
+            "thing": "Stone",
+            "height": 40,
+            "x": 48,
+            "y": 40
+          },
+          {
+            "thing": "Stone",
+            "height": 48,
+            "x": 56,
+            "y": 48
+          },
+          {
+            "thing": "Stone",
+            "height": 56,
+            "x": 64,
+            "y": 56
+          },
+          {
+            "thing": "Stone",
+            "height": 64,
+            "x": 72,
+            "y": 64
+          },
+          {
+            "thing": "Stone",
+            "x": 80,
+            "y": 64,
+            "height": 64
+          },
+          {
+            "macro": "EndOutsideCastle",
+            "transport": {
+              "map": "7-3"
+            },
+            "x": 152,
+            "y": 0
+          }
+        ]
+      }
+    ]
+  }
+}

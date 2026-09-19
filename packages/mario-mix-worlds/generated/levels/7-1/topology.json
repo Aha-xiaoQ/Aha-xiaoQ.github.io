@@ -1,0 +1,60 @@
+{
+  "locations": [
+    {
+      "area": 0,
+      "entry": "Plain"
+    },
+    {
+      "area": 0,
+      "entry": "PipeVertical"
+    },
+    {
+      "area": 1
+    }
+  ],
+  "areas": [
+    {
+      "area": 0,
+      "setting": "Overworld Alt",
+      "underwater": false,
+      "exit": null,
+      "sections": []
+    },
+    {
+      "area": 1,
+      "setting": "Underworld",
+      "underwater": false,
+      "exit": null,
+      "sections": []
+    }
+  ],
+  "links": [
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r026"
+      },
+      "kind": "location",
+      "target": 2
+    },
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r060"
+      },
+      "kind": "world",
+      "target": {
+        "map": "7-2"
+      }
+    }
+  ],
+  "issues": [
+    {
+      "roomId": "area-1",
+      "sourceRecord": "r006",
+      "kind": "horizontal-pipe-without-transport"
+    }
+  ]
+}

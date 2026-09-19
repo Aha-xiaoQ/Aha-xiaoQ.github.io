@@ -1,0 +1,41 @@
+# Inert documentation example. Review and copy into .github/workflows manually.
+# Pages Settings must use GitHub Actions. This file has not been deployed.
+name: Publish reviewed website
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: pages-reviewed
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm run release:test
+      - run: npm run journal:build
+      - run: npm run site:build
+      - run: npm run release:prepare
+      - run: npm run release:check
+      - run: node scripts/publication/gate.mjs --ci-record
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: .local/publish
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy reviewed artifact
+        id: deployment
+        uses: actions/deploy-pages@v4

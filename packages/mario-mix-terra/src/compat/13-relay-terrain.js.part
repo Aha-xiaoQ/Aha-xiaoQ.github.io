@@ -1,0 +1,269 @@
+/* 0.3.0 — source-shaped terrain, physical tank contact, descending secret route.
+ * This module is intentionally separate from the canonical 1-2 map data.
+ */
+let r03Rewards={ninja:false,tank:false},r03Challenge=null,r03Terrain=[],r03OriginalAudioStatus='not-started';
+const R03_ASSET_IDS=['water-a','water-b','wall-brick','wall-steel','grass','base-eagle','player-tank','enemy-basic','enemy-armor','ng-bat','ng-thug','barbarian-walk','item-shuriken','item-windmill','item-flame','item-spirit','item-health','power-star'];
+const r03Ready=Promise.all(R03_ASSET_IDS.map(id=>new Promise((ok,fail)=>{const im=new Image();im.onload=()=>{R12_SPRITES[id]=im;ok();};im.onerror=()=>fail(Error('Missing asset '+id));im.src=R12_EMBEDDED_IMAGES['relay12/assets/'+id+'.png'];})));
+window.__mixReady=Promise.all([window.__mixReady,r03Ready]);
+R12_WEAPONS.spin={label:'跳跃旋风斩',hud:'SPIN',cost:5};
+const r03Shape=(id,name,width,blocks,spawn=[24,176])=>({id,name,width,blocks,spawn,floor:[[0,width/2]],ceiling:[],coins:[],pipes:[],lifts:[],nativeEnemies:[],landmarks:[]});
+RELAY12_MAP.areas.alley=r03Shape('alley','忍龙支线 · 街巷潜入',512,[{kind:'stone',x:0,y:88,nx:1,ny:11},{kind:'brick',x:96,y:8,nx:3,ny:2},{kind:'brick',x:168,y:8,nx:2,ny:3}]);
+RELAY12_MAP.areas.bar=r03Shape('bar','忍龙支线 · JAY’S BAR',256,[{kind:'stone',x:0,y:96,nx:1,ny:12},{kind:'stone',x:120,y:96,nx:1,ny:12}]);
+RELAY12_MAP.areas.defense=r03Shape('defense','坦克支线 · 第一关基地保卫',256,[]);
+const r03IsSecret=()=>!!r12&&['alley','bar','defense'].includes(r12.area);
+const r03OldStart=startGame;
+startGame=function(){if(r03Challenge?.failed&&r12IsHero()){r03StartChallenge(r03Challenge.kind);return;}r03Rewards={ninja:false,tank:false};r03Challenge=null;r03Terrain=[];return r03OldStart();};
+const r03OldSelect=selectHero;selectHero=function(id){r03Challenge=null;return r03OldSelect(id);};
+heroHelp.ryu='1-2 横版原图。J 挥刀，空格/K 跳跃，L 忍术，E 切换。第一道悬崖的绳索边，贴墙按 ↓ 下行进入街巷与首关 Boss；普通坠落仍会死亡。';
+heroHelp.tank='1-2 俯视原图适配。方向移动，J/空格开炮。河流挡车但不挡弹；草丛遮挡，冰面滑行。碰车不掉命。第一根标记管道进入守护基地挑战。';
+const r03OldLoad=r12Load;
+r12Load=function(area,preserve=false,spawn=null,keepGeometry=false){
+ r03OldLoad(area,preserve,spawn,keepGeometry);r12.r03descent=0;r12.r03Grip=0;r03Terrain=[];
+ if(hero==='tank'){
+  r12.water=[];r12.bridges=[]; // Remove the previous invented pit-wide water and long service decks.
+  // The original ceiling and ground bands become water; internal silhouettes stay in place.
+  r12.water=[{x:0,y:24,w:r12.def.width,h:24},{x:0,y:208,w:r12.def.width,h:40}];
+  if(area==='underground')r03Terrain=[{x:336,y:64,w:64,h:32,kind:'grass'},{x:1392,y:144,w:64,h:32,kind:'grass'},{x:704,y:176,w:80,h:32,kind:'ice'},{x:2256,y:112,w:96,h:32,kind:'ice'}];
+  for(const e of ninja.foes)if(e.tankKind==='armor')e.hp=e.maxHp=4;
+  r12Unstick(player,true);
+ }else if(area==='underground'){
+  // Only extend the two faces beneath the existing FIRST 1-2 gap. No above-ground tile is moved.
+  for(let y=15;y<=21;y++)for(const x of [79,83]){put(tiles,x,y,'stone');at(x,y).routeExtension=true;}
+ }
+ if(area==='alley'){
+  ninja.foes=[ninjaEnemy('walker',180,180,501),ninjaEnemy('thrower',304,180,502),ninjaEnemy('hawk',382,102,503)];
+  ninja.lanterns=[{x:62,y:154,w:12,h:18,id:551,type:'spirit',dead:false},{x:234,y:130,w:12,h:18,id:552,type:'health',dead:false}];
+  r12Message('支线 1 / 2 · 穿过街巷，进入右侧酒吧。',240);r03Challenge={kind:'ninja',failed:false};
+ }else if(area==='bar'){
+  ninja.foes=[{...ninjaEnemy('barbarian',182,166,601),w:26,h:42,hp:8,maxHp:8,phase:'walk',clock:0,swings:0,hitLock:0}];
+  ninja.hp=Math.min(16,ninja.hp+4);r03Challenge={kind:'ninja',failed:false};
+  r12Message('支线 2 / 2 · 躲开连斩，借墙换边，再反击。',240);
+ }else if(area==='defense')r03InitDefense();
+ r12.discovered.add('v0.3');r03CheckSpawn();
+};
+function r03CheckSpawn(){if(hero!=='tank'||r12?.area==='defense')return;for(const e of ninja.foes){if(e.dead)continue;if(r12TankCollides(e)){r12Unstick(e,true);if(r12TankCollides(e))e.dead=true;}}}
+r12Unstick=function(p,tank=false){const blocked=b=>tank?r12TankCollides(b):solids(b).length;if(!blocked(p))return;const o={x:p.x,y:p.y};for(let r=1;r<=32;r++)for(const [dx,dy] of [[0,-r*4],[-r*4,0],[r*4,0],[0,r*4]]){const b={x:o.x+dx,y:o.y+dy,w:p.w,h:p.h};if(b.x>=16&&b.y>=24&&b.y+b.h<=208&&!blocked(b)){p.x=b.x;p.y=b.y;return;}}};
+// Normal tanks block one another, including shielded tanks. There is no contact damage.
+r12TankMove=function(b,dir,speed){const [dx,dy]=R12_DIR[dir],q={...b,x:b.x+dx*speed,y:b.y+dy*speed};
+ if(r12TankCollides(q))return false;
+ const bodies=ninja.foes.filter(e=>e!==b&&!e.dead&&!e.spawn);if(b!==player)bodies.push(player);
+ if(bodies.some(e=>overlap(q,e)&&!overlap(b,e)))return false;
+ if(bodies.some(e=>overlap(q,e)&&overlap(b,e)&&Math.abs(q.x-e.x)+Math.abs(q.y-e.y)<Math.abs(b.x-e.x)+Math.abs(b.y-e.y)))return false;
+ b.x=q.x;b.y=q.y;return true;
+};
+function r03TileParts(t){const mask=t.parts??15,x=t.x*T,y=t.y*T;return [0,1,2,3].filter(i=>mask&(1<<i)).map(i=>({x:x+(i%2)*8,y:y+Math.floor(i/2)*8,w:8,h:8}));}
+const r03OldSolids=solids;
+solids=function(b){const found=r03OldSolids(b);return hero==='tank'?found.filter(t=>t.type==='ground'||(t.y>2&&r03TileParts(t).some(q=>overlap(q,b)))):found;};
+r12TankCollides=function(b){if(r12?.area==='defense')return b.x<24||b.y<24||b.x+b.w>232||b.y+b.h>232||(r03Challenge?.blocks||[]).some(t=>!t.dead&&overlap(b,t))||(r03Challenge?.base?overlap(b,r03Challenge.base):false);
+ if(!r12||b.y<48||b.y+b.h>208||b.x<16||b.x+b.w>r12.def.width-16)return true;
+ return solids(b).some(t=>t.type!=='ground');
+};
+r12TankPlayer=function(input){const p=player,t=r12.tank;for(const k of ['shield','freeze','cool'])if(t[k]>0)t[k]--;if(p.invuln)p.invuln--;
+ const dir=input.left?2:input.right?0:input.up?3:input.down?1:null;const onIce=r03Terrain.some(s=>s.kind==='ice'&&overlap(p,s));p.vx=p.vy=0;
+ if(dir!==null){t.dir=dir;p.dir=dir;t.glide=onIce?20:0;t.glideDir=dir;if(r12TankMove(p,dir,1.4)){p.vx=R12_DIR[dir][0]*1.4;p.vy=R12_DIR[dir][1]*1.4;t.track++;}}
+ else if(onIce&&t.glide>0){t.glide--;if(r12TankMove(p,t.glideDir,1.4*t.glide/20))t.track++;else t.glide=0;}else t.glide=0;
+ if((input.run||input.jump)&&!t.cool)r12TankShot(p);p.grounded=true;p.facing=t.dir===2?-1:1;
+ r12CommonPlayer(input);
+};
+const r03OldBreak=r12Break;
+r12Break=function(t,by='sword'){if(hero==='tank'&&by==='cannon'&&r12?.area!=='defense'){
+ if(t.type==='ground'||t.type==='pipe')return false;
+ if(t.content&&!t.used){if(r12.r03Impact?.friendly!==false)ninjaBump(t);return false;}
+ if(t.used||t.type==='question')return false;
+ if(t.type==='stone'&&(r12.r03Impact?.friendly===false||(r12.r03Impact?.power??r12.tank.power)<3)){r12Sound('steel');return false;}
+ if(!['brick','stone'].includes(t.type))return false;
+ const s=r12.r03Impact;let remove=15;
+ if(((r12.r03Impact?.power??r12.tank.power)<3||s?.friendly===false)&&s){const parts=r03TileParts(t);const right=s.vx<0,down=s.vy<0;
+ if(s.vx){const col=right?Math.max(...parts.map(p=>p.x)):Math.min(...parts.map(p=>p.x));remove=col===t.x*T?5:10;}
+ else{const row=down?Math.max(...parts.map(p=>p.y)):Math.min(...parts.map(p=>p.y));remove=row===t.y*T?3:12;}}
+ t.parts=(t.parts??15)&~remove;if(!t.parts)tiles.delete(tileKey(t.x,t.y));ninjaDust(t.x*T+8,t.y*T+8,'#d29a60',5);r12Event('terrain-hit',{x:t.x,y:t.y,remaining:t.parts,by});return true;
+ }return r03OldBreak(t,by);};
+const r03OldThrow=ninjaThrow;
+ninjaThrow=function(){if(ninja.weapon!=='spin')return r03OldThrow();if(ninja.cool||ninja.hit)return;if(player.grounded){r12Message('跳跃旋风斩：先跳起来，再按忍术。');return;}if(ninja.spirit<5){ninjaSound('empty');return;}ninja.spirit-=5;ninja.cool=28;ninja.spin=24;ninja.spinHit=new Set();ninjaSound('slash');r12Event('weapon',{weapon:'spin',cost:5});};
+function r03TryDescent(input){if(hero!=='ryu'||r12.area!=='underground')return false;
+ const p=player,near=p.x>=1278&&p.x+p.w<=1330;
+ if(near&&ninja.wall&&input.down&&p.y+p.h>207){r12.r03descent++;r12.r03Grip=8;}else if(r12.r03Grip)r12.r03Grip--;
+ if(near&&input.down&&r12.r03Grip&&r12.r03descent>=8&&p.y+p.h>254){r12Event('cliff-descent',{x:p.x,y:p.y});r12Travel('alley');return true;}return false;
+}
+const r03OldCommon=r12CommonPlayer;
+r12CommonPlayer=function(input){
+ if(r12.area==='alley'){
+  if(player.x>463){r12Travel('bar');return;}
+ }else if(r12.area==='bar'){
+  if(r03Challenge?.won&&player.x>212&&input.down){r12Travel('exit');return;}
+ }else if(r12.area==='defense')return;
+ r03OldCommon(input);
+ if(hero==='ryu'&&r12.area==='underground'&&player.x>=1250&&player.x<1350&&player.y>174)r12.camY=clamp(player.y-174,0,105);
+};
+const r03OldTravel=r12Travel;
+r12Travel=function(target,spawn=null){if(target==='bonus'&&hero==='tank'){target='defense';spawn=null;}r03OldTravel(target,spawn);};
+function r03StartChallenge(kind){r03Challenge=null;mode='playing';r12Load(kind==='tank'?'defense':'bar',true);player.invuln=120;hideOverlay();}
+const r03OldDamageEnemy=r12DamageEnemy;
+r12DamageEnemy=function(e,amount=1){if(e.kind==='barbarian'){if(e.hitLock||e.dead)return;e.hitLock=12;e.hp-=amount;e.flash=9;r12Event('boss-hit',{hp:e.hp});ninjaSound('hit');if(e.hp<=0){r12Kill(e);r03WinChallenge('ninja');}return;}r03OldDamageEnemy(e,amount);};
+function r03WinChallenge(kind){if(r03Challenge?.won)return;r03Challenge.won=true;r03Challenge.wonAt=frame;
+ if(!r03Rewards[kind]){r03Rewards[kind]=true;if(kind==='ninja'){ninja.unlocked.push('spin');ninja.weapon='spin';ninja.spirit=Math.min(30,ninja.spirit+10);ninja.hp=Math.min(16,ninja.hp+4);}else{r12.tank.power=3;r12.tank.shield=600;}r12Event('secret-reward',{kind,reward:kind==='ninja'?'jump-and-slash':'max-power-shield'});}
+ ninja.projectiles=[];stopMusic();oneShot(hero==='ryu'?'ryu_clear':'tank_clear');r12Message(kind==='ninja'?'获得跳跃旋风斩！右侧管道按 ↓ 回到旗杆。':'基地守护成功！获得满级火力与护盾。右上出口按 ↑ 返回。',600);
+}
+const r03OldEnemies=r12NinjaEnemies;
+r12NinjaEnemies=function(){if(r12.area!=='bar')return r03OldEnemies();const e=ninja.foes[0];if(!e||e.dead)return;
+ e.t++;e.clock++;if(e.hitLock)e.hitLock--;if(e.flash)e.flash--;
+ if(e.phase==='walk'){e.dir=player.x<e.x?-1:1;r12Body(e,e.dir*.55,0);if(e.clock>=65){e.phase='windup';e.clock=0;e.swings=0;}}
+ else if(e.phase==='windup'&&e.clock>=24){e.phase='slash';e.clock=0;ninjaSound('slash');}
+ else if(e.phase==='slash'){
+  if(e.clock>=4&&e.clock<=13){const box={x:e.dir>0?e.x+14:e.x-19,y:e.y+8,w:30,h:27};if(overlap(box,player))ninjaHurt(e);}
+  if(e.clock>=20){e.swings++;e.clock=0;e.phase=e.swings<2?'windup':'recover';}
+ }else if(e.phase==='recover'&&e.clock>=45){e.phase='walk';e.clock=0;}
+};
+// Exact first-stage obstacle positions transcribed from newagebegins/BattleCity Stages.js.
+const R03_STAGE1_RUNS=[
+ [64,48,2,9],[128,48,2,9],[192,48,2,7],[256,48,2,7],[320,48,2,9],[384,48,2,9],
+ [224,112,2,2,'steel'],[32,224,2,1],[32,240,2,1,'steel'],[96,224,4,2],[320,224,4,2],[416,224,2,1],[416,240,2,1,'steel'],
+ [192,192,2,2],[256,192,2,2], [64,288,2,7],[128,288,2,7],[320,288,2,7],[384,288,2,7],
+ [192,256,2,6],[256,256,2,6],[224,272,2,2],
+ [208,384,1,3],[224,384,2,1],[256,384,1,3]
+];
+function r03InitDefense(){
+ const blocks=[];const seen=new Set();for(const [x,y,nx,ny,type='brick'] of R03_STAGE1_RUNS)for(let j=0;j<ny;j++)for(let i=0;i<nx;i++){const key=(x+i*16)+','+(y+j*16);if(seen.has(key))continue;seen.add(key);blocks.push({x:24+(x+i*16-32)/2,y:24+(y+j*16-16)/2,w:8,h:8,type,dead:false});}
+ r03Challenge={kind:'tank',blocks,base:{x:120,y:216,w:16,h:16},failed:false,won:false,spawned:0,total:4,kills:0,clock:0,spawnClock:0};
+ tiles=new Map();pipes=[];looseCoins=[];r12.water=[];r12.bridges=[];r03Terrain=[];ninja.foes=[];ninja.projectiles=[];ninja.lanterns=[];
+ // Fixed, reachable supplies for the short four-enemy defense. These are
+ // independent of the main-route carrier cycle; its first star is unchanged.
+ ninja.drops=[
+  {x:90,y:196,w:12,h:12,type:'shovel',id:100101,anchored:true,fixedSupply10:true},
+  {x:154,y:196,w:12,h:12,type:'grenade',id:100102,anchored:true,fixedSupply10:true},
+  {x:58,y:172,w:12,h:12,type:'timer',id:100103,anchored:true,fixedSupply10:true},
+  {x:186,y:172,w:12,h:12,type:'helmet',id:100104,anchored:true,fixedSupply10:true}
+ ];
+ Object.assign(player,{x:90,y:216,w:12,h:12,invuln:120,dir:3});r12.tank.dir=3;r12.tank.power=Math.max(1,r12.tank.power);r12.tank.shield=180;
+ r12Message('原第一关布局 · 击破 4 辆敌车，保护底部鹰徽。炮弹也会误伤基地。',300);
+}
+function r03DefenseTick(input){const c=r03Challenge,t=r12.tank;c.clock++;frame++;r12.ticks++;if(r12.messageTime)r12.messageTime--;
+ if(c.won){if(input.up&&player.x>204&&player.y<55&&frame-c.wonAt>60)r12Travel('exit');r12TankPlayer(input);return;}
+ if(c.failed)return;
+ if(c.spawned<c.total&&ninja.foes.filter(e=>!e.dead).length<2&&c.spawnClock--<=0){const x=[24,124,220][c.spawned%3];if(!ninja.foes.some(e=>!e.dead&&Math.abs(e.x-x)<18&&e.y<46)){
+ ninja.foes.push({kind:'tank',tankKind:'basic',id:700+c.spawned,x,y:24,w:12,h:12,dir:1,t:0,cool:100,hp:1,maxHp:1,dead:false,spawn:50,turn:0});c.spawned++;c.spawnClock=150;}}
+ r12TankPlayer(input);
+ for(const d of ninja.drops)if(!d.gone&&overlap(player,d)){r12Give(d.type);d.gone=true;}ninja.drops=ninja.drops.filter(d=>!d.gone);
+ if(!t.freeze)for(const e of ninja.foes){if(e.dead)continue;if(e.spawn){e.spawn--;continue;}e.t++;if(e.cool)e.cool--;if(e.flash)e.flash--;
+ if(e.t%70===1)e.dir=e.y>190?(e.x<114?0:e.x>138?2:1):e.t%210<140?1:((e.id%2)?0:2);
+ if(!r12TankMove(e,e.dir,.55)&&e.t%40===0)e.dir=(e.dir+1)%4;
+ if(!e.cool){r12TankShot(e,false);e.cool=100;}}
+ for(const s of ninja.projectiles){if(s.life<=0)continue;s.life--;const steps=Math.ceil(Math.max(Math.abs(s.vx),Math.abs(s.vy))/2);for(let k=0;k<steps&&s.life>0;k++){
+ s.x+=s.vx/steps;s.y+=s.vy/steps;
+ const wall=c.blocks.find(w=>!w.dead&&overlap(s,w));if(wall){if(wall.type==='brick'||(s.friendly&&t.power===3))wall.dead=true;s.life=0;ninjaDust(s.x,s.y);break;}
+ if(overlap(s,c.base)){s.life=0;c.failed=true;mode='gameover';stopMusic();r12Message('基地被击毁。按重试重新挑战。',9999);showOverlay('BASE LOST','基地失守','炮弹击中了鹰徽。坦克车体接触不造成伤害。','重试基地挑战 →');r12Event('base-destroyed',{friendly:s.friendly});break;}
+ if(s.friendly){for(const e of ninja.foes)if(!e.dead&&!e.spawn&&overlap(s,e)){r12DamageEnemy(e);s.life=0;break;}}
+ else if(overlap(s,player)){r12TankHurt(s);s.life=0;}
+ if(s.x<24||s.x>232||s.y<24||s.y>232)s.life=0;
+ }}
+ for(const a of ninja.projectiles)if(a.friendly&&a.life>0)for(const b of ninja.projectiles)if(!b.friendly&&b.life>0&&overlap(a,b))a.life=b.life=0;
+ ninja.projectiles=ninja.projectiles.filter(s=>s.life>0);c.kills=ninja.foes.filter(e=>e.dead).length;
+ for(const f of ninja.fx){f.x+=f.vx;f.y+=f.vy;f.life--;}ninja.fx=ninja.fx.filter(f=>f.life>0);
+ if(c.spawned===c.total&&c.kills===c.total&&!c.failed)r03WinChallenge('tank');
+}
+// Hidden deaths retry the current scene, not an unrelated 1-2 checkpoint.
+const r03OldReset=resetLife;
+resetLife=function(){if(r12?.area==='defense'&&!r03Challenge?.failed){mode='playing';Object.assign(player,{x:90,y:216,w:12,h:12,vx:0,vy:0,invuln:180,dir:3});Object.assign(r12.tank,{dir:3,power:0,shield:180,cool:0,glide:0});r12Event('defense-respawn',{remaining:r03Challenge.total-r03Challenge.kills});hideOverlay();audioSync();return;}if(r03IsSecret()){const area=r12.area,power=r12.tank.power;resetGameAudio();r12Load(area,false);if(hero==='tank')r12.tank.power=Math.max(1,power);player.invuln=120;audioSync();return;}r03OldReset();};
+const r03OldFixed=fixedUpdate;
+fixedUpdate=function(){if(!r12IsHero()||!r12)return r03OldFixed();if(r12.area==='defense'&&mode==='playing'&&!r12.transition){r03DefenseTick(getInput());audioSync();return;}
+ r03OldFixed();if(!r12||!ninja||mode!=='playing'||r12.transition)return;
+ if(ninja.spin>0){ninja.spin--;const box={x:player.x-16,y:player.y-9,w:44,h:44};for(const e of ninja.foes)if(!e.dead&&overlap(box,e)&&!ninja.spinHit.has(e.id)){ninja.spinHit.add(e.id);r12DamageEnemy(e,2);}}
+};
+const r03OldHandoff=r12Handoff;
+r12Handoff=function(){if(r12.area!=='exit')return r03OldHandoff();hero='tank';r12Load('underground',false,[1520,176]);r12.handoff=true;r12.tank.power=2;r12.tank.shield=300;lives=3;r12Event('handoff',{from:'ryu',to:'tank',branch:true});r12Message('忍龙已抵达地面。坦克接手地下后段，打通援军路线。',240);};
+const r03OldDrawTank=r12DrawTank;
+r12DrawTank=function(g,x,y,dir,enemy=false,t=0,armored=false){const im=R12_SPRITES[enemy?(armored?'enemy-armor':'enemy-basic'):'player-tank'];if(!im)return r03OldDrawTank(g,x,y,dir,enemy,t,armored);g.save();g.imageSmoothingEnabled=false;g.translate(Math.round(x+6),Math.round(y+6));g.rotate((dir+1)*Math.PI/2);g.drawImage(im,-8,-8,16,16);if(Math.floor(t/6)%2){g.fillStyle=enemy?'#7da6a0':'#ab8d31';g.fillRect(-7,-4,2,2);g.fillRect(5,2,2,2);}g.restore();};
+const r03OldDrawEnemy=r12DrawEnemy;
+r12DrawEnemy=function(e){if(e.dead||e.flash&&frame%2)return;
+ if(e.kind==='barbarian'){const im=R12_SPRITES['barbarian-walk'];if(im){ctx.save();ctx.translate(Math.round(e.x-camera+13),Math.round(e.y+e.h));if(e.dir<0)ctx.scale(-1,1);ctx.drawImage(im,-32,-64,64,64);if(e.phase==='windup'){rect(16,-59,3,3,'#ffe19a');}if(e.phase==='slash'&&e.clock<14){rect(8,-28,29,3,'#f4e9d8');rect(31,-31,5,6,'#f8efdf');}ctx.restore();}return;}
+ const id=e.kind==='walker'||e.kind==='thrower'?'ng-thug':e.kind==='hawk'?'ng-bat':null,im=id&&R12_SPRITES[id];
+ if(!im)return r03OldDrawEnemy(e);const cw=e.kind==='hawk'?16:25,ch=e.kind==='hawk'?16:40,idx=Math.floor(e.t/9)%(e.kind==='hawk'?2:3);
+ ctx.save();ctx.translate(Math.round(e.x-camera+e.w/2),Math.round(e.y+e.h));if(e.dir<0)ctx.scale(-1,1);ctx.drawImage(im,idx*cw,0,cw,ch,-cw/2,-ch,cw,ch);ctx.restore();
+};
+const r03OldDrawDrop=r12DrawDrop;
+r12DrawDrop=function(d){const id=hero==='ryu'?({'shuriken':'item-shuriken',windmill:'item-windmill',flame:'item-flame',spirit:'item-spirit',health:'item-health'}[d.type]):d.type==='star'?'power-star':null;const im=R12_SPRITES[id];if(!im)return r03OldDrawDrop(d);ctx.drawImage(im,Math.round(d.x-camera-2),Math.round(d.y-2),16,16);};
+function r03TileImage(id,x,y,w=16,h=16){const im=R12_SPRITES[id];if(im)ctx.drawImage(im,Math.round(x),Math.round(y),w,h);}
+const r03OldDrawMap=r12DrawMap;
+r12DrawMap=function(){
+ if(r12.area==='defense'){
+  rect(0,0,W,H,'#525252');rect(24,24,208,208,'#000');for(const t of r03Challenge.blocks)if(!t.dead)r03TileImage(t.type==='steel'?'wall-steel':'wall-brick',t.x,t.y,8,8);
+  r03TileImage('base-eagle',120,216,16,16);return;
+ }
+ if(['alley','bar'].includes(r12.area)){
+  rect(0,0,W,H,'#080820');const bar=r12.area==='bar';
+  for(let x=Math.floor(camera/64)*64;x<camera+W;x+=64){rect(x-camera,bar?56:88,62,120,bar?'#311f42':'#192443');for(let y=bar?62:100;y<180;y+=24){rect(x-camera+6,y,18,16,'#4f4966');rect(x-camera+9,y+2,4,11,'#a2aec1');rect(x-camera+37,y,18,16,'#4f4966');}}
+  if(bar){rect(16,144,224,6,'#9b724a');rect(16,150,224,38,'#463046');for(let x=20;x<232;x+=20){rect(x,154,13,26,'#704655');rect(x,144,12,3,'#e1bb78');}text('JAY\'S BAR',128,63,'#f4c46b',1.2,true);}
+  else{for(let x=128;x<512;x+=192){rect(x-camera,96,42,22,'#954b66');text('JAY',x-camera+21,103,'#f7d6ba',.75,true);}rect(470-camera,145,24,63,'#66416e');text('BAR',482-camera,134,'#eed6aa',.7,true);}
+  for(const t of tiles.values())if(t.x*T>camera-16&&t.x*T<camera+W)drawBlock(t);
+  if(bar&&r03Challenge?.won){sprite('pipe_top',208,176);sprite('pipe_body',208,192);}return;
+ }
+ if(hero!=='tank'){r03OldDrawMap();if(r12.area==='underground'){
+  const x=1280-camera;
+  
+ }return;}
+ const surface=r12.area==='entrance'||r12.area==='exit';rect(0,0,W,H,'#05090d');
+ // Open air in the SAME 1-2 drawing is the tank's traversable plane, not a new arena.
+ for(let x=Math.floor(camera/16)*16;x<camera+W;x+=16)for(const y of [32,208,224])r03TileImage(frame%40<20?'water-a':'water-b',x-camera,y);
+ for(const s of r03Terrain)if(s.kind==='ice'){for(let x=s.x;x<s.x+s.w;x+=16)for(let y=s.y;y<s.y+s.h;y+=16){if(at(x/16,y/16))continue;rect(x-camera,y,16,16,'#b8d8e3');rect(x-camera+2,y+2,9,1,'#f1fbff');rect(x-camera+6,y+9,8,1,'#e5f2ff');}}
+ for(const t of tiles.values()){if(t.x*T<camera-16||t.x*T>camera+W||t.type==='ground'||t.y<=2)continue;
+  if(t.type==='pipe'){drawBlock(t);continue;}if(t.used||t.type==='question'){drawBlock(t);continue;}
+  const im=R12_SPRITES[t.type==='stone'?'wall-steel':'wall-brick'];if(im)for(const p of r03TileParts(t)){const sx=p.x-t.x*T,sy=p.y-t.y*T;ctx.drawImage(im,sx,sy,8,8,p.x-camera,p.y,8,8);}
+ }
+ r12DrawPipes();for(const c of looseCoins)if(c.x>camera-10&&c.x<camera+W)drawCoin(c.x-camera,c.y);
+ if(r12.area==='exit'){const x=r12.def.flag-camera;rect(x-1,48,2,144,'#e2dfb3');sprite('flag_top',x-4,40);sprite('flag',x-16,mode==='flag'||mode==='win'?flagY:56);const save=camera;camera=202*T-(r12.def.castle-save);drawCastle();camera=save;}
+};
+const r03OldDrawHud=r12DrawHud;
+r12DrawHud=function(){if(r12.area==='defense'){rect(0,0,256,24,'#191919');text('STAGE 01',8,7,'#eee',.9);text('LEFT '+(r03Challenge.total-r03Challenge.kills),135,7,'#f4cf65',.8);return;}
+ r03OldDrawHud();if(r12.area==='bar'&&!r03Challenge.won){text('BOSS',169,18,'#f7b7ad',.65);const b=ninja.foes[0];for(let i=0;i<8;i++)rect(199+i*3,18,2,5,i<(b?.hp||0)?'#dc7777':'#382e3a');}};
+const r03OldDraw=r12Draw;
+r12Draw=function(){r03OldDraw();if(!r12)return;
+ if(hero==='tank'&&r12.area!=='defense'){ctx.save();ctx.beginPath();ctx.rect(0,48,256,160);ctx.clip();for(const s of r03Terrain)if(s.kind==='grass')for(let x=s.x;x<s.x+s.w;x+=16)for(let y=s.y;y<s.y+s.h;y+=16)if(!at(x/16,y/16))r03TileImage('grass',x-camera,y);ctx.restore();}
+ if(hero==='ryu'&&ninja.spin>0){ctx.save();ctx.strokeStyle='#d7e6fc';ctx.lineWidth=2;ctx.beginPath();ctx.arc(player.x-camera+6,player.y+13-r12.camY,20,frame*.5,frame*.5+4.9);ctx.stroke();ctx.restore();}
+ if($('audioStatus'))$('audioStatus').textContent=r03OriginalAudioStatus==='ready'?'已加载对应游戏项目音轨；效果音和音乐音量可分别调节。':r03OriginalAudioStatus==='loading'?'正在载入源项目音轨；缺失项明确使用回退。':r03OriginalAudioStatus==='partial'?'已加载部分源项目录音；其余仍为合成音效 / 忍者配乐。':'本地含坦克开炮录音；其他缺失项为合成回退。';
+};
+// Narrow test/debug interface: not exposed on the ordinary page.
+if(window.__relayTest){const oldState=__relayTest.state.bind(__relayTest);__relayTest.state=function(){const s=oldState();return s?{...s,rewards:{...r03Rewards},terrain:r03Terrain.map(t=>({...t})),challenge:r03Challenge?{...r03Challenge,blocks:r03Challenge.blocks?.map(b=>({...b}))}:null}:s;};
+ __relayTest.secret=kind=>r03StartChallenge(kind);__relayTest.terrain=()=>r03Terrain;__relayTest.contactMove=(dir,speed)=>r12TankMove(player,dir,speed);__relayTest.hitBoss=()=>r12DamageEnemy(ninja.foes[0]);__relayTest.impact=(x,y,vx,vy)=>{r12.r03Impact={vx,vy};return r12Break(at(x,y),'cannon');};__relayTest.sourceStage1=()=>R03_STAGE1_RUNS;}
+
+/* Corresponding-project recordings; optional online loading and local cache support.
+ * Public repository availability does not itself establish independent asset licensing.
+ * No music is silently described as an original recording when a fallback is active.
+ */
+const R03_AUDIO_ROOT='https://raw.githubusercontent.com/';
+const R03_SOURCE_AUDIO={
+ ninja_slash:{repo:'SangMinhTruong/Ninja-Gaiden-NES',ref:'0b5875d9e14c25f35a6460f29b289e1bce3d0daf',path:'NinjaGaiden/Resources/Sound/Effect/Sword.wav'},
+ ninja_throw:{repo:'SangMinhTruong/Ninja-Gaiden-NES',ref:'0b5875d9e14c25f35a6460f29b289e1bce3d0daf',path:'NinjaGaiden/Resources/Sound/Effect/Shuriken.wav'},
+ ninja_hurt:{repo:'SangMinhTruong/Ninja-Gaiden-NES',ref:'0b5875d9e14c25f35a6460f29b289e1bce3d0daf',path:'NinjaGaiden/Resources/Sound/Effect/NinjaHurt.wav'},
+ ninja_hit:{repo:'SangMinhTruong/Ninja-Gaiden-NES',ref:'0b5875d9e14c25f35a6460f29b289e1bce3d0daf',path:'NinjaGaiden/Resources/Sound/Effect/EnemyHurt.wav'},
+ ninja_pickup:{repo:'SangMinhTruong/Ninja-Gaiden-NES',ref:'0b5875d9e14c25f35a6460f29b289e1bce3d0daf',path:'NinjaGaiden/Resources/Sound/Effect/ItemCollecting.wav'},
+ r12_cannon:{repo:'newagebegins/BattleCity',ref:'a1b1741782dcf23fc814e9a7abc5f383900b2cda',path:'sound/bullet_shot.ogg'},
+ r12_blast:{repo:'newagebegins/BattleCity',ref:'a1b1741782dcf23fc814e9a7abc5f383900b2cda',path:'sound/explosion_1.ogg'},
+ r12_steel:{repo:'newagebegins/BattleCity',ref:'a1b1741782dcf23fc814e9a7abc5f383900b2cda',path:'sound/bullet_hit_2.ogg'},
+ r03_tank_start:{repo:'newagebegins/BattleCity',ref:'a1b1741782dcf23fc814e9a7abc5f383900b2cda',path:'sound/stage_start.ogg'},
+ ryu_theme:{repo:'SangMinhTruong/Ninja-Gaiden-NES',ref:'0b5875d9e14c25f35a6460f29b289e1bce3d0daf',path:'NinjaGaiden/Resources/Sound/Stage/3-1 - Pursuit.wav',gain:.52},
+ r03_boss_theme:{repo:'SangMinhTruong/Ninja-Gaiden-NES',ref:'0b5875d9e14c25f35a6460f29b289e1bce3d0daf',path:'NinjaGaiden/Resources/Sound/Stage/3-3 Boss Battle.wav',gain:.5}
+};
+let r03AudioLoading=null,r03SourceAudioKeys=new Set();
+async function r03LoadSourceAudio(){if(r03AudioLoading||!audio)return r03AudioLoading;r03OriginalAudioStatus='loading';
+ r03AudioLoading=(async()=>{const results=await Promise.allSettled(Object.entries(R03_SOURCE_AUDIO).map(async([key,d])=>{
+ const ac=audio,url=R03_AUDIO_ROOT+d.repo+'/'+d.ref+'/'+d.path.split('/').map(encodeURIComponent).join('/');
+ const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),18000);
+ try{const inline=typeof R03_EMBEDDED_AUDIO!=='undefined'&&R03_EMBEDDED_AUDIO[key];let bytes;
+ if(inline)bytes=Uint8Array.from(atob(inline),c=>c.charCodeAt(0)).buffer;else{const response=await fetch(url,{signal:controller.signal});if(!response.ok)throw Error('HTTP '+response.status);bytes=await response.arrayBuffer();}
+ const buffer=await ac.decodeAudioData(bytes);if(!buffer.length)throw Error('Empty recording');bank.set(key,{buffer,gain:d.gain??.6});r03SourceAudioKeys.add(key);
+ if(bgm?.key===key){stopMusic();audioSync();}return key;
+ }finally{clearTimeout(timer);}}));
+ r03OriginalAudioStatus=results.every(r=>r.status==='fulfilled')?'ready':r03SourceAudioKeys.size?'partial':'failed';
+ r12Event('source-audio-loaded',{loaded:[...r03SourceAudioKeys],failed:results.filter(r=>r.status==='rejected').length});return results;
+ })();return r03AudioLoading;
+}
+const r03AudioInit=audioInit;audioInit=function(){const r=r03AudioInit();if(r12IsHero())r03LoadSourceAudio();return r;};
+const r03AudioSync=audioSync;audioSync=function(){if(!r12IsHero()||!audio)return r03AudioSync();
+ if(mode==='paused'||document.hidden||!soundOn||mode!=='playing'||r12?.target==='handoff'||(r03IsSecret()&&r03Challenge?.won)){stopMusic();return;}
+ if(hero==='tank'){ // Battle City's playfield should not acquire an invented melodic loop.
+  stopMusic();if(r12&&r03SourceAudioKeys.has('r03_tank_start')&&!r12.r03StartPlayed){r12.r03StartPlayed=true;oneShot('r03_tank_start');}return;}
+ if(r12?.area==='bar'&&r03SourceAudioKeys.has('r03_boss_theme')){playMusic('r03_boss_theme');return;}return r03AudioSync();
+};
+const r03Desired=desiredMusic;desiredMusic=function(){if(hero==='tank'&&r12)return null;return r03Desired();};
+if(window.__relayTest){__relayTest.sourceAudio=()=>({status:r03OriginalAudioStatus,loaded:[...r03SourceAudioKeys],manifest:R03_SOURCE_AUDIO});}
+

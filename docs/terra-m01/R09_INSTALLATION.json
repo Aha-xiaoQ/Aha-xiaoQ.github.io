@@ -1,0 +1,1766 @@
+{
+  "schemaVersion": 1,
+  "version": "terra-m01-r09",
+  "source": "user-uploaded third episode",
+  "delivery": "local-review-not-deployed",
+  "createdAt": "2026-09-16",
+  "document": "/notes/mario-mix/docs/terra-source/",
+  "download": "/downloads/source/MarioMix_Terraria_M01_Source.zip",
+  "files": [
+    {
+      "path": ".github/workflows/terra-m01.yml",
+      "before": null,
+      "after": "b554d6ca74e97ab2c4218d6d26a2c2d486efa241d0f5676c6f5905890ac1194e"
+    },
+    {
+      "path": "docs/terra-m01/HANDOFF_R09.md",
+      "before": null,
+      "after": "72ed67462883e945eac82d811814f001c4beb5df4164fdd664a34fedbf04d6e7"
+    },
+    {
+      "path": "docs/terra-m01/START_HERE.md",
+      "before": null,
+      "after": "29fbd37769fdeed4b8e81cc8054fd4a784af314714773da97155c2cefe3c836c"
+    },
+    {
+      "path": "docs/terra-m01/TEST_REPORT_R09.md",
+      "before": null,
+      "after": "3bf980df0eef4fdda3fcfb58fe1ca55e29d198442fa509d5cbcfc6b4a731b162"
+    },
+    {
+      "path": "downloads/source/MarioMix_Terraria_M01_Source.json",
+      "before": null,
+      "after": "36269850d8549c36d2a020129cbbd84f5b2bea7c71ad93b018b31f30b2b156c9"
+    },
+    {
+      "path": "downloads/source/MarioMix_Terraria_M01_Source.zip",
+      "before": null,
+      "after": "a9b30f361a8cae1249e43d0ffa3961039b49eac2e2cf7d906e7c492e9af4734d"
+    },
+    {
+      "path": "packages/mario-mix-terra/.gitattributes",
+      "before": null,
+      "after": "c1e91f66e3bf1fb592c627e11fd6b47408f6d7a27486e0ace5bf257e36ebdfb4"
+    },
+    {
+      "path": "packages/mario-mix-terra/.github/CODEOWNERS",
+      "before": null,
+      "after": "b9f7f03183f849ec216dd6953ab02af624d9cab59904b6bbe64d59ff092ee20c"
+    },
+    {
+      "path": "packages/mario-mix-terra/.github/PULL_REQUEST_TEMPLATE.md",
+      "before": null,
+      "after": "d97ae5a8e4cf2505787118db7a21373958aa140ebff7b18558c1cdda6e04806a"
+    },
+    {
+      "path": "packages/mario-mix-terra/.github/workflows/source.yml",
+      "before": null,
+      "after": "13c7396397cd8ae416d9a8a2f6ed7ab2e868ba32e803309f4b7a15e47438360a"
+    },
+    {
+      "path": "packages/mario-mix-terra/.gitignore",
+      "before": null,
+      "after": "76229c0fe3e50c42e5d74dd87c2f493ec4c638b56521f209fb44c67560bc81cb"
+    },
+    {
+      "path": "packages/mario-mix-terra/AGENTS.md",
+      "before": null,
+      "after": "df554ba5134f366587792310eb23c053d7ebc9c495a40455634d5204f8482c0d"
+    },
+    {
+      "path": "packages/mario-mix-terra/CONTRIBUTING.md",
+      "before": null,
+      "after": "7b4eecae80952b7d8d1a7203558205a03937e8a927b5e9da1decd04a3f3e9b4f"
+    },
+    {
+      "path": "packages/mario-mix-terra/DEV.cmd",
+      "before": null,
+      "after": "781a5c88e5ca60f03994ec3b692573d22282cb61140ecd14db8bc5673856207d"
+    },
+    {
+      "path": "packages/mario-mix-terra/README.md",
+      "before": null,
+      "after": "2a6f137e267df97c3df5c35a9eb863270c4499e52002ff5b19642325fee5c35b"
+    },
+    {
+      "path": "packages/mario-mix-terra/START_HERE.md",
+      "before": null,
+      "after": "712844b84f83970acd6b8cb55e9a8bacfff51861dee385b6417df6fc59d12fcd"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/appear.mp3",
+      "before": null,
+      "after": "b8860e4c554bcf7a4bae46d9ea7fce25c141b7813b8541702ad68c05ca7d7874"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/bill_death.wav",
+      "before": null,
+      "after": "18b0d419552b9b1a8b6d41cf3c630eca3d29c3b04edfca305723ddd93a1c730c"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/bill_electric.wav",
+      "before": null,
+      "after": "8f7903ac4917a71df8f2d9cdb8f26993e3b7310b6ee27d302537df301688af28"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/bill_flare.wav",
+      "before": null,
+      "after": "d436b333267a593076978b2a2b20fe03c72d5160b5d09c4b31da077537831d19"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/bill_hit.wav",
+      "before": null,
+      "after": "1e752a3420cbef62893553775fd68fa5a7609da41189b10ee30c30f02200ae72"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/bill_laser.wav",
+      "before": null,
+      "after": "9f26578694b2f4134e61d1e5449daaf34ec194e5953ec83766332ff6b543d9c7"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/bill_machine.wav",
+      "before": null,
+      "after": "d8b387afad320d0afc2e64fc38d39a1ec5248e66bda818df70c604b5284124ee"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/bill_pickup.wav",
+      "before": null,
+      "after": "4f2328499c331c7587f7edd00d7042767da95ae509cfc1273125ef16b01e1151"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/bill_shot.wav",
+      "before": null,
+      "after": "d9711a95eeb0ecd8f61890c2e9b018f2ad3d5a7f7f8fa84fee7a56b5336db1c0"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/bill_spread.wav",
+      "before": null,
+      "after": "4784f07c1580f2deb060645a2ae356ae38728085b31349377398ed68d9a4ba6c"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/bill_theme.ogg",
+      "before": null,
+      "after": "f2fa0b528f59596a61671f42e9e97e16c8a0d0a9f46d2cfa71a60508de75a25b"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/break.mp3",
+      "before": null,
+      "after": "5607838c9af18013a0bea9a7f4a2c58fc7e3c18948d27113200384ed6ab1a24c"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/bump.mp3",
+      "before": null,
+      "after": "57cd2ce4aaaa0a6d38665eb6d78bb87387bfa684acc209ef4c5f7a2e2af8f715"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/clear.mp3",
+      "before": null,
+      "after": "7ebbc45d09fecebd807f0b2bafb3e0fa76f3261028403e160e104c1510bfdf19"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/coin.mp3",
+      "before": null,
+      "after": "4522fee812136b35ea873d7b66d66d6c47c9d18bd87dcdc97951654fdf77bc7b"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/death.mp3",
+      "before": null,
+      "after": "e48e6db031d908e9586ebbb2d4ef0b132d21a07002a484edb205e995906ccac1"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/fire.mp3",
+      "before": null,
+      "after": "753048ebd92a4a252c9e393058fe9c64d28e798432a6f0df11be1c840c245e6d"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/firework.mp3",
+      "before": null,
+      "after": "341f86e11bfbdfdcbbcdd6f2c5dcaced3a3b7a5441e0b3399fc33a29d30cb3aa"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/flag.mp3",
+      "before": null,
+      "after": "0f717058f1a1e20a7d56b41a962bb625cbc1237fcbfe861d3ea8ba150b720511"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/gameover.mp3",
+      "before": null,
+      "after": "027250a40e93070e3ee1f80f6627af85ec24fc3a121fe59070beb4ed614ab641"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/hurry.mp3",
+      "before": null,
+      "after": "94ea61da92bf194970984c01aae14bd116ce053652e20be0c7c49e452c27e7a5"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/hurry_overworld.mp3",
+      "before": null,
+      "after": "2e909eace49e463b9d042b71a290691ab52faf4bda84af8a7d15988342aef779"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/hurry_star.mp3",
+      "before": null,
+      "after": "cc548f16fb3b80bff6c30cb3ad330140e5ad82c5457c8fdca9cb1f0da66cdf24"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/hurry_underworld.mp3",
+      "before": null,
+      "after": "9cc7916c299731c1064f18d3452c50643d1c928279df5260f0a77f95682c5e76"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/hurt.mp3",
+      "before": null,
+      "after": "a78a86627d1210610caa23845e0d474444ecaa691b8f490cd6bea1b0d84fe37c"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/jump_small.mp3",
+      "before": null,
+      "after": "49943e7a05a947209f1a3291e4b5f8db692240a6b2efae26b659e3e7755b6d30"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/jump_super.mp3",
+      "before": null,
+      "after": "7d1aff3791a3d92e7494923701d77517c4f2dbc49d8cdf4d5546366f161d1a60"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/kick.mp3",
+      "before": null,
+      "after": "8207561a349f4ff2631e724c36086215417b5612825d893e1e535a79b476cd14"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/mega_charge.ogg",
+      "before": null,
+      "after": "d75064a95d62be59b139d56f6d6325fd7df8b3aa4a53f8e9ca2e0cf42c6fa889"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/mega_charge_nes.wav",
+      "before": null,
+      "after": "021e5ba4ff5a7a2cc14cac29a21ed56897ae3adc85a3db028e0e4db726c0a690"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/mega_charge_start.wav",
+      "before": null,
+      "after": "90ede448d9c44600be4ffff502ee5be922fe975ad13b33fec52d7b92d58c96bb"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/mega_charge_weak.wav",
+      "before": null,
+      "after": "2e2c785fd600f993d621a375a96f7a8e9bcaa9724e25441d9cb72ee0c9244479"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/mega_death.wav",
+      "before": null,
+      "after": "d2775185d2524426267ade202dc9036411771947b6c53c36389ee7ae6914dd71"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/mega_energy.ogg",
+      "before": null,
+      "after": "f7a264b40aea16ab8fabad7d35b2f10206322c68463dc9c8bd526c614b272653"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/mega_hurt.wav",
+      "before": null,
+      "after": "eaae2b9054a14f3def4d280a2e6bc2770c34a5ff981f88bb1388dd660915bf97"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/mega_shot.ogg",
+      "before": null,
+      "after": "dd3cb4175f3c7069e19057da9ce3d469ab7d7e4dda55309e0782000e6fa879a9"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/mega_shot_nes.wav",
+      "before": null,
+      "after": "a79fc2832f7ec14b435ffe2d6399a911c7169f1881ec5ea0028ac12ff7bd4c3c"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/mega_theme.ogg",
+      "before": null,
+      "after": "834a666cb16ec5c07fde9f9e87ded4b665b75cdafaa8ad7a877b158c46a181ff"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/oneup.mp3",
+      "before": null,
+      "after": "b9ce806badcf61583493fd242194d4ba7cbe5fc00edb8f88a82a4192ca15ddaf"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/overworld.mp3",
+      "before": null,
+      "after": "19c04e8fa6c81c8003477289e644218e4bde96caf927936ddc737126759947b3"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/pause.mp3",
+      "before": null,
+      "after": "c170e7b7448e02de6e89e7907753f55d600327ff5b59fbd28ce591cdcdd5539e"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/pipe.mp3",
+      "before": null,
+      "after": "94b2b2416ec2fb5b0c43c7e7cdf1fe1f46b0189d865116980062e770d4b5c476"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/powerup.mp3",
+      "before": null,
+      "after": "d244dc2839de3edba2227db50d55332fb3ab6a52ce83d70f0b9d096e9806c334"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/star.mp3",
+      "before": null,
+      "after": "a1dacc60fc0b0644f12def3a5f37fe0b4b15806ffb3aa1557023c9114bff4615"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/stomp.wav",
+      "before": null,
+      "after": "91e68666743fedfd4641fdba7251c008e66ff50ea496ebda951aead1cd7024fe"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/audio/underworld.mp3",
+      "before": null,
+      "after": "cda71935f018aa15dea42181f2ee9e963d0b108ef540f8a7b01b8e70f97c4377"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-001.png",
+      "before": null,
+      "after": "fbf9108b33d37e8824c0396aaff1fa9a15ab255f5e8a3bd6940d54ae6ffea110"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-002.png",
+      "before": null,
+      "after": "a9340a33f745fcf610e6b8851845b97638c6cab81b4f0d0c93d443fec02fa71e"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-003.png",
+      "before": null,
+      "after": "22b8730bf3fa7a51c4281e2452c766ea641d8ea72cae1fcf21c85f99d56fb8b9"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-004.png",
+      "before": null,
+      "after": "5c0c0644960ee6bbec1832f14860a894352bca2739928d25ed5e89e471d38745"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-005.png",
+      "before": null,
+      "after": "84e44eee527c85cc34d2495a74d19d33c538ff7d302a4053ec3b0569f7026511"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-006.png",
+      "before": null,
+      "after": "803f6ebc08551baa393e72b405d538e785b5fd97fee5ac5f0043f49ba26ca695"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-007.png",
+      "before": null,
+      "after": "5501ffc2fce29ec1d8ac8698b6ad4c17126351fdf2ef029c7e9ff87c05832287"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-008.png",
+      "before": null,
+      "after": "ca12031b9ea18964b7e66ca2841cb40292ba9d575e9171e20d81211c54a7b259"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-009.png",
+      "before": null,
+      "after": "e89bdd5dc109febcee53e32f33aa5424527b8e9594682007ddf57f47f9e15752"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-010.png",
+      "before": null,
+      "after": "713b66f0317d6aa3245485b84ef2564115da552636406c4d22a40f6825d4c36b"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-011.png",
+      "before": null,
+      "after": "75c6e57aacfb4654808eca4616f12526aae9bc262937d87adb3fcdf2245e8f6b"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-012.png",
+      "before": null,
+      "after": "0076a7b96e75db2a3b5b7cf255d0d0912c95931e3be625227d371e070aa1dba9"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-013.png",
+      "before": null,
+      "after": "fc0471e98502f91d9b58797243f4c9830ff9ecf08e8e793fd65aab4a8c0e4cb2"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-014.png",
+      "before": null,
+      "after": "ec9bf7178cbc30ad310c3407c24ccf1cb8122ec14c2effaad1eacb7f5cf168a0"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-015.png",
+      "before": null,
+      "after": "db4ecc7a405a79833c26474f69623cb763c5df9e00c03eba6d5ba5092ea25496"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-016.png",
+      "before": null,
+      "after": "30a1ed3135d6e1db53c6df6dd611720d314721c200a578c594d3beb0dc96facd"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-017.png",
+      "before": null,
+      "after": "9bc45c7e36476508025240935d6aa11081752933f7f28d7c0dc55973a24939d6"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-018.png",
+      "before": null,
+      "after": "304e104de4bb7dcdb6da673c77667b17ffb06e03b0b6e7063c5094fc06efbd26"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-019.png",
+      "before": null,
+      "after": "e5465f341d22191a4fdbf7a800869668804c591e0ec092af7c23ffb70c467dce"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-020.png",
+      "before": null,
+      "after": "f6a3fa4b92df651ebba856fcfecb80f4df171520e91e39a5d51fc9898b698815"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-021.png",
+      "before": null,
+      "after": "d1dcfe6515252557d82d0bc6e667f7ed1bd9aa88b2e3c52a977b705936c21389"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-022.png",
+      "before": null,
+      "after": "541df88176f38aba792d6cad68bdee2272c30157522be2d27f0203578fa431ba"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-023.png",
+      "before": null,
+      "after": "0afbe9831b47ec21b8bdacc3fd18458047660396f0fd136a89359e2e6e856075"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-024.png",
+      "before": null,
+      "after": "9f87c67ca002f945d5c0dd7e2a05dcc225911c2707d4ab68f0bd9dcb978359f1"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-025.png",
+      "before": null,
+      "after": "864dc12af5e50d22a2feb2b2436b5f3f004540101e90437d11d9ccd54749320a"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-026.png",
+      "before": null,
+      "after": "09910a4452ce6b6726a85738a586d617d2938edaed8787452c31a94a52fc29ab"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-027.png",
+      "before": null,
+      "after": "2c702160828ee90cd245c4528311c4565fce8871a44be2387e1eaf3535a48573"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-028.png",
+      "before": null,
+      "after": "67c0d9d084f919325dd77bc9fedc1f05686fd68a5c351d8b8f5fa551e9c16139"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-029.png",
+      "before": null,
+      "after": "79c9c225937588fdb424af77db0d7184e625186cdaf475ef298dfac1977e86a5"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-030.png",
+      "before": null,
+      "after": "47c88a8db8ef39542697925005df9b0b8291545b5ba6fed7f7953af387fff474"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-031.png",
+      "before": null,
+      "after": "9bf509950cc17cf8720539104600f90129146d68f675e01d1986020d93ba80ad"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-032.png",
+      "before": null,
+      "after": "179154897f254c1bb30fca1660d9a057897af0ae6fc50f16c13c1f69e3b3426c"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-033.png",
+      "before": null,
+      "after": "4e184bf8ac00e52ef68a17fc762ed0f4affadfba2671586761185af29fd24f5f"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-034.png",
+      "before": null,
+      "after": "7ae6dd97e7d740a696c0ddb3d7d00d641369e051d418609811558005ae0b5398"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-035.png",
+      "before": null,
+      "after": "d2d028a0c4190dcac499f114a0c6fcdfc4b5d54e4decf71ca77e4b538961ecf5"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-036.png",
+      "before": null,
+      "after": "f33f26cd9427bb306c676ba5b19ecd1129b3c86e908b319b2d3451fbf84cd248"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-037.png",
+      "before": null,
+      "after": "662cab241b1c3bed088d8c1a1b094952e7e2210d9bf5a5ac83fcb30415980fa2"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-038.png",
+      "before": null,
+      "after": "4c100d0ec7663f4995a9d232468bd16bc67bc68bf6eb24a874a175d0e0e6a5e1"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-039.png",
+      "before": null,
+      "after": "82ffa2f7bfebfc6d9330e7e8e49c38632f73b34b69c81ca6acee43e5914e0e15"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-040.png",
+      "before": null,
+      "after": "1dd8d15160b6fe9454054d12d2d9e855193ec383912f78a06b8435f569554d5d"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-041.png",
+      "before": null,
+      "after": "1f207ba11ae03ba1c0b58fbbf7ffc4b245fbf4309fe6c0e330e854f18b9c3a85"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-042.png",
+      "before": null,
+      "after": "691fa66be8cdc4eb8653d1a5c5f47491959f457f72aefe9e23fa46975fd2effc"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-043.png",
+      "before": null,
+      "after": "d521e23a04aad76d6f7b2bd40aac2e658df5e92edf1a9263533f27adb70110b5"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-044.png",
+      "before": null,
+      "after": "bff4ecd16cdbc02af487889c18059ea97e164cc4ae1fd107717b24927542f2fb"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-045.png",
+      "before": null,
+      "after": "dd00077f6c05b057ecc540f704c9e41bf724422a8b53dcefb9fbb252593dae87"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-046.png",
+      "before": null,
+      "after": "60a5844112cfa6b20ef6d60b943cb0d1b9ac3af580b5d30bddf75d2ccf579b15"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-047.png",
+      "before": null,
+      "after": "5c8c29ced5030d7df3cd705a7176783fd510f9f0bb1bd7ad1ca98267b5605b9d"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-048.png",
+      "before": null,
+      "after": "bc285c05116c03f3ff571025b682fdf2bbb41c48456f494a1bf06ad1ce149500"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-049.png",
+      "before": null,
+      "after": "ed6156f249a83e01dfec310b0395a17e40b52dc7c1b4b746093fcdd35e9ef8b5"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-050.png",
+      "before": null,
+      "after": "b2da1e61ed061306f643c6e282f79a6ca91befc4247b1686169c610b898feaf4"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-051.png",
+      "before": null,
+      "after": "c49268bf34b2543c120376619644e86818fc3b9fdbbad72d8aa8fc9670bdc428"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-052.png",
+      "before": null,
+      "after": "9437ebc38736a09e812d7bc39e558c044bea1ded4fa9aa1ef5251c2aef4287fb"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-053.png",
+      "before": null,
+      "after": "787e9a6b536e960197148760e246ec69f5545929b4e91addeb1765db78610e86"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-054.png",
+      "before": null,
+      "after": "8969f73ca116201b6cf9c74e58aa83ca3a4f769aaf3d88b309d6151e99c5f1f7"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-055.png",
+      "before": null,
+      "after": "e17a5d3603e7962b60fb71889eda0707e1960a574cf0a161dab0112f96eb2656"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-056.png",
+      "before": null,
+      "after": "8c058f4279e631651c9437eafa099456a31a34bf972b0add931717f9e412b4b3"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-057.png",
+      "before": null,
+      "after": "f0575aec40b0551cb983f2681d2f2f4745f6eb2843fc2caacba784e7b17b619e"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-058.png",
+      "before": null,
+      "after": "92bf07686af247c95cb2a3bee6f43d9f7d72ff08c33baaaaf169da8ee80a8edd"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-059.png",
+      "before": null,
+      "after": "15cdcd84c639b9959fc788aa722a50ef050b349e04fe170727d2efd86c71eee9"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-060.png",
+      "before": null,
+      "after": "ff443cc3e6d74269d2ab238ae60f505c14958417f745278ca52bc88796278de1"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-061.png",
+      "before": null,
+      "after": "5a0767c6f02f6da371f7e4e03d638b282a9373110f5b308ab7e527c11d42473d"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-062.png",
+      "before": null,
+      "after": "99f1f83ffd931c92573443eed8aa852a133f9fef4bbca50bbff44d57ef1b830e"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-063.png",
+      "before": null,
+      "after": "1bc0ca97c4b13fabf16cf00185d7ff8fdcea64774533ec81e4232e13092a2e49"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-064.png",
+      "before": null,
+      "after": "c85b57438b0a0e07e2c5bd550ee3423ad931014689e30a161da282f1e0863817"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-065.png",
+      "before": null,
+      "after": "9441deb31bc8290338f977cb9141d278e80a671b7f5552d01fdc62ccc1df3d9c"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-066.png",
+      "before": null,
+      "after": "967d6a19c38a54e04a333820dc77c484f135f9fbda1705cf8ee5742bc96bb658"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-067.png",
+      "before": null,
+      "after": "60ffbe557015074475e6910dd5316c668130c225519aa16d37654585d417e7de"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-068.png",
+      "before": null,
+      "after": "1493adbdc4baf1ebcafa23d2d8f2a5946b4a5e98423a0543fa78f9efeade96ab"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-069.png",
+      "before": null,
+      "after": "b35b2241cf71773e5226331a0ef334283c16a2cee30d876dcb213bdc06c88c61"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-070.png",
+      "before": null,
+      "after": "6cd236227ff812ac67871716cc9c9c9be17590102cc2b45c5f4870d7d5ce032a"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-071.png",
+      "before": null,
+      "after": "eda229515f992eba60fa1c69609079129fc4ffd6262eca425bb2ca606004b812"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-072.png",
+      "before": null,
+      "after": "5ce6a8cce2eeb4f4c62f94c939e23ebb91dd4f9c1b1afe07d196c5f6d71d86b5"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-073.png",
+      "before": null,
+      "after": "cb5d608ca5297c9b302347c5ca40a89daeaa1d53f058dc9287b7a694e0e31783"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-074.png",
+      "before": null,
+      "after": "cb203488bf0debe2956eeb8a388375b21256372599325c568dba898b79f88ef5"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-075.png",
+      "before": null,
+      "after": "9e4e2d679bfcc19398e7fe112ec495d2b48fb07ead38bac9d35c5d308a2f50fa"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-076.png",
+      "before": null,
+      "after": "c518a86973473ebebb46ea7cf76d1f313c378a35eb0b4360a308fbcda9d4e2e4"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-077.png",
+      "before": null,
+      "after": "ec43683691b74ed85dd862e1715aea56152e90a046d8b3b4eb9fdc552a869578"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-078.png",
+      "before": null,
+      "after": "f3c41b6d5c0c9740b789040ce8ee53ae49f5b25c6d1b382e74d22201d910caa6"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-079.png",
+      "before": null,
+      "after": "7f0ede084c4489be0be61e65eb0dc46119112e5ac765c74ba5bf7fc84c05771a"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-080.png",
+      "before": null,
+      "after": "6e48e4b3e0ae3f9f6d5a8c06058628094e870ccbdc7e30bbcda4b7994c2bcf77"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-081.png",
+      "before": null,
+      "after": "f02b211393a31f461e705303c4a2c6c6964f1c4ba0698626f5ba647ef11bc877"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-082.png",
+      "before": null,
+      "after": "9a45610b021034e7922b7ef91ae153bb4acb826e23e625230753d23b2661a08c"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-083.png",
+      "before": null,
+      "after": "4a82c362ce626e53a2dbca37d68ef9b1469e9a04dd3933320ef08f5dc55c41b1"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-084.png",
+      "before": null,
+      "after": "e312cbb565750aaeb0d2c2d4eadc255022a2e8624c6ce1e58e038c40cd383d84"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-085.png",
+      "before": null,
+      "after": "a0670db176ef3cbcc6a49ccc6326a99b58e237e99bc1d3b3dca65c5e66ff75c6"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-086.png",
+      "before": null,
+      "after": "c89ccb4807d44cba07d17a15ec12dfed73775f81f0231771ad3ba1cdfe95588f"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-087.png",
+      "before": null,
+      "after": "88a5060add161a96831222ab83f46e0268418188bbeb2ee78cfba679245189c3"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-088.png",
+      "before": null,
+      "after": "94ec878e551a4bf09b79fd93e31e97ab5119b0551019c3fa1b63d5200cf4f0d3"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-089.png",
+      "before": null,
+      "after": "503b02598c6e2573c76a606978b13c3e993991e205582ff79b43b3f2e8c63a87"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-090.png",
+      "before": null,
+      "after": "d970d9d5b8d3150351914b122bae6ddb372093c7b6f2a6640d7b6804ac1f98ce"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-091.png",
+      "before": null,
+      "after": "f58f1045e3fdd10ac71e132a83327e6e0b37058070b4cb94dae3624980ba7b9e"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-092.png",
+      "before": null,
+      "after": "41d09aca68715bc33285c6bbdc62415010a63fbc73af818966646ef6ac89686a"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-093.png",
+      "before": null,
+      "after": "f18e27d4c393f0df1f25f10785f6a7f55b69d23c0a74321d909c7b63b3e943b7"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-094.png",
+      "before": null,
+      "after": "f9ab929ade774818e522d0b7ace337732e5a24c205378e222304d70417d6a1ec"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-095.png",
+      "before": null,
+      "after": "63026e8f2d09b8a043f60131984a5e05c45a77d3c31fde9850fb0165a040518d"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-096.png",
+      "before": null,
+      "after": "5a6459aeb3d6466c4694ded81167672037e6e9a93b54394498e2bb24040265ed"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-097.png",
+      "before": null,
+      "after": "3ff02c462b79846f5e2733289df54d3103e09b2466a1960bfb952787a2019b9c"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-098.png",
+      "before": null,
+      "after": "cb25623e862282f16cd35631990706dc19033592fbf23ec3672b1371a5378855"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-099.png",
+      "before": null,
+      "after": "555d338977490ea7c67363645bd459d3710b3dd55783fc1a19252f011ebcb58a"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-100.png",
+      "before": null,
+      "after": "57f094bec9b91b331667951bad9013f7bc8527038850b15da2a2af7d823a97c7"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-101.png",
+      "before": null,
+      "after": "2710b1f5e13be0392d0b7de945fbc251cd1776789576ec302896b7b475f8e268"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-102.png",
+      "before": null,
+      "after": "384c58be27fdef7a00f5a7b58224d95ed892737a77a8a24754290c68ffc989c5"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-103.png",
+      "before": null,
+      "after": "eb7ae7ab17062634056422d0fa40feb86948b7d44c99c68b4842172055c97913"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-104.png",
+      "before": null,
+      "after": "973630f39ac1900961a34da498e655967b8acd6bd770ed65ebe2ab518773ed5e"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-105.png",
+      "before": null,
+      "after": "4e1474a546edfa4bd0c97a66c9627e1cbe2938cf50cb1e2bb552c7c6457ba6cf"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-106.png",
+      "before": null,
+      "after": "a89ea447f5a1e9fb048eb0d3d3b8d2931cda14a919ce14c139a27bdb8c1b65ed"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-107.png",
+      "before": null,
+      "after": "4df76b7da00d93d04df4b6902ee88396c7dc6a7a81ace4b8ca4032ab95cc6815"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-108.png",
+      "before": null,
+      "after": "9cbc96384149de53e7abd0c3b959ffccdf0552c2bcad83f07ff61608e88f0901"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-109.png",
+      "before": null,
+      "after": "c900d1fd503fe2a92ba90cf96a3cbcaf4e953d22edd0f2170cc12ddf3c978f04"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-110.png",
+      "before": null,
+      "after": "3b57064ad98b02f9ec62b806dd773f52ad540b5bd2a54f3d82448c9adb08a151"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-111.png",
+      "before": null,
+      "after": "6652fa3a1f4b3b7f930c097e77e5bbf4e4e7a396dee226d470bd3f987108d68a"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-112.png",
+      "before": null,
+      "after": "2d8b0107f218acd81b87a57c312573d4bfe594a4047d0bfa1aadd7a632de6673"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-113.png",
+      "before": null,
+      "after": "cf4b43e57a5317359a3091122e684b99849ed27832c4a016520f6a98292e18d9"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-114.png",
+      "before": null,
+      "after": "c7d64ce6f6e22bfa1ed22c31dbda7d8bc5895d372173229d14ebf354d39ffe26"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-115.png",
+      "before": null,
+      "after": "afff7ea3bf0f6bf4e7b6cf93ea86d889c76a94d02be27dc2a47da11d12a67113"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-116.png",
+      "before": null,
+      "after": "58ac001baa6754a58f47896423a133089e141dfc0b14c5a6f867d5a2df135bdf"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-117.png",
+      "before": null,
+      "after": "86d7720e3bdd298a32da04c283006dacbc4b43b4f7642873784024c4cd825fa9"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-118.png",
+      "before": null,
+      "after": "c50eab8d446a8d914ac38702956bdc5d0154b63da24b1071d6288cc12c8e3fdd"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-119.png",
+      "before": null,
+      "after": "9ffc1cc3d49f3d7ee036bfb22567ce543fe5fd01fbc6757d3fb3249cfece145d"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-120.png",
+      "before": null,
+      "after": "86312cb1215f9bf7a734e66791460581764ee12a6b790a5bd27da716d953bb40"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-121.png",
+      "before": null,
+      "after": "5993866da630d844bb064f8dbff6ada23e6c152adcc0588e4fa5b6fbd3c289d5"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-122.png",
+      "before": null,
+      "after": "fb095844c6c88c1f49bfde074b6e3f76d9fe6a528f4f002538d771b5722dcae5"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-123.png",
+      "before": null,
+      "after": "fe9e8a24201d06acd99de866f62b73ddb89f85f91750d486b665526539ecdf89"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-124.ogg",
+      "before": null,
+      "after": "de7d6a9e7f3f6f85ab1b3a608900a86dc43a9aa27ed1f885e3b22c29081563d6"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-125.wav",
+      "before": null,
+      "after": "1cd658ac0d8b882e6e35743171ce5f097fd25ee705c8cdd6c77b4af57d1f45f5"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-126.wav",
+      "before": null,
+      "after": "f2e48f8a0bd0615f0fb507fe0377a77fda471ff1300aecf0a375a78bedc8bd97"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-127.wav",
+      "before": null,
+      "after": "23cf8088c7768a80f82c8b401737c8a341d632c88e7efdaffce560fc5f9bdbc9"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-128.png",
+      "before": null,
+      "after": "25487f8866237889519c748abf23f3adf29c56dff3f9b6c5ca815814904a8171"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-129.png",
+      "before": null,
+      "after": "796ce94197b717d81bb695a5650aa0b53e65aefe3f156ebdb52aae89a078d6bc"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-130.png",
+      "before": null,
+      "after": "df4286d82acd0e89714c66d88b3e800e00a6f8a013796c9c5df7888e0bfaf8fa"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-131.png",
+      "before": null,
+      "after": "7a186c5828a5ea84167e528999dad49cf5cd6d159d9cd142f98ea41a7d94c08d"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-132.png",
+      "before": null,
+      "after": "8d36685afc2ffd8f3daa810288b046f8cd26c6b78d18e33a9fdd2d1c9392dec7"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-133.png",
+      "before": null,
+      "after": "c03ef02fc372f66044d9bb2ea4c5b9b5d03b32be513aceddb31fa7848c536c04"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-134.png",
+      "before": null,
+      "after": "dc90be8d2b4ab50cb1645a0743eddbe6b6523ef72178ec5075e78f52e5158549"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-135.png",
+      "before": null,
+      "after": "7dc94a165ef0a60aae388c31172527180a6b3fd23ffcff7cfd94745650245deb"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-136.png",
+      "before": null,
+      "after": "17f1a824c39023ac015cd87c7aa0cd3fbd4043aba339bcf8197be82cc7a64820"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-137.png",
+      "before": null,
+      "after": "6168e20b22f48d500178c26a52e913fbe7992dd00a34f5115bb4967cfacbe7af"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-138.png",
+      "before": null,
+      "after": "f823c440b2858e44c44451130749b56ca06d013c9ec39c3fb9d0cb4bf1b985ce"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-139.png",
+      "before": null,
+      "after": "48f42f6638607e957a65ef4513f43d49451066e54032302e094c869243376e98"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-140.png",
+      "before": null,
+      "after": "06f393f91c5f86555a152a702f3ec24a42d1cffca9696505e53ea3584d99dfd6"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-141.png",
+      "before": null,
+      "after": "64a9eeb237d0f0760c12f55ab349ec72c77c709b809e62979bc8dc2a068ca61d"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-142.png",
+      "before": null,
+      "after": "592dd44ea7545544f77c20560430031c7f12457d0a162263a777a6f2c6bae2d9"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-143.png",
+      "before": null,
+      "after": "bad589a39f9a657955df22aef57a9710ded1b143e5460df2a63b8755419ec078"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-144.png",
+      "before": null,
+      "after": "ba30420fcb819f6090a60e7ae41b0c2a48f033640113b6103f5060ab7ee92123"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-145.png",
+      "before": null,
+      "after": "95e272aefac3ab5eda8f2bad352f404442820b952872365d444d8c2973c8a5df"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-146.png",
+      "before": null,
+      "after": "ac7f437365b5fdd5bc3025cda82904364ebe68f8d766baba95e12bc5e8999a84"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-147.png",
+      "before": null,
+      "after": "55510e5cfe95d7e9a0a8fbd6461766e25d56059155d257638853c95090886001"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-148.png",
+      "before": null,
+      "after": "57f315d461ced44ceb84932a83cafbb5e1ceeaa0145bdab6dbdb1f7d2a59210b"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-149.png",
+      "before": null,
+      "after": "4752a5b8f615d71531df6edf9c8d6938e46f645f1042f2911fc171c77723883f"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-150.png",
+      "before": null,
+      "after": "7fc248f3b3a3c4ea8ea0acd056b5794646f4117dd11e005a3bc132ff3d19b482"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-151.png",
+      "before": null,
+      "after": "4ddedcde32cfa03752d366a1bde7ba16f5bd23129a01ece2eeae6a83f6cdda5f"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-152.png",
+      "before": null,
+      "after": "f5f96cd68f848225fc0b782d8af86771cab44fbdf0024b3d19ffb44c776a4c39"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-153.png",
+      "before": null,
+      "after": "fb597b26dd4f1fe446a59065a9b05db97cc3c1189ad148cff9b1897144f13ffe"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-154.png",
+      "before": null,
+      "after": "9ab529483c611c2adf867b4d1f8c7105c2d0f93df061780ddca52beb5792a589"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-155.png",
+      "before": null,
+      "after": "a9a5c38730be09bd112a63e7818d55b4da991897312fd5372d93f32285d23f11"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-156.png",
+      "before": null,
+      "after": "d374cc66c0dd236201560f25805002c7f2fe71cb172a985c6004edc7fdab9734"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-157.png",
+      "before": null,
+      "after": "27585fb9faeb7e51ec9552899178f4e7d0baf9f14a71e5740af0d2b736c6acc9"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-158.png",
+      "before": null,
+      "after": "2fa865b88451bb9882774441de18f75e66ca6c72099ac49f80bf7aa7d84ff3d7"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-159.png",
+      "before": null,
+      "after": "2bc5e744797063456c16dc31ed56f12eadae5bba6ded31f938c0d07b8710b361"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-160.png",
+      "before": null,
+      "after": "6a3c9bac7828dc963e51e9b5ebf85559e99f162494213a8a3da4913b0259d17e"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-161.png",
+      "before": null,
+      "after": "4e5eb97314ee6d2b5c8ed72ec87d0dfc7e0f8cb1d17ed7021378da4d94605762"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-162.png",
+      "before": null,
+      "after": "ac935888f9f020e4c16d66324e09533ed4097466e4473ffd87c0f44bd3f274ac"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-163.png",
+      "before": null,
+      "after": "0d52b692b0d343cde498d45c93893846ddaa8e04cf188efa6a9f140000367ca2"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-164.png",
+      "before": null,
+      "after": "b8ac2e81896715337f49e2b92163a2d06d2005d469ae18b8d246f9e04813e1b2"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-165.png",
+      "before": null,
+      "after": "dedf25a6bbba0e0042e4471fbe2c3b47c7cf73efaf5e520ce6251655d2837e1b"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-166.png",
+      "before": null,
+      "after": "57259a3fcfe43575ddb228700c0fff868081519b486e0e8ec6b0809ff9a1b766"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-167.png",
+      "before": null,
+      "after": "23a6d5e6c66d1b58fc1b064e3ace3fcd44a1c05b4498b10fd1671a0b3de1333d"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-168.png",
+      "before": null,
+      "after": "92a9ce9d7b0ab0586c31948e7f91b93a31a8662cf31cc63c41a2fa20ddc49faf"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-169.png",
+      "before": null,
+      "after": "1a9d8cb5d96d6f936c3792444e52bcb999b736ff8f89940ada23f6384b15dfda"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-170.png",
+      "before": null,
+      "after": "87196d520bbd02cc6a03ce859f8f76d7a24e79f47fbf44079146785f73b13444"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-171.png",
+      "before": null,
+      "after": "dee434ceefe9095959ebac3a9f5e89f0f2cb999cb41a9c81f777a5153a0b1c0f"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-172.png",
+      "before": null,
+      "after": "3268c5ca855e929fc890539f63269accc03f45db94f697266744d35e02e980ce"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-173.png",
+      "before": null,
+      "after": "2b089c6662b6a552398fca102e07beb9eb85c8a8518ce2156eb4ed62bf8c0914"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-174.png",
+      "before": null,
+      "after": "211b1d8c2e270703588621dbec66beb9a3a0e4919b269d0335da84f8de7ca737"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-175.png",
+      "before": null,
+      "after": "229e9f02699608e9d463a84b194f81288c17914170a56988eb0422ad7188a0d1"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-176.png",
+      "before": null,
+      "after": "c055bed35eef02b2aafbc5f582f3c1bb1c505037f4033ee45dcfe62aef65781e"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-177.png",
+      "before": null,
+      "after": "0702209e66a4bd1aaf9e40fcb15a13186ad10a6fdf731ae3393041024b9f5260"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-178.png",
+      "before": null,
+      "after": "2956d46b5fadc5f884355a4e08646fdb2dc5a8efaf5f1f4c80d0405e3fd63171"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-179.png",
+      "before": null,
+      "after": "6765d095ac894143a0fe9abc9b60b44817d4aa551529d2029778788479584898"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-180.png",
+      "before": null,
+      "after": "f01ff88a7901f6ba734c71b6aee0663ad9f1fa19fea1769a349e2933496931c4"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-181.png",
+      "before": null,
+      "after": "cf4a7c175939aa78f5ef9e486c6bc03babe8ae9b1aa8b7fd3dc9a0a640192d3e"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-182.png",
+      "before": null,
+      "after": "8403b594fcf6f466673cd4e8e4de440c0cf50647be047d32e5946bed7cfac002"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-183.png",
+      "before": null,
+      "after": "b77e7984af775c304ead63aeb82087b27d55ac8087c0446ff3247afd90867a53"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-184.png",
+      "before": null,
+      "after": "44f42c76895ca8050f8dfab54e80f4c4716e84ab565c43bcebb22a4bd2d57dee"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-185.png",
+      "before": null,
+      "after": "c7f9ae1a64a106f2be551a39e2c65ac0a82017bbd91b1c5a3beb9e07349cfc53"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-186.png",
+      "before": null,
+      "after": "3527ebafa96d6aae644923e8da4983e590e3240309a788697bcd3394e568e28d"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-187.png",
+      "before": null,
+      "after": "89f6a1a4c6bfcef97c112cf10a491654b6b3e5e8bc168caec6d4e618a508a18c"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-188.png",
+      "before": null,
+      "after": "eb1e5aed05c0d6153d42a376f9e3d9e71942c224a2dd1f9f5b45efcead0804da"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-189.png",
+      "before": null,
+      "after": "a6bc107c43963492c664afa3a671761e89e5b1f4744475821e51f6694061df5b"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-190.png",
+      "before": null,
+      "after": "b69a22c34e5886bfea5247653bdf8ebb54e8e0b6e92bfa848e6873065cd82897"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-191.png",
+      "before": null,
+      "after": "9d7fe6a19310622f499fe764b6dc7b05a2aeec1a88a92f49f764485b5a505bd1"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-192.png",
+      "before": null,
+      "after": "9bffbf9f5bcc15aae25bf76ec6441a65a3f215aa18c100edc80d49b0136407d5"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-193.png",
+      "before": null,
+      "after": "4a0ab79cafbbe04059a5dd7167854e3d0ce59b316a8a49308311b3567b8b6581"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-194.png",
+      "before": null,
+      "after": "b0b52c4df99666d42db056f75db0f85ef5e6f7ed0ef77db6ce5388735e41306a"
+    },
+    {
+      "path": "packages/mario-mix-terra/assets/embedded/media-195.png",
+      "before": null,
+      "after": "db140018c9ea3b497e03ddead97a4d6c0a226482048d0e5b8f2c39dea7877766"
+    },
+    {
+      "path": "packages/mario-mix-terra/baseline.json",
+      "before": null,
+      "after": "ecab6caa090e493eeb9c1ba77a22d903f7bfad47d58af079b81ddbeafa8391a1"
+    },
+    {
+      "path": "packages/mario-mix-terra/build.config.json",
+      "before": null,
+      "after": "6786f3640e177033be5e0a55a200f71392893b1e4446c1edf60bfc540782c434"
+    },
+    {
+      "path": "packages/mario-mix-terra/content/audio-manifest.json",
+      "before": null,
+      "after": "9f4a07801724ad01a9d80f1a27394d193e6fa373c0e9b6ec2856ab41a32eada2"
+    },
+    {
+      "path": "packages/mario-mix-terra/content/resources.json",
+      "before": null,
+      "after": "ebcc1f000690c0674280659e956ae0667897f4c25fc207ec682c011985a399c9"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/ACCEPTANCE.md",
+      "before": null,
+      "after": "88fc832d851db6b580fbe517ee59618d4756bfcdb753e180684ca70fc1f2410e"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/ADR-001-engine-strategy.md",
+      "before": null,
+      "after": "07dac67f168934d7a1f5b28d568cbafde3bf1f96de53b1a1a9241f26e3866faa"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/ARCHITECTURE.md",
+      "before": null,
+      "after": "17a971e3b3d1a7b905982599e6a19bf68c5f537db35cfb5d3d2060ef0ea4acac"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/CHANGELOG_M01.md",
+      "before": null,
+      "after": "3f4d955e4e0d9bf6f9cf0b8a4ed14bd3ee3637f401727c996ef657607e80b62e"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/HANDOFF_M01.md",
+      "before": null,
+      "after": "63f0714a816a61dba99cdc1ee90780d225105270b57eb4525c8dd85f8214a7c6"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/MODULE_MAP.md",
+      "before": null,
+      "after": "6a9d5172019b171d1cf4574735ca78e4b13f08f682965d56f66aa02a128eb7dc"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/REFERENCES.md",
+      "before": null,
+      "after": "565b8d79c4fea0ce90cebc923201be5c3d75295192662954bdb5810a184db768"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/REMOTE_SOURCES.json",
+      "before": null,
+      "after": "7ba681271b2e419f4621caf06723fd68886263583329aae992525d6bedf0eb7c"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/RESOURCES.md",
+      "before": null,
+      "after": "5e749a0736beecd9750a1a58095c773d9be36c91059ff0d01433719a147e9715"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/SECURITY.md",
+      "before": null,
+      "after": "2dcb028a8034af56e67389cdb08db25ea8d5b7cf97b63a2fc5ae4a14c272a678"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/TASKS.json",
+      "before": null,
+      "after": "5c16e2ad8685dd2da8585f5593b965cd8c6b13339f5bff4ba2b0e06b8972b349"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/TEST_REPORT.md",
+      "before": null,
+      "after": "2fa7246fe6b3873fd0bf1bde1c287836534a48ab69ec5f0f9186ca5ecda65bdd"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/UI_CONTRACT.md",
+      "before": null,
+      "after": "024db0574ebfe3141c4ba1dcf4ecb1aa674108b5a72d08d7eb81c7662084bf22"
+    },
+    {
+      "path": "packages/mario-mix-terra/package.json",
+      "before": null,
+      "after": "290382b4241bac2b25c18309183b9f74fc71d07fd8d69c58868598d7505465eb"
+    },
+    {
+      "path": "packages/mario-mix-terra/scripts/browser-compare.py",
+      "before": null,
+      "after": "4228fcd40e51301a1ba8e2b61303c0f1a51977cdf1a5ecede3f56e26c6128cb2"
+    },
+    {
+      "path": "packages/mario-mix-terra/scripts/build.mjs",
+      "before": null,
+      "after": "0fefefb638d4c4cec9743129743ada76cbe06b41e24eafe5f2b8b785227641eb"
+    },
+    {
+      "path": "packages/mario-mix-terra/scripts/check.mjs",
+      "before": null,
+      "after": "c06110729bd22899642c0836e65f31947c42524af936699aa515eca18b4e4cbd"
+    },
+    {
+      "path": "packages/mario-mix-terra/scripts/lib/safe-path.mjs",
+      "before": null,
+      "after": "3ef1c9c6e1d985b0571906eccaac91c2cd9ea161ab5d56b284b3a12d9de8126c"
+    },
+    {
+      "path": "packages/mario-mix-terra/scripts/pack.mjs",
+      "before": null,
+      "after": "db092de11191da250256c532f00c14ca65393534dc44c4225c88fe11f027d224"
+    },
+    {
+      "path": "packages/mario-mix-terra/scripts/serve.mjs",
+      "before": null,
+      "after": "f98b64007eef38a33edfe3535e58cfec74648eb4aa5d0cc8f2855aab8cb6f83a"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/app/index.template.html",
+      "before": null,
+      "after": "6ebf77980666b0d8a07a7639a26c46abaaa1124adfee723ee53683bb82fafc1f"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/compat/00-bootstrap.js.part",
+      "before": null,
+      "after": "cdf67ca1b1c98fc77820232dbc59cf9d17bcd0356df4978c882b1f51e525f893"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/compat/10-ninja.js.part",
+      "before": null,
+      "after": "a330b82a6a3d976c5c8836836c3a9fa1e70904e7890d64397b6d6fc745816509"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/compat/11-level12.js.part",
+      "before": null,
+      "after": "4e843d5e90a1da29f87083b535453bb4a271b0abb875099ebdd65508b5e82c91"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/compat/12-relay.js.part",
+      "before": null,
+      "after": "a3bcced15f7639463ae9d8a8d79bc379a1f4aae490a824b9abc945ae3d1a305d"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/compat/13-relay-terrain.js.part",
+      "before": null,
+      "after": "3e68f3fbe4730e651cebed5a69f05b82a7e73d2b73e78346c5e4d6b1c6afc6b8"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/compat/14-relay-input.js.part",
+      "before": null,
+      "after": "59297b59793f707c3596238002d548059b3118c489136c38cfa914850b0c037b"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/compat/15-relay-foundation.js.part",
+      "before": null,
+      "after": "a1d5d1cd1f53c1e744f0d73c30820c7d9998804a7dd50be1d305d8b75d5420aa"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/compat/16-relay-presentation.js.part",
+      "before": null,
+      "after": "27d71b28c94bc75aab2ce74a049b013ee2e6d376acfe4659999751202c531fc0"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/compat/17-relay-integration.js.part",
+      "before": null,
+      "after": "e72f500cc2cd877e80b3fb715800e918f24e1b72cfce38fb60f54d6b40d30980"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/compat/18-relay-collision.js.part",
+      "before": null,
+      "after": "b3938e0fdf59e08937e367cd429d4452a2f850a5bd5328b0d683126eda6e05f3"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/compat/19-relay-ending.js.part",
+      "before": null,
+      "after": "54c9e0b4cf0a61ebf022fff57a66e1d766ed07c5d0652e794f3e169a156823a3"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/compat/20-relay-repair.js.part",
+      "before": null,
+      "after": "d0747df625bc172a38fe93b09e514b06f4cffe0d936d0ab628520ac8b72a85bd"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/compat/21-inherited-renderer.js.part",
+      "before": null,
+      "after": "18ef59fd5f503b9123da281b183fc2bd8a59447523660c3cc6dc29fbaede090b"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/compat/30-terra-foundation.js.part",
+      "before": null,
+      "after": "2837c6c720e0250c76db8b9a1beac7656ab90a741eb7f96cb1c753ff755df29a"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/compat/31-terra-arena.js.part",
+      "before": null,
+      "after": "56cefad34218b5b2db8df802a9eaaad7c9c268ff1eb79b73eeb364ca64b5f6b5"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/compat/32-terra-combat.js.part",
+      "before": null,
+      "after": "4d9a31e0b00b043c5afdac167bf192083cb381c8adfac615472870a58268ef54"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/compat/33-terra-loot-mount.js.part",
+      "before": null,
+      "after": "705ddf8ca4b8b1f28846c416ff9a00a497e92a9cdd4c03eb16431497b1a2ee76"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/compat/34-terra-cache.js.part",
+      "before": null,
+      "after": "a4296c42706ff51601211b9a2d34ed5bb9a7aa94c34e2d3fe1637dcbfe3003ec"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/compat/35-terra-world-combat.js.part",
+      "before": null,
+      "after": "11c3323f2b8e05210a5400d36ab4cb604db014c89f0dfb7f300d3cfffedf6f25"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/compat/36-terra-actor-ui.js.part",
+      "before": null,
+      "after": "c5afb7867a7e37e1312ea3301af8e5b716b0c3e1e5386640b90f9a91e321aecb"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/compat/37-terra-supplies.js.part",
+      "before": null,
+      "after": "6741d24b68bacb806facff4cd2d17d287f5420d84a10293987a65b20b7281258"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/compat/38-terra-underground.js.part",
+      "before": null,
+      "after": "be927ca611616e3faaa579ce9d62888602211c1b6940f0b5992c3faef039232d"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/compat/39-terra-mining.js.part",
+      "before": null,
+      "after": "0c09f16c5171bab6c5a6ac3e3dc7afa99bea79595cc0b15e82899e50d1e3b747"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/compat/40-terra-hud.js.part",
+      "before": null,
+      "after": "90e1689ffa4ce83d93f33a484d661c5d955d50e5f83ac11485c0f74982e7b24e"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/compat/41-terra-ecology.js.part",
+      "before": null,
+      "after": "200e3f97d2f21e29d36c7fb8a93498f68b17baf1ad29208a80352fa83e06b8b5"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/compat/42-terra-input-owner.js.part",
+      "before": null,
+      "after": "56503f1d71d327627065fce0856f09dd71bff5816adbdfcb0908ad472f006946"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/compat/43-terra-ecology-physics.js.part",
+      "before": null,
+      "after": "4776a8ee60fbc61de9ccd55bcf28fa2aabf9d9984904fe4d86294a6c9491c982"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/compat/44-terra-device-adaptation.js.part",
+      "before": null,
+      "after": "291f7842938763723a2b759c485b3ef373935f93553fa98dd37a338e4b5ff832"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/compat/45-terra-inventory.js.part",
+      "before": null,
+      "after": "61170b7b7baf3c7a6e9f4d48adb297621973c82a7bfef866fd8074b161119aae"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/compat/46-terra-bindings.js.part",
+      "before": null,
+      "after": "a5599fc32e4f65c9b475c8a3047b8821c7c7aaf0db5a7e91353d4a0f4b8501e4"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/compat/47-terra-native-media.js.part",
+      "before": null,
+      "after": "7cc701d71a171316fc97674c2e33bc4ebe3fa2a3a424896f7727ec151c7cc305"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/compat/48-terra-rematch.js.part",
+      "before": null,
+      "after": "c477256dab7a41a1ac9f7666c0dd972628f303575003b76797d2c52a5b5c5e2c"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/compat/90-loop-and-test.js.part",
+      "before": null,
+      "after": "56c6cf0ac56fdd9235e1e65d8e124e474161826f2cf05bbf31c242c653706ed8"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/content/actions.mjs",
+      "before": null,
+      "after": "3b334c7e821aef2ac77d0eefec56553855783edeef1a2eb79f17c7fd1e8a825f"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/content/level-13.mjs",
+      "before": null,
+      "after": "3d29c7ffde6bef83da4fafbf2fdc046e3c5aaa496b547ae58ce80df6cc1cab98"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/input/logical-input.mjs",
+      "before": null,
+      "after": "70c91e9496265a2150d037f5df61b55c1f103597816e53b4a15f069847688969"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/input/stick.mjs",
+      "before": null,
+      "after": "56e547f25b3ddd476e9f55f69dc6b5ad4594b6d800236af315c273a5e00b4249"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/resources/audio-inline.template.json",
+      "before": null,
+      "after": "83f568c720e320159210d7474264d7599628858ead1646564b11435c107b21aa"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/resources/pickups.js",
+      "before": null,
+      "after": "311c34b7ab8f603bbce276258bcf243499477d5a2e7930c579f5ca53656dfade"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/runtime/fixed-step.mjs",
+      "before": null,
+      "after": "f2e27e3a5f54a10f00ce0b4b439f5ec91cee9e81e0df67a38dcb8a7334b3fd9a"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/simulation/eye-boss.mjs",
+      "before": null,
+      "after": "7c8517e61f6d2599ce27e4bb7a25661f7ee15feef334482e94e69fb8383ae4c0"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/simulation/platform-builder.mjs",
+      "before": null,
+      "after": "532cfef8752e47c9d4084fd5b79df8e77319c0a2e081cfe2cdfa015b523ed050"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/ui/console.css",
+      "before": null,
+      "after": "98abce0dd28e23aed4ff9838b1cbbc81dfd4c8a2c8b9eabfe7c8198757ef5225"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/ui/key-label.mjs",
+      "before": null,
+      "after": "6b1dee5eb498693f841038a1dfb5c22422fbd1b636150731f1a61c61ba6f76e9"
+    },
+    {
+      "path": "packages/mario-mix-terra/tests/build.test.mjs",
+      "before": null,
+      "after": "e53557127e03e97f1dc4e8ffeeaf2c651c051ff05d306999305129048791bf9f"
+    },
+    {
+      "path": "packages/mario-mix-terra/tests/golden/action-definitions.txt",
+      "before": null,
+      "after": "e5c1eae7fb99ce554593af0898d19f8bf846abdb0a47769ecbe8f53881cc6e0d"
+    },
+    {
+      "path": "packages/mario-mix-terra/tests/golden/clock.txt",
+      "before": null,
+      "after": "949c11079dd73d1e5b6503bf4c22b02d4140da829fb3c9601dbe60e46c1fb089"
+    },
+    {
+      "path": "packages/mario-mix-terra/tests/golden/eye-boss.txt",
+      "before": null,
+      "after": "2284d453f958b004e0b5ee1c9beadf6a41a9cc9da93fe06c9f6ee12bc88837aa"
+    },
+    {
+      "path": "packages/mario-mix-terra/tests/golden/key-label.txt",
+      "before": null,
+      "after": "6a6ad5ccaa247e5879562931d0b8ceee75e72a5e121bb0898dbac570e148695d"
+    },
+    {
+      "path": "packages/mario-mix-terra/tests/golden/level-13.txt",
+      "before": null,
+      "after": "fc188de71b4e24edc69e7ea9d629d4a73a748562a7971978e11b7885bdd68067"
+    },
+    {
+      "path": "packages/mario-mix-terra/tests/golden/logical-input.txt",
+      "before": null,
+      "after": "523d8e1897b80290811b1e9893fdd8f35e063ad1610d9ff204a9aba23a04fea6"
+    },
+    {
+      "path": "packages/mario-mix-terra/tests/golden/platform-builder.txt",
+      "before": null,
+      "after": "1c13c504299c08018137315b46c103029c0f9abe6079a9575db8ca10333c8fc3"
+    },
+    {
+      "path": "packages/mario-mix-terra/tests/golden/stick.txt",
+      "before": null,
+      "after": "449744d71c7c354a23d1be75ae099882faf06e9c5be11acca83cb579580ddcc0"
+    },
+    {
+      "path": "packages/mario-mix-terra/tests/modules.test.mjs",
+      "before": null,
+      "after": "5009437719d2543d33eafacef6d98c820a93bd9197cdb962eaf0e97c01bb272c"
+    },
+    {
+      "path": "packages/mario-mix-terra/tests/pack.test.mjs",
+      "before": null,
+      "after": "1506c7074a9cd512c33baef701e1ef3b4c4d7fda0feeb22fa0f14f06ee06ada9"
+    },
+    {
+      "path": "packages/mario-mix-terra/upstream/NOTICE.txt",
+      "before": null,
+      "after": "be448dd0c572f1dbee9052c75e0ddbc099924f9821d0b9cc0703664b2c0a4c80"
+    },
+    {
+      "path": "packages/mario-mix-terra/upstream/README.txt",
+      "before": null,
+      "after": "8a1c40a2e5c7ed3127bcb6bb3462cf1352b1e541beeb3e1e96d7bd8e2e8f45df"
+    },
+    {
+      "path": "content/development/projects/mario-mix.json",
+      "before": "aa4bb4b3d18867a1e0e7bd8ee3017e62fe0aef932131424727531609452ac41f",
+      "after": "d2544607b2b327c8b8afcacac7d71a5b9a57d53970b6b2678596672f9701b4af"
+    },
+    {
+      "path": "notes/index.html",
+      "before": "9647a7bc9aba8a37e553db059b27c3a748012aad930d36e31df12f6aa141a719",
+      "after": "f169ec30438a6c8eac2e3226dd314b5a370bb507ffc0071ee7f7e5921c649aa3"
+    },
+    {
+      "path": "notes/updates/index.html",
+      "before": "5bb1875828f49923da7c51990ff6423a91ca7a714d8051b5fd184b1b8c5f1ca8",
+      "after": "2037f45d0166dc786c691829ba0f812a3c31ab13654cb78e91f27210c67bdc40"
+    },
+    {
+      "path": "notes/mario-mix/index.html",
+      "before": "f139825f6fa744f537e0f5183443e7dba9a16cd9159e8e8f0b92ddd842d2e33a",
+      "after": "33f7f29b51a613780dbeed4bd1aaa17c35488325abd258966eb230e4d7b48e8a"
+    },
+    {
+      "path": "notes/mario-mix/docs/index.html",
+      "before": "67ddf16d9b4fca7e235e95b597c880498bfea98e520f15c895c6280e0ebd7619",
+      "after": "7754889fa942af217b9b46067a76c5dea28737de1c93135f95a9738ea4fde3ca"
+    },
+    {
+      "path": "notes/mario-mix/updates/index.html",
+      "before": "ef59fd7c2cb9d4ff7be6c6bf71e92fd677d2b374bb27c379da8c08f245e0baac",
+      "after": "03c453aaa4824d8bfae7263a1d3441ebc1da4137e6de96212c969d6b8c3a69a4"
+    },
+    {
+      "path": "notes/mario-mix/docs/terra-source/index.html",
+      "before": null,
+      "after": "b2e49fd4acc916539cd904c8cba1d6209c921e84f49b5a2b13b665cbbc13fbaf"
+    },
+    {
+      "path": "docs/development/generated-pages.json",
+      "before": "ba3e1f4ab732286689fc18f8319e4f567adfaabfa36090c919941858ecb8cf55",
+      "after": "ce6ecab5f60649e9ff9b54d9d6e530b1795bba3e8f0e851aed958781353d67f5"
+    },
+    {
+      "path": "package.json",
+      "before": "15b4336e1dad71b4838748968055b36ae7dfc620a5414da4ac32d9b9f6b4db98",
+      "after": "40dcc018713f8c443880d09dc4ff4535abf6e506c7aef9e606e14e16c20754de"
+    },
+    {
+      "path": "README.md",
+      "before": "09f962a03934d117c3ae0d7e82cdb84abe82e1acb43b20cd6ad7e7ac81137163",
+      "after": "2fd5f3f71a89b7a45ace7b483399e42f43b37b9d872d07080f70e15fbd7905e8"
+    },
+    {
+      "path": "AGENTS.md",
+      "before": "88e04c48d75ee9fafa574e0126aab64e503b076552a15c8e82c58c5b429e49b9",
+      "after": "747f0f1891ed689dc58beb638d83c15a4dc79cddab0f18f62dbaa463cdcae71b"
+    },
+    {
+      "path": ".gitignore",
+      "before": "dee91195e430406ba0863d34bd464c0de81113267925eb279ae116e693fbd56d",
+      "after": "22f333be66b2533037f56b8d515f7e27188548d22c2f656ebbaed9f5f3b2c9f6"
+    }
+  ]
+}

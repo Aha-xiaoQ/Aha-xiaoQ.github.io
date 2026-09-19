@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "terra-m07",
+  "version": "0.4.3",
+  "edition": "M07",
+  "channel": "release-candidate",
+  "date": "2026-09-19",
+  "sourceArchive": "MarioMix_Terraria_M07_Source.zip",
+  "baselineSha256": "e134fdee21a6dce43585cda93c582ca2c0bf45f325f14cde81e33b80b758f19c",
+  "publicName": "第三期开发版 0.4.3",
+  "scope": "玩家界面整理：高清HUD、角色与关卡文案、按需帮助、操作确认与提示回看。关卡扩展仍为实验。",
+  "stable": [
+    "third-episode-candidate",
+    "independent-module-contributions",
+    "deterministic-source-package"
+  ],
+  "experimental": [
+    "platform-v1",
+    "data-driven-stage-lab"
+  ],
+  "excluded": [
+    "unfinished-castle-branch",
+    "replacement-of-online-play",
+    "automatic-deployment"
+  ]
+}

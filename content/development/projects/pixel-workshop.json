@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "id": "pixel-workshop",
+  "title": "作品网站",
+  "category": "web",
+  "visibility": "public",
+  "stage": "体验优化 · 待验收",
+  "updatedAt": "2026-09-15",
+  "summary": "把游戏、工具和制作过程放在一起。持续改善阅读、导航与协作，让新作品也能自然加入。",
+  "intro": "这里收录小Q的游戏、工具和制作记录。可以直接体验作品，也可以查看源码、了解进展或反馈问题。",
+  "highlights": [
+    "游戏与工具可直接体验，源码与指南各有入口。",
+    "项目分别记录任务、资料与更新，支持继续添加新作品。",
+    "欢迎反馈阅读、导航或移动端体验中的问题。"
+  ],
+  "links": [
+    {
+      "label": "浏览网站",
+      "href": "/"
+    },
+    {
+      "label": "查看项目",
+      "href": "/projects/"
+    },
+    {
+      "label": "源代码仓库",
+      "href": "https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io"
+    }
+  ],
+  "participation": {
+    "mode": "open",
+    "summary": "可以从阅读体验、移动端检查、链接修复或文档完善开始。界面修改先对照主站规范，涉及结构时先说明理由。",
+    "issueUrl": "https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/issues/new",
+    "repository": "https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io"
+  },
+  "state": {
+    "adapter": "project-v1",
+    "path": "content/development/states/pixel-workshop.json"
+  },
+  "updates": [
+    {
+      "id": "r04-multi-project",
+      "date": "2026-09-15",
+      "title": "开发日志支持多个项目",
+      "status": "local-review",
+      "summary": "栏目首页改为项目与日志入口；各项目拥有概览、任务、资料与更新页。保留旧记录，新增登记与校验工具；等待完整仓库与线上验收。"
+    }
+  ],
+  "docs": [
+    {
+      "id": "start",
+      "title": "本地预览与验收",
+      "summary": "继续使用原启动方式，新增栏目检查命令。",
+      "sections": [
+        {
+          "title": "运行",
+          "paragraphs": [
+            "在网站源码根目录运行检查，然后启动本地服务。"
+          ],
+          "code": "npm run check\nnpm test\nnpm run test:journal\n# A：npm run dev\n# B：npm start"
+        },
+        {
+          "title": "主要验收路径",
+          "paragraphs": [
+            "首页 → 开发 → 任意项目 → 任务 / 资料 / 更新 → 其他栏目。再测试直接刷新、前进后退、手机布局和原有语言切换。"
+          ]
+        },
+        {
+          "title": "检查与发布不同",
+          "paragraphs": [
+            "自动测试通过后，仍需维护者在完整仓库检查资源与交互，并手动提交和推送。更新包不会修改远端设置。"
+          ]
+        }
+      ],
+      "sources": []
+    },
+    {
+      "id": "architecture",
+      "title": "栏目框架与数据边界",
+      "summary": "共享页面骨架，项目内容独立保存。",
+      "sections": [
+        {
+          "title": "三层结构",
+          "paragraphs": [
+            "全站外壳负责 Logo、六项导航、标题区、页脚和转场；开发负责项目列表与近期记录；项目详情负责自己的任务、资料和参与方式。"
+          ]
+        },
+        {
+          "title": "一个项目，一份登记",
+          "paragraphs": [
+            "catalog.json 只记录项目 ID 与配置路径。项目配置提供介绍、类型、可见性、资料和状态来源。新项目使用独立状态文件；旧项目通过只读适配器展示，不迁移或覆盖原数据。"
+          ]
+        },
+        {
+          "title": "显示不同性质的状态",
+          "paragraphs": [
+            "项目阶段描述整体进度，任务状态描述一个工作项，更新状态区分“本地待验收”和“已发布”。不把任务数做成游戏完成率。"
+          ]
+        },
+        {
+          "title": "维护不是权限系统",
+          "paragraphs": [
+            "维护页从项目页尾进入，浏览器草稿不等于共享数据。该网站与仓库是公开的，隐藏入口、draft 或 noindex 都不构成访问权限。"
+          ]
+        }
+      ],
+      "sources": []
+    },
+    {
+      "id": "add-project",
+      "title": "接入一个新项目",
+      "summary": "登记、编辑、校验、生成；不需要修改路由。",
+      "sections": [
+        {
+          "title": "创建草稿",
+          "paragraphs": [
+            "使用不与已有栏目冲突的英文 ID；工具创建草稿，不会自动出现在公开列表。"
+          ],
+          "code": "npm run journal:add -- --id my-new-project --title \"我的新项目\" --category tool"
+        },
+        {
+          "title": "填写事实",
+          "paragraphs": [
+            "补齐介绍、可用入口、当前阶段、资料与参与方式。计划中的内容明确标为计划，验收后再更新完成状态。"
+          ]
+        },
+        {
+          "title": "审核后公开",
+          "paragraphs": [
+            "将该项目 visibility 改为 public 后，生成直达页面并检查。实际发布仍由维护者推送。"
+          ],
+          "code": "npm run journal:build\nnpm run test:journal"
+        },
+        {
+          "title": "归档而不是删除历史",
+          "paragraphs": [
+            "将 visibility 改为 archived，项目仍可通过原路径查看，并在列表归档筛选中找到。不会删除原任务或已有历史。"
+          ]
+        }
+      ],
+      "sources": []
+    }
+  ]
+}

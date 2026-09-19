@@ -1,0 +1,268 @@
+{
+  "repository": "umaim/Mario",
+  "commit": "980c275358704a49f868567aeec5bdfb347c4781",
+  "path": "Source/settings/maps.js",
+  "gitBlob": "657d750ad65bb06c0e63a3d8958736f9236ec3c0",
+  "range": "Worlds 1–8 gameplay layout transcription",
+  "url": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+  "method": "Manual transcription of gameplay placement records, area locations and section definitions. Pure background scenery omitted; not a byte-identical source export or original-game certification.",
+  "omittedVisuals": [
+    "Pattern",
+    "DecorativeBack",
+    "DecorativeDot",
+    "CustomText"
+  ],
+  "map": {
+    "name": "6-4",
+    "time": 300,
+    "locations": [
+      {
+        "area": 0,
+        "entry": "Castle"
+      }
+    ],
+    "areas": [
+      {
+        "setting": "Castle",
+        "creation": [
+          {
+            "macro": "StartInsideCastle",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "thing": "Stone",
+            "width": 192,
+            "height": 24,
+            "x": 0,
+            "y": 88
+          },
+          {
+            "macro": "Floor",
+            "width": 64,
+            "x": 40,
+            "y": 24
+          },
+          {
+            "macro": "Water",
+            "width": 16,
+            "x": 104,
+            "y": 8
+          },
+          {
+            "macro": "Floor",
+            "width": 88,
+            "x": 120,
+            "y": 24
+          },
+          {
+            "thing": "Stone",
+            "x": 184,
+            "y": 64
+          },
+          {
+            "thing": "CastleBlock",
+            "fireballs": 6,
+            "x": 184,
+            "y": 56
+          },
+          {
+            "thing": "Stone",
+            "width": 1088,
+            "x": 192,
+            "y": 88
+          },
+          {
+            "macro": "Water",
+            "width": 24,
+            "x": 208,
+            "y": 0
+          },
+          {
+            "thing": "Podoboo",
+            "x": 216,
+            "y": -32
+          },
+          {
+            "macro": "Floor",
+            "width": 24,
+            "x": 232,
+            "y": 24
+          },
+          {
+            "thing": "CastleBlock",
+            "fireballs": 6,
+            "x": 240,
+            "y": 24
+          },
+          {
+            "thing": "Block",
+            "contents": "Mushroom",
+            "x": 240,
+            "y": 56
+          },
+          {
+            "macro": "Water",
+            "width": 24,
+            "x": 256,
+            "y": 0
+          },
+          {
+            "thing": "Podoboo",
+            "x": 264,
+            "y": -32
+          },
+          {
+            "thing": "Stone",
+            "width": 296,
+            "x": 280,
+            "y": 32
+          },
+          {
+            "thing": "Stone",
+            "width": 552,
+            "height": 24,
+            "x": 280,
+            "y": 24
+          },
+          {
+            "macro": "Floor",
+            "width": 744,
+            "x": 280,
+            "y": 0
+          },
+          {
+            "thing": "Stone",
+            "width": 280,
+            "height": 24,
+            "x": 296,
+            "y": 80
+          },
+          {
+            "thing": "CastleBlock",
+            "fireballs": 6,
+            "x": 296,
+            "y": 56
+          },
+          {
+            "thing": "CastleBlock",
+            "fireballs": 6,
+            "x": 392,
+            "y": 56
+          },
+          {
+            "thing": "CastleBlock",
+            "fireballs": 6,
+            "x": 480,
+            "y": 56
+          },
+          {
+            "thing": "CastleBlock",
+            "fireballs": 6,
+            "x": 536,
+            "y": 56
+          },
+          {
+            "thing": "CastleBlock",
+            "fireballs": 6,
+            "x": 608,
+            "y": 32
+          },
+          {
+            "thing": "Stone",
+            "x": 640,
+            "y": 80
+          },
+          {
+            "thing": "CastleBlock",
+            "fireballs": 6,
+            "x": 640,
+            "y": 72
+          },
+          {
+            "thing": "CastleBlock",
+            "fireballs": 6,
+            "x": 672,
+            "y": 32
+          },
+          {
+            "thing": "Stone",
+            "x": 704,
+            "y": 80
+          },
+          {
+            "thing": "CastleBlock",
+            "fireballs": 6,
+            "direction": 1,
+            "x": 704,
+            "y": 72
+          },
+          {
+            "thing": "CastleBlock",
+            "fireballs": 6,
+            "x": 736,
+            "y": 32
+          },
+          {
+            "thing": "Stone",
+            "width": 56,
+            "height": 16,
+            "x": 776,
+            "y": 80
+          },
+          {
+            "macro": "Fill",
+            "thing": "Block",
+            "xnum": 3,
+            "xwidth": 24,
+            "contents": "Coin",
+            "hidden": true,
+            "x": 848,
+            "y": 32
+          },
+          {
+            "macro": "Fill",
+            "thing": "Block",
+            "xnum": 3,
+            "xwidth": 24,
+            "contents": "Coin",
+            "hidden": true,
+            "x": 856,
+            "y": 64
+          },
+          {
+            "thing": "Stone",
+            "width": 32,
+            "height": 24,
+            "x": 928,
+            "y": 24
+          },
+          {
+            "thing": "Stone",
+            "width": 40,
+            "height": 24,
+            "x": 984,
+            "y": 24
+          },
+          {
+            "thing": "Stone",
+            "width": 40,
+            "height": 16,
+            "x": 984,
+            "y": 80
+          },
+          {
+            "macro": "EndInsideCastle",
+            "spawnType": "Blooper",
+            "throwing": true,
+            "transport": {
+              "map": "7-1"
+            },
+            "x": 1024,
+            "y": 0
+          }
+        ]
+      }
+    ]
+  }
+}

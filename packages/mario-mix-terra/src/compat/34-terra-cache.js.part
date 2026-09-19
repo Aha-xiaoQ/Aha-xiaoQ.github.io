@@ -1,0 +1,54 @@
+/* R08 input, renderer and persistent-media repairs. Does not change terrain,
+   equipment stats, boss AI, or the legacy five-hero engine. */
+const r08PauseBase=togglePause;
+togglePause=function(){if(isTrio()){r05CancelPointer();clearInput();r08StopRoars();}return r08PauseBase.apply(this,arguments);};
+const r08RetryBase=retry;retry=function(){if(isTrio()){r05CancelPointer();r08StopRoars();}return r08RetryBase.apply(this,arguments);};
+const r08StopMusicBase=r06StopMusic;
+r06StopMusic=function(){r08StopRoars();return r08StopMusicBase.apply(this,arguments);};
+const r08AudioSyncBase=r06SyncMusic;
+r06SyncMusic=function(){if(!soundOn||document.hidden||!isTrio()||!['playing','flag'].includes(mode))r08StopRoars();return r08AudioSyncBase.apply(this,arguments);};
+window.addEventListener('visibilitychange',()=>{if(document.hidden){r05CancelPointer();r08StopRoars();}r06SyncMusic();});
+window.addEventListener('blur',()=>{if(isTrio()){r05CancelPointer();r08StopRoars();}});
+r06Roar=function(rate=1){if(!r06RoarAudio||!soundOn||!isTrio()||document.hidden||!['playing','flag'].includes(mode))return;const a=r06RoarAudio.cloneNode();a.volume=r06MusicVolume;a.playbackRate=rate;r08LiveRoars.add(a);a.onended=a.onerror=()=>r08LiveRoars.delete(a);a.play().catch(()=>r08LiveRoars.delete(a));};
+// Synchronize with the visible slider immediately, not only after it is moved.
+if($('musicVolume'))r06MusicVolume=clamp(Number($('musicVolume').value)/100,0,1);
+
+// Pre-render identical light textures and stitched furniture frames once. Never
+// flatten the whole stage: actors, flame animation and camera remain dynamic.
+const r08GlowCache=new Map(),r08FireFrames=new Map();let r08FrameRevision=-1;
+function r08Glow(fire){const key=fire?'fire':'torch';if(r08GlowCache.has(key))return r08GlowCache.get(key);const r=fire?128:104,cv=document.createElement('canvas');cv.width=cv.height=r*2;const g=cv.getContext('2d'),gl=g.createRadialGradient(r,r,2,r,r,r);gl.addColorStop(0,fire?'rgba(255,184,90,.18)':'rgba(255,200,128,.12)');gl.addColorStop(.55,'rgba(245,164,75,.045)');gl.addColorStop(1,'rgba(230,150,70,0)');g.fillStyle=gl;g.fillRect(0,0,r*2,r*2);r08GlowCache.set(key,cv);return cv;}
+function r08FireFrame(fire,frame){if(r08FrameRevision!==r08ImageRevision){r08FireFrames.clear();r08FrameRevision=r08ImageRevision;}const key=(fire?'fire':'torch')+frame;if(r08FireFrames.has(key))return r08FireFrames.get(key);const im=r06Images[fire?'campfireTiles':'torchTiles'],fallback=r06Images[fire?'campfirePlaced':'torchPlaced'];if(!im&&!fallback)return null;const cv=document.createElement('canvas');cv.width=fire?48:20;cv.height=fire?32:20;const g=cv.getContext('2d');g.imageSmoothingEnabled=false;if(im&&fire){for(let row=0;row<2;row++)for(let col=0;col<3;col++)g.drawImage(im,col*18,frame*36+row*18,16,16,col*16,row*16,16,16);}else if(im)g.drawImage(im,0,0,20,20,0,0,20,20);else g.drawImage(fallback,0,0,cv.width,cv.height);r08FireFrames.set(key,cv);return cv;}
+r07Furniture=function(kind,x,y,ticks,phase=0){const fire=kind==='campfire',r=fire?128:104;ctx.drawImage(r08Glow(fire),x-r,y-(fire?20:14)-r);const frame=r08FireFrame(fire,fire?Math.floor(ticks/8+phase)%8:0);if(frame)ctx.drawImage(frame,Math.round(x-frame.width/2),Math.round(y-frame.height));};
+
+// Preserve the visible native status panel, but make storage and decoding states
+// explicit; an HTTP response is not evidence that a soundtrack has been decoded.
+const r08CacheButton=document.createElement('button');r08CacheButton.type='button';r08CacheButton.id='r08CacheMedia';r08CacheButton.textContent='缓存原图 / 三首原曲';
+const r08CacheStatus=document.createElement('div');r08CacheStatus.id='r08CacheStatus';r08CacheStatus.setAttribute('aria-live','polite');
+r06Media.append(r08CacheButton,r08CacheStatus);
+const r08MediaNote=r06Media.querySelector('p');if(r08MediaNote)r08MediaNote.textContent='三首 BGM 按场景单独播放。成功联网取得的原图与音频可缓存在此浏览器；本地导入优先。首次无网不会凭空补齐素材；缓存不可用不影响开局。';
+async function r08CacheEverything(){if(r08CacheBusy)return;r08CacheBusy=true;r08CacheProgress='正在保存原图…';r08CacheButton.disabled=true;let ok=0;
+ try{if(!await r08DB()){r08CacheProgress='浏览器未开放持久缓存；可继续联网试玩或导入音频。';return;}
+  const jobs=[];for(const [key,path] of Object.entries(R06_IMAGE_PATHS)){const status=r06AssetStatus[key];if(!status.embedded&&status.state==='unavailable')jobs.push(r07LoadImage(key,path));else if(!status.embedded&&r06Images[key])jobs.push(r08RememberImage(key,r06Images[key]));}await Promise.all(jobs);
+  for(const [key,t] of Object.entries(r06Music)){r08CacheProgress='正在保存 '+t.label+'…';r08UpdateMediaStatus();if(t.cached){ok++;continue;}if(t.local)continue;for(const url of t.urls){if(await r08CacheAudio(key,url)){ok++;break;}}}
+  r08CacheProgress='音乐缓存 '+ok+' / 3；未成功的项目仍需联网或本地导入。';
+ }finally{r08CacheBusy=false;r08CacheButton.disabled=false;r08UpdateMediaStatus();}}
+r08CacheButton.addEventListener('click',r08CacheEverything);
+function r08UpdateMediaStatus(){const a=Object.values(r06AssetStatus),local=a.filter(x=>x.embedded&&x.state==='ready').length,hit=a.filter(x=>x.origin==='cache'&&x.state==='ready').length,net=a.filter(x=>x.origin==='network'&&x.state==='ready').length,miss=a.filter(x=>x.state==='unavailable').length;
+ r08CacheStatus.textContent=(r08CacheError?r08CacheError+'。':'')+(r08CacheProgress||'缓存属于当前浏览器与站点；更换浏览器或清理站点数据后需重新加载。')+' 原图：内嵌 '+local+' / 缓存 '+hit+' / 在线 '+net+(miss?' / 未取得 '+miss:'')+'。';
+ const m=r06MusicKey?r06Music[r06MusicKey]:null;const names={playing:'播放中',ready:'已解码',loading:'加载中','not-loaded':'待解码','network-unavailable':'网络不可用','waiting-user-or-network':'等待点击启用声音','local-decode-error':'本地文件解码失败'};if(m){const origin=m.local?'本地导入':m.cacheURL?'浏览器缓存':'联网原曲';$('r06MusicStatus').textContent='BGM：'+m.label+' · '+origin+' · '+(m.restorePending?'检查本机缓存':names[m.state]||m.state);$('audioBadge').textContent=m.state==='playing'?(m.local?'本地音频':'ORIGINAL BGM'):'音频未播放';}}
+async function r08ImportMedia(e){const f=e.target.files?.[0];if(!f)return;if(f.size>40*1024*1024){r08CacheProgress='音频超过 40 MB，本次未导入。';r08UpdateMediaStatus();return;}const key=$('r06MusicSlot').value,url=URL.createObjectURL(f);r08CacheProgress='正在检查本地音频…';
+ if(key==='roar'){r08StopRoars();if(r06RoarAudio){r06RoarAudio.pause();URL.revokeObjectURL(r06RoarAudio.src);}const a=new Audio(url);r06RoarAudio=a;a.preload='auto';a.addEventListener('canplay',async()=>{if(r06RoarAudio!==a)return;const saved=await r08WriteCache('audio:user:roar',{blob:f,kind:'user-import',savedAt:Date.now()});r08CacheProgress=saved?'本地吼声已解码并保存。':'本地吼声已解码；此浏览器未保存缓存。';r08UpdateMediaStatus();},{once:true});a.addEventListener('error',()=>{if(r06RoarAudio===a){r06RoarAudio=null;URL.revokeObjectURL(url);r08CacheProgress='吼声文件不能解码，请换成浏览器支持的音频。';r08UpdateMediaStatus();}},{once:true});a.load();return;}
+ const t=r06Music[key];t.generation++;t.restorePending=false;t.audio.pause();if(t.cacheURL)URL.revokeObjectURL(t.cacheURL);else if(t.local)URL.revokeObjectURL(t.audio.src);t.cacheURL=null;t.local=true;t.cached=false;t.audio.src=url;t.audio.preload='auto';t.state='loading';t.busy=false;t.nextTry=0;t.failures=[];const generation=t.generation;
+ t.audio.addEventListener('canplay',async()=>{if(!t.local||t.audio.src!==url)return;const saved=await r08WriteCache('audio:user:'+key,{blob:f,kind:'user-import',savedAt:Date.now()});if(!t.local||t.audio.src!==url)return;t.cached=saved;r08CacheProgress=saved?'本地音乐已解码并保存，下次打开优先使用。':'本地音乐已解码；此浏览器未保存缓存。';r08UpdateMediaStatus();},{once:true});
+ t.audio.addEventListener('error',()=>{if(t.audio.src===url){r08CacheProgress='本地音乐解码失败；没有保存无效文件。';r08UpdateMediaStatus();}},{once:true});r06MusicUnlocked=true;t.audio.load();r06SyncMusic();r08UpdateMediaStatus();}
+(async()=>{const stored=await r08ReadCache('audio:user:roar');if(stored?.blob instanceof Blob&&!r06RoarAudio){r06RoarAudio=new Audio(URL.createObjectURL(stored.blob));r08CacheHits++;}})();
+$('r06RetryMedia').onclick=()=>{for(const [key,path] of Object.entries(R06_IMAGE_PATHS))if(r06AssetStatus[key].state==='unavailable')r07LoadImage(key,path);for(const t of Object.values(r06Music))if(!t.local&&!t.cacheURL){t.audio.pause();t.sourceIndex=0;t.generation++;t.audio.src=t.urls[0];t.state='not-loaded';t.nextTry=0;t.busy=false;t.failures=[];}r06MusicUnlocked=true;r06SyncMusic();};
+const r08UIBase=r06UpdateUI;
+r06UpdateUI=function(){r08UIBase();if(!isTrio())return;$('bestLabel').textContent='R08';if(!state){$('overlayText').textContent='R08：泰拉瑞亚 1-3。四层贯通战场、星怒 / 铂金套开局、史莱姆坐骑、落地自由换装。修复重试与短按跳跃；新增本机原图 / 原曲缓存。';return;}
+ $('heroHelp').textContent='R08：四层战场不需施工；J 自动瞄准克眼。击败后碰到地面套装即可换装。外部问号砖给粘鞍，内场给云朵瓶。F 骑乘，V 换坐骑，H 治疗。R 主线回检查点并保留装备；战场重新挑战。下方可查看音频 / 缓存状态。';
+ r08UpdateMediaStatus();};
+// Only throttle the ancillary DOM panel, never game ticks or canvas rendering.
+let r08UILast=-Infinity,r08UISignature='',r08UIState=null,r08UIWrites=0;
+function r08RefreshUI(){if(!isTrio()){r04TrioUI();r05UI();r06UpdateUI();return;}const s=state,key=[mode,s?.phase,s?.kit,s?.mounted,s?.mountType,s?.tool,s?.notice,s?.hp,s?.cloudJump,r06MusicKey,r06MusicKey&&r06Music[r06MusicKey].state,r08ImageRevision,r08CacheProgress].join('|'),now=performance.now();if(s===r08UIState&&key===r08UISignature&&now-r08UILast<100)return;r08UIState=s;r08UISignature=key;r08UILast=now;r08UIWrites++;r04TrioUI();r05UI();r06UpdateUI();}
+trioUI=r08RefreshUI;
+

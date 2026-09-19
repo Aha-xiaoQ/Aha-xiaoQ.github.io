@@ -1,0 +1,45 @@
+name: 混合马里奥 · 认领任务或报告问题
+description: 说明具体版本、最小复现及预期结果，维护者确认范围后开始。
+title: '[Mario Mix] '
+body:
+  - type: markdown
+    attributes:
+      value: '请勿上传 token、私密聊天、无授权素材或整个未知来源代码包。截图不能替代版本和操作步骤。'
+  - type: dropdown
+    id: episode
+    attributes:
+      label: 涉及哪一期或模块
+      options:
+        - 第一期 I
+        - 第二期 II
+        - 第三期 III
+        - packages/mario-mix 工程工具
+        - 文档与验收
+    validations:
+      required: true
+  - type: input
+    id: baseline
+    attributes:
+      label: 游戏版本或提交 / 本地构建 SHA-256
+      description: 从 game:audit 或 game:build 结果中填写，不确定时明确写未核对。
+    validations:
+      required: true
+  - type: input
+    id: task
+    attributes:
+      label: 对应本地任务编号（可选）
+      placeholder: MM-DEV-001
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 操作步骤、预期结果和实际结果
+      description: 包含角色、关卡、浏览器、键盘/手柄/触屏；请求认领时说明计划改动范围。
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 如何验证完成 / 已有证据
+      description: 截图或视频、自动测试结果；尚未执行的测试写未执行。
+    validations:
+      required: true

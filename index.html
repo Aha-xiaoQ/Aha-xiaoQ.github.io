@@ -18,20 +18,33 @@
   <meta name="twitter:description" content="做项目，也做工具，偶尔做点游戏。">
   <meta name="twitter:image" content="https://aha-xiaoq.github.io/assets/xiaoq-og-workbench-r1.png">
   <title>在下_小Q</title>
-  <link rel="stylesheet" href="assets/site-brand-tokens.css?v=font-4e7e8387">
-  <link rel="preload" href="assets/fonts/LXGWWenKai-Regular.woff2?v=font-4e7e8387" as="font" type="font/woff2" crossorigin fetchpriority="high">
-  <link rel="preload" href="assets/fonts/LXGWWenKai-Medium.woff2?v=font-4e7e8387" as="font" type="font/woff2" crossorigin fetchpriority="high">
-  <link rel="preload" href="assets/site-shell.css?v=dd5b8227f5b3e07a8da6" as="style">
+  <link rel="stylesheet" href="assets/site-brand-tokens.css?v=font-20260919-r22">
+  <link rel="preload" href="assets/fonts/LXGWWenKai-Regular-site.woff2?v=font-20260919-r22" as="font" type="font/woff2" crossorigin fetchpriority="high">
+  <link rel="preload" href="assets/fonts/LXGWWenKai-Medium-site.woff2?v=font-20260919-r22" as="font" type="font/woff2" crossorigin fetchpriority="high">
+  <link rel="preload" href="assets/site-shell.css?v=font-20260919-r22" as="style">
   <link rel="preload" href="assets/backgrounds/bg-home-pixel-game-r3.webp?v=dd5b8227f5b3e07a8da6" as="image" type="image/webp" fetchpriority="high">
   <link rel="preload" href="assets/identity/xiaoq-avatar-p63a.svg?v=dd5b8227f5b3e07a8da6" as="image" fetchpriority="high">
   <link rel="preload" href="assets/q-logo-pixel-framed.svg?v=dd5b8227f5b3e07a8da6" as="image" type="image/svg+xml">
   <link rel="stylesheet" href="assets/promo.css?v=dd5b8227f5b3e07a8da6">
   <link rel="stylesheet" href="assets/site-i18n.css?v=dd5b8227f5b3e07a8da6">
-  <script src="assets/site-i18n-data.js?v=dd5b8227f5b3e07a8da6"></script>
-  <script src="assets/site-i18n.js?v=dd5b8227f5b3e07a8da6" defer></script>
+  <script src="assets/site-i18n-data.js?v=workshop-r06"></script>
+  <script src="assets/site-i18n.js?v=site-unified-r02" defer></script>
 
   <meta name="site-build" content="dd5b8227f5b3e07a8da6">
   <script defer src="/assets/site-freshness.js?v=dd5b8227f5b3e07a8da6"></script>
+<link rel="stylesheet" data-workshop-css href="/assets/workshop-components.css?v=workshop-r08">
+<link rel="stylesheet" data-media-css href="/assets/workshop-media.css?v=workshop-r08">
+<link rel="stylesheet" data-site-actions-css href="/assets/ui/site-actions.css?v=workshop-r17">
+<link rel="stylesheet" data-experience-css href="/assets/experience/site-experience.css?v=site-r23">
+<script type="module" data-experience-module src="/assets/experience/runtime.mjs?v=site-r23"></script>
+<link rel="stylesheet" data-journey-css href="/assets/launch/journey.css?v=launch-r19">
+<script data-journey-support src="/content/game-support.js?v=launch-r19"></script>
+<script data-journey-core src="/assets/launch/journey.js?v=showcase-r25"></script>
+<script type="module" data-journey-module src="/assets/launch/runtime.mjs?v=launch-r19"></script>
+<link rel="stylesheet" data-chapters-css href="/assets/chapters/chapters.css?v=worlds-r21">
+<link rel="stylesheet" data-showcase-css href="/assets/ui/site-showcase.css?v=showcase-r25">
+<script data-showcase-support src="/content/about-support.js?v=showcase-r25"></script>
+<script data-showcase-core src="/assets/ui/site-showcase.js?v=showcase-r25"></script>
 </head>
 <body>
   <div id="app" data-prerendered="true">
@@ -42,14 +55,14 @@
           <img src="assets/q-logo-pixel-framed.svg?v=dd5b8227f5b3e07a8da6" alt="在下_小Q的 Q 标记" width="42" height="42" decoding="sync">
           <span>在下_小Q<small>PIXEL WORKSHOP</small></span>
         </a>
-        <nav aria-label="主导航">
+        <nav data-site-development-nav aria-label="主导航">
           <a href="index.html" data-nav-key="home" aria-current="page">首页</a>
           <a href="projects/index.html" data-nav-key="projects">项目</a>
           <a href="games/index.html" data-nav-key="games">游戏</a>
           <a href="tools/index.html" data-nav-key="tools">工具</a>
-          <a href="notes/index.html" data-nav-key="notes">笔记</a>
+          <a href="notes/index.html" data-nav-key="notes">开发</a>
           <a href="about/index.html" data-nav-key="about">关于</a>
-        </nav>
+        </nav><a class="q-search-launch" data-site-search href="/search/" aria-label="搜索全站">搜索</a>
       </header>
 
       <main class="shell stage" id="main" tabindex="-1">
@@ -68,7 +81,7 @@
             <h1 id="site-name">在下_<em>小Q</em></h1>
             <p>做项目，也做工具，偶尔做点游戏。</p>
           </div>
-          <a class="primary-path" href="projects/index.html"><span>重点入口</span><strong>项目 <b aria-hidden="true">↗</b></strong></a>
+          <a class="primary-path" href="projects/index.html" data-action-kind="internal"><span>重点入口</span><strong>项目 </strong></a>
           <section class="now-signal" aria-labelledby="now-title"><strong class="now-signal__label" id="now-title">正在做</strong><span class="now-signal__title">更新网站、发布视频</span><time datetime="2026-09-09">2026-09-09</time></section>
         </section>
 
@@ -79,10 +92,10 @@
         <section class="paths" id="paths" aria-labelledby="paths-title">
           <p class="paths__label" id="paths-title">往里逛逛</p>
           <div class="paths__stack">
-            <a class="path path--games" href="games/index.html"><span>01</span><strong>游戏</strong><i aria-hidden="true">→</i></a>
-            <a class="path path--tools" href="tools/index.html"><span>02</span><strong>工具</strong><i aria-hidden="true">→</i></a>
-            <a class="path path--notes" href="notes/index.html"><span>03</span><strong>笔记</strong><i aria-hidden="true">→</i></a>
-            <a class="path path--about" href="about/index.html"><span>04</span><strong>关于我</strong><i aria-hidden="true">→</i></a>
+            <a class="path path--games" href="games/index.html" data-action-kind="internal"><span>01</span><strong>游戏</strong></a>
+            <a class="path path--tools" href="tools/index.html" data-action-kind="internal"><span>02</span><strong>工具</strong></a>
+            <a class="path path--notes" href="notes/index.html" data-action-kind="internal"><span>03</span><strong>开发</strong></a>
+            <a class="path path--about" href="about/index.html" data-action-kind="internal"><span>04</span><strong>关于我</strong></a>
           </div>
         </section>
       </main>
@@ -91,9 +104,9 @@
         <div class="shell footer-inner">
         <p>欢迎来逛。</p>
         <div class="contact" aria-label="联系在下_小Q">
-          <a class="contact-link" href="https://github.com/Aha-xiaoQ" aria-label="打开在下_小Q的 GitHub"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12.8c-3 1-3-1.5-4.2-1.8M10.2 14v-2.5c.1-.8-.2-1.5-.7-2 2.4-.3 4.9-1.2 4.9-5.3A4.1 4.1 0 0 0 13.3 1.4 3.8 3.8 0 0 0 13.2-1 4 4 0 0 0 10.4.1a9.7 9.7 0 0 0-4.8 0A4 4 0 0 0 2.8-1a3.8 3.8 0 0 0-.1 2.4 4.1 4.1 0 0 0-1.1 2.8c0 4.1 2.5 5 4.9 5.3-.5.5-.8 1.2-.7 2V14" /></svg><span>GitHub</span></a>
-          <a class="contact-link" href="https://space.bilibili.com/22673233?spm_id_from=333.1007.0.0" aria-label="打开在下_小Q的 Bilibili"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.7h10v7.2H3zM5.3 2.4l1.4 1.4m2.6-1.4L8 3.8M6 7.6h.1m3.8 0h.1M5.7 10c1.4.8 3.2.8 4.6 0" /></svg><span>Bilibili</span></a>
-          <a class="contact-link" href="mailto:hfutqdm@163.com" aria-label="发邮件给在下_小Q"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M2.2 4.1h11.6v7.8H2.2zM2.7 4.7 8 8.6l5.3-3.9" /></svg><span>邮箱</span></a>
+          <a class="contact-link" href="https://github.com/Aha-xiaoQ" aria-label="打开在下_小Q的 GitHub" data-action-kind="external" data-action-variant="quiet"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12.8c-3 1-3-1.5-4.2-1.8M10.2 14v-2.5c.1-.8-.2-1.5-.7-2 2.4-.3 4.9-1.2 4.9-5.3A4.1 4.1 0 0 0 13.3 1.4 3.8 3.8 0 0 0 13.2-1 4 4 0 0 0 10.4.1a9.7 9.7 0 0 0-4.8 0A4 4 0 0 0 2.8-1a3.8 3.8 0 0 0-.1 2.4 4.1 4.1 0 0 0-1.1 2.8c0 4.1 2.5 5 4.9 5.3-.5.5-.8 1.2-.7 2V14" /></svg><span>GitHub</span></a>
+          <a class="contact-link" href="https://space.bilibili.com/22673233?spm_id_from=333.1007.0.0" aria-label="打开在下_小Q的 Bilibili" data-action-kind="external" data-action-variant="quiet"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.7h10v7.2H3zM5.3 2.4l1.4 1.4m2.6-1.4L8 3.8M6 7.6h.1m3.8 0h.1M5.7 10c1.4.8 3.2.8 4.6 0" /></svg><span>Bilibili</span></a>
+          <a class="contact-link" href="mailto:hfutqdm@163.com" aria-label="发邮件给在下_小Q" data-action-kind="email" data-action-variant="quiet"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M2.2 4.1h11.6v7.8H2.2zM2.7 4.7 8 8.6l5.3-3.9" /></svg><span>邮箱</span></a>
         </div>
         </div>
       </footer>
@@ -110,10 +123,15 @@
   <script src="content/taxonomy.js?v=dd5b8227f5b3e07a8da6"></script>
   <script src="content/site-data.js?v=dd5b8227f5b3e07a8da6"></script>
   <script src="content/asset-manifest.js?v=dd5b8227f5b3e07a8da6"></script>
-  <script src="assets/promo.js?v=dd5b8227f5b3e07a8da6"></script>
-  <script src="assets/site-shell.js?v=dd5b8227f5b3e07a8da6"></script>
+  <script src="/assets/ui/site-actions.js?v=workshop-r17"></script>
+<script src="assets/promo.js?v=workshop-r18"></script>
+  <script src="/assets/workshop-media.js?v=workshop-r08"></script>
+<script src="/content/presentation.js?v=workshop-r08"></script>
+<script src="/assets/workshop-cards.js?v=showcase-r25"></script>
+<script src="/assets/workshop-media-runtime.js?v=workshop-r08"></script>
+<script src="assets/site-shell.js?v=showcase-r25"></script>
   <script src="assets/site-transition-r65.js?v=dd5b8227f5b3e07a8da6"></script>
-  <script src="assets/site-router.js?v=dd5b8227f5b3e07a8da6"></script>
+  <script src="assets/site-router.js?v=site-r23"></script>
 <script defer src="/assets/site-analytics.js?v=dd5b8227f5b3e07a8da6"></script>
 </body>
 </html>

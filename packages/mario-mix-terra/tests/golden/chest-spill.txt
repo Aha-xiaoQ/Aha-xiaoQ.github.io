@@ -1,0 +1,5 @@
+function t21Open(s,c){if(!c||c.removed||c.t21Spilled||c.empty||s.t11Transition)return false;
+ const items=c.items?.length?c.items:[{kind:'healing',count:2},{kind:'torch',count:20}];c.opened=true;c.empty=true;c.t21Spilled=true;c.items=[];
+ const n=items.length;items.forEach((it,i)=>{const spread=(i-(n-1)/2)*.9;t21Drop(s,it.kind,it.count,c.x+8+Math.sign(spread)*6,c.y-4,{vx:spread,vy:-3.4-i%2*.6,pickDelay:42,chestId:c.id});});
+ terraSound('door');t21Event('chest-spilled',{id:c.id,items:items.map(x=>({...x}))});r05Persist();return true;
+}

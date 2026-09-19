@@ -1,0 +1,30 @@
+name: 模块改动 / 协作任务
+description: 用明确范围和验收条件提出一项小改动
+title: "[Terra] "
+body:
+  - type: input
+    id: task
+    attributes:
+      label: 任务编号 / 模块
+      placeholder: M02-LABELS / key-label
+    validations:
+      required: true
+  - type: textarea
+    id: change
+    attributes:
+      label: 当前问题与预期变化
+      description: 区分等价迁移、有意修复与新玩法
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: 计划修改文件与不修改的范围
+    validations:
+      required: true
+  - type: textarea
+    id: verification
+    attributes:
+      label: 验收步骤、设备和候选 SHA
+    validations:
+      required: true

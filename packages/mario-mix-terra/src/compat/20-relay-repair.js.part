@@ -1,0 +1,71 @@
+/* v0.10 — focused repair on the user's exact v0.9 upload.
+ * No replacement of the v0.9 entrance, positional ending, music or map data.
+ * Shield PNGs: newagebegins/BattleCity a1b1741782dcf23fc814e9a7abc5f383900b2cda.
+ * CastleRailingFilled and small-castle assembly: umaim/Mario 980c275358704a49f868567aeec5bdfb347c4781.
+ * Source-code licensing is not a separate licence for original game artwork.
+ */
+const R10_VERSION='1.0.0';
+const R10_BASE_SHA='2c5fdefedc9da867e06da51152777ea636c5fee2ca5e6cb5a98e422bdc2683db';
+const R10_SHIELD_DATA=["iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAC4jAAAuIwF4pT92AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAACVSURBVHja7FfbCsAgCLUx8P//Np/cU7A1xC6CtXkepQ5ejmaJmeEOInoYEDHBBDS+A5xx1p7WHkr21sg1PvcMpJxzU4RaLXu1U86vowENsxFL8NdAmQOjah+dC+t0gTQJrTMh8bpnIBx4acBaCxpPlCDmQJQgXsN9dsLeHbH1/j47ofVWvE8XfP9n9Pvf8QUAAP//AwBARZgJurWBfQAAAABJRU5ErkJggg==","iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAC4jAAAuIwF4pT92AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAB8SURBVHja7FdBDoAwCBvGhP//Fk548jKj2B2EmHIejJbChkTEQMzdHx1UVZB42yi2HUWeIXx7rg0DkmkARYT6lTPABC4amPscrX02N+Z4fRhYVfsqI+c99QyY2SfI75hgGzIBJsBJyNeQf0K2YX8NcDP6/XZ8AAAA//8DAE3RawUWlQdKAAAAAElFTkSuQmCC"];
+const r10Ready=Promise.all(R10_SHIELD_DATA.map((data,i)=>new Promise((resolve,reject)=>{
+ const id='bc-shield10-'+i,im=new Image();
+ im.onload=()=>{R12_SPRITES[id]=im;resolve();};
+ im.onerror=()=>reject(new Error('Missing embedded shield frame '+i));
+ im.src='data:image/png;base64,'+data;
+})));
+window.__mixReady=Promise.all([window.__mixReady,r10Ready]);
+// The filled central crenellations are an existing source sprite, not a redraw.
+const R10_FILLED_RAIL='p[2,5,9]11112220222x15,222122202221x27,122202221x27,1x07,1x27,1x27,1x27,1x27,1x27,1x27,12222000x19,0000';
+decoded.set('castle_railing_filled10',{w:16,h:8,pixels:decodeClassic(R10_FILLED_RAIL)});
+function r10DrawShield(g,x,y){
+ if(hero!=='tank'||!r12?.tank?.shield||mode==='dying'||r12.finish09?.hidden)return;
+ // Alternate the two white pixel-outline frames every two simulated ticks.
+ // No alpha bubble, no blinking vehicle; pausing freezes this animation.
+ const phase=(Math.floor(r12.ticks/2)&1),im=R12_SPRITES['bc-shield10-'+phase];
+ if(!im)return;
+ g.save();g.imageSmoothingEnabled=false;
+ g.drawImage(im,0,0,32,32,Math.round(x-2),Math.round(y-2),16,16);
+ g.restore();
+}
+// Rebuilt shovel walls must never imprison an actor occupying a damaged cell.
+function r10ClearNewFortifications(){
+ if(hero!=='tank'||r12?.area!=='defense'||!r03Challenge)return;
+ const bodies=[player,...ninja.foes.filter(e=>!e.dead&&!e.spawn)];
+ for(const body of bodies){
+  if(!r12TankCollides(body))continue;
+  const origin={x:body.x,y:body.y};let chosen=null;
+  for(let radius=2;radius<=208&&!chosen;radius+=2){
+   for(let dx=-radius;dx<=radius&&!chosen;dx+=2){
+    const dy=radius-Math.abs(dx);
+    for(const sign of dy?[1,-1]:[1]){
+     const q={...body,x:origin.x+dx,y:origin.y+dy*sign};
+     if(r12TankCollides(q)||bodies.some(other=>other!==body&&overlap(q,other)))continue;
+     chosen=q;break;
+    }
+   }
+  }
+  if(chosen){body.x=chosen.x;body.y=chosen.y;body.vx=body.vy=0;
+   r12Event('shovel-safe-position',{player:body===player,from:origin,to:{x:body.x,y:body.y}});}
+ }
+}
+const r10GiveBefore=r12Give;
+r12Give=function(type){
+ const result=r10GiveBefore(type);
+ if(hero==='tank'&&type==='shovel')r10ClearNewFortifications();
+ return result;
+};
+const r10FixedBefore=fixedUpdate;
+fixedUpdate=function(){
+ const defense=hero==='tank'&&r12?.area==='defense',oldShovel=defense?r12.tank.shovel:0;
+ r10FixedBefore();
+ if(defense&&r12?.area==='defense'&&oldShovel>0&&!r12.tank.shovel)r10ClearNewFortifications();
+};
+if(window.__relayTest){
+ __relayTest.give=t=>r12Give(t);
+ __relayTest.r10=()=>({version:R10_VERSION,baseSha256:R10_BASE_SHA,
+  shieldPhase:r12?.tank?.shield?(Math.floor(r12.ticks/2)&1):null,
+  shieldFrames:R10_SHIELD_DATA.length,supplies:ninja?.drops?.filter(d=>d.fixedSupply10).map(d=>({type:d.type,x:d.x,y:d.y})),
+  guard:r03Challenge?.blocks?.filter(b=>b.shovelGuard).map(b=>({...b}))||[],
+  exitSteel:false,finish:r12?.finish09?{...r12.finish09}:null});
+}
+

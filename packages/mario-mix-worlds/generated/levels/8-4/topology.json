@@ -1,0 +1,637 @@
+{
+  "locations": [
+    {
+      "area": 0,
+      "entry": "Castle"
+    },
+    {
+      "area": 0,
+      "entry": "PipeVertical"
+    },
+    {
+      "area": 1,
+      "entry": "PipeVertical"
+    },
+    {
+      "area": 2,
+      "entry": "PipeVertical"
+    },
+    {
+      "area": 3,
+      "xloc": 0,
+      "entry": "PipeVertical"
+    },
+    {
+      "area": 4,
+      "entry": "PipeVertical"
+    }
+  ],
+  "areas": [
+    {
+      "area": 0,
+      "setting": "Castle",
+      "underwater": false,
+      "exit": null,
+      "sections": [
+        {
+          "stretch": {
+            "width": 8,
+            "creation": [
+              {
+                "macro": "Floor",
+                "x": 0,
+                "y": 0
+              },
+              {
+                "thing": "Stone",
+                "x": 0,
+                "y": 88
+              }
+            ]
+          },
+          "after": {
+            "width": 424,
+            "creation": [
+              {
+                "macro": "Pipe",
+                "height": "Infinity",
+                "piranha": true,
+                "transport": 1,
+                "x": 0,
+                "y": 16
+              },
+              {
+                "thing": "Stone",
+                "width": 424,
+                "x": 0,
+                "y": 88
+              },
+              {
+                "macro": "Floor",
+                "width": 72,
+                "x": 16,
+                "y": 0
+              },
+              {
+                "macro": "Fill",
+                "thing": "Goomba",
+                "xnum": 3,
+                "xwidth": 12,
+                "x": 36,
+                "y": 8
+              },
+              {
+                "macro": "Floor",
+                "width": 32,
+                "x": 88,
+                "y": 24
+              },
+              {
+                "macro": "Water",
+                "width": 136,
+                "x": 120,
+                "y": 0
+              },
+              {
+                "thing": "Platform",
+                "width": 16,
+                "sliding": true,
+                "begin": 140,
+                "end": 232,
+                "speed": 2,
+                "x": 152,
+                "y": 0
+              },
+              {
+                "macro": "Floor",
+                "width": 48,
+                "x": 256,
+                "y": 24
+              },
+              {
+                "thing": "Stone",
+                "width": 32,
+                "x": 264,
+                "y": 56
+              },
+              {
+                "macro": "Pipe",
+                "height": "Infinity",
+                "piranha": true,
+                "transport": 2,
+                "x": 304,
+                "y": 40
+              },
+              {
+                "macro": "Floor",
+                "width": 56,
+                "x": 320,
+                "y": 24
+              },
+              {
+                "macro": "Pipe",
+                "height": "Infinity",
+                "piranha": true,
+                "x": 376,
+                "y": 48
+              },
+              {
+                "macro": "Floor",
+                "width": 32,
+                "x": 392,
+                "y": 24
+              },
+              {
+                "macro": "Section",
+                "x": 424,
+                "y": 0
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "area": 1,
+      "setting": "Castle",
+      "underwater": false,
+      "exit": null,
+      "sections": [
+        {
+          "before": {
+            "width": 328,
+            "creation": [
+              {
+                "thing": "Stone",
+                "width": 328,
+                "x": 0,
+                "y": 88
+              },
+              {
+                "macro": "Floor",
+                "width": 40,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "macro": "Pipe",
+                "height": "Infinity",
+                "piranha": true,
+                "x": 40,
+                "y": 24
+              },
+              {
+                "macro": "Floor",
+                "width": 64,
+                "x": 56,
+                "y": 0
+              },
+              {
+                "macro": "Fill",
+                "thing": "Beetle",
+                "xnum": 2,
+                "xwidth": 16,
+                "x": 88,
+                "y": 8.5
+              },
+              {
+                "macro": "Pipe",
+                "height": "Infinity",
+                "piranha": true,
+                "transport": 1,
+                "x": 120,
+                "y": 16
+              },
+              {
+                "macro": "Floor",
+                "width": 64,
+                "x": 136,
+                "y": 0
+              },
+              {
+                "thing": "Koopa",
+                "jumping": true,
+                "x": 176,
+                "y": 32
+              },
+              {
+                "thing": "Koopa",
+                "jumping": true,
+                "x": 192,
+                "y": 24
+              },
+              {
+                "macro": "Pipe",
+                "height": "Infinity",
+                "piranha": true,
+                "x": 200,
+                "y": 24
+              },
+              {
+                "macro": "Water",
+                "width": 24,
+                "x": 216,
+                "y": 0
+              },
+              {
+                "macro": "Floor",
+                "width": 88,
+                "x": 240,
+                "y": 0
+              },
+              {
+                "thing": "Block",
+                "hidden": true,
+                "x": 264,
+                "y": 32
+              },
+              {
+                "thing": "Stone",
+                "width": 16,
+                "x": 280,
+                "y": 32
+              },
+              {
+                "macro": "Pipe",
+                "height": 24,
+                "transport": 3,
+                "x": 280,
+                "y": 32
+              },
+              {
+                "thing": "Koopa",
+                "jumping": true,
+                "x": 304,
+                "y": 28
+              },
+              {
+                "thing": "Koopa",
+                "jumping": true,
+                "x": 320,
+                "y": 36
+              }
+            ]
+          },
+          "stretch": {
+            "width": 8,
+            "creation": [
+              {
+                "macro": "Floor",
+                "x": 0,
+                "y": 0
+              },
+              {
+                "thing": "Stone",
+                "x": 0,
+                "y": 88
+              }
+            ]
+          },
+          "after": {
+            "width": 16,
+            "creation": [
+              {
+                "macro": "Pipe",
+                "height": "Infinity",
+                "piranha": true,
+                "x": 0,
+                "y": 16
+              },
+              {
+                "thing": "Stone",
+                "width": 16,
+                "x": 0,
+                "y": 88
+              },
+              {
+                "macro": "Section",
+                "x": 16,
+                "y": 0
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "area": 2,
+      "setting": "Castle",
+      "underwater": false,
+      "exit": null,
+      "sections": [
+        {
+          "before": {
+            "width": 264,
+            "creation": [
+              {
+                "thing": "Stone",
+                "width": 264,
+                "x": 0,
+                "y": 88
+              },
+              {
+                "macro": "Floor",
+                "x": 0,
+                "y": 0
+              },
+              {
+                "macro": "Floor",
+                "width": 48,
+                "x": 8,
+                "y": 24
+              },
+              {
+                "macro": "Pipe",
+                "height": "Infinity",
+                "piranha": true,
+                "x": 56,
+                "y": 40
+              },
+              {
+                "macro": "CheepsStart",
+                "x": 72,
+                "y": 0
+              },
+              {
+                "macro": "Floor",
+                "width": 48,
+                "x": 72,
+                "y": 24
+              },
+              {
+                "macro": "Pipe",
+                "height": "Infinity",
+                "piranha": true,
+                "transport": 1,
+                "x": 120,
+                "y": 48
+              },
+              {
+                "macro": "Floor",
+                "width": 48,
+                "x": 136,
+                "y": 24
+              },
+              {
+                "macro": "Water",
+                "width": 32,
+                "x": 184,
+                "y": 0
+              },
+              {
+                "macro": "Floor",
+                "width": 32,
+                "x": 216,
+                "y": 24
+              },
+              {
+                "macro": "Pipe",
+                "height": "Infinity",
+                "piranha": true,
+                "transport": 4,
+                "x": 248,
+                "y": 40
+              },
+              {
+                "macro": "CheepsStop",
+                "x": 264,
+                "y": 0
+              }
+            ]
+          },
+          "stretch": {
+            "width": 8,
+            "creation": [
+              {
+                "macro": "Floor",
+                "x": 0,
+                "y": 24
+              },
+              {
+                "thing": "Stone",
+                "x": 0,
+                "y": 88
+              }
+            ]
+          },
+          "after": {
+            "width": 40,
+            "creation": [
+              {
+                "macro": "Floor",
+                "width": 24,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "thing": "Stone",
+                "width": 40,
+                "x": 0,
+                "y": 88
+              },
+              {
+                "macro": "Pipe",
+                "height": "Infinity",
+                "piranha": true,
+                "x": 24,
+                "y": 16
+              },
+              {
+                "macro": "Section",
+                "x": 40,
+                "y": 0
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "area": 3,
+      "setting": "Underwater Castle",
+      "underwater": true,
+      "exit": null,
+      "sections": []
+    },
+    {
+      "area": 4,
+      "setting": "Castle",
+      "underwater": false,
+      "exit": null,
+      "sections": []
+    }
+  ],
+  "links": [
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r006"
+      },
+      "kind": "Section",
+      "target": {
+        "macro": "Section",
+        "x": 168,
+        "y": 0
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "section": 0,
+        "part": "after",
+        "record": "r000"
+      },
+      "kind": "location",
+      "target": 1
+    },
+    {
+      "from": {
+        "area": 0,
+        "section": 0,
+        "part": "after",
+        "record": "r009"
+      },
+      "kind": "location",
+      "target": 2
+    },
+    {
+      "from": {
+        "area": 0,
+        "section": 0,
+        "part": "after",
+        "record": "r013"
+      },
+      "kind": "Section",
+      "target": {
+        "macro": "Section",
+        "x": 424,
+        "y": 0
+      }
+    },
+    {
+      "from": {
+        "area": 1,
+        "part": "base",
+        "record": "r002"
+      },
+      "kind": "Section",
+      "target": {
+        "macro": "Section",
+        "x": 16,
+        "y": 0
+      }
+    },
+    {
+      "from": {
+        "area": 1,
+        "section": 0,
+        "part": "before",
+        "record": "r005"
+      },
+      "kind": "location",
+      "target": 1
+    },
+    {
+      "from": {
+        "area": 1,
+        "section": 0,
+        "part": "before",
+        "record": "r014"
+      },
+      "kind": "location",
+      "target": 3
+    },
+    {
+      "from": {
+        "area": 1,
+        "section": 0,
+        "part": "after",
+        "record": "r002"
+      },
+      "kind": "Section",
+      "target": {
+        "macro": "Section",
+        "x": 16,
+        "y": 0
+      }
+    },
+    {
+      "from": {
+        "area": 2,
+        "part": "base",
+        "record": "r002"
+      },
+      "kind": "Section",
+      "target": {
+        "macro": "Section",
+        "x": 16,
+        "y": 0
+      }
+    },
+    {
+      "from": {
+        "area": 2,
+        "section": 0,
+        "part": "before",
+        "record": "r006"
+      },
+      "kind": "location",
+      "target": 1
+    },
+    {
+      "from": {
+        "area": 2,
+        "section": 0,
+        "part": "before",
+        "record": "r010"
+      },
+      "kind": "location",
+      "target": 4
+    },
+    {
+      "from": {
+        "area": 2,
+        "section": 0,
+        "part": "after",
+        "record": "r003"
+      },
+      "kind": "Section",
+      "target": {
+        "macro": "Section",
+        "x": 40,
+        "y": 0
+      }
+    },
+    {
+      "from": {
+        "area": 3,
+        "part": "base",
+        "record": "r021"
+      },
+      "kind": "location",
+      "target": 5
+    },
+    {
+      "from": {
+        "area": 4,
+        "part": "base",
+        "record": "r003"
+      },
+      "kind": "location",
+      "target": 1
+    },
+    {
+      "from": {
+        "area": 4,
+        "part": "base",
+        "record": "r010"
+      },
+      "kind": "world",
+      "target": {
+        "map": "1-1"
+      }
+    }
+  ],
+  "issues": []
+}

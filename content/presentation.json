@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "entries": {
+    "project-q-mimi": {
+      "kind": "sprite",
+      "preset": "character-paper",
+      "src": "projects/q-mimi/spritesheet.webp",
+      "alt": "Q咪的眨眼与挥爪动画",
+      "fit": "contain",
+      "rendering": "auto",
+      "tone": "dark",
+      "sprite": {
+        "width": 96,
+        "height": 104,
+        "columns": 8,
+        "rows": 11,
+        "frames": 6,
+        "durationMs": 1560
+      }
+    },
+    "project-q-workflow": {
+      "kind": "image",
+      "preset": "interface",
+      "src": "assets/illustrations/workflow.svg",
+      "alt": "任务清单、代码分支与检查连接起来的工作流示意",
+      "fit": "contain",
+      "rendering": "auto",
+      "tone": "paper",
+      "categoryLabel": "开发工具"
+    }
+  }
+}

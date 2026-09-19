@@ -1,0 +1,448 @@
+/* Release gameplay extension. Native Terraria sheets have pinned source URLs.
+   A missing optional NPC sheet never spawns an invisible enemy. */
+const T21_REMOTE={NPC61:'NPC_61.png',NPC181:'NPC_181.png',NPC42:'NPC_42.png',NPC150:'NPC_150.png',NPC173:'NPC_173.png',NPC668:'NPC_668.png',iceBlade:'Item_724.png',boomstick:'Item_964.png',flurry:'Item_1579.png',blizzard:'Item_987.png',anklet:'Item_212.png',claws:'Item_211.png',mirror:'Item_50.png',healing:'Item_188.png',manaPotion:'Item_189.png',silverCoin:'Item_72.png'};
+const t21Art={},t21ArtState={},t21Frames={};
+function t21ImageLoad(key,src,timeout=14000){return new Promise(resolve=>{const im=new Image();im.crossOrigin='anonymous';let done=false;const finish=ok=>{if(done)return;done=true;clearTimeout(timer);if(ok){if(!src.startsWith('data:')){try{const cv=document.createElement('canvas');cv.width=im.width;cv.height=im.height;cv.getContext('2d').drawImage(im,0,0);localStorage.setItem('marioMix.native.'+key,cv.toDataURL('image/png'));}catch{}}t21Art[key]=im;if(!key.startsWith('NPC'))r06Images[key]=im;r08ImageRevision++;t21ArtState[key]='ready';}resolve(ok);};im.onload=()=>finish(im.naturalWidth>0);im.onerror=()=>finish(false);const timer=setTimeout(()=>finish(false),timeout);im.src=src;});}
+const t21EmbeddedReady=Promise.all(Object.entries(T21_NATIVE).map(([k,src])=>t21ImageLoad(k,src,3000)));
+const t21ArtReady=t21EmbeddedReady.then(async()=>{
+ const jobs=Object.entries(T21_REMOTE).map(async([k,file])=>{if(t21Art[k])return true;t21ArtState[k]='loading';try{const saved=localStorage.getItem('marioMix.native.'+k);if(saved?.startsWith('data:image/png;base64,')&&await t21ImageLoad(k,saved,2500))return true;}catch{}const base='sullerandras/terraria-hd-textures',rev='93960b7c8226c57a10dc2474d73d4b604b401c40';for(const src of [`https://cdn.jsdelivr.net/gh/${base}@${rev}/source-pngs/${file}`,`https://raw.githubusercontent.com/${base}/${rev}/source-pngs/${file}`])if(await t21ImageLoad(k,src))return true;t21ArtState[k]='unavailable';return false;});
+ return Promise.all(jobs);
+});
+// Use original pixels, not recolored generic slimes, for additional biome monsters.
+// Atlas frames are specified for the small NPCs; Deerclops bounds are found from
+// transparent margins, avoiding hard-coded guessed multi-column frame heights.
+function t21DeerFrames(){if(t21Frames.deer)return t21Frames.deer;const im=t21Art.NPC668;if(!im)return null;
+ const cv=document.createElement('canvas');cv.width=im.width;cv.height=im.height;const g=cv.getContext('2d');g.drawImage(im,0,0);
+ try{const data=g.getImageData(0,0,cv.width,cv.height).data,out=[],cw=im.width/5;
+  for(let col=0;col<5;col++){let start=-1,last=-1;for(let y=0;y<im.height;y++){let any=false;for(let x=col*cw;x<(col+1)*cw;x++)if(data[(y*im.width+x)*4+3]>0){any=true;break;}
+    if(any){if(start<0)start=y;last=y;}if(start>=0&&(!any&&y-last>10||y===im.height-1)){if(last-start>70){let min=cw,max=0;for(let yy=start;yy<=last;yy++)for(let x=0;x<cw;x++)if(data[(yy*im.width+col*cw+x)*4+3]>0){min=Math.min(min,x);max=Math.max(max,x);}out.push({x:col*cw+min,y:start,w:max-min+1,h:last-start+1,col});}start=-1;}}
+  }
+  if(out.length)t21Frames.deer=out;return out;
+ }catch{return null;}}
+Object.assign(T10_ITEMS,{iceBlade:{grip:[5,35],tip:[30,3],scale:1,style:'swing'},boomstick:{grip:[10,13],tip:[38,8],scale:1,style:'gun'}});
+// Complete the two new weapon paths. These projectiles NEVER share the homing-
+// Chlorophyte bullet handler. The mouse remains manual, pad lock sets launch only.
+function t21Shot(s,kind,x,y,vx,vy,damage,life=100){t21Ensure(s);const a={kind,x,y,vx,vy,damage,life,age:0,hit:[],w:3,h:3};s.t21ExtraShots.push(a);return a;}
+const t21AttackBase=r06Attack;
+r06Attack=function(v={}){const s=state,p=s?.p;if(!s||s.tool!==0||p.cooldown>0)return;const weapon=r06Weapon(s);
+ if(['iceBlade','boomstick'].includes(weapon)){const aim=r06Arm(s,v),sc=t10Scale(s),angle=aim.facing<0?Math.PI-aim.angle:aim.angle,duration=weapon==='iceBlade'?20:40;p.attack=p.cooldown=p.t10SwingDuration=duration;p.t10PreviousBlade=null;s.attackId++;
+  const hand=t10WorldPose(s).hand;
+  if(weapon==='iceBlade'){if(!(s.t21IceCooldown>0)){t21Shot(s,'icebolt',hand.x,hand.y,Math.cos(angle)*9*sc,Math.sin(angle)*9*sc,17,100);s.t21IceCooldown=60;}terraSound('swing',{volume:.55});}
+  else{for(let i=0;i<4;i++){const a=angle+(i-1.5)*.055;t21Shot(s,'pellet',hand.x+Math.cos(a)*20*sc,hand.y+Math.sin(a)*20*sc,Math.cos(a)*12*sc,Math.sin(a)*12*sc,14,75);}terraSound('shoot',{volume:.55});}
+  t21Event('new-weapon-attack',{weapon,source:aim.source});return;
+ }
+ const before=s.attackId,ret=t21AttackBase(v);if(s.t13Accessories.claws&&s.attackId!==before&&['starfury','terraBlade','zenith'].includes(weapon)){p.cooldown=Math.max(1,Math.round(p.cooldown/1.12));p.attack=Math.max(1,Math.round(p.attack/1.12));p.t10SwingDuration=p.attack;}
+ return ret;
+};r05Attack=r06Attack;
+const t21ArcBase=t10HitArc;
+t10HitArc=function(s,targets){const weapon=r06Weapon(s);if(weapon==='boomstick')return;if(weapon!=='iceBlade')return t21ArcBase(s,targets);const p=s.p;if(p.attack<2||p.attack>p.t10SwingDuration-2)return;const pose=t10WorldPose(s);
+ for(const t of targets){if(t.obj.t21Arc===s.attackId)continue;const box={x:t.x-t.w/2,y:t.y-t.h/2,w:t.w,h:t.h};if(segmentHits(pose.hand,pose.end,box,4*t10Scale(s))){t.obj.t21Arc=s.attackId;r06DamageTarget(t,17,'ice-blade-melee');}}
+};
+// Recovered class weapons retain their archetype without silently changing armor.
+const T21_CLASS_WEAPON={zenith:'melee',sdmg:'ranger',lastPrism:'mage',terraprisma:'summoner',kaleidoscope:'summoner'};
+T21_ITEMS.kaleidoscope={name:'万花筒',effect:'鞭子标记目标；召唤剑自主攻击',icon:'kaleidoscope',weapon:true};
+const t21CombatBase=r06TickCombat;
+r06TickCombat=function(v){const s=state,weapon=r06Weapon(s),type=T21_CLASS_WEAPON[weapon];if(!type)return t21CombatBase(v);const kit=s.kit,override=s.t13WeaponOverride;s.kit=type;s.t13WeaponOverride=false;if(type==='summoner'&&!s.minions?.length)r06CreateMinions(s);try{return t21CombatBase(v);}finally{s.kit=kit;s.t13WeaponOverride=override;}};
+
+function t21NpcDamage(s,amount,x){const p=s.p;if(mode!=='playing'||p.invuln||s.t13Recalling)return;const damage=Math.max(1,Math.round(amount)-Math.floor(r06Defense(s)*.5));s.hp=Math.max(0,s.hp-damage);p.invuln=90;p.hurtLock=12;p.vx=(p.x+p.w/2<x?-1:1)*3;p.vy=-3.3;p.grounded=false;p.support=null;p.attack=0;number('-'+damage,p.x,p.y,'#ffc3b6');terraSound('hurt');t21Event('npc-hurt',{damage,hp:s.hp});if(!s.hp){if(s.r05Arena){s.phase='defeated';mode='respawn';clearInput();showOverlay('地下探索','再试一次','已打开的宝箱与地形保留。','回准备场 →','ENTER / A');}else fail('damage');}}
+const T21_NPCS={
+ vulture:{name:'秃鹫',art:'NPC61',fw:78,fh:60,n:6,w:34,h:28,hp:132,damage:14,defense:4,style:'vulture'},
+ faceMonster:{name:'脸怪',art:'NPC181',fw:34,fh:48,n:22,w:24,h:40,hp:144,damage:25,defense:10,style:'walker'},
+ hornet:{name:'黄蜂',art:'NPC42',fw:44,fh:40,n:4,w:24,h:24,hp:126,damage:18,defense:6,style:'hornet'},
+ iceBat:{name:'冰雪蝙蝠',art:'NPC150',fw:38,fh:32,n:4,w:24,h:18,hp:132,damage:18,defense:6,style:'bat'},
+ crimera:{name:'猩红喀迈拉',art:'NPC173',fw:48,fh:40,n:4,w:30,h:24,hp:140,damage:22,defense:8,style:'chase'}
+};
+function t21ConvertFoe(e,key,s){const def=T21_NPCS[key],art=t21Art[def?.art];if(!def||!art||e.t21Species||e===s.eye||e.kind==='eyeBoss'||!Number.isFinite(e.w)||!Number.isFinite(e.h))return false;const feet=e.y+e.h,sc=s.r05Arena?1:.75;e.t21Original={kind:e.kind,w:e.w,h:e.h};e.t21Species=key;e.kind=key;e.w=def.w*sc;e.h=def.h*sc;e.y=feet-e.h;if(['vulture','walker'].includes(def.style)){const home=s.level.surfaces.find(q=>q.id===e.home);if(home)e.y=home.y-e.h;}e.hp=e.maxHp=Math.round(def.hp*(e.elite?1.75:1));e.t21Scale=sc;e.flying=['vulture','hornet','bat','chase'].includes(def.style);e.t21Mood=def.style==='vulture'?'perched':'awake';e.age=0;e.vx=0;e.vy=0;e.dead=false;return true;}
+function t21Populate(s){if(!s||s.stage!==0)return;for(const [i,e]of(s.r05Arena?[]:s.foes||[]).entries()){
+ if(e===s.eye||e.kind==='eyeBoss'||!Number.isFinite(e.w)||!Number.isFinite(e.h))continue;
+ if(!e.t21HpRaised&&!e.t21Species){e.t21HpRaised=true;e.hp=e.maxHp=Math.max(e.elite?180:132,Math.ceil(e.maxHp*1.1));}const b=e.t16Biome||t16BiomeAt(e.x,s).id,key=b==='desert'?'vulture':b==='crimson'?(i%2?'crimera':'faceMonster'):b==='jungle'?'hornet':b==='snow'?'iceBat':null;
+ if(key&&!['goomba','koopa'].includes(e.kind)&&!e.dead&&!e.active)t21ConvertFoe(e,key,s);
+ }
+ for(const [i,e]of(s.t13World?.deepFoes||[]).entries()){if(e.dead||e.active||e.t21Species)continue;const key=e.biome===2?(i%2?'crimera':'faceMonster'):e.biome===3?'hornet':e.biome===4?'iceBat':e.biome===5?(i%2?'sporeSkeleton':'sporeBat'):e.biome===6?'graniteElemental':e.biome===8?'eaterOfSouls':null;if(key)t21ConvertFoe(e,key,s);}
+}
+function t21NpcMove(s,e,surfaces){const def=T21_NPCS[e.t21Species],p=s.p,sc=e.t21Scale||1,view=s.r05Arena?900:320;if(e.dead)return;if(Math.abs(e.x-p.x)>view||Math.abs(e.y-p.y)>(s.r05Arena?570:240)){e.active=false;return;}e.active=true;e.age++;if(e.flash)e.flash--;const dx=p.x+p.w/2-e.x-e.w/2,dy=p.y+p.h*.5-e.y-e.h/2,dir=Math.sign(dx)||e.dir||1;
+ if(e.knock>0){e.knock--;e.vx*=.9;}else if(e.t21Mood==='perched'){e.vx=0;e.vy=0;if(Math.hypot(dx,dy)<180*sc||e.hp<e.maxHp){e.t21Mood='awake';e.vy=-2.2*sc;}}
+ else if(def.style==='walker'){e.dir=dir;e.vx=dir*1.35*sc;if(e.grounded&&dy< -18&&e.age%45===0)e.vy=-5.6*sc;}
+ else{const distance=Math.hypot(dx,dy)||1,range=def.style==='hornet'?130*sc:0,tx=dx-dir*range,ty=dy+(def.style==='hornet'?-35*sc:0),d=Math.hypot(tx,ty)||1,sp=(def.style==='bat'?2.6:def.style==='chase'?2.4:2.15)*sc;e.vx=approach(e.vx,tx/d*sp,.07*sc);e.vy=approach(e.vy,ty/d*sp,.055*sc);e.dir=e.vx<0?-1:1;
+  if(def.style==='hornet'&&distance<260*sc&&e.age%145===0&&t14Visible(s,{x:e.x+e.w/2,y:e.y+e.h/2})){s.t21Hostile.push({kind:'stinger',x:e.x+e.w/2,y:e.y+e.h/2,vx:dx/distance*4*sc,vy:dy/distance*4*sc,life:100,age:0,damage:18});}}
+ const old={x:e.x,y:e.y,w:e.w,h:e.h};if(def.style==='walker')e.vy=Math.min(7*sc,e.vy+.28*sc);e.x+=e.vx;e.y+=e.vy;e.grounded=false;
+ for(const q of surfaces){if(q.solid&&near(e,q)&&old.y<q.y+q.h&&old.y+old.h>q.y&&Math.abs(e.vx)>0){e.x=old.x;e.vx=0;if(def.style==='walker')e.vy=-4.9*sc;else e.vy=dy<0?-2*sc:2*sc;}
+ if(e.x+e.w>q.x&&e.x<q.x+q.w&&old.y+e.h<=q.y+.6&&e.y+e.h>=q.y&&e.vy>=0){e.y=q.y-e.h;e.vy=0;e.grounded=true;}}
+ if(e.y>(s.r05Arena?T13.top+T13.rows*16:300)){e.dead=true;return;}
+ if(near(p,e))t21NpcDamage(s,def.damage,e.x+e.w/2);
+}
+const t21EnemiesBase=updateEnemies;
+updateEnemies=function(ss){const s=state,all=s.foes,custom=all.filter(e=>e.t21Species);s.foes=all.filter(e=>!e.t21Species);try{t21EnemiesBase(ss);}finally{s.foes=all;}for(const e of custom)t21NpcMove(s,e,ss);};
+const t21DeepBase=t17DeepStep;
+t17DeepStep=function(s){const all=s.t13World?.deepFoes;if(!all)return;const custom=all.filter(e=>e.t21Species);s.t13World.deepFoes=all.filter(e=>!e.t21Species);try{t21DeepBase(s);}finally{s.t13World.deepFoes=all;}for(const e of custom){const box={x:e.x-24,y:e.y-24,w:e.w+48,h:e.h+64};t21NpcMove(s,e,t13PhysicalSurfaces(s,box));}};
+function t21DrawNpc(e,c){const def=T21_NPCS[e.t21Species],im=t21Art[def?.art];if(e.dead)return true;if(!im)return true;const sc=e.t21Scale||1,frames=t21NativeFrames(im,def.art,def.n),frame=e.t21Mood==='perched'?frames[0]:frames[Math.floor(e.age/(def.style==='walker'?7:6))%frames.length],fh=frame.h,fw=im.width,f=0;ctx.save();ctx.imageSmoothingEnabled=false;ctx.translate(Math.round(e.x+e.w/2-c),Math.round(e.y+e.h));ctx.scale(e.dir<0?sc:-sc,sc);if(e.flash%2)ctx.globalAlpha=.5;ctx.drawImage(im,0,frame.y,fw,fh,-fw/2,-fh+2,fw,fh);ctx.restore();return true;}
+const t21FoeDrawBase=t10DrawFoe;t10DrawFoe=function(e,c){return e.t21Species?t21DrawNpc(e,c):t21FoeDrawBase(e,c);};
+const t21DrawDeepBase=t17DrawDeep;t17DrawDeep=function(s){const all=s.t13World.deepFoes;s.t13World.deepFoes=all.filter(e=>!e.t21Species);try{t21DrawDeepBase(s);}finally{s.t13World.deepFoes=all;}for(const e of all)if(e.t21Species&&e.active)t21DrawNpc(e,s.cam);};
+
+// Deerclops occupies the lower snow clearing BEFORE the final staircase. It does
+// not replace/resize the original stairs or seal the flag/castle route.
+function t21MakeDeer(s){const art=t21Art.NPC668,frames=t21DeerFrames();if(s.t21Deer||!art||!frames?.length||s.r05Arena)return;
+ s.t21Deer={id:'t21-deerclops',kind:'deerclops',x:2132,y:146,w:36,h:62,hp:7000,maxHp:7000,defense:10,active:false,dead:false,vx:0,vy:0,dir:-1,age:0,mode:'dormant',cycle:0,flash:0,shots:[],frame:0};}
+function t21DeerMode(e,m){e.mode=m;e.age=0;t21Event('deer-state',{mode:m});}
+function t21IceWave(s,e,both=false){for(const direction of both?[-1,1]:[e.dir])for(let i=0;i<(both?9:7);i++){const x=e.x+e.w/2+direction*(35+i*13),ground=Math.min(208,...s.level.surfaces.filter(q=>q.solid&&x>=q.x&&x<q.x+q.w&&q.y>=80).map(q=>q.y));s.t21Hostile.push({kind:'ice-spike',x,y:ground,w:11,h:25+i,age:-i*5,life:72,damage:26});}}
+function t21Hands(s,e){for(let i=0;i<5;i++){const angle=i*Math.PI*2/5,px=s.p.x+s.p.w/2,py=s.p.y+s.p.h/2;s.t21Hostile.push({kind:'shadow-hand',x:px+Math.cos(angle)*70,y:py+Math.sin(angle)*52,tx:px+s.p.vx*14,ty:py+s.p.vy*8,age:0,life:130,damage:28,vx:0,vy:0});}}
+function t21DeerStep(s){const e=s.t21Deer;if(!e||e.dead||s.r05Arena)return;const p=s.p,dx=p.x+p.w/2-e.x-e.w/2,dy=p.y+p.h/2-e.y-e.h/2,d=Math.hypot(dx,dy);
+ if(e.mode==='dormant'){if(p.x>2050&&p.x<2230&&p.y+p.h>145){e.active=true;t21DeerMode(e,'awaken');terraSound('roar',{volume:.65});}return;}
+ if(d>470){e.active=false;s.t21Hostile=s.t21Hostile.filter(a=>!['ice-spike','debris','shadow-hand'].includes(a.kind));t21DeerMode(e,'dormant');return;}e.active=true;e.invulnerable=d>360;e.age++;if(e.flash)e.flash--;e.dir=Math.sign(dx)||e.dir;
+ if(e.mode==='awaken'){if(e.age>90)t21DeerMode(e,'walk');}
+ else if(e.mode==='walk'){e.x=clamp(e.x+e.dir*.58,2078,2144);if(p.y+p.h<e.y+20&&e.age>85)t21DeerMode(e,'hands');else if(Math.abs(dx)<95&&e.age>70)t21DeerMode(e,'slam');else if(e.age>150)t21DeerMode(e,'throw');}
+ else if(e.mode==='slam'){if(e.age===38){t21IceWave(s,e,e.cycle%3===2);e.cycle++;terraSound('break',{volume:.65});}if(e.age>86)t21DeerMode(e,'walk');}
+ else if(e.mode==='throw'){if(e.age===45)for(let i=0;i<5;i++){const vx=e.dir*(1.7+i*.45);s.t21Hostile.push({kind:'debris',x:e.x+e.w/2,y:e.y+20,vx,vy:-4.8-i*.22,age:0,life:190,damage:28});}if(e.age>108)t21DeerMode(e,'walk');}
+ else if(e.mode==='hands'){if(e.age===42)t21Hands(s,e);if(e.age>118)t21DeerMode(e,'walk');}
+ if(e.mode!=='awaken'&&near(p,e))t21NpcDamage(s,30,e.x+e.w/2);
+}
+const t21AllTargetsBase=r06AllTargets;r06AllTargets=function(s){const a=t21AllTargetsBase(s),e=s.t21Deer;if(!s.r05Arena&&e?.active&&!e.dead&&e.mode!=='awaken')a.push({id:e.id,x:e.x+e.w/2,y:e.y+e.h/2,w:e.w,h:e.h,obj:e});return a;};
+const t21DamageBase=r06DamageTarget;
+r06DamageTarget=function(t,damage,kind){const e=t?.obj,s=state;if(!e?.t21Species&&e?.kind!=='deerclops')return t21DamageBase(t,damage,kind);if(e.dead||e.invulnerable||e.mode==='awaken')return;const defense=e.kind==='deerclops'?10:T21_NPCS[e.t21Species].defense,armor=Math.max(0,defense-(s.t13Accessories.shark?5:0)),actual=Math.max(1,Math.round(damage-armor*.5));e.hp-=actual;e.flash=8;
+ if(e.kind!=='deerclops'){e.knock=kind==='copper-axe'?18:11;e.vx=(s.p.attackFacing||s.p.facing)*(kind==='copper-axe'?4.5:2.5)*(e.elite?.55:1);e.vy=-2;e.t21Mood='awake';}
+ number(String(actual),t.x,t.y-12,'#f2debb');if(e.hp<=0){e.hp=0;e.dead=true;e.active=false;e.vx=e.vy=0;t10Burst(s,e.x+e.w/2,e.y+e.h/2,'hit',12);s.kills++;s.score+=e.kind==='deerclops'?5000:100;terraSound('npcDeath');t21Event('enemy-defeated',{id:e.id,kind:e.kind});if(e.kind==='deerclops'){s.t21Hostile=s.t21Hostile.filter(a=>a.kind==='stinger');t21Drop(s,'weatherPain',1,e.x-8,180,{vx:-1,pickDelay:42});t21Drop(s,'lucy',1,e.x+12,180,{vx:.6,pickDelay:42});t21Drop(s,'healing',5,e.x+24,180,{vx:1,pickDelay:42});t21Drop(s,'silverCoin',100,e.x+36,180,{vx:1.4,pickDelay:42});t21Event('deer-defeated',{reward:'weatherPain',adaptation:'guaranteed physical loot'});}else if(e.elite)t21Drop(s,'healing',1,e.x,e.y);}};
+function t21ExtraStep(s){if(s.t21IceCooldown>0)s.t21IceCooldown--;const targets=r06AllTargets(s),sc=t10Scale(s);
+ for(const a of s.t21ExtraShots){a.age++;a.life--;const from={x:a.x,y:a.y};a.x+=a.vx;a.y+=a.vy;const box={x:Math.min(from.x,a.x)-2,y:Math.min(from.y,a.y)-2,w:Math.abs(a.vx)+4,h:Math.abs(a.vy)+4};if(t13PhysicalSurfaces(s,box).some(q=>q.solid&&segmentHits(from,a,q,1))){a.life=0;continue;}
+  for(const t of targets){if(a.hit.includes(t.id))continue;if(segmentHits(from,a,{x:t.x-t.w/2,y:t.y-t.h/2,w:t.w,h:t.h},2*sc)){a.hit.push(t.id);r06DamageTarget(t,a.damage,a.kind);a.life=0;break;}}}
+ s.t21ExtraShots=s.t21ExtraShots.filter(a=>a.life>0);
+ for(const a of s.t21Hostile){a.age++;a.life--;if(a.kind==='ice-spike'){if(a.age>8&&a.age<42&&near(s.p,{x:a.x-a.w/2,y:a.y-a.h,w:a.w,h:a.h}))t21NpcDamage(s,a.damage,a.x);continue;}
+ if(a.kind==='shadow-hand'){if(a.age===35){const dx=a.tx-a.x,dy=a.ty-a.y,d=Math.hypot(dx,dy)||1;a.vx=dx/d*3.3;a.vy=dy/d*3.3;}if(a.age<35)continue;}
+ if(a.kind==='debris')a.vy+=.16;const from={x:a.x,y:a.y};a.x+=a.vx||0;a.y+=a.vy||0;if(a.kind!=='shadow-hand'&&t13PhysicalSurfaces(s,{x:a.x-3,y:a.y-3,w:6,h:6}).some(q=>q.solid&&segmentHits(from,a,q,1))){a.life=0;continue;}if(near(s.p,{x:a.x-4,y:a.y-4,w:8,h:8})){t21NpcDamage(s,a.damage,a.x);a.life=0;}}
+ s.t21Hostile=s.t21Hostile.filter(a=>a.life>0);
+}
+function t22DeerPose(e){
+ const walk=[[0,2],[0,3],[0,4],[1,0],[1,1],[1,2],[1,3],[1,4],[2,0],[2,1],[2,2]];
+ let cell=[0,0];
+ if(e.mode==='walk')cell=walk[Math.floor(e.age/9)%walk.length];
+ else if(e.mode==='slam')cell=e.age<24?[2,3]:e.age<38?[2,4]:e.age<55?[3,0]:e.age<70?[3,1]:[3,2];
+ else if(e.mode==='throw')cell=e.age<24?[2,3]:e.age<45?[2,4]:e.age<64?[3,3]:[3,4];
+ else if(e.mode==='hands'||e.mode==='awaken')cell=[4,Math.min(4,Math.floor(e.age/18))];
+ return {x:cell[0]*218,y:cell[1]*240,w:218,h:240,scale:.3,foot:238};
+}
+function t21DrawDeer(s,c){
+ const e=s.t21Deer,im=t21Art.NPC668;if(!e||e.dead||!im)return;
+ const f=t22DeerPose(e);ctx.save();ctx.imageSmoothingEnabled=false;
+ ctx.translate(Math.round(e.x+e.w/2-c),Math.round(e.y+e.h));ctx.scale(e.dir>0?1:-1,1);
+ if(e.flash%2)ctx.globalAlpha=.6;
+ ctx.drawImage(im,f.x,f.y,f.w,f.h,-109*f.scale,-f.foot*f.scale,f.w*f.scale,f.h*f.scale);ctx.restore();
+ if(e.active){ctx.fillStyle='#111d29';ctx.fillRect(Math.round(e.x-c-1),Math.round(e.y-9),38,3);ctx.fillStyle='#af515c';ctx.fillRect(Math.round(e.x-c),Math.round(e.y-8),36*Math.max(0,e.hp/e.maxHp),1);}
+}
+const t21ProjectileRenderBase=r06DrawProjectiles;r06DrawProjectiles=function(s,c){t21ProjectileRenderBase(s,c);if(!s.r05Arena)t21DrawDeer(s,c);const sc=t10Scale(s);ctx.save();
+ for(const a of s.t21ExtraShots){ctx.strokeStyle=a.kind==='icebolt'?'#a4e5f7':'#e8d8a0';ctx.lineWidth=a.kind==='icebolt'?3*sc:1*sc;ctx.beginPath();ctx.moveTo(a.x-c-a.vx*.65,a.y-a.vy*.65);ctx.lineTo(a.x-c,a.y);ctx.stroke();}
+ for(const a of s.t21Hostile){if(a.age<0)continue;if(a.kind==='ice-spike'){const h=a.h*Math.min(1,a.age/8,Math.max(0,(65-a.age)/20));const im=t21Art.deerIce;if(im&&h>0){ctx.save();ctx.translate(Math.round(a.x-c),Math.round(a.y));ctx.rotate(Math.PI/2);const row=Math.abs(Math.floor(a.x/13))%5;ctx.drawImage(im,0,row*48,200,48,-h,-h*.12,h,h*.24);ctx.restore();}}
+ else if(a.kind==='debris'){const im=t21Art.deerDebris;if(im){ctx.save();ctx.translate(Math.round(a.x-c),Math.round(a.y));ctx.rotate(a.age*.06);ctx.drawImage(im,Math.abs(Math.round(a.vx))%3*34,68,34,34,-6,-6,12,12);ctx.restore();}}
+ else if(a.kind==='shadow-hand'){const im=t10Tint('deerHand',[66,48,72]);if(im){ctx.save();ctx.globalAlpha=a.age<35?.2+a.age/60:.85;ctx.translate(Math.round(a.x-c),Math.round(a.y));ctx.rotate(Math.atan2((a.vy||0),(a.vx||0))+Math.PI/2);ctx.drawImage(im,-8,-8.4,16,16.8);ctx.restore();}}
+ else{ctx.fillStyle='#b8c06f';ctx.fillRect(a.x-c-3,a.y-1,6,2);}}
+ ctx.restore();};
+const t21NewBase=newState;newState=function(){const s=t21NewBase();t21Ensure(s);t21Populate(s);t21MakeDeer(s);return s;};
+const t21ExtraStepBase=step;step=function(v){const s=state;t21Ensure(s);if(s&&mode==='playing'){if(s.ticks%120===0){t21Populate(s);t21MakeDeer(s);}if(v.jumpEdge&&!s.p.grounded&&s.p.cloudAvailable&&s.t13Accessories.blizzard)s.t21BlizzardJump=true;}
+ const ret=t21ExtraStepBase(v);if(state===s&&s&&mode==='playing'&&!s.t11Transition){if(s.t21BlizzardJump){if(!s.p.cloudAvailable&&s.p.vy<0){s.p.vy*=1.24;s.r06FX.push({type:'cloud',x:s.p.x+s.p.w/2,y:s.p.y+s.p.h,age:0});}s.t21BlizzardJump=false;}t21ExtraStep(s);t21DeerStep(s);}return ret;};
+
+const t25DeerStepBase=t21DeerStep;
+let t25DeerLastTick=-1;
+t21DeerStep=function(s){
+ if(!s?.t21Deer||s.t21Deer.dead||s.r05Arena)return t25DeerStepBase(s);
+ // Keep the chase/collision cadence at 60 Hz; avoid duplicate calls after secret exit.
+ if(t25DeerLastTick===s.ticks)return;
+ t25DeerLastTick=s.ticks;
+ return t25DeerStepBase(s);
+};
+
+// Mainline movement is in r04MainStep rather than r05Physics. Keep the
+// requested fall and Deerclops backward-motion fixes on that path too.
+const t25MainStepBase=r04MainStep;
+r04MainStep=function(v){
+ const s=state,p=s?.p,wasGround=!!p?.grounded,oldFeet=p?p.y+p.h:0,ret=t25MainStepBase(v);
+ if(!p||state!==s||mode!=='playing'||s.r05Arena)return ret;
+ const deer=s.t21Deer,backing=!!(deer?.active&&deer.mode!=='dormant'&&!p.hurtLock&&v.x&&p.facing&&Math.sign(v.x)!==Math.sign(p.facing));
+ if(backing&&!s.mounted)p.vx=approach(p.vx,v.x*2.75,.48);
+ if(p.grounded){
+  if(!wasGround){const start=Number.isFinite(p.t25FallStartY)?p.t25FallStartY:oldFeet;t25FallDamage(s,Math.max(0,p.y+p.h-start));}
+  p.t25FallStartY=null;
+ }else if(wasGround||!Number.isFinite(p.t25FallStartY))p.t25FallStartY=oldFeet;
+ return ret;
+};
+// Weather Pain: original item/projectile textures; crossover damage and guaranteed
+// Deerclops reward are local balancing. R23 permits up to three homing Hurtnados.
+// Third-party Terraria content belongs to its rights holders; no blanket license.
+const T22_TEXTURES={"weatherPain": "__TERRA_ASSET_media-183__", "hurtnado": "__TERRA_ASSET_media-184__", "deerIce": "__TERRA_ASSET_media-185__", "deerDebris": "__TERRA_ASSET_media-186__", "deerHand": "__TERRA_ASSET_media-187__"};
+const t22ArtReady=Promise.all(Object.entries(T22_TEXTURES).map(([k,v])=>t21ImageLoad(k,v,3000)));
+T21_ITEMS.weatherPain={name:'天候棒',effect:'按住连发追踪旋风，最多3股；穿透10点防御',icon:'weatherPain',weapon:true};
+T10_ITEMS.weatherPain={grip:[9,39],tip:[32,8],scale:.85,style:'prism'};
+
+T10_ITEMS.lucy={grip:[5,27],tip:[30,5],scale:1,style:'swing'};
+const t23LucyReady=t21ImageLoad('lucy','__TERRA_ASSET_media-188__',3000);
+const t22AttackBase=r06Attack;
+r06Attack=function(v={}){
+ const s=state,p=s?.p;if(!s||r06Weapon(s)!=='weatherPain')return t22AttackBase(v);
+ if(s.tool!==0||p.cooldown>0)return;
+ s.t22Tornadoes=(s.t22Tornadoes||[]).filter(a=>a.life>0);
+ if(s.mana<10){p.cooldown=12;return;}
+ const aim=r06Arm(s,v),a=aim.facing<0?Math.PI-aim.angle:aim.angle,sc=t10Scale(s),hand=t10WorldPose(s).hand;
+ s.mana-=10;p.attack=p.cooldown=p.t10SwingDuration=30;s.attackId++;
+ if(s.t22Tornadoes.length>=3)s.t22Tornadoes.shift();s.t22Tornadoes.push({id:'hurtnado-'+s.attackId,x:hand.x,y:hand.y,vx:Math.cos(a)*4*sc,vy:Math.sin(a)*4*sc,life:570,age:0,hits:0,lastHits:{},bounces:0});
+ terraSound('swing',{volume:.5});t21Event('weather-pain-cast',{attackId:s.attackId});
+};r05Attack=r06Attack;
+const t22ArcBase=t10HitArc;
+t10HitArc=function(s,targets){if(r06Weapon(s)!=='weatherPain')return t22ArcBase(s,targets);};
+const t22ExtraBase=t21ExtraStep;
+t21ExtraStep=function(s){
+ t22ExtraBase(s);const sc=t10Scale(s);
+ for(const a of s.t22Tornadoes||[]){
+  a.age++;a.life--;const targets=r06AllTargets(s).filter(t=>!t.obj.dead&&!t.obj.invulnerable);
+  const target=targets.filter(t=>Math.hypot(t.x-a.x,t.y-a.y)<420*sc).sort((l,r)=>Math.hypot(l.x-a.x,l.y-a.y)-Math.hypot(r.x-a.x,r.y-a.y))[0];
+  if(target){const dx=target.x-a.x,dy=target.y-a.y,d=Math.hypot(dx,dy)||1;a.vx=approach(a.vx,dx/d*4*sc,.22*sc);a.vy=approach(a.vy,dy/d*4*sc,.22*sc);}
+  const radius=9*sc,from={x:a.x,y:a.y},sol=t13PhysicalSurfaces(s,{x:a.x-16,y:a.y-24,w:32,h:48}).filter(q=>q.solid);
+  if(sol.some(q=>segmentHits(from,{x:a.x+a.vx,y:a.y},q,radius))){a.vx=-a.vx;a.bounces++;}else a.x+=a.vx;
+  if(sol.some(q=>segmentHits({x:a.x,y:a.y},{x:a.x,y:a.y+a.vy},q,radius))){a.vy=-a.vy;a.bounces++;}else a.y+=a.vy;
+  for(const t of targets){if(a.age-(a.lastHits[t.id]??-100)<24)continue;
+   if(Math.abs(t.x-a.x)<t.w/2+12*sc&&Math.abs(t.y-a.y)<t.h/2+24*sc){
+    a.lastHits[t.id]=a.age;a.hits++;
+    // Cancel up to 10 defense at the normal Classic 0.5 damage coefficient.
+    const defense=t.id==='boss'?(t.obj.phase===1?12:0):t.obj.kind==='deerclops'?10:T21_NPCS[t.obj.t21Species]?.defense||0;
+    r06DamageTarget(t,36+Math.min(10,defense)*.5,'hurtnado');
+    t21Event('weather-pain-hit',{target:t.id,hits:a.hits});if(a.hits>=15){a.life=0;break;}
+   }
+  }
+ }
+ s.t22Tornadoes=(s.t22Tornadoes||[]).filter(a=>a.life>0);
+};
+const t22ProjectilesBase=r06DrawProjectiles;
+r06DrawProjectiles=function(s,c){
+ t22ProjectilesBase(s,c);const im=t21Art.hurtnado;if(!im)return;const sc=t10Scale(s);
+ ctx.save();ctx.imageSmoothingEnabled=false;
+ for(const a of s.t22Tornadoes||[]){const frame=Math.floor(a.age/5)%8;ctx.globalAlpha=Math.min(1,a.life/20);ctx.drawImage(im,0,frame*66,62,66,Math.round(a.x-c-23*sc),Math.round(a.y-25*sc),46*sc,50*sc);}
+ ctx.restore();
+};
+
+
+// R23: baseline common-enemy durability. New biome species own their tuned stats.
+const t23MobPopulateBase=t21Populate;
+t21Populate=function(s){
+ t23MobPopulateBase(s);
+ for(const e of s?.t13World?.deepFoes||[]){
+  if(e.dead||e.t23Underground||e.t23HpTuned||e.t21Species)continue;
+  const old=e.maxHp||e.hp||1,next=Math.max(e.elite?180:132,old);
+  e.hp=Math.max(1,Math.ceil(next*(e.hp||old)/old));e.maxHp=next;e.t23HpTuned=true;
+ }
+};
+
+
+// R23 visual contract: world 256x240 at 3x backing; arena unchanged; original .75 outdoor body.
+// Layers retain their source atlas positions, with no repainted eyes or fitted-per-frame crops.
+const t23BodyVisibilityBase=r06DrawBody;
+r06DrawBody=function(g,x,foot,...args){
+ g.save();
+ if(g===ctx&&state?.p.invuln&&!state.t11Transition&&Math.floor(state.ticks/4)%2)g.globalAlpha*=.70;
+ t23BodyVisibilityBase(g,x,foot,...args);g.restore();
+};
+const t23Visual={contract:()=>({logical:[W,H],backing:[canvas.width,canvas.height],bodyScale:t10Scale(state),transform:ctx.getTransform().toString(),pixelSampling:!ctx.imageSmoothingEnabled,player:{w:state.p.w,h:state.p.h},stealth:!!state.t12Stealth}),images:()=>r06Images};
+
+
+// Hold the ordinary platform-use control to bridge forward before movement.
+// Placement, protection, inventory and feedback still belong to t13Place.
+function t23AutoPlatform(s,v){
+ if(!s||mode!=='playing'||s.t11Transition||(s.r05Arena&&s.phase==='battle')||s.tool!==1||s.mounted||s.t16Cart?.on){if(s)s.t23BuildLine=null;return;}
+ const held=!!(v.action||t13Pointer.down||r05Pointer.down),p=s.p;
+ if(!held||v.jump||v.y>.5||v.y<-.5){s.t23BuildLine=null;return;}
+ const feet=p.y+p.h,base=s.r05Arena?T13.top:0;
+ if(p.grounded){
+  const support=t13PhysicalSurfaces(s,{x:p.x-1,y:feet-2,w:p.w+2,h:5}).find(q=>Math.abs(q.y-feet)<2);
+  const row=support?.y??feet;
+  s.t23BuildLine=base+Math.round((row-base)/16)*16;
+ }
+ const row=s.t23BuildLine;
+ if(!Number.isFinite(row)||feet<row-3||feet>row+3||p.vy<-.5||s.wood<=0)return;
+ const dir=Math.abs(v.x)>.1?Math.sign(v.x):p.facing;
+ const edge=dir>0?Math.floor((p.x+p.w-1)/16):Math.floor(p.x/16);
+ let count=0;
+ for(let i=1;i<=3&&s.wood>0;i++){
+  const x=(edge+dir*i)*16,box={x,y:row,w:16,h:6};
+  if(x<0||x+16>s.level.width)break;
+  const obstacles=t13PhysicalSurfaces(s,box).filter(q=>q.solid&&near(q,box));
+  if(obstacles.length){
+   // Existing ground at this same foot level is already safe; a wall blocks extension.
+   if(obstacles.some(q=>q.y<row-1))break;
+   continue;
+  }
+  if(t13PhysicalSurfaces(s,box).some(q=>q.oneWay&&Math.abs(q.y-row)<1&&q.x<=x&&q.x+q.w>=x+16))continue;
+  if(s.built.some(q=>q.x===x&&q.y===row))continue;
+  if(t13Place(s,{x:x+8,y:row+8},1)){count++;s.t13Target={x:x+8,y:row+8};}
+ }
+ if(count){s.p.attack=8;s.p.attackFacing=dir;s.t13Use=10;t21Event('auto-platform',{count,row,direction:dir,wood:s.wood});}
+}
+const t23BuildStepBase=step;
+step=function(v){t23AutoPlatform(state,v);return t23BuildStepBase(v);};
+
+
+/*@terra-module:mount-binding*/
+
+// R24: one update owner, outside the temporary equipped-weapon kit context.
+function t24HasSummons(s){return !!s&&(s.t24SummonActive||s.kit==='summoner'||['terraprisma','kaleidoscope'].includes(r06Weapon(s)));}
+function t24TickSummons(s){
+ if(!t24HasSummons(s)){s.minions=[];return;}
+ s.t24SummonActive=true;
+ const p=s.p,sc=t10Scale(s),px=p.x+p.w/2,py=p.y+p.h/2;
+  if(!s.minions.length)r06CreateMinions(s);const target=r06AllTargets(s).filter(t=>!t.obj.dead&&Number.isFinite(t.x)&&Number.isFinite(t.y)&&Math.hypot(t.x-px,t.y-py)<1200*sc).sort((a,b)=>Math.hypot(a.x-px,a.y-py)-Math.hypot(b.x-px,b.y-py))[0];
+  for(const m of s.minions){m.trail.push({x:m.x,y:m.y});if(m.trail.length>9)m.trail.shift();const cycle=(s.ticks+m.id*11)%66;let tx,ty;
+   if(target){const attack=cycle<22,phase=(s.ticks+m.id*14)/28;tx=target.x+(attack?0:Math.cos(phase)*95*sc);ty=target.y+(attack?0:Math.sin(phase)*72*sc);if(cycle===12&&Math.hypot(m.x-target.x,m.y-target.y)<80*sc+target.w){r06DamageTarget(target,90+(target.obj.tagUntil>s.ticks?20:0),'terraprisma');}}
+   else {tx=px+(m.id-2.5)*24*sc;ty=p.y-(42+(m.id%2)*12)*sc;}
+   const dx=tx-m.x,dy=ty-m.y,d=Math.hypot(dx,dy)||1,speed=Math.min(d,18*sc);m.x+=dx/d*speed;m.y+=dy/d*speed;m.angle=Math.atan2(dy,dx)+Math.PI/4;
+  }
+
+}
+const t24CombatBase=r06TickCombat;
+r06TickCombat=function(v){const s=state,ret=t24CombatBase(v);if(s===state&&!s.t11Transition)t24TickSummons(s);return ret;};
+const t24PipeBase=t11TickPipe;
+t11TickPipe=function(){
+ const previous=state,active=t24HasSummons(previous),ret=t24PipeBase();
+ if(active&&state){state.t24SummonActive=true;if(state!==previous||!state.t11Transition){r06CreateMinions(state);for(const m of state.minions)m.trail=[];}}
+ return ret;
+};
+
+const t24Calibrate=null;
+
+const t21Diagnostics={ready:Promise.all([t21ArtReady,t22ArtReady,t23LucyReady]),embeddedReady:t21EmbeddedReady,events:()=>T21_LOG,config:t21Config,bind:t21Bind,settings:t21OpenBindings,closeSettings:t21CloseBindings,raw:v=>t14RawTarget(state,v),target:v=>t13ToolTarget(state,v),place:(t,n)=>t13Place(state,t,n),open:i=>t21Open(state,state.t13World.chests[i]),drop:(kind,x,y,extra={})=>t21Drop(state,kind,1,x,y,extra),collect:(k,n=1)=>t21Collect(state,k,n),drops:()=>state?.t13Drops,items:T21_ITEMS,art:()=>Object.fromEntries(Object.entries(t21Art).map(([k,v])=>[k,[v.width,v.height]])),artState:()=>t21ArtState,deer:()=>state?.t21Deer,frames:t21DeerFrames,populate:()=>{t21Populate(state);t21MakeDeer(state);},damage:r06DamageTarget,extraStep:()=>t21ExtraStep(state)};
+
+const t21AssetStatus=document.createElement('p');t21AssetStatus.id='t21AssetStatus';t21AssetStatus.style.cssText='font-size:11px;line-height:1.65;color:#b7c3cb;margin:10px 0';t15Help.after(t21AssetStatus);
+function t21UpdateAssetStatus(){const pending=Object.keys(T21_REMOTE).filter(k=>t21ArtState[k]!=='ready');t21AssetStatus.textContent=pending.length?(pending.some(k=>t21ArtState[k]!=='unavailable')?'正在载入新增原版素材；不影响现有关卡。':'部分新增原版素材未载入，请联网后重新打开。缺失贴图的敌人不会隐形出现。'):'';}
+t21UpdateAssetStatus();t21ArtReady.then(t21UpdateAssetStatus);
+const t21CleanBase=t20CleanUI;t20CleanUI=function(){t21CleanBase();if(!isTrio())return;/*@terra-module:player-win-copy*/if(state&&/暂不接力|三段接力|尚未完成|R\d{2}/.test(state.notice||'')){state.notice='';state.noticeTime=0;}if($('r06Mount'))$('r06Mount').title='';};
+
+function t21NativeFrames(im,key,fallback){if(t21Frames[key])return t21Frames[key];try{const cv=document.createElement('canvas');cv.width=im.width;cv.height=im.height;const g=cv.getContext('2d');g.drawImage(im,0,0);const rgba=g.getImageData(0,0,im.width,im.height).data;let start=-1,last=-1;const runs=[];for(let y=0;y<im.height;y++){let ink=false;for(let x=0;x<im.width;x++)if(rgba[(y*im.width+x)*4+3]){ink=true;break;}if(ink){if(start<0)start=y;last=y;}if(start>=0&&(!ink&&y-last>=2||y===im.height-1)){if(last-start>8)runs.push({y:start,h:last-start+1});start=-1;}}if(runs.length>1)return t21Frames[key]=runs;}catch{}return t21Frames[key]=Array.from({length:fallback},(_,i)=>({y:i*im.height/fallback,h:im.height/fallback}));}
+
+ fixedUpdate=function(){if(!isTrio())return old.update.apply(this,arguments);pollMixPad();if(!isTrio())return;const v=readInput();if(mode==='menu'&&v.toolEdge)chooseStage(1-r05EntryChoice);step(v);prev=v;audioSync();};
+ draw=function(){if(!isTrio()){setRenderScale(1);return old.draw.apply(this,arguments);}return render();};
+ if(document.documentElement.dataset.test==='1'||new URLSearchParams(location.search).has('test')){
+  const snapshot=()=>state?JSON.parse(JSON.stringify({mode,hero,ready,...state})):null;
+  window.__trioTest={t24:{hasSummons:()=>t24HasSummons(state)},t23Building:{step:v=>t23AutoPlatform(state,v),line:()=>state?.t23BuildLine},t23Visual,t22:{lucyPose:()=>t10WorldPose(state),chop:()=>chopTree(),ready:t22ArtReady,deerPose:t22DeerPose,targets:()=>r06AllTargets(state),weapon:()=>r06Weapon(state),populate:()=>t21Populate(state),drawNpc:e=>t21DrawNpc(e,state.cam)},t21:t21Diagnostics,t20:t20Diagnostics,t17:t17Diagnostics,t16:t16Diagnostics,t15:t15Diagnostics,t14:t14Diagnostics,t13:t13Diagnostics,t12:t12Diagnostics,t11:t11Diagnostics,t10:t10Diagnostics,r08Peek(){return {mode,...state};},r08Tick(n=1){for(let i=0;i<n;i++)fixedUpdate();},r08Report(){return {version:R08_VERSION,cacheHits:r08CacheHits,cacheWrites:r08CacheWrites,cacheError:r08CacheError,uiWrites:r08UIWrites,glowTextures:r08GlowCache.size,fireFrames:r08FireFrames.size,pointer:{...r05Pointer},roars:r08LiveRoars.size,music:Object.fromEntries(Object.entries(r06Music).map(([k,t])=>[k,{src:t.audio.src,state:t.state,local:!!t.local,cached:!!t.cached,restorePending:t.restorePending,volume:t.audio.volume}]))}},r08CacheEverything,r08RestoreMusic,r08CacheAudio,r08LoadImage:r07LoadImage,r08ReadCache,r08WriteCache,r08WaitMusic:async()=>{while(Object.values(r06Music).some(t=>t.restorePending))await new Promise(r=>setTimeout(r,10));},r08Point(v){Object.assign(r05Pointer,v);},r08Combat(v={}){r06TickCombat(v);},r08RenderBench(n=60){const t=performance.now();for(let i=0;i<n;i++)render();return performance.now()-t;},r07Report(){return{version:R07_VERSION,arena:R07_ARENA,slime:R07_SLIME,assets:r06AssetStatus,music:Object.fromEntries(Object.entries(r06Music).map(([k,t])=>[k,{state:t.state,paused:t.audio.paused,src:t.audio.src,sources:t.urls,failures:t.failures,local:!!t.local}]))}},r07CycleMount,r07EquipDrop(index){return r07EquipDrop(state,state.r07Loot[index]);},r06Report(){return{version:R06_VERSION,assets:r06AssetStatus,music:Object.fromEntries(Object.entries(r06Music).map(([k,v])=>[k,{state:v.state,paused:v.audio.paused,src:v.audio.src}])),rewardOpen:r06RewardsOpen,view:R06_VIEW}},r06ChooseKit,r06OpenRewards,r06Heal,r06ToggleMount,r06NaturalArrival,r06Target(){const t=r06Target(state);return t?{id:t.id,x:t.x,y:t.y}:null},r06AssetReady:Promise.all(r06AssetJobs),r05Summon,r05StartArena(){chooseStage(1);startGame();render();return snapshot();},r05Construction(){return r05Builder?.save();},r05BuildAt(x,y){if(!r05Builder)return null;const r=r05Builder.place(x,y,state.p);state.built=[...r05Builder.platforms.values()];state.wood=r05Builder.wood;return r;},r05SetEye(v){if(state.eye)Object.assign(state.eye,v);},r05HitEye(d){r05HitEye(d,'explicit-test-fixture');},r05Retry(){enterTerraSecret(true);render();return snapshot();},r05Report(){return{view:[canvas.width,canvas.height],entry:r05EntryChoice,construction:r05Builder?.save(),assets:{eye:[photos.eyeOriginal?.width,photos.eyeOriginal?.height],servant:[photos.servantOriginal?.width,photos.servantOriginal?.height]},phase:state?.phase}},advance(n=1,v={}){for(let i=0;i<n;i++){const inp={x:0,y:0,jump:false,action:false,auxiliary:false,tool:false,...v};inp.jumpEdge=inp.jump&&!prev.jump;inp.auxEdge=inp.auxiliary&&!prev.auxiliary;inp.toolEdge=inp.tool&&!prev.tool;step(inp);prev=inp;}},chooseStage,enterHidden(){return state.stage===0?enterTerraSecret():enterSpatialSecret();},exitHidden:exitSecret,resources(){return R04_RESOURCE_STATUS;},ready:readyPromise,start(){showCharacters();selectHero(id);startGame();render();return snapshot();},state:snapshot,attackGeometry(){return {tip:bladePoint(state.p.attack),previous:bladePoint(Math.min(SWING,state.p.attack+1))};},step(n=1,v={}){for(let i=0;i<n;i++){const inp={x:0,y:0,jump:false,action:false,auxiliary:false,tool:false,...v};inp.jumpEdge=inp.jump&&!prev.jump;inp.auxEdge=inp.auxiliary&&!prev.auxiliary;inp.toolEdge=inp.tool&&!prev.tool;step(inp);prev=inp;}render();return snapshot();},native(n=1){for(let i=0;i<n;i++)fixedUpdate();render();return snapshot();},place(x,y){Object.assign(state.p,{x,y,vx:0,vy:0,grounded:false,support:null,invuln:0,hurtLock:0});prev={};},fixture(v){Object.assign(state,v);},player(v){Object.assign(state.p,v);},target(x,y){state.target={x,y};},canBuild,build:placePlatform,mine:minePlatform,menu:showCharacters,primary:handlePrimary,pause:togglePause,damage(){hurt({x:state.p.x+30,w:16});},surfaces(){return JSON.parse(JSON.stringify(solids()));},decode(){return {ready,error:loadError,images:Object.keys(photos),tiles:Object.keys(tiles13),audio:extraAudioReady,audioFailures:[...audioFailures]};},audioReady:async()=>{audioInit();await prepareAudio();await loadExtraAudio();audioSync();},audio(){return {track:bgm?.key||null,bankKeys:[...bank.keys()].filter(k=>k.startsWith('trio13_')),soundOn};},snapshot:render,metadata(){return SandboxTrioLevel13.compile();},spriteInfo(){return [...decoded].map(([name,d])=>({name,w:d.w,h:d.h}));},finish(){startFlag();},sound(k){terraSound(k);},renderTerrain(){const old=state.p.x;state.p.x=-5000;render();state.p.x=old;}};
+ }
+
+// R23 ecology: original source-pngs at pinned 93960b7c..., not generated HD art.
+// Terraria artwork belongs to its respective rights holders; inclusion is not a relicensing grant.
+const T23_UNDERGROUND_NATIVE={"NPC483":"__TERRA_ASSET_media-189__","NPC6":"__TERRA_ASSET_media-190__","NPC634":"__TERRA_ASSET_media-191__","NPC635":"__TERRA_ASSET_media-192__","Tiles367":"__TERRA_ASSET_media-193__","Tiles368":"__TERRA_ASSET_media-194__","Tiles71":"__TERRA_ASSET_media-195__"};
+const t23UndergroundReady=Promise.all(Object.entries(T23_UNDERGROUND_NATIVE).map(([key,src])=>t21ImageLoad(key,src,3000)));
+Object.assign(T21_NPCS,{
+ sporeBat:{name:'孢子蝙蝠',art:'NPC634',fw:44,fh:40,n:3,w:26,h:20,hp:136,damage:16,defense:2,style:'bat'},
+ sporeSkeleton:{name:'孢子骷髅',art:'NPC635',fw:40,fh:56,n:16,w:22,h:42,hp:152,damage:22,defense:8,style:'walker'},
+ graniteElemental:{name:'花岗岩精',art:'NPC483',fw:60,fh:60,n:22,w:32,h:32,hp:144,damage:24,defense:14,style:'chase'},
+ eaterOfSouls:{name:'噬魂怪',art:'NPC6',fw:42,fh:80,n:2,w:30,h:40,hp:144,damage:20,defense:6,style:'chase'}
+});
+const T23_UNDERGROUND_KEYS=new Set(['sporeBat','sporeSkeleton','graniteElemental','eaterOfSouls']);
+const t23UndergroundMoveBase=t21NpcMove;
+t21NpcMove=function(s,e,surfaces){
+ if(e.t21Species==='graniteElemental'&&!e.dead){
+  // Expert-style hurt reaction: contract and fall, then resume pursuit.
+  if(e.t23GuardTicks>0){
+   e.t23GuardTicks--;e.active=true;e.age++;e.vx=0;e.t23Guard=true;if(e.flash)e.flash--;
+   const feet=e.y+e.h;e.vy=Math.min(6,e.vy+.28);e.y+=e.vy;
+   for(const q of surfaces)if(e.x+e.w>q.x&&e.x<q.x+q.w&&feet<=q.y+.6&&e.y+e.h>=q.y){e.y=q.y-e.h;e.vy=0;}
+   if(near(s.p,e))t21NpcDamage(s,T21_NPCS.graniteElemental.damage,e.x+e.w/2);return;
+  }
+  e.t23Guard=false;
+ }
+ return t23UndergroundMoveBase(s,e,surfaces);
+};
+const t23UndergroundDamageBase=r06DamageTarget;
+r06DamageTarget=function(t,damage,kind){
+ if(t?.obj?.t23Guard&&!t.obj.dead){t.obj.flash=4;return;}
+ const hp=t?.obj?.hp,out=t23UndergroundDamageBase(t,damage,kind),e=t?.obj;
+ if(e?.t21Species==='graniteElemental'&&!e.dead&&e.hp<hp){e.t23HurtCount=(e.t23HurtCount||0)+1;if(e.t23HurtCount%2===0){e.t23GuardTicks=42;e.t23Guard=true;e.vy=0;}}
+ return out;
+};
+const t23UndergroundNpcDrawBase=t21DrawNpc;
+t21DrawNpc=function(e,c){
+ if(!T23_UNDERGROUND_KEYS.has(e.t21Species))return t23UndergroundNpcDrawBase(e,c);
+ if(e.dead)return true;
+ const d=T21_NPCS[e.t21Species],im=t21Art[d.art];if(!im)return true;
+ let frame=Math.floor(e.age/(d.style==='walker'?7:6))%d.n;
+ if(e.t21Species==='sporeSkeleton')frame=Math.abs(e.vx)>.1?2+Math.floor(e.age/7)%12:0;
+ if(e.t21Species==='graniteElemental')frame=e.t23Guard?16+Math.floor(e.age/8)%6:Math.floor(e.age/6)%14;
+ const sc=e.t21Scale||1;
+ const flying=d.style!=='walker';
+ ctx.save();ctx.imageSmoothingEnabled=false;ctx.translate(Math.round(e.x+e.w/2-c),Math.round(e.y+(flying?e.h/2:e.h)));ctx.scale(e.dir<0?sc:-sc,sc);
+ if(e.flash%2)ctx.globalAlpha=.65;
+ ctx.drawImage(im,0,frame*d.fh,d.fw,d.fh,-d.fw/2,flying?-d.fh/2:-d.fh+2,d.fw,d.fh);ctx.restore();return true;
+};
+const t23UndergroundTextureBase=t17DeepTexture;
+t17DeepTexture=function(kind,bid,v){
+ if((bid!==6&&bid!==7)||kind>=3)return t23UndergroundTextureBase(kind,bid,v);
+ const im=t21Art[bid===6?'Tiles368':'Tiles367'];if(!im)return t23UndergroundTextureBase(kind,bid,v);
+ const key='r23-native:'+bid+':'+v;if(t17DeepTextureCache.has(key))return t17DeepTextureCache.get(key);
+ const cv=document.createElement('canvas');cv.width=cv.height=16;const g=cv.getContext('2d');g.imageSmoothingEnabled=false;
+ // Terraria full-block interior variants use 16px cells on an 18px atlas grid.
+ g.drawImage(im,(1+v%3)*18,18,16,16,0,0,16,16);t17DeepTextureCache.set(key,cv);return cv;
+};
+const t23UndergroundDrawBase=t17DrawDeep;
+t17DrawDeep=function(s){
+ const w=s.t13World,all=w.decor;
+ // Replace the procedural blue rectangle mushrooms with their native atlas.
+ const native=t21Art.Tiles71;w.decor=native?all.filter(d=>d.biome!==5):all;
+ try{t23UndergroundDrawBase(s);}finally{w.decor=all;}
+ if(!native)return;ctx.save();ctx.imageSmoothingEnabled=false;
+ for(const d of all)if(d.biome===5&&d.x>s.cam-24&&d.x<s.cam+R06_VIEW.w+24&&d.y>(s.camY||0)-24&&d.y<(s.camY||0)+R06_VIEW.h+24){
+  const v=Math.floor(t13Hash(Math.floor(d.x/16),Math.floor(d.y/16),23)*5)%5;
+  ctx.drawImage(native,v*18,0,16,20,Math.round(d.x-s.cam-8),Math.round(d.y-20),16,20);
+ }
+ ctx.restore();
+};
+function t23UndergroundPopulate(s){
+ const w=s?.t13World;if(!w||w.t23Ecology||!t21Art.NPC634||!t21Art.NPC483)return;
+ // Keep the fixed seeded spawn layout; only fill an ecology missing its own encounter.
+ w.t23Ecology=true;
+ for(const bid of [5,6,8]){
+  const existing=w.deepFoes.filter(e=>e.biome===bid);if(existing.length>=2)continue;
+  let added=0;
+  for(let cy=24;cy<102&&existing.length+added<2;cy+=2)for(let cx=8;cx<w.cols-8&&existing.length+added<2;cx+=2){
+   if(w.regions[cy*w.cols+cx]!==bid||t13At(w,cx,cy)||t13At(w,cx,cy-1)||t13At(w,cx,cy-2)||!t13At(w,cx,cy+1))continue;
+   const x=cx*16,y=T13.top+(cy+1)*16-40;
+   if(w.chests.some(q=>Math.hypot(q.x-x,q.y-y)<120)||w.deepFoes.some(e=>Math.hypot(e.x-x,e.y-y)<190))continue;
+   w.deepFoes.push({id:'r17-deep-r23-'+bid+'-'+added,kind:'zombie',x,y,w:22,h:40,hp:100,maxHp:100,elite:false,flying:false,age:0,active:false,vx:0,vy:0,dir:-1,grounded:true,dead:false,flash:0,knock:0,jumpWait:20,biome:bid,skin:'blue'});added++;
+  }
+ }
+ t21Populate(s);
+ // The old generator checked one tile wide, while actors can span two or three.
+ // Move a blocked spawn a few pixels inside the same chamber; never carve terrain.
+ const clear=(e,x,y)=>{for(let cy=Math.floor((y-T13.top)/16);cy<=Math.floor((y+e.h-.1-T13.top)/16);cy++)for(let cx=Math.floor(x/16);cx<=Math.floor((x+e.w-.1)/16);cx++)if(t13At(w,cx,cy))return false;return true;};
+ for(const e of w.deepFoes){
+  if(T23_UNDERGROUND_KEYS.has(e.t21Species))e.t23Underground=true;
+  if(clear(e,e.x,e.y))continue;
+  let done=false;
+  for(const dy of [0,-8,-16,-24,-32]){for(const dx of [0,-8,8,-16,16,-24,24,-32,32])if(clear(e,e.x+dx,e.y+dy)){e.x+=dx;e.y+=dy;done=true;break;}if(done)break;}
+ }
+}
+const t23UndergroundStepBase=step;
+step=function(v){const out=t23UndergroundStepBase(v);if(state?.r05Arena)t23UndergroundPopulate(state);return out;};
+if(new URLSearchParams(location.search).get('test')==='1')Object.assign(t21Diagnostics,{
+ undergroundReady:t23UndergroundReady,
+ underground:()=>({biomes:T17_BIOMES.map((b,i)=>({id:i,name:b.name,cells:[...(state?.t13World?.regions||[])].filter(v=>v===i).length})),enemies:state?.t13World?.deepFoes,assets:Object.keys(T23_UNDERGROUND_NATIVE)}),
+ undergroundPopulate:()=>t23UndergroundPopulate(state),
+ undergroundDamage:(t,d,k)=>r06DamageTarget(t,d,k),
+ undergroundDraw:e=>t21DrawNpc(e,state.cam)
+});
+
+ 
+// R26 audio fallback: remote Terraria clips are optional; embedded effects stay audible offline.
+const t26TerraSoundBase=terraSound;
+const t26SfxFallback={gun:'hit',bow:'hit',npcDeath:'hit',pickup:'hit',coin:'hit',menu:'hit',chat:'hit',door:'build',heal:'hit',treeFell:'break',jump:'hit',appear:'build',powerup:'build',mount:'build',clear:'build',flag:'build',firework:'hit',hurry:'hit'};
+terraSound=function(key,options={}){
+ const result=t26TerraSoundBase(key,options);if(result||!isTrio()||!soundOn||!audio)return result;
+ const fallback=t26SfxFallback[key];if(!fallback)return result;
+ const play=()=>bank.has('trio13_'+fallback)?oneShot('trio13_'+fallback,options):0;
+ const immediate=play();if(immediate)return immediate;
+ if(typeof loadExtraAudio==='function')loadExtraAudio().then(()=>{if(mode==='playing'&&soundOn&&audio)play();}).catch(()=>{});
+ return 0;
+};
+
+// R26 cactus contact: every desert cactus uses the same damage gate; existing invulnerability prevents duplicate hits.
+const t26MainStepBase=r04MainStep;
+function t26CactusHazard(s){
+ if(!s||s.r05Arena||mode!=='playing'||s.p.invuln||s.p.hurtLock||s.t26CactusLock>0)return;
+ const p=s.p;
+ for(const t of s.trees||[]){
+  const biome=t.t16Biome||t16BiomeAt?.(t.x,s)?.id;if(biome!=='desert'||t.hp<=0)continue;
+  const h=Math.max(24,t.visualH||t.h||60),box={x:t.x-14,y:t.y-h+6,w:28,h:h-6};
+  if(p.x+p.w>box.x&&p.x<box.x+box.w&&p.y+p.h>box.y&&p.y<box.y+box.h){s.t26CactusLock=24;r05Hurt(8,t.x);evt('cactus-hurt',{id:t.id});break;}
+ }
+}
+r04MainStep=function(v){const s=state,ret=t26MainStepBase(v);if(state===s&&s&&!s.r05Arena){if(s.t26CactusLock>0)s.t26CactusLock--;t26CactusHazard(s);}return ret;};

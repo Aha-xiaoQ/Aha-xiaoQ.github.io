@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "version": "publication-r24",
+  "files": [
+    {
+      "path": "assets/journal/model.mjs",
+      "before": "269026d5624cf97e9ecdeb68ea50ea4278a0b611ddfd6c2bea087c4331ea7b58",
+      "after": "18d6d711e2c844143fbbfeed1b2cb2fc923c8e0b13a61797ff184778a44487e1"
+    },
+    {
+      "path": "assets/journal/render.mjs",
+      "before": "9d498857969503d50dc3658fcff124c86d6fd59c1aebfcb80f677d90d3cb10ad",
+      "after": "9f64043b3a591393e145c563b64f3c18ef1c085a204012790f1d1d0353277a9b"
+    },
+    {
+      "path": "assets/release/public-content.mjs",
+      "before": null,
+      "after": "7c483da8f893ec737a373c122152c6b7f400bbdf0279614ffbb794adcb04b628"
+    },
+    {
+      "path": "config/publication.json",
+      "before": null,
+      "after": "e6c3124745b26491b18bdb1dc5d3f6ee28a472ffc6653c54c2291d04c9656b52"
+    },
+    {
+      "path": "docs/release-r24/ACCEPTANCE.md",
+      "before": null,
+      "after": "a48712606fab7f03f9dc19b312abe286f8319422a422d7539d45d29b81562fa9"
+    },
+    {
+      "path": "docs/release-r24/HANDOFF_R24.md",
+      "before": null,
+      "after": "1724cfad45d20be527c4ad40dba216388e762a624ec4633b6993e760513386c5"
+    },
+    {
+      "path": "docs/release-r24/PUBLISH.md",
+      "before": null,
+      "after": "db09afa4f728f004e27fb2494800ca475bfcc04f84697e9fee0fdf72045b240b"
+    },
+    {
+      "path": "docs/release-r24/START_HERE.md",
+      "before": null,
+      "after": "1a9cce073e605ca6464ef60e2fe56488653c8e4bd4bb90223a3c041871171ad6"
+    },
+    {
+      "path": "docs/release-r24/TEST_REPORT.md",
+      "before": null,
+      "after": "12efcd5295a25587a1c7f96b29ca1fd533fb4b1628c881fa56b7babe67967d4a"
+    },
+    {
+      "path": "docs/release-r24/pages-workflow.example.yml",
+      "before": null,
+      "after": "ed039401dba4727352e0b24ff9e80f6b2a08fc71107465b2caa025b0483a1727"
+    },
+    {
+      "path": "scripts/journal/build.mjs",
+      "before": "53c582e59757c9a4323069b08aafb679dd69292f99a982a0d9f1249f7485e445",
+      "after": "4bd23a428c77a2b47ff83c39fd471c8d1e7112c1d3e739807ccea9586bc754a7"
+    },
+    {
+      "path": "scripts/publication/archives.mjs",
+      "before": null,
+      "after": "4430c6f819526f32445d7abf4dcac36b3c5bf39236c4c654dec422badc39114e"
+    },
+    {
+      "path": "scripts/publication/audit.mjs",
+      "before": null,
+      "after": "07362b3d5b8dc9a19d9105be13eafcc6ec2898cf04383782fa2e5f84a8f45d2e"
+    },
+    {
+      "path": "scripts/publication/build.mjs",
+      "before": null,
+      "after": "7fa5c928704ccce15dae673fe92e76bc91723d72dcfe291b5b114e856db2490c"
+    },
+    {
+      "path": "scripts/publication/gate.mjs",
+      "before": null,
+      "after": "378ef680a7534272332c8ab56357e9c349c01ee4c4446dd3b66dfa5888eb3ee5"
+    },
+    {
+      "path": "scripts/publication/identity.mjs",
+      "before": null,
+      "after": "1c56802dfd2d2363b78b52866ded063a3f00ee0e6e5e4c36a6f16a3dad8410ba"
+    },
+    {
+      "path": "scripts/publication/paths.mjs",
+      "before": null,
+      "after": "48ac5693b2bcb460d4a054005b8389df1cf0363abdbdac384ce1887bb3d29c1f"
+    },
+    {
+      "path": "scripts/publication/runtime.mjs",
+      "before": null,
+      "after": "21f6d31f2fec33df200ad23bd0f8434fea9c881a9d84c953fc82c990528e8f79"
+    },
+    {
+      "path": "scripts/publication/serve.mjs",
+      "before": null,
+      "after": "0a00e9632fdf2d73527e891b55797ff72c0c7f176071db3537d2244534aac0e0"
+    },
+    {
+      "path": "scripts/publication/syntax.mjs",
+      "before": null,
+      "after": "4da6c134561e7c24ed83ed5062cba49d837cd2abe1092e32179e787d39663c52"
+    },
+    {
+      "path": "tests/publication/audit.test.mjs",
+      "before": null,
+      "after": "84e678483ab7b3ad9d306d566c88b72be622ae83e2683caecaea19f515d860db"
+    },
+    {
+      "path": "package.json",
+      "before": "7dbcb1d479b86f546e62d38f88900e38dcb117a65c71c125b9549546c4e5fb17",
+      "after": "77477aabdd3508c1d73a4fa1b5a70a7fb7cedf563afe3e09683310a45ff39d89"
+    },
+    {
+      "path": ".gitignore",
+      "before": "22f333be66b2533037f56b8d515f7e27188548d22c2f656ebbaed9f5f3b2c9f6",
+      "after": "af918f1011e1293acea1fc510f51ba774d05e00af1dd2b94be0343f0d530db68"
+    }
+  ],
+  "publicationRoot": ".local/publish",
+  "remoteChanged": false
+}

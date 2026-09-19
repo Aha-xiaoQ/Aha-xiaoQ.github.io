@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "scope": "R05 engineering follow-up only; does not replace existing gameplay backlog",
+  "remoteIssuesCreated": false,
+  "tasks": [
+    {
+      "id": "MM-DEV-001",
+      "title": "首次完整仓库构建与对照试玩",
+      "priority": "P0",
+      "status": "ready",
+      "owner": null,
+      "paths": "README.md / docs/ACCEPTANCE.md",
+      "acceptance": "运行 audit、build、原始与候选服务；记录资源加载、输入和候选哈希。",
+      "boundary": "不修改游戏参数。",
+      "evidence": null
+    },
+    {
+      "id": "MM-DEV-002",
+      "title": "补充下穿边沿与隐藏平台回归",
+      "priority": "P1",
+      "status": "ready",
+      "owner": null,
+      "paths": "tests/controls.test.mjs",
+      "acceptance": "先指出缺失场景，再添加一个能复现的测试；比较 golden 与 bridge。",
+      "boundary": "不得为了通过测试改 golden 或锁文件。",
+      "evidence": null
+    },
+    {
+      "id": "MM-DEV-003",
+      "title": "完成三期真实来源盘点",
+      "priority": "P0",
+      "status": "ready",
+      "owner": null,
+      "paths": "scripts/core.mjs / docs/SOURCE_AUDIT.md",
+      "acceptance": "在维护者真实文件上记录 actualBlob，区分公开版与本地整合版。",
+      "boundary": "先盘点，不把 I 的替换器用到 II/III。",
+      "evidence": null
+    },
+    {
+      "id": "MM-DEV-004",
+      "title": "素材许可证据逐项登记",
+      "priority": "P0",
+      "status": "ready",
+      "owner": null,
+      "paths": "docs/LICENSING.md / .local/asset-inventory.pending.json",
+      "acceptance": "选一个资源提供明确来源、权利人和授权证据；无证据仍 pending。",
+      "boundary": "不下载并转发不明授权素材。",
+      "evidence": null
+    },
+    {
+      "id": "MM-DEV-005",
+      "title": "验证首次外部 PR 与远端检查",
+      "priority": "P0",
+      "status": "maintainer",
+      "owner": null,
+      "paths": "docs/GOVERNANCE.md",
+      "acceptance": "真实 Issue、PR、CI 与审核链接；记录实际提交而不是包版本。",
+      "boundary": "维护者手动完成，自动化无远端写权限。",
+      "evidence": null
+    },
+    {
+      "id": "MM-DEV-006",
+      "title": "确认下一模块迁移范围",
+      "priority": "P1",
+      "status": "blocked",
+      "owner": null,
+      "paths": "docs/ARCHITECTURE.md",
+      "acceptance": "MM-DEV-001 完整验收后，选一个输入或音频纯逻辑模块，附契约和测试计划。",
+      "boundary": "禁止同时重做全部角色/物理/音频。",
+      "evidence": null
+    }
+  ]
+}

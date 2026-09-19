@@ -1,0 +1,95 @@
+{
+  "locations": [
+    {
+      "area": 0,
+      "entry": "Plain"
+    },
+    {
+      "area": 0,
+      "entry": "PipeVertical"
+    },
+    {
+      "area": 0,
+      "xloc": 1272
+    },
+    {
+      "area": 1
+    },
+    {
+      "area": 2,
+      "entry": "Vine"
+    }
+  ],
+  "areas": [
+    {
+      "area": 0,
+      "setting": "Overworld Night Alt",
+      "underwater": false,
+      "exit": null,
+      "sections": []
+    },
+    {
+      "area": 1,
+      "setting": "Underworld",
+      "underwater": false,
+      "exit": null,
+      "sections": []
+    },
+    {
+      "area": 2,
+      "setting": "Sky Night",
+      "underwater": false,
+      "exit": 2,
+      "sections": []
+    }
+  ],
+  "links": [
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r009"
+      },
+      "kind": "location",
+      "target": 3
+    },
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r045"
+      },
+      "kind": "vine",
+      "target": {
+        "entrance": 4
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r084"
+      },
+      "kind": "world",
+      "target": {
+        "map": "3-2"
+      }
+    },
+    {
+      "from": {
+        "area": 2,
+        "part": "base",
+        "record": "r002"
+      },
+      "kind": "location",
+      "target": true
+    }
+  ],
+  "issues": [
+    {
+      "roomId": "area-1",
+      "sourceRecord": "r014",
+      "kind": "horizontal-pipe-without-transport"
+    }
+  ]
+}

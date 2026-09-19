@@ -1,0 +1,168 @@
+{
+  "locations": [
+    {
+      "area": 0,
+      "entry": "Walking"
+    },
+    {
+      "area": 1
+    },
+    {
+      "area": 1,
+      "entry": "PipeVertical"
+    },
+    {
+      "area": 2
+    },
+    {
+      "area": 3,
+      "entry": "PipeVertical"
+    },
+    {
+      "area": 4,
+      "entry": "Vine"
+    }
+  ],
+  "areas": [
+    {
+      "area": 0,
+      "setting": "Overworld",
+      "underwater": false,
+      "exit": null,
+      "sections": []
+    },
+    {
+      "area": 1,
+      "setting": "Underworld",
+      "underwater": false,
+      "exit": null,
+      "sections": []
+    },
+    {
+      "area": 2,
+      "setting": "Underworld",
+      "underwater": false,
+      "exit": null,
+      "sections": []
+    },
+    {
+      "area": 3,
+      "setting": "Overworld",
+      "underwater": false,
+      "exit": null,
+      "sections": []
+    },
+    {
+      "area": 4,
+      "setting": "Overworld",
+      "underwater": false,
+      "exit": null,
+      "sections": []
+    }
+  ],
+  "links": [
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r001"
+      },
+      "kind": "location",
+      "target": 1
+    },
+    {
+      "from": {
+        "area": 1,
+        "part": "base",
+        "record": "r024"
+      },
+      "kind": "vine",
+      "target": {
+        "transport": 5
+      }
+    },
+    {
+      "from": {
+        "area": 1,
+        "part": "base",
+        "record": "r037"
+      },
+      "kind": "location",
+      "target": 3
+    },
+    {
+      "from": {
+        "area": 1,
+        "part": "base",
+        "record": "r084"
+      },
+      "kind": "location",
+      "target": 4
+    },
+    {
+      "from": {
+        "area": 1,
+        "part": "base",
+        "record": "r092-0"
+      },
+      "kind": "world",
+      "target": {
+        "map": "5-1"
+      }
+    },
+    {
+      "from": {
+        "area": 2,
+        "part": "base",
+        "record": "r009"
+      },
+      "kind": "location",
+      "target": 2
+    },
+    {
+      "from": {
+        "area": 3,
+        "part": "base",
+        "record": "r010"
+      },
+      "kind": "world",
+      "target": {
+        "map": "4-3"
+      }
+    },
+    {
+      "from": {
+        "area": 4,
+        "part": "base",
+        "record": "r026-0"
+      },
+      "kind": "world",
+      "target": {
+        "map": "8-1"
+      }
+    },
+    {
+      "from": {
+        "area": 4,
+        "part": "base",
+        "record": "r026-1"
+      },
+      "kind": "world",
+      "target": {
+        "map": "7-1"
+      }
+    },
+    {
+      "from": {
+        "area": 4,
+        "part": "base",
+        "record": "r026-2"
+      },
+      "kind": "world",
+      "target": {
+        "map": "6-1"
+      }
+    }
+  ],
+  "issues": []
+}

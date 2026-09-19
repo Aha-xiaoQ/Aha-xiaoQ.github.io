@@ -1,0 +1,2583 @@
+{
+  "type": "map",
+  "version": "1.10",
+  "orientation": "orthogonal",
+  "renderorder": "right-down",
+  "infinite": false,
+  "width": 237,
+  "height": 15,
+  "tilewidth": 16,
+  "tileheight": 16,
+  "tilesets": [],
+  "layers": [
+    {
+      "id": 1,
+      "type": "objectgroup",
+      "name": "collision",
+      "visible": true,
+      "opacity": 1,
+      "draworder": "topdown",
+      "objects": [
+        {
+          "id": 2,
+          "name": "ref-001",
+          "type": "Floor",
+          "x": 0,
+          "y": 208,
+          "width": 1104,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-001"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "name": "ref-002",
+          "type": "Block",
+          "x": 256,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-002"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "name": "ref-003",
+          "type": "Brick",
+          "x": 320,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-003"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "name": "ref-004",
+          "type": "Block",
+          "x": 336,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-004"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "name": "ref-006",
+          "type": "Brick",
+          "x": 352,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-006"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "name": "ref-007",
+          "type": "Block",
+          "x": 352,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-007"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "name": "ref-008",
+          "type": "Block",
+          "x": 368,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-008"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "name": "ref-009",
+          "type": "Brick",
+          "x": 384,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-009"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "name": "ref-010",
+          "type": "Pipe",
+          "x": 448,
+          "y": 176,
+          "width": 32,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-010"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "name": "ref-011",
+          "type": "Pipe",
+          "x": 608,
+          "y": 160,
+          "width": 32,
+          "height": 48,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-011"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "name": "ref-013",
+          "type": "Pipe",
+          "x": 736,
+          "y": 144,
+          "width": 32,
+          "height": 64,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-013"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "name": "ref-016",
+          "type": "Pipe",
+          "x": 912,
+          "y": 144,
+          "width": 32,
+          "height": 64,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-016"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 14,
+          "name": "ref-018",
+          "type": "Floor",
+          "x": 1136,
+          "y": 208,
+          "width": 240,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-018"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 15,
+          "name": "ref-019",
+          "type": "Brick",
+          "x": 1232,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-019"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 16,
+          "name": "ref-020",
+          "type": "Block",
+          "x": 1248,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-020"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 17,
+          "name": "ref-021",
+          "type": "Brick",
+          "x": 1264,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-021"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 18,
+          "name": "ref-022",
+          "type": "Brick",
+          "x": 1280,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-022"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 19,
+          "name": "ref-024",
+          "type": "Brick",
+          "x": 1296,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-024"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 20,
+          "name": "ref-025",
+          "type": "Brick",
+          "x": 1312,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-025"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 21,
+          "name": "ref-027-0-0",
+          "type": "Brick",
+          "x": 1328,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-027-0-0"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 22,
+          "name": "ref-027-1-0",
+          "type": "Brick",
+          "x": 1344,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-027-1-0"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 23,
+          "name": "ref-027-2-0",
+          "type": "Brick",
+          "x": 1360,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-027-2-0"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 24,
+          "name": "ref-027-3-0",
+          "type": "Brick",
+          "x": 1376,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-027-3-0"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 25,
+          "name": "ref-027-4-0",
+          "type": "Brick",
+          "x": 1392,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-027-4-0"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 26,
+          "name": "ref-028",
+          "type": "Floor",
+          "x": 1424,
+          "y": 208,
+          "width": 1024,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-028"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 27,
+          "name": "ref-029-0-0",
+          "type": "Brick",
+          "x": 1456,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-029-0-0"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 28,
+          "name": "ref-029-1-0",
+          "type": "Brick",
+          "x": 1472,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-029-1-0"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 29,
+          "name": "ref-029-2-0",
+          "type": "Brick",
+          "x": 1488,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-029-2-0"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 30,
+          "name": "ref-030",
+          "type": "Brick",
+          "x": 1504,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-030"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 31,
+          "name": "ref-031",
+          "type": "Block",
+          "x": 1504,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-031"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 32,
+          "name": "ref-034",
+          "type": "Brick",
+          "x": 1600,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-034"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 33,
+          "name": "ref-035",
+          "type": "Brick",
+          "x": 1616,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-035"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 34,
+          "name": "ref-036",
+          "type": "Block",
+          "x": 1696,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-036"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 35,
+          "name": "ref-038",
+          "type": "Block",
+          "x": 1744,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-038"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 36,
+          "name": "ref-039",
+          "type": "Block",
+          "x": 1744,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-039"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 37,
+          "name": "ref-040",
+          "type": "Block",
+          "x": 1792,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-040"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 38,
+          "name": "ref-043",
+          "type": "Brick",
+          "x": 1888,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-043"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 39,
+          "name": "ref-044-0-0",
+          "type": "Brick",
+          "x": 1936,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-044-0-0"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 40,
+          "name": "ref-044-1-0",
+          "type": "Brick",
+          "x": 1952,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-044-1-0"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 41,
+          "name": "ref-044-2-0",
+          "type": "Brick",
+          "x": 1968,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-044-2-0"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 42,
+          "name": "ref-046",
+          "type": "Brick",
+          "x": 2048,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-046"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 43,
+          "name": "ref-047",
+          "type": "Brick",
+          "x": 2064,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-047"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 44,
+          "name": "ref-048",
+          "type": "Block",
+          "x": 2064,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-048"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 45,
+          "name": "ref-049",
+          "type": "Brick",
+          "x": 2080,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-049"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 46,
+          "name": "ref-050",
+          "type": "Block",
+          "x": 2080,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-050"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 47,
+          "name": "ref-051",
+          "type": "Brick",
+          "x": 2096,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-051"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 48,
+          "name": "ref-052",
+          "type": "Stone",
+          "x": 2144,
+          "y": 192,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-052"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 49,
+          "name": "ref-053",
+          "type": "Stone",
+          "x": 2160,
+          "y": 176,
+          "width": 16,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-053"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 50,
+          "name": "ref-054",
+          "type": "Stone",
+          "x": 2176,
+          "y": 160,
+          "width": 16,
+          "height": 48,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-054"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 51,
+          "name": "ref-055",
+          "type": "Stone",
+          "x": 2192,
+          "y": 144,
+          "width": 16,
+          "height": 64,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-055"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 52,
+          "name": "ref-056",
+          "type": "Stone",
+          "x": 2240,
+          "y": 144,
+          "width": 16,
+          "height": 64,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-056"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 53,
+          "name": "ref-057",
+          "type": "Stone",
+          "x": 2256,
+          "y": 160,
+          "width": 16,
+          "height": 48,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-057"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 54,
+          "name": "ref-058",
+          "type": "Stone",
+          "x": 2272,
+          "y": 176,
+          "width": 16,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-058"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 55,
+          "name": "ref-059",
+          "type": "Stone",
+          "x": 2288,
+          "y": 192,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-059"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 56,
+          "name": "ref-060",
+          "type": "Stone",
+          "x": 2368,
+          "y": 192,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-060"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 57,
+          "name": "ref-061",
+          "type": "Stone",
+          "x": 2384,
+          "y": 176,
+          "width": 16,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-061"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 58,
+          "name": "ref-062",
+          "type": "Stone",
+          "x": 2400,
+          "y": 160,
+          "width": 16,
+          "height": 48,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-062"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 59,
+          "name": "ref-063",
+          "type": "Stone",
+          "x": 2416,
+          "y": 144,
+          "width": 16,
+          "height": 64,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-063"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 60,
+          "name": "ref-064",
+          "type": "Stone",
+          "x": 2432,
+          "y": 144,
+          "width": 16,
+          "height": 64,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-064"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 61,
+          "name": "ref-065",
+          "type": "Floor",
+          "x": 2480,
+          "y": 208,
+          "width": 1312,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-065"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 62,
+          "name": "ref-066",
+          "type": "Stone",
+          "x": 2480,
+          "y": 144,
+          "width": 16,
+          "height": 64,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-066"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 63,
+          "name": "ref-067",
+          "type": "Stone",
+          "x": 2496,
+          "y": 160,
+          "width": 16,
+          "height": 48,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-067"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 64,
+          "name": "ref-068",
+          "type": "Stone",
+          "x": 2512,
+          "y": 176,
+          "width": 16,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-068"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 65,
+          "name": "ref-069",
+          "type": "Stone",
+          "x": 2528,
+          "y": 192,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-069"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 66,
+          "name": "ref-070",
+          "type": "Pipe",
+          "x": 2608,
+          "y": 176,
+          "width": 32,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-070"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 67,
+          "name": "ref-071",
+          "type": "Brick",
+          "x": 2688,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-071"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 68,
+          "name": "ref-072",
+          "type": "Brick",
+          "x": 2704,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-072"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 69,
+          "name": "ref-073",
+          "type": "Block",
+          "x": 2720,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-073"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 70,
+          "name": "ref-074",
+          "type": "Brick",
+          "x": 2736,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-074"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 71,
+          "name": "ref-077",
+          "type": "Pipe",
+          "x": 2864,
+          "y": 176,
+          "width": 32,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-077"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 72,
+          "name": "ref-078",
+          "type": "Stone",
+          "x": 2896,
+          "y": 192,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-078"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 73,
+          "name": "ref-079",
+          "type": "Stone",
+          "x": 2912,
+          "y": 176,
+          "width": 16,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-079"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 74,
+          "name": "ref-080",
+          "type": "Stone",
+          "x": 2928,
+          "y": 160,
+          "width": 16,
+          "height": 48,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-080"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 75,
+          "name": "ref-081",
+          "type": "Stone",
+          "x": 2944,
+          "y": 144,
+          "width": 16,
+          "height": 64,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-081"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 76,
+          "name": "ref-082",
+          "type": "Stone",
+          "x": 2960,
+          "y": 128,
+          "width": 16,
+          "height": 80,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-082"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 77,
+          "name": "ref-083",
+          "type": "Stone",
+          "x": 2976,
+          "y": 112,
+          "width": 16,
+          "height": 96,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-083"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 78,
+          "name": "ref-084",
+          "type": "Stone",
+          "x": 2992,
+          "y": 96,
+          "width": 16,
+          "height": 112,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-084"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 79,
+          "name": "ref-085",
+          "type": "Stone",
+          "x": 3008,
+          "y": 80,
+          "width": 32,
+          "height": 128,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-085"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        },
+        {
+          "id": 80,
+          "name": "ref-086-base",
+          "type": "Stone",
+          "x": 3168,
+          "y": 192,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-086-base"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "solid"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 81,
+      "type": "objectgroup",
+      "name": "gameplay",
+      "visible": true,
+      "opacity": 1,
+      "draworder": "topdown",
+      "objects": [
+        {
+          "id": 82,
+          "name": "ref-086-exit",
+          "type": "exit",
+          "x": 3152,
+          "y": 32,
+          "width": 16,
+          "height": 176,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-086-exit"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "marker"
+            }
+          ]
+        },
+        {
+          "id": 83,
+          "name": "start",
+          "type": "spawn",
+          "x": 32,
+          "y": 184,
+          "width": 12,
+          "height": 24,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "start"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "marker"
+            }
+          ]
+        },
+        {
+          "id": 84,
+          "name": "pipe-return",
+          "type": "spawn",
+          "x": 2612,
+          "y": 152,
+          "width": 12,
+          "height": 24,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "pipe-return"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "marker"
+            }
+          ]
+        },
+        {
+          "id": 85,
+          "name": "portal-0",
+          "type": "portal",
+          "x": 912,
+          "y": 112,
+          "width": 32,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "portal-0"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "marker"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 86,
+      "type": "objectgroup",
+      "name": "reference-markers",
+      "visible": true,
+      "opacity": 1,
+      "draworder": "topdown",
+      "objects": [
+        {
+          "id": 87,
+          "name": "ref-004-item",
+          "type": "Contents",
+          "x": 336,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-004-item"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "marker"
+            }
+          ]
+        },
+        {
+          "id": 88,
+          "name": "ref-005",
+          "type": "Goomba",
+          "x": 352,
+          "y": 192,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-005"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "marker"
+            }
+          ]
+        },
+        {
+          "id": 89,
+          "name": "ref-012",
+          "type": "Goomba",
+          "x": 680,
+          "y": 192,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-012"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "marker"
+            }
+          ]
+        },
+        {
+          "id": 90,
+          "name": "ref-014",
+          "type": "Goomba",
+          "x": 824,
+          "y": 192,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-014"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "marker"
+            }
+          ]
+        },
+        {
+          "id": 91,
+          "name": "ref-015",
+          "type": "Goomba",
+          "x": 844,
+          "y": 192,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-015"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "marker"
+            }
+          ]
+        },
+        {
+          "id": 92,
+          "name": "ref-016-link",
+          "type": "PipeRoute",
+          "x": 912,
+          "y": 144,
+          "width": 32,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-016-link"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "marker"
+            }
+          ]
+        },
+        {
+          "id": 93,
+          "name": "ref-017",
+          "type": "HiddenBlock",
+          "x": 1024,
+          "y": 128,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-017"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "marker"
+            }
+          ]
+        },
+        {
+          "id": 94,
+          "name": "ref-017-item",
+          "type": "Contents",
+          "x": 1024,
+          "y": 128,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-017-item"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "marker"
+            }
+          ]
+        },
+        {
+          "id": 95,
+          "name": "ref-020-item",
+          "type": "Contents",
+          "x": 1248,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-020-item"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "marker"
+            }
+          ]
+        },
+        {
+          "id": 96,
+          "name": "ref-023",
+          "type": "Goomba",
+          "x": 1280,
+          "y": 64,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-023"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "marker"
+            }
+          ]
+        },
+        {
+          "id": 97,
+          "name": "ref-026",
+          "type": "Goomba",
+          "x": 1312,
+          "y": 64,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-026"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "marker"
+            }
+          ]
+        },
+        {
+          "id": 98,
+          "name": "ref-030-item",
+          "type": "Contents",
+          "x": 1504,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-030-item"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "marker"
+            }
+          ]
+        },
+        {
+          "id": 99,
+          "name": "ref-032",
+          "type": "Goomba",
+          "x": 1552,
+          "y": 192,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-032"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "marker"
+            }
+          ]
+        },
+        {
+          "id": 100,
+          "name": "ref-033",
+          "type": "Goomba",
+          "x": 1576,
+          "y": 192,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-033"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "marker"
+            }
+          ]
+        },
+        {
+          "id": 101,
+          "name": "ref-035-item",
+          "type": "Contents",
+          "x": 1616,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-035-item"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "marker"
+            }
+          ]
+        },
+        {
+          "id": 102,
+          "name": "ref-037",
+          "type": "Koopa",
+          "x": 1712,
+          "y": 184,
+          "width": 16,
+          "height": 24,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-037"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "marker"
+            }
+          ]
+        },
+        {
+          "id": 103,
+          "name": "ref-039-item",
+          "type": "Contents",
+          "x": 1744,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-039-item"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "marker"
+            }
+          ]
+        },
+        {
+          "id": 104,
+          "name": "ref-041",
+          "type": "Goomba",
+          "x": 1824,
+          "y": 192,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-041"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "marker"
+            }
+          ]
+        },
+        {
+          "id": 105,
+          "name": "ref-042",
+          "type": "Goomba",
+          "x": 1848,
+          "y": 192,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-042"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "marker"
+            }
+          ]
+        },
+        {
+          "id": 106,
+          "name": "ref-045-0-0",
+          "type": "Goomba",
+          "x": 1984,
+          "y": 192,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-045-0-0"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "marker"
+            }
+          ]
+        },
+        {
+          "id": 107,
+          "name": "ref-045-1-0",
+          "type": "Goomba",
+          "x": 2016,
+          "y": 192,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-045-1-0"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "marker"
+            }
+          ]
+        },
+        {
+          "id": 108,
+          "name": "ref-045-2-0",
+          "type": "Goomba",
+          "x": 2048,
+          "y": 192,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-045-2-0"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "marker"
+            }
+          ]
+        },
+        {
+          "id": 109,
+          "name": "ref-045-3-0",
+          "type": "Goomba",
+          "x": 2080,
+          "y": 192,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-045-3-0"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "marker"
+            }
+          ]
+        },
+        {
+          "id": 110,
+          "name": "ref-075",
+          "type": "Goomba",
+          "x": 2784,
+          "y": 192,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-075"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "marker"
+            }
+          ]
+        },
+        {
+          "id": 111,
+          "name": "ref-076",
+          "type": "Goomba",
+          "x": 2808,
+          "y": 192,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-076"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "marker"
+            }
+          ]
+        },
+        {
+          "id": 112,
+          "name": "ref-086-flag",
+          "type": "Flagpole",
+          "x": 3174,
+          "y": 48,
+          "width": 4,
+          "height": 160,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-086-flag"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "marker"
+            }
+          ]
+        },
+        {
+          "id": 113,
+          "name": "ref-086-castle",
+          "type": "Castle",
+          "x": 3232,
+          "y": 128,
+          "width": 80,
+          "height": 80,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceId",
+              "type": "string",
+              "value": "ref-086-castle"
+            },
+            {
+              "name": "collision",
+              "type": "string",
+              "value": "marker"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "nextobjectid": 115,
+  "nextlayerid": 116,
+  "properties": [
+    {
+      "name": "scope",
+      "type": "string",
+      "value": "Object-layer export for editing/reference. Tiled reimport is not implemented."
+    }
+  ]
+}

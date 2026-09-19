@@ -1,0 +1,23 @@
+/* R30 — hidden rematch, escalating Eye power, and explicit hidden-weapon range. */
+const R30_REMATCH_GATE=Object.freeze({x:R05Arena.width-288,y:R05Arena.floor-48,w:44,h:48});
+function r30BossMultiplier(s){return Math.pow(2,Math.max(0,Math.floor(Number(s?.r05RematchCount)||0)));}
+function r30BossAttackDamage(s,amount){return Math.max(1,Math.round(Number(amount||0)*r30BossMultiplier(s)));}
+function r30ApplyBossScale(s){const e=s?.eye;if(!e)return;const hp=Math.round(T13.bossHP*r30BossMultiplier(s));e.profile={...e.profile,maxHp:hp};e.hp=e.maxHp=hp;}
+function r30DrawRematchGate(s,c){
+ if(!s?.r05Arena||s.phase!=='cleared')return;
+ const q=R30_REMATCH_GATE,x=Math.round(q.x-c),y=q.y;if(x>R06_VIEW.w+80||x+q.w<-80)return;
+ ctx.save();ctx.fillStyle='#182936';ctx.fillRect(x-6,y+34,56,14);ctx.fillStyle='#d4ab5f';ctx.fillRect(x,y+6,q.w,38);ctx.fillStyle='#754827';ctx.fillRect(x+4,y+10,q.w-8,30);ctx.fillStyle='#f5d47e';ctx.fillRect(x+14,y+16,16,20);ctx.fillStyle='#7bc9e9';ctx.fillRect(x+19,y+20,6,10);r05Text('再战 BOSS',x+q.w/2,y-24,11,'#ffe6a0','center');ctx.restore();
+}
+const r30PersistBase=r05Persist;
+r05Persist=function(){const s=state;if(s?.r05Arena&&mainState){mainState.r05RematchCount=s.r05RematchCount||0;mainState.r05EyeDefeats=s.r05EyeDefeats||mainState.r05EyeDefeats||0;mainState.coins=Number(s.coins??mainState.coins??0);}return r30PersistBase();};
+const r30SummonBase=r05Summon;
+r05Summon=function(){const s=state,apply=!!s?.r30RematchActive,ok=r30SummonBase();if(ok&&s?.eye&&apply)r30ApplyBossScale(s);if(s)s.r30RematchActive=false;return ok;};
+const r30HitEyeBase=r05HitEye;
+r05HitEye=function(raw,kind){const s=state,before=!!s?.bossClear;r30HitEyeBase(raw,kind);if(!before&&s?.r05Arena&&s.bossClear){const defeated=(Number(mainState?.r05EyeDefeats)||0)+1,reward=1000*Math.pow(2,defeated-1),coins=Math.max(Number(s.coins)||0,Number(mainState?.coins)||0)+reward;s.r05EyeDefeats=defeated;s.r05CoinReward=reward;s.coins=coins;if(mainState){mainState.r05EyeDefeats=defeated;mainState.coins=coins;}s.notice='克苏鲁之眼已击败！金币 +'+reward+'（第'+defeated+'次）。右侧可再战，生命与攻击力会翻倍。';s.noticeTime=1800;evt('eye-coin-reward',{defeated,reward,coins});r05Persist();}};
+function r30RematchTouch(s){const q=R30_REMATCH_GATE,p=s?.p;if(!s?.r05Arena||s.phase!=='cleared'||s.r05RematchCooldown>0||!p)return false;return p.x+p.w>q.x&&p.x<q.x+q.w&&p.y+p.h>q.y&&p.y<q.y+q.h;}
+function r30Rematch(s){if(!r30RematchTouch(s))return false;s.r05RematchCount=(s.r05RematchCount||0)+1;s.r05EyeDefeats=s.r05EyeDefeats||0;s.rewardPending=false;if(mainState)mainState.r05RematchCount=s.r05RematchCount;s.phase='preparation';s.bossClear=false;s.eye=null;s.foes=[];s.projectiles=[];s.servants=[];s.hp=s.maxHp;s.p.invuln=90;s.p.hurtLock=0;s.healTicks=0;s.r05RematchCooldown=90;s.r30RematchActive=true;const oldGate=s.t12SummonGate;s.t12SummonGate=true;let ok=false;try{ok=r05Summon();}finally{s.t12SummonGate=oldGate;s.r30RematchActive=false;}if(ok){s.notice='再战克苏鲁之眼！生命与攻击力 ×'+r30BossMultiplier(s);s.noticeTime=240;evt('eye-rematch',{count:s.r05RematchCount,multiplier:r30BossMultiplier(s),hp:s.eye?.maxHp||0});r05Persist();}return ok;}
+const r30ArenaStepBase=r05ArenaStep;
+r05ArenaStep=function(v){const s=state;if(s?.r05RematchCooldown>0)s.r05RematchCooldown--;const wasCleared=!!(s?.r05Arena&&s.phase==='cleared');const out=r30ArenaStepBase(v);if(state===s&&wasCleared&&mode==='playing'&&s.phase==='cleared')r30Rematch(s);return out;};
+window.__sandboxTrioBuild=Object.freeze({version:'release-1.0',singleExtension:true,defaultHero:'sandboxTrio',persistentMediaCache:true,playable:true,relay:false,spatialStages:false,originalEyeAtlas:true,embeddedStarter:true,mediaNeedsInternet:true,ai:'Original crossover gameplay adaptation',rewardRules:'Custom crossover contact-equipment exchange; not vanilla Eye drops'});
+/*@terra-module:adventure-shell*/})();
+

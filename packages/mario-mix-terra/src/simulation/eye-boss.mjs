@@ -1,0 +1,151 @@
+/** Extracted from the uploaded third episode; no DOM or host globals. */
+export function createEyeSystem(){
+/**
+ * Eye of Cthulhu CLASSIC behavior reconstruction, 60 fixed ticks/sec.
+ * Behavioral sequence is based on Terraria Wiki: hover/spawn -> 3 charges -> repeat,
+ * transform below 50% (still vulnerable), then 3 stronger charges without servants.
+ * Steering constants/timing are explicit project tuning, NOT frame-exact vanilla AI.
+ * No rendering, no made-up replacement sprite, no terrain clamps, no expert dash phase.
+ */
+const CLASSIC = Object.freeze({
+  maxHp: 2800, phase1Defense: 12, phase2Defense: 0,
+  hoverTicks: 600, servantEvery: 120, maxServantsPerHover: 4,
+  phase2HoverTicks: 180, transformTicks: 180,
+  chargeTicks: 40, recoverTicks: 65,
+  phase1Speed: 5.8, phase2Speed: 7.0,
+  hoverSpeed: 3.2, hoverAcceleration: 0.05, hoverHeight: 200,
+  contact1: 15, contact2: 23,
+  provenance: 'Classic behavior outline verified; timing and acceleration pending frame calibration'
+});
+const clamp = (n,a,b)=>Math.max(a,Math.min(b,n));
+const approach = (a,b,d)=>a<b?Math.min(a+d,b):Math.max(a-d,b);
+const vector = (dx,dy,speed)=>{
+  const length=Math.hypot(dx,dy);
+  return length>1e-8 ? {x:dx/length*speed,y:dy/length*speed} : {x:0,y:speed};
+};
+function turnTowards(a,b,amount) {
+  const delta=Math.atan2(Math.sin(b-a),Math.cos(b-a));
+  return a+clamp(delta,-amount,amount);
+}
+function createEye({x=0,y=0,profile=CLASSIC}={}) {
+  if (![x,y,profile.maxHp].every(Number.isFinite) || profile.maxHp<=0)
+    throw new TypeError('Eye position and health must be finite');
+  return {x,y,vx:0,vy:0,hp:profile.maxHp,maxHp:profile.maxHp,profile,
+    phase:1,mode:'hover',age:0,cycleCharges:0,spawnedThisHover:0,
+    spin:0,angle:Math.PI/2,tick:0,dead:false,despawned:false};
+}
+const transition=(boss,mode,events)=>{
+  boss.mode=mode; boss.age=0; events.push({type:'state',mode,phase:boss.phase,tick:boss.tick});
+};
+/** Apply already-computed weapon damage after boss defense. Never transform-invulnerable. */
+function damageEye(boss,rawDamage) {
+  if (!Number.isFinite(rawDamage) || rawDamage<0) throw new RangeError('Invalid damage');
+  if (boss.dead || boss.despawned || rawDamage===0) return {dealt:0,killed:false};
+  const defense=boss.phase===1?boss.profile.phase1Defense:boss.profile.phase2Defense;
+  const dealt=Math.min(boss.hp,Math.max(1,Math.round(rawDamage-defense/2)));
+  boss.hp-=dealt;
+  if (boss.hp===0) { boss.dead=true; boss.mode='dead'; }
+  return {dealt,killed:boss.dead};
+}
+/**
+ * Target positions and velocities use original Terraria-like pixel units, y down.
+ * Caller handles scaling to the Mario adapter, collision, drops, source audio, and sprites.
+ * No player-velocity prediction is applied to classic charges.
+ */
+function tickEye(boss,target,{day=false,playerAlive=true}={}) {
+  if (!target || !Number.isFinite(target.x) || !Number.isFinite(target.y))
+    throw new TypeError('Target must have finite x/y');
+  const events=[];
+  if (boss.dead || boss.despawned) return events;
+  const c=boss.profile;
+  boss.tick++; boss.age++;
+  if ((day || !playerAlive) && boss.mode!=='despawn') transition(boss,'despawn',events);
+  if (boss.mode==='despawn') {
+    boss.vy-=.08; boss.y+=boss.vy; boss.x+=boss.vx;
+    if (boss.age>180) {boss.despawned=true;events.push({type:'despawn'});}
+    return events;
+  }
+  if (boss.phase===1 && boss.hp<boss.maxHp*.5 && boss.mode!=='transform') {
+    transition(boss,'transform',events);
+    events.push({type:'transform-start'});
+  }
+  if (boss.mode==='transform') {
+    boss.vx*=.98; boss.vy*=.98;
+    const halfway=c.transformTicks/2;
+    boss.spin=clamp(boss.spin+(boss.age<halfway?.005:-.005),0,.35);
+    boss.angle+=boss.spin;
+    if (boss.age>=c.transformTicks) {
+      boss.phase=2; boss.cycleCharges=0; boss.spawnedThisHover=0;
+      transition(boss,'hover',events);
+      events.push({type:'transform-end',phase:2});
+    }
+  } else if (boss.mode==='hover') {
+    const desired=vector(target.x-boss.x,target.y-c.hoverHeight-boss.y,c.hoverSpeed);
+    boss.vx=approach(boss.vx,desired.x,c.hoverAcceleration);
+    boss.vy=approach(boss.vy,desired.y,c.hoverAcceleration);
+    boss.angle=turnTowards(boss.angle,Math.atan2(target.y-boss.y,target.x-boss.x),.06);
+    if (boss.phase===1 && boss.age%c.servantEvery===0 && boss.spawnedThisHover<c.maxServantsPerHover) {
+      boss.spawnedThisHover++;
+      const dir=vector(target.x-boss.x,target.y-boss.y,4);
+      events.push({type:'spawn-servant',x:boss.x+dir.x*10,y:boss.y+dir.y*10,vx:dir.x,vy:dir.y});
+    }
+    const duration=boss.phase===1?c.hoverTicks:c.phase2HoverTicks;
+    if (boss.age>=duration) {
+      const velocity=vector(target.x-boss.x,target.y-boss.y,boss.phase===1?c.phase1Speed:c.phase2Speed);
+      boss.vx=velocity.x; boss.vy=velocity.y;
+      boss.angle=Math.atan2(boss.vy,boss.vx);
+      transition(boss,'charge',events);
+      events.push({type:'charge',number:boss.cycleCharges+1,phase:boss.phase});
+      if (boss.phase===2) events.push({type:'roar'});
+    }
+  } else if (boss.mode==='charge') {
+    // Preserve direction during the charge; do not home each tick or bounce off platforms.
+    if (boss.age>=c.chargeTicks) transition(boss,'recover',events);
+  } else if (boss.mode==='recover') {
+    boss.vx*=.97; boss.vy*=.97;
+    boss.angle=turnTowards(boss.angle,Math.atan2(target.y-boss.y,target.x-boss.x),.08);
+    if (boss.age>=c.recoverTicks) {
+      boss.cycleCharges++;
+      if (boss.cycleCharges>=3) {
+        boss.cycleCharges=0; boss.spawnedThisHover=0;
+        transition(boss,'hover',events);
+      } else {
+        const dir=vector(target.x-boss.x,target.y-boss.y,boss.phase===1?c.phase1Speed:c.phase2Speed);
+        boss.vx=dir.x; boss.vy=dir.y; boss.angle=Math.atan2(dir.y,dir.x);
+        transition(boss,'charge',events);
+        events.push({type:'charge',number:boss.cycleCharges+1,phase:boss.phase});
+        if (boss.phase===2) events.push({type:'roar'});
+      }
+    }
+  }
+  boss.x+=boss.vx; boss.y+=boss.vy;
+  return events;
+}
+/** Branch state persists construction between attempts; entering is preparation, not auto-aggro. */
+class EyeArenaSession {
+  constructor({inventory,spawn={x:720,y:96},maxHp=200}={}) {
+    if (!inventory) throw new TypeError('A persistent construction inventory is required');
+    this.inventory=inventory; this.spawn={...spawn}; this.maxHp=maxHp;
+    this.phase='preparation'; this.eye=null; this.attempts=0;
+    this.rewardClaimed=false; this.projectiles=[]; this.servants=[];
+  }
+  summon() {
+    if (this.phase!=='preparation') return false;
+    this.eye=createEye(this.spawn); this.phase='battle'; this.attempts++;
+    return true;
+  }
+  retry() {
+    if (this.phase==='cleared') return false;
+    this.phase='preparation'; this.eye=null; this.projectiles=[]; this.servants=[];
+    // Inventory and platform objects deliberately remain the SAME persistent instance.
+    return true;
+  }
+  claimVictory() {
+    if (!this.eye?.dead || this.rewardClaimed) return null;
+    this.phase='cleared'; this.rewardClaimed=true;
+    return {maxHp:40,wood:12,adaptation:'Project reward, not vanilla Eye loot'};
+  }
+}
+
+return {CLASSIC,createEye,damageEye,tickEye,EyeArenaSession};
+}

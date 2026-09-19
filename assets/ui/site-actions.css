@@ -1,0 +1,62 @@
+/* R17 interaction details. Existing palette, WenKai, mastheads and route motion are authoritative.
+   This stylesheet only loads on the outer site, never inside published games. */
+#app{--q-action-fast:140ms;--q-action-ease:cubic-bezier(.2,.6,.3,1);--q-action-focus:#ffd24c}
+#app .q-action-sr{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip-path:inset(50%)!important;white-space:nowrap!important;border:0!important}
+#app [data-action-kind]{-webkit-tap-highlight-color:transparent}
+#app [data-action-variant]{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:44px;max-width:100%;line-height:1.5;padding:10px 17px;font-size:16px;font-weight:600;border:1px solid transparent;box-sizing:border-box;border-radius:0;transform:none;text-decoration:none;transition:background-color var(--q-action-fast) var(--q-action-ease),border-color var(--q-action-fast) var(--q-action-ease),box-shadow var(--q-action-fast) var(--q-action-ease)}
+#app [data-action-variant] .q-action-label{min-width:0;overflow-wrap:anywhere}
+#app .q-action-meta{flex-shrink:0;display:inline-block;font-size:12px;font-weight:500;letter-spacing:.02em;line-height:1.3;color:inherit;opacity:.78;padding:2px 0 2px 10px;border-left:1px solid currentColor;white-space:nowrap}
+#app [data-action-variant=primary]{background:var(--paper);border-color:var(--paper);color:var(--bg);box-shadow:3px 3px 0 var(--accent)}
+#app [data-action-variant=secondary]{background:transparent;border-color:var(--line);color:inherit;box-shadow:none}
+#app [data-action-variant=quiet],#app [data-action-variant=text]{background:transparent;color:inherit;box-shadow:none;padding:8px 1px;border:0;text-decoration:underline;text-decoration-thickness:1px;text-decoration-color:currentColor;text-underline-offset:6px}
+#app [data-action-variant=text]{display:inline;min-height:0;padding:0;font-size:inherit;font-weight:inherit}
+#app [data-action-variant=card]{background:transparent;border-color:currentColor;box-shadow:none;color:inherit;padding:9px 18px;white-space:normal}
+#app [data-action-kind]:focus-visible,#app .j-destination-link:focus-visible{outline:3px solid var(--q-action-focus);outline-offset:4px}
+#app [data-action-variant]:active{box-shadow:none;border-color:currentColor;transform:none}
+#app .j-project-card .j-card-bottom{justify-content:flex-end;gap:12px;min-height:80px;padding:17px 0 20px}
+#app .j-card-bottom .j-card-action{position:relative;z-index:1;flex:0 1 auto;text-align:center;min-width:128px}
+#app .j-card-bottom::after,#app .j-card-action::after{content:none}
+#app .pw-work-bottom .pw-action{margin-left:auto;white-space:normal;font-size:16px;gap:12px}
+#app .pw-action .q-action-label{font:inherit;display:inline;width:auto;height:auto;line-height:1.5;color:inherit;background:none;transform:none}
+#app .pw-action .q-action-meta{font-size:12px;line-height:1.3;width:auto;height:auto;background:none;transform:none;color:inherit}
+#app .pw-game-card .actions{column-gap:18px;row-gap:12px;align-items:center;margin-top:auto;padding-top:22px}
+#app .pw-game-card .actions [data-action-variant=primary]{min-width:112px}
+#app .pw-game-card .actions [data-action-variant=quiet]{font-size:15px}
+#app .j-shortcuts>.entry.j-destination{padding:0;display:block}
+#app .j-destination-link{display:flex;flex-direction:column;gap:14px;height:100%;min-height:216px;box-sizing:border-box;padding:26px;color:inherit;text-decoration:none;border:0;background:transparent}
+#app .j-destination-link h3{font-size:23px;line-height:1.4;margin:0}
+#app .j-destination-link p{line-height:1.8;color:var(--muted);margin:0}
+#app .j-destination-label{align-self:flex-start;margin-top:auto;padding-top:12px;font-size:15px;line-height:1.6;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px}
+#app .journal .j-section-footer{margin-top:20px}
+#app .journal .j-resources{gap:12px 24px}
+#app .journal .j-reading a:not([data-action-variant=primary]):not([data-action-variant=secondary]){overflow-wrap:anywhere}
+#app .j-shortcuts{align-items:stretch}
+#app .footer-links a,#app .contact-link{min-height:44px;display:inline-flex;align-items:center;text-decoration:underline;text-decoration-thickness:1px;text-decoration-color:transparent;text-underline-offset:6px}
+#app .footer-links{flex-wrap:wrap;column-gap:24px;row-gap:4px}
+#app .primary-path strong{font-size:24px}
+#app .primary-path{gap:20px}
+#app .paths .path{grid-template-columns:36px minmax(0,1fr);}
+#app .paths .path strong{justify-self:start}
+#app .paths .path::after{content:none}
+#app :is(.j-subnav,.filter-bar) :is(a,button){min-height:44px;line-height:1.5}
+#app :is(.j-subnav,.filter-bar) [aria-current=page],#app .filter-bar [aria-pressed=true]{box-shadow:inset 0 -3px 0 var(--accent)}
+#app .journal :is(button,input,select):focus-visible{outline:3px solid var(--q-action-focus);outline-offset:3px}
+#app .journal button:disabled{cursor:not-allowed;opacity:.5;box-shadow:none;transform:none}
+@media(hover:hover) and (pointer:fine){
+ #app [data-action-variant=primary]:hover{box-shadow:5px 5px 0 var(--accent);transform:none}
+ #app [data-action-variant=secondary]:hover,#app [data-action-variant=card]:hover{background:var(--paper);color:var(--bg);border-color:var(--paper);box-shadow:3px 3px 0 var(--accent);transform:none}
+ #app .j-project-card--secondary [data-action-variant=card]:hover,#app .pw-work-card--paper [data-action-variant=card]:hover{background:var(--bg);color:var(--paper);border-color:var(--bg)}
+ #app [data-action-variant=quiet]:hover,#app [data-action-variant=text]:hover{text-decoration-thickness:2px;text-decoration-color:var(--accent);transform:none}
+ #app .j-destination-link:hover .j-destination-label{text-decoration-thickness:2px;text-decoration-color:var(--accent)}
+ #app .footer-links a:hover,#app .contact-link:hover{text-decoration-color:currentColor}
+}
+@media(max-width:680px){
+ #app [data-action-variant]{min-height:44px;white-space:normal}
+ #app .j-destination-link{padding:22px;min-height:188px}
+ #app .pw-game-card .actions{display:flex;flex-wrap:wrap;gap:14px 18px}
+ #app .pw-game-card .actions [data-action-variant=primary],#app .pw-game-card .actions [data-action-variant=secondary]{flex:1 1 130px}
+ #app .pw-game-card .actions [data-action-variant=quiet]{flex:0 1 auto}
+}
+@media(prefers-reduced-motion:reduce){#app [data-action-variant],#app .j-destination-link{transition:none}#app [data-action-variant]:hover{transform:none}}
+@media(forced-colors:active){#app [data-action-variant]{border:1px solid ButtonText;box-shadow:none}#app [data-action-variant=text]{border:0}#app [data-action-kind]:focus-visible,#app .j-destination-link:focus-visible{outline:3px solid Highlight}#app .j-destination-label{text-decoration:underline}}
+#app .j-project-card--secondary [data-action-kind]:focus-visible,#app .pw-work-card--paper [data-action-kind]:focus-visible{outline-color:var(--bg)}

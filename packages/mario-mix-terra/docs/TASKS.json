@@ -1,0 +1,522 @@
+{
+  "schemaVersion": 2,
+  "project": "mario-mix-terra",
+  "version": "terra-m05",
+  "updatedAt": "2026-09-17",
+  "tasks": [
+    {
+      "id": "M04-LOOT",
+      "title": "物品定义与武器交换、箱子散落计划迁出",
+      "status": "local-verified",
+      "scope": [
+        "src/content/items.mjs",
+        "src/simulation/loot-rules.mjs",
+        "tests/loot.test.mjs"
+      ],
+      "acceptance": [
+        "正常既有武器与箱子保持原行为",
+        "规则模块不直接改变宿主对象",
+        "完整第三期回归不退步"
+      ],
+      "evidence": "docs/TEST_REPORT_M04.md",
+      "difficulty": "medium",
+      "dependsOn": [],
+      "owner": null,
+      "issue": null,
+      "pullRequest": null,
+      "audience": "public",
+      "area": "物品规则",
+      "summary": "已迁出物品定义、武器交换与箱子散落规则；本地对照通过，设备与自然流程仍需复验。",
+      "priority": "P1"
+    },
+    {
+      "id": "M04-LIFECYCLE",
+      "title": "场景退出事件、快照与封闭驱动契约加固",
+      "status": "local-verified",
+      "scope": [
+        "src/runtime/stage-session.mjs",
+        "src/content/stage-catalog.mjs",
+        "tests/final-contract.test.mjs"
+      ],
+      "acceptance": [
+        "旧代次事件不能影响新场景",
+        "失败清理和快照隔离有测试",
+        "不支持的旧角色跨地图组合必须报错"
+      ],
+      "evidence": "docs/TEST_REPORT_M04.md",
+      "difficulty": "medium",
+      "dependsOn": [],
+      "owner": null,
+      "issue": null,
+      "pullRequest": null,
+      "audience": "public",
+      "area": "场景",
+      "summary": "场景退出、异常清理和快照隔离已实现；完整游戏流程等待实机验收。",
+      "priority": "P1"
+    },
+    {
+      "id": "M04-PUBLISH",
+      "title": "0.4.1 实机验收与发布",
+      "status": "blocked",
+      "scope": [
+        "docs/PUBLISH.md",
+        "docs/RELEASE_REVIEW.json",
+        "release.json"
+      ],
+      "acceptance": [
+        "Windows与真实HTTP/资源加载记录",
+        "实体设备、自然通关和音频验收",
+        "源码下载与构建SHA对应，手动审查权利和审批",
+        "记录实际提交、人工审批和上线结果"
+      ],
+      "evidence": null,
+      "difficulty": "medium",
+      "dependsOn": [
+        "M04-LOOT",
+        "M04-LIFECYCLE",
+        "M02-WINDOWS",
+        "M02-DEVICE"
+      ],
+      "owner": null,
+      "issue": null,
+      "pullRequest": null,
+      "audience": "public",
+      "area": "发布验收",
+      "summary": "核对 Windows、浏览器加载、设备操作、通关、音频和素材许可，完成后记录提交与发布结果。",
+      "priority": "P0"
+    },
+    {
+      "id": "M02-BINDINGS",
+      "title": "配置/捕获/路由/设置会话迁出",
+      "status": "local-verified",
+      "scope": [
+        "src/input/bindings-model.mjs",
+        "src/input/binding-capture.mjs",
+        "src/input/keyboard-router.mjs",
+        "src/ui/settings-session.mjs"
+      ],
+      "acceptance": [
+        "原底稿 SHA 重建一致",
+        "正常游戏 13 阶段对照一致",
+        "默认配置可导出再导入，键位不变"
+      ],
+      "evidence": "docs/TEST_REPORT_M02.md",
+      "difficulty": "medium",
+      "dependsOn": [],
+      "owner": null,
+      "issue": null,
+      "pullRequest": null,
+      "audience": "public",
+      "area": "输入",
+      "summary": "按键配置、捕获与设置会话已迁出并完成本地测试；设备验收单独记录。",
+      "priority": "P1"
+    },
+    {
+      "id": "M02-ARCH",
+      "title": "模块登记、架构门禁与交接工具",
+      "status": "local-verified",
+      "scope": [
+        "architecture/modules.json",
+        "scripts/architecture.mjs",
+        "scripts/collaboration.mjs"
+      ],
+      "acceptance": [
+        "漏登记/缺测试/越层/循环依赖被拦截",
+        "生成文档可复跑"
+      ],
+      "evidence": "docs/TEST_REPORT_M02.md",
+      "difficulty": "medium",
+      "dependsOn": [],
+      "owner": null,
+      "issue": null,
+      "pullRequest": null,
+      "audience": "public",
+      "area": "工程",
+      "summary": "模块职责、依赖与测试已登记；新增模块需通过架构检查。",
+      "priority": "P1"
+    },
+    {
+      "id": "M02-WINDOWS",
+      "title": "Windows 原生开发与悬空 junction 验收",
+      "status": "ready",
+      "scope": [
+        "scripts/lib/safe-path.mjs",
+        "tests/build.test.mjs",
+        "docs/ACCEPTANCE.md"
+      ],
+      "acceptance": [
+        "记录 Windows/Node 版本与候选 SHA",
+        "安全用例不可跳过",
+        "CLI/构建/源码打包完整通过"
+      ],
+      "difficulty": "small",
+      "dependsOn": [],
+      "owner": null,
+      "evidence": null,
+      "issue": null,
+      "pullRequest": null,
+      "audience": "public",
+      "area": "平台验收",
+      "summary": "在 Windows 上完成启动、构建、源码打包和链接防护测试，并记录系统及 Node.js 版本。",
+      "priority": "P0"
+    },
+    {
+      "id": "M02-DEVICE",
+      "title": "真实手柄改键、断连与返回游戏",
+      "status": "ready",
+      "scope": [
+        "docs/ACCEPTANCE.md",
+        "docs/evidence/README.md"
+      ],
+      "acceptance": [
+        "记录设备型号与浏览器",
+        "连续开关菜单无误触",
+        "映射保存后刷新可恢复"
+      ],
+      "difficulty": "small",
+      "dependsOn": [
+        "M02-BINDINGS"
+      ],
+      "owner": null,
+      "evidence": null,
+      "issue": null,
+      "pullRequest": null,
+      "audience": "public",
+      "area": "设备验收",
+      "summary": "检查手柄改键、断连、热插拔和返回游戏。复验放置是否位于脚边前一格，并记录坐骑奖励、姿势与武器位置。",
+      "priority": "P0"
+    },
+    {
+      "id": "M02-LABELS",
+      "title": "补充特殊键显示的回归样例",
+      "status": "ready",
+      "scope": [
+        "src/ui/key-label.mjs",
+        "tests/modules.test.mjs"
+      ],
+      "acceptance": [
+        "先在 Issue 说明确切按键和预期标签",
+        "先补 failing test 再修改",
+        "不改默认键位与全局监听"
+      ],
+      "difficulty": "small",
+      "dependsOn": [],
+      "owner": null,
+      "evidence": null,
+      "issue": null,
+      "pullRequest": null,
+      "audience": "public",
+      "area": "输入",
+      "summary": "为尚未覆盖的特殊按键补充标签与测试，不改变默认键位。",
+      "priority": "P1"
+    },
+    {
+      "id": "M03-INVENTORY",
+      "title": "库存提交、单次奖励与存档一致性",
+      "status": "planned",
+      "scope": [
+        "src/compat/45-terra-inventory.js.part",
+        "tests/"
+      ],
+      "acceptance": [
+        "重复领取不会重复奖励",
+        "旧武器留地可换回",
+        "保留已迁出规则，记录提交、奖励和保存前后的状态"
+      ],
+      "difficulty": "medium",
+      "dependsOn": [
+        "M02-DEVICE"
+      ],
+      "owner": null,
+      "evidence": null,
+      "issue": null,
+      "pullRequest": null,
+      "audience": "public",
+      "area": "物品规则",
+      "summary": "武器交换计划已迁出；下一步整理库存提交、单次奖励与保存流程的一致性。",
+      "priority": "P1"
+    },
+    {
+      "id": "M03-SCENE",
+      "title": "主关/隐藏房间生命周期与音频所有权",
+      "status": "planned",
+      "scope": [
+        "src/compat/36-terra-actor-ui.js.part",
+        "src/runtime/"
+      ],
+      "acceptance": [
+        "进入、暂停、返回状态可追踪",
+        "先保存坐骑和奖励语义",
+        "不新增 wrapper 链"
+      ],
+      "difficulty": "large",
+      "dependsOn": [
+        "M02-DEVICE"
+      ],
+      "owner": null,
+      "evidence": null,
+      "issue": null,
+      "pullRequest": null,
+      "audience": "public",
+      "area": "场景",
+      "summary": "整理原第三期的房间切换和音频所有权，保留坐骑、奖励及返回语义。",
+      "priority": "P1"
+    },
+    {
+      "id": "M02-ASSETS",
+      "title": "核实一组资源的许可依据",
+      "status": "ready",
+      "scope": [
+        "content/resources.json",
+        "docs/RESOURCES.md",
+        "docs/REMOTE_SOURCES.json"
+      ],
+      "acceptance": [
+        "逐项记录来源与作者/权利方",
+        "没有依据则保留未确认",
+        "不凭公开下载认定再分发许可"
+      ],
+      "difficulty": "small",
+      "dependsOn": [],
+      "owner": null,
+      "evidence": null,
+      "issue": null,
+      "pullRequest": null,
+      "audience": "public",
+      "area": "素材",
+      "summary": "为一组图像或音频核实来源、权利方和许可依据，未知项继续标为待确认。",
+      "priority": "P1"
+    },
+    {
+      "id": "M02-PR",
+      "title": "第一位外部贡献者完成小 PR",
+      "status": "ready",
+      "scope": [
+        "CONTRIBUTING.md",
+        "docs/TASKS.json"
+      ],
+      "acceptance": [
+        "提供真实 PR 链接、测试与审阅记录",
+        "提供实际提交、测试与审阅记录",
+        "分别记录代码合并与发布状态"
+      ],
+      "difficulty": "small",
+      "dependsOn": [],
+      "owner": null,
+      "evidence": null,
+      "issue": null,
+      "pullRequest": null,
+      "audience": "public",
+      "area": "协作验证",
+      "summary": "新贡献者完成一项小改动，提交测试和 PR；记录上手过程中的阻碍。",
+      "priority": "P1"
+    },
+    {
+      "id": "M03-CONTRACT",
+      "title": "关卡/角色/适配层协议与可运行接入原型",
+      "status": "local-verified",
+      "scope": [
+        "src/content/stage-catalog.mjs",
+        "src/bridges/stages.bridge.js",
+        "tests/stages.test.mjs"
+      ],
+      "acceptance": [
+        "两角色共用底图且overlay独立",
+        "新增匿名ID无需改核心",
+        "未知机制/不兼容驱动拒绝"
+      ],
+      "evidence": "docs/TEST_REPORT_M03.md",
+      "difficulty": "medium",
+      "dependsOn": [],
+      "owner": null,
+      "issue": null,
+      "pullRequest": null,
+      "audience": "public",
+      "area": "关卡接口",
+      "summary": "地图、角色与适配层支持原型接入。当前仅在 platform-v1 已实现能力内验证。",
+      "priority": "P1"
+    },
+    {
+      "id": "M03-OUTSIDER",
+      "title": "非作者从空白副本完成关卡内容PR",
+      "status": "ready",
+      "scope": [
+        "docs/stages/ADD_LEVEL.md",
+        "content/extensions/"
+      ],
+      "acceptance": [
+        "只依文档完成新ID和房间",
+        "列出阻碍、真实PR和审阅",
+        "由参与者填写上手记录与验收结果"
+      ],
+      "evidence": null,
+      "difficulty": "small",
+      "dependsOn": [
+        "M03-CONTRACT"
+      ],
+      "owner": null,
+      "issue": null,
+      "pullRequest": null,
+      "audience": "public",
+      "area": "协作验证",
+      "summary": "新贡献者按教程创建关卡草稿，记录步骤、遇到的问题与 PR。",
+      "priority": "P1"
+    },
+    {
+      "id": "M03-ACTOR",
+      "title": "迁出一个真实角色供数据地图驱动调用",
+      "status": "planned",
+      "scope": [
+        "src/compat/30-terra-foundation.js.part",
+        "src/compat/36-terra-actor-ui.js.part",
+        "docs/stages/READINESS.md"
+      ],
+      "acceptance": [
+        "房间依赖显式注入、不固定tree-id",
+        "保留原动作/物理对照",
+        "至少两张地图实测与HUD读模型"
+      ],
+      "evidence": null,
+      "difficulty": "large",
+      "dependsOn": [
+        "M03-CONTRACT"
+      ],
+      "owner": null,
+      "issue": null,
+      "pullRequest": null,
+      "audience": "public",
+      "area": "角色扩展",
+      "summary": "迁出一个真实角色，在两张数据地图中对照其动作、物理和 HUD。",
+      "priority": "P1"
+    },
+    {
+      "id": "M03-MAP14",
+      "title": "核验并转录原版1-4底图与机关规格",
+      "status": "planned",
+      "scope": [
+        "content/maps/",
+        "docs/stages/MAP_BASELINES.md"
+      ],
+      "acceptance": [
+        "逐格几何与版本来源",
+        "火焰棒/敌人/终点条件规格独立",
+        "许可证/素材证据分开记录"
+      ],
+      "evidence": null,
+      "difficulty": "medium",
+      "dependsOn": [],
+      "owner": null,
+      "issue": null,
+      "pullRequest": null,
+      "audience": "public",
+      "area": "后续关卡",
+      "summary": "转录 1-4 的地形和机关规格，分别记录来源与保真检查；不属于当前版本内容。",
+      "priority": "P1"
+    },
+    {
+      "id": "M03-MECHANICS14",
+      "title": "实现1-4可复用机关与终点规则",
+      "status": "planned",
+      "scope": [
+        "src/simulation/",
+        "tests/",
+        "docs/stages/READINESS.md"
+      ],
+      "acceptance": [
+        "火焰棒/城堡Boss/桥斧终点有真实实现",
+        "新对象类型先登记再调用",
+        "验证机关的运行行为、判定与结束条件"
+      ],
+      "evidence": null,
+      "difficulty": "large",
+      "dependsOn": [
+        "M03-MAP14",
+        "M03-ACTOR"
+      ],
+      "owner": null,
+      "issue": null,
+      "pullRequest": null,
+      "audience": "public",
+      "area": "后续关卡",
+      "summary": "在角色与底图接口具备后实现旋转火焰棒、Boss、桥和斧头终点规则。",
+      "priority": "P1"
+    },
+    {
+      "id": "M03-EDITOR",
+      "title": "限定Tiled导入器与可编辑数据流程",
+      "status": "planned",
+      "scope": [
+        "scripts/stages.mjs",
+        "content/extensions/",
+        "docs/stages/CONTRACT.md"
+      ],
+      "acceptance": [
+        "只支持明确版本和对象集合",
+        "不识别的机关报错",
+        "往返转换不丢字段/坐标"
+      ],
+      "evidence": null,
+      "difficulty": "medium",
+      "dependsOn": [
+        "M03-CONTRACT"
+      ],
+      "owner": null,
+      "issue": null,
+      "pullRequest": null,
+      "audience": "public",
+      "area": "编辑工具",
+      "summary": "按限定的地图格式和对象类型实现 Tiled 导入，未识别机制需要明确报错。",
+      "priority": "P1"
+    },
+    {
+      "id": "M05-UI",
+      "title": "菜单、HUD 与显示偏好",
+      "status": "local-verified",
+      "scope": [
+        "src/ui/",
+        "tests/presentation.test.mjs"
+      ],
+      "acceptance": [
+        "菜单、快捷栏与设置显示正常",
+        "显示控件焦点不触发游戏动作",
+        "持久偏好、实体设备与自然流程另行验收"
+      ],
+      "evidence": "docs/TEST_REPORT_M05.md",
+      "difficulty": "medium",
+      "dependsOn": [],
+      "owner": null,
+      "issue": null,
+      "pullRequest": null,
+      "audience": "public",
+      "area": "界面",
+      "summary": "菜单、HUD 和显示选项已实现并通过本地测试；刷新恢复与设备体验仍待实机核验。",
+      "priority": "P1"
+    },
+    {
+      "id": "M06-EXPERIENCE",
+      "title": "操作引导、焦点与返回恢复验收",
+      "status": "local-verified",
+      "scope": [
+        "src/ui/quick-guide.mjs",
+        "src/ui/adventure-help.mjs",
+        "tests/release-polish.test.mjs"
+      ],
+      "acceptance": [
+        "手册显示当前绑定，按键不泄漏到游戏",
+        "手册只恢复自身触发的暂停，缓存页面保留监听器",
+        "Windows、实体设备、真实前进后退缓存和音频需实机核验"
+      ],
+      "evidence": "docs/TEST_REPORT_M06.md",
+      "difficulty": "medium",
+      "dependsOn": [],
+      "owner": null,
+      "issue": null,
+      "pullRequest": null,
+      "audience": "public",
+      "area": "体验与引导",
+      "summary": "操作速查、反馈模板和界面生命周期已通过本地测试；自然试玩、实体手柄与浏览器历史恢复仍待验收。",
+      "priority": "P1"
+    }
+  ],
+  "revision": 16
+}

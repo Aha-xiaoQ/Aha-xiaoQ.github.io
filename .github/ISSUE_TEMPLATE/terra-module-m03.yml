@@ -1,0 +1,22 @@
+name: 新关卡提案
+description: 先明确SDK支持范围，再提交独立内容
+body:
+  - type: input
+    id: chapter
+    attributes:
+      label: 稳定关卡ID
+    validations:
+      required: true
+  - type: textarea
+    id: profile
+    attributes:
+      label: 所需能力与当前profile
+      description: 新Boss/新物理/新资源包需先讨论，不是现成能力
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 进入、死亡、返回与验收路线
+    validations:
+      required: true

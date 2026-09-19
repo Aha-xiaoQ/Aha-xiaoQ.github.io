@@ -1,0 +1,84 @@
+/* 0.9: surface entrance, native scenery, positional tank ending and distinct tally sound.
+ * Keep canonical level-data.js intact. The exterior is Mario scenery, the
+ * underground tank level retains water and lifts. No continuous tank melody.
+ */
+const R09_VERSION='0.9.0';
+function r09FinishPhase(f,phase){f.phase=phase;f.phaseAge=0;r12Event('tank-finish-phase',{phase,x:player.x,y:player.y});}
+function r09FinishMove(f,x,y,speed,dir){
+ const ox=player.x,oy=player.y,nx=approach(ox,x,speed),ny=approach(oy,y,speed);
+ if(r12TankCollides({...player,x:nx,y:ny})){
+  f.blocked=(f.blocked||0)+1;if(f.blocked===1)r12Event('tank-finish-blocked',{phase:f.phase,x:nx,y:ny});return false;
+ }
+ f.blocked=0;player.x=nx;player.y=ny;player.vx=nx-ox;player.vy=ny-oy;r12.tank.dir=dir;
+ const n=Math.abs(player.vx)+Math.abs(player.vy);r12.tank.track+=n;player.anim+=n;
+ return player.x===x&&player.y===y;
+}
+function r09FinishTank(){
+ frame++;r12.ticks++;r12.clearTick++;const k=r12.clearTick;let f=r12.finish09;
+ if(!f){
+  f=r12.finish09={phase:'align',phaseAge:0,age:0,laneX:r12.def.flag+10,groundY:FLOOR-player.h-2,doorX:r12.def.castle+36,goalX:r12.def.castle+42,hidden:false,entered:false};
+  r12.flagBonus=Math.max(100,Math.round((208-player.y)/32)*500);addScore(r12.flagBonus,player.x,player.y);
+  player.vx=player.vy=0;player.invuln=0;r12.tank.shield=0;ninja.projectiles=[];r04ClearCommands();r12.r08IntroPending=false;
+  audioSync();oneShot('clear');r09FinishPhase(f,'align');
+ }
+ f.age++;f.phaseAge++;player.vx=player.vy=0;flagY=approach(flagY,176,2.1);
+ if(f.phase==='align'){if(r09FinishMove(f,f.laneX,player.y,1.5,player.x<=f.laneX?0:2))r09FinishPhase(f,'descend');}
+ else if(f.phase==='descend'){if(r09FinishMove(f,f.laneX,f.groundY,1.65,1))r09FinishPhase(f,'turn');}
+ else if(f.phase==='turn'){r12.tank.dir=0;if(f.phaseAge>=8)r09FinishPhase(f,'drive');}
+ else if(f.phase==='drive'){if(r09FinishMove(f,f.goalX,f.groundY,1.45,0)){f.entered=true;f.hidden=true;flagPhase=2;r09FinishPhase(f,'inside');}}
+ if(k>=70&&timeLeft>0){const n=Math.min(5,timeLeft);timeLeft-=n;score+=n*50;if(k%8===0)sfx('coin');}
+ camera=clamp(player.x-110,0,Math.max(0,r12.def.width-W));updateParticles();
+ if(f.entered&&f.phaseAge>=24&&timeLeft===0){mode='win';showOverlay('RESCUE RELAY / CHAPTER 02','1-2 突破成功','得分 '+score+' · 救援仍在继续。<br>“选人”会清空本次战场，开始全新的流程。','再玩一次 →');r12Event('win',{relay:r12RelayActive,castleEntered:true});}
+ audioSync();
+}
+// Gatehouse drawing reuses the original Mario castle sprite builder.
+function r09Castle(worldX){
+ const x=worldX-camera;if(x>W+2||x+80<0)return;
+ // Same 80x80 small-castle assembly as the map source, including filled
+ // middle battlements. Crop the existing 17-row plain-brick sprite to 16.
+ const brick=classicSprite('castle_brick');
+ for(const dx of [0,16,48,64]){
+  for(const dy of [40,24])ctx.drawImage(brick,0,0,16,16,Math.round(x+dx),FLOOR-dy,16,16);
+  ctx.drawImage(brick,0,0,16,8,Math.round(x+dx),FLOOR-8,16,8);
+ }
+ sprite('castle_railing',x,FLOOR-48);sprite('castle_railing',x+64,FLOOR-48);
+ for(const dx of [16,32,48])sprite('castle_railing_filled10',x+dx,FLOOR-48);
+ for(const dx of [16,32,48])sprite('castle_railing',x+dx,FLOOR-80);
+ sprite('castle_top',x+16,FLOOR-72);sprite('castle_top',x+40,FLOOR-72);
+ sprite('castle_door',x+32,FLOOR-40);
+ if((mode==='flag'&&flagPhase>=2)||mode==='win')sprite('castle_flag',x+33,FLOOR-100);
+}
+function r09DrawSurfaceMap(){
+ rect(0,0,W,H,'#568ab5');
+ for(let i=0;i<5;i++){sprite('cloud1',i*110-camera*.3,55+(i%2)*24);sprite('hill_small',i*150-camera*.6,189);}
+ for(const t of tiles.values())if(t.x*T>camera-17&&t.x*T<camera+W)drawBlock(t);
+ if(r12.area==='entrance')r09Castle(0);
+ r12DrawPipes();for(const c of looseCoins)if(c.x>camera-10&&c.x<camera+W)drawCoin(c.x-camera,c.y);
+ if(r12.area==='exit'){
+  const x=r12.def.flag-camera;rect(x-1,40,2,152,'#e4e5bb');sprite('flag_top',x-4,32);sprite('flag',x-16,mode==='flag'||mode==='win'?flagY:48);r09Castle(r12.def.castle);
+ }
+}
+const r09OldMap=r12DrawMap;
+r12DrawMap=function(){if(r12&&['entrance','exit'].includes(r12.area))return r09DrawSurfaceMap();return r09OldMap();};
+const r09OldLoad=r12Load;
+r12Load=function(area,preserve=false,spawn=null,keepGeometry=false){
+ r09OldLoad(area,preserve,spawn,keepGeometry);
+ if(area==='entrance'&&!spawn&&r12IsHero()){
+  // Place new arrivals outside the 80px gatehouse instead of inside its wall.
+  Object.assign(player,{x:86,y:FLOOR-player.h-(hero==='tank'?2:0),vx:0,vy:0});
+  camera=0;r12.camY=0;r12Checkpoint={hero,area,x:player.x,y:player.y};
+ }
+};
+const r09OldTankDraw=r12DrawTank;
+r12DrawTank=function(g,x,y,dir,enemy=false,t=0,armored=false,entity=null){
+ const f=r12?.finish09;
+ if(!enemy&&g===ctx&&r12?.area==='exit'&&f&&['flag','win'].includes(mode)){
+  if(f.hidden)return;
+  if(f.phase==='drive'){g.save();g.beginPath();g.rect(-10000,-10000,10000+f.doorX-camera,20000);g.clip();r09OldTankDraw(g,x,y,dir,enemy,t,armored,entity);g.restore();return;}
+ }
+ return r09OldTankDraw(g,x,y,dir,enemy,t,armored,entity);
+};
+const r09OldPanel=updateAudioPanel;
+updateAudioPanel=function(){r09OldPanel();if(hero==='tank'&&$('audioStatus'))$('audioStatus').textContent='坦克：开场短曲 / 履带音效 / 地下计数与完成提示 / 最终奖励曲。无连续战斗配乐；音乐和音效可分别调节。';};
+if(window.__relayTest)__relayTest.r09=()=>({...__relayTest.r08(),version:R09_VERSION,finish:r12?.finish09?{...r12.finish09}:null,surface:['entrance','exit'].includes(r12?.area)});
+

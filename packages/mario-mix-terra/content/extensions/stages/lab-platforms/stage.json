@@ -1,0 +1,39 @@
+{
+  "id": "lab-platforms",
+  "title": "关卡接入试验场（非正式 1-4）",
+  "driver": "platform-v1",
+  "status": "sample",
+  "entryRoom": "main",
+  "entrySpawn": "start",
+  "rooms": {
+    "main": "lab-main",
+    "bonus": "lab-bonus"
+  },
+  "characters": [
+    "lab-runner",
+    "lab-scout"
+  ],
+  "requiredCapabilities": [
+    "jump"
+  ],
+  "overlays": {
+    "lab-runner": {
+      "rooms": {
+        "main": {
+          "geometry": [
+            {
+              "id": "runner-route",
+              "collision": "oneway",
+              "x": 392,
+              "y": 184,
+              "w": 88,
+              "h": 8
+            }
+          ]
+        }
+      }
+    }
+  },
+  "audio": "legacy-default",
+  "note": "验证同一基底图＋不同能力＋单独适配层＋隐藏房往返；经典角色、完整 Boss、结算演出仍需迁移/制作。"
+}

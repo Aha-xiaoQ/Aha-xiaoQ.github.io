@@ -1,0 +1,277 @@
+{
+  "type": "map",
+  "version": "1.10",
+  "orientation": "orthogonal",
+  "renderorder": "right-down",
+  "width": 32,
+  "height": 15,
+  "tilewidth": 16,
+  "tileheight": 16,
+  "infinite": false,
+  "nextlayerid": 4,
+  "nextobjectid": 12,
+  "tilesets": [],
+  "layers": [
+    {
+      "id": 1,
+      "name": "collision",
+      "type": "objectgroup",
+      "visible": true,
+      "opacity": 1,
+      "x": 0,
+      "y": 0,
+      "draworder": "index",
+      "objects": [
+        {
+          "id": 1,
+          "name": "r000-roof",
+          "type": "solid",
+          "x": 0,
+          "y": 32,
+          "width": 512,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r000-roof\",\"x\":0,\"y\":32,\"w\":512,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "r000-bridge",
+          "type": "solid",
+          "x": 0,
+          "y": 160,
+          "width": 208,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r000-bridge\",\"x\":0,\"y\":160,\"w\":208,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "name": "r000-floor",
+          "type": "solid",
+          "x": 208,
+          "y": 208,
+          "width": 304,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r000-floor\",\"x\":208,\"y\":208,\"w\":304,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "name": "r000-step",
+          "type": "solid",
+          "x": 208,
+          "y": 144,
+          "width": 48,
+          "height": 64,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r000-step\",\"x\":208,\"y\":144,\"w\":48,\"h\":64,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "name": "r000-ceiling",
+          "type": "solid",
+          "x": 224,
+          "y": 48,
+          "width": 32,
+          "height": 48,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r000-ceiling\",\"x\":224,\"y\":48,\"w\":32,\"h\":48,\"collision\":\"solid\"}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "objects",
+      "type": "objectgroup",
+      "visible": true,
+      "opacity": 1,
+      "x": 0,
+      "y": 0,
+      "draworder": "index",
+      "objects": [
+        {
+          "id": 6,
+          "name": "inspection-start",
+          "type": "spawn",
+          "x": 24,
+          "y": 136,
+          "width": 12,
+          "height": 24,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"inspection-start\",\"kind\":\"spawn\",\"x\":24,\"y\":136,\"w\":12,\"h\":24}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "pending-mechanics",
+      "type": "objectgroup",
+      "visible": true,
+      "opacity": 1,
+      "x": 0,
+      "y": 0,
+      "draworder": "index",
+      "objects": [
+        {
+          "id": 7,
+          "name": "r000-boss",
+          "type": "enemy-bowser",
+          "x": 138,
+          "y": 124,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r000-boss\",\"kind\":\"enemy-bowser\",\"source\":{\"thing\":\"Bowser\",\"x\":69,\"y\":42},\"sourcePath\":{\"area\":0,\"section\":2,\"part\":\"before\",\"record\":\"r000\"},\"x\":138,\"y\":124}"
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "name": "r000-axe",
+          "type": "bridge-axe-finish",
+          "x": 208,
+          "y": 128,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r000-axe\",\"kind\":\"bridge-axe-finish\",\"source\":{\"thing\":\"CastleAxe\",\"x\":104,\"y\":40},\"sourcePath\":{\"area\":0,\"section\":2,\"part\":\"before\",\"record\":\"r000\"},\"x\":208,\"y\":128}"
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "name": "r000",
+          "type": "castle-finish",
+          "x": 0,
+          "y": 208,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r000\",\"kind\":\"castle-finish\",\"source\":{\"macro\":\"EndInsideCastle\",\"spawnType\":\"SpinyEgg\",\"transport\":{\"map\":\"5-1\"},\"x\":0,\"y\":0},\"sourcePath\":{\"area\":0,\"section\":2,\"part\":\"before\",\"record\":\"r000\"},\"x\":0,\"y\":208}"
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "name": "r000-transport",
+          "type": "source-transport-not-simulated",
+          "x": 0,
+          "y": 208,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r000-transport\",\"kind\":\"source-transport-not-simulated\",\"source\":{\"macro\":\"EndInsideCastle\",\"spawnType\":\"SpinyEgg\",\"transport\":{\"map\":\"5-1\"},\"x\":0,\"y\":0},\"sourcePath\":{\"area\":0,\"section\":2,\"part\":\"before\",\"record\":\"r000\"},\"x\":0,\"y\":208}"
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "name": "section-mode",
+          "type": "conditional-section-runtime",
+          "x": 0,
+          "y": 32,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"section-mode\",\"kind\":\"conditional-section-runtime\",\"source\":{\"x\":0,\"y\":88},\"sourcePath\":{\"area\":0,\"section\":2,\"part\":\"before\",\"record\":\"section\"},\"x\":0,\"y\":32}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "properties": [
+    {
+      "name": "room",
+      "type": "string",
+      "value": "area-0-section-2-before"
+    },
+    {
+      "name": "underwater",
+      "type": "bool",
+      "value": false
+    },
+    {
+      "name": "inspectionOnly",
+      "type": "bool",
+      "value": true
+    },
+    {
+      "name": "referenceReview",
+      "type": "string",
+      "value": "pending"
+    }
+  ]
+}

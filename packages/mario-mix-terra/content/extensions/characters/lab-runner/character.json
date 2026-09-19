@@ -1,0 +1,27 @@
+{
+  "id": "lab-runner",
+  "title": "行者 · 单跳",
+  "driver": "platform-v1",
+  "capabilities": [
+    "jump",
+    "attack",
+    "platform-drop"
+  ],
+  "motion": {
+    "speed": 2.4,
+    "acceleration": 0.22,
+    "gravity": 0.3,
+    "jumpSpeed": 6.2,
+    "maxFall": 6,
+    "width": 12,
+    "height": 24,
+    "maxHealth": 3
+  },
+  "appearance": {
+    "body": "#f7f5ed",
+    "accent": "#ed263d",
+    "shape": "runner"
+  },
+  "audio": null,
+  "note": "原创几何占位角色，用于验证框架接口；不是马里奥或泰拉角色手感/素材。"
+}

@@ -1,0 +1,185 @@
+/* R17 content and physics. Terrain layout and elite tiers are crossover rules,
+ * not a claim that Terraria's worldgen/AI has been transplanted verbatim. */
+const T17_CONTENT={reference:'Terraria PC 1.4.5.8',biomes:['森林','沙漠','猩红','丛林','雪原','发光蘑菇','花岗岩','大理石','腐化','灰烬'],revision:17};
+const t17Art={};
+const t17ArtReady=Promise.all(Object.entries(T17_ASSET_DATA).map(([key,url])=>new Promise(resolve=>{const im=new Image();im.onload=()=>{t17Art[key]=im;resolve(true)};im.onerror=()=>resolve(false);im.src=url;})));
+const t17PlantCache=new Map();
+function t17PlantSprite(variant,height){
+ const key=variant+':'+height+':'+r08ImageRevision;if(t17PlantCache.has(key))return t17PlantCache.get(key);
+ const im=r06Images[variant==='boreal'?'t12TreeTop':'t12ForestTop'];if(!im)return t12TreeImage(variant);
+ const cv=document.createElement('canvas');cv.width=96;cv.height=height;const g=cv.getContext('2d');g.imageSmoothingEnabled=false;
+ const frame=variant==='forest2'?2:variant==='boreal'?1:0,sx=82*frame;
+ for(let y=72;y<height;y+=8)g.drawImage(im,sx+34,70,14,8,42,y,14,Math.min(8,height-y));
+ g.drawImage(im,sx,0,80,80,8,0,80,80);t17PlantCache.set(key,cv);return cv;
+}
+function t17FixTrees(s){
+ for(const [i,t]of(s.trees||[]).entries()){
+  if(t.t17Sized)continue;t.t17Sized=true;
+  const biome=t.t16Biome||t16BiomeAt(t.x,s).id;
+  t.variant=biome==='snow'?'boreal':i%3===2?'forest2':'forest';
+  t.visualH=s.r05Arena?(biome==='desert'?112+i%3*16:192+i%4*24):biome==='desert'?60+i%2*12:Math.max(64,Math.min(108,t.y-24));
+  t.h=t.visualH;
+ }
+}
+const t17TreeDrawOld=t12DrawTree;
+t12DrawTree=function(g,t,c=0,scale=1){
+ const biome=t.t16Biome||t16BiomeAt(t.x).id,h=t.visualH||96,x=t.x-c;
+ if(t.hp<=0&&t.fall>=42)return t17TreeDrawOld(g,t,c,scale);
+ g.save();g.imageSmoothingEnabled=false;g.translate(Math.round(x),Math.round(t.y));
+ if(t.shake)g.rotate(Math.sin(t.shake*1.6)*.024);
+ if(biome==='desert'&&t17Art.cactus){
+  // Native 16x16 frame parts; no drawn rectangles pretending to be a cactus.
+  const im=t17Art.cactus,unit=state?.r05Arena?16:8,n=Math.max(4,Math.round(h/unit));g.scale(scale,scale);
+  const tile=(sx,sy,dx,dy)=>g.drawImage(im,sx*18,sy*18,16,16,dx,dy,unit,unit);
+  for(let i=1;i<=n;i++)tile(0,i===n?0:1,-unit/2,-i*unit);
+  for(const [dir,level]of [[1,Math.max(2,Math.floor(n*.52))],[-1,Math.max(2,Math.floor(n*.32))]]){
+   const right=dir>0;tile(right?1:4,0,-unit/2,-level*unit);
+   tile(right?2:3,2,(right?.5:-1.5)*unit,-level*unit);
+   tile(right?2:3,1,(right?.5:-1.5)*unit,-(level+1)*unit);
+   tile(right?2:3,0,(right?.5:-1.5)*unit,-(level+2)*unit);
+  }
+ }else{
+  const tall=state?.r05Arena,im=t17PlantSprite(t.variant,tall?h:Math.round(h/.6)),r=tall?1:.6;
+  g.drawImage(im,Math.round(-48*r*scale),Math.round(-h*scale),Math.round(96*r*scale),Math.round(h*scale));
+ }
+ g.restore();
+};
+const t17NewContentBase=newState;
+newState=function(){const s=t17NewContentBase();t17FixTrees(s);return s;};
+const T17_BIOMES=[
+ {name:'森林',rgb:[.94,.86,.69],wall:'#292c29'},
+ {name:'沙漠',rgb:[1.45,1.19,.67],wall:'#4b3826'},
+ {name:'猩红',rgb:[1.15,.54,.57],wall:'#3c1b26'},
+ {name:'丛林',rgb:[.63,1.03,.56],wall:'#183628'},
+ {name:'雪原',rgb:[1.26,1.49,1.67],wall:'#233a52'},
+ {name:'发光蘑菇',rgb:[.49,.81,1.29],wall:'#152441'},
+ {name:'花岗岩',rgb:[.51,.64,.99],wall:'#171f34'},
+ {name:'大理石',rgb:[1.51,1.48,1.33],wall:'#424249'},
+ {name:'腐化',rgb:[.89,.58,1.16],wall:'#2d2040'},
+ {name:'灰烬',rgb:[.75,.71,.70],wall:'#2e2125'}
+];
+function t17DeepBiome(x,y){const xx=x+3.7*Math.sin(y*.19)+2.3*Math.sin(y*.053),yy=y+2.4*Math.sin(x*.13);if(yy>104)return 9;if(yy>68){if(xx<57)return 6;if(xx>140)return 7;return 5;}/* Reachable shallow pockets reuse the existing cave geometry. */if(yy>20&&yy<47&&xx>70&&xx<110)return 5;if(yy>37&&yy<68&&xx>16&&xx<42)return 6;if(yy>31&&yy<64&&xx>150&&xx<180)return 7;if(yy>38&&xx<53)return 8;if(yy>38&&xx>117&&xx<147)return 5;return clamp(Math.floor(xx/192*5),0,4);}
+const t17GenerateBase=t13GenerateWorld;
+t13GenerateWorld=function(){
+ const w=t17GenerateBase();w.t17=true;w.regions=new Uint8Array(w.cells.length);w.deepFoes=[];w.decor=[];
+ const carve=(cx,cy,rx,ry)=>{for(let y=Math.max(7,Math.floor(cy-ry));y<=Math.min(w.rows-3,Math.ceil(cy+ry));y++)for(let x=Math.max(2,Math.floor(cx-rx));x<=Math.min(w.cols-3,Math.ceil(cx+rx));x++)if(!t13Protected(w,x,y)&&((x-cx)/rx)**2+((y-cy)/ry)**2<1)w.cells[y*w.cols+x]=0;};
+ // Wider chambers alternate with navigable three-tile passages and ore pillars.
+ for(let i=0;i<26;i++){const x=13+(i*31)%166,y=18+Math.floor(i/5)*20+(i%3)*3;carve(x,y,8+i%3*2,5+i%2*2);}
+ for(let y=0;y<w.rows;y++)for(let x=0;x<w.cols;x++)w.regions[y*w.cols+x]=t17DeepBiome(x,y);
+ // Fourteen added caches across the themed caverns have real loot, not labels.
+ const specs=[[18,16],[78,23],[109,20],[167,26],[30,46],[84,44],[127,52],[174,60],[24,77],[76,82],[133,83],[170,90],[75,112],[120,118]];
+ for(const [i,[cx,cy]]of specs.entries()){
+  carve(cx,cy-3,8,6);for(let x=cx-7;x<=cx+7;x++)w.cells[cy*w.cols+x]=2;
+  const biome=t17DeepBiome(cx,cy),items=[{kind:'torch',count:30},{kind:'wood',count:40}];
+  items.unshift({kind:i%5===0?'terraBlade':i%5===1?'boots':i%5===2?'band':i%5===3?'heart':'starfury',count:1});
+  if(i===8||i===12)items.unshift({kind:'stormbow',count:1});
+  w.chests.push({id:'r17-cache-'+i,name:T17_BIOMES[biome].name+' · '+(cy>70?'深层宝箱':'遗迹宝箱'),x:cx*16-16,y:T13.top+cy*16-28,w:32,h:28,opened:false,empty:false,items});
+  w.torches.push({x:(cx-5)*16+8,y:T13.top+cy*16-16,wall:true,phase:i%5});
+ }
+ // Protect floors of all old and new chests after room carving.
+ for(const q of w.chests){const cy=Math.round((q.y+28-T13.top)/16),cx=Math.round((q.x+16)/16);for(let x=cx-2;x<=cx+2;x++)w.cells[cy*w.cols+x]=2;for(let y=cy-4;y<cy;y++)for(let x=cx-3;x<=cx+3;x++)w.cells[y*w.cols+x]=0;}
+ // Fixtures only spawn in genuine empty cells with solid footing (for walkers).
+ for(let cy=12;cy<122;cy+=5)for(let cx=10;cx<184;cx+=7){
+  if(t13At(w,cx,cy)||t13At(w,cx,cy-1)||t13At(w,cx,cy-2)||!t13At(w,cx,cy+1))continue;
+  if(w.chests.some(q=>Math.hypot(q.x-cx*16,q.y-(T13.top+cy*16))<100))continue;
+  const i=w.deepFoes.length,elite=i%7===5,kind=i%4===0?'caveBat':i%4===1?'slime':i%4===2?'zombie':'demonEye',flying=kind==='caveBat'||kind==='demonEye',size=kind==='zombie'?[22,40]:kind==='slime'?[28,22]:[28,22],hp=(kind==='slime'?60:kind==='caveBat'?80:120)*(elite?3:1);
+  w.deepFoes.push({id:'r17-deep-'+i,kind,x:cx*16,y:T13.top+(cy+1)*16-size[1],w:size[0],h:size[1],hp,maxHp:hp,elite,flying,age:i*5,active:false,vx:0,vy:0,dir:-1,grounded:!flying,dead:false,flash:0,knock:0,jumpWait:20,biome:t17DeepBiome(cx,cy),skin:'blue'});
+ }
+ // Only locally visible background decorations are drawn.
+ for(let y=7;y<125;y++)for(let x=3;x<189;x++)if(!t13At(w,x,y)&&t13At(w,x,y+1)&&t13Hash(x,y,77)>.85)w.decor.push({x:x*16+8,y:T13.top+(y+1)*16,biome:t17DeepBiome(x,y),h:10+Math.floor(t13Hash(x,y,32)*16)});
+ w.revision++;return w;
+};
+const t17RoomContentBase=t11PrepareRoom;
+t11PrepareRoom=function(s){t17RoomContentBase(s);t17FixTrees(s);s.notice='靠近宝箱按 X / E；取齐道具后再拾取最右眼球。矿车按 B / F 上车。';s.noticeTime=240;};
+Object.assign(T13_LOOT_NAMES,{stormbow:'代达罗斯风暴弓'});
+const t17TakeContentBase=t13TakeChest;
+t13TakeChest=function(){const s=state,c=s?.t13World?.chests.find(q=>q.id===t13OpenChestId);if(c&&mode==='inventory')for(const item of c.items)if(item.kind==='stormbow'){if(!s.t13Owned.includes('stormbow'))s.t13Owned.push('stormbow');s.t13Weapon='stormbow';s.t13WeaponOverride=!!s.kit;}return t17TakeContentBase();};
+const t17TargetsBase=r06AllTargets;
+r06AllTargets=function(s){const out=t17TargetsBase(s);for(const e of s.t13World?.deepFoes||[])if(!e.dead&&e.active)out.push({id:e.id,x:e.x+e.w/2,y:e.y+e.h/2,w:e.w,h:e.h,obj:e});return out;};
+const t17DamageContentBase=r06DamageTarget;
+r06DamageTarget=function(t,damage,kind){if(!String(t?.id??'').startsWith('r17-deep-'))return t17DamageContentBase(t,damage,kind);const e=t.obj,s=state;if(e.dead)return;
+ const dealt=Math.max(1,Math.round(damage)-(e.elite?6:2));e.hp-=dealt;e.flash=8;e.knock=kind==='copper-axe'?18:10;e.vx=(s.p.attackFacing||s.p.facing)*(kind==='copper-axe'?4.5:2.5)*(e.elite?.65:1);e.vy=-2;
+ number(String(dealt),t.x,t.y-18,e.elite?'#ffd095':'#f4e3b2');t10Burst(s,t.x,t.y,e.kind==='slime'?'gel':'hit',5);
+ if(e.hp<=0){e.dead=true;s.kills++;s.score+=e.elite?500:80;terraSound('npcDeath');if(e.elite){s.healPotions++;t13Drop(s,'torch',12,e.x,e.y);s.hp=Math.min(s.maxHp,s.hp+20);t13Event('elite-defeated',{id:e.id,reward:'healing-potion + torches'});}}
+};
+function t17DeepStep(s){
+ const p=s.p,w=s.t13World;if(!w)return;
+ for(const e of w.deepFoes){if(e.dead||Math.abs(e.x-p.x)>850||Math.abs(e.y-p.y)>580){e.active=false;continue;}e.active=true;e.age++;if(e.flash)e.flash--;
+  const dx=p.x-e.x,dy=p.y-e.y,dir=dx<0?-1:1;
+  if(e.knock>0){e.knock--;e.vx*=.9;}
+  else if(e.flying){const d=Math.hypot(dx,dy)||1,sp=e.kind==='caveBat'?2.8:2.1;e.vx=approach(e.vx,dx/d*sp,.07);e.vy=approach(e.vy,dy/d*sp+Math.sin(e.age/18)*.25,.055);}
+  else if(e.kind==='slime'){if(e.grounded&&--e.jumpWait<=0){e.vx=dir*(e.elite?2.8:1.8);e.vy=e.age%3===0?-6.2:-4.7;e.jumpWait=38;}}
+  else{e.vx=dir*(e.elite?1.7:1.05);if(e.grounded&&dy< -25&&e.age%48===0)e.vy=-6;}
+  e.dir=e.vx<0?-1:1;const bounds={x:e.x-16,y:e.y-16,w:e.w+32,h:e.h+40},ss=t13PhysicalSurfaces(s,bounds).filter(q=>q.solid);
+  e.x+=e.vx;let hitWall=false;for(const q of ss)if(near(e,q)){if(e.vx>0)e.x=q.x-e.w;else if(e.vx<0)e.x=q.x+q.w;hitWall=true;}
+  if(hitWall){if(!e.flying&&e.grounded)e.vy=-6;else if(e.flying)e.vy=dy<0?-2:2;e.vx=0;}
+  const oldY=e.y,foot=e.y+e.h;e.vy=Math.min(7,e.vy+(e.flying?0:.28));e.y+=e.vy;e.grounded=false;
+  for(const q of ss)if(e.x+e.w>q.x&&e.x<q.x+q.w){if(e.vy>=0&&foot<=q.y+1&&e.y+e.h>=q.y){e.y=q.y-e.h;e.vy=0;e.grounded=true;}else if(e.vy<0&&oldY>=q.y+q.h&&e.y<q.y+q.h){e.y=q.y+q.h;e.vy=0;}}
+  if(near(p,e)&&p.invuln===0&&!s.t13Recalling){const phase=s.phase;s.phase='battle';r05Hurt(e.elite?40:22,e.x);if(s.phase==='battle')s.phase=phase;if(s.hp<=0){showOverlay('CAVERN / RETRY','在地下倒下了','已开宝箱与挖掘地形保留，返回地表准备场。','回准备场 →','ENTER / A 重试');break;}}
+ }
+}
+const t17DeepTextureCache=new Map();
+function t17DeepTexture(kind,bid,v){const key=kind+':'+bid+':'+v;if(t17DeepTextureCache.has(key))return t17DeepTextureCache.get(key);const src=t13TileTexture(kind,v),cv=document.createElement('canvas');cv.width=cv.height=16;const g=cv.getContext('2d');g.drawImage(src,0,0);const data=g.getImageData(0,0,16,16),rgb=T17_BIOMES[bid].rgb;
+ for(let i=0;i<data.data.length;i+=4)for(let k=0;k<3;k++)data.data[i+k]=Math.min(255,data.data[i+k]*rgb[k]);g.putImageData(data,0,0);t17DeepTextureCache.set(key,cv);return cv;}
+function t17DrawDeep(s){const w=s.t13World,c=s.cam,yc=s.camY||0,x0=Math.max(0,Math.floor(c/16)),x1=Math.min(w.cols-1,Math.ceil((c+R06_VIEW.w)/16)),y0=Math.max(0,Math.floor((yc-T13.top)/16)),y1=Math.min(w.rows-1,Math.ceil((yc+R06_VIEW.h-T13.top)/16));
+ ctx.save();ctx.imageSmoothingEnabled=false;
+ for(let y=y0;y<=y1;y++)for(let x=x0;x<=x1;x++){const cell=t13At(w,x,y),bid=w.regions[y*w.cols+x],xx=x*16-c,yy=T13.top+y*16,v=Math.floor(t13Hash(x,y)*3);
+  if(cell){ctx.drawImage(t17DeepTexture(cell,bid,v),xx,yy);if(!t13At(w,x,y-1)){ctx.fillStyle=bid===4?'#d8eef5':bid===3?'#57844c':bid===2?'#c55f6b':bid===5?'#669add':'#ada68b';ctx.fillRect(xx,yy,16,2);}if(w.cracks[x+','+y]){ctx.strokeStyle='#1b1722';ctx.beginPath();ctx.moveTo(xx+5,yy);ctx.lineTo(xx+9,yy+7);ctx.lineTo(xx+4,yy+16);ctx.stroke();}}
+  else{ctx.fillStyle=T17_BIOMES[bid].wall;ctx.fillRect(xx,yy,16,16);ctx.fillStyle='#aaa5a414';ctx.fillRect(xx+(x%3)*3,yy+4,6,1);if(y>1&&t13At(w,x,y-1)&&t13Hash(x,y)>.64){ctx.fillStyle=bid===4?'#87bbc3':bid===3?'#4d7545':'#72727d';ctx.beginPath();ctx.moveTo(xx+4,yy);ctx.lineTo(xx+11,yy);ctx.lineTo(xx+8,yy+10+x%8);ctx.fill();}}
+ }
+ for(const d of w.decor){if(d.x<c-30||d.x>c+R06_VIEW.w+30||d.y<yc-40||d.y>yc+R06_VIEW.h+40)continue;if(d.biome===5){ctx.fillStyle='#508fda';ctx.fillRect(d.x-c-2,d.y-d.h,4,d.h);ctx.fillStyle='#7cafee';ctx.fillRect(d.x-c-8,d.y-d.h-3,16,4);ctx.fillStyle='#b7eaff';ctx.fillRect(d.x-c-3,d.y-d.h-3,3,2);}else if([4,6,7].includes(d.biome)){ctx.fillStyle=d.biome===4?'#87c6de':d.biome===6?'#757dc2':'#bcbab8';ctx.beginPath();ctx.moveTo(d.x-c-4,d.y);ctx.lineTo(d.x-c-2,d.y-d.h);ctx.lineTo(d.x-c+3,d.y-d.h+4);ctx.lineTo(d.x-c+6,d.y);ctx.fill();}}
+ for(const q of w.chests){if(q.removed||q.x<c-60||q.x>c+R06_VIEW.w+60||q.y<yc-70||q.y>yc+R06_VIEW.h+50)continue;const im=r06Images.chestItem;if(im){if(q.opened){ctx.drawImage(im,0,10,32,18,q.x-c,q.y+10,32,18);ctx.drawImage(im,0,0,32,10,q.x-c,q.y-3,32,10);}else ctx.drawImage(im,q.x-c,q.y,32,28);}}
+ for(const e of w.deepFoes){if(e.dead||!e.active)continue;let im,fw,fh,n;if(e.kind==='slime'){im=t10SlimeOriginal;fw=32;fh=26;n=2;}else if(e.kind==='zombie'){im=r06Images.zombie;fw=38;fh=48;n=3;}else if(e.kind==='caveBat'){im=r06Images.caveBat;fw=44;fh=40;n=4;}else{im=r06Images.demonEye;fw=38;fh=24;n=2;}
+  if(im){ctx.save();ctx.translate(Math.round(e.x+e.w/2-c),Math.round(e.y+e.h));ctx.scale(e.dir<0?1:-1,1);if(e.flash%2)ctx.globalAlpha=.55;ctx.drawImage(im,0,Math.floor(e.age/(e.flying?6:10))%n*fh,fw,fh,-fw/2,-fh,fw,fh);ctx.restore();}
+  if(e.elite){ctx.fillStyle='#d8b163';ctx.font='11px sans-serif';ctx.textAlign='center';ctx.fillText('精英',e.x+e.w/2-c,e.y-14);ctx.fillStyle='#211b24';ctx.fillRect(e.x-c-5,e.y-9,e.w+10,3);ctx.fillStyle='#d88e54';ctx.fillRect(e.x-c-5,e.y-9,(e.w+10)*Math.max(0,e.hp/e.maxHp),3);}
+ }
+ ctx.restore();
+}
+const t17WorldDrawBase=t13DrawWorld;
+t13DrawWorld=function(s){if(s.t13World?.t17){t17DrawDeep(s);t16DrawRails(s);}else t17WorldDrawBase(s);};
+const t17LightsBase=t13LightSources;
+t13LightSources=function(s){const out=t17LightsBase(s);for(const d of s.t13World?.decor||[])if(d.biome===5&&Math.abs(d.x-s.p.x)<800&&Math.abs(d.y-s.p.y)<550)out.push({x:d.x,y:d.y-d.h,r:.13,g:.34,b:.67});return out;};
+const t17ContentStepBase=step;
+step=function(v){const s=state;const out=t17ContentStepBase(v);if(s===state&&s&&mode==='playing'&&!s.t11Transition&&s.r05Arena){t17DeepStep(s);}return out;};
+const t17ContentSyncBase=t15Sync;
+t15Sync=function(s){t17ContentSyncBase(s);if(s?.r05Arena&&s.p.y>T13.top+60){const w=s.t13World,x=clamp(Math.floor(s.p.x/16),0,191),y=clamp(Math.floor((s.p.y-T13.top)/16),0,127);$('relayMessage').textContent=T17_BIOMES[t17DeepBiome(x,y)].name+' · 地下 '+Math.max(0,Math.floor((s.p.y-T13.top)/16))+' 格';}};
+Object.assign(t17Diagnostics,{ready:t17ArtReady,world:()=>state?.t13World,damage:r06DamageTarget,content:T17_CONTENT,art:()=>Object.fromEntries(Object.entries(t17Art).map(([k,v])=>[k,[v.width,v.height]])),deep:()=>state?.t13World?{biomes:[...new Set(state.t13World.regions)],chests:state.t13World.chests.length,enemies:state.t13World.deepFoes.length,elites:state.t13World.deepFoes.filter(e=>e.elite).length}:null});
+
+/* Reference-driven differences from legacy aiming. Original-source artwork is
+ * kept for held items; the 1.4.4+ Terra Blade aura is a browser reconstruction. */
+function t17HomingTarget(s,x,y,range=300,manhattan=false){let best=null,dist=range;for(const t of r06AllTargets(s)){if(t.obj.dead)continue;const dx=t.x-x,dy=t.y-y,d=manhattan?Math.abs(dx)+Math.abs(dy):Math.hypot(dx,dy);if(d<dist){best=t;dist=d;}}return best;}
+// Summons keep autonomous targeting; player-held whips and guns do not.
+r06Target=function(s,range=Infinity){const p=s.p;return t17HomingTarget(s,p.x+p.w/2,p.y+p.h/2,range);};
+const t17AttackWeaponsBase=r06Attack;
+r06Attack=function(v={}){
+ const s=state,p=s?.p;if(!s||s.tool!==0||p.cooldown>0)return;
+ if((!s.kit||s.t13WeaponOverride)&&s.t13Weapon==='terraBlade'){
+  const a=r06Arm(s,v),sc=t10Scale(s),an=a.facing<0?Math.PI-a.angle:a.angle;p.attack=p.cooldown=p.t10SwingDuration=18;p.t10PreviousBlade=null;s.attackId++;
+  const hand=t10WorldPose(s).hand;r06Shoot(s,{type:'terraBlade',x:hand.x+Math.cos(an)*18*sc,y:hand.y+Math.sin(an)*18*sc,vx:Math.cos(an)*12*sc,vy:Math.sin(an)*12*sc,damage:85,life:100,angle:an,pierce:3,t17Wave:true});terraSound('swing',{volume:.6});return;
+ }
+ return t17AttackWeaponsBase(v);
+};r05Attack=r06Attack;
+const t17ArcWeaponsBase=t10HitArc;
+t10HitArc=function(s,targets){
+ if(s.t13Weapon!=='terraBlade'||s.kit&&!s.t13WeaponOverride)return t17ArcWeaponsBase(s,targets);
+ const p=s.p;if(p.attack<=0)return;const sc=t10Scale(s),u=1-p.attack/(p.t10SwingDuration||18);if(u<.1||u>.9)return;
+ const aim=(p.attackFacing<0?Math.PI-p.aim:p.aim),cx=p.x+p.w/2,cy=p.y+p.h/2;
+ for(const t of targets){if(t.obj.r06Melee===s.attackId)continue;const dx=t.x-cx,dy=t.y-cy,delta=Math.atan2(Math.sin(Math.atan2(dy,dx)-aim),Math.cos(Math.atan2(dy,dx)-aim));if(Math.hypot(dx,dy)<86*sc+t.w/2&&Math.abs(delta)<1.9){t.obj.r06Melee=s.attackId;r06DamageTarget(t,85,'terra-blade-melee');}}
+};
+function t17Crescent(x,y,a,r,alpha=.7){ctx.save();ctx.translate(x,y);ctx.rotate(a);ctx.globalCompositeOperation='lighter';for(let i=0;i<3;i++){ctx.globalAlpha=alpha*(1-i*.22);ctx.fillStyle=['#43945b','#64d982','#d6ffdc'][i];const rr=r*(1-i*.17);ctx.beginPath();ctx.moveTo(-rr*.25,-rr);ctx.quadraticCurveTo(rr*.87,0,-rr*.25,rr);ctx.quadraticCurveTo(rr*.18,0,-rr*.25,-rr);ctx.fill();}ctx.restore();}
+const t17WeaponDrawBase=r06DrawProjectiles;
+r06DrawProjectiles=function(s,c){const waves=s.projectiles.filter(b=>b.t17Wave),all=s.projectiles;s.projectiles=all.filter(b=>!b.t17Wave);try{t17WeaponDrawBase(s,c);}finally{s.projectiles=all;}
+ const sc=t10Scale(s);for(const b of waves){for(let i=0;i<b.trail.length;i+=3){const t=b.trail[i];t17Crescent(t.x-c,t.y,Math.atan2(b.vy,b.vx),31*sc,(i+1)/b.trail.length*.16);}t17Crescent(b.x-c,b.y,Math.atan2(b.vy,b.vx),35*sc,.64);}
+ if(r06Weapon(s)==='terraBlade'&&s.p.attack>0){const p=s.p,u=1-p.attack/(p.t10SwingDuration||18),a=p.attackFacing<0?Math.PI-p.aim:p.aim,pose=t10WorldPose(s);ctx.save();ctx.globalCompositeOperation='lighter';ctx.globalAlpha=Math.sin(Math.PI*u)*.47;ctx.strokeStyle='#80eaa5';ctx.lineWidth=13*sc;ctx.beginPath();ctx.arc(p.x+p.w/2-c,p.y+p.h/2,65*sc,a-1.5+u*.7,a+.7+u*.7);ctx.stroke();ctx.restore();}
+};
+Object.assign(t17Diagnostics,{nativeTarget:(x,y,range)=>t17HomingTarget(state,x,y,range),weapons:{reference:'1.4.5.8',playerAutoAim:false,chlorophyteHoming:true,summonHoming:true,stormbowPrediction:false,terraBlade:'wide-aura / straight-wave browser reconstruction',lastPrism:'low-mana fade'}});
+
+// One sweep, one hit per enemy: the polyline equals the rendered whip bend.
+function t17WhipHit(s,targets){
+ if(s.whipAge<3||s.whipAge>25)return;const sc=t10Scale(s),hand=t10WorldPose(s).hand,p=s.p,a=p.attackFacing<0?Math.PI-p.aim:p.aim,len=Math.sin(s.whipAge/28*Math.PI)*240*sc,points=[hand];
+ for(let i=1;i<=14;i++){const u=i/14,bend=Math.sin(u*Math.PI)*Math.sin(s.whipAge/28*Math.PI*2)*25*sc;points.push({x:hand.x+Math.cos(a)*len*u-Math.sin(a)*bend,y:hand.y+Math.sin(a)*len*u+Math.cos(a)*bend});}
+ for(const t of targets){if(t.obj.dead||t.obj.t17WhipId===s.whipId)continue;const box={x:t.x-t.w/2,y:t.y-t.h/2,w:t.w,h:t.h};for(let i=1;i<points.length;i++)if(segmentHits(points[i-1],points[i],box,4*sc)){t.obj.t17WhipId=s.whipId;t.obj.tagUntil=s.ticks+240;r06DamageTarget(t,180,'kaleidoscope');break;}}
+}
+
+
+const T20_ASSETS={"castleBrick": "__TERRA_ASSET_media-178__", "sharkNecklace": "__TERRA_ASSET_media-179__", "shackle": "__TERRA_ASSET_media-180__"};

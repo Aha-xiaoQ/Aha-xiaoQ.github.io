@@ -1,0 +1,1 @@
+let last=0,accumulator=0;function loop(now){if(!last)last=now;const elapsed=Math.min((now-last)/1000,.1);last=now;if(!manual){accumulator+=elapsed;let n=0;while(accumulator>=1/60&&n<6){fixedUpdate();accumulator-=1/60;n++}draw()}requestAnimationFrame(loop)}requestAnimationFrame(loop);

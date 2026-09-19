@@ -1,0 +1,146 @@
+{
+  "id": "lab-main",
+  "title": "关卡接入试验场",
+  "tileSize": 16,
+  "width": 1024,
+  "height": 240,
+  "provenance": {
+    "kind": "original",
+    "source": "M03 contract sample authored for this project",
+    "review": "verified",
+    "note": "原创几何接入样例，不是原版 1-4 地图，不使用未完成奥日城堡分支。"
+  },
+  "geometry": [
+    {
+      "id": "floor-a",
+      "collision": "solid",
+      "x": 0,
+      "y": 208,
+      "w": 400,
+      "h": 32
+    },
+    {
+      "id": "floor-b",
+      "collision": "solid",
+      "x": 464,
+      "y": 208,
+      "w": 560,
+      "h": 32
+    },
+    {
+      "id": "platform-a",
+      "collision": "oneway",
+      "x": 96,
+      "y": 160,
+      "w": 96,
+      "h": 8
+    },
+    {
+      "id": "platform-b",
+      "collision": "oneway",
+      "x": 272,
+      "y": 144,
+      "w": 96,
+      "h": 8
+    },
+    {
+      "id": "lift",
+      "collision": "oneway",
+      "x": 656,
+      "y": 156,
+      "w": 64,
+      "h": 8,
+      "motion": {
+        "axis": "y",
+        "min": 128,
+        "max": 192,
+        "speed": 0.5
+      }
+    }
+  ],
+  "objects": [
+    {
+      "id": "start",
+      "kind": "spawn",
+      "x": 32,
+      "y": 180,
+      "w": 12,
+      "h": 24
+    },
+    {
+      "id": "return",
+      "kind": "spawn",
+      "x": 256,
+      "y": 180,
+      "w": 12,
+      "h": 24
+    },
+    {
+      "id": "checkpoint-spawn",
+      "kind": "spawn",
+      "x": 576,
+      "y": 180,
+      "w": 12,
+      "h": 24
+    },
+    {
+      "id": "checkpoint",
+      "kind": "checkpoint",
+      "x": 572,
+      "y": 164,
+      "w": 24,
+      "h": 44,
+      "targetSpawn": "checkpoint-spawn"
+    },
+    {
+      "id": "bonus-door",
+      "kind": "portal",
+      "x": 200,
+      "y": 172,
+      "w": 24,
+      "h": 36,
+      "targetRoom": "bonus",
+      "targetSpawn": "start"
+    },
+    {
+      "id": "coin-a",
+      "kind": "coin",
+      "x": 125,
+      "y": 140,
+      "w": 8,
+      "h": 12
+    },
+    {
+      "id": "coin-b",
+      "kind": "coin",
+      "x": 520,
+      "y": 184,
+      "w": 8,
+      "h": 12
+    },
+    {
+      "id": "hazard",
+      "kind": "hazard",
+      "x": 756,
+      "y": 200,
+      "w": 32,
+      "h": 8
+    },
+    {
+      "id": "enemy",
+      "kind": "walker",
+      "x": 840,
+      "y": 192,
+      "w": 16,
+      "h": 16
+    },
+    {
+      "id": "goal",
+      "kind": "exit",
+      "x": 972,
+      "y": 156,
+      "w": 24,
+      "h": 52
+    }
+  ]
+}

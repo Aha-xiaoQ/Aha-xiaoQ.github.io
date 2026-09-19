@@ -1,0 +1,235 @@
+/* R20: recovered R17 + single-owner input, contact interactions, readable boss
+ * staging and the final native-brick castle. No main collision geometry changes.
+ * The rail-aware pursuit/camera is an explicit crossover adaptation, not vanilla AI. */
+const T20_BUILD='release-1.0';
+const t20AssetJobs=[];
+for(const [k,url] of Object.entries(T20_ASSETS))t20AssetJobs.push(new Promise(resolve=>{const im=new Image();im.onload=()=>{r06Images[k]=im;r08ImageRevision++;resolve(true);};im.onerror=()=>resolve(false);im.src=url;}));
+
+// Mouse coordinates always use the visible canvas content rectangle, including
+// its border/letterboxing and the current camera; idle pointer does not own a pad.
+t17AimPoint=function(s,v={},tools=false){
+ const p=s.p,sc=t10Scale(s),origin={x:p.x+p.w/2,y:p.y+p.h/2};
+ if(t20Device==='keyboard'&&t17Input.source==='mouse'&&t17Input.lastMouse){
+  t13SamplePointer({clientX:t17Input.lastMouse[0],clientY:t17Input.lastMouse[1]});
+  if(t13Pointer.active)return{x:t13Pointer.x,y:t13Pointer.y,source:'mouse',pointer:true};
+ }
+ if(t20Device==='gamepad'&&!tools){
+  const eye=s.r05Arena&&s.phase==='battle'&&s.eye&&!s.eye.dead?s.eye:null;
+  const target=eye?{id:'boss',x:eye.x,y:eye.y,vx:eye.vx,vy:eye.vy}:r06Target(s,s.r05Arena?1600:W*1.25);
+  if(target){
+   // Aim assistance only sets the launch location. Arrows remain ordinary projectiles.
+   const lead=r06Weapon(s)==='stormbow'&&s.r05Arena?35:0;
+   const x=target.x+clamp((target.vx||0)*lead,-600,600),y=target.y+clamp((target.vy||0)*lead,-450,450);
+   return{x,y,source:'gamepad-auto',pointer:false,targetId:target.id};
+  }
+ }
+ let dx=v.x||t20LeftAim[0]||p.facing,dy=v.y||t20LeftAim[1]||0;
+ if(t20Device==='keyboard'){dx=v.x||p.facing;dy=v.y||0;}
+ const n=Math.hypot(dx,dy)||1;dx/=n;dy/=n;const reach=(tools?52:260)*sc;
+ return{x:origin.x+dx*reach,y:origin.y+dy*reach,dx,dy,source:t20Device==='gamepad'?'gamepad-direction':'keyboard',pointer:false};
+};
+
+// Slight difficulty adjustment, applied once per fresh main-map state.
+const t20NewBase=newState;
+newState=function(){const s=t20NewBase();if(s.stage!==0||s.secret)return s;
+ for(const e of s.foes){e.t20BaseHp=e.maxHp;e.hp=e.maxHp=Math.ceil(e.maxHp*1.2);}
+ for(const [id,kind,index] of [['tree-14','slime',40],['tree-15','zombie',41],['tree-16','caveBat',42]]){
+  const q=s.level.surfaces.find(q=>q.id===id);if(!q)continue;
+  const e=t10MakeFoe(kind,q,q.x+Math.min(22,q.w-24),index,'blue');e.t20BaseHp=e.maxHp;e.hp=e.maxHp=Math.ceil(e.maxHp*1.2);e.t20Added=true;s.foes.push(e);
+ }
+ t20ArrangeTrees(s);s.t20Build=T20_BUILD;return s;
+};
+function t20ArrangeTrees(s){
+ const ss=s.level.surfaces.filter(q=>q.type==='tree'||q.type==='floor'),taken=[];
+ s.trees=(s.trees||[]).filter(t=>{
+  const candidates=ss.filter(q=>t.x>=q.x+5&&t.x<q.x+q.w-5).sort((a,b)=>a.y-b.y);
+  let q=candidates[0];if(!q)return false;
+  const half=t.t16Biome==='desert'?16:27;
+  const x=clamp(t.x,q.x+Math.min(half,q.w/2),q.x+q.w-Math.min(half,q.w/2));
+  // No canopy crosses a higher cap, a pipe or a moving-platform corridor.
+  if(s.level.surfaces.some(a=>a!==q&&a.y<q.y&&a.x<x+half&&a.x+a.w>x-half))return false;
+  if(taken.some(a=>Math.abs(a.x-x)<48&&Math.abs(a.y-q.y)<60))return false;
+  t.x=x;t.y=q.y;t.visualH=t.h=t.t16Biome==='desert'?Math.min(82,q.y-12):Math.min(112,q.y-12);
+  t.visualH=t.h=Math.max(54,t.h);t.t20Surface=q.id;taken.push(t);return true;
+ });
+}
+
+// Five accessories including the existing Cloud in a Bottle, then the bow;
+// the summon item sits at the right, and is gated by all other supply pickups.
+const t20PrepareBase=t11PrepareRoom;
+t11PrepareRoom=function(s){t20PrepareBase(s);s.t13Accessories??={boots:false,regen:false};
+ // Keep ground-tree crowns clear of overhead wooden platforms; native trunks
+ // remain full width, and rail lines may pass behind the trunks as scenery.
+ for(const t of s.trees||[]){const caps=s.level.surfaces.filter(q=>q.oneWay&&q.type!=='rail'&&q.y<t.y&&q.x<t.x+48&&q.x+q.w>t.x-48);
+  if(caps.length){const headroom=t.y-Math.max(...caps.map(q=>q.y))-12;t.h=t.visualH=Math.min(t.visualH,Math.max(80,headroom));}
+ }
+
+ const defs=[['cloudBottle','云朵瓶',170,!!s.cloudJump],['hudBoots','赫尔墨斯靴',232,!!s.t13Accessories.boots],['hudRegen','再生手环',294,!!s.t13Accessories.regen],['sharkNecklace','鲨牙项链',356,!!s.t13Accessories.shark],['shackle','脚镣',418,!!s.t13Accessories.shackle],['stormbow','代达罗斯风暴弓',480,s.t13Owned.includes('stormbow')],['suspiciousEye','可疑眼球',564,s.phase==='cleared']];
+ s.t12Supplies=defs.map(([kind,name,tx,done],index)=>({kind,name,tx,done,index,x:252,y:454,age:0,launched:false,grounded:false}));
+ s.notice='';s.noticeTime=0;
+};
+t12SuppliesStep=function(s){if(s.t11Transition||s.phase==='cleared')return;s.t12RoomTicks++;if(!s.t11Chest?.opened)return;
+ for(const d of s.t12Supplies||[]){if(d.done||!d.launched)continue;d.age++;const u=Math.min(1,d.age/24);d.x=252+(d.tx-252)*(u*u*(3-2*u));d.y=u<1?454-60*Math.sin(u*Math.PI):474;d.grounded=u===1;
+  if(d.age<24||!near(s.p,{x:d.x-14,y:d.y-12,w:28,h:32}))continue;
+  if(d.kind==='suspiciousEye'&&s.t12Supplies.some(q=>q.kind!=='suspiciousEye'&&!q.done))continue;
+  d.done=true;terraSound('pickup');
+  if(d.kind==='cloudBottle')r06CollectCloud(s);
+  else if(d.kind==='hudBoots')s.t13Accessories.boots=true;
+  else if(d.kind==='hudRegen')s.t13Accessories.regen=true;
+  else if(d.kind==='sharkNecklace')s.t13Accessories.shark=true;
+  else if(d.kind==='shackle')s.t13Accessories.shackle=true;
+  else if(d.kind==='stormbow'){if(!s.t13Owned.includes('stormbow'))s.t13Owned.push('stormbow');s.t13Weapon='stormbow';s.t12Blade=true;s.t13Inventory.arrows+=400;s.tool=0;s.p.attack=s.p.cooldown=0;}
+  else{ s.t12SummonGate=true;const ok=r05Summon();s.t12SummonGate=false;if(!ok){d.done=false;continue;} }
+  if(d.kind!=='suspiciousEye')r06Chat(d.name,'#e2d7a7');t13Event('supply-pickup',{kind:d.kind,phase:s.phase});r05Persist();
+ }
+};
+const t20DamageEyeBase=R05Eye.damageEye;
+R05Eye.damageEye=function(e,raw){if(state?.eye===e&&state.t13Accessories?.shark&&raw>0){const d=e.phase===1?e.profile.phase1Defense:e.profile.phase2Defense;raw+=Math.min(5,Math.max(0,d))/2;}return t20DamageEyeBase(e,raw);};
+const t20ModelBase=t15Model;
+t15Model=function(s){const m=t20ModelBase(s);if(s.t13Accessories?.shark)m.gear.push({key:'sharkNecklace',name:'鲨牙项链 · 穿透 5 防御'});if(s.t13Accessories?.shackle)m.gear.push({key:'shackle',name:'脚镣 · 防御 +1'});return m;};
+
+// Contact loot uses the existing item transaction, without pausing or a modal.
+function t20TouchLoot(s){
+ if(s.phase==='battle'||s.t11Transition)return;
+ if(s.t11Chest&&!s.t11Chest.opened&&near(s.p,{x:s.t11Chest.x-7,y:s.t11Chest.y-6,w:46,h:42}))t12Open();
+ for(const c of s.t13World?.chests||[]){if(c.removed||c.empty||!near(s.p,{x:c.x-6,y:c.y-6,w:44,h:40}))continue;
+  c.opened=true;t13OpenChestId=c.id;mode='inventory';
+  try{t13TakeChest();}finally{t13OpenChestId=null;t13ChestPanel.hidden=true;mode='playing';}
+  r06Chat(c.name+' · 已收取','#dbcba6');t13Event('contact-chest',{id:c.id});
+ }
+}
+function t20TouchCart(s){
+ if(!s.r05Arena||s.t11Transition||s.t13Recalling)return;t16Init(s);const cart=s.t16Cart;if(cart.on)return;
+ const p=s.p,q=t16RailPoint(cart.d),close=near(p,{x:q.x-22,y:q.y-22,w:44,h:30});
+ if(s.t17CartMustLeave&&!close)s.t17CartMustLeave=false;
+ if(close&&!s.t17CartMustLeave&&!(s.t16BoardLock>0))t16Board('contact',66);
+}
+
+// Continuous arrival outside the current viewport (never teleported to the player).
+const t20SummonBase=r05Summon;
+r05Summon=function(){const ok=t20SummonBase();const s=state;if(ok&&s?.eye){const e=s.eye;e.x=s.cam+R06_VIEW.w+116;e.y=(s.camY??-96)+112;e.vx=-3;e.vy=.3;e.mode='arrival';e.age=0;e.trail=[];e.t20Entered=false;s.t20Arrival={x:e.x,y:e.y,cam:s.cam};}return ok;};
+const t20EyeBase=r06EyeStep;
+r06EyeStep=function(e,p){
+ const s=state,rail=!!s?.t16Cart?.on;
+ const pursue=(arrival=false)=>{
+  const dir=Math.abs(p.vx)>.5?Math.sign(p.vx):s?.t16Cart?.dir||1;
+  const tx=p.x+p.w/2+(arrival?210:-260)*dir,ty=p.y-180;
+  const dx=tx-e.x,dy=ty-e.y;
+  const vx=clamp((rail?p.vx:0)+dx*.052,-24,24),vy=clamp((rail?p.vy:0)+dy*.045,-17,17);
+  e.vx=approach(e.vx,vx,arrival?.55:.7);e.vy=approach(e.vy,vy,.55);
+  e.x+=e.vx;e.y+=e.vy;e.angle=Math.atan2(p.y+p.h/2-e.y,p.x+p.w/2-e.x);
+  return Math.hypot(dx,dy);
+ };
+ if(e.mode==='arrival'||e.mode==='railApproach'){
+  const arriving=e.mode==='arrival';e.tick++;e.age++;
+  const d=pursue(arriving);e.trail.push({x:e.x,y:e.y,angle:e.angle});if(e.trail.length>14)e.trail.shift();
+  if(e.age>45&&d<180){e.vx=clamp(e.vx,-5.1,5.1);e.vy=clamp(e.vy,-5.1,5.1);e.mode='hover';e.age=0;e.t20Entered=true;return[{type:'state',mode:'hover',phase:e.phase}];}return[];
+ }
+ // A charge has a visible starting position. Recover from off-screen by flying
+ // back into position, not by teleporting or launching an unseen intercept.
+ if(rail&&['hover','recover','fastWind'].includes(e.mode)&&
+    (Math.abs(e.x-p.x)>920||Math.abs(e.y-p.y)>520)){
+  e.mode='railApproach';e.age=0;return r06EyeStep(e,p);
+ }
+ const before={x:e.x,y:e.y,mode:e.mode,vx:e.vx,vy:e.vy};
+ const events=t20EyeBase(e,p);
+ if(rail&&((before.mode==='hover'&&e.mode==='hover')||(before.mode==='recover'&&e.mode==='recover'))){
+  // Rail-speed adaptation affects only staging/recovery, never a launched charge.
+  e.x=before.x;e.y=before.y;e.vx=before.vx;e.vy=before.vy;pursue();
+ }
+ if(rail&&events.some(q=>q.type==='fast-dash')){
+  // Aim once at the launch position; no extra predictive intercept is added for
+  // a minecart. The rapid dash retains its speed and never homes after launch.
+  const speed=Math.hypot(e.vx,e.vy),dx=p.x+p.w/2-before.x,dy=p.y+p.h/2-before.y,d=Math.hypot(dx,dy)||1;
+  e.vx=dx/d*speed;e.vy=dy/d*speed;e.x=before.x+e.vx;e.y=before.y+e.vy;e.angle=Math.atan2(dy,dx);
+ }
+ return events;
+};
+const t20CameraBase=t11Camera;
+t11Camera=function(s){const e=s?.eye;
+ if(!s?.r05Arena||s.phase!=='battle'||!e||e.dead||!e.t20Entered){if(s)s.t20Camera=null;return t20CameraBase(s);}
+ const p=s.p,px=p.x+p.w/2,py=p.y+p.h/2,w=R06_VIEW.w,h=R06_VIEW.h;
+ const cx=clamp((px+e.x)*.5-w/2,px-w+170,px-170),cy=clamp((py+e.y)*.5-h/2,py-h+110,py-160);
+ // Keep an independent previous camera: legacy player-follow writes earlier in
+ // the tick must not cancel this framing on every frame.
+ const previous=s.t20Camera||{x:s.cam,y:s.camY??-96};
+ s.cam=approach(previous.x,clamp(cx,0,R07_ARENA.width-w),Math.abs(p.vx)+14);
+ s.camY=approach(previous.y,clamp(cy,-720,T13.top+T13.rows*T13.tile-h+120),Math.abs(p.vy)+12);
+ s.t20Camera={x:s.cam,y:s.camY};
+};
+const t20StepBase=step;
+step=function(v){const s=state;const out=t20StepBase(v);if(state===s&&s&&mode==='playing'&&!s.t11Transition){t20TouchLoot(s);t20TouchCart(s);}return out;};
+
+// Native Grey Brick sheet, original 16x16 pieces. Door position is unchanged.
+// Decorative architecture never inserts invisible physical collision surfaces.
+const t20CastleBase=drawCastleAt;
+drawCastleAt=function(x,large=false,won=false){
+ const im=r06Images.castleBrick;if(!large||!im)return t20CastleBase(x,large,won);if(x>W+40||x+150<-40)return;
+ ctx.save();ctx.imageSmoothingEnabled=false;
+ const tile=(xx,yy,variant=0)=>ctx.drawImage(im,18+(variant%3)*18,18,16,16,Math.round(x+xx),yy,16,16);
+ const block=(xx,yy,ww,hh)=>{ctx.save();ctx.beginPath();ctx.rect(Math.round(x+xx),yy,ww,hh);ctx.clip();for(let j=0;j<hh;j+=16)for(let i=0;i<ww;i+=16)tile(xx+i,yy+j,(i/16+j/16)%3);ctx.restore();};
+ const rim=(xx,y,w)=>{for(let a=0;a<w;a+=24)block(xx+a,y,12,12);block(xx,y+12,w,5);};
+ block(-24,152,168,56);block(-24,104,32,104);block(16,80,48,128);block(104,112,40,96);
+ rim(-28,92,40);rim(12,68,56);rim(100,100,48);
+ ctx.fillStyle='#18222b88';for(const [xx,yy,ww,hh] of [[2,108,6,100],[58,84,6,124],[136,116,8,92],[-24,165,168,3]])ctx.fillRect(x+xx,yy,ww,hh);
+ // Recessed arrow-slit windows and a single entrance aligned with doorX.
+ for(const [xx,yy] of [[-13,130],[31,101],[47,101],[115,137],[80,176]]){
+  ctx.fillStyle='#232728';ctx.fillRect(x+xx-2,yy-2,9,20);ctx.fillStyle='#b5a486';ctx.fillRect(x+xx-2,yy+17,9,2);ctx.fillStyle='#171c22';ctx.fillRect(x+xx,yy,5,17);
+ }
+ ctx.fillStyle='#25292b';ctx.fillRect(x+25,170,30,38);ctx.fillRect(x+29,166,22,8);ctx.fillStyle='#11191d';ctx.fillRect(x+28,174,24,34);ctx.fillRect(x+31,170,18,8);
+ // Use the existing original wood atlas for the lintel and courtyard trim.
+ for(const xx of [8,64,80,96])sheet(ctx,'wood',[3,3,18,6],x+xx,150,16,5);
+ sheet(ctx,'wood',[3,3,18,6],x+26,169,28,5);
+ const torch=r06Images.torchPlaced||r06Images.torch;
+ for(const xx of [18,60,98]){const y=184,glow=ctx.createRadialGradient(x+xx,y,1,x+xx,y,17);glow.addColorStop(0,'#f8b54655');glow.addColorStop(1,'#f8b54600');ctx.fillStyle=glow;ctx.fillRect(x+xx-17,y-17,34,34);if(torch)ctx.drawImage(torch,x+xx-5,y-6,10,10);}
+ if(won)sprite('castle_flag',x+32,42);ctx.restore();
+};
+
+// Exterior layout only. In-game health/mana bars and collision space are untouched.
+const t20Style=document.createElement('style');t20Style.textContent=`
+body.t15-terra .app{max-width:1250px;margin:0 auto;padding:24px 24px 18px}
+body.t15-terra header{margin:0 0 20px;padding:0 0 18px;border-bottom:1px solid #53697845}
+body.t15-terra .layout{grid-template-columns:minmax(0,1fr) 286px;gap:22px;align-items:start}
+body.t15-terra .panel{padding:22px 20px;background:#14232cf0;border:1px solid #49627288;border-radius:9px;box-shadow:none}
+body.t15-terra .panel h2{font-size:23px;line-height:1.5;margin:9px 0 10px;letter-spacing:.01em}
+body.t15-terra .panel>.intro{font-size:12px;line-height:1.9;margin:0 0 18px;color:#b9c9cc}
+body.t15-terra .panel .kicker{font-size:10px;letter-spacing:.18em;color:#d8bd8d}
+body.t15-terra .status-card{padding:14px;margin:16px 0;background:#0c192378;border:1px solid #425d6d88;border-radius:6px}
+body.t15-terra .status-bottom{font-size:10px}
+body.t15-terra #bestLabel{display:none!important}
+body.t15-terra .status-card #relayMessage{margin:12px 0 0;padding:10px 0 0;border:0;border-top:1px solid #455e6755;background:transparent;min-height:0;font-size:12px;color:#e4dbc3;max-width:none}
+body.t15-terra .status-card #heroStatus{margin:6px 0 0;font-size:11px;color:#a8bac3;line-height:1.6}
+body.t15-terra .status-card #gamepadStatus{display:block!important;font-size:10px;line-height:1.6;margin:9px 0 0;color:#86a6a4}
+body.t15-terra .panel .buttons{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0}
+body.t15-terra .panel .buttons button{min-height:38px;font-size:12px;padding:8px 6px}
+body.t15-terra .panel #charactersButton{grid-column:1/-1;margin:0!important;background:#284353;color:#e5e9df}
+body.t15-terra .tagline{margin:13px 3px 0;line-height:1.8;font-size:10px;color:#a0b2ba}
+body.t15-terra #t15Help,body.t15-terra #t20Audio{margin:14px 0 0;padding:12px 0 0;border:0;border-top:1px solid #49637266;border-radius:0;background:none;font-size:11px}
+body.t15-terra #t15Help summary,body.t15-terra #t20Audio summary{cursor:pointer;color:#d6ddce;font-weight:500;line-height:1.8}
+body.t15-terra #t15Help table{font-size:10px}body.t15-terra #t15Help p{color:#aebfc5;line-height:1.9}
+body.t15-terra #t20Audio .audio-panel{margin:12px 0 0;padding:0;border:0;background:none}
+body.t15-terra #t20Audio .audio-head{display:none}body.t15-terra .source-note{margin-top:18px;color:#9cabb3;font-size:11px}
+body.t15-terra .hero-picker small{line-height:1.6;letter-spacing:0;font-weight:400;background:transparent!important;border:none!important;padding:0!important}
+body.t15-terra .overlay.choosing #overlayText{min-height:0;margin:12px auto 16px;color:#b9c9cf}
+body.t15-terra .overlay.choosing .overlay-box{border-width:1px;border-radius:6px;padding:24px 16px!important;background:#0c1824ed}
+body.t15-terra .overlay.choosing .hero-picker button{min-height:136px}
+body.t15-terra .overlay-hint{opacity:.8;font-size:10px;letter-spacing:.04em}
+@media(max-width:980px){body.t15-terra .app{padding:18px 16px}body.t15-terra .layout{grid-template-columns:minmax(0,1fr) 258px;gap:16px}body.t15-terra .panel{padding:18px 15px}body.t15-terra .panel h2{font-size:21px}}
+@media(max-width:760px){body.t15-terra .app{padding:14px 12px}body.t15-terra .layout{grid-template-columns:1fr;gap:16px}body.t15-terra .panel{padding:20px}body.t15-terra .overlay.choosing .overlay-box{padding:12px 7px!important}body.t15-terra .overlay.choosing .hero-picker button{min-height:82px}body.t15-terra .hero-picker strong{font-size:10px}body.t15-terra .hero-picker small{font-size:8px}body.t15-terra .tagline{flex-wrap:wrap}}
+`;document.head.append(t20Style);
+const t20Status=document.querySelector('.status-card'),t20Buttons=document.querySelector('.panel .buttons');
+for(const id of ['relayMessage','heroStatus','gamepadStatus'])if($(id))t20Status.append($(id));
+t20Buttons.prepend($('charactersButton'));t20Buttons.after(t15Help);
+const t20Audio=document.createElement('details');t20Audio.id='t20Audio';t20Audio.innerHTML='<summary>声音设置</summary>';const t20AudioPanel=document.querySelector('.audio-panel');t20AudioPanel.before(t20Audio);t20Audio.append(t20AudioPanel);t15Help.after(t20Audio);
+t15Help.innerHTML=`<summary>操作指南 · 手柄 / 键鼠</summary><table><thead><tr><th>动作</th><th>手柄</th><th>键鼠</th></tr></thead><tbody><tr><td>移动</td><td>左摇杆 / 十字键</td><td>WASD / 方向键</td></tr><tr><td>瞄准</td><td>自动索敌；无目标随方向</td><td>鼠标</td></tr><tr><td>跳跃 / 跳车</td><td>A</td><td>空格 / K / Z</td></tr><tr><td>攻击 / 工具</td><td>B / X / RT</td><td>左键 / J</td></tr><tr><td>切换工具</td><td>LB / R3</td><td>1–6 / 滚轮 / [ ]</td></tr><tr><td>切换武器</td><td>按下右摇杆</td><td>Q</td></tr><tr><td>上下已得坐骑</td><td>LT</td><td>F</td></tr><tr><td>治疗</td><td>按下左摇杆</td><td>H</td></tr><tr><td>暂停</td><td>Start</td><td>P / Esc</td></tr></tbody></table><p>宝箱接触后打开并领取。矿车接触上车，跳跃下车；跳下后车辆停在原处，离开再碰到可以重新上车。左方向控制矿车运行方向，松开继续巡航，下方向刹车。</p><p>键鼠由鼠标瞄准，手柄自动选择敌人；按实际输入切换。右摇杆偏转不影响武器方向。镐与斧按左方向使用，鼠标可精确选块。子弹、箭无限，武器自带追踪行为保留。</p><p>补给箱先取云朵瓶、饰品与弓，最后拿最右边的可疑眼球。战斗中不能返程，胜利后从原管道返回。套装拾取后自动换装并骑 UFO；UFO 向下可穿过木平台。</p>`;
+/*@terra-module:player-copy*/
+const t20UIBase=r06UpdateUI;r06UpdateUI=function(){t20UIBase();t20CleanUI();};
+const t20SyncBase=t15Sync;t15Sync=function(s){t20SyncBase(s);t20CleanUI();};
+r04PauseHelp=function(){return '手柄：左方向移动，A 跳跃，B / X 攻击，LB / R3 切工具。键鼠：WASD 移动，鼠标瞄准，空格跳跃，左键攻击。详细操作在游戏外的操作指南中。';};
+const t20RenderBase=render;render=function(){const result=t20RenderBase();t20CleanUI();return result;};
+Promise.all([readyPromise,...r06AssetJobs,...t20AssetJobs]).then(()=>{if(isTrio()){render();t20CleanUI();}});
+t20CleanUI();
+const t20Diagnostics={build:T20_BUILD,ready:Promise.all(t20AssetJobs),device:()=>t20Device,aim:(v={},tool=false)=>t17AimPoint(state,v,tool),owner:t20Own,geometry:t14CanvasRect,castle:{tile:'Tiles_38.png',doorOffset:40},loot:()=>t20TouchLoot(state),cart:()=>t20TouchCart(state),eyeStep:(e,p)=>r06EyeStep(e,p),camera:()=>t11Camera(state),supply:()=>t12SuppliesStep(state)};
+
+const T21_NATIVE={"boomstick":"__TERRA_ASSET_media-181__","iceBlade":"__TERRA_ASSET_media-182__"};
+

@@ -1,0 +1,17 @@
+node_modules/
+.update-backups/
+.update-staging/
+collab-update-*/
+*.local.json
+.DS_Store
+Thumbs.db
+coverage/
+test-results/
+/packages/mario-mix/.local/
+
+# Terra M01 local build outputs
+packages/mario-mix-terra/dist/
+packages/mario-mix-terra/.local/
+
+# R24 local publication output and review records
+/.local/

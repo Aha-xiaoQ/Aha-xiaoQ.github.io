@@ -1,0 +1,849 @@
+{
+  "schemaVersion": 1,
+  "version": "chapters-r20",
+  "createdAt": "2026-09-19",
+  "delivery": "local-review-not-deployed",
+  "scope": "four first-world reference templates, 32-slot chapter registry, isolated M06 preview; original game unchanged",
+  "files": [
+    {
+      "path": "assets/chapters/chapters.css",
+      "before": null,
+      "after": "c8065d772168a3401391340c8d1ee6709d7b2c92ce309a5e51b3bf130fbac8a9"
+    },
+    {
+      "path": "assets/chapters/view.mjs",
+      "before": null,
+      "after": "2e6dadf6804bc2e7c7d202586c87a8a10111ba67f45f59cdc6f0b0ecda5513e7"
+    },
+    {
+      "path": "assets/journal/model.mjs",
+      "before": "443f6348183ff0381cc6dbcb397cda8dbc1290e590017b88d1af6ef623b9537f",
+      "after": "3483ae94662acf8b37ce3ec88705527b34c66788022f1ebb53ac9e6ef0343d65"
+    },
+    {
+      "path": "assets/journal/render.mjs",
+      "before": "67923b263d6089cec6c57bb2f3275e14ca9cbb0ac3b6fdd7b852a49834185a1e",
+      "after": "6d8797de4655b96e2078ba810e815e3a77cacb46f9f2e31311c1cf795c2d3dd5"
+    },
+    {
+      "path": "assets/journal/runtime.mjs",
+      "before": "8679a8c7075656c287afe99ea3b845f7b51c2a5d09dd517805be0f5f5b8e87be",
+      "after": "34e612a719dbd2f5113ee1eb1a49513bd7df5d3f1b2d3eb8ec714eefaf3fff66"
+    },
+    {
+      "path": "docs/chapters-r20/ACCEPTANCE.md",
+      "before": null,
+      "after": "d8e277d72deb8813197048cfb6d086212bc2f26700a0b39fd9ad17179e13872d"
+    },
+    {
+      "path": "docs/chapters-r20/CHANGELOG.md",
+      "before": null,
+      "after": "e9ce585a0a983c49b1f3a02125cf4008287e48192c861beda4155bc95fe916dd"
+    },
+    {
+      "path": "docs/chapters-r20/HANDOFF_R20.md",
+      "before": null,
+      "after": "c5946458d8c09333508a0ceb17966ad0a896e90ef981f5e1fc2dd3a9dc950ad6"
+    },
+    {
+      "path": "docs/chapters-r20/REFERENCES.md",
+      "before": null,
+      "after": "02241bb17dad790961b3ec447d45403f972f316f41947151d54ba38886e920bf"
+    },
+    {
+      "path": "docs/chapters-r20/START_HERE.md",
+      "before": null,
+      "after": "39cbc3d359fb913a729b680406c2ab73f55c4f0192ab9ec894a3f6f8cfaf97dc"
+    },
+    {
+      "path": "docs/chapters-r20/TEST_REPORT.md",
+      "before": null,
+      "after": "2eb7a5ed72aab7e131f1eaa7765f0a89d7ddf8967e6f8b4604a298d9867e7844"
+    },
+    {
+      "path": "downloads/source/MarioMix_World1_W01_Starter.json",
+      "before": null,
+      "after": "b17f68d67240af3e7a64835fa72ea375a4c7a46871015ac81317eb9026f6b01c"
+    },
+    {
+      "path": "downloads/source/MarioMix_World1_W01_Starter.zip",
+      "before": null,
+      "after": "09b6f55bd2cc85274dea9f9f4626d77f61addea1b8dd1571ea76ecfa21201b5e"
+    },
+    {
+      "path": "packages/mario-mix-worlds/.gitattributes",
+      "before": null,
+      "after": "9030de200b6d3afc2f3e5af03b3542f1b618aae7743bc47fd9256ea1328827b3"
+    },
+    {
+      "path": "packages/mario-mix-worlds/.gitignore",
+      "before": null,
+      "after": "bec3fe6fb695b57190f77dd9e27266efa52e0c7da3e1917129c730d154969763"
+    },
+    {
+      "path": "packages/mario-mix-worlds/CONTRIBUTING.md",
+      "before": null,
+      "after": "3c428c135f9c4075586225de7a60ee42136e0f360b75539682d9bf9eb9f798e5"
+    },
+    {
+      "path": "packages/mario-mix-worlds/NOTICE.md",
+      "before": null,
+      "after": "578ac40ece701eb0226809b4b53cb388824a7ccd37f85c8b109b245b2bbde1c7"
+    },
+    {
+      "path": "packages/mario-mix-worlds/README.md",
+      "before": null,
+      "after": "8b0afd6612e7fed4706028ac07f36b5f849ef4f7146d457f2cd5629cfde2b494"
+    },
+    {
+      "path": "packages/mario-mix-worlds/START_HERE.md",
+      "before": null,
+      "after": "839b90571e4df3ad5ee18d9c73da1c2cefe4698c13d0e22d19cb05c2a7ed07be"
+    },
+    {
+      "path": "packages/mario-mix-worlds/content/adaptations/.gitkeep",
+      "before": null,
+      "after": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "packages/mario-mix-worlds/content/catalog.json",
+      "before": null,
+      "after": "c5f71ea0adf72f08e7fb0164ef7d40de4be5ce91cf1823d026f62a731d354545"
+    },
+    {
+      "path": "packages/mario-mix-worlds/docs/ACCEPTANCE.md",
+      "before": null,
+      "after": "c65fa485864ac6a871c5f72a94e45896f8360d3c4d9daa2ee9d639f22ca88614"
+    },
+    {
+      "path": "packages/mario-mix-worlds/docs/ARCHITECTURE.md",
+      "before": null,
+      "after": "498522255359799b66ddd9b31d7712138deedef25a9b1bd882193906decab4c7"
+    },
+    {
+      "path": "packages/mario-mix-worlds/docs/HANDOFF_W01.md",
+      "before": null,
+      "after": "6fde31c34bafa08784319954d99eb4abe02c0842b8db36ca76a71a6e6b3b74f6"
+    },
+    {
+      "path": "packages/mario-mix-worlds/docs/MAP_CONTRACT.md",
+      "before": null,
+      "after": "ae78020de3153167a27a2936e3c65c661cd01789fd965201e0b338fe55d356ab"
+    },
+    {
+      "path": "packages/mario-mix-worlds/docs/ROADMAP.md",
+      "before": null,
+      "after": "dbedef519bff61c4fdeb6532bab058653aaea385c38568dd2a117cd0852ebe43"
+    },
+    {
+      "path": "packages/mario-mix-worlds/docs/TEST_REPORT.md",
+      "before": null,
+      "after": "2eb7a5ed72aab7e131f1eaa7765f0a89d7ddf8967e6f8b4604a298d9867e7844"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/catalog-public.json",
+      "before": null,
+      "after": "5fc724b5fdc774ec96a05b8151658c4df497ee26285c543175c8356571eb693a"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/coverage.json",
+      "before": null,
+      "after": "76e793668b1f1e73083509e889f574f80cb5b11e26ac3f15f30e7e3837beb37a"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/downloads/MarioMix_Map_1-1_W01.zip",
+      "before": null,
+      "after": "97d5e5c0697152b82b1ebe6b7a42bf3f5ce76d2c90e7ae04330b2f822eac27e8"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/downloads/MarioMix_Map_1-2_W01.zip",
+      "before": null,
+      "after": "8d26c309d1717e85205b4a45f30a14c9d591ef0d3909925509c7cbc2dc66d801"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/downloads/MarioMix_Map_1-3_W01.zip",
+      "before": null,
+      "after": "0943849b928788bafbf03b1769f83ec438076e5d9507a7b29035d32f68a68b3d"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/downloads/MarioMix_Map_1-4_W01.zip",
+      "before": null,
+      "after": "8c3392e4fce2f487790733388ab2c77bc0382ea3ba50e293164a2e1b2f00bab4"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-1/LICENSE-reference.txt",
+      "before": null,
+      "after": "32ed3a02b75a6b876aaaeaad601a4bc1e0f2ebfda988636c32be565d5d2ddd79"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-1/NOTICE.md",
+      "before": null,
+      "after": "578ac40ece701eb0226809b4b53cb388824a7ccd37f85c8b109b245b2bbde1c7"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-1/README.md",
+      "before": null,
+      "after": "d032ffda4d34eba55f593c32ab746e4fb61f02daef923c49153fe33fdd754718"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-1/area-0.svg",
+      "before": null,
+      "after": "8c8b5a7ab1de699dfbcc70e221773049b7353db26995af24aa7869416e7a44fd"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-1/area-1.svg",
+      "before": null,
+      "after": "c2244c878c4a0b92d6610c4781134bbf82fc87fe6deb79c0cf8b8f90225e110f"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-1/coverage.json",
+      "before": null,
+      "after": "9a366025f2a5d9f40751d9f5e798828948a251885aac3508f6ae210eba27711d"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-1/extension/content/extensions/audio/map-kit-silent/audio.json",
+      "before": null,
+      "after": "721099db4abb7c2d3b9511eae74d4db82443d2821f8f1b449b50b60355539137"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-1/extension/content/extensions/maps/classic-1-1-area-0/map.json",
+      "before": null,
+      "after": "2142b76bf813249b1513fe3a20ac0a15bdf3c117af6a9f633f8c3c0c2fe237d5"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-1/extension/content/extensions/maps/classic-1-1-area-1/map.json",
+      "before": null,
+      "after": "05dfa8af26835429f76614feaf1276eedb13ad709caad3e068b31cd783d8c267"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-1/extension/content/extensions/stages/template-1-1/stage.json",
+      "before": null,
+      "after": "334cffd63d9fc6374c30bd9a5dc84b3648dc961572040da0e0a96568eae76931"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-1/reference.json",
+      "before": null,
+      "after": "bbbcefb55d246a5f4ff18bc55e9fc861ef0ace1a58ad4c6eee45793fb8da39c2"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-1/template.json",
+      "before": null,
+      "after": "29341fa80cfbc2b74151ec9f43d81691e066057c3530f88197da9ace9229fe13"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-2/LICENSE-reference.txt",
+      "before": null,
+      "after": "32ed3a02b75a6b876aaaeaad601a4bc1e0f2ebfda988636c32be565d5d2ddd79"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-2/NOTICE.md",
+      "before": null,
+      "after": "578ac40ece701eb0226809b4b53cb388824a7ccd37f85c8b109b245b2bbde1c7"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-2/README.md",
+      "before": null,
+      "after": "b99b32f06f7868de78bceefedf79dbf4fd59090c716837e01e56df908b45655f"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-2/area-0.svg",
+      "before": null,
+      "after": "e41360ad4705cfa9c9892864a3273aa9c63a8d59d3bf880abab8d4f186b6cdf8"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-2/area-1.svg",
+      "before": null,
+      "after": "3a4bce93ecbea8116c0bb30d2d606fe078b9ad2571a33ea2adecda2387b316cc"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-2/area-2.svg",
+      "before": null,
+      "after": "d67326179d501d7bd0794ac2ee3a2c8c8b3e50168eb4f21618ed6bd1abb788e3"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-2/area-3.svg",
+      "before": null,
+      "after": "feb424c2701aaaaaec6688c50c803de0bfd0173d362cbe9b2b5487fe74cf3316"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-2/coverage.json",
+      "before": null,
+      "after": "c4e01167b61e50963b06564d38f16b1560de7b6a3fc900181ec2323665dcc461"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-2/extension/content/extensions/audio/map-kit-silent/audio.json",
+      "before": null,
+      "after": "721099db4abb7c2d3b9511eae74d4db82443d2821f8f1b449b50b60355539137"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-2/extension/content/extensions/maps/classic-1-2-area-0/map.json",
+      "before": null,
+      "after": "63a8a24be405ccb0af112e6ef438d929f746e6391f65a53314ce0b89b65086c9"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-2/extension/content/extensions/maps/classic-1-2-area-1/map.json",
+      "before": null,
+      "after": "8adbbb9c467429b9a99a72d73c7e8322509dfd0862a0959859530c7fdbfc5d81"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-2/extension/content/extensions/maps/classic-1-2-area-2/map.json",
+      "before": null,
+      "after": "722ec82ab1a1f945ccf7bd3b744628277035299977d6d13992c6ca8e3c8577cf"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-2/extension/content/extensions/maps/classic-1-2-area-3/map.json",
+      "before": null,
+      "after": "05faf01ab563b32a106d2036bdd161675e964a7abfb4f8b3377e61e13d7abcf3"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-2/extension/content/extensions/stages/template-1-2/stage.json",
+      "before": null,
+      "after": "c667b2529c9bf1d8fdc00b55c872f0dc1e00439dd5b9fe9586b19fe9785b493c"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-2/reference.json",
+      "before": null,
+      "after": "c243b22586fb54486dededa62fbc92fc4645c5877d9560e11a10fa8308c10395"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-2/template.json",
+      "before": null,
+      "after": "d0d02079d24556e67be35c2b87d8dd46d0462f809867e01b33782f2c05cbf6ff"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-3/LICENSE-reference.txt",
+      "before": null,
+      "after": "32ed3a02b75a6b876aaaeaad601a4bc1e0f2ebfda988636c32be565d5d2ddd79"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-3/NOTICE.md",
+      "before": null,
+      "after": "578ac40ece701eb0226809b4b53cb388824a7ccd37f85c8b109b245b2bbde1c7"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-3/README.md",
+      "before": null,
+      "after": "e5056a70155ecaa1d37273659960681fb818c8e5ff3b7c3759ccf47a8e9ed0c6"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-3/area-0.svg",
+      "before": null,
+      "after": "59f43155a6f0640fdf37c19e9ace435e0325aff59de2a8a8122c47fbb19e6fdc"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-3/coverage.json",
+      "before": null,
+      "after": "0a8bee7437910561ea2334e373a39d30f3c06f3cdfae07127e78f6ac3ddc3a05"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-3/extension/content/extensions/audio/map-kit-silent/audio.json",
+      "before": null,
+      "after": "721099db4abb7c2d3b9511eae74d4db82443d2821f8f1b449b50b60355539137"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-3/extension/content/extensions/maps/classic-1-3-area-0/map.json",
+      "before": null,
+      "after": "841bb5866a77ae30a6de51692ec825bd6b6fa567e8d7d7b1db8dd96e852db7fb"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-3/extension/content/extensions/stages/template-1-3/stage.json",
+      "before": null,
+      "after": "84112fef046cee6b2dbbd61ad9f02d3e42b90ac42e7063baeac5b870e47122b8"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-3/reference.json",
+      "before": null,
+      "after": "7337399bb457e1490b52e76a5a837f661c40bf6a7964233927c76762f5543b56"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-3/template.json",
+      "before": null,
+      "after": "64084e0ac319a8987033f057f39a928bdab30e27bb2e2da4fdf51c767d060491"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-4/LICENSE-reference.txt",
+      "before": null,
+      "after": "32ed3a02b75a6b876aaaeaad601a4bc1e0f2ebfda988636c32be565d5d2ddd79"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-4/NOTICE.md",
+      "before": null,
+      "after": "578ac40ece701eb0226809b4b53cb388824a7ccd37f85c8b109b245b2bbde1c7"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-4/README.md",
+      "before": null,
+      "after": "52dbce2ba4e579b6198c840ede5b3f0398f47de73ef6eb2c89b81a134b665817"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-4/area-0.svg",
+      "before": null,
+      "after": "3c4549b12b0bb4de8a5812a7457748422f78fe54de397384ba51357424338acc"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-4/coverage.json",
+      "before": null,
+      "after": "f24edf34b1249dd525b516a7a5ec1114d59e9884c3e0aed9095d139d4e7b8dc6"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-4/extension/content/extensions/audio/map-kit-silent/audio.json",
+      "before": null,
+      "after": "721099db4abb7c2d3b9511eae74d4db82443d2821f8f1b449b50b60355539137"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-4/extension/content/extensions/maps/classic-1-4-area-0/map.json",
+      "before": null,
+      "after": "d99f7732507f895ed14013bde52e7e3b4ff0deba9ec0caab2e55ef8475381b0d"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-4/extension/content/extensions/stages/template-1-4/stage.json",
+      "before": null,
+      "after": "0774e69b2b562284596fccb2af4edad7b82650bbb3ae09bae00dff3f76cc2aba"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-4/reference.json",
+      "before": null,
+      "after": "5d29948a4dede5e74d5c9d1c5ce02130bdda1845e699815dd531ce8b35d268f2"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/levels/1-4/template.json",
+      "before": null,
+      "after": "c0c5d537b6d26c2891b68a7391b1ce3f640104e4f951e218c36fed3fb994810c"
+    },
+    {
+      "path": "packages/mario-mix-worlds/generated/manifest.json",
+      "before": null,
+      "after": "b5ef64eff83bdad3a7c5c79ef964fef236ff5bdc73b8a5dfe82967634cc0907a"
+    },
+    {
+      "path": "packages/mario-mix-worlds/package.json",
+      "before": null,
+      "after": "47333cabfb426d6c0425141a7fc2240c249a74603106252f253df7bb87010752"
+    },
+    {
+      "path": "packages/mario-mix-worlds/reference/LICENSE-MIT.txt",
+      "before": null,
+      "after": "32ed3a02b75a6b876aaaeaad601a4bc1e0f2ebfda988636c32be565d5d2ddd79"
+    },
+    {
+      "path": "packages/mario-mix-worlds/reference/first-world.json",
+      "before": null,
+      "after": "eef3d0ae715baadd48437075d26f73c7897cc36e27144125732f5532970ee62e"
+    },
+    {
+      "path": "packages/mario-mix-worlds/scripts/build.mjs",
+      "before": null,
+      "after": "977d1964aa14df2590418e93d96c594150c9b530d8848a483e17ecb3a0f5896a"
+    },
+    {
+      "path": "packages/mario-mix-worlds/scripts/lib/safe-path.mjs",
+      "before": null,
+      "after": "3ef1c9c6e1d985b0571906eccaac91c2cd9ea161ab5d56b284b3a12d9de8126c"
+    },
+    {
+      "path": "packages/mario-mix-worlds/scripts/lib/zip.mjs",
+      "before": null,
+      "after": "8e34eabf34892e58ce6c167c7bb8c8686e8e3958f83362e77397258e2c70873f"
+    },
+    {
+      "path": "packages/mario-mix-worlds/scripts/pack.mjs",
+      "before": null,
+      "after": "1472c9608b409ca61fa2699460a15bdec7e82bf2544a58affd31110c8bff4136"
+    },
+    {
+      "path": "packages/mario-mix-worlds/scripts/preview.mjs",
+      "before": null,
+      "after": "90fd45c52df8bcf7e1710fc90952f02e811f7197516994c2f6e9b49b23d22a29"
+    },
+    {
+      "path": "packages/mario-mix-worlds/src/catalog.mjs",
+      "before": null,
+      "after": "e2ea6657618df3a88f8e3f7ee8fcb27a020eafd5252c73805b755701c2ba83d7"
+    },
+    {
+      "path": "packages/mario-mix-worlds/src/compiler.mjs",
+      "before": null,
+      "after": "0f4e2018b0dc29471f635518468b347b0b3f363e6e1f672dd88ac8bacda154ad"
+    },
+    {
+      "path": "packages/mario-mix-worlds/src/map-svg.mjs",
+      "before": null,
+      "after": "38fb40af14ccbe635285901d65efb880200f5359e9edddb6ed6116c1f42ed85b"
+    },
+    {
+      "path": "packages/mario-mix-worlds/src/preview-labels.mjs",
+      "before": null,
+      "after": "60e49f3fda18707494c6b64fdb0fbc40fde849ca309d06d6b7b4466d1d52c479"
+    },
+    {
+      "path": "packages/mario-mix-worlds/tests/worlds.test.mjs",
+      "before": null,
+      "after": "762531e82ecca8e3656361044d7a5dcd1f05946a2497c9fb0d59192657eb3ae8"
+    },
+    {
+      "path": "scripts/experience/wire.mjs",
+      "before": "3551cc23768360e77118a64ed6d00423a78f352b695e4eabe208a37dedb937dd",
+      "after": "e44f36e0353749625c6826422991a8e9d48bd62b331996a4775a6130479e8c1f"
+    },
+    {
+      "path": "scripts/journal/build.mjs",
+      "before": "d256cc67266ee7e4b1c4b4207f381a80b7aa6043a4b9cea8d08c10ed970c2c7c",
+      "after": "92aa0fd7e3c2a2cbb1eb1eb1eaeb58686546905df6880d92fdcc4ae52f048078"
+    },
+    {
+      "path": "scripts/public-content/check.mjs",
+      "before": "3de876f4ed591dde6eb916cfb2a382efd9580ffb096b578a115e21851f52a91d",
+      "after": "7c9ca5be410c41c235f5b7abd7d8fefb112e40c71bf2da1dabaae858a5ed4cdf"
+    },
+    {
+      "path": "scripts/worlds/sync.mjs",
+      "before": null,
+      "after": "8c5e61f79df38b6ec502255e75073cd77c1909cdeae35c0da4c32033cd41d3e1"
+    },
+    {
+      "path": "tests/workshop-r06.test.mjs",
+      "before": "43140043090b12ddf66e6a9922510018dc8ae984ac71329bb70d9fd4d1a7c803",
+      "after": "ee224e7ddaf7d8f5f0e15c5d63f3555489309930fc53172893896cf61c55c4b8"
+    },
+    {
+      "path": "tests/workshop-r12.test.mjs",
+      "before": "f2dd1af62cf0a26a827841d414934c674e1c33379e4a909000b5b7f68c4e9964",
+      "after": "81e37bbafc8988fd2293f994d4d46c0f482ec8d60e6bb36fc82b029ddd4734bd"
+    },
+    {
+      "path": "tests/workshop-r13.test.mjs",
+      "before": "3f98efaf61d2b2f503d7ee8f8b5513e0522d13bfe46e796d58efc6b7e6eb6f18",
+      "after": "4cfb6a2506dd42e72502fdf4e3d0ba343495bc931aeeac01d508960769aca706"
+    },
+    {
+      "path": "tests/worlds/chapters.test.mjs",
+      "before": null,
+      "after": "524040896e63925ab99e72afba2849cea4a8f52de5bb128dfc89d994abcc63c4"
+    },
+    {
+      "path": "content/development/projects/mario-mix.json",
+      "before": "080082fbd711ba45e05ed2b6227e3270a3fc3fe2e937ac8dbf8adbbd27b55299",
+      "after": "66d2716f7bcf93b5c9a11897d72b35495e9daf813f8f4290924c2a3e8289866f"
+    },
+    {
+      "path": "downloads/maps/MarioMix_Map_1-1_W01.zip",
+      "before": null,
+      "after": "97d5e5c0697152b82b1ebe6b7a42bf3f5ce76d2c90e7ae04330b2f822eac27e8"
+    },
+    {
+      "path": "assets/chapters/maps/1-1-area-0.svg",
+      "before": null,
+      "after": "8c8b5a7ab1de699dfbcc70e221773049b7353db26995af24aa7869416e7a44fd"
+    },
+    {
+      "path": "assets/chapters/maps/1-1-area-1.svg",
+      "before": null,
+      "after": "c2244c878c4a0b92d6610c4781134bbf82fc87fe6deb79c0cf8b8f90225e110f"
+    },
+    {
+      "path": "downloads/maps/MarioMix_Map_1-2_W01.zip",
+      "before": null,
+      "after": "8d26c309d1717e85205b4a45f30a14c9d591ef0d3909925509c7cbc2dc66d801"
+    },
+    {
+      "path": "assets/chapters/maps/1-2-area-0.svg",
+      "before": null,
+      "after": "e41360ad4705cfa9c9892864a3273aa9c63a8d59d3bf880abab8d4f186b6cdf8"
+    },
+    {
+      "path": "assets/chapters/maps/1-2-area-1.svg",
+      "before": null,
+      "after": "3a4bce93ecbea8116c0bb30d2d606fe078b9ad2571a33ea2adecda2387b316cc"
+    },
+    {
+      "path": "assets/chapters/maps/1-2-area-2.svg",
+      "before": null,
+      "after": "d67326179d501d7bd0794ac2ee3a2c8c8b3e50168eb4f21618ed6bd1abb788e3"
+    },
+    {
+      "path": "assets/chapters/maps/1-2-area-3.svg",
+      "before": null,
+      "after": "feb424c2701aaaaaec6688c50c803de0bfd0173d362cbe9b2b5487fe74cf3316"
+    },
+    {
+      "path": "downloads/maps/MarioMix_Map_1-3_W01.zip",
+      "before": null,
+      "after": "0943849b928788bafbf03b1769f83ec438076e5d9507a7b29035d32f68a68b3d"
+    },
+    {
+      "path": "assets/chapters/maps/1-3-area-0.svg",
+      "before": null,
+      "after": "59f43155a6f0640fdf37c19e9ace435e0325aff59de2a8a8122c47fbb19e6fdc"
+    },
+    {
+      "path": "downloads/maps/MarioMix_Map_1-4_W01.zip",
+      "before": null,
+      "after": "8c3392e4fce2f487790733388ab2c77bc0382ea3ba50e293164a2e1b2f00bab4"
+    },
+    {
+      "path": "assets/chapters/maps/1-4-area-0.svg",
+      "before": null,
+      "after": "3c4549b12b0bb4de8a5812a7457748422f78fe54de397384ba51357424338acc"
+    },
+    {
+      "path": "docs/chapters-r20/generated-files.json",
+      "before": null,
+      "after": "46a26b8277a855f66163df94eaf7bbc9a598bd66007f2473107b93cea6bd9502"
+    },
+    {
+      "path": "notes/index.html",
+      "before": "c20f8310cc117ee906aef7339074e1736e4e7c915962df2ae7586641fc7a9837",
+      "after": "17f3a18e0410048d76f012977adc3f24b096839c0f925083e92b1fd3f32f5144"
+    },
+    {
+      "path": "notes/updates/index.html",
+      "before": "167363e598d81feae78d3885e2880de8f7fc8e9212eb795f1396b97b48bc8b40",
+      "after": "a1e467633438d59c72bdc27a6bc9800864587b2264f7d7d9ab91ff896c468202"
+    },
+    {
+      "path": "notes/contribute/index.html",
+      "before": "f481719df99f3361bc4d2ac3688efedd419deb2b3c4e7dbcddc996f09f4f145c",
+      "after": "518c48e0e7ffb84d22994f963f46236c194b678ce5c172c9b0d4f32b75dc2b61"
+    },
+    {
+      "path": "notes/mario-mix/index.html",
+      "before": "de555820599e4734a9fd9bb8f032bf94bf3be385d4f4fbd853e7e693c480ce3f",
+      "after": "22bac83452a8847ba388d3b26a539e4d2cdfed238e4832454347d59818cd6e0c"
+    },
+    {
+      "path": "notes/mario-mix/tasks/index.html",
+      "before": "92e36f0f7917939bb67f0782013146ffd6a8ec545b8d9a806a94051ef2e58fe7",
+      "after": "5a89de6d9bdc68dcdfab816b498337119aa1e5cbca69275a00aa74d4268ef4bf"
+    },
+    {
+      "path": "notes/mario-mix/docs/index.html",
+      "before": "bb65938b8a595d2b097103b37bfdec276ef7e704738d24a1fec2a2fed6e7bf24",
+      "after": "235f2cd19f6942f5fe5559fb1c50e080c59f4dfbfa17ed1c5f8b31cc27c8dd1e"
+    },
+    {
+      "path": "notes/mario-mix/updates/index.html",
+      "before": "e5b864e4be918729a235b7d10705980bc583d72bc3268a24c49881ee8cdc418f",
+      "after": "6204bcd95318b73521619f76fdcd4a27ea1e29ac69a04273e4e7ec13a7cc6acf"
+    },
+    {
+      "path": "notes/mario-mix/contribute/index.html",
+      "before": "3108a7de5c56d4a9bd9adc6ccc245601c481a934724e2853956ad873545da9a7",
+      "after": "50988263c64f97810d57e5b61e26416641a83ffc6a130a2def528ad756f71ea0"
+    },
+    {
+      "path": "notes/mario-mix/manage/index.html",
+      "before": "72a8158ae3b20fedf8d8277e79d32771da14b1548baead017073ad666a2072aa",
+      "after": "bd0cd12b2a336a95551accf08d4f75b0f99694d1f3fa36f779ce99097b445467"
+    },
+    {
+      "path": "notes/mario-mix/docs/terra-source/index.html",
+      "before": "428029b86dc3b66dbc4f2c5913559f2d6d6502ba8f4ca4601e4369c3d619e537",
+      "after": "1429c2bbf6c9c914cf0d125b3ac9dac336fd5fe6a27951e16c9f2047fcda99bf"
+    },
+    {
+      "path": "notes/mario-mix/docs/terra-collaboration/index.html",
+      "before": "451395347ff26c1e38be1e01debccd1efa00e2461b233f0e3184a194d26e77c1",
+      "after": "39cedc29f552bc104717cda53542d34e682c8966a7dc74944d298b0d604e27d9"
+    },
+    {
+      "path": "notes/mario-mix/docs/terra-stages/index.html",
+      "before": "818b65d542cfbc20eeb87a7c0274f52b1673931b1aa3b8ad190aa48854b91981",
+      "after": "60477bf3908eb2ff02379af66b34f892d11f5a233ff3ec5006c4442af5e9ae77"
+    },
+    {
+      "path": "notes/mario-mix/docs/terra-history/index.html",
+      "before": "e2953647d740ce4852188bfa0bc545693ef2473cfbd366d3ecd295ff8b3b49cb",
+      "after": "7d231c9fceda5d1309a97288f497818df1ac4a6ec324180a90c07a74eac9e2f2"
+    },
+    {
+      "path": "notes/mario-mix/docs/start/index.html",
+      "before": "feee22f1391aa614289db563124563369d2c3c31f90741b13a043693a010820d",
+      "after": "685bb79f008b08900bdc333cf53f6f5c3a2ae5fe6893249e553c9deeec86581f"
+    },
+    {
+      "path": "notes/mario-mix/docs/architecture/index.html",
+      "before": "a89e1f8e6126f8b7ffb1b5e4830b2e7b20cc75f664b151a88c3ac87ab31a0275",
+      "after": "cc572423e1e96b5efb2cc95cc8a15afa5c2fb90509009ee48f282c90367f838e"
+    },
+    {
+      "path": "notes/mario-mix/docs/reference/index.html",
+      "before": "b4605cf5aad6887be19794ad49ae693790e48e6bd5ab23dacfb99e0c90096307",
+      "after": "2418f3d84a8d9e3edb292209a32fe6eef780ac6471f83c4091ed278c129a978e"
+    },
+    {
+      "path": "notes/mario-mix/docs/engineering/index.html",
+      "before": "43187d201a350e2fd18bb0dac0022916686c8f6ef0220a69f19a1568a30764ff",
+      "after": "406dfed7ebd5083e0a215176e4897faa652eb5ac96c6ad0ec5c9ac5eb282d86a"
+    },
+    {
+      "path": "notes/mario-mix/docs/terra-chapters/index.html",
+      "before": "cae0a94be07ffe69be6930ee1082e6017e11ec58ac646cc4dea2b24cdf081f54",
+      "after": "6ea0b31210f22a37989a488462cd87df023468a7335da25fa343d65185002fa6"
+    },
+    {
+      "path": "notes/pixel-workshop/index.html",
+      "before": "fefdeac4b1deac8fda04318934ea3320b83f4646eda6249013ed2b6918e06cc1",
+      "after": "1398d9e625bcb8d9d23d3b38857a715745f936f86a151ed6923b654d0db82c4c"
+    },
+    {
+      "path": "notes/pixel-workshop/tasks/index.html",
+      "before": "4c179b265c7f1bd5ad1f14718bbd9d72c9be696c98f49f718b8f243945552202",
+      "after": "be81dd1c493837f03ca565691b8b0ace631870028d340177b639c78830494a9b"
+    },
+    {
+      "path": "notes/pixel-workshop/docs/index.html",
+      "before": "8b4d7689fc70f114b64a218bdbba5eb51724772dc09518d4cc9804124a030920",
+      "after": "78b0332f22cd9c790cd077f30abbb91f8e84b12df7115b8190435c5052caaab3"
+    },
+    {
+      "path": "notes/pixel-workshop/updates/index.html",
+      "before": "45c0a701b2064f660a353ea2b6bd3634b6ff4ec0a43ccd33b5a4af0c2a8c5f76",
+      "after": "ef2e1df6db1211bf975e01e0957f83d7d9a4c0cae648d9e5c2b487de8009f260"
+    },
+    {
+      "path": "notes/pixel-workshop/contribute/index.html",
+      "before": "501c96d98e93949b4b032d170b5fdf5f0da8e3a661b20440cce2edb1ad1ddeb1",
+      "after": "6e4ac15841b1d1053a32401096d1abc7370898cf60e6ad4f662e93ad11d20959"
+    },
+    {
+      "path": "notes/pixel-workshop/manage/index.html",
+      "before": "ac7735d1b50aae39fa469eb5e52fd3a60a9155fa25c641c0c37f4092e1dd4189",
+      "after": "0c0a50fc776d3a553a1aefdc9592f89e11788b8083bba1b6f46db5886736fa10"
+    },
+    {
+      "path": "notes/pixel-workshop/docs/start/index.html",
+      "before": "316ef1f8efe5b48968dce7f1b7b937572f661d778417aeb2d4aed9c2ff117654",
+      "after": "a39c2b8d8661f9ec79aca90e924aa0eafd5ae4312cc2cea8af4be14fe1c2ac5d"
+    },
+    {
+      "path": "notes/pixel-workshop/docs/architecture/index.html",
+      "before": "8b44c8f724547ef0f7f813b13ec7186d8b1b5cb2af70fb479752cbe113d29bd6",
+      "after": "4ca6ef683cd728744d555952484c2471dc21b28a30761fd4b5ce8b87a2c92542"
+    },
+    {
+      "path": "notes/pixel-workshop/docs/add-project/index.html",
+      "before": "0c0ccbe66caa70089fbfd7ac580671d52f2073728d6f4217395d81c7772a2cc3",
+      "after": "65eeed85b85457d7b37b069edf891b6ca7783f567034179d5c9fd04073d58832"
+    },
+    {
+      "path": "docs/development/generated-pages.json",
+      "before": "40715d495865b373bd510327591fc5221e760743dcec9a0f9df0e65e14afe8fe",
+      "after": "2ec5f34fdfb417f7f9bf0045149bb91cf6d9b51b09ecfedda48f756c934215be"
+    },
+    {
+      "path": "projects/index.html",
+      "before": "f1226a808aec33e636d77e2bae7508a6888e5e49dbc6c1cdfef3a017b624bc02",
+      "after": "e0615d4594540251e2a157180b3e7dc03da85fac4c5d42ed80f199c81c8672cd"
+    },
+    {
+      "path": "games/index.html",
+      "before": "eb0ca3ad355e6959075fbd527ec97d522e24b21189dcf650bc8d7648c5593177",
+      "after": "16ac0fb4ca421f2097970d77b7d16ea614adebb59d7903a9e8efd885d7ea82ad"
+    },
+    {
+      "path": "tools/index.html",
+      "before": "2679b5c10eca4efd0e92e049f4f61e6772252a3582b7838f2b2b663e98328b7e",
+      "after": "f1e6b8519942ce19ef83c02dc4f5fae6bd62bedf228be055535d5a66a7025b51"
+    },
+    {
+      "path": "docs/design-r07/generated-pages.json",
+      "before": "75bad3cdfd3b5ff5b45aecb5c863661b00273ee1b0f3b67a70558ddeaadcf7d8",
+      "after": "fb0719d2a19aeea8fa291511699d9239e7b71eb14fb4da687ba9cbf79f33e531"
+    },
+    {
+      "path": "content/search-index.json",
+      "before": "ed831d96a2930939b0f6dbba85e615d545fed21aa71636cfebf513137484a1b8",
+      "after": "490ccc334d094d47e90bf34d3b5845034e18aad71ffe3fb3f185c3abbc374130"
+    },
+    {
+      "path": "search/index.html",
+      "before": "e7860279cf9bf9afb2d11512ef2fa07cd7bfd988c165b9f9ea08915887142a24",
+      "after": "b17a18cf47fbd885d30a28b8044c3e4a654956044ca69440ec3030be46f02eab"
+    },
+    {
+      "path": "docs/experience-r18/generated-files.json",
+      "before": "ba4340ea73aa4532bbc862fe5479a3eda5916b8771f4d793e7ba14fbf21fb0ce",
+      "after": "238005a1eae7f3900c95e1cfdf4caaf406036e49e035879bdaa139d5eb6a25fe"
+    },
+    {
+      "path": "play-guide/index.html",
+      "before": "ab521e1ea5626a576e8dceeb0af35d667325009b8ca9195f88baef760a713543",
+      "after": "bdc4979b230b57d6fafc828ffeeb2e3f648b8be18255753fca1f20c40483eda1"
+    },
+    {
+      "path": "404.html",
+      "before": "5d997df1365f8e8eff9982fd84ee7f54d2284bb02708525d4208923de80a4670",
+      "after": "f25173218cf665fc5b22ca3c6044b2e032d335e0a78b7590210c7fc088177ec1"
+    },
+    {
+      "path": "games/mario-mix-3/index.html",
+      "before": "4dadd6f6b58542bd71e9ddd41139421c573e48d8df83d26f6af8fa0ac4ca3e69",
+      "after": "c8f206522c46652aa7874a8e0adb45dfdda11dd0c1e23447839c9ebe8dad0524"
+    },
+    {
+      "path": "games/mario-mix-2/index.html",
+      "before": "3668de1815abd6916104f6e1a0a40a4c79b6e005ca59ca35bde98f08b6aeb08b",
+      "after": "ddec0356529cef440bf56b76e85c6d1ab39e550fc92848ebeaeb8aafa3e325d4"
+    },
+    {
+      "path": "games/mario-mix/index.html",
+      "before": "bd7321c16e756f21920b9178d603e2e4bcbb789797ebe1ec3b1dc730931ee1a4",
+      "after": "e292e7dac91f1b2ef6bc1922d4da204a4fc5c79e627d392c87f5930512955f23"
+    },
+    {
+      "path": "games/pipebound/index.html",
+      "before": "777f304f66067006bdb68cfb778ff41945d8bcbc4707cb91b1e91d19701b86c5",
+      "after": "419032681a610d50a49193c23082438f27e4b904c482d8b19855535b368a6f4a"
+    },
+    {
+      "path": "games/mario-classic/index.html",
+      "before": "04d88a8ffc399bf37a79334fbf447189bc6abba2984fb48b5bdc19b6af1fa0b1",
+      "after": "6c164766496dea5050971ff06427f693a4f1d681a1eb6ac720b0ffb6ae0f3997"
+    },
+    {
+      "path": "docs/launch-r19/generated-files.json",
+      "before": "959df63f7bc9de1e254fd8323fb1139c761cd2495cea7ce01583ab0b90a5b6b1",
+      "after": "ec14566a47dec747459b659eba120c11528e9d3e32334559f70c5d8c3919808f"
+    },
+    {
+      "path": "index.html",
+      "before": "06c4de77a94d2b340e4d82f4ac1d17b5e1021af9b64afb7534fbbba30d36a35c",
+      "after": "140a5bdc3a2dcaeee18f59bf714c5153ef1a963224c22d4deeb4f6d7e0eac388"
+    },
+    {
+      "path": "games/pixel-pipe-adventure/index.html",
+      "before": "1c6368770dcdcc5ddd143e530dece3f492af7d24ee8dd0ae1dc53bd3e81f8a44",
+      "after": "5541b43fe66f856693ed0aaa50b2eb5322eb3cd38d3e0145a620d88658038be9"
+    },
+    {
+      "path": "games/voxel-frontier/index.html",
+      "before": "eff280b8e71feba06ad999fe5449ae0a1202263960fa6d0ca47f31b6866f69f7",
+      "after": "23191f4b585fa19a4ee565d43ed3e05daf12b09e87f9fd6b1fa41b2d9b5d0339"
+    },
+    {
+      "path": "about/index.html",
+      "before": "976f5798ec8e94350256329f16ae1a0a7cb353a30f82d8c35aa6886520ae1989",
+      "after": "f132388dc6fa9c5965de8001a3e9febe47be1220cdb48ad2e13ee706cd16d8c9"
+    },
+    {
+      "path": "package.json",
+      "before": "b0b4b3279482747adebf48e396cc094ec2613c40b6a0ca952dd202db96b72851",
+      "after": "866dcf385fb92b809cc69575138949ef074096f8afd7a728b12799fec94cc94a"
+    },
+    {
+      "path": "README.md",
+      "before": "cb7fac5e24f6e7d6ee1018e42dccfe8c409c638f0fb686d2d9cc3fd17df011e7",
+      "after": "85b845258399e97e0fb3bb9989ca4986f412c5d96969a22fc5bce0c10cc2ca77"
+    },
+    {
+      "path": "AGENTS.md",
+      "before": "edefb9076bed0da55535fb87fd39015fc82cb776553780438bb13bac8f738ef4",
+      "after": "15d582e1c8d36d3aab253b15149beef89624d794150f649df1b8b186802e5a57"
+    },
+    {
+      "path": "collab/delivery-files.txt",
+      "before": "19529070cb68d0c233d3703d290d58519678d7c20962a2d6bab4da6451cabc61",
+      "after": "c8bc6f110bdfe8665bae2782980304b178ff3fae7c01658db4a1ce53e2c0a39a"
+    }
+  ]
+}

@@ -1,0 +1,330 @@
+{
+  "type": "map",
+  "version": "1.10",
+  "orientation": "orthogonal",
+  "renderorder": "right-down",
+  "width": 17,
+  "height": 15,
+  "tilewidth": 16,
+  "tileheight": 16,
+  "infinite": false,
+  "nextlayerid": 4,
+  "nextobjectid": 15,
+  "tilesets": [],
+  "layers": [
+    {
+      "id": 1,
+      "name": "collision",
+      "type": "objectgroup",
+      "visible": true,
+      "opacity": 1,
+      "x": 0,
+      "y": 0,
+      "draworder": "index",
+      "objects": [
+        {
+          "id": 1,
+          "name": "r000",
+          "type": "solid",
+          "x": 0,
+          "y": 160,
+          "width": 48,
+          "height": 80,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r000\",\"x\":0,\"y\":160,\"w\":48,\"h\":80,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "r001",
+          "type": "solid",
+          "x": 0,
+          "y": 32,
+          "width": 272,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r001\",\"x\":0,\"y\":32,\"w\":272,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "name": "r002",
+          "type": "solid",
+          "x": 48,
+          "y": 208,
+          "width": 64,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r002\",\"x\":48,\"y\":208,\"w\":64,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "name": "r003",
+          "type": "solid",
+          "x": 96,
+          "y": 96,
+          "width": 32,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003\",\"x\":96,\"y\":96,\"w\":32,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "name": "r005",
+          "type": "solid",
+          "x": 144,
+          "y": 96,
+          "width": 48,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005\",\"x\":144,\"y\":96,\"w\":48,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "name": "r006",
+          "type": "solid",
+          "x": 160,
+          "y": 208,
+          "width": 16,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r006\",\"x\":160,\"y\":208,\"w\":16,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "name": "r007",
+          "type": "solid",
+          "x": 160,
+          "y": 112,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r007\",\"x\":160,\"y\":112,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "name": "r009",
+          "type": "solid",
+          "x": 208,
+          "y": 96,
+          "width": 64,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r009\",\"x\":208,\"y\":96,\"w\":64,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "name": "r010",
+          "type": "solid",
+          "x": 224,
+          "y": 208,
+          "width": 48,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r010\",\"x\":224,\"y\":208,\"w\":48,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "objects",
+      "type": "objectgroup",
+      "visible": true,
+      "opacity": 1,
+      "x": 0,
+      "y": 0,
+      "draworder": "index",
+      "objects": [
+        {
+          "id": 10,
+          "name": "inspection-start",
+          "type": "spawn",
+          "x": 24,
+          "y": 136,
+          "width": 12,
+          "height": 24,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"inspection-start\",\"kind\":\"spawn\",\"x\":24,\"y\":136,\"w\":12,\"h\":24}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "pending-mechanics",
+      "type": "objectgroup",
+      "visible": true,
+      "opacity": 1,
+      "x": 0,
+      "y": 0,
+      "draworder": "index",
+      "objects": [
+        {
+          "id": 11,
+          "name": "r004",
+          "type": "lava-volume",
+          "x": 112,
+          "y": 208,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r004\",\"kind\":\"lava-volume\",\"source\":{\"macro\":\"Water\",\"width\":24,\"x\":56,\"y\":0},\"sourcePath\":{\"area\":0,\"section\":3,\"part\":\"before\",\"record\":\"r004\"},\"x\":112,\"y\":208}"
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "name": "r007-fire",
+          "type": "rotating-firebar",
+          "x": 160,
+          "y": 112,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r007-fire\",\"kind\":\"rotating-firebar\",\"source\":{\"thing\":\"CastleBlock\",\"fireballs\":6,\"direction\":1,\"x\":80,\"y\":48},\"sourcePath\":{\"area\":0,\"section\":3,\"part\":\"before\",\"record\":\"r007\"},\"x\":160,\"y\":112}"
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "name": "r008",
+          "type": "lava-volume",
+          "x": 176,
+          "y": 208,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r008\",\"kind\":\"lava-volume\",\"source\":{\"macro\":\"Water\",\"width\":24,\"x\":88,\"y\":0},\"sourcePath\":{\"area\":0,\"section\":3,\"part\":\"before\",\"record\":\"r008\"},\"x\":176,\"y\":208}"
+            }
+          ]
+        },
+        {
+          "id": 14,
+          "name": "section-mode",
+          "type": "conditional-section-runtime",
+          "x": 0,
+          "y": 32,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"section-mode\",\"kind\":\"conditional-section-runtime\",\"source\":{\"x\":0,\"y\":88},\"sourcePath\":{\"area\":0,\"section\":3,\"part\":\"before\",\"record\":\"section\"},\"x\":0,\"y\":32}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "properties": [
+    {
+      "name": "room",
+      "type": "string",
+      "value": "area-0-section-3-before"
+    },
+    {
+      "name": "underwater",
+      "type": "bool",
+      "value": false
+    },
+    {
+      "name": "inspectionOnly",
+      "type": "bool",
+      "value": true
+    },
+    {
+      "name": "referenceReview",
+      "type": "string",
+      "value": "pending"
+    }
+  ]
+}

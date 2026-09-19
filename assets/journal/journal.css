@@ -1,0 +1,180 @@
+/* R04 content only. All site chrome, fonts, colours and transitions remain shared. */
+.journal{padding-bottom:12px;min-width:0}
+.journal .j-project-grid,.journal .j-shortcuts,.journal .j-notes-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.journal .j-project-card{display:flex;flex-direction:column;min-width:0;min-height:278px}
+.journal .j-card-top,.journal .j-card-bottom,.journal .j-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.journal .j-card-top{margin-bottom:24px}
+.journal .j-category{font-size:14px;letter-spacing:1px;color:var(--paper);border-bottom:2px solid var(--accent);padding-bottom:4px}
+.journal .j-stage,.journal .j-small,.journal .j-meta,.journal .j-pagination,.journal .j-card-index{font-size:14px;color:var(--muted)}
+.journal .j-project-card h3{font-size:30px;line-height:1.3}
+.journal .j-project-card>p{line-height:1.85;max-width:35em}
+.journal .j-card-bottom{margin-top:auto;padding-top:28px}
+.journal .j-card-bottom .entry__link{margin-top:0}
+.journal .j-card-index{font-size:25px;opacity:.55}
+.journal .j-title-link:hover{text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:6px}
+.journal .j-link{color:var(--paper);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:5px}
+.journal .j-link:hover{text-decoration-color:var(--accent)}
+.journal .j-toolbar{display:flex;align-items:end;justify-content:space-between;gap:24px;margin:0 0 24px;flex-wrap:wrap}
+.journal .j-toolbar .filter-bar{margin:0;gap:10px}
+.journal label{display:flex;flex-direction:column;gap:8px;color:var(--muted);font-size:15px;min-width:0}
+.journal input,.journal select{background:var(--bg);color:var(--paper);border:1px solid var(--line);border-radius:0;min-height:46px;padding:10px 14px;font:inherit;max-width:100%;min-width:0}
+.journal input:focus-visible,.journal select:focus-visible,.journal summary:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+.journal .j-search{width:min(300px,100%)}
+.journal .j-task-controls .j-search{width:min(540px,100%);flex:1}
+.journal .j-task-controls select{min-width:170px}
+.journal .j-update-list{padding:0;margin:0;list-style:none;border-top:1px solid var(--line)}
+.journal .j-update-list>li{display:grid;grid-template-columns:132px minmax(0,1fr);gap:30px;padding:27px 0;border-bottom:1px solid var(--line)}
+.journal .j-update-list time{font-size:15px;color:var(--muted);padding-top:4px}
+.journal .j-update-list .j-meta{justify-content:flex-start;margin-bottom:10px}
+.journal .j-update-list h3{font-size:24px;line-height:1.4;margin-bottom:10px}
+.journal .j-update-list p{font-size:16px;line-height:1.85;color:var(--muted);max-width:62em}
+.journal .j-section-footer{margin-top:20px;text-align:right}
+.journal .j-invite{display:flex;align-items:center;justify-content:space-between;gap:32px}
+.journal .j-invite .eyebrow{margin-bottom:12px;color:var(--muted)}
+.journal .j-invite h2{font-size:28px}
+.journal .j-invite p:not(.eyebrow){margin-top:16px;color:var(--muted);max-width:46em}
+.journal .j-invite .button{flex-shrink:0}
+.journal .j-path{padding-top:26px;border-bottom:1px solid var(--line)}
+.journal .j-breadcrumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:15px;color:var(--muted);margin-bottom:20px}
+.journal .j-subnav{display:flex;gap:26px;flex-wrap:wrap}
+.journal .j-subnav a{display:block;color:var(--muted);padding:10px 3px 15px;border-bottom:3px solid transparent}
+.journal .j-subnav a[aria-current=page]{color:var(--paper);border-color:var(--accent)}
+.journal .j-subnav a:hover{color:var(--paper)}
+.journal .j-overview{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:48px;align-items:start}
+.journal .j-overview-main .j-meta{justify-content:flex-start;margin-bottom:24px}
+.journal .j-overview h2{font-size:30px;margin-bottom:20px}
+.journal .j-lead{line-height:1.95;color:var(--muted)}
+.journal .j-focus .eyebrow{font-size:13px;color:var(--muted);margin-bottom:16px}
+.journal .j-focus h2{font-size:24px}
+.journal .j-focus ol{padding-left:24px;color:var(--muted);line-height:1.85;margin:0 0 24px}
+.journal .j-focus li+li{margin-top:14px}
+.journal .j-shortcuts{grid-template-columns:repeat(3,minmax(0,1fr))}
+.journal .j-shortcuts h3{font-size:24px;line-height:1.4}
+.journal .j-shortcuts p{font-size:16px;line-height:1.85}
+.journal .j-shortcuts .entry{padding:26px;display:flex;flex-direction:column}
+.journal .j-shortcuts .entry__link{margin-top:auto;padding-top:24px}
+.journal .j-description{line-height:1.85;color:var(--muted);max-width:56em;margin-bottom:12px}
+.journal .j-task-controls{margin-top:26px}
+.journal .j-task-grid{display:grid;gap:18px}
+.journal .j-result-summary{color:var(--muted);font-size:15px;margin-bottom:18px}
+.journal .j-task{min-width:0;padding:24px 28px;border-left-width:3px}
+.journal .j-task .j-meta{justify-content:flex-start;margin-bottom:12px}
+.journal .j-task h3{font-size:23px;line-height:1.45}
+.journal .j-task>p{font-size:16px;line-height:1.85}
+.journal .j-status{margin-left:auto;padding:2px 10px;border:1px solid var(--line);color:var(--paper)}
+.journal .j-status[data-status=active],.journal .j-status[data-status=review]{border-color:var(--accent)}
+.journal details{margin-top:18px}
+.journal summary{cursor:pointer;font-size:16px;line-height:1.7;color:var(--paper);padding-block:5px}
+.journal .j-detail{padding:18px 0 4px;font-size:16px;color:var(--muted);line-height:1.85;overflow-wrap:anywhere}
+.journal .j-detail h4{margin:0 0 12px;color:var(--paper);font-size:17px}
+.journal .j-detail ul{padding-left:24px}
+.journal .j-detail p{margin:12px 0}
+.journal .j-pagination{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:24px}
+.journal .button:disabled{opacity:.4;cursor:default;transform:none;box-shadow:none}
+.journal .j-reading{max-width:860px;margin:0 auto;font-size:18px;line-height:1.9}
+.journal .j-reading>section{margin-top:40px}
+.journal .j-reading h2{font-size:28px;margin-bottom:18px}
+.journal .j-reading p+p{margin-top:16px}
+.journal .j-reading p{color:var(--muted)}
+.journal pre{background:var(--bg);border:1px solid var(--line);padding:20px;overflow:auto;font-size:14px;line-height:1.8;margin:24px 0;max-width:100%}
+.journal code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere}
+.journal .j-contribute-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:30px}
+.journal .j-contribute-options .entry{padding:24px}
+.journal .j-contribute-options h3{font-size:21px}
+.journal .j-contribute-options p{font-size:16px}
+.journal .j-resources{display:flex;gap:22px;flex-wrap:wrap;margin-top:30px;font-size:15px}
+.journal .j-resources>span{color:var(--muted)}
+.journal .j-maintainer{margin-top:42px;font-size:14px;text-align:right}
+.journal .j-maintainer a{color:var(--muted)}
+.journal .j-notice{margin-top:24px;line-height:1.85}
+.journal .j-notice h2{font-size:24px}
+.journal .j-notice p{font-size:16px}
+.journal .j-management{margin-top:24px}
+.journal .j-maintenance-actions{display:flex;gap:16px;flex-wrap:wrap;margin:24px 0}
+.journal .j-legacy-details{border:1px solid var(--line);padding:20px;min-width:0}
+.journal .j-empty,.journal .j-error{grid-column:1/-1}
+.journal .j-empty-text,.journal .j-language-note{font-size:15px;color:var(--muted);margin-top:24px}
+.journal .j-sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media(max-width:960px){.journal .j-overview{grid-template-columns:1fr;gap:28px}.journal .j-shortcuts{grid-template-columns:repeat(2,minmax(0,1fr))}.journal .j-invite{align-items:flex-start;flex-direction:column}}
+@media(max-width:640px){.journal .j-project-grid,.journal .j-shortcuts,.journal .j-notes-grid,.journal .j-contribute-options{grid-template-columns:1fr}.journal .j-project-card{min-height:0}.journal .j-project-card h3{font-size:27px}.journal .j-card-top{margin-bottom:18px}.journal .j-toolbar{align-items:stretch;gap:18px}.journal .j-search{width:100%}.journal .j-update-list>li{grid-template-columns:1fr;gap:10px;padding-block:24px}.journal .j-update-list h3{font-size:22px}.journal .j-subnav{gap:18px}.journal .j-subnav a{font-size:16px}.journal .j-task{padding:22px}.journal .j-task-controls{flex-direction:column}.journal .j-task-controls .j-search{width:100%}.journal .j-task-controls select{width:100%}.journal .j-pagination{flex-wrap:wrap}.journal .j-pagination>span{font-size:13px}.journal .j-legacy-details{padding:12px}.journal .j-reading{font-size:17px}.journal .j-reading h2{font-size:25px}.journal .j-overview h2{font-size:27px}}
+
+.journal .j-project-pagination{grid-column:1/-1}
+
+/* R06 / editorial project dossiers. No new global theme or route animation. */
+.journal .section-head h2{font-size:clamp(27px,3vw,38px);line-height:1.25}
+.journal .section-head .eyebrow{font-size:12px;letter-spacing:1.8px}
+.journal .section-head>p{font-size:16px;max-width:28em;line-height:1.8}
+.journal .j-toolbar{margin-top:26px;margin-bottom:26px;gap:20px}
+.journal .j-project-grid{gap:32px}
+.journal .j-project-card{position:relative;isolation:isolate;border:2px solid var(--paper);box-shadow:7px 7px 0 var(--accent);padding:26px 28px 0;min-height:0;background:var(--surface)}
+.journal .j-card-top{position:relative;margin:0 0 18px;min-height:28px}
+.journal .j-card-top .j-category{background:var(--accent);color:var(--paper);padding:3px 12px;border:0;font-weight:700;line-height:1.6}
+.journal .j-card-index{font:700 24px/1 ui-monospace,monospace;color:inherit;opacity:.75}
+/* R08: category illustrations, with no slogan baked into the image. */
+.journal .j-project-emblem{position:relative;display:grid;grid-template-columns:minmax(0,.66fr) minmax(0,1.12fr);align-items:center;gap:14px;min-height:176px;margin:0 0 24px;padding:20px 22px;background:var(--bg);color:var(--paper);border:1px solid var(--line);overflow:hidden}
+.journal .j-emblem-word{font:850 clamp(28px,3.3vw,46px)/1 ui-sans-serif,Arial,sans-serif;letter-spacing:-1.5px;color:var(--paper)}
+.journal .j-emblem-art{display:block;width:100%;height:auto;max-height:146px;aspect-ratio:16/9;object-fit:contain}
+.journal .j-card-copy{min-width:0;margin-bottom:24px;flex:1}
+.journal .j-card-copy .j-stage{font-size:13px;line-height:1.6;display:block;color:var(--muted);margin-bottom:10px}
+.journal .j-card-copy h3{font-size:32px;line-height:1.35;overflow-wrap:anywhere;margin:0 0 14px}
+.journal .j-card-copy p{font-size:17px;line-height:1.9;color:var(--muted);max-width:34em;margin:0}
+.journal .j-card-bottom{padding:15px 0 20px;border-top:1px solid var(--line);margin-top:auto}
+.journal .j-card-bottom>span{color:var(--paper);background:var(--accent);font:28px/1 Arial,sans-serif;display:grid;place-items:center;width:42px;height:42px;pointer-events:none}
+.journal .j-card-action{font-size:18px;min-height:44px;display:flex;align-items:center;flex:1;color:inherit}
+.journal .j-card-action::after{content:"";position:absolute;inset:0;z-index:1}
+.journal .j-card-action:focus-visible{outline:none}
+.journal .j-project-card:focus-within{outline:3px solid var(--accent);outline-offset:5px}
+.journal .j-project-card--secondary{background:var(--paper);color:var(--bg)}
+.journal .j-project-card--secondary .j-card-copy p,.journal .j-project-card--secondary .j-card-copy .j-stage{color:#38353e}
+.journal .j-project-card--secondary .j-card-bottom{border-color:#b4afb6}
+.journal .j-update-list{counter-reset:journal-updates;border-top:2px solid var(--paper)}
+.journal .j-update-list>li{position:relative;grid-template-columns:140px minmax(0,1fr);gap:26px;padding:24px 0;border-bottom:1px solid var(--line)}
+.journal .j-update-list time{color:var(--paper);padding:6px 12px;background:var(--bg);border-left:4px solid var(--accent);align-self:start;font-size:14px;line-height:1.6}
+.journal .j-update-list .j-stage{font-size:12px;padding:2px 8px;border:1px solid var(--line);color:var(--paper)}
+.journal .j-update-list h3{font-size:22px;line-height:1.5}
+.journal .j-update-list p{font-size:16px;max-width:58em}
+.journal .j-invite{border:2px solid var(--paper);border-left:8px solid var(--accent);background:var(--paper);color:var(--bg);padding:32px;box-shadow:7px 7px 0 var(--accent);position:relative}
+.journal .j-invite .eyebrow{color:#47414a;font-size:12px}
+.journal .j-invite h2{font-size:30px;line-height:1.35}
+.journal .j-invite p:not(.eyebrow){color:#3d3841;font-size:17px;line-height:1.85;max-width:39em}
+.journal .j-invite .button{background:var(--bg);border-color:var(--bg);color:var(--paper);box-shadow:4px 4px 0 var(--accent)}
+.journal .j-subnav{gap:8px;padding-bottom:12px}
+.journal .j-subnav a{padding:8px 20px;border:1px solid var(--line);color:var(--paper);min-height:44px;font-size:16px}
+.journal .j-subnav a[aria-current=page]{background:var(--paper);color:var(--bg);border-color:var(--paper);box-shadow:3px 3px 0 var(--accent)}
+.journal .j-breadcrumb{font-size:14px;line-height:1.7}
+.journal .j-task{position:relative;border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--surface);padding:24px 26px}
+.journal .j-task h3{max-width:40em;font-size:23px}
+.journal .j-task .j-status{font-size:13px;white-space:nowrap}
+.journal .j-task .j-detail{max-width:65em}
+.journal .j-shortcuts .entry,.journal .j-notes-grid .entry{position:relative;border:1px solid var(--line);border-top:4px solid var(--accent);border-left-width:1px;background:var(--surface);padding:26px}
+.journal .j-shortcuts .entry__link{align-self:flex-start;color:var(--paper);border-bottom:2px solid var(--accent);padding-bottom:4px;font-size:16px}
+.journal .j-shortcuts h3{font-size:23px}
+.journal .j-focus{border:2px solid var(--paper);border-top:7px solid var(--accent);box-shadow:5px 5px 0 var(--accent)}
+.journal .j-reading{max-width:48em}
+.journal .j-reading>section{padding-bottom:32px;border-bottom:1px solid var(--line)}
+.journal .j-reading h2{line-height:1.4;padding-left:14px;border-left:4px solid var(--accent)}
+.journal .j-maintainer{border-top:1px solid var(--line);padding-top:22px;font-size:13px}
+@media(max-width:680px){.journal .j-project-grid{grid-template-columns:1fr;gap:28px}.journal .j-project-card{padding:22px 22px 0}.journal .j-project-emblem{min-height:145px;padding:18px 16px;gap:12px}.journal .j-emblem-word{font-size:clamp(26px,7vw,40px)}.journal .j-card-copy h3{font-size:28px}.journal .j-invite{padding:24px}.journal .j-invite h2{font-size:26px}.journal .j-subnav{gap:7px}.journal .j-subnav a{padding:8px 13px}.journal .j-update-list>li{grid-template-columns:1fr;gap:14px}.journal .j-update-list time{justify-self:start}.journal .j-task{padding:21px}.journal .j-task .j-status{margin-left:0}.journal .section-head{gap:12px}}
+
+@media(max-width:380px){.journal .j-project-emblem{padding:16px 12px;min-height:122px;gap:8px;grid-template-columns:minmax(0,.75fr) minmax(0,1fr)}.journal .j-emblem-word{font-size:26px;letter-spacing:-1px}}
+
+/* R12 / approved compact direction. No banner, title duplication or micro-caption.
+   Scope is limited to category emblems, not site headers, cards or other media. */
+.journal .j-project-card .j-project-emblem--compact{
+ display:flex;align-items:center;justify-content:flex-start;
+ width:100%;height:80px;min-height:80px;margin:0 0 20px;padding:0;
+ border:0;background:none;color:inherit;gap:0;overflow:visible;
+}
+.journal .j-project-card .j-project-emblem--compact::before,
+.journal .j-project-card .j-project-emblem--compact::after{content:none}
+.journal .j-project-card .j-project-emblem--compact .j-compact-icon{
+ display:block;flex:0 0 auto;width:96px;height:72px;max-width:96px;
+ object-fit:contain;image-rendering:auto;transform:none;animation:none;
+}
+@media(max-width:680px){
+ .journal .j-project-card .j-project-emblem--compact{height:72px;min-height:72px;margin-bottom:16px}
+}
+/* R20: chapter status is a distinct content block, not a new theme or route. */
+.journal .j-chapter-overview{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.journal .j-chapter-overview>li{padding:22px 20px;border-top:2px solid var(--accent);background:var(--surface);min-width:0}.journal .j-chapter-row{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.journal .j-chapter-number{font-size:30px;line-height:1.1;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-1px}.journal .j-chapter-status{display:inline-block;border:1px solid var(--line);padding:2px 9px;font-size:12px;white-space:nowrap;color:var(--muted)}.journal .j-chapter-status[data-state=playable]{border-color:#7c9990;color:#c6e7da}.journal .j-chapter-status[data-state=developing]{border-color:#b88b61;color:#f0c79d}.journal .j-chapter-overview h3{font-size:18px;line-height:1.65;margin:18px 0 8px;min-height:3.3em}.journal .j-chapter-overview p{font-size:14px;color:var(--muted);margin-bottom:14px}.journal .j-chapter-unavailable{font-size:13px;color:var(--muted);display:block;padding:10px 0}.journal .j-level-atlas{max-width:none}.journal .j-chapter-intro{margin:24px 0 30px}.journal .j-chapter-intro p{margin:12px 0;color:var(--muted)}.journal .j-chapter-note{border-left:3px solid var(--accent);padding:12px 16px;background:var(--surface);font-size:14px}.journal .j-chapter-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}.journal .j-chapter-detail{padding:24px;border:1px solid var(--line);background:var(--surface);min-width:0}.journal .j-chapter-detail h3{font-size:20px;margin:10px 0 0}.journal .j-chapter-cast{color:var(--paper);font-size:16px;margin:20px 0 8px}.journal .j-chapter-detail>p:not(.j-chapter-cast){font-size:14px;line-height:1.8;color:var(--muted)}.journal .j-chapter-detail dl{border-top:1px solid var(--line);margin:20px 0 12px;padding-top:12px;font-size:13px}.journal .j-chapter-detail dl>div{display:grid;grid-template-columns:7em minmax(0,1fr);gap:12px;padding:7px 0}.journal .j-chapter-detail dt{color:var(--muted)}.journal .j-chapter-detail dd{margin:0;overflow-wrap:anywhere}.journal .j-chapter-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:12px 0}.journal .j-chapter-detail details{border-top:1px solid var(--line);margin-top:20px}.journal .j-chapter-detail summary,.journal .j-future-world summary{cursor:pointer;min-height:44px;padding:12px 0;font-size:14px}.journal .j-map-strip{overflow-x:auto;border:1px solid var(--line);background:var(--bg);max-width:100%;margin:6px 0 12px}.journal .j-map-strip img{max-width:none;width:auto;height:120px;display:block}.journal .j-chapter-next{margin-top:38px}.journal .j-chapter-next>p{color:var(--muted);margin:12px 0 20px;font-size:15px}.journal .j-future-world{border-top:1px solid var(--line)}.journal .j-future-world summary span{color:var(--muted);font-size:13px;margin-left:12px}.journal .j-future-world ul{list-style:none;padding:0;margin:0 0 16px}.journal .j-future-world li{display:grid;grid-template-columns:4em 1fr 1fr 1fr;gap:12px;padding:10px 8px;font-size:13px;color:var(--muted)}.journal .j-future-world li strong{color:var(--paper)}.journal [data-level-atlas]~nav{margin-top:32px}@media(max-width:1040px){.journal .j-chapter-overview{grid-template-columns:repeat(2,minmax(0,1fr))}.journal .j-chapter-overview h3{min-height:0}}@media(max-width:660px){.journal .j-chapter-overview,.journal .j-chapter-cards{grid-template-columns:1fr}.journal .j-chapter-detail{padding:20px}.journal .j-chapter-detail dl>div{grid-template-columns:1fr;gap:2px}.journal .j-future-world li{grid-template-columns:3em 1fr 1fr}.journal .j-future-world li span:last-child{grid-column:2/-1}.journal .j-chapter-overview>li{padding:20px}.journal .j-chapter-overview h3{margin-top:12px}.journal .j-chapter-number{font-size:28px}}
+
+.journal .j-chapter-detail{display:flex;flex-direction:column}.journal .j-chapter-detail dl{flex:1}.journal .j-chapter-actions{min-height:44px}

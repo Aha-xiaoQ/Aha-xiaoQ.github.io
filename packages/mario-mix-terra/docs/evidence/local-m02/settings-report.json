@@ -1,0 +1,109 @@
+{
+  "result": "pass",
+  "mode": "offline-full-candidate-with-DOM-events",
+  "checks": [
+    {
+      "name": "dialog renders 15 action rows",
+      "passed": true
+    },
+    {
+      "name": "one owned polling resource",
+      "passed": true
+    },
+    {
+      "name": "reopening already-open settings is idempotent",
+      "passed": true
+    },
+    {
+      "name": "dialog buttons have accessible action names",
+      "passed": true
+    },
+    {
+      "name": "real keyboard capture binds KeyT",
+      "passed": true
+    },
+    {
+      "name": "conflicting keyboard assignment is rejected",
+      "passed": true
+    },
+    {
+      "name": "conflict names action owner",
+      "passed": true
+    },
+    {
+      "name": "Escape first cancels capture and keeps settings open",
+      "passed": true
+    },
+    {
+      "name": "Escape without capture closes and releases poll",
+      "passed": true
+    },
+    {
+      "name": "reset restores shipped jump keys",
+      "passed": true
+    },
+    {
+      "name": "default configuration survives import exactly",
+      "passed": true
+    },
+    {
+      "name": "failed load is reported without partial state",
+      "passed": true
+    },
+    {
+      "name": "virtual pad edge binds selected action",
+      "passed": true
+    },
+    {
+      "name": "same held button does not repeatedly bind",
+      "passed": true
+    },
+    {
+      "name": "native dialog close cleans lifetime",
+      "passed": true
+    },
+    {
+      "name": "native close leaves no session timer",
+      "passed": true
+    },
+    {
+      "name": "30 open/close cycles leave no poll resource",
+      "passed": true
+    },
+    {
+      "name": "repeated rendering keeps only one dialog and table",
+      "passed": true
+    },
+    {
+      "name": "persistent UI listener count stays bounded",
+      "passed": true
+    },
+    {
+      "name": "late file import cannot affect a reopened session",
+      "passed": true
+    },
+    {
+      "name": "settings layout fits viewport 320",
+      "passed": true
+    },
+    {
+      "name": "settings layout fits viewport 390",
+      "passed": true
+    },
+    {
+      "name": "settings layout fits viewport 768",
+      "passed": true
+    },
+    {
+      "name": "settings layout fits viewport 1280",
+      "passed": true
+    },
+    {
+      "name": "all settings checks have no uncaught script errors",
+      "passed": true
+    }
+  ],
+  "pageErrors": [],
+  "candidateSha256": "8765508699756e0c8b3b802b7fe364332f6adb1c9597f604929c1faf2957f3db",
+  "scope": "Real DOM events, full candidate, embedded game assets. Pad samples and delayed File are controlled fixtures. No real gamepad, persistent storage, HTTP/ESM, audio listening or natural completion claim."
+}

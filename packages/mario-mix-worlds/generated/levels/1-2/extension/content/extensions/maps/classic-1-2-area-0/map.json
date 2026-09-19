@@ -1,0 +1,59 @@
+{
+  "id": "classic-1-2-area-0",
+  "title": "1-2 · 地表",
+  "tileSize": 16,
+  "width": 384,
+  "height": 240,
+  "provenance": {
+    "kind": "transcribed",
+    "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+    "review": "pending",
+    "note": "第一世界社区参考坐标转录。基础几何用于开发预览；机关、敌人行为与原版逐格保真尚待验收。"
+  },
+  "geometry": [
+    {
+      "id": "r000",
+      "x": 0,
+      "y": 208,
+      "w": 384,
+      "h": 32,
+      "collision": "solid"
+    },
+    {
+      "id": "r002",
+      "x": 160,
+      "y": 176,
+      "w": 39,
+      "h": 32,
+      "collision": "solid"
+    },
+    {
+      "id": "r003",
+      "x": 192,
+      "y": 144,
+      "w": 32,
+      "h": 64,
+      "collision": "solid"
+    }
+  ],
+  "objects": [
+    {
+      "id": "r002-portal",
+      "kind": "portal",
+      "x": 142,
+      "y": 176,
+      "w": 22,
+      "h": 32,
+      "targetRoom": "area-1",
+      "targetSpawn": "location-1"
+    },
+    {
+      "id": "location-0",
+      "kind": "spawn",
+      "x": 32,
+      "y": 184,
+      "w": 12,
+      "h": 24
+    }
+  ]
+}

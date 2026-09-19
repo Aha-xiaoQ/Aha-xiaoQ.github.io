@@ -1,0 +1,48 @@
+/* Source-faithful World 1-2 transcription, FullScreenMario maps.js @980c275.
+ * Coordinates remain upstream units: 8 units = one 16-pixel block.
+ * Data and semantic layer are shared by the side view and top-down adapters.
+ * Game artwork/design rights remain with the original rights holders. */
+const RELAY12_MAP = (()=>{
+ const B=(x,y,nx=1,ny=1,content=null)=>({kind:'brick',x,y,nx,ny,content});
+ const S=(x,y,h=8,w=8)=>({kind:'stone',x,y,nx:w/8,ny:h/8});
+ const Q=(x,y,content='coin',nx=1)=>({kind:'question',x,y,nx,ny:1,content});
+ const C=(x,y,nx=1,ny=1,dx=8,dy=16)=>({kind:'coin',x,y,nx,ny,dx,dy});
+ const E=(kind,x,y,n=1,dx=12)=>({kind,x,y,n,dx});
+ const main={id:'underground',name:'1-2 · 地下通道',width:3040,spawn:[48,160],
+  floor:[[0,640],[664,272],[952,16],[984,96],[1144,64],[1264,256]],
+  ceiling:[[48,664],[720,360],[1272,56],[1344,136]],
+  blocks:[B(0,8,1,11),Q(80,32,'power'),Q(88,32,'coin',4),
+   S(136,8),S(152,16,16),S(168,24,24),S(184,32,32),S(200,32,32),S(216,24,24),B(232,40,1,1,'multi'),S(248,24,24),S(264,16,16),
+   B(312,32,1,3),B(320,32),B(328,32,1,3),B(336,48),B(344,48),B(352,32,1,3),B(360,32),B(368,32,1,2),B(368,48,1,1,'star'),
+   B(416,32,2,5),B(432,16,2,3),B(432,72,2,2),B(464,32,4),B(464,72,5,2),B(496,32,2,7),B(528,72,4,2),B(536,32,1,5),B(544,32,2),B(552,40,1,1,'power'),
+   B(576,32,2),B(576,40),B(576,48,2,3),B(584,40,1,1,'multi'),B(608,32,4),B(608,72,4,2),B(672,40,6,2),B(712,88,1,1,'life'),
+   B(952,8,2,3),S(1040,8),S(1048,16,16),S(1056,24,24),S(1064,32,32),S(1072,32,32),B(1144,40,5),B(1184,40,1,1,'power'),
+   B(1264,8,17,3),B(1344,32,7,7),B(1504,8,2,11)],
+  coins:[C(321,39),C(330,60,4),C(361,39),C(465,39,4),C(545,39),C(674,64,6)],
+  pipes:[{x:800,height:24,transport:'bonus',piranha:true},{x:848,height:32,piranha:true},{x:896,height:16,piranha:true}],
+  sidePipe:{x:1312,y:40,verticalX:1328,height:64,top:88,transport:'exit'},
+  lifts:[{x:1096,width:24,dir:1},{x:1224,width:24,dir:-1}],
+  warp:{x:1400,destinations:[4,3,2]},
+  nativeEnemies:[E('goomba',128,8),E('goomba',136,16),E('goomba',232,8),E('turtle',352,12,2),E('turtle',472,12),E('goomba',494,8),E('goomba',510,8),E('goomba',584,72),E('goomba',608,40,2),E('goomba',768,8,3),E('goomba',872,8),E('goomba',1056,32),E('goomba',1064,48),E('turtle',1152,12)],
+  landmarks:[{x:80,label:'BLOCKS'},{x:312,label:'BRICKS'},{x:800,label:'PIPES'},{x:1096,label:'LIFTS'},{x:1312,label:'EXIT'},{x:1400,label:'WARP'}]
+ };
+ const bonus={id:'bonus',name:'1-2 · 管道补给室',width:272,spawn:[32,60],floor:[[0,136]],ceiling:[],
+  blocks:[B(0,8,1,11),B(24,32,9),B(24,64,10,4),B(96,32,1,1,'multi'),B(104,24,2,9)],coins:[C(25,7,9),C(33,39,8)],pipes:[],lifts:[],nativeEnemies:[],landmarks:[],sidePipe:{x:104,y:16,verticalX:120,top:100,height:100,transport:'return'}};
+ const exit={id:'exit',name:'1-2 · 地面出口',width:928,spawn:[12,150],floor:[[0,464]],ceiling:[],blocks:[S(16,8),S(24,16,16),S(32,24,24),S(40,32,32),S(48,40,40),S(56,48,48),S(64,56,56),S(72,64,64,16),S(152,8)],coins:[],pipes:[{x:0,height:16}],lifts:[],nativeEnemies:[],landmarks:[],flag:304,castle:390};
+ const entrance={id:'entrance',name:'1-2 · 地下入口',width:384,spawn:[30,182],floor:[[0,192]],ceiling:[],blocks:[],coins:[],pipes:[{x:96,height:32}],lifts:[],nativeEnemies:[],landmarks:[],sidePipe:{x:80,y:16,verticalX:96,top:32,height:32,transport:'underground'}};
+ return {version:'0.2.0',source:'umaim/Mario',commit:'980c275358704a49f868567aeec5bdfb347c4781',blob:'657d750ad65bb06c0e63a3d8958736f9236ec3c0',areas:{entrance,underground:main,bonus,exit},
+  adaptation:{ninja:'Canonical solid positions; content/enemy substitution only. Climbing can reach the original ceiling route.',tank:'Same x/y brick silhouettes; floor becomes boundary, gaps become water with explicit bridge adapters; original lift shafts become traversable service decks. No gravity; tank footprint 12x12.'}};
+})();
+function relayBuildGeometry(def){
+ const map=new Map(),pp=[],cc=[];
+ const tile=(x,y,kind,content=null)=>put(map,Math.round(x/8),Math.round(13-y/8),kind,content);
+ for(const [x,w] of def.floor)for(let xx=x;xx<x+w;xx+=8)for(let y=0;y>=-8;y-=8)tile(xx,y,'ground');
+ for(const [x,w] of def.ceiling)for(let xx=x;xx<x+w;xx+=8)tile(xx,88,'brick');
+ for(const b of def.blocks)for(let j=0;j<b.ny;j++)for(let i=0;i<b.nx;i++)tile(b.x+i*8,b.y+(b.kind==='stone'?-j:j)*8,b.kind,b.kind==='question'?(b.content||'coin'):(i===0&&j===0?b.content:null));
+ for(const c of def.coins)for(let j=0;j<c.ny;j++)for(let i=0;i<c.nx;i++)cc.push({x:(c.x+i*c.dx)*2,y:208-(c.y+j*c.dy)*2,w:8,h:12});
+ for(const p of def.pipes){for(let xx=p.x;xx<p.x+16;xx+=8)for(let yy=8;yy<=p.height;yy+=8)tile(xx,yy,'pipe');pp.push({x:p.x*2,y:208-p.height*2,w:32,h:p.height/8,...p,x:p.x*2});}
+ if(def.sidePipe){const q=def.sidePipe;for(let yy=q.top-q.height+8;yy<=q.top;yy+=8)for(let xx=q.verticalX;xx<q.verticalX+16;xx+=8)tile(xx,yy,'pipe');for(let xx=q.x;xx<q.x+16;xx+=8)for(let yy=q.y-8;yy<=q.y;yy+=8)tile(xx,yy,'pipe');}
+ if(def.warp)for(let i=0;i<3;i++){const x=def.warp.x+8+i*32;for(let xx=x;xx<x+16;xx+=8)for(let yy=8;yy<=16;yy+=8)tile(xx,yy,'pipe');}
+ return {tiles:map,pipes:pp,coins:cc};
+}
+

@@ -1,0 +1,38 @@
+{
+  "mode": "offline-full-script-fixture",
+  "scenarioCount": 13,
+  "scenarios": [
+    "start-world",
+    "walk",
+    "jump",
+    "weapon",
+    "pause",
+    "pause-no-advance",
+    "resume",
+    "hidden-preparation",
+    "construction-result",
+    "boss-summon",
+    "arena-combat",
+    "boss-reward",
+    "return-world"
+  ],
+  "mismatches": [],
+  "pageErrors": {
+    "reference": [],
+    "candidate": []
+  },
+  "layout": {
+    "390": {
+      "width": 390,
+      "scroll": 390
+    },
+    "768": {
+      "width": 768,
+      "scroll": 768
+    }
+  },
+  "result": "pass",
+  "scope": "Actual baseline and candidate scripts, full embedded game assets, deterministic input and seed. HTTP/file navigation not tested; all external requests blocked; storage may be unavailable.",
+  "ui": "Binding dialog opens, renders >=10 actions and closes; screenshots use embedded game resources and system fonts.",
+  "candidateSha256": "8765508699756e0c8b3b802b7fe364332f6adb1c9597f604929c1faf2957f3db"
+}

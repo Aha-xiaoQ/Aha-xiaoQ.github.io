@@ -1,0 +1,334 @@
+{
+  "repository": "umaim/Mario",
+  "commit": "980c275358704a49f868567aeec5bdfb347c4781",
+  "path": "Source/settings/maps.js",
+  "gitBlob": "657d750ad65bb06c0e63a3d8958736f9236ec3c0",
+  "range": "Worlds 1–8 gameplay layout transcription",
+  "url": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+  "method": "Manual transcription of gameplay placement records, area locations and section definitions. Pure background scenery omitted; not a byte-identical source export or original-game certification.",
+  "omittedVisuals": [
+    "Pattern",
+    "DecorativeBack",
+    "DecorativeDot",
+    "CustomText"
+  ],
+  "map": {
+    "name": "4-3",
+    "time": 300,
+    "locations": [
+      {
+        "area": 0,
+        "entry": "Plain"
+      }
+    ],
+    "areas": [
+      {
+        "setting": "Overworld Shrooms",
+        "creation": [
+          {
+            "macro": "Floor",
+            "width": 120,
+            "x": 0,
+            "y": 0
+          },
+          {
+            "macro": "Shroom",
+            "width": 40,
+            "x": 128,
+            "y": 0
+          },
+          {
+            "macro": "Shroom",
+            "width": 40,
+            "x": 152,
+            "y": 64
+          },
+          {
+            "macro": "Fill",
+            "thing": "Coin",
+            "xnum": 3,
+            "xwidth": 8,
+            "x": 161,
+            "y": 71
+          },
+          {
+            "macro": "Shroom",
+            "width": 56,
+            "x": 184,
+            "y": 32
+          },
+          {
+            "macro": "Fill",
+            "thing": "Coin",
+            "xnum": 4,
+            "xwidth": 8,
+            "x": 193,
+            "y": 39
+          },
+          {
+            "macro": "Fill",
+            "thing": "Koopa",
+            "xnum": 2,
+            "smart": true,
+            "x": 224,
+            "y": 44
+          },
+          {
+            "macro": "Shroom",
+            "width": 24,
+            "x": 256,
+            "y": 72
+          },
+          {
+            "macro": "Shroom",
+            "width": 56,
+            "x": 288,
+            "y": 8
+          },
+          {
+            "thing": "Koopa",
+            "smart": true,
+            "floating": true,
+            "jumping": true,
+            "begin": 32,
+            "end": 88,
+            "x": 288,
+            "y": 84
+          },
+          {
+            "thing": "Coin",
+            "x": 302,
+            "y": 15
+          },
+          {
+            "thing": "Koopa",
+            "smart": true,
+            "x": 312,
+            "y": 20
+          },
+          {
+            "macro": "Shroom",
+            "width": 40,
+            "x": 312,
+            "y": 64
+          },
+          {
+            "thing": "Coin",
+            "x": 321,
+            "y": 15
+          },
+          {
+            "thing": "Block",
+            "contents": "Mushroom",
+            "x": 344,
+            "y": 88
+          },
+          {
+            "macro": "Shroom",
+            "width": 24,
+            "x": 352,
+            "y": 32
+          },
+          {
+            "thing": "Coin",
+            "x": 385,
+            "y": 47
+          },
+          {
+            "macro": "Scale",
+            "between": 56,
+            "dropRight": 44,
+            "x": 396,
+            "y": 86
+          },
+          {
+            "macro": "Shroom",
+            "width": 24,
+            "x": 408,
+            "y": 40
+          },
+          {
+            "thing": "Platform",
+            "width": 24,
+            "floating": true,
+            "begin": 16,
+            "end": 72,
+            "x": 464,
+            "y": 20
+          },
+          {
+            "thing": "Platform",
+            "width": 24,
+            "floating": true,
+            "begin": 32,
+            "end": 88,
+            "x": 496,
+            "y": 66
+          },
+          {
+            "macro": "Shroom",
+            "width": 40,
+            "x": 520,
+            "y": 0
+          },
+          {
+            "macro": "Shroom",
+            "width": 24,
+            "x": 536,
+            "y": 48
+          },
+          {
+            "macro": "Fill",
+            "thing": "Coin",
+            "xnum": 3,
+            "xwidth": 8,
+            "x": 537,
+            "y": 55
+          },
+          {
+            "thing": "Koopa",
+            "smart": true,
+            "x": 544,
+            "y": 12
+          },
+          {
+            "macro": "Shroom",
+            "width": 24,
+            "x": 560,
+            "y": 80
+          },
+          {
+            "macro": "Fill",
+            "thing": "Coin",
+            "xnum": 3,
+            "xwidth": 8,
+            "x": 561,
+            "y": 87
+          },
+          {
+            "macro": "Shroom",
+            "width": 24,
+            "x": 576,
+            "y": 32
+          },
+          {
+            "thing": "Coin",
+            "x": 585,
+            "y": 39
+          },
+          {
+            "macro": "Shroom",
+            "width": 40,
+            "x": 592,
+            "y": 64
+          },
+          {
+            "thing": "Koopa",
+            "smart": true,
+            "x": 624,
+            "y": 76
+          },
+          {
+            "macro": "Scale",
+            "between": 64,
+            "dropRight": 52,
+            "x": 652,
+            "y": 86
+          },
+          {
+            "macro": "Shroom",
+            "x": 672,
+            "y": 32
+          },
+          {
+            "macro": "Scale",
+            "dropRight": 56,
+            "x": 740,
+            "y": 86
+          },
+          {
+            "thing": "Coin",
+            "x": 770,
+            "y": 47
+          },
+          {
+            "macro": "Shroom",
+            "width": 24,
+            "x": 792,
+            "y": 16
+          },
+          {
+            "macro": "Scale",
+            "between": 48,
+            "dropRight": 56,
+            "x": 828,
+            "y": 86
+          },
+          {
+            "macro": "Shroom",
+            "width": 24,
+            "x": 840,
+            "y": 24
+          },
+          {
+            "macro": "Shroom",
+            "width": 40,
+            "x": 904,
+            "y": 32
+          },
+          {
+            "macro": "Fill",
+            "thing": "Coin",
+            "xnum": 5,
+            "xwidth": 8,
+            "x": 905,
+            "y": 39
+          },
+          {
+            "macro": "Shroom",
+            "width": 24,
+            "x": 936,
+            "y": 56
+          },
+          {
+            "macro": "Shroom",
+            "width": 56,
+            "x": 968,
+            "y": 0
+          },
+          {
+            "macro": "Shroom",
+            "width": 40,
+            "x": 1040,
+            "y": 24
+          },
+          {
+            "thing": "Platform",
+            "width": 24,
+            "floating": true,
+            "begin": 8,
+            "end": 88,
+            "x": 1088,
+            "y": 67
+          },
+          {
+            "macro": "Floor",
+            "width": 152,
+            "x": 1128,
+            "y": 0
+          },
+          {
+            "macro": "EndOutsideCastle",
+            "large": true,
+            "walls": 3,
+            "transport": {
+              "map": "4-4"
+            },
+            "x": 1176,
+            "y": 0
+          }
+        ]
+      }
+    ]
+  }
+}

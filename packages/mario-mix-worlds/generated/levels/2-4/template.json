@@ -1,0 +1,2509 @@
+{
+  "schemaVersion": 2,
+  "level": "2-4",
+  "stage": {
+    "id": "template-2-4",
+    "title": "2-4 · 区域 1（地形检查）",
+    "driver": "platform-v1",
+    "status": "draft",
+    "entryRoom": "area-0",
+    "entrySpawn": "inspection-start",
+    "rooms": {
+      "area-0": "classic-2-4-area-0"
+    },
+    "characters": [
+      "lab-runner",
+      "lab-scout"
+    ],
+    "requiredCapabilities": [
+      "jump"
+    ],
+    "overlays": {},
+    "audio": "map-kit-silent",
+    "note": "分区几何检查，不是整关通关。原房间连接、条件循环与未实现机制保留在模板 topology / coverage；静态机关只用于检查位置。"
+  },
+  "inspectionStages": [
+    {
+      "id": "template-2-4",
+      "title": "2-4 · 区域 1（地形检查）",
+      "driver": "platform-v1",
+      "status": "draft",
+      "entryRoom": "area-0",
+      "entrySpawn": "inspection-start",
+      "rooms": {
+        "area-0": "classic-2-4-area-0"
+      },
+      "characters": [
+        "lab-runner",
+        "lab-scout"
+      ],
+      "requiredCapabilities": [
+        "jump"
+      ],
+      "overlays": {},
+      "audio": "map-kit-silent",
+      "note": "分区几何检查，不是整关通关。原房间连接、条件循环与未实现机制保留在模板 topology / coverage；静态机关只用于检查位置。"
+    }
+  ],
+  "maps": [
+    {
+      "id": "classic-2-4-area-0",
+      "title": "2-4 · 区域 1",
+      "tileSize": 16,
+      "width": 2560,
+      "height": 240,
+      "provenance": {
+        "kind": "transcribed",
+        "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+        "review": "pending",
+        "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+      },
+      "geometry": [
+        {
+          "id": "r000-0",
+          "x": 0,
+          "y": 112,
+          "w": 48,
+          "h": 128,
+          "collision": "solid"
+        },
+        {
+          "id": "r000-24",
+          "x": 48,
+          "y": 128,
+          "w": 16,
+          "h": 112,
+          "collision": "solid"
+        },
+        {
+          "id": "r000-32",
+          "x": 64,
+          "y": 144,
+          "w": 16,
+          "h": 96,
+          "collision": "solid"
+        },
+        {
+          "id": "r000-floor",
+          "x": 80,
+          "y": 160,
+          "w": 176,
+          "h": 80,
+          "collision": "solid"
+        },
+        {
+          "id": "r001",
+          "x": 0,
+          "y": 32,
+          "w": 256,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r004",
+          "x": 288,
+          "y": 144,
+          "w": 32,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r005",
+          "x": 352,
+          "y": 112,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r006",
+          "x": 368,
+          "y": 112,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r007",
+          "x": 368,
+          "y": 48,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r008",
+          "x": 384,
+          "y": 112,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r009",
+          "x": 432,
+          "y": 144,
+          "w": 32,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r011",
+          "x": 512,
+          "y": 224,
+          "w": 832,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r012",
+          "x": 512,
+          "y": 160,
+          "w": 32,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r013",
+          "x": 544,
+          "y": 32,
+          "w": 784,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r014",
+          "x": 544,
+          "y": 80,
+          "w": 336,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r015",
+          "x": 544,
+          "y": 208,
+          "w": 144,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r016",
+          "x": 592,
+          "y": 144,
+          "w": 192,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r017",
+          "x": 688,
+          "y": 208,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r018",
+          "x": 704,
+          "y": 208,
+          "w": 176,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r019",
+          "x": 784,
+          "y": 144,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r020",
+          "x": 800,
+          "y": 144,
+          "w": 176,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r021",
+          "x": 880,
+          "y": 80,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r022",
+          "x": 880,
+          "y": 208,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r023",
+          "x": 896,
+          "y": 208,
+          "w": 176,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r024",
+          "x": 896,
+          "y": 80,
+          "w": 432,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r025",
+          "x": 976,
+          "y": 144,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r026",
+          "x": 992,
+          "y": 144,
+          "w": 176,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r027",
+          "x": 1072,
+          "y": 208,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r028",
+          "x": 1088,
+          "y": 208,
+          "w": 192,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r029",
+          "x": 1168,
+          "y": 144,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r030",
+          "x": 1280,
+          "y": 160,
+          "w": 64,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r031",
+          "x": 1312,
+          "y": 96,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r034",
+          "x": 1472,
+          "y": 176,
+          "w": 16,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r035",
+          "x": 1472,
+          "y": 160,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r036",
+          "x": 1488,
+          "y": 160,
+          "w": 96,
+          "h": 80,
+          "collision": "solid"
+        },
+        {
+          "id": "r037",
+          "x": 1488,
+          "y": 32,
+          "w": 96,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r038",
+          "x": 1584,
+          "y": 208,
+          "w": 160,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r040",
+          "x": 1648,
+          "y": 176,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r041",
+          "x": 1728,
+          "y": 160,
+          "w": 16,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r043",
+          "x": 1728,
+          "y": 160,
+          "w": 16,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r044",
+          "x": 1776,
+          "y": 160,
+          "w": 32,
+          "h": 80,
+          "collision": "solid"
+        },
+        {
+          "id": "r046",
+          "x": 1840,
+          "y": 208,
+          "w": 208,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r047",
+          "x": 1840,
+          "y": 160,
+          "w": 80,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r048",
+          "x": 1840,
+          "y": 32,
+          "w": 208,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r049-0-0",
+          "x": 1952,
+          "y": 160,
+          "w": 32,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r049-1-0",
+          "x": 2016,
+          "y": 160,
+          "w": 32,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r050-0-0",
+          "x": 2048,
+          "y": 80,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r050-1-0",
+          "x": 2064,
+          "y": 80,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r050-2-0",
+          "x": 2080,
+          "y": 80,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r050-3-0",
+          "x": 2096,
+          "y": 80,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r050-4-0",
+          "x": 2112,
+          "y": 80,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r050-5-0",
+          "x": 2128,
+          "y": 80,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r051-roof",
+          "x": 2048,
+          "y": 32,
+          "w": 512,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r051-bridge",
+          "x": 2048,
+          "y": 160,
+          "w": 208,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r051-floor",
+          "x": 2256,
+          "y": 208,
+          "w": 304,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r051-step",
+          "x": 2256,
+          "y": 144,
+          "w": 48,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r051-ceiling",
+          "x": 2272,
+          "y": 48,
+          "w": 32,
+          "h": 48,
+          "collision": "solid"
+        }
+      ],
+      "objects": [
+        {
+          "id": "r039-0-0",
+          "kind": "coin",
+          "x": 1634,
+          "y": 194,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r039-0-1",
+          "kind": "coin",
+          "x": 1634,
+          "y": 130,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r039-1-0",
+          "kind": "coin",
+          "x": 1650,
+          "y": 194,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r039-1-1",
+          "kind": "coin",
+          "x": 1650,
+          "y": 130,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r039-2-0",
+          "kind": "coin",
+          "x": 1666,
+          "y": 194,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r039-2-1",
+          "kind": "coin",
+          "x": 1666,
+          "y": 130,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "inspection-start",
+          "kind": "spawn",
+          "x": 24,
+          "y": 88,
+          "w": 12,
+          "h": 24
+        }
+      ]
+    }
+  ],
+  "rooms": [
+    {
+      "roomId": "area-0",
+      "label": "区域 1",
+      "setting": "Castle",
+      "origin": {
+        "area": 0,
+        "part": "base"
+      },
+      "declaredWidth": null,
+      "underwater": false,
+      "inspectionOnly": true,
+      "previewSupported": true,
+      "map": {
+        "id": "classic-2-4-area-0",
+        "title": "2-4 · 区域 1",
+        "tileSize": 16,
+        "width": 2560,
+        "height": 240,
+        "provenance": {
+          "kind": "transcribed",
+          "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+          "review": "pending",
+          "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+        },
+        "geometry": [
+          {
+            "id": "r000-0",
+            "x": 0,
+            "y": 112,
+            "w": 48,
+            "h": 128,
+            "collision": "solid"
+          },
+          {
+            "id": "r000-24",
+            "x": 48,
+            "y": 128,
+            "w": 16,
+            "h": 112,
+            "collision": "solid"
+          },
+          {
+            "id": "r000-32",
+            "x": 64,
+            "y": 144,
+            "w": 16,
+            "h": 96,
+            "collision": "solid"
+          },
+          {
+            "id": "r000-floor",
+            "x": 80,
+            "y": 160,
+            "w": 176,
+            "h": 80,
+            "collision": "solid"
+          },
+          {
+            "id": "r001",
+            "x": 0,
+            "y": 32,
+            "w": 256,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r004",
+            "x": 288,
+            "y": 144,
+            "w": 32,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r005",
+            "x": 352,
+            "y": 112,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r006",
+            "x": 368,
+            "y": 112,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r007",
+            "x": 368,
+            "y": 48,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r008",
+            "x": 384,
+            "y": 112,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r009",
+            "x": 432,
+            "y": 144,
+            "w": 32,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r011",
+            "x": 512,
+            "y": 224,
+            "w": 832,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r012",
+            "x": 512,
+            "y": 160,
+            "w": 32,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r013",
+            "x": 544,
+            "y": 32,
+            "w": 784,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r014",
+            "x": 544,
+            "y": 80,
+            "w": 336,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r015",
+            "x": 544,
+            "y": 208,
+            "w": 144,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r016",
+            "x": 592,
+            "y": 144,
+            "w": 192,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r017",
+            "x": 688,
+            "y": 208,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r018",
+            "x": 704,
+            "y": 208,
+            "w": 176,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r019",
+            "x": 784,
+            "y": 144,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r020",
+            "x": 800,
+            "y": 144,
+            "w": 176,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r021",
+            "x": 880,
+            "y": 80,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r022",
+            "x": 880,
+            "y": 208,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r023",
+            "x": 896,
+            "y": 208,
+            "w": 176,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r024",
+            "x": 896,
+            "y": 80,
+            "w": 432,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r025",
+            "x": 976,
+            "y": 144,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r026",
+            "x": 992,
+            "y": 144,
+            "w": 176,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r027",
+            "x": 1072,
+            "y": 208,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r028",
+            "x": 1088,
+            "y": 208,
+            "w": 192,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r029",
+            "x": 1168,
+            "y": 144,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r030",
+            "x": 1280,
+            "y": 160,
+            "w": 64,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r031",
+            "x": 1312,
+            "y": 96,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r034",
+            "x": 1472,
+            "y": 176,
+            "w": 16,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r035",
+            "x": 1472,
+            "y": 160,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r036",
+            "x": 1488,
+            "y": 160,
+            "w": 96,
+            "h": 80,
+            "collision": "solid"
+          },
+          {
+            "id": "r037",
+            "x": 1488,
+            "y": 32,
+            "w": 96,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r038",
+            "x": 1584,
+            "y": 208,
+            "w": 160,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r040",
+            "x": 1648,
+            "y": 176,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r041",
+            "x": 1728,
+            "y": 160,
+            "w": 16,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r043",
+            "x": 1728,
+            "y": 160,
+            "w": 16,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r044",
+            "x": 1776,
+            "y": 160,
+            "w": 32,
+            "h": 80,
+            "collision": "solid"
+          },
+          {
+            "id": "r046",
+            "x": 1840,
+            "y": 208,
+            "w": 208,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r047",
+            "x": 1840,
+            "y": 160,
+            "w": 80,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r048",
+            "x": 1840,
+            "y": 32,
+            "w": 208,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r049-0-0",
+            "x": 1952,
+            "y": 160,
+            "w": 32,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r049-1-0",
+            "x": 2016,
+            "y": 160,
+            "w": 32,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r050-0-0",
+            "x": 2048,
+            "y": 80,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r050-1-0",
+            "x": 2064,
+            "y": 80,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r050-2-0",
+            "x": 2080,
+            "y": 80,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r050-3-0",
+            "x": 2096,
+            "y": 80,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r050-4-0",
+            "x": 2112,
+            "y": 80,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r050-5-0",
+            "x": 2128,
+            "y": 80,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r051-roof",
+            "x": 2048,
+            "y": 32,
+            "w": 512,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r051-bridge",
+            "x": 2048,
+            "y": 160,
+            "w": 208,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r051-floor",
+            "x": 2256,
+            "y": 208,
+            "w": 304,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r051-step",
+            "x": 2256,
+            "y": 144,
+            "w": 48,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r051-ceiling",
+            "x": 2272,
+            "y": 48,
+            "w": 32,
+            "h": 48,
+            "collision": "solid"
+          }
+        ],
+        "objects": [
+          {
+            "id": "r039-0-0",
+            "kind": "coin",
+            "x": 1634,
+            "y": 194,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r039-0-1",
+            "kind": "coin",
+            "x": 1634,
+            "y": 130,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r039-1-0",
+            "kind": "coin",
+            "x": 1650,
+            "y": 194,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r039-1-1",
+            "kind": "coin",
+            "x": 1650,
+            "y": 130,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r039-2-0",
+            "kind": "coin",
+            "x": 1666,
+            "y": 194,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r039-2-1",
+            "kind": "coin",
+            "x": 1666,
+            "y": 130,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "inspection-start",
+            "kind": "spawn",
+            "x": 24,
+            "y": 88,
+            "w": 12,
+            "h": 24
+          }
+        ]
+      },
+      "markers": [
+        {
+          "id": "r002",
+          "kind": "enemy-podoboo",
+          "source": {
+            "thing": "Podoboo",
+            "x": 128,
+            "y": -32
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r002"
+          },
+          "x": 256,
+          "y": 272
+        },
+        {
+          "id": "r003",
+          "kind": "lava-volume",
+          "source": {
+            "macro": "Water",
+            "width": 128,
+            "x": 128,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r003"
+          },
+          "x": 256,
+          "y": 208
+        },
+        {
+          "id": "r007-contents",
+          "kind": "block-contents",
+          "source": {
+            "thing": "Block",
+            "contents": "Mushroom",
+            "x": 184,
+            "y": 80
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r007"
+          },
+          "x": 368,
+          "y": 48
+        },
+        {
+          "id": "r010",
+          "kind": "enemy-podoboo",
+          "source": {
+            "thing": "Podoboo",
+            "x": 240,
+            "y": -32
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r010"
+          },
+          "x": 480,
+          "y": 272
+        },
+        {
+          "id": "r019-fire",
+          "kind": "rotating-firebar",
+          "source": {
+            "thing": "CastleBlock",
+            "fireballs": 6,
+            "x": 392,
+            "y": 32
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r019"
+          },
+          "x": 784,
+          "y": 144
+        },
+        {
+          "id": "r021-fire",
+          "kind": "rotating-firebar",
+          "source": {
+            "thing": "CastleBlock",
+            "fireballs": 6,
+            "x": 440,
+            "y": 64
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r021"
+          },
+          "x": 880,
+          "y": 80
+        },
+        {
+          "id": "r025-fire",
+          "kind": "rotating-firebar",
+          "source": {
+            "thing": "CastleBlock",
+            "fireballs": 6,
+            "x": 488,
+            "y": 32
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r025"
+          },
+          "x": 976,
+          "y": 144
+        },
+        {
+          "id": "r029-fire",
+          "kind": "rotating-firebar",
+          "source": {
+            "thing": "CastleBlock",
+            "fireballs": 6,
+            "x": 584,
+            "y": 32
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r029"
+          },
+          "x": 1168,
+          "y": 144
+        },
+        {
+          "id": "r031-fire",
+          "kind": "rotating-firebar",
+          "source": {
+            "thing": "CastleBlock",
+            "fireballs": 6,
+            "x": 656,
+            "y": 56
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r031"
+          },
+          "x": 1312,
+          "y": 96
+        },
+        {
+          "id": "r032",
+          "kind": "platform-generator",
+          "source": {
+            "macro": "PlatformGenerator",
+            "width": 12,
+            "direction": -1,
+            "x": 686,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r032"
+          },
+          "x": 1372,
+          "y": 208
+        },
+        {
+          "id": "r033",
+          "kind": "platform-generator",
+          "source": {
+            "macro": "PlatformGenerator",
+            "width": 12,
+            "x": 710,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r033"
+          },
+          "x": 1420,
+          "y": 208
+        },
+        {
+          "id": "r035-fire",
+          "kind": "rotating-firebar",
+          "source": {
+            "thing": "CastleBlock",
+            "fireballs": 6,
+            "direction": 1,
+            "x": 736,
+            "y": 24
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r035"
+          },
+          "x": 1472,
+          "y": 160
+        },
+        {
+          "id": "r042",
+          "kind": "lava-volume",
+          "source": {
+            "macro": "Water",
+            "width": 16,
+            "x": 872,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r042"
+          },
+          "x": 1744,
+          "y": 208
+        },
+        {
+          "id": "r045",
+          "kind": "lava-volume",
+          "source": {
+            "macro": "Water",
+            "width": 32,
+            "x": 904,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r045"
+          },
+          "x": 1808,
+          "y": 208
+        },
+        {
+          "id": "r051-boss",
+          "kind": "enemy-bowser",
+          "source": {
+            "thing": "Bowser",
+            "x": 1093,
+            "y": 42
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r051"
+          },
+          "x": 2186,
+          "y": 124
+        },
+        {
+          "id": "r051-axe",
+          "kind": "bridge-axe-finish",
+          "source": {
+            "thing": "CastleAxe",
+            "x": 1128,
+            "y": 40
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r051"
+          },
+          "x": 2256,
+          "y": 128
+        },
+        {
+          "id": "r051",
+          "kind": "castle-finish",
+          "source": {
+            "macro": "EndInsideCastle",
+            "spawnType": "Shell",
+            "transport": {
+              "map": "3-1"
+            },
+            "x": 1024,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r051"
+          },
+          "x": 2048,
+          "y": 208
+        },
+        {
+          "id": "r051-transport",
+          "kind": "source-transport-not-simulated",
+          "source": {
+            "macro": "EndInsideCastle",
+            "spawnType": "Shell",
+            "transport": {
+              "map": "3-1"
+            },
+            "x": 1024,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r051"
+          },
+          "x": 2048,
+          "y": 208
+        },
+        {
+          "id": "r052",
+          "kind": "noncolliding-platform",
+          "source": {
+            "thing": "Platform",
+            "width": 16,
+            "sliding": true,
+            "begin": 1080,
+            "end": 1112,
+            "nocollidechar": true,
+            "x": 1108,
+            "y": 56
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r052"
+          },
+          "x": 2216,
+          "y": 96
+        }
+      ],
+      "semantics": [
+        {
+          "id": "r000-0",
+          "kind": "Stone",
+          "source": {
+            "x": 0
+          },
+          "referenceRect": {
+            "x": 0,
+            "y": 112,
+            "w": 48,
+            "h": 128
+          }
+        },
+        {
+          "id": "r000-24",
+          "kind": "Stone",
+          "source": {
+            "x": 24
+          },
+          "referenceRect": {
+            "x": 48,
+            "y": 128,
+            "w": 16,
+            "h": 112
+          }
+        },
+        {
+          "id": "r000-32",
+          "kind": "Stone",
+          "source": {
+            "x": 32
+          },
+          "referenceRect": {
+            "x": 64,
+            "y": 144,
+            "w": 16,
+            "h": 96
+          }
+        },
+        {
+          "id": "r000-floor",
+          "kind": "Floor",
+          "source": {
+            "x": 40
+          },
+          "referenceRect": {
+            "x": 80,
+            "y": 160,
+            "w": 176,
+            "h": 80
+          }
+        },
+        {
+          "id": "r001",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 128,
+            "height": 24,
+            "x": 0,
+            "y": 88
+          },
+          "referenceRect": {
+            "x": 0,
+            "y": 32,
+            "w": 256,
+            "h": 48
+          }
+        },
+        {
+          "id": "r004",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 16,
+            "x": 144,
+            "y": 32
+          },
+          "referenceRect": {
+            "x": 288,
+            "y": 144,
+            "w": 32,
+            "h": 16
+          }
+        },
+        {
+          "id": "r005",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 176,
+            "y": 48
+          },
+          "referenceRect": {
+            "x": 352,
+            "y": 112,
+            "w": 16,
+            "h": 16
+          }
+        },
+        {
+          "id": "r006",
+          "kind": "CastleBlock",
+          "source": {
+            "thing": "CastleBlock",
+            "x": 184,
+            "y": 48
+          },
+          "referenceRect": {
+            "x": 368,
+            "y": 112,
+            "w": 16,
+            "h": 16
+          }
+        },
+        {
+          "id": "r007",
+          "kind": "Block",
+          "source": {
+            "thing": "Block",
+            "contents": "Mushroom",
+            "x": 184,
+            "y": 80
+          },
+          "referenceRect": {
+            "x": 368,
+            "y": 48,
+            "w": 16,
+            "h": 16
+          }
+        },
+        {
+          "id": "r008",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 192,
+            "y": 48
+          },
+          "referenceRect": {
+            "x": 384,
+            "y": 112,
+            "w": 16,
+            "h": 16
+          }
+        },
+        {
+          "id": "r009",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 16,
+            "x": 216,
+            "y": 32
+          },
+          "referenceRect": {
+            "x": 432,
+            "y": 144,
+            "w": 32,
+            "h": 16
+          }
+        },
+        {
+          "id": "r011",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 416,
+            "x": 256,
+            "y": -8
+          },
+          "referenceRect": {
+            "x": 512,
+            "y": 224,
+            "w": 832,
+            "h": 16
+          }
+        },
+        {
+          "id": "r012",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 16,
+            "height": 32,
+            "x": 256,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 512,
+            "y": 160,
+            "w": 32,
+            "h": 64
+          }
+        },
+        {
+          "id": "r013",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 392,
+            "height": 24,
+            "x": 272,
+            "y": 88
+          },
+          "referenceRect": {
+            "x": 544,
+            "y": 32,
+            "w": 784,
+            "h": 48
+          }
+        },
+        {
+          "id": "r014",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 168,
+            "x": 272,
+            "y": 64
+          },
+          "referenceRect": {
+            "x": 544,
+            "y": 80,
+            "w": 336,
+            "h": 16
+          }
+        },
+        {
+          "id": "r015",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 72,
+            "x": 272,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 544,
+            "y": 208,
+            "w": 144,
+            "h": 16
+          }
+        },
+        {
+          "id": "r016",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 96,
+            "x": 296,
+            "y": 32
+          },
+          "referenceRect": {
+            "x": 592,
+            "y": 144,
+            "w": 192,
+            "h": 16
+          }
+        },
+        {
+          "id": "r017",
+          "kind": "CastleBlock",
+          "source": {
+            "thing": "CastleBlock",
+            "x": 344,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 688,
+            "y": 208,
+            "w": 16,
+            "h": 16
+          }
+        },
+        {
+          "id": "r018",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 88,
+            "x": 352,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 704,
+            "y": 208,
+            "w": 176,
+            "h": 16
+          }
+        },
+        {
+          "id": "r019",
+          "kind": "CastleBlock",
+          "source": {
+            "thing": "CastleBlock",
+            "fireballs": 6,
+            "x": 392,
+            "y": 32
+          },
+          "referenceRect": {
+            "x": 784,
+            "y": 144,
+            "w": 16,
+            "h": 16
+          }
+        },
+        {
+          "id": "r020",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 88,
+            "x": 400,
+            "y": 32
+          },
+          "referenceRect": {
+            "x": 800,
+            "y": 144,
+            "w": 176,
+            "h": 16
+          }
+        },
+        {
+          "id": "r021",
+          "kind": "CastleBlock",
+          "source": {
+            "thing": "CastleBlock",
+            "fireballs": 6,
+            "x": 440,
+            "y": 64
+          },
+          "referenceRect": {
+            "x": 880,
+            "y": 80,
+            "w": 16,
+            "h": 16
+          }
+        },
+        {
+          "id": "r022",
+          "kind": "CastleBlock",
+          "source": {
+            "thing": "CastleBlock",
+            "x": 440,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 880,
+            "y": 208,
+            "w": 16,
+            "h": 16
+          }
+        },
+        {
+          "id": "r023",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 88,
+            "x": 448,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 896,
+            "y": 208,
+            "w": 176,
+            "h": 16
+          }
+        },
+        {
+          "id": "r024",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 216,
+            "x": 448,
+            "y": 64
+          },
+          "referenceRect": {
+            "x": 896,
+            "y": 80,
+            "w": 432,
+            "h": 16
+          }
+        },
+        {
+          "id": "r025",
+          "kind": "CastleBlock",
+          "source": {
+            "thing": "CastleBlock",
+            "fireballs": 6,
+            "x": 488,
+            "y": 32
+          },
+          "referenceRect": {
+            "x": 976,
+            "y": 144,
+            "w": 16,
+            "h": 16
+          }
+        },
+        {
+          "id": "r026",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 88,
+            "x": 496,
+            "y": 32
+          },
+          "referenceRect": {
+            "x": 992,
+            "y": 144,
+            "w": 176,
+            "h": 16
+          }
+        },
+        {
+          "id": "r027",
+          "kind": "CastleBlock",
+          "source": {
+            "thing": "CastleBlock",
+            "x": 536,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 1072,
+            "y": 208,
+            "w": 16,
+            "h": 16
+          }
+        },
+        {
+          "id": "r028",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 96,
+            "x": 544,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 1088,
+            "y": 208,
+            "w": 192,
+            "h": 16
+          }
+        },
+        {
+          "id": "r029",
+          "kind": "CastleBlock",
+          "source": {
+            "thing": "CastleBlock",
+            "fireballs": 6,
+            "x": 584,
+            "y": 32
+          },
+          "referenceRect": {
+            "x": 1168,
+            "y": 144,
+            "w": 16,
+            "h": 16
+          }
+        },
+        {
+          "id": "r030",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 32,
+            "height": 32,
+            "x": 640,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 1280,
+            "y": 160,
+            "w": 64,
+            "h": 64
+          }
+        },
+        {
+          "id": "r031",
+          "kind": "CastleBlock",
+          "source": {
+            "thing": "CastleBlock",
+            "fireballs": 6,
+            "x": 656,
+            "y": 56
+          },
+          "referenceRect": {
+            "x": 1312,
+            "y": 96,
+            "w": 16,
+            "h": 16
+          }
+        },
+        {
+          "id": "r034",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "x": 736,
+            "y": 16
+          },
+          "referenceRect": {
+            "x": 1472,
+            "y": 176,
+            "w": 16,
+            "h": 64
+          }
+        },
+        {
+          "id": "r035",
+          "kind": "CastleBlock",
+          "source": {
+            "thing": "CastleBlock",
+            "fireballs": 6,
+            "direction": 1,
+            "x": 736,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 1472,
+            "y": 160,
+            "w": 16,
+            "h": 16
+          }
+        },
+        {
+          "id": "r036",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 48,
+            "x": 744,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 1488,
+            "y": 160,
+            "w": 96,
+            "h": 80
+          }
+        },
+        {
+          "id": "r037",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 48,
+            "height": 24,
+            "x": 744,
+            "y": 88
+          },
+          "referenceRect": {
+            "x": 1488,
+            "y": 32,
+            "w": 96,
+            "h": 48
+          }
+        },
+        {
+          "id": "r038",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 80,
+            "x": 792,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 1584,
+            "y": 208,
+            "w": 160,
+            "h": 32
+          }
+        },
+        {
+          "id": "r040",
+          "kind": "CastleBlock",
+          "source": {
+            "thing": "CastleBlock",
+            "x": 824,
+            "y": 16
+          },
+          "referenceRect": {
+            "x": 1648,
+            "y": 176,
+            "w": 16,
+            "h": 16
+          }
+        },
+        {
+          "id": "r041",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 24,
+            "x": 864,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 1728,
+            "y": 160,
+            "w": 16,
+            "h": 48
+          }
+        },
+        {
+          "id": "r043",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 24,
+            "x": 864,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 1728,
+            "y": 160,
+            "w": 16,
+            "h": 48
+          }
+        },
+        {
+          "id": "r044",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 16,
+            "x": 888,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 1776,
+            "y": 160,
+            "w": 32,
+            "h": 80
+          }
+        },
+        {
+          "id": "r046",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 104,
+            "x": 920,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 1840,
+            "y": 208,
+            "w": 208,
+            "h": 32
+          }
+        },
+        {
+          "id": "r047",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 40,
+            "height": 24,
+            "x": 920,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 1840,
+            "y": 160,
+            "w": 80,
+            "h": 48
+          }
+        },
+        {
+          "id": "r048",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 104,
+            "height": 24,
+            "x": 920,
+            "y": 88
+          },
+          "referenceRect": {
+            "x": 1840,
+            "y": 32,
+            "w": 208,
+            "h": 48
+          }
+        },
+        {
+          "id": "r049-0-0",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 16,
+            "height": 24,
+            "x": 976,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 1952,
+            "y": 160,
+            "w": 32,
+            "h": 48
+          }
+        },
+        {
+          "id": "r049-1-0",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 16,
+            "height": 24,
+            "x": 1008,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 2016,
+            "y": 160,
+            "w": 32,
+            "h": 48
+          }
+        },
+        {
+          "id": "r050-0-0",
+          "kind": "Brick",
+          "source": {
+            "thing": "Brick",
+            "x": 1024,
+            "y": 64
+          },
+          "referenceRect": {
+            "x": 2048,
+            "y": 80,
+            "w": 16,
+            "h": 16
+          }
+        },
+        {
+          "id": "r050-1-0",
+          "kind": "Brick",
+          "source": {
+            "thing": "Brick",
+            "x": 1032,
+            "y": 64
+          },
+          "referenceRect": {
+            "x": 2064,
+            "y": 80,
+            "w": 16,
+            "h": 16
+          }
+        },
+        {
+          "id": "r050-2-0",
+          "kind": "Brick",
+          "source": {
+            "thing": "Brick",
+            "x": 1040,
+            "y": 64
+          },
+          "referenceRect": {
+            "x": 2080,
+            "y": 80,
+            "w": 16,
+            "h": 16
+          }
+        },
+        {
+          "id": "r050-3-0",
+          "kind": "Brick",
+          "source": {
+            "thing": "Brick",
+            "x": 1048,
+            "y": 64
+          },
+          "referenceRect": {
+            "x": 2096,
+            "y": 80,
+            "w": 16,
+            "h": 16
+          }
+        },
+        {
+          "id": "r050-4-0",
+          "kind": "Brick",
+          "source": {
+            "thing": "Brick",
+            "x": 1056,
+            "y": 64
+          },
+          "referenceRect": {
+            "x": 2112,
+            "y": 80,
+            "w": 16,
+            "h": 16
+          }
+        },
+        {
+          "id": "r050-5-0",
+          "kind": "Brick",
+          "source": {
+            "thing": "Brick",
+            "x": 1064,
+            "y": 64
+          },
+          "referenceRect": {
+            "x": 2128,
+            "y": 80,
+            "w": 16,
+            "h": 16
+          }
+        },
+        {
+          "id": "r051-roof",
+          "kind": "Stone",
+          "source": {
+            "x": 1024,
+            "y": 88
+          },
+          "referenceRect": {
+            "x": 2048,
+            "y": 32,
+            "w": 512,
+            "h": 16
+          }
+        },
+        {
+          "id": "r051-bridge",
+          "kind": "CastleBridge",
+          "source": {
+            "x": 1024,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 2048,
+            "y": 160,
+            "w": 208,
+            "h": 32
+          }
+        },
+        {
+          "id": "r051-floor",
+          "kind": "Floor",
+          "source": {
+            "x": 1128
+          },
+          "referenceRect": {
+            "x": 2256,
+            "y": 208,
+            "w": 304,
+            "h": 32
+          }
+        },
+        {
+          "id": "r051-step",
+          "kind": "Stone",
+          "source": {
+            "x": 1128
+          },
+          "referenceRect": {
+            "x": 2256,
+            "y": 144,
+            "w": 48,
+            "h": 64
+          }
+        },
+        {
+          "id": "r051-ceiling",
+          "kind": "Stone",
+          "source": {
+            "x": 1136
+          },
+          "referenceRect": {
+            "x": 2272,
+            "y": 48,
+            "w": 32,
+            "h": 48
+          }
+        }
+      ],
+      "sourceRecordCount": 53
+    }
+  ],
+  "topology": {
+    "locations": [
+      {
+        "area": 0,
+        "entry": "Castle"
+      }
+    ],
+    "areas": [
+      {
+        "area": 0,
+        "setting": "Castle",
+        "underwater": false,
+        "exit": null,
+        "sections": []
+      }
+    ],
+    "links": [
+      {
+        "from": {
+          "area": 0,
+          "part": "base",
+          "record": "r051"
+        },
+        "kind": "world",
+        "target": {
+          "map": "3-1"
+        }
+      }
+    ],
+    "issues": []
+  },
+  "coverage": {
+    "placementRecords": 53,
+    "areas": 1,
+    "sectionViews": 0,
+    "views": 1,
+    "geometry": 57,
+    "objects": 7,
+    "pending": [
+      "block-contents",
+      "bridge-axe-finish",
+      "castle-finish",
+      "enemy-bowser",
+      "enemy-podoboo",
+      "lava-volume",
+      "noncolliding-platform",
+      "platform-generator",
+      "rotating-firebar",
+      "source-transport-not-simulated"
+    ],
+    "details": [
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r002",
+        "kind": "enemy-podoboo"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r003",
+        "kind": "lava-volume"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r007-contents",
+        "kind": "block-contents"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r010",
+        "kind": "enemy-podoboo"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r019-fire",
+        "kind": "rotating-firebar"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r021-fire",
+        "kind": "rotating-firebar"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r025-fire",
+        "kind": "rotating-firebar"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r029-fire",
+        "kind": "rotating-firebar"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r031-fire",
+        "kind": "rotating-firebar"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r032",
+        "kind": "platform-generator"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r033",
+        "kind": "platform-generator"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r035-fire",
+        "kind": "rotating-firebar"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r042",
+        "kind": "lava-volume"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r045",
+        "kind": "lava-volume"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r051-boss",
+        "kind": "enemy-bowser"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r051-axe",
+        "kind": "bridge-axe-finish"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r051",
+        "kind": "castle-finish"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r051-transport",
+        "kind": "source-transport-not-simulated"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r052",
+        "kind": "noncolliding-platform"
+      }
+    ],
+    "geometryReview": "reference-transcribed-pending-original-review",
+    "playability": "partition-inspection-not-level-completion",
+    "underwaterAreas": 0,
+    "sourceIssues": 0
+  },
+  "source": {
+    "repository": "umaim/Mario",
+    "commit": "980c275358704a49f868567aeec5bdfb347c4781",
+    "path": "Source/settings/maps.js",
+    "gitBlob": "657d750ad65bb06c0e63a3d8958736f9236ec3c0",
+    "range": "Worlds 1–8 gameplay layout transcription",
+    "url": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+    "method": "Manual transcription of gameplay placement records, area locations and section definitions. Pure background scenery omitted; not a byte-identical source export or original-game certification.",
+    "omittedVisuals": [
+      "Pattern",
+      "DecorativeBack",
+      "DecorativeDot",
+      "CustomText"
+    ]
+  }
+}

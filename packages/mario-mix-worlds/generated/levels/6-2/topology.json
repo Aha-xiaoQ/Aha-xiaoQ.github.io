@@ -1,0 +1,162 @@
+{
+  "locations": [
+    {
+      "area": 0,
+      "entry": "Plain"
+    },
+    {
+      "area": 0,
+      "entry": "PipeVertical"
+    },
+    {
+      "area": 0,
+      "entry": "PipeVertical"
+    },
+    {
+      "area": 0,
+      "xloc": 1304
+    },
+    {
+      "area": 0,
+      "entry": "PipeVertical"
+    },
+    {
+      "area": 1
+    },
+    {
+      "area": 2
+    },
+    {
+      "area": 3,
+      "entry": "Vine"
+    },
+    {
+      "area": 4
+    }
+  ],
+  "areas": [
+    {
+      "area": 0,
+      "setting": "Overworld Night",
+      "underwater": false,
+      "exit": null,
+      "sections": []
+    },
+    {
+      "area": 1,
+      "setting": "Underworld",
+      "underwater": false,
+      "exit": null,
+      "sections": []
+    },
+    {
+      "area": 2,
+      "setting": "Underwater",
+      "underwater": true,
+      "exit": null,
+      "sections": []
+    },
+    {
+      "area": 3,
+      "setting": "Sky Night",
+      "underwater": false,
+      "exit": 3,
+      "sections": []
+    },
+    {
+      "area": 4,
+      "setting": "Underworld",
+      "underwater": false,
+      "exit": null,
+      "sections": []
+    }
+  ],
+  "links": [
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r002"
+      },
+      "kind": "location",
+      "target": 5
+    },
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r018"
+      },
+      "kind": "location",
+      "target": 6
+    },
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r025"
+      },
+      "kind": "vine",
+      "target": {
+        "transport": 7
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r053"
+      },
+      "kind": "location",
+      "target": 8
+    },
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r074"
+      },
+      "kind": "world",
+      "target": {
+        "map": "6-3"
+      }
+    },
+    {
+      "from": {
+        "area": 1,
+        "part": "base",
+        "record": "r008"
+      },
+      "kind": "location",
+      "target": 1
+    },
+    {
+      "from": {
+        "area": 2,
+        "part": "base",
+        "record": "r035"
+      },
+      "kind": "location",
+      "target": 2
+    },
+    {
+      "from": {
+        "area": 3,
+        "part": "base",
+        "record": "r002"
+      },
+      "kind": "location",
+      "target": true
+    },
+    {
+      "from": {
+        "area": 4,
+        "part": "base",
+        "record": "r008"
+      },
+      "kind": "location",
+      "target": 4
+    }
+  ],
+  "issues": []
+}

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>开发栏目内部内容源</title></head><body>
+<div class="mm-dev" data-dev-component="main" data-dev-variant="A" data-i18n-skip="" lang="zh-CN"><div aria-label="开发栏目内导航" class="dev-subnav" role="navigation"><a href="#overview">项目总览</a><a href="#episodes-title">现有版本</a><a href="#board">任务与验收</a><a href="#roadmap-title">里程碑</a><a href="#docs-title">开发资料</a><a href="#handoff">交接与导出</a></div><p class="dev-note">页面整合 R02 · 项目记录保持原文（中文） · <a href="../docs/site/DEVELOPMENT_PAGE_SPEC.md">主站页面规范 ↗</a></p><p class="dev-note"><a href="https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io" id="repo-link" rel="noopener noreferrer" target="_blank">GitHub ↗</a> · 状态修改仍需导出并手动提交。</p>
+<section aria-labelledby="hero-title" class="section mm-intro" id="overview">
+<div class="hero-copy">
+<p class="eyebrow"><span aria-hidden="true" class="pixel-dot"></span> MARIO MIX / COMMUNITY WORKSPACE</p>
+<h2 id="hero-title">混合马里奥 · 协作记录</h2>
+<p class="hero-lede">从一条建议，到一个通过验收的改动。<br/>这里记录我们正在做什么，以及你可以从哪里加入。</p>
+<div class="actions"><a class="button primary" href="#board">查看可参与的任务 <span aria-hidden="true">↓</span></a><a class="button button--quiet" href="guide.html">第一次参与？从这里开始</a></div>
+<p class="hero-meta"><span id="release-label">collab-r01</span><span class="sep">/</span><span id="record-date">记录于 2026-09-14</span><span class="sep">/</span><span>非官方同人项目</span></p>
+</div>
+<aside aria-labelledby="resume-title" class="resume-card">
+<div class="card-kicker"><span>从这里接着做</span><span class="mini-tag">HANDOFF</span></div>
+<p class="status-line" id="delivery-status">本地交付包；等待维护者推送与线上验收</p>
+<h2 id="resume-title">推送并验收协作准备版</h2>
+<p id="resume-summary">每次中断都留下文件记录，下次从同一个地方继续。</p>
+<div class="workflow"><span>本地修改</span><b aria-hidden="true">→</b><span>校验交付</span><b aria-hidden="true">→</b><span>手动推送</span></div>
+<button class="button full button--quiet" id="copy-handoff-top" type="button">复制新对话续接说明 <span aria-hidden="true">↗</span></button>
+<p class="small muted">任务随仓库版本发布；编辑先保存为本地草稿。</p>
+</aside>
+</section>
+<section aria-label="协作事项统计，不是游戏完成度" class="metrics">
+<div><strong id="count-total">—</strong><span>协作事项</span></div>
+<div><strong id="count-ready">—</strong><span>可认领</span></div>
+<div><strong id="count-review">—</strong><span>待验收</span></div>
+<div><strong id="count-done">—</strong><span>本轮已完成事项</span></div>
+<p>状态来自仓库文件<br/><span>不是实时 GitHub 后台</span></p>
+</section>
+<div class="notice error" hidden="" id="fatal" role="alert"></div>
+<noscript><p class="notice">任务交互需要启用 JavaScript。仍可阅读 <a href="../collab/TASKS.md">任务摘要</a> 与 <a href="guide.html">参与指南</a>。</p></noscript>
+<section aria-labelledby="episodes-title" class="section episodes-section">
+<div class="section-heading"><div><p class="eyebrow">PLAY THE BASELINE</p><h2 id="episodes-title">先玩一遍，理解我们在做什么。</h2></div><p>保留三个现有游戏版本；本轮更新开发协作工具。</p></div>
+<div class="episodes" id="episodes"></div>
+</section>
+<section aria-labelledby="board-title" class="section" id="board">
+<div class="section-heading"><div><p class="eyebrow">ISSUES BEFORE FEATURES</p><h2 id="board-title">每一个改动，都有去处。</h2></div><a class="text-link" href="../collab/TASKS.md">查看文本任务摘要 ↗</a></div>
+<div class="notice draft-notice" hidden="" id="draft-banner">
+<div><strong id="draft-label">你正在查看本地草稿</strong><p id="draft-description">只有当前浏览器可见；导出并由维护者提交后，才成为共享状态。</p></div>
+<div class="actions"><button class="button small-button button--quiet" id="export-draft" type="button">导出 project.json</button><button class="text-button" id="discard-draft" type="button">恢复仓库记录</button></div>
+</div>
+<div class="board-controls">
+<div aria-label="按任务状态筛选" class="filters" id="status-filters" role="group"></div>
+<div class="search-row"><label class="search"><span aria-hidden="true">⌕</span><input aria-label="搜索任务、模块或文件路径" id="search" placeholder="搜索任务、模块或文件路径" type="search"/></label><label class="sr-only" for="area">按模块筛选</label><select id="area"><option value="all">全部模块</option></select></div>
+</div>
+<p aria-live="polite" class="small muted" id="results-count"></p>
+<div class="task-grid" id="task-grid"></div>
+<div class="board-footer"><p>认领前先看前置事项；一个 PR 尽量只完成一件事。卡片编号不是 GitHub Issue 编号。</p><label class="text-link file-button">导入本地状态草稿<input accept="application/json,.json" id="import-draft" type="file"/></label></div>
+</section>
+<section aria-labelledby="roadmap-title" class="section">
+<div class="section-heading"><div><p class="eyebrow">ONE MILESTONE AT A TIME</p><h2 id="roadmap-title">先跑通协作，再逐步做大。</h2></div><p>先完成协作准备与基线验收，再逐步扩展角色和关卡。</p></div>
+<div class="milestones" id="milestones"></div>
+</section>
+<section aria-labelledby="docs-title" class="section docs-section">
+<div><p class="eyebrow">READ BEFORE YOU BUILD</p><h2 id="docs-title">不用读完整个项目，<br/>先找到你的入口。</h2><p class="muted">启动、结构、规则、验证和交接都有固定位置。<br/>现状与规划分开记录，未验证的事项明确标注。</p><a class="button button--quiet" href="guide.html">打开参与指南 →</a></div>
+<div class="doc-links">
+<a href="../docs/collab/GETTING_STARTED.md"><span><b>01</b> 启动与路径</span><small>从仓库根目录运行 · 三期入口</small><em>↗</em></a>
+<a href="../docs/collab/ARCHITECTURE.md"><span><b>02</b> 当前结构与下一步拆分</span><small>什么已经存在 · 什么只是计划</small><em>↗</em></a>
+<a href="../CONTRIBUTING.md"><span><b>03</b> 贡献与素材规则</span><small>小 PR · 清楚的来源 · 人工验收</small><em>↗</em></a>
+<a href="../docs/collab/VALIDATION.md"><span><b>04</b> 本轮验证记录</span><small>已验证 · 未验证 · 已知限制</small><em>↗</em></a>
+</div>
+</section>
+<section aria-labelledby="handoff-title" class="section handoff-section" id="handoff">
+<div><p class="eyebrow">CONTEXT THAT STAYS</p><h2 id="handoff-title">换一个对话，也能接得上。</h2><p class="muted">复制说明只是提供恢复入口。开始下一轮前仍要读取最新仓库，不能把记录的旧 SHA 当成永远有效的最新版。</p><div class="actions"><button class="button primary" id="copy-handoff-bottom" type="button">复制续接说明</button><a class="text-link" href="../docs/collab/HANDOFF.md">阅读交接记录 ↗</a></div></div>
+<div class="handoff-files"><span>先读这四个文件</span><code>AGENTS.md</code><code>docs/collab/HANDOFF.md</code><code>collab/project.json</code><code>docs/collab/VALIDATION.md</code></div>
+</section>
+<section class="notice" hidden="" id="copy-fallback"><label for="copy-text">浏览器未允许直接复制。请选中下面文字，按 Ctrl+C / Command+C：</label><textarea id="copy-text" readonly="" rows="8"></textarea></section>
+<dialog aria-labelledby="dialog-title" id="task-dialog">
+<div class="dialog-head"><span class="mono" id="dialog-id"></span><button aria-label="关闭任务详情" class="icon-button" id="close-dialog" type="button">×</button></div>
+<h2 id="dialog-title"></h2><p class="muted" id="dialog-summary"></p>
+<h3>验收标准</h3><ul class="acceptance" id="dialog-acceptance"></ul>
+<h3>相关路径</h3><div class="path-list" id="dialog-paths"></div>
+<p class="small muted" id="dialog-deps"></p><p class="evidence" id="dialog-evidence"></p>
+<div class="actions"><button class="button button--quiet" id="copy-task" type="button">复制任务说明</button><a class="text-link" id="task-issue" rel="noopener noreferrer" target="_blank">在 GitHub 打开任务表单 ↗</a></div>
+<details class="edit-details" id="edit-details"><summary>编辑本地状态 <span>只保存为草稿，不会提交到 GitHub</span></summary>
+<form id="task-form">
+<div class="form-grid"><label>状态<select id="edit-status"></select></label><label>负责人<input id="edit-owner" maxlength="100" placeholder="GitHub 用户名或约定称呼"/></label></div>
+<label>验收依据（标为完成时必填）<textarea id="edit-evidence" maxlength="6000" placeholder="完成了什么，在哪里验证，还有哪些限制" rows="3"></textarea></label>
+<label>当前备注<textarea id="edit-notes" maxlength="6000" placeholder="已尝试的方法、遇到的问题、下一步" rows="3"></textarea></label>
+<label>已创建的 GitHub Issue（可留空）<input id="edit-issue" maxlength="1000" placeholder="https://github.com/owner/repo/issues/123" type="url"/></label>
+<p class="form-error" id="edit-error" role="alert"></p>
+<div class="actions"><button class="button primary" type="submit">保存为本地草稿</button><button class="text-button" id="set-next-task" type="button">设为下次续接任务</button></div>
+</form>
+</details>
+</dialog><div aria-live="polite" class="toast" hidden="" id="toast" role="status"></div></div>
+
+<template id="mm-runtime"><script src="model.js?v=collab-r01"></script>
+<script src="project-data.js?v=collab-r01"></script>
+<script src="app.js?v=site-clarity-r03"></script></template>
+</body></html>

@@ -1,0 +1,90 @@
+/* Configurable actions; state-machine keys remain canonical internally. */
+const T21_ACTIONS={
+ left:{name:'向左',code:'KeyA',keys:['KeyA','ArrowLeft'],pad:[14]},right:{name:'向右',code:'KeyD',keys:['KeyD','ArrowRight'],pad:[15]},
+ up:{name:'向上',code:'KeyW',keys:['KeyW','ArrowUp'],pad:[12]},down:{name:'向下 / 下穿',code:'KeyS',keys:['KeyS','ArrowDown'],pad:[13]},
+ jump:{name:'跳跃 / 跳车',code:'Space',keys:['Space','KeyK','KeyZ'],pad:[0]},attack:{name:'攻击 / 使用',code:'KeyJ',keys:['KeyJ','KeyX','ShiftLeft','ShiftRight'],pad:[1]},
+ toolPrev:{name:'上一个工具',code:'BracketLeft',keys:['BracketLeft'],pad:[4]},toolNext:{name:'下一个工具',code:'BracketRight',keys:['BracketRight'],pad:[5]},
+ weapon:{name:'切换已有武器',code:'KeyQ',keys:['KeyQ'],pad:[2]},mount:{name:'上下坐骑',code:'KeyF',keys:['KeyF'],pad:[3]},
+ interact:{name:'交互 / 管道',code:'KeyE',keys:['KeyE','KeyL'],pad:[6]},heal:{name:'治疗',code:'KeyH',keys:['KeyH'],pad:[10]},
+ recall:{name:'魔镜返程',code:'KeyB',keys:['KeyB'],pad:[6]},pause:{name:'暂停',code:'KeyP',keys:['KeyP','Escape'],pad:[7]},
+ torch:{name:'快速放火把',code:'KeyG',keys:['KeyG'],pad:[]},mountCycle:{name:'切换坐骑种类',code:'KeyV',keys:['KeyV'],pad:[]}
+};
+const T21_PAD_CANON={0:'jump',1:'attack',2:'attack',7:'attack',3:'interact',4:'toolPrev',5:'toolNext',6:'mount',8:'recall',9:'pause',10:'heal',11:'weapon',12:'up',13:'down',14:'left',15:'right'};
+const T21_PAD_NAMES=['A / ×','B / ○','X / □','Y / △','LB / L1','RB / R1','LT / L2','RT / R2','Back / View','Start / Options','L3','R3','↑','↓','←','→'];
+function t25PadLabel(i){return T21_PAD_NAMES[i]||`手柄键 ${i}`;}
+function t25PadButtons(){try{return Array.from(navigator.getGamepads?.()||[]).find(p=>p&&p.connected!==false)?.buttons.map(t17Pressed)||[];}catch{return [];}}
+function t25StopBindingPoll(){if(t25BindTimer){clearInterval(t25BindTimer);t25BindTimer=0;}}
+function t25BindingPoll(){
+ if(!t21BindingBox?.open){t25StopBindingPoll();return;}
+ const buttons=t25PadButtons();
+ for(const idx of [...t25ReleaseButtons])if(!buttons[idx]){t25ReleaseButtons.delete(idx);t17Input.blocked.delete(idx);}
+ if(t25ReleaseButtons.size){t21CapturePrev=buttons;return;}
+ if(t21Capture?.source==='pad'){
+  const idx=buttons.findIndex((v,i)=>v&&!t21CapturePrev[i]);
+  if(idx>=0){const capture=t21Capture;t21Capture=null;const ok=t21Bind(capture.action,'pad',idx);if(ok){t25ReleaseButtons.add(idx);t17Input.blocked.add(idx);}t21BindingStatus.textContent=ok?'已绑定：'+t25PadLabel(idx)+'，已自动等待释放':'绑定失败，请先释放按键后重试。';}
+ }
+ t21CapturePrev=buttons;
+}
+function t25StartBindingPoll(){t25StopBindingPoll();t25ReleaseButtons.clear();t25BindingPoll();t25BindTimer=setInterval(t25BindingPoll,16);}
+const t21DefaultBinds=()=>Object.fromEntries(Object.entries(T21_ACTIONS).map(([k,v])=>[k,{keys:[...v.keys],pad:[...v.pad]}]));
+let t21Binds=t21DefaultBinds(),t25NeedsSave=false,t25BindTimer=0,t25ReleaseButtons=new Set(),t21Capture=null,t21CapturePrev=[],t21RemapWasPlaying=false,t21Storage='未保存';
+const t21KeyHeld=new Map();
+function t21LoadBinds(data){if(!data||data.version!==1||!data.actions)throw Error('不是有效的按键配置');const next=t21DefaultBinds();
+ for(const [k,v]of Object.entries(data.actions)){if(!Object.hasOwn(T21_ACTIONS,k))continue;if(!Array.isArray(v.keys)||!Array.isArray(v.pad)||v.keys.some(x=>!/^([A-Za-z][A-Za-z0-9]*|Space)$/.test(x))||v.pad.some(x=>!Number.isInteger(x)||x<0||x>31))throw Error('按键数据无效');next[k]={keys:[...new Set(v.keys)].slice(0,6),pad:[...new Set(v.pad)].slice(0,4)};}
+ if(data.controlLayout!==6){
+  // Migrate only the old layout marker and the return action. Preserve the
+  // player's other custom bindings while freeing LT if an old action used it.
+  for(const [k,v]of Object.entries(next))if(k!=='recall'&&v.pad.includes(6)){
+   v.pad=v.pad.filter(i=>i!==6);
+   if(!v.pad.length){
+    const used=i=>Object.entries(next).some(([owner,b])=>owner!==k&&b.pad.includes(i));
+    const fallback=[...T21_ACTIONS[k].pad,11,3,10,4,5,2,1,0,7,8,9,12,13,14,15].find(i=>i!==6&&!used(i));
+    if(fallback!==undefined)v.pad=[fallback];
+   }
+  }
+  next.recall.pad=[6];t25NeedsSave=true;
+ }
+ for(const source of ['keys','pad']){const owners=new Map();for(const [k,v]of Object.entries(next))for(const x of v[source]){const prior=owners.get(x);const shared=source==='pad'&&((k==='toolNext'&&prior==='recall')||(k==='recall'&&prior==='toolNext'));if(prior&&!shared)throw Error('同一按键绑定了多个动作');if(!prior)owners.set(x,k);}}
+ if(!next.jump.keys.length||!next.attack.keys.length||!next.jump.pad.length||!next.attack.pad.length)throw Error('跳跃和攻击不能留空');t21Binds=next;
+ if(Number.isFinite(data.deadzone))t17Input.deadzone=clamp(data.deadzone,.12,.4);return true;
+}
+try{const raw=localStorage.getItem('marioMix.controls.v1');if(raw)t21LoadBinds(JSON.parse(raw));t21Storage='本机自动保存';}catch{}
+function t21Config(){return{version:1,controlLayout:6,actions:structuredClone(t21Binds),deadzone:t17Input.deadzone};}
+function t21SaveBinds(){try{localStorage.setItem('marioMix.controls.v1',JSON.stringify(t21Config()));t21Storage='已保存到本机';}catch{t21Storage='浏览器禁止本地存储；可导出配置保存';}t21BindingStatus.textContent=t21Storage;}
+function t21Bind(action,source,value){if(!Object.hasOwn(T21_ACTIONS,action)||!['keys','pad'].includes(source)||source==='pad'&&(!Number.isInteger(value)||value<0||value>31)||source==='keys'&&(!/^[A-Za-z][A-Za-z0-9]*$/.test(value)||['Tab','AltLeft','AltRight','ControlLeft','ControlRight','MetaLeft','MetaRight'].includes(value)))return false;if(action==='mount'&&source==='pad'){if(!t24AssignMount(t21Binds,value)){t21BindingStatus.textContent='无法绑定：没有可腾出的手柄按钮。';return false;}t21SaveBinds();t21RefreshBindings();t21BindingStatus.textContent='已绑定：'+t25PadLabel(value);return true;}const conflict=Object.entries(t21Binds).find(([k,v])=>k!==action&&v[source].includes(value)&&!(source==='pad'&&((action==='toolNext'&&k==='recall')||(action==='recall'&&k==='toolNext'))));if(conflict){t21BindingStatus.textContent='已被“'+T21_ACTIONS[conflict[0]].name+'”使用，请先更改该动作。';return false;}t21Binds[action][source]=[value];t21SaveBinds();t21RefreshBindings();return true;}
+function t21PhysicalIndices(i){const action=T21_PAD_CANON[i];return mode==='playing'&&action?t21Binds[action].pad:[i];}
+t17Action=function(i){return t21PhysicalIndices(i).some(j=>!!t17Input.buttons[j]&&!t17Input.blocked.has(j));};
+t17Edge=function(i){return t21PhysicalIndices(i).some(j=>!!t17Input.buttons[j]&&!t17Input.previous[j]&&!t17Input.blocked.has(j));};
+function t21KeyLabel(k){return ({Space:'空格',ArrowLeft:'←',ArrowRight:'→',ArrowUp:'↑',ArrowDown:'↓',BracketLeft:'[',BracketRight:']',Escape:'Esc',ShiftLeft:'左 Shift',ShiftRight:'右 Shift'}[k]||k.replace(/^Key|^Digit/,''));}
+const t21BindingBox=document.createElement('dialog');t21BindingBox.id='t21Bindings';t21BindingBox.innerHTML='<header><h2>按键设置</h2><button type="button" id="t21BindClose">完成</button></header><p>点击动作旁的按钮，再按新的键；手柄按键会实时读取。设置会自动保存，也可以导出配置。</p><div class="t21BindScroll"><table><thead><tr><th>动作</th><th>键盘</th><th>手柄</th></tr></thead><tbody id="t21BindRows"></tbody></table></div><p id="t21BindingStatus" role="status"></p><footer><button type="button" id="t21BindReset">恢复默认</button><button type="button" id="t21BindExport">导出配置</button><button type="button" id="t21BindImport">导入配置</button><input type="file" accept="application/json,.json" id="t21BindFile" hidden></footer>';
+document.body.append(t21BindingBox);const t21BindingStatus=$('t21BindingStatus');
+const t21BindingButton=document.createElement('button');t21BindingButton.type='button';t21BindingButton.id='t21BindingButton';t21BindingButton.textContent='按键设置';t15Help.before(t21BindingButton);
+function t21RefreshBindings(){const tbody=$('t21BindRows');tbody.replaceChildren();for(const [k,a]of Object.entries(T21_ACTIONS)){if(k==='interact')continue;const row=document.createElement('tr'),name=document.createElement('td');name.textContent=a.name;row.append(name);for(const source of ['keys','pad']){const cell=document.createElement('td'),b=document.createElement('button');b.type='button';b.dataset.binding=k;b.dataset.source=source;b.textContent=t21Binds[k][source].map(v=>source==='keys'?t21KeyLabel(v):t25PadLabel(v)).join(' / ')||'未绑定';b.onclick=()=>{t21Capture={action:k,source};t21CapturePrev=[];try{t21CapturePrev=Array.from(navigator.getGamepads?.()||[]).find(x=>x)?.buttons.map(t17Pressed)||[];}catch{}t21BindingStatus.textContent='请按下“'+a.name+'”的新'+(source==='keys'?'键盘键':'手柄按钮')+'，Esc 取消。';};cell.append(b);row.append(cell);}tbody.append(row);}}
+function t21OpenBindings(){t21RemapWasPlaying=mode==='playing';if(t21RemapWasPlaying)togglePause();t17ResetActions();t21KeyHeld.clear();t21Capture=null;t21RefreshBindings();t21BindingStatus.textContent=t21Storage;t21BindingBox.showModal();t25StartBindingPoll();}
+function t21CloseBindings(){t21Capture=null;t25ReleaseButtons.clear();t25StopBindingPoll();t21BindingBox.close();t17ResetActions();t21KeyHeld.clear();if(t21RemapWasPlaying&&mode==='paused')togglePause();t21RemapWasPlaying=false;canvas.focus({preventScroll:true});}
+t21BindingButton.onclick=t21OpenBindings;$('t21BindClose').onclick=t21CloseBindings;t21BindingBox.addEventListener('cancel',e=>{e.preventDefault();if(t21Capture){t21Capture=null;t21BindingStatus.textContent='已取消';}else t21CloseBindings();});
+$('t21BindReset').onclick=()=>{t21Binds=t21DefaultBinds();t21SaveBinds();t21RefreshBindings();};
+$('t21BindExport').onclick=()=>{const url=URL.createObjectURL(new Blob([JSON.stringify(t21Config(),null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='MarioMix_按键配置.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),3000);};
+$('t21BindImport').onclick=()=>$('t21BindFile').click();$('t21BindFile').onchange=async e=>{try{const file=e.target.files[0];if(file.size>50000)throw Error('配置文件过大');t21LoadBinds(JSON.parse(await file.text()));t21SaveBinds();t21RefreshBindings();}catch(err){t21BindingStatus.textContent=err.message;}e.target.value='';};
+const t21EarlyBase=t17Early.handle;
+ t17Early.handle=function(e){if(!isTrio())return t21EarlyBase(e);
+ // Keep the owner in sync even on menus and overlays; gameplay input then starts
+ // without inheriting the previous device's pointer/aim state.
+ if((e.type==='keydown'||e.type==='keyup')&&t17Keys.has(e.code)&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&!e.target?.closest?.('input,textarea,select,[contenteditable="true"]'))t20Own('keyboard','key');
+ if((e.type==='pointermove'||e.type==='pointerdown')&&e.target===canvas)t20Own('keyboard','pointer');
+ if(t21BindingBox.open){if(e.type==='keydown'&&t21Capture){if(e.code==='Escape'){t21Capture=null;t21BindingStatus.textContent='已取消';return true;}if(t21Capture.source==='keys'&&!e.repeat&&!e.ctrlKey&&!e.metaKey&&!e.altKey){const c=t21Capture;t21Capture=null;t21Bind(c.action,'keys',e.code);}return true;}if(['keydown','keyup'].includes(e.type)){if(e.code==='Tab')return false;if(e.type==='keydown'&&!e.repeat){if(e.code==='Escape')t21CloseBindings();else if(['Enter','Space'].includes(e.code))document.activeElement?.closest?.('#t21Bindings button')?.click();}return true;}return ['blur','focus','visibilitychange'].includes(e.type)?t21EarlyBase(e):false;}
+ if(e.type==='keydown'||e.type==='keyup'){
+  if(mode==='paused'&&e.type==='keydown'&&!e.repeat&&t21Binds.pause.keys.includes(e.code)){togglePause();t17ResetActions();return true;}if(!['playing','flag'].includes(mode)&&!t21KeyHeld.has(e.code))return t21EarlyBase(e);
+  const action=Object.keys(t21Binds).find(k=>t21Binds[k].keys.includes(e.code)),mapped=t21KeyHeld.get(e.code)||(action&&T21_ACTIONS[action].code);
+  if(mapped){if(e.type==='keydown')t21KeyHeld.set(e.code,mapped);else t21KeyHeld.delete(e.code);const proxy={type:e.type,code:mapped,key:e.key,target:e.target,repeat:e.repeat,ctrlKey:e.ctrlKey,metaKey:e.metaKey,altKey:e.altKey};return t21EarlyBase(proxy);}
+  if(t17Keys.has(e.code)&&!/^Digit[1-6]$|^Key[CR]$|^Enter$/.test(e.code))return true;
+ }
+ return t21EarlyBase(e);
+};
+const t21PollBase=pollMixPad;pollMixPad=function(){if(!isTrio()||!t21BindingBox.open)return t21PollBase();t25BindingPoll();};
+const t21BindingsCSS=document.createElement('style');t21BindingsCSS.textContent=`#t21BindingButton{font:inherit;font-size:12px;border:1px solid #697b88;background:#203544;color:#e7dcbd;border-radius:5px;padding:9px 14px;cursor:pointer;margin-top:12px}#t21Bindings{width:min(640px,94vw);max-height:90vh;padding:22px;border:1px solid #698293;border-radius:10px;background:#162a38;color:#e9e5d6;font:13px/1.6 sans-serif}#t21Bindings::backdrop{background:#030a12bb}#t21Bindings header{display:flex;align-items:center;justify-content:space-between}#t21Bindings h2{margin:0;font-size:21px}#t21Bindings p{font-size:12px;color:#b8c9d2}#t21Bindings table{border-collapse:collapse;width:100%}#t21Bindings td,#t21Bindings th{padding:7px;text-align:left;border-bottom:1px solid #56728355}#t21Bindings td:first-child{width:32%}#t21Bindings button{font:inherit;cursor:pointer;padding:6px 10px;border:1px solid #657f8d;background:#2c4555;color:#f6e1b3;border-radius:4px}#t21Bindings td button{width:100%;font-size:12px;min-height:34px}#t21Bindings footer{display:flex;flex-wrap:wrap;gap:8px}#t21Bindings .t21BindScroll{max-height:54vh;overflow:auto}#t21BindingStatus{min-height:22px;color:#f0d29c}`;document.head.append(t21BindingsCSS);
+
+const t21GuideRows=[['jump','跳跃 / 跳车'],['attack','攻击 / 工具'],['toolPrev','上一个工具'],['toolNext','下一个工具'],['weapon','切换已有武器'],['mount','上下坐骑'],['heal','治疗'],['recall','魔镜返程'],['pause','暂停']];
+function t21RefreshGuide(){t15Help.innerHTML='<summary>操作指南 · 手柄 / 键鼠</summary><p>移动：左摇杆 / 十字键，或 WASD / 方向键。键鼠用鼠标手动瞄准，手柄自动索敌；右摇杆偏转不影响瞄准。按实际输入自动切换。</p><table><thead><tr><th>动作</th><th>手柄</th><th>键盘</th></tr></thead><tbody>'+t21GuideRows.map(([k,n])=>'<tr><td>'+n+'</td><td>'+t21Binds[k].pad.map(t25PadLabel).join(' / ')+'</td><td>'+t21Binds[k].keys.map(t21KeyLabel).join(' / ')+'</td></tr>').join('')+'</tbody></table><p>1–6、滚轮或 LB / R3 切工具（R3 为按下右摇杆）。手柄平台默认沿脚下台面向前接一格；火把与篝火落在脚前地面。上 / 下方向调整高度，鼠标可精确选格。</p><p>宝箱碰到后弹出实物，走过去拾取并显示名称、效果。换下的武器留在地面，先走开再接触即可换回；不再直接删除旧武器。</p><p>上下坐骑：Y（键盘 F，可在按键设置更改），适用于史莱姆、UFO 和矿车。矿车也可接触上车、跳跃下车；原车保留，走开后可重新接触上车。套装接触换装并自动骑 UFO，向下可穿木台。箭矢与子弹无限，魔力、木材和药水仍消耗。</p><p>最右侧眼球在战前物资拿齐后召唤克眼，击败后可从原管道返回。终点大台阶下方的雪地可遇到独眼巨鹿；主线不强制击败它。</p>';}
+const t21RefreshBindingsOriginal=t21RefreshBindings;t21RefreshBindings=function(){t21RefreshBindingsOriginal();t21RefreshGuide();};t21RefreshGuide();if(t25NeedsSave){try{t21SaveBinds();}catch{}t25NeedsSave=false;}
+

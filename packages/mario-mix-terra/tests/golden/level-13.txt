@@ -1,0 +1,30 @@
+(function(root){'use strict';
+const objectHex='90 11 0f 26 fe 10 2a 93 87 17 a3 14 b2 42 0a 92 19 40 36 14 50 41 82 16 2b 93 24 41 bb 14 b8 00 c2 43 c3 13 1b 94 67 12 c4 15 53 c1 d2 41 12 c1 29 13 85 17 1b 92 1a 42 47 13 83 41 a7 13 0e 91 a7 63 b7 63 c5 65 d5 65 dd 4a e3 67 f3 67 8d c1 ae 42 df 20 fd';
+const enemyHex='2b d7 e3 03 c2 86 e2 06 76 a5 a3 8f 03 86 2b 57 68 28 e9 28 e5 83 24 8f 36 a8 5b 03 ff';
+const bytes=s=>s.split(' ').map(t=>parseInt(t,16));
+function decodeObjects(){const b=bytes(objectHex),records=[];let page=0;for(let i=2;i<b.length&&b[i]!==253;i+=2){const a=b[i],v=b[i+1];if(v&128)page++;records.push({offset:i,a,v,page,x:page*256+(a>>4)*16,row:a&15,type:(v>>4)&7,n:(v&15)+1,y:32+(a&15)*16});}return records;}
+function decodeEnemies(){const b=bytes(enemyHex),records=[];let page=0;for(let i=0;i<b.length&&b[i]!==255;i+=2){const a=b[i],v=b[i+1];if(v&128)page++;records.push({offset:i,a,v,page,x:page*256+(a>>4)*16,row:a&15,type:v&63,hardOnly:!!(v&64)});}return records;}
+function compile(){const o=decodeObjects(),e=decodeEnemies(),surfaces=[],coins=[],enemies=[],movers=[];let reward=null,nt=0,ns=0;
+ // Floor-control commands act after their own column. Decorative/castle commands are not colliders.
+ surfaces.push({id:'floor-start',type:'floor',x:0,y:208,w:256,h:32,solid:true},{id:'floor-end',type:'floor',x:2064,y:208,w:752,h:32,solid:true});
+ for(const r of o){if(r.row>=12)continue;if(r.type===1)surfaces.push({id:'tree-'+nt++,type:'tree',x:r.x,y:r.y,w:r.n*16,h:16,oneWay:true});
+ else if(r.type===4)for(let j=0;j<r.n;j++)coins.push({x:r.x+j*16+2,y:r.y+2,w:10,h:14,taken:false});
+ else if(r.type===6)surfaces.push({id:'stone-'+ns++,type:'stone',x:r.x,y:r.y,w:16,h:r.n*16,solid:true});
+ else if(r.type===0)reward={id:'reward',type:'reward',x:r.x,y:r.y,w:16,h:16,solid:true,used:false,bump:0};}
+ for(const r of e){if(r.hardOnly)continue;
+  if(r.type===37||r.type===40){const axis=r.type===37?'y':'x';movers.push({id:'mover-'+movers.length,type:'mover',x:r.x,y:r.row*16,w:48,h:8,oneWay:true,axis,origin:r.x,min:axis==='y'?96:r.x-64,max:axis==='y'?216:r.x+64,dir:axis==='y'?1:-1,age:0,speed:axis==='y'?.5:.75});}
+  else if([3,6,15].includes(r.type)){const kind=r.type===6?'goomba':'koopa',h=kind==='koopa'?24:16;
+   // NES enemy Y decoding has its own sprite alignment; feet are aligned to the original support top.
+   const candidates=surfaces.filter(s=>r.x+8>=s.x&&r.x+8<s.x+s.w&&s.y>=r.row*16).sort((a,b)=>a.y-b.y);
+   const support=candidates[0],foot=support?support.y:(r.row*16+32);
+   const flying=r.type===15,spawnY=flying?r.row*16+8:foot-h;
+   enemies.push({kind,x:r.x,y:spawnY,w:16,h,flying,home:flying?null:support?.id||null,spawnX:r.x,spawnY,sourceOffset:r.offset,sourceType:r.type});
+  }
+ }
+ const clouds=[];const pattern=[[28,64,'cloud2'],[76,32,'cloud1'],[148,72,'cloud2'],[228,0,'cloud1'],[284,32,'cloud1'],[308,40,'cloud1'],[372,0,'cloud1']];
+ for(let repeat=0;repeat<5;repeat++)for(const [x,y,sprite]of pattern)clouds.push({x:(repeat*384+x)*2,bottom:208-(y+4)*2,sprite});
+ surfaces.push({id:'flag-base',type:'stone',x:2432,y:192,w:16,h:16,solid:true});
+ return {width:2816,floor:208,time:300,surfaces,coins,reward,enemies,movers,clouds,flag:{x:2440,top:40,bottom:192},castle:{x:2512,doorX:2552,doorY:208},rawObjects:o,rawEnemies:e};
+}
+const api=Object.freeze({objectHex,enemyHex,decodeObjects,decodeEnemies,compile});if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.SandboxTrioLevel13=api;
+})(typeof window==='undefined'?globalThis:window);

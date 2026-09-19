@@ -1,0 +1,21 @@
+{
+  "id": "inspect-4-2-area-1",
+  "title": "4-2 · 区域 2（地形检查）",
+  "driver": "platform-v1",
+  "status": "draft",
+  "entryRoom": "area-1",
+  "entrySpawn": "inspection-start",
+  "rooms": {
+    "area-1": "classic-4-2-area-1"
+  },
+  "characters": [
+    "lab-runner",
+    "lab-scout"
+  ],
+  "requiredCapabilities": [
+    "jump"
+  ],
+  "overlays": {},
+  "audio": "map-kit-silent",
+  "note": "分区几何检查，不是整关通关。原房间连接、条件循环与未实现机制保留在模板 topology / coverage；静态机关只用于检查位置。"
+}

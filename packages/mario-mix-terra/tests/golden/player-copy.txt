@@ -1,0 +1,15 @@
+function t20CleanUI(){if(!isTrio())return;
+ $('bestLabel').textContent='';document.querySelector('header .offline').textContent='TERRARIA · 1-3';t10Build.textContent='';
+ const card=document.querySelector('[data-hero="sandboxTrio"] small');if(card)card.textContent='关卡 1-3';
+ document.querySelector('.brand small').textContent='MARIO MIX / WORLD 1-3';
+ const k=document.querySelector('.panel .kicker');if(k)k.textContent='WORLD 1-3';
+ const h=document.querySelector('.panel h2');if(h)h.innerHTML='熟悉的路。<br>不同的冒险。';
+ const intro=document.querySelector('.panel>.intro');if(intro&&intro.id!=='heroHelp')intro.textContent='穿过森林与树冠，沿着管道深入地下。准备装备，迎战克苏鲁之眼。';
+ const tag=document.querySelector('.tagline span');if(tag)tag.textContent='森林之上，冒险继续。';
+ if(mode==='menu'){$('overlayText').textContent='选择旅伴，开始下一段冒险。';$('overlayLabel').textContent='MARIO MIX / CHAPTER 03';}
+ if($('r06Mount'))$('r06Mount').title='F / LT：上下已获得的坐骑；接触矿车也可上车。';
+ if($('gamepadStatus'))$('gamepadStatus').textContent=t17Input.connected?(t20Device==='gamepad'?'手柄操作 · 自动索敌':'键鼠操作 · 鼠标瞄准'):'键鼠操作 · 可连接手柄';
+ $('stateLabel').textContent=({menu:'选择角色',playing:'冒险中',flag:'抵达终点',paused:'已暂停',win:'关卡完成',respawn:'重新出发',gameover:'冒险结束',inventory:'查看宝箱'})[mode]||'冒险中';
+ if(mode==='menu'){$('heroStatus').textContent='泰拉瑞亚 · 关卡 1-3';$('relayMessage').textContent='准备出发';}
+ else if(state){$('relayMessage').textContent=state.r05Arena?(state.phase==='battle'?'克苏鲁之眼':state.phase==='cleared'?'战斗胜利 · 探索与返程':state.p.y>650?'地下探索':'战前准备'):'WORLD 1-3 · 泰拉瑞亚';}
+}

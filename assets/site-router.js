@@ -8,9 +8,14 @@
   // It owns internal links before the browser can start a document request.
   // The HTML files remain valid deep-link fallbacks, but normal navigation is
   // always handled in this document.
+  // JOURNAL-R04: generic project content routes, one native transition owner.
   const routeInfo = (pathname) => {
     const path = pathname.replace(/\\/g, "/").replace(/\/+/g, "/");
     if (path === "/" || path.endsWith("/index.html") && path.split("/").filter(Boolean).length === 1) return { kind: "home", page: "home", title: "在下_小Q" };
+    if (/^\/(?:notes|dev)(?:\/|$)/.test(path)) return {kind:"content",page:"journal",journalPath:path,title:"开发 · 在下_小Q"};
+    if (/^\/play-guide\/(?:index\.html)?$/.test(path)) return {kind:'content',page:'visitorHelp',title:'试玩帮助 · 在下_小Q'};
+    if (path === '/404.html') return {kind:'content',page:'notFound',title:'页面未找到 · 在下_小Q'};
+    if (/^\/search\/(?:index\.html)?$/.test(path)) return {kind:"content",page:"search",title:"搜索 · 在下_小Q"};
     const detail = path.match(/\/(?:games)\/([^/]+)\/(?:index\.html)?$/);
     if (detail) {
       const itemSlug = detail[1];
@@ -26,7 +31,7 @@
   };
   const baseForPath = (pathname) => {
     const segments = pathname.split("/").filter(Boolean);
-    const depth = Math.max(0, segments.length - 1);
+    const depth = Math.max(0, segments.length - (pathname.endsWith("/") ? 0 : 1));
     return "../".repeat(depth);
   };
   // Resolve from the loaded router, not the current route or stale literals.
@@ -36,6 +41,42 @@
     url.search = routerURL.search;
     return url.href;
   };
+  let experienceModule;
+  const prepareExperience=async info=>{if(info.page!=="search")return;experienceModule ||= import(new URL("experience/runtime.mjs?v=site-r23",routerURL).href).catch(e=>{experienceModule=null;throw e;});await experienceModule;};
+  let journalModule;
+  const prepareJournal = async info => {
+    if(info.page!=="journal")return;
+    journalModule ||= import(assetHref("journal/runtime.mjs")).catch(error=>{journalModule=null;throw error;});
+    await journalModule;
+    await Promise.all([globalThis.SITE_JOURNAL.prepare(info),journalStyle()]);
+    if(info.journalError)throw Error("Project data unavailable");
+  };
+  const journalStyle = () => {
+    let link=document.querySelector('[data-journal-css]');
+    if(link?.sheet)return Promise.resolve();
+    if(!link){link=document.createElement('link');link.rel='stylesheet';link.href=assetHref('journal/journal.css');link.dataset.journalCss='';document.head.append(link);}
+    return waitForLink(link);
+  };
+  const syncJournalNavigation = () => {
+    const en=document.documentElement.lang.startsWith("en"),inside=/^\/(notes|dev)(\/|$)/.test(location.pathname);
+    app.querySelectorAll('.site-header nav,.topbar>nav').forEach(nav=>{
+      nav.style.flexWrap='wrap';
+      nav.querySelectorAll('[data-nav-key="dev"]').forEach(a=>a.remove());
+      nav.querySelectorAll('[data-nav-key="notes"]').forEach(a=>{
+        a.dataset.i18nSkip='';a.href='/notes/';const label=en?'Dev':'开发';if(a.textContent!==label)a.textContent=label;
+        if(inside){nav.querySelectorAll('[aria-current="page"]').forEach(n=>n.removeAttribute('aria-current'));a.setAttribute('aria-current','page');}else a.removeAttribute('aria-current');
+      });
+    });
+  };
+  const syncJournalMetadata = info => {
+    if(info?.page!=="journal"||!globalThis.SITE_JOURNAL)return;
+    const meta=globalThis.SITE_JOURNAL.describe(location.pathname),title=meta.title+' · 在下_小Q';document.title=title;
+    for(const [kind,key,value]of [['name','description',meta.intro],['property','og:title',title],['property','og:description',meta.intro],['name','twitter:title',title],['name','twitter:description',meta.intro]]){
+      let n=document.querySelector('meta['+kind+'="'+key+'"]');if(!n){n=document.createElement('meta');n.setAttribute(kind,key);document.head.append(n);}n.content=value;
+    }
+    let canonical=document.querySelector('link[rel="canonical"]');if(!canonical){canonical=document.createElement('link');canonical.rel='canonical';document.head.append(canonical);}canonical.href=location.origin+location.pathname;
+  };
+  document.addEventListener('site-language-change',()=>{syncJournalNavigation();syncJournalMetadata(routeInfo(location.pathname));});
   const warmHomeAssets = () => {
     const add = (as, name, type = "", crossOrigin = false) => {
       const href = assetHref(name);
@@ -130,7 +171,9 @@
     document.head.append(style);
   };
   const renderRoute = (info) => {
+    globalThis.SITE_EXPERIENCE?.dispose();
     globalThis.SITE_GUESTBOOK_UNMOUNT?.();
+    globalThis.SITE_JOURNAL?.unmount();
     document.body.dataset.routeKind = info.kind;
     document.body.dataset.page = info.page;
     document.body.dataset.itemSlug = info.itemSlug || "";
@@ -141,88 +184,104 @@
     }
     document.title = info.title;
     globalThis.SITE_I18N?.route(info);
-  };
-  const focusMain = () => {
-    window.requestAnimationFrame(() => {
-      const main = app.querySelector("#main");
-      if (main instanceof HTMLElement) main.focus({ preventScroll: true });
-    });
-  };
-  let navigating = false;
-  let navigationSequence = 0;
-  const navigate = async (url, { historyMode = "push", force = false } = {}) => {
-    const info = routeInfo(url.pathname);
-    if (!info || (navigating && !force)) return false;
-    const navigationId = ++navigationSequence;
-    if (force) {
-      navigating = false;
-      app.classList.remove("q-route-new", "q-route-new--in");
+    if(info.page==='journal')globalThis.SITE_JOURNAL?.mount(app,info);
+    syncJournalNavigation();syncJournalMetadata(info);
+    if(info.page==='search'){
+      const summary='查找游戏、工具、项目与开发资料。';
+      for(const [attr,key,value]of [['name','description',summary],['property','og:title',info.title],['property','og:description',summary],['name','twitter:title',info.title],['name','twitter:description',summary]]){
+        let meta=document.querySelector('meta['+attr+'="'+key+'"]');if(!meta){meta=document.createElement('meta');meta.setAttribute(attr,key);document.head.append(meta);}meta.content=value;
+      }
     }
-    if (!force && url.pathname === location.pathname && !url.hash) return false;
-    navigating = true;
-    const commit = () => {
+    globalThis.SITE_EXPERIENCE?.mount(app);
+  };
+  // R18: history entries own scroll and content focus; no query text is stored separately.
+  let renderedPath=location.pathname,scrollTick=0,viewSuspended=false;
+  const plainState=()=>history.state&&typeof history.state==='object'?history.state:{};
+  const contentFocus=()=>{
+    const el=document.activeElement,main=app.querySelector('#main');if(!main?.contains(el)||el===main)return null;
+    if(el.id)return {id:el.id};const a=el.closest('a[href]');
+    if(a){const href=a.getAttribute('href'),links=[...main.querySelectorAll('a[href]')].filter(x=>x.getAttribute('href')===href);return {href,index:links.indexOf(a)};}return null;
+  };
+  const saveView=()=>{if(viewSuspended||renderedPath!==location.pathname)return;const state=plainState();history.replaceState({...state,qView:{x:scrollX,y:scrollY,focus:contentFocus()||state.qView?.focus||null}},'',location.href);};
+  window.addEventListener('scroll',()=>{if(scrollTick)return;scrollTick=requestAnimationFrame(()=>{scrollTick=0;saveView();});},{passive:true});
+  document.addEventListener('focusin',()=>{if(app.querySelector('#main')?.contains(document.activeElement))saveView();});
+  if('scrollRestoration' in history)history.scrollRestoration='manual';
+  let navigating=false,navigationSequence=0,activeTransition;
+  const showFailure=(url,options)=>{
+    let box=app.querySelector(':scope > .q-resource-error');if(!box){box=document.createElement('section');box.className='q-resource-error';box.setAttribute('role','alert');app.prepend(box);}
+    box.replaceChildren();const p=document.createElement('p');p.textContent='页面暂时无法打开。已有内容仍可阅读。';const b=document.createElement('button');b.type='button';b.className='button button--quiet';b.textContent='重试加载';b.onclick=()=>navigate(new URL(url),{...options,force:true});const a=document.createElement('a');a.className='button button--quiet';a.textContent='直接打开页面';a.href=String(url);a.dataset.routerIgnore='';box.append(p,b,a);
+  };
+  const restoreView=(url,view,id)=>requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    if(id!==navigationSequence)return;
+    viewSuspended=false;
+    let target=null;if(url.hash)try{target=document.getElementById(decodeURIComponent(url.hash.slice(1)));}catch{}
+    if(target){if(!target.hasAttribute('tabindex'))target.tabIndex=-1;target.focus({preventScroll:true});target.scrollIntoView({block:'start',behavior:'instant'});return;}
+    const main=app.querySelector('#main');let focus=null;
+    if(view?.focus?.id){const el=document.getElementById(view.focus.id);if(main?.contains(el))focus=el;}
+    else if(view?.focus?.href)focus=[...(main?.querySelectorAll('a[href]')||[])].filter(a=>a.getAttribute('href')===view.focus.href)[view.focus.index||0];
+    (focus||main)?.focus({preventScroll:true});window.scrollTo({top:view?.y||0,left:view?.x||0,behavior:'instant'});saveView();
+  }));
+  const navigate=async(url,{historyMode="push",force=false,preserveView=false}={})=>{
+    url=new URL(url,location.href);const info=routeInfo(url.pathname);if(!info)return false;
+    if(!force&&url.pathname===location.pathname&&url.search===location.search&&!url.hash)return false;
+    if(historyMode!=="none"||preserveView)saveView();
+    const targetView=(historyMode==='none'||preserveView)?plainState().qView:null;
+    if(historyMode==='none')viewSuspended=true;
+    const navigationId=++navigationSequence;navigating=true;activeTransition?.skipTransition?.();app.classList.remove('q-route-new','q-route-new--in');
+    const commit=()=>{
+      if(navigationId!==navigationSequence)return;
       applyStyles(info.kind);
-      if (historyMode === "replace") window.history.replaceState({}, "", url.href);
-      if (historyMode === "push") window.history.pushState({}, "", url.href);
-      renderRoute(info);
-      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-      focusMain();
+      if(historyMode==='push')history.pushState({qView:{x:0,y:0,focus:null}},'',url.href);
+      else if(historyMode==='replace')history.replaceState({...plainState(),qView:{x:0,y:0,focus:null}},'',url.href);
+      renderedPath=location.pathname;renderRoute(info);restoreView(url,targetView,navigationId);
     };
-    // Keep the current route visible while the destination stylesheet warms.
-    // Only commit once the new DOM has its real layout rules, so an avatar can
-    // never flash at its unstyled intrinsic size for one frame.
-    try {
-      await styleFor(info.kind);
-    } catch {
-      if (navigationId !== navigationSequence) return false;
-      navigating = false;
-      // Keep the old styled screen until normal document navigation takes over.
-      window.location.assign(url.href);
-      return false;
+    try{await Promise.all([styleFor(info.kind),prepareJournal(info),prepareExperience(info)]);if(info.canonical){url=new URL(url.href);url.pathname=info.canonical;}}
+    catch{if(navigationId!==navigationSequence)return false;navigating=false;showFailure(url,{historyMode,preserveView});return false;}
+    if(navigationId!==navigationSequence)return false;
+    if(typeof document.startViewTransition==='function'&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+      const transition=document.startViewTransition(commit);activeTransition=transition;
+      transition.finished.finally(()=>{if(navigationId===navigationSequence)navigating=false;}).catch(()=>{});return true;
     }
-    if (navigationId !== navigationSequence) return false;
-    if (typeof document.startViewTransition === "function" && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      const transition = document.startViewTransition(commit);
-      transition.finished.then(() => {
-        if (navigationId === navigationSequence) navigating = false;
-      }, () => {
-        if (navigationId === navigationSequence) navigating = false;
-      });
-      return true;
-    }
-    commit();
-    app.classList.add("q-route-new");
-    requestAnimationFrame(() => {
-      if (navigationId !== navigationSequence) return;
-      app.classList.add("q-route-new--in");
-      window.setTimeout(() => {
-        if (navigationId !== navigationSequence) return;
-        app.classList.remove("q-route-new", "q-route-new--in");
-        navigating = false;
-      }, 240);
-    });
-    return true;
+    commit();app.classList.add('q-route-new');requestAnimationFrame(()=>{if(navigationId!==navigationSequence)return;app.classList.add('q-route-new--in');setTimeout(()=>{if(navigationId!==navigationSequence)return;app.classList.remove('q-route-new','q-route-new--in');navigating=false;},240);});return true;
   };
+  globalThis.SITE_ROUTER={navigate};
 
   injectMotionStyle();
   normalizeStylesheetLinks();
-  warmHomeAssets();
+  // No content-page prefetch of the homepage artwork; its normal entry still loads it.
+  if(document.body.dataset.page==='home')warmHomeAssets();
+  syncJournalNavigation();
   const initial = routeInfo(location.pathname);
-  if (initial) prepareStyles().then(() => {
+  // Destination styles are requested when their route is used.
+  if (initial) Promise.all([styleFor(initial.kind),prepareJournal(initial),prepareExperience(initial)]).then(() => {
     const current = routeInfo(location.pathname);
     if (current) applyStyles(current.kind);
+    // Do not overwrite a newer navigation that completed while initial resources loaded.
+    if(initial.page==='journal' && current?.journalPath===initial.journalPath){
+      if(initial.canonical){const url=new URL(location.href);url.pathname=initial.canonical;history.replaceState(history.state,'',url);}
+      renderRoute(initial);
+      if(location.hash)requestAnimationFrame(()=>{try{document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView();}catch{}});
+    }
+    globalThis.SITE_EXPERIENCE?.mount(app);
+    if(history.state?.qView)restoreView(new URL(location.href),history.state.qView,navigationSequence);
+    syncJournalNavigation();
   }).catch(() => {
-    // Keep the server-rendered page and its active stylesheet on warmup failure.
+    // Keep the meaningful server-rendered fallback; report failure, not a fake empty state.
+    if(initial?.page==='journal'){
+      showFailure(new URL(location.href),{historyMode:'none',preserveView:true});
+    }
   });
   document.addEventListener("click", (event) => {
     if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     const link = event.target?.closest?.("a[href]");
-    if (!link) return;
+    if (!link || link.hasAttribute("data-router-ignore") || link.hasAttribute("download") || (link.target && link.target.toLowerCase()!=="_self") || link.relList.contains("external")) return;
     const url = new URL(link.href, location.href);
     if (url.origin !== location.origin || !routeInfo(url.pathname)) return;
-    if (url.pathname === location.pathname && url.hash) return;
+    if (url.pathname === location.pathname && url.search === location.search && url.hash) return;
+    saveView();
     event.preventDefault();
     void navigate(url);
   }, true);
+  window.addEventListener('pagehide',saveView);
   window.addEventListener("popstate", () => { void navigate(new URL(location.href), { historyMode: "none", force: true }); });
 })();

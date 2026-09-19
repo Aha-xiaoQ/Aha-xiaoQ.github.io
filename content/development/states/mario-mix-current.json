@@ -1,0 +1,514 @@
+{
+  "schemaVersion": 1,
+  "projectId": "mario-mix",
+  "revision": 16,
+  "updatedAt": "2026-09-17",
+  "generated": {
+    "tool": "public-tasks-v1",
+    "source": "packages/mario-mix-terra/docs/TASKS.json",
+    "sha256": "b61dc29d042468c016e44cbd3e8473261fe20ffbe40182081ced3949ec5ca503",
+    "version": "terra-m05"
+  },
+  "tasks": [
+    {
+      "id": "M02-DEVICE",
+      "title": "真实手柄改键、断连与返回游戏",
+      "summary": "检查手柄改键、断连、热插拔和返回游戏。复验放置是否位于脚边前一格，并记录坐骑奖励、姿势与武器位置。",
+      "area": "设备验收",
+      "status": "ready",
+      "priority": "P0",
+      "acceptance": [
+        "记录设备型号与浏览器",
+        "连续开关菜单无误触",
+        "映射保存后刷新可恢复"
+      ],
+      "dependsOn": [
+        "M02-BINDINGS"
+      ],
+      "owner": "",
+      "evidence": "",
+      "notes": "",
+      "issueUrl": "",
+      "audience": "public",
+      "origin": {
+        "path": "packages/mario-mix-terra/docs/TASKS.json",
+        "id": "M02-DEVICE",
+        "status": "ready"
+      }
+    },
+    {
+      "id": "M02-WINDOWS",
+      "title": "Windows 原生开发与悬空 junction 验收",
+      "summary": "在 Windows 上完成启动、构建、源码打包和链接防护测试，并记录系统及 Node.js 版本。",
+      "area": "平台验收",
+      "status": "ready",
+      "priority": "P0",
+      "acceptance": [
+        "记录 Windows/Node 版本与候选 SHA",
+        "安全用例不可跳过",
+        "CLI/构建/源码打包完整通过"
+      ],
+      "dependsOn": [],
+      "owner": "",
+      "evidence": "",
+      "notes": "",
+      "issueUrl": "",
+      "audience": "public",
+      "origin": {
+        "path": "packages/mario-mix-terra/docs/TASKS.json",
+        "id": "M02-WINDOWS",
+        "status": "ready"
+      }
+    },
+    {
+      "id": "M02-ASSETS",
+      "title": "核实一组资源的许可依据",
+      "summary": "为一组图像或音频核实来源、权利方和许可依据，未知项继续标为待确认。",
+      "area": "素材",
+      "status": "ready",
+      "priority": "P1",
+      "acceptance": [
+        "逐项记录来源与作者/权利方",
+        "没有依据则保留未确认",
+        "不凭公开下载认定再分发许可"
+      ],
+      "dependsOn": [],
+      "owner": "",
+      "evidence": "",
+      "notes": "",
+      "issueUrl": "",
+      "audience": "public",
+      "origin": {
+        "path": "packages/mario-mix-terra/docs/TASKS.json",
+        "id": "M02-ASSETS",
+        "status": "ready"
+      }
+    },
+    {
+      "id": "M02-LABELS",
+      "title": "补充特殊键显示的回归样例",
+      "summary": "为尚未覆盖的特殊按键补充标签与测试，不改变默认键位。",
+      "area": "输入",
+      "status": "ready",
+      "priority": "P1",
+      "acceptance": [
+        "先在 Issue 说明确切按键和预期标签",
+        "先补 failing test 再修改",
+        "不改默认键位与全局监听"
+      ],
+      "dependsOn": [],
+      "owner": "",
+      "evidence": "",
+      "notes": "",
+      "issueUrl": "",
+      "audience": "public",
+      "origin": {
+        "path": "packages/mario-mix-terra/docs/TASKS.json",
+        "id": "M02-LABELS",
+        "status": "ready"
+      }
+    },
+    {
+      "id": "M02-PR",
+      "title": "第一位外部贡献者完成小 PR",
+      "summary": "新贡献者完成一项小改动，提交测试和 PR；记录上手过程中的阻碍。",
+      "area": "协作验证",
+      "status": "ready",
+      "priority": "P1",
+      "acceptance": [
+        "提供真实 PR 链接、测试与审阅记录",
+        "提供实际提交、测试与审阅记录",
+        "分别记录代码合并与发布状态"
+      ],
+      "dependsOn": [],
+      "owner": "",
+      "evidence": "",
+      "notes": "",
+      "issueUrl": "",
+      "audience": "public",
+      "origin": {
+        "path": "packages/mario-mix-terra/docs/TASKS.json",
+        "id": "M02-PR",
+        "status": "ready"
+      }
+    },
+    {
+      "id": "M03-OUTSIDER",
+      "title": "非作者从空白副本完成关卡内容PR",
+      "summary": "新贡献者按教程创建关卡草稿，记录步骤、遇到的问题与 PR。",
+      "area": "协作验证",
+      "status": "ready",
+      "priority": "P1",
+      "acceptance": [
+        "只依文档完成新ID和房间",
+        "列出阻碍、真实PR和审阅",
+        "由参与者填写上手记录与验收结果"
+      ],
+      "dependsOn": [
+        "M03-CONTRACT"
+      ],
+      "owner": "",
+      "evidence": "",
+      "notes": "",
+      "issueUrl": "",
+      "audience": "public",
+      "origin": {
+        "path": "packages/mario-mix-terra/docs/TASKS.json",
+        "id": "M03-OUTSIDER",
+        "status": "ready"
+      }
+    },
+    {
+      "id": "M04-PUBLISH",
+      "title": "0.4.1 实机验收与发布",
+      "summary": "核对 Windows、浏览器加载、设备操作、通关、音频和素材许可，完成后记录提交与发布结果。",
+      "area": "发布验收",
+      "status": "blocked",
+      "priority": "P0",
+      "acceptance": [
+        "Windows与真实HTTP/资源加载记录",
+        "实体设备、自然通关和音频验收",
+        "源码下载与构建SHA对应，手动审查权利和审批",
+        "记录实际提交、人工审批和上线结果"
+      ],
+      "dependsOn": [
+        "M04-LOOT",
+        "M04-LIFECYCLE",
+        "M02-WINDOWS",
+        "M02-DEVICE"
+      ],
+      "owner": "",
+      "evidence": "",
+      "notes": "",
+      "issueUrl": "",
+      "audience": "public",
+      "origin": {
+        "path": "packages/mario-mix-terra/docs/TASKS.json",
+        "id": "M04-PUBLISH",
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "M02-ARCH",
+      "title": "模块登记、架构门禁与交接工具",
+      "summary": "模块职责、依赖与测试已登记；新增模块需通过架构检查。",
+      "area": "工程",
+      "status": "review",
+      "priority": "P1",
+      "acceptance": [
+        "漏登记/缺测试/越层/循环依赖被拦截",
+        "生成文档可复跑"
+      ],
+      "dependsOn": [],
+      "owner": "",
+      "evidence": "本地验证；实机验收另记。 docs/TEST_REPORT_M02.md",
+      "notes": "",
+      "issueUrl": "",
+      "audience": "public",
+      "origin": {
+        "path": "packages/mario-mix-terra/docs/TASKS.json",
+        "id": "M02-ARCH",
+        "status": "local-verified"
+      }
+    },
+    {
+      "id": "M02-BINDINGS",
+      "title": "配置/捕获/路由/设置会话迁出",
+      "summary": "按键配置、捕获与设置会话已迁出并完成本地测试；设备验收单独记录。",
+      "area": "输入",
+      "status": "review",
+      "priority": "P1",
+      "acceptance": [
+        "原底稿 SHA 重建一致",
+        "正常游戏 13 阶段对照一致",
+        "默认配置可导出再导入，键位不变"
+      ],
+      "dependsOn": [],
+      "owner": "",
+      "evidence": "本地验证；实机验收另记。 docs/TEST_REPORT_M02.md",
+      "notes": "",
+      "issueUrl": "",
+      "audience": "public",
+      "origin": {
+        "path": "packages/mario-mix-terra/docs/TASKS.json",
+        "id": "M02-BINDINGS",
+        "status": "local-verified"
+      }
+    },
+    {
+      "id": "M03-CONTRACT",
+      "title": "关卡/角色/适配层协议与可运行接入原型",
+      "summary": "地图、角色与适配层支持原型接入。当前仅在 platform-v1 已实现能力内验证。",
+      "area": "关卡接口",
+      "status": "review",
+      "priority": "P1",
+      "acceptance": [
+        "两角色共用底图且overlay独立",
+        "新增匿名ID无需改核心",
+        "未知机制/不兼容驱动拒绝"
+      ],
+      "dependsOn": [],
+      "owner": "",
+      "evidence": "本地验证；实机验收另记。 docs/TEST_REPORT_M03.md",
+      "notes": "",
+      "issueUrl": "",
+      "audience": "public",
+      "origin": {
+        "path": "packages/mario-mix-terra/docs/TASKS.json",
+        "id": "M03-CONTRACT",
+        "status": "local-verified"
+      }
+    },
+    {
+      "id": "M04-LIFECYCLE",
+      "title": "场景退出事件、快照与封闭驱动契约加固",
+      "summary": "场景退出、异常清理和快照隔离已实现；完整游戏流程等待实机验收。",
+      "area": "场景",
+      "status": "review",
+      "priority": "P1",
+      "acceptance": [
+        "旧代次事件不能影响新场景",
+        "失败清理和快照隔离有测试",
+        "不支持的旧角色跨地图组合必须报错"
+      ],
+      "dependsOn": [],
+      "owner": "",
+      "evidence": "本地验证；实机验收另记。 docs/TEST_REPORT_M04.md",
+      "notes": "",
+      "issueUrl": "",
+      "audience": "public",
+      "origin": {
+        "path": "packages/mario-mix-terra/docs/TASKS.json",
+        "id": "M04-LIFECYCLE",
+        "status": "local-verified"
+      }
+    },
+    {
+      "id": "M04-LOOT",
+      "title": "物品定义与武器交换、箱子散落计划迁出",
+      "summary": "已迁出物品定义、武器交换与箱子散落规则；本地对照通过，设备与自然流程仍需复验。",
+      "area": "物品规则",
+      "status": "review",
+      "priority": "P1",
+      "acceptance": [
+        "正常既有武器与箱子保持原行为",
+        "规则模块不直接改变宿主对象",
+        "完整第三期回归不退步"
+      ],
+      "dependsOn": [],
+      "owner": "",
+      "evidence": "本地验证；实机验收另记。 docs/TEST_REPORT_M04.md",
+      "notes": "",
+      "issueUrl": "",
+      "audience": "public",
+      "origin": {
+        "path": "packages/mario-mix-terra/docs/TASKS.json",
+        "id": "M04-LOOT",
+        "status": "local-verified"
+      }
+    },
+    {
+      "id": "M05-UI",
+      "title": "菜单、HUD 与显示偏好",
+      "summary": "菜单、HUD 和显示选项已实现并通过本地测试；刷新恢复与设备体验仍待实机核验。",
+      "area": "界面",
+      "status": "review",
+      "priority": "P1",
+      "acceptance": [
+        "菜单、快捷栏与设置显示正常",
+        "显示控件焦点不触发游戏动作",
+        "持久偏好、实体设备与自然流程另行验收"
+      ],
+      "dependsOn": [],
+      "owner": "",
+      "evidence": "本地验证；实机验收另记。 docs/TEST_REPORT_M05.md",
+      "notes": "",
+      "issueUrl": "",
+      "audience": "public",
+      "origin": {
+        "path": "packages/mario-mix-terra/docs/TASKS.json",
+        "id": "M05-UI",
+        "status": "local-verified"
+      }
+    },
+    {
+      "id": "M06-EXPERIENCE",
+      "title": "操作引导、焦点与返回恢复验收",
+      "summary": "操作速查、反馈模板和界面生命周期已通过本地测试；自然试玩、实体手柄与浏览器历史恢复仍待验收。",
+      "area": "体验与引导",
+      "status": "review",
+      "priority": "P1",
+      "acceptance": [
+        "手册显示当前绑定，按键不泄漏到游戏",
+        "手册只恢复自身触发的暂停，缓存页面保留监听器",
+        "Windows、实体设备、真实前进后退缓存和音频需实机核验"
+      ],
+      "dependsOn": [],
+      "owner": "",
+      "evidence": "本地验证；实机验收另记。 docs/TEST_REPORT_M06.md",
+      "notes": "",
+      "issueUrl": "",
+      "audience": "public",
+      "origin": {
+        "path": "packages/mario-mix-terra/docs/TASKS.json",
+        "id": "M06-EXPERIENCE",
+        "status": "local-verified"
+      }
+    },
+    {
+      "id": "M03-ACTOR",
+      "title": "迁出一个真实角色供数据地图驱动调用",
+      "summary": "迁出一个真实角色，在两张数据地图中对照其动作、物理和 HUD。",
+      "area": "角色扩展",
+      "status": "planned",
+      "priority": "P1",
+      "acceptance": [
+        "房间依赖显式注入、不固定tree-id",
+        "保留原动作/物理对照",
+        "至少两张地图实测与HUD读模型"
+      ],
+      "dependsOn": [
+        "M03-CONTRACT"
+      ],
+      "owner": "",
+      "evidence": "",
+      "notes": "",
+      "issueUrl": "",
+      "audience": "public",
+      "origin": {
+        "path": "packages/mario-mix-terra/docs/TASKS.json",
+        "id": "M03-ACTOR",
+        "status": "planned"
+      }
+    },
+    {
+      "id": "M03-EDITOR",
+      "title": "限定Tiled导入器与可编辑数据流程",
+      "summary": "按限定的地图格式和对象类型实现 Tiled 导入，未识别机制需要明确报错。",
+      "area": "编辑工具",
+      "status": "planned",
+      "priority": "P1",
+      "acceptance": [
+        "只支持明确版本和对象集合",
+        "不识别的机关报错",
+        "往返转换不丢字段/坐标"
+      ],
+      "dependsOn": [
+        "M03-CONTRACT"
+      ],
+      "owner": "",
+      "evidence": "",
+      "notes": "",
+      "issueUrl": "",
+      "audience": "public",
+      "origin": {
+        "path": "packages/mario-mix-terra/docs/TASKS.json",
+        "id": "M03-EDITOR",
+        "status": "planned"
+      }
+    },
+    {
+      "id": "M03-INVENTORY",
+      "title": "库存提交、单次奖励与存档一致性",
+      "summary": "武器交换计划已迁出；下一步整理库存提交、单次奖励与保存流程的一致性。",
+      "area": "物品规则",
+      "status": "planned",
+      "priority": "P1",
+      "acceptance": [
+        "重复领取不会重复奖励",
+        "旧武器留地可换回",
+        "保留已迁出规则，记录提交、奖励和保存前后的状态"
+      ],
+      "dependsOn": [
+        "M02-DEVICE"
+      ],
+      "owner": "",
+      "evidence": "",
+      "notes": "",
+      "issueUrl": "",
+      "audience": "public",
+      "origin": {
+        "path": "packages/mario-mix-terra/docs/TASKS.json",
+        "id": "M03-INVENTORY",
+        "status": "planned"
+      }
+    },
+    {
+      "id": "M03-MAP14",
+      "title": "核验并转录原版1-4底图与机关规格",
+      "summary": "转录 1-4 的地形和机关规格，分别记录来源与保真检查；不属于当前版本内容。",
+      "area": "后续关卡",
+      "status": "planned",
+      "priority": "P1",
+      "acceptance": [
+        "逐格几何与版本来源",
+        "火焰棒/敌人/终点条件规格独立",
+        "许可证/素材证据分开记录"
+      ],
+      "dependsOn": [],
+      "owner": "",
+      "evidence": "",
+      "notes": "",
+      "issueUrl": "",
+      "audience": "public",
+      "origin": {
+        "path": "packages/mario-mix-terra/docs/TASKS.json",
+        "id": "M03-MAP14",
+        "status": "planned"
+      }
+    },
+    {
+      "id": "M03-MECHANICS14",
+      "title": "实现1-4可复用机关与终点规则",
+      "summary": "在角色与底图接口具备后实现旋转火焰棒、Boss、桥和斧头终点规则。",
+      "area": "后续关卡",
+      "status": "planned",
+      "priority": "P1",
+      "acceptance": [
+        "火焰棒/城堡Boss/桥斧终点有真实实现",
+        "新对象类型先登记再调用",
+        "验证机关的运行行为、判定与结束条件"
+      ],
+      "dependsOn": [
+        "M03-MAP14",
+        "M03-ACTOR"
+      ],
+      "owner": "",
+      "evidence": "",
+      "notes": "",
+      "issueUrl": "",
+      "audience": "public",
+      "origin": {
+        "path": "packages/mario-mix-terra/docs/TASKS.json",
+        "id": "M03-MECHANICS14",
+        "status": "planned"
+      }
+    },
+    {
+      "id": "M03-SCENE",
+      "title": "主关/隐藏房间生命周期与音频所有权",
+      "summary": "整理原第三期的房间切换和音频所有权，保留坐骑、奖励及返回语义。",
+      "area": "场景",
+      "status": "planned",
+      "priority": "P1",
+      "acceptance": [
+        "进入、暂停、返回状态可追踪",
+        "先保存坐骑和奖励语义",
+        "不新增 wrapper 链"
+      ],
+      "dependsOn": [
+        "M02-DEVICE"
+      ],
+      "owner": "",
+      "evidence": "",
+      "notes": "",
+      "issueUrl": "",
+      "audience": "public",
+      "origin": {
+        "path": "packages/mario-mix-terra/docs/TASKS.json",
+        "id": "M03-SCENE",
+        "status": "planned"
+      }
+    }
+  ]
+}

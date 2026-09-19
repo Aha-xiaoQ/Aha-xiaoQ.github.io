@@ -1,0 +1,553 @@
+{
+  "schemaVersion": 1,
+  "version": "public-content-r15",
+  "source": "third-episode development source M05; R15 documentation revision",
+  "delivery": "local-review-not-deployed",
+  "createdAt": "2026-09-17",
+  "document": "/notes/mario-mix/docs/terra-source/",
+  "download": "/downloads/source/MarioMix_Terraria_M05_R15_Source.zip",
+  "merge": "preserved local terra-chapters documentation and prior state; generated pages rebuilt",
+  "backup": "D:/Code/xiaoq-homepage-github-main-r08-review-R15-backup-20260917132621",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "before": "d51aa59662b93f0134f5fb34373f9f469148972264886925de734bb96c0818fc",
+      "after": "0e9b81b4e502f7bb825759ea8da75bdbcd1e86cf6d02e135297dd877bd23cced"
+    },
+    {
+      "path": "README.md",
+      "before": "64ad5d826c456adf632c0feaffd0b69f8ccd75919f32ab4fdd08b35a632b89ba",
+      "after": "e45a8a2f59817eee0a651fddf49c9f3d8f0bb80326a0801630fd0326d9529d39"
+    },
+    {
+      "path": "about/index.html",
+      "before": "9e5edc14bc522822e848f14af7f741416cf9ee7b6eff24f06d4b78e8ef633677",
+      "after": "a78c76c945e12654be8b9b6683531c529d352a3edb33e26d5667556030ddb4f7"
+    },
+    {
+      "path": "assets/journal/model.mjs",
+      "before": "32272f8bd140b19979c9114f892d145421176347c02c111ccb27447b603a702d",
+      "after": "587681639e9e185607c42d719f07fdb33ef7c19261689128d6128d3262b4e02b"
+    },
+    {
+      "path": "assets/journal/render.mjs",
+      "before": "f911180166715e1396b93a0c414753221f4be8f0707718605da94f539fb7f95f",
+      "after": "5556c25f26c4ab6b8b70265e4c7396ea1a5d492d7eee409e6c5c45b6bddaf1a4"
+    },
+    {
+      "path": "assets/journal/runtime.mjs",
+      "before": "fdbef71cd7304f919cf82d4a7c5bdedff4a417bfad73250e1d5c53a15b7a82ce",
+      "after": "50038efc5a27781956153c91c95b84330241788988bae4d8c7bbcadf3fa11ce3"
+    },
+    {
+      "path": "collab/delivery-files.txt",
+      "before": "b72211b6e3172d17dbcdf55603d4fd4247bd80c01031724e1c2cdad9c9d37e0a",
+      "after": "fe8d2ebee68985c0359b6950f7b17cacf8efdcee9a9b6ad944bc455ef7b3ebe9"
+    },
+    {
+      "path": "content/development/projects/mario-mix.json",
+      "before": "af956e5da9a0810134bd69f6a956d1c779407330b32759f0fd743d274ae2ee32",
+      "after": "fb927c6c4c708217d2ed82a8a5a8f46db2e1e7a633bf9e46771070576c9af05d"
+    },
+    {
+      "path": "content/development/projects/pixel-workshop.json",
+      "before": "48f6cae2a738b5db3325010d3e5fc55259c1200d0a4864bec8ed17c172a2b4e6",
+      "after": "d95db4bbb5728954dc0022d220242aeb849fade468d4d26c412077589cfc2f06"
+    },
+    {
+      "path": "content/development/states/mario-mix-current.json",
+      "before": null,
+      "after": "03ee5f9beb2d8a0b0103c9e587e4fd19e7ec574c951572b99f259f95239564ed"
+    },
+    {
+      "path": "docs/content-r15/ACCEPTANCE.md",
+      "before": null,
+      "after": "7d2756332a2b2250c38303c93fd6f7198bdb1c00cccc87d99d506177aebb9a5a"
+    },
+    {
+      "path": "docs/content-r15/CHANGELOG.md",
+      "before": null,
+      "after": "9e7b359ffa4277f287e5ca0488cd67a45326b22373684d0e070fd45ea98bf140"
+    },
+    {
+      "path": "docs/content-r15/CONTENT_POLICY.md",
+      "before": null,
+      "after": "50b7fe3a498f86dee178e463be635166e12c2a5d60cf267f6b8b7fa5e0764d29"
+    },
+    {
+      "path": "docs/content-r15/DATA_CONTRACT.md",
+      "before": null,
+      "after": "468347e03acf90b47a57241d055ee391e1b1ab747d56be1d46e2e2c4d9b8cf27"
+    },
+    {
+      "path": "docs/content-r15/HANDOFF_R15.md",
+      "before": null,
+      "after": "7bc8fa6058d5f3d7c91fa422a9895d9979df4af7e3d4d68005dd8c3ab01f17b8"
+    },
+    {
+      "path": "docs/content-r15/INSTALLATION.json",
+      "before": null,
+      "after": "c1287c092dbaecc6ada33ca8d56869a394e078989206d956e7c0dd43cf90ea61"
+    },
+    {
+      "path": "docs/content-r15/START_HERE.md",
+      "before": null,
+      "after": "b848126b55e786c5080c56e7fc45a21e41f3297d3dcc28384ac6287c0d10f954"
+    },
+    {
+      "path": "docs/content-r15/TEST_REPORT.md",
+      "before": null,
+      "after": "5832196f1877357baf24ca44ede2ae690acf028294d0d2232bdcd0ad3a576053"
+    },
+    {
+      "path": "docs/content-r15/generated-tasks.json",
+      "before": null,
+      "after": "f9d60e4aec035fdc3a9ccd2300ae37752b61b4f202f64b174236e12951f84dc7"
+    },
+    {
+      "path": "docs/content-r15/history/legacy-state.json",
+      "before": null,
+      "after": "f44ed6a16fba36caa1f41f75b0bcb00b1a90d600433c121aaa4e661a6859222f"
+    },
+    {
+      "path": "docs/content-r15/history/project-before.json",
+      "before": null,
+      "after": "af956e5da9a0810134bd69f6a956d1c779407330b32759f0fd743d274ae2ee32"
+    },
+    {
+      "path": "docs/content-r15/history/website-before.json",
+      "before": null,
+      "after": "48f6cae2a738b5db3325010d3e5fc55259c1200d0a4864bec8ed17c172a2b4e6"
+    },
+    {
+      "path": "docs/design-r07/generated-pages.json",
+      "before": "27b26f3f29b7b976dadc8151ac2161ed7a6c9ee740c4d96488b8e2c6ad3c30cf",
+      "after": "0743d8b3ce5cae2630ffc613a3344f6083ab218c56cd219507d806b75694f212"
+    },
+    {
+      "path": "docs/development/generated-pages.json",
+      "before": "54636cb2fff4d16c06f6086d2016585a334ec5435e76182dd17065ed17f811d7",
+      "after": "ee5a75eed2fbcec9c25b637600d3d6da8b4c16658ca0fcd5ebaf7f47660f55a6"
+    },
+    {
+      "path": "downloads/source/MarioMix_Terraria_M01_Source.json",
+      "before": null,
+      "after": "36269850d8549c36d2a020129cbbd84f5b2bea7c71ad93b018b31f30b2b156c9"
+    },
+    {
+      "path": "downloads/source/MarioMix_Terraria_M01_Source.zip",
+      "before": null,
+      "after": "a9b30f361a8cae1249e43d0ffa3961039b49eac2e2cf7d906e7c492e9af4734d"
+    },
+    {
+      "path": "downloads/source/MarioMix_Terraria_M02_Source.json",
+      "before": null,
+      "after": "a0d3788605dc5c66e7711cac4ff8f90880b5c18f1a9655243bb790f357615862"
+    },
+    {
+      "path": "downloads/source/MarioMix_Terraria_M02_Source.zip",
+      "before": null,
+      "after": "e74ad5a9e2fca5d4001369a3f1930580f9190a35d587519c46b1094ad70e9a26"
+    },
+    {
+      "path": "downloads/source/MarioMix_Terraria_M03_Source.json",
+      "before": null,
+      "after": "036c1c08c731793522ad68409e409c11ad8916c51264e31d96289fd09dc02e61"
+    },
+    {
+      "path": "downloads/source/MarioMix_Terraria_M03_Source.zip",
+      "before": null,
+      "after": "c5b26032ff14d05790f5ba7a2dfa7fe1a0592968648fd03ea61cb9907f316c61"
+    },
+    {
+      "path": "downloads/source/MarioMix_Terraria_M04_Source.json",
+      "before": null,
+      "after": "f01b1ed42c7da93fa4d868f5b042e9a21c9445af7f9ca01a7871c297165cef7d"
+    },
+    {
+      "path": "downloads/source/MarioMix_Terraria_M04_Source.zip",
+      "before": null,
+      "after": "ce406ea1113f5d1f35bbf7bc2a91b8c2b4c7c222db4e5b100cce78f291c675a1"
+    },
+    {
+      "path": "downloads/source/MarioMix_Terraria_M05_R15_Source.json",
+      "before": null,
+      "after": "7ade0e9322b2eae503b664608d0b1ffe2ca35d3ec0487f30e35f2550f4660080"
+    },
+    {
+      "path": "downloads/source/MarioMix_Terraria_M05_R15_Source.zip",
+      "before": null,
+      "after": "1932e8be80e740bd274d8653f3915b883a9120859db9de60f9aac5bdb2de676a"
+    },
+    {
+      "path": "downloads/source/MarioMix_Terraria_M05_Source.json",
+      "before": null,
+      "after": "dc8fcfb3352fd9ea8f864172cdc280e8f58671fe38a1bceb3e714b24b961ed26"
+    },
+    {
+      "path": "downloads/source/MarioMix_Terraria_M05_Source.zip",
+      "before": null,
+      "after": "cdb8b684d6e86deaae4591be7e03e0a7016aa53f7608823b0f3f3916d90ef5c3"
+    },
+    {
+      "path": "games/index.html",
+      "before": "7541a73303e8f3f4f38f192ededdf6edad8bbc226b4b03b21def2a71b93e62ca",
+      "after": "9fb451e710114a72c898a51136394fce9e6adb2f5498dad8d69d3c8add1eadab"
+    },
+    {
+      "path": "index.html",
+      "before": "b56b7fe9ce491603e621d01cd6cfe53ae5f845c0762b4b7a7c1283c2d40ce5f8",
+      "after": "ab92cff4974f17cdd7362f8b104f3eaf59abd386beaf0cb44aa34c0d2288d37e"
+    },
+    {
+      "path": "notes/contribute/index.html",
+      "before": "38c980f510ec40b657e85a7dcc2309216aab606e75f3d30a50f09be57f3429e1",
+      "after": "2029a967cae0f999c7aa4008abb94a50defe16d1cffc6fe468de4213fd56154b"
+    },
+    {
+      "path": "notes/index.html",
+      "before": "77e0b28f74196bcf425bac7183cf6f7ba7eb76c03246028b416d0edb48511296",
+      "after": "e05835647ec829bb87aeebc4b7d2c50393039546b5b00ad6c45010c295d842ff"
+    },
+    {
+      "path": "notes/mario-mix/contribute/index.html",
+      "before": "a0c38c6c1820ddaca7c66e886fd08b360f283635487af3b62e3b12af495cc364",
+      "after": "db931650b51737c3a5e646ba6e54424a2e03031147fd58f8dc6b87d5913f6f39"
+    },
+    {
+      "path": "notes/mario-mix/docs/architecture/index.html",
+      "before": "ceac0f9e150165fea4a7d519f8925a6d4b6a51f6cae171f7c70833e6afe80960",
+      "after": "9f37012da35708159e6fa8925c0dbd45858dad900db4ffe8cb40d1170aab2ff0"
+    },
+    {
+      "path": "notes/mario-mix/docs/engineering/index.html",
+      "before": "6c835408ae7dc49242585e68fe7ac222b838506a19a7340d3fee253281ae65cc",
+      "after": "85e438dff2496ab106619ff5bb61c763874330a1ba38f315ec938912b8c3786a"
+    },
+    {
+      "path": "notes/mario-mix/docs/index.html",
+      "before": "dcb9736a4ada43a12a33b639478fb193561a3e23a49729f0b13181b30e901737",
+      "after": "d60552da7da03ee957fcc0e9e12089a402db6cedbf293850af3991429f12ed92"
+    },
+    {
+      "path": "notes/mario-mix/docs/reference/index.html",
+      "before": "0f8ba520799655a0a8183f022cf9382159c715f1e9413af0f0afc6ed971b09b6",
+      "after": "3a66b17176beed518aaef6b53c02b566aeec75b5b404b76b7dfe0f84abaeefed"
+    },
+    {
+      "path": "notes/mario-mix/docs/start/index.html",
+      "before": "9f69e7a074350cb1e267250de3ff5a58e00c0db5f267909ca80325d8f1147844",
+      "after": "6f10bcda2e42189e7ba26e3241d0e1c14d6bda3c96178b127ba1b76ad891f6ac"
+    },
+    {
+      "path": "notes/mario-mix/docs/terra-chapters/index.html",
+      "before": "3f5756acbe09f53d24b2b13abb827e90d7d5fd7573a6d5f6471fafad06c3da26",
+      "after": "a0c40a541f003a24c7e17c31cc12f9ebc6c15ed11fde2c39bc1c67180db2302a"
+    },
+    {
+      "path": "notes/mario-mix/docs/terra-collaboration/index.html",
+      "before": "8ff985d338f46b1e0be85dcba7ad32699a20c5a4a2fefd418026f3d598476462",
+      "after": "36a44bb2c7fc7f3da5b68d76005c2dff8b8aa3c134bcb30cd617e5058e0136a2"
+    },
+    {
+      "path": "notes/mario-mix/docs/terra-history/index.html",
+      "before": "9d3d5445a85d4e3756a31ece0143edcaff07d2f277a597f67dbd6d4ddbf560a9",
+      "after": "188dc0d34658513900046e749c85643876bea84b54b2367d99170c9807621168"
+    },
+    {
+      "path": "notes/mario-mix/docs/terra-source/index.html",
+      "before": "c7efd07a3a0707e8c4bb3086f80cc88fd9f726a4a1468612e8120d48dd6ed925",
+      "after": "daf7eb86ba36b46133577d255a8c699544a0c10262f913c795ad7f7ffe4b77c6"
+    },
+    {
+      "path": "notes/mario-mix/docs/terra-stages/index.html",
+      "before": "4bc519ed719ca5f45ae1664d8de1e25cf684b604382e16199f26aeb80e89c73b",
+      "after": "2dc3e4fedfb0e333d8a0034a09d5b8a06f004937f8324368c34b17f03b95782b"
+    },
+    {
+      "path": "notes/mario-mix/index.html",
+      "before": "8937ba3e67861737c35b2437896448d8bfeafc40fb5c524c8f131826ffa34afe",
+      "after": "3b1500493f498b3c4d05cbcd15d7c3ce45e7183c6f31eba635c5e7db361fad4d"
+    },
+    {
+      "path": "notes/mario-mix/manage/index.html",
+      "before": "3fd497daddeb5143b314a598d5a6c29c3b52d7630796775a067730c949a2e7e0",
+      "after": "cf023055f45ecbb0563aea7bf9dea0a90fe0b59aceb4614c231fb045585058ee"
+    },
+    {
+      "path": "notes/mario-mix/tasks/index.html",
+      "before": "8cca20ad9bf4979374ad1afee35535ccf7a2a633fdb661bfd0f3e0647e28cc21",
+      "after": "6a4ea52cf21075b66ccabef68fdba41b3546cde839b71a7057f6678eeba353e9"
+    },
+    {
+      "path": "notes/mario-mix/updates/index.html",
+      "before": "5a241f2cbc3686e23f0faa08a971a5cc1a3c2ff6beab7efb66992a74322de989",
+      "after": "d95b0240495a7eb672d49b9f47f59b0556892c3e1b993764f8d657b05683cfbe"
+    },
+    {
+      "path": "notes/pixel-workshop/contribute/index.html",
+      "before": "648963e6ad6b02179339511352e2e8fd5b65e38d7471cfd4491c3c2d44f93395",
+      "after": "9d3c90bdb5dbfe41802717d889248500673a4ee92eff24498f689af0f770e542"
+    },
+    {
+      "path": "notes/pixel-workshop/docs/add-project/index.html",
+      "before": "808280b00c95c03d443e54de606096bc96c168ee1cc80c05ed2c4c8a4f5e1c87",
+      "after": "633aad0ebc6894dfddacbe213b744610b669531625fde1aa58d1589310f48104"
+    },
+    {
+      "path": "notes/pixel-workshop/docs/architecture/index.html",
+      "before": "dbbe995b718775a8e891d7518e8a6f1f22a46f4590c51f76f47c84c79a829d64",
+      "after": "53c377a130c8f2111e400c60174e2f7c95697b56604b682d0474dcb6943944c4"
+    },
+    {
+      "path": "notes/pixel-workshop/docs/index.html",
+      "before": "290cefef17bf8f93e88392b71a5078256d2f44c24277c7c13cbb2947b90f65a0",
+      "after": "bd28693427a4fbb5591260ebdaed8048e532da41e647d04291d9678d98afc560"
+    },
+    {
+      "path": "notes/pixel-workshop/docs/start/index.html",
+      "before": "a1e0cd1215e1707e0469af27c707255533459a952cb45f1fda3c5c60de4fad07",
+      "after": "d588383aaac55ed7113eaab3ecb0b83fa8ec18490421b22ee24e7a6253b4e142"
+    },
+    {
+      "path": "notes/pixel-workshop/index.html",
+      "before": "6208c0bb97adc419ee16f64868b5fe4bd4ae563c92f6538140dd882898b25725",
+      "after": "84bd6840aabec3b53359addadb64e0f8ab1fd8a505c01dd7d33b8b7b631e4e64"
+    },
+    {
+      "path": "notes/pixel-workshop/manage/index.html",
+      "before": "0cb371262a03d37d61cef3a5781cced3cdfe57bb43311459791403850e7d55a6",
+      "after": "41398e552546e9e964a3e09a9b3059a0cde037a19a176429fcac58cfc8a35122"
+    },
+    {
+      "path": "notes/pixel-workshop/tasks/index.html",
+      "before": "61c116601fa526fd81dfacea7483ac41dcdd0720cac005649472c202e0e1c7e8",
+      "after": "4cf02b658b9e744197b8e49234780c1820e4ff1a22233cc905468eac8c96b7cf"
+    },
+    {
+      "path": "notes/pixel-workshop/updates/index.html",
+      "before": "da280dc312de857a8cb3c6874433e7771dd8ba93f2291012093f9739b846c786",
+      "after": "ba06f2f7638b72636f69872b42b13446deacbe14b6405ef5473f12f82bf260f9"
+    },
+    {
+      "path": "notes/updates/index.html",
+      "before": "cc9fcb1f5b8bb760d33cefad26e320f6b72e80fd3f3b88efb7cda90176d7952d",
+      "after": "4e7f733750b324ec13b85deee69e5ebe7b6cc3005894f9e650fdc8d2a7654fdb"
+    },
+    {
+      "path": "package.json",
+      "before": "eba95f3df264f0c3a525fa327983de25e06202e0337cca21785e6f13fdf17706",
+      "after": "4e38e9b8451bafa3047dd87c8510a4781e8e5fbd9c7b5b6338b45d524196dcaf"
+    },
+    {
+      "path": "packages/mario-mix-terra/AGENTS.md",
+      "before": "6923a2a02f0f3fe752b4812239cddc87e61722e2699e6e14160119f04a84d8fc",
+      "after": "0a4e40fc9a435c2948a4cc109484c37531848e6ab37c4ac87d8a6c43f01f5790"
+    },
+    {
+      "path": "packages/mario-mix-terra/CONTRIBUTING.md",
+      "before": "bad94ce9c773a4fc860602804547dafc02ea8f8c7ca381d8ad42cc9a9b21757b",
+      "after": "c6f2dd9085965b6d07c9d222ec9bcf4337d99ac6d654ae7fbaa6a9eb81f65389"
+    },
+    {
+      "path": "packages/mario-mix-terra/README.md",
+      "before": "de99feaa61baac60a587bffe570f7a7ab624dc7c70b4926e6396b9204af78e35",
+      "after": "d1ece81c9b5a67d08108cfedcfcfc6e89b4ced9db3cd0b4c581cfc021ca19ea0"
+    },
+    {
+      "path": "packages/mario-mix-terra/START_HERE.md",
+      "before": "5b3c609f23179fe1a0735ffccf003f79ef14f9d2bca733ee3e79876fddfe30e1",
+      "after": "23b30287dde21144f1409f5ed76eeceed60dec612b267a3dffead6adcae5c3ec"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/ARCHITECTURE.md",
+      "before": "ad244f67cecd04de55432fd09619089b45d449910742807874151c11f56ef8e0",
+      "after": "489fa7202c8d580086afea65df2da41c0327b7fe65006470872c73abf07a277f"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/GOVERNANCE.md",
+      "before": "2fa46c4d4d0569d46cafb710cb8c8d6a61016e42bde6767a9adc5721966a6303",
+      "after": "188ade56a1632cd629b7861a256100342cf00e6acfae969ed62c30df4b2002b3"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/KNOWN_LIMITS.md",
+      "before": "c2d7dc4225d473fcf3add6d0b3ad25821d6bdfb5f3b07525cdb0160836425bb9",
+      "after": "70599b9962c0b1ed8b7a2506fc57de6e4f1b09635bd15a68a5eb1b88b2f4641d"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/PUBLISH.md",
+      "before": "30bd55518653ebf7f5e860d4863151e165cd9fca4344ac01b5753dbd545bb00c",
+      "after": "593df1ec5a0152f344b8549115a7ecf00160c8954b00b5407f1bc1d95945f2b3"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/TASKS.json",
+      "before": "279a6162d32e0ed20875c6e3e734bde8a4ed60af88d9878e47ef2ad114fb3a19",
+      "after": "f5ff4d5065052018eba8eed9391ef60979976e7f41848314dc3e8c4fb105078d"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/UI_CONTRACT.md",
+      "before": "96f78b5a82dd84d89c5cf8e5e3064b1e17888d7cde448b6c0580ed45432c1173",
+      "after": "7ef87ba1b526616f0ab970cee63980da8b10b9c96a7ef46b48c06788c1f23dad"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/history/r15-before/AGENTS.md",
+      "before": null,
+      "after": "6923a2a02f0f3fe752b4812239cddc87e61722e2699e6e14160119f04a84d8fc"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/history/r15-before/CONTRIBUTING.md",
+      "before": null,
+      "after": "bad94ce9c773a4fc860602804547dafc02ea8f8c7ca381d8ad42cc9a9b21757b"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/history/r15-before/README.md",
+      "before": null,
+      "after": "a91e858c1d0d0a826ebf81b435a698c4e0101428766a16b040db5a0f937dd510"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/history/r15-before/START_HERE.md",
+      "before": null,
+      "after": "8c6b3f5daa200f515409e6a7ba459927c97edc87a971f50ad47369b33732b0f2"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/history/r15-before/docs/ARCHITECTURE.md",
+      "before": null,
+      "after": "93fa4f571f1fcfc088cc671e0cd6c70e6e84314011cd5dd69082658b2b1b8787"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/history/r15-before/docs/GOVERNANCE.md",
+      "before": null,
+      "after": "2fa46c4d4d0569d46cafb710cb8c8d6a61016e42bde6767a9adc5721966a6303"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/history/r15-before/docs/KNOWN_LIMITS.md",
+      "before": null,
+      "after": "c2d7dc4225d473fcf3add6d0b3ad25821d6bdfb5f3b07525cdb0160836425bb9"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/history/r15-before/docs/PUBLISH.md",
+      "before": null,
+      "after": "6f4cfb29710808578546394d5ee986ba80bf4b7ee795384845a07b7b0dd13d2b"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/history/r15-before/docs/TASKS.json",
+      "before": null,
+      "after": "279a6162d32e0ed20875c6e3e734bde8a4ed60af88d9878e47ef2ad114fb3a19"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/history/r15-before/docs/UI_CONTRACT.md",
+      "before": null,
+      "after": "96f78b5a82dd84d89c5cf8e5e3064b1e17888d7cde448b6c0580ed45432c1173"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/history/r15-before/docs/stages/ADD_CHARACTER.md",
+      "before": null,
+      "after": "3aae16adfb289a5cab1b02b11e574f1be5cd20268445de65d14f9b3fe9b3b660"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/history/r15-before/docs/stages/ADD_LEVEL.md",
+      "before": null,
+      "after": "04dcfd265575676115b190abf8e6942ef8489e2637f4514f0dce1695c8de1196"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/history/r15-before/docs/stages/CONTRACT.md",
+      "before": null,
+      "after": "1779e63ba664b2189efcfa2f5d84dc410984e14a0081716b6cc0f847298986fb"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/history/r15-before/docs/stages/READINESS.md",
+      "before": null,
+      "after": "73202f6c48adabeb9a8f8116699af14594628a0560a5de88aac7d5a98bdf4e70"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/stages/ADD_CHARACTER.md",
+      "before": "3aae16adfb289a5cab1b02b11e574f1be5cd20268445de65d14f9b3fe9b3b660",
+      "after": "07aa7a09489fc6029c3177823a959f286e83704a4cefb1647336c00fbe4532f8"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/stages/ADD_LEVEL.md",
+      "before": "04dcfd265575676115b190abf8e6942ef8489e2637f4514f0dce1695c8de1196",
+      "after": "f8ee3d40959bace65f902725f76d476c5d4643493cb43022906280028a8bd339"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/stages/CONTRACT.md",
+      "before": "1779e63ba664b2189efcfa2f5d84dc410984e14a0081716b6cc0f847298986fb",
+      "after": "039adc90fb8942785864f04672a4491c9cdc27e4f8c056ece24e67cf3c86ef13"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/stages/READINESS.md",
+      "before": "73202f6c48adabeb9a8f8116699af14594628a0560a5de88aac7d5a98bdf4e70",
+      "after": "eb40db93634d950ce98a16caad16549b1733c7f0e3187ed77a415a56474cbff9"
+    },
+    {
+      "path": "packages/mario-mix-terra/release.json",
+      "before": "c5bac4c5fae02572cc06ab5985852e6e17b820f1380def9e9e989f378b572e78",
+      "after": "ee0d6d2628b8795c004578efeac9eb0695dd1f1c1971089ccbcd0183dbaf8b59"
+    },
+    {
+      "path": "packages/mario-mix-terra/scripts/pack.mjs",
+      "before": "db75afd3b7686b797bcf15140543d89666aa1e410011b81f04644a3faf6a72e3",
+      "after": "549e2d86b44822e54c4f5827d6aafe3309b12d576e4841407260ac4367236ec9"
+    },
+    {
+      "path": "packages/mario-mix-terra/scripts/prepublish.mjs",
+      "before": "81015f809851f82f9e66c0d018deca45bce90c8413cfc811201d1848d13c195d",
+      "after": "d7907e5a6743930406173a56623975ad9f146eaef04d9bd7193788da45b05b66"
+    },
+    {
+      "path": "packages/mario-mix-terra/tests/architecture.test.mjs",
+      "before": "729c69077f0ad8bc0488d1ed08cc175322510123b2aa7a36942ce25d886fd50d",
+      "after": "7622f5b5dc164466abcf5563f9b87115b4b2634b703c6f51a2f5801f7698e52d"
+    },
+    {
+      "path": "projects/index.html",
+      "before": "02c3f1d8cb405c0cb35f43bd9d3a3d9871d3075410e9579a344e2355e107a0ba",
+      "after": "1760e4a342d6012ea0cae418af709fbea030c9c4d621c76e48818631dfcde5d9"
+    },
+    {
+      "path": "scripts/journal/build.mjs",
+      "before": "4c6b8c630aaf75e5c298d38abbd3f4cd71d40056368566ba8a935792ad425647",
+      "after": "b5dee87c3d743881542242f197976bf8be678f0686814012a90ff1b25c61a1a6"
+    },
+    {
+      "path": "scripts/public-content/check.mjs",
+      "before": null,
+      "after": "2604f8ba0cf94cff4b5d229a5c2ce598ddac3224699724ee895c10097c516f3d"
+    },
+    {
+      "path": "scripts/public-content/sync.mjs",
+      "before": null,
+      "after": "9656f1112b18cabdf8e4ebc219fbf5f3a78124af7d06785f95c717da17f7caf8"
+    },
+    {
+      "path": "scripts/workshop/build.mjs",
+      "before": "5243498f0ab7ec63a3f5564ce2811e7f2132dadc2810ef3907340119b3ecf613",
+      "after": "4d33d9a62aeb29476280f86615eeb53e4542a81e551c507123400bb0e0138ebd"
+    },
+    {
+      "path": "tests/public-content/content.test.mjs",
+      "before": null,
+      "after": "64d695233f7802ea934c2fb1af3f01de6a8e5165018e8f2f0600d95b99dd5dd4"
+    },
+    {
+      "path": "tests/workshop-r06.test.mjs",
+      "before": "5a13db9f3a707d1a8f726f417c98efd36d42c7072dc26fa821cae14b663594ea",
+      "after": "0ba37b2aade57797db0c261b17a90a9728cf100b7e8b1e8c01e2523aec449823"
+    },
+    {
+      "path": "tests/workshop-r12.test.mjs",
+      "before": "a07ef503b2e2f48d92d6eecf5e8e42de91b25d7357fb4b0fb1a4d70080b609d1",
+      "after": "d5563176a684f5b31b630a1f6f6319eacc2c2fca9f3fbcbdc8e580deb4a9a5dc"
+    },
+    {
+      "path": "tests/workshop-r13.test.mjs",
+      "before": "0e29d40146f52e6178344d90b3b6a399124ff4e1a30764b2ed5bb54ee6448a19",
+      "after": "e4cb8e77c7c61a3a0bbdfc23998c34124e28c77dc9b2d1aa552d970400f89a33"
+    },
+    {
+      "path": "tools/index.html",
+      "before": "2b5e3179d555236bded6105c037d130c95d0d211de7bb4bfdc211918c7b42b2f",
+      "after": "69b0f8a11f38d84b77b1e256adb938cd99dea52e6f18a648e0d6b0fb7d6bd16f"
+    }
+  ]
+}

@@ -1,0 +1,266 @@
+/* 0.7 — integration fixes, not a redesigned main map.
+ * Explicit transition, pipe, projectile, reward and menu presentation policies.
+ * Novel crossover choices are documented separately from original-game rules.
+ */
+const R07_VERSION='0.7.0';
+const R07_ITEM_INDEX={star:0,power:0,helmet:1,health:1,grenade:2,shovel:3,life:4,timer:5};
+const R07_DROP_CYCLE=['star','helmet','timer','grenade','life','shovel','helmet','timer'];
+let r07BonusIndex=0,r07Transit=null,r07DefeatFx=[],r07MixReport={},r07Normalised=new WeakSet();
+const r07Ready=Promise.all(['tank-items07','ng-explosion07'].map(id=>new Promise((resolve,reject)=>{
+ const im=new Image();im.onload=()=>{R12_SPRITES[id]=im;resolve();};im.onerror=()=>reject(Error('Missing 0.7 image '+id));im.src=R12_EMBEDDED_IMAGES['relay12/assets/'+id+'.png'];
+})));
+window.__mixReady=Promise.all([window.__mixReady,r07Ready]);
+heroNames.tank='坦克大战';
+RELAY12_MAP.areas.exit.flag=312; // Centre the pole on its 16px supporting block.
+RELAY12_MAP.areas.bar.name='JAY’S BAR';
+RELAY12_MAP.areas.defense.name='坦克大战 · 基地保卫';
+function r07NextBonus(){return R07_DROP_CYCLE[(r07BonusIndex++)%R07_DROP_CYCLE.length];}
+
+// Six actual supply sprites from the user-provided sheet. A helmet is not a cross.
+const r07OldDrop=r12DrawDrop;
+r12DrawDrop=function(d){
+ if(hero!=='tank')return r07OldDrop(d);
+ if(d.fromCarrier&&d.ttl<180&&Math.floor(frame/8)%2)return;
+ const i=R07_ITEM_INDEX[d.type],im=R12_SPRITES['tank-items07'];
+ if(i===undefined||!im)return r07OldDrop(d);
+ ctx.drawImage(im,i*16,0,16,16,Math.round(d.x-camera-2),Math.round(d.y-2),16,16);
+};
+
+// A 16x16 arena brick consists of four 8px collision cells. Ordinary shells
+// remove a complete 16x8 face strip (two cells), not a lone 8x8 corner.
+// Maximum-level shells remove the remaining 16x16 block, including steel.
+function r07DefenseImpact(wall,s){
+ const c=r03Challenge;if(!c||wall.type==='pipe')return;
+ const strong=s.friendly&&(s.power??0)>=3;
+ if(wall.type==='steel'&&!strong){r06Sound('steel');r12Event('defense-steel-block');return;}
+ const bx=24+Math.floor((wall.x-24)/16)*16,by=24+Math.floor((wall.y-24)/16)*16;
+ let removed=0;
+ for(const b of c.blocks){
+  if(b.dead||b.type==='pipe'||(b.type==='steel'&&!strong))continue;
+  if(b.x<bx||b.x>=bx+16||b.y<by||b.y>=by+16)continue;
+  if(!strong&&(s.vx?b.x!==wall.x:b.y!==wall.y))continue;
+  b.dead=true;removed++;
+  particles.push({kind:'debris',x:b.x+2,y:b.y+2,vx:(removed%2?1:-1)*.9,vy:-1.6,life:24,under:false});
+ }
+ if(removed){r06Sound('brick');r12Event('defense-brick-hit',{removed,block:[bx,by],strong});}
+}
+
+// The rising half of the visible sword arc can reach immediately overhead.
+// This is not a full-body/360 degree attack; crouching keeps a low cut.
+function r07SwordBoxes(){
+ const p=player,n=ninja;
+ const forward={x:p.facing>0?p.x+p.w-2:p.x-25,y:p.y+p.h-24,w:28,h:24};
+ if(p.crouch||n.attack<8)return [forward];
+ return [forward,{x:p.facing>0?p.x+2:p.x-5,y:p.y-9,w:p.w+5,h:18}];
+}
+const r07Break=r12Break;
+r12Break=function(t,by='sword'){
+ if(!t)return false;
+ if(hero==='ryu'&&['stone','steel','ground','pipe'].includes(t.type))return false;
+ return r07Break(t,by);
+};
+
+// Enemy death feedback follows the enemy family, not the currently selected hero.
+function r07DefeatPresentation(e){
+ if(e.kind==='tank'){r06Explosion(e.x+e.w/2,e.y+e.h/2);r06Sound('enemydeath');return;}
+ if(e.kind==='goomba'||e.kind==='koopa'){
+  r07DefeatFx.push({kind:'mario',sprite:e.kind==='goomba'?'goomba':'koopa0',x:e.x+e.w/2,y:e.y+e.h/2,vx:player.x<e.x?.7:-.7,vy:-2.6,age:0,life:50,area:r12.area,under:room==='under'});
+  sfx('kick');return;
+ }
+ const total=e.kind==='barbarian'?4:1;
+ for(let i=0;i<total;i++)r07DefeatFx.push({kind:'ninja',x:e.x+e.w/2+(i%2?8:-4),y:e.y+e.h/2+(i>1?7:-5),age:-i*5,life:18,area:r12.area});
+ if(bank.has('ng07_enemy'))oneShot('ng07_enemy');else ninjaSound('hit');
+}
+function r07TickDefeat(){
+ for(const f of r07DefeatFx){f.age++;if(f.kind==='mario'){f.x+=f.vx;f.y+=f.vy;f.vy+=.2;}}
+ r07DefeatFx=r07DefeatFx.filter(f=>f.age<f.life&&f.area===r12?.area);
+}
+
+// Original Mario sprites in both views. In particular, vertical body rendering
+// never repaints the rim. A side entrance is the same familiar elbow, not a box.
+function r07VerticalPipe(p){
+ const bottom=p.bottom??208,x=Math.round(p.x-camera),top=Math.round(p.y);
+ ctx.save();ctx.beginPath();ctx.rect(x,top,32,Math.max(0,bottom-top));ctx.clip();
+ for(let y=top+16;y<bottom;y+=16)sprite('pipe_body',x,y);
+ sprite('pipe_top',x,top);ctx.restore();
+}
+function r07SidePipe(q){
+ const x=q.x*2-camera,y=208-q.y*2,vx=q.verticalX*2-camera,top=208-q.top*2,bottom=208-(q.top-q.height)*2;
+ ctx.save();ctx.beginPath();ctx.rect(vx,top,32,bottom-top);ctx.clip();
+ for(let yy=top;yy<bottom;yy+=16)sprite('pipe_body',vx,yy);
+ ctx.restore();sprite('pipe_side',x,y);
+ // The above-ground entry has a capped, thicker upper rim.
+ const cap=pipes.find(p=>Math.abs(p.x-q.verticalX*2)<.1&&Math.abs(p.y-top)<.1);
+ if(cap)sprite('pipe_top',vx,top);
+}
+r12DrawPipes=function(){
+ for(const p of pipes)if(p.x>=camera-34&&p.x<=camera+W)r07VerticalPipe(p);
+ if(r12.def.sidePipe)r07SidePipe(r12.def.sidePipe);
+ if(r12.def.warp)for(let i=0;i<3;i++){
+  const p={x:(r12.def.warp.x+8+i*32)*2,y:176,bottom:208};r07VerticalPipe(p);
+  text(String(r12.def.warp.destinations[i]),p.x-camera+16,161,'#cbe3d6',1,true);
+ }
+};
+function r07DrawForegroundPipes(){
+ if(!r12)return;
+ if(r12.spawnFrames>0&&r12.area==='exit'||r07Transit?.kind==='pipe'&&r12.transition>21)r12DrawPipes();
+ if(r12.area==='defense'&&r03Challenge?.exitPipe&&r07Transit?.kind==='pipe')r07VerticalPipe(r03Challenge.exitPipe);
+}
+
+// Down the existing wall -> direct, short room cut. No floor portal or pipe.
+r03TryDescent=function(input){
+ if(hero!=='ryu'||r12?.area!=='underground')return false;
+ const p=player,n=ninja,inside=p.x>=1280-.1&&p.x+p.w<=1328+.1;
+ if(inside&&n.wall&&input.down&&p.y+p.h>208){
+  if(!n.descentActive)r12Event('cliff-descent-arm');n.descentActive=true;
+ }
+ if(n.descentActive&&p.y+p.h<=208)n.descentActive=false;
+ if(n.descentActive&&inside&&input.down&&n.wall&&p.y+p.h>=302){
+  r12Event('cliff-descent',{x:p.x,y:p.y});r12Travel('bar',null,'region');return true;
+ }
+ return false;
+};
+
+// Voluntary pipe travel and a room boundary are deliberately separate actions.
+r12Travel=function(target,spawn=null,kind='pipe'){
+ if(!r12||r12.transition||mode!=='playing')return false;
+ if(target==='alley'){target='bar';kind='region';}
+ if(target==='bonus'&&hero==='tank'){target='defense';spawn=null;}
+ r12SaveGeometry();const p=player;
+ const side=r12.def.sidePipe;
+ const horizontal=side&&Math.abs(p.x+p.w-side.x*2)<7;
+ r07Transit={kind,from:r12.area,target,x:p.x,y:p.y,dx:kind==='pipe'&&horizontal?1:0,dy:kind==='pipe'&&!horizontal?1:0};
+ r12.transition=42;r12.target=target;r12.transitionSpawn=spawn;r04ClearCommands();
+ if(kind==='pipe')oneShot('pipe'); // Mario's pipe recording for every character.
+ r12Event(kind==='pipe'?'pipe':'region-transition',{target});return true;
+};
+function r07DefenseExit(input){
+ const c=r03Challenge,p=player,q=c?.exitPipe;
+ if(!q||!c.won||r12.pipeCooldown>0||frame-c.wonAt<36)return;
+ if(input.down&&p.x+p.w/2>q.x+4&&p.x+p.w/2<q.x+28&&Math.abs(p.y+p.h-q.y)<=6)r12Travel('exit');
+}
+const r07Win=r03WinChallenge;
+r03WinChallenge=function(kind){
+ if(r03Challenge?.won)return;
+ r07Win(kind);
+ if(kind==='ninja'){
+  pipes=[{x:208,y:176,bottom:208}];
+  r12Message('旋风斩已获得',150);
+ }else{
+  const c=r03Challenge;c.exitPipe={x:192,y:192,bottom:232};
+  // After the fight, reveal the pipe in the lower-right wall and clear only
+  // its approach. The original combat arena is unchanged while fighting.
+  for(const b of c.blocks)if(b.x>=184&&b.y>=168)b.dead=true;
+  for(let x=192;x<224;x+=8)for(let y=192;y<232;y+=8)c.blocks.push({x,y,w:8,h:8,type:'pipe',dead:false});
+  pipes=[c.exitPipe];r12.pipeCooldown=36;
+  r12Message('基地守护成功 · 满级火力与护盾',160);
+ }
+};
+const r07Load=r12Load;
+r12Load=function(area,preserve=false,spawn=null,keepGeometry=false){
+ const tr=r07Transit,previous=r12?.area;
+ if(area==='alley')area='bar';
+ r07Load(area,preserve,spawn,keepGeometry);r07DefeatFx=[];
+ if(area==='bar'){
+  // Never retain a pipe from a previous successful challenge.
+  r12.def.pipes=[];pipes=[];r12.message='';r12.messageTime=0;
+  r12.spawnFrames=18;
+ }
+ if(area==='defense'){r03Challenge.total=4;r12.message='';r12.messageTime=0;}
+ if(area==='underground'){
+  r12.message='';r12.messageTime=0;
+  if(hero==='ryu')for(const [k,t] of tiles)if(t.routeExtension&&t.y>19)tiles.delete(k);
+ }
+ if(area==='exit'&&previous){
+  const top=176,to=top-player.h;Object.assign(player,{x:17,y:top,vx:0,vy:0,invuln:90});
+  r12.spawnFrames=26;r12.spawnFromY=top;r12.spawnToY=to;r12.pipeCooldown=55;
+ }
+ // Subsequent main-map areas do not change the selected character's soundtrack.
+ r12.r07Entry=tr?.kind||'start';r07Transit=null;
+};
+
+// Preserve the canonical map. Only remove pre-discovery explanatory labels and
+// the obsolete alley/shaft pipe. The lift locations and directions are retained.
+const r07Map=r12DrawMap;
+r12DrawMap=function(){
+ r07Map();
+ if(r12.area==='defense'&&r03Challenge?.won)r07VerticalPipe(r03Challenge.exitPipe);
+ if(hero==='tank'&&r12.area==='underground')for(const l of r12.lifts){
+  rect(l.x-camera,l.y,l.w,7,'#aa966d');rect(l.x-camera,l.y,l.w,2,'#f0d8ac');
+  for(let x=l.x+3;x<l.x+l.w;x+=8)rect(x-camera,l.y+3,1,3,'#3e5260');
+ }
+};
+
+// UI ownership is explicit: gameplay and results never keep .choosing.
+function r07MenuState(){
+ const menu=mode==='menu',o=$('overlay');o.classList.toggle('choosing',menu);
+ $('heroPicker').hidden=!menu;$('overlayCharacters').hidden=menu;
+ if($('relayStart'))$('relayStart').hidden=!menu;
+ if($('tankOptions06'))$('tankOptions06').hidden=!menu||hero!=='tank';
+ if(!menu)for(const b of document.querySelectorAll('[data-hero]'))b.blur();
+}
+const r07Overlay=showOverlay;
+showOverlay=function(...args){r07Overlay(...args);r07MenuState();};
+const r07Start=startGame;
+startGame=function(){r07BonusIndex=0;r07DefeatFx=[];r07Transit=null;const out=r07Start();r07MenuState();return out;};
+const r07Clear=r05ClearSession;
+r05ClearSession=function(){r07DefeatFx=[];r07Transit=null;r07BonusIndex=0;r07Clear();};
+
+// Measured gain staging, no replacement of BGM by the pipe effect.
+function r07NormaliseAudio(){
+ if(!audio)return;
+ for(const [key,v] of bank){if(!v.buffer||r07Normalised.has(v.buffer))continue;
+  const music=!!NINJA_TUNES[key]||key.endsWith('_theme');
+  if(!music&&!key.startsWith('t06_')&&!key.startsWith('ninja_')&&!key.startsWith('ng07_')&&key!=='pipe')continue;
+  let peak=0,sum=0,n=0;const d=v.buffer.getChannelData(0);
+  for(let i=0;i<d.length;i++){const a=Math.abs(d[i]);peak=Math.max(peak,a);if(a>.003){sum+=a*a;n++;}}
+  const rms=Math.sqrt(sum/Math.max(1,n)),target=key==='t06_engine'?.055:music?.12:.18;
+  const gain=Math.min(8,.68/Math.max(.001,peak),target/Math.max(.001,rms));
+  v.gain=gain;r07Normalised.add(v.buffer);r07MixReport[key]={peak,rms,gain,target};
+ }
+}
+const r07AudioInit=audioInit;
+audioInit=function(...args){const a=r07AudioInit(...args);r07NormaliseAudio();return a;};
+const r07Prepare=prepareAudio;
+prepareAudio=async function(){const r=await r07Prepare();r07NormaliseAudio();return r;};
+const r07Shot=oneShot;
+oneShot=function(key,options={}){r07NormaliseAudio();return r07Shot(key,options);};
+const r07Sound=ninjaSound;
+ninjaSound=function(name){
+ const key={slash:'ng07_sword',hurt:'ng07_hurt',hit:'ng07_enemy',throw:'ng07_throw',jump:'ng07_jump',pickup:'ng07_pickup'}[name];
+ if(key&&bank.has(key)){oneShot(key);return;}return r07Sound(name);
+};
+const r07AudioSync=audioSync;
+audioSync=function(){r07NormaliseAudio();r07AudioSync();
+ if(r12IsHero()&&bgm){const duck=hero==='tank'&&audio.currentTime<(r12.r06IntroUntil||0)?.3:1;setGain(bgm.gain,(bank.get(bgm.key)?.gain??.5)*duck,.04);}
+};
+
+const r07Fixed=fixedUpdate;
+fixedUpdate=function(){
+ const before=frame;
+ if(r12IsHero()&&r12?.transition>21&&r07Transit?.kind==='pipe'){
+  const k=42-r12.transition;player.x=r07Transit.x+r07Transit.dx*k*1.15;player.y=r07Transit.y+r07Transit.dy*k*1.15;
+ }
+ r07Fixed();if(frame!==before)r07TickDefeat();
+};
+const r07Draw=r12Draw;
+r12Draw=function(){
+ r07Draw();if(!r12)return;
+ ctx.save();ctx.beginPath();ctx.rect(0,r12.area==='defense'?24:31,256,r12.area==='defense'?208:197);ctx.clip();
+ for(const f of r07DefeatFx){
+  if(f.age<0)continue;const x=f.x-camera,y=f.y-r12.camY;
+  if(f.kind==='mario'){const im=classicSprite(f.sprite,f.under?'under':'normal');sprite(f.sprite,x-im.width/2,y-im.height/2,false,true,f.under?'under':'normal');}
+  else{const im=R12_SPRITES['ng-explosion07'];if(im)ctx.drawImage(im,Math.min(2,Math.floor(f.age/6))*48,0,48,48,Math.round(x-16),Math.round(y-16),32,32);}
+ }
+ ctx.restore();
+};
+heroHelp.tank='坦克大战 · 方向键/WASD 四向移动，J/空格开炮。零/一星一颗在场炮弹，二/三星两颗；三星能破钢。红色闪烁车受击掉道具，绿装甲车四发击破。';
+heroHelp.ryu='隼龙 · 方向移动，空格跳跃，J 攻击，L 忍术，E 切换。贴墙 ↑↓，跳跃蹬出。刀可击中前方及紧邻头顶的普通砖，不能砍碎石砖。';
+const tankTitle=document.querySelector('[data-hero="tank"] strong');if(tankTitle)tankTitle.textContent='坦克大战';
+if($('tankMusic06'))$('tankMusic06').checked=r06Music;
+selectHero(hero);r07MenuState();
+if(window.__relayTest){
+ __relayTest.travel=(...a)=>r12Travel(...a);
+ __relayTest.r07=()=>({version:R07_VERSION,bonusIndex:r07BonusIndex,transit:r07Transit,defeat:r07DefeatFx.map(f=>({...f})),mix:r07MixReport,pipeCount:pipes.length,secretTotal:r03Challenge?.total});
+}
+

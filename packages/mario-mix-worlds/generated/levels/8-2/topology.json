@@ -1,0 +1,63 @@
+{
+  "locations": [
+    {
+      "area": 0,
+      "entry": "Plain"
+    },
+    {
+      "area": 0,
+      "entry": "PipeVertical"
+    },
+    {
+      "area": 1
+    }
+  ],
+  "areas": [
+    {
+      "area": 0,
+      "setting": "Overworld",
+      "underwater": false,
+      "exit": null,
+      "sections": []
+    },
+    {
+      "area": 1,
+      "setting": "Underworld",
+      "underwater": false,
+      "exit": null,
+      "sections": []
+    }
+  ],
+  "links": [
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r050"
+      },
+      "kind": "location",
+      "target": 2
+    },
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r077"
+      },
+      "kind": "world",
+      "target": {
+        "map": "8-3"
+      }
+    },
+    {
+      "from": {
+        "area": 1,
+        "part": "base",
+        "record": "r009"
+      },
+      "kind": "location",
+      "target": 1
+    }
+  ],
+  "issues": []
+}

@@ -1,0 +1,217 @@
+/* R12 — append once inside the existing Terraria closure, after R11, before dispatch.
+   Mainline colliders and the four complete arena lanes remain unchanged. */
+const T12_VERSION='R12 · 泰拉瑞亚 1-3';
+const T12_ART_PROFILE=Object.freeze({guardianFrameHeight:92,guardianFrames:2,terrain:'native Terraria dirt pixels; browser-composed grass and night forest',armor:'native torso/head source crops plus complete 20-frame leg atlases'});
+const t12Events=[];
+function t12Event(type,data={}){t12Events.push({tick:state?.ticks,type,...data});if(t12Events.length>400)t12Events.shift();evt(type,data);}
+const t12Style=document.createElement('style');
+t12Style.textContent=`
+#t11ChestAction,#r06Summon,#r06Natural{display:none!important}
+#t12Toolbar[hidden]{display:none!important}
+#t12Toolbar{display:flex;align-items:stretch;gap:7px;padding:9px 4px 5px;flex-wrap:wrap}
+#t12Toolbar button{position:relative;display:flex;align-items:center;gap:7px;flex:1 1 95px;min-height:52px;padding:5px 9px;border:2px solid #66748c;border-radius:6px;background:#172942;color:#e1e7ed;font:12px inherit;cursor:pointer;text-align:left}
+#t12Toolbar button[aria-pressed=true]{border-color:#f6d986;background:#38435c;box-shadow:inset 0 0 0 1px #b29e65}
+#t12Toolbar button:disabled{opacity:.48;cursor:default}
+#t12Toolbar canvas{width:34px;height:34px;image-rendering:pixelated;flex:none}
+#t12Toolbar small{display:block;font-size:10px;color:#b9c8d7;margin-top:3px}
+#t12Status{flex-basis:100%;font-size:11px;line-height:1.5;color:#bdcec4;padding:2px 4px}
+#t12Toolbar kbd{position:absolute;right:5px;top:3px;font-size:9px;opacity:.7}
+`;
+document.head.append(t12Style);
+const t12Toolbar=document.createElement('div');t12Toolbar.id='t12Toolbar';t12Toolbar.setAttribute('role','group');t12Toolbar.setAttribute('aria-label','泰拉瑞亚武器与工具');
+t12Toolbar.innerHTML=[0,1,2].map((n)=>`<button type="button" data-t12-tool="${n}" aria-pressed="${n===0}"><canvas width="40" height="40"></canvas><span><b></b><small></small></span><kbd>${n+1}</kbd></button>`).join('')+'<div id="t12Status"></div>';
+t10Build.before(t12Toolbar);
+for(const b of t12Toolbar.querySelectorAll('button'))b.addEventListener('click',()=>{
+ if(!state||mode!=='playing')return;const n=Number(b.dataset.t12Tool);if(state.r05Arena&&n!==0)return;
+ r05CancelPointer();clearInput();r06DigitTool(n);t12UI();canvas.focus({preventScroll:true});render();
+});
+let t12BarKey='';
+function t12UI(){
+ const s=state;t12Toolbar.hidden=!isTrio()||!s||mode==='menu';if(!isTrio())return;
+ $('bestLabel').textContent='R12';t10Build.textContent='R12 · 原式平台 / 自动宝箱 / 拾取召唤';document.querySelector('header .offline').textContent='TERRARIA · 1-3';
+ $('r06Summon').hidden=true;t11ChestButton.hidden=true;
+ if(!s){$('overlayText').textContent='泰拉瑞亚 · 1-3｜星怒与铂金套；隐藏宝箱自动弹出奖励，拾取最右侧可疑眼球开战。';return;}
+ r06SyncKitTools();const key=[s.tool,s.wood,s.t12Blade,s.kit,s.r05Arena,s.hp,s.maxHp,r08ImageRevision,!!s.t12Stealth,s.shield,(s.t12Boosts||[]).map(b=>b.level).join(',')].join('|');
+ if(key!==t12BarKey){t12BarKey=key;const keys=[r06Weapon(s),'wood','axe'],names=[tools[0],'木平台','铜斧'];
+  t12Toolbar.querySelectorAll('button').forEach((b,n)=>{b.setAttribute('aria-pressed',String(n===s.tool));b.disabled=!!s.r05Arena&&n!==0;b.querySelector('b').textContent=names[n];b.querySelector('small').textContent=n===0?'J 使用 · E 切换':n===1?(s.r05Arena?'战场已铺好':s.wood+' 块 · J 放置'):(s.r05Arena?'战场无需砍伐':'J 砍树 / 回收');const g=b.querySelector('canvas').getContext('2d');g.clearRect(0,0,40,40);g.imageSmoothingEnabled=false;r06Icon(g,keys[n],20,20,34);});
+ }
+ const kit=s.kit,bonus=kit==='melee'?'日耀护盾 '+s.shield+'/3 · 双击左右冲刺':kit==='ranger'?'双击↓切换星旋隐身'+(s.t12Stealth?'（已启用）':''):kit==='mage'?'星云强化 '+(s.t12Boosts||[]).map((b,i)=>['伤害','生命','魔力'][i]+':'+b.level).join(' / '):kit==='summoner'?'星尘守卫 · 六把泰拉棱镜自动迎敌':'';
+ $('t12Status').textContent='生命 '+s.hp+'/'+s.maxHp+' · '+(kit?r06Kit(s).armorName:'铂金全套')+' · '+(s.cloudJump?'云朵瓶：空中再按跳跃':'云朵瓶：隐藏宝箱')+(bonus?' · '+bonus:'');
+ $('heroHelp').textContent='1/2/3 或点击下方栏切换武器、平台、斧头；E 循环，J 使用。管道口↓进入隐藏。宝箱自动弹出云朵瓶、泰拉刃、可疑眼球；前两件取完，再碰最右侧眼球即可开战。战后从原管道↓返回。';
+ if(s.r05Arena){$('relayMessage').textContent=s.phase==='preparation'?'宝箱自动打开：先取左侧云朵瓶和中间泰拉刃，最后碰最右侧可疑眼球。':s.phase==='battle'?'克苏鲁之眼战斗中 · 管道已封锁；胜利后由原管道返回。':'四套职业装备接触即穿上并骑 UFO；原管道口↓返回。';}
+}
+const t12UIBase=r06UpdateUI;r06UpdateUI=function(){t12UIBase();t12UI();};
+r06SyncKitTools=function(){tools[0]=r06Kit(state)?.weaponName||(state?.t12Blade?'泰拉刃':'星怒');};
+
+// Restore the actual 1-3 silhouette: full cap tiles and broad tiled supports, not an 8px pole.
+drawTerraTerrain=function(s){if(s.secret){drawTerraArenaTerrain(s);return;}const c=s.cam,vis=s.level.surfaces.filter(q=>q.x<c+W+90&&q.x+q.w>c-90),bottom=Math.max(336,H+(s.r07CamY||0)+48);
+ for(const q of vis)if(q.type==='tree'){
+  const left=q.x+16,width=q.w-32;if(width<=0)continue;
+  for(let x=left;x<left+width;x+=8)for(let y=q.y+16;y<bottom;y+=8)ctx.drawImage(tiles13.trunk,0,0,Math.min(8,left+width-x),8,Math.round(x-c),y,Math.min(8,left+width-x),8);
+ }
+ // Trees are background decoration/harvestables. ALL platform faces are composited afterward.
+ for(const t of s.trees||[])drawChopTree(t,c);
+ for(const q of vis.slice().sort((a,b)=>a.y-b.y)){
+  if(q.type==='tree')for(let dx=0;dx<q.w;dx+=16){const w=Math.min(16,q.w-dx),im=tiles13[dx===0?'treeLeft':dx+16>=q.w?'treeRight':'treeMid'];ctx.drawImage(im,0,0,w,16,Math.round(q.x+dx-c),q.y,w,16);}
+  else for(let x=q.x;x<q.x+q.w;x+=16)for(let y=q.y;y<q.y+q.h;y+=16)sprite(q.type==='floor'?'ground':'stone',x-c,y);
+ }
+};
+// Deterministic pixel scenery caches. Native sheets replace these fallbacks when present.
+const t12TreeCache=new Map();
+// Two original Terraria crown atlases, each with three native variants. No palette-swapped fake species.
+function t12TreeImage(kind){
+ const key=kind+'@'+r08ImageRevision;if(t12TreeCache.has(key))return t12TreeCache.get(key);
+ const snowy=kind==='boreal',source=r06Images[snowy?'t12TreeTop':'t12ForestTop'];
+ const cv=document.createElement('canvas');cv.width=96;cv.height=132;const g=cv.getContext('2d');g.imageSmoothingEnabled=false;
+ if(!source)return cv;
+ const frame=kind==='forest2'?2:kind==='boreal'?1:0,sx=frame*82;
+ // Extend the original trunk at the crown's bottom; no unrelated inventory-icon texture.
+ for(let y=72;y<132;y+=8)g.drawImage(source,sx+34,70,14,8,42,y,14,Math.min(8,132-y));
+ g.drawImage(source,sx,0,80,80,8,0,80,80);
+ t12TreeCache.set(key,cv);return cv;
+}
+function t12DrawTree(g,t,c=0,scale=1){const im=r06Images['t12Tree_'+t.variant],x=t.x-c;
+ const total=t.visualH||60,w=(im?im.width/Math.max(1,im.height):96/132)*total;
+ g.save();g.translate(Math.round(x),Math.round(t.y));if(t.shake)g.rotate(Math.sin(t.shake*1.6)*.035);if(t.fall){g.rotate((t.fallDir||1)*Math.min(1.5,(t.fall/42)**2*1.5));g.globalAlpha=Math.max(0,1-t.fall/45);}
+ if(t.hp<=0&&t.fall>=42){g.fillStyle='#795236';g.fillRect(-3,-4,6,4);g.restore();return;}
+ const image=im||t12TreeImage(t.variant);g.drawImage(image,Math.round(-w*scale/2),Math.round(-total*scale),Math.round(w*scale),Math.round(total*scale));g.restore();
+}
+drawChopTree=function(t,c){if(t.x-c<-100||t.x-c>W+100)return;t12DrawTree(ctx,t,c);};
+function t12Init(s,base=null){s.t12Blade=!!(base?.t12Blade??s.t12Blade);s.t12Boosts=[0,1,2].map(()=>({level:0,time:0}));s.t12BoostDrops=[];s.t12Stealth=false;s.t12Dash=0;s.t12Tap={x:0,y:0,left:-1000,right:-1000,down:-1000};s.t12Guardian={x:s.p.x-40,y:s.p.y-30,age:0,attack:0};s.t12Hits=0;s.t12RoomTicks=0;}
+const t12NewBase=newState;newState=function(){const s=t12NewBase();t12Init(s);if(!s.secret){s.trees=(s.trees||[]).map((t,i)=>({...t,variant:['forest','boreal','forest2'][i%3],visualH:Math.max(28,Math.min(63,t.y-38)),h:Math.max(20,Math.min(40,t.y-55))}));}return s;};
+const t12CopyBase=r06CopyLoadout;r06CopyLoadout=function(from,to){t12CopyBase(from,to);to.t12Blade=!!from.t12Blade;};
+
+// Automatic chest opening, three independently collectible objects. Summon item is rightmost.
+const t12PrepareBase=t11PrepareRoom;
+t11PrepareRoom=function(s){t12PrepareBase(s);t12Init(s,mainState);s.t11Chest.opened=false;s.t11Chest.age=0;s.t12RoomTicks=0;
+ s.t12Supplies=[{kind:'cloudBottle',label:'云朵瓶',tx:180,done:!!s.cloudJump},{kind:'terraBlade',label:'泰拉刃',tx:276,done:!!s.t12Blade},{kind:'suspiciousEye',label:'可疑眼球',tx:390,done:s.phase==='cleared'}].map((d,i)=>({...d,x:252,y:465,w:24,h:24,age:0,launched:false,grounded:false,index:i}));
+ if(s.phase==='cleared'){s.t11Chest.opened=true;for(const d of s.t12Supplies)d.done=true;}
+ s.notice='宝箱自动开启，先取云朵瓶和泰拉刃，最后拾取右侧可疑眼球。';s.noticeTime=230;s.r06Natural=0;};
+function t12Open(){const s=state;if(!s?.r05Arena||s.t11Transition||mode!=='playing')return false;const q=s.t11Chest;if(!q||q.opened)return false;q.opened=true;q.age=0;for(const d of s.t12Supplies||[])d.launched=true;terraSound('door');t12Event('chest-interact-open',{items:(s.t12Supplies||[]).filter(d=>!d.done).map(d=>d.kind)});return true;}
+t11OpenChest=t12Open;
+const t12SummonBase=r05Summon;
+r05Summon=function(){if(!state?.t12SummonGate)return false;return t12SummonBase();};
+$('r06Summon').onclick=()=>false;r06NaturalArrival=function(){return false;};
+function t12SuppliesStep(s){if(s.t11Transition||s.phase==='cleared')return;s.t12RoomTicks++;
+ /* R17: supply chest requires the interact action. */
+ if(!s.t11Chest.opened)return;
+ for(const d of s.t12Supplies){if(d.done||!d.launched)continue;d.age++;const u=Math.min(1,d.age/24);d.x=252+(d.tx-252)*(u*u*(3-2*u));d.y=u<1?454-60*Math.sin(u*Math.PI):474;d.grounded=u===1;
+  if(d.age<12)continue;const box={x:d.x-14,y:d.y-12,w:28,h:32};if(!near(s.p,box))continue;
+  if(d.kind==='suspiciousEye'&&(!s.cloudJump||!s.t12Blade)){if(s.ticks%60===0)note('先拿左侧云朵瓶和中间泰拉刃，再碰可疑眼球。');continue;}
+  d.done=true;terraSound('pickup');
+  if(d.kind==='cloudBottle')r06CollectCloud(s);
+  else if(d.kind==='terraBlade'){s.t12Blade=true;s.tool=0;s.p.attack=0;s.p.cooldown=0;s.starCooldown=0;r06SyncKitTools();r06Chat('获得泰拉刃！已替换星怒。','#b9f7bd');}
+  else{s.t12SummonGate=true;const ok=r05Summon();s.t12SummonGate=false;if(!ok){d.done=false;continue;}}
+  t12Event('chest-pickup',{kind:d.kind,phase:s.phase});r05Persist();
+ }
+}
+function t12DrawChest(s,c){const q=s.t11Chest;if(!q)return;const placed=r06Images.t12Chest,icon=r06Images.chestItem;
+ if(placed){const fy=q.opened?38:0;ctx.drawImage(placed,0,fy,32,32,Math.round(q.x-c),464,32,32);}else if(icon){if(!q.opened)ctx.drawImage(icon,q.x-c,q.y,32,28);else{ctx.drawImage(icon,0,10,32,18,q.x-c,q.y+10,32,18);ctx.drawImage(icon,0,0,32,10,q.x-c,q.y-3,32,10);}}
+ for(const d of s.t12Supplies||[]){if(d.done||!d.launched)continue;const bob=d.grounded?Math.sin((s.ticks+d.index*9)*.055)*2:0,x=d.x-c,y=d.y+bob,im=r06Images[d.kind]||photos[d.kind];ctx.save();ctx.globalAlpha=.22;ctx.fillStyle=d.index===2?'#df8e9a':d.index===1?'#7cddad':'#b8d0f5';ctx.beginPath();ctx.ellipse(x,d.y+19,15,3,0,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1;if(im){const sc=Math.min(28/im.width,28/im.height);ctx.drawImage(im,Math.round(x-im.width*sc/2),Math.round(y-im.height*sc/2),im.width*sc,im.height*sc);}if(Math.abs(s.p.x+s.p.w/2-d.x)<65)r05Text(d.label,x,y-30,11,'#ede9cf','center');ctx.restore();}
+}
+
+// The supply chest's Terra Blade uses a native weapon sprite, straight green beams and finite pierce.
+T10_ITEMS.terraBlade={grip:[6,47],tip:[40,5],scale:1,style:'swing'};
+const t12AttackBase=r06Attack;
+r06Attack=function(v={}){const s=state;if(!s.t12Blade||s.kit)return t12AttackBase(v);const p=s.p;if(p.cooldown>0)return;const aim=r06Arm(s,v),sc=t10Scale(s);p.t10SwingDuration=20;p.attack=20;p.cooldown=20;p.t10PreviousBlade=null;s.attackId++;
+ const pose=t10WorldPose(s),a=aim.facing<0?Math.PI-aim.angle:aim.angle,x=pose.hand.x+Math.cos(a)*13*sc,y=pose.hand.y+Math.sin(a)*13*sc;
+ r06Shoot(s,{type:'terraBlade',x,y,vx:Math.cos(a)*12*sc,vy:Math.sin(a)*12*sc,damage:90,life:90,angle:a,pierce:3});terraSound('swing',{volume:.6});t12Event('terra-blade-use',{hand:pose.hand,angle:a});};
+r05Attack=function(v){return r06Attack(v);};
+const t12ArcBase=t10HitArc;t10HitArc=function(s,targets){if(!s.t12Blade||s.kit)return t12ArcBase(s,targets);const p=s.p,pose=t10WorldPose(s),previous=p.t10PreviousBlade;if(p.attack>0&&pose.u>.10&&pose.u<.85){for(const t of targets){if(t.obj.r06Melee===s.attackId)continue;const box={x:t.x-t.w/2,y:t.y-t.h/2,w:t.w,h:t.h};if(segmentHits(pose.hand,pose.end,box,4*pose.scale)||previous&&segmentHits(previous.end,pose.end,box,5*pose.scale)){t.obj.r06Melee=s.attackId;r06DamageTarget(t,85,'terra-blade-melee');}}}p.t10PreviousBlade={hand:pose.hand,end:pose.end};};
+
+// Set mechanics are implemented in this browser engine; source art is never substituted by recoloured Platinum.
+const t12DamageBase=r06DamageTarget;
+r06DamageTarget=function(target,damage,kind){const s=state;if(!target||target.obj.dead)return;
+ if(s.kit==='ranger'&&s.t12Stealth)damage=Math.round(damage*1.8);
+ if(s.kit==='mage'&&s.t12Boosts)damage=Math.round(damage*(1+.15*s.t12Boosts[0].level));
+ t12DamageBase(target,damage,kind);
+ if(s.kit==='mage'&&kind!=='nebula-booster'&&++s.t12Hits%4===0&&s.t12BoostDrops.length<15){const k=Math.floor(s.t12Hits/4)%3;s.t12BoostDrops.push({kind:k,x:target.x,y:target.y,vx:Math.sin(s.ticks)*1.5,vy:-1,age:0});}
+};
+function t12ClassStep(s,v){if(!s.t12Tap)t12Init(s);const p=s.p,t=s.t12Tap,now=s.ticks;
+ if(s.kit==='ranger'&&v.y>.5&&t.y<=.5&&!t11NearMouth(s)&&!v.jump){if(now-t.down<18){s.t12Stealth=!s.t12Stealth;t.down=-1000;t12Event('vortex-stealth',{enabled:s.t12Stealth});}else t.down=now;}
+ if(s.kit==='melee'&&v.x&&Math.sign(v.x)!==Math.sign(t.x)){const k=v.x>0?'right':'left';if(now-t[k]<18&&s.shield>0&&!s.mounted){s.t12Dash=18;s.t12DashDir=Math.sign(v.x);t[k]=-1000;t12Event('solar-dash');}else t[k]=now;}
+ t.x=v.x;t.y=v.y;if(s.kit==='ranger'&&s.t12Stealth&&!s.mounted&&p.grounded)p.vx*=.35;
+ if(s.t12Dash>0){s.t12Dash--;p.vx=s.t12DashDir*12*t10Scale(s);p.invuln=Math.max(p.invuln,2);if(s.t12Dash===0)p.vx*=.3;for(const target of r06AllTargets(s))if(target.obj.t12DashHit!==now-s.t12Dash&&Math.hypot(target.x-p.x-p.w/2,target.y-p.y-p.h/2)<48*t10Scale(s)){target.obj.t12DashHit=now-s.t12Dash;r06DamageTarget(target,150,'solar-dash');s.shield=Math.max(0,s.shield-1);s.shieldTicks=0;s.t12Dash=0;t10Burst(s,target.x,target.y,'hit',16);break;}}
+ if(s.kit==='mage'){
+  for(const b of s.t12Boosts){if(b.time>0)b.time--;else b.level=0;}
+  for(const d of s.t12BoostDrops){d.age++;const dx=p.x+p.w/2-d.x,dy=p.y+p.h/2-d.y,dist=Math.hypot(dx,dy);if(dist<190){d.vx=dx/Math.max(1,dist)*4;d.vy=dy/Math.max(1,dist)*4;}else d.vy=Math.min(d.vy+.02,1);d.x+=d.vx;d.y+=d.vy;
+   if(dist<25){d.done=true;const b=s.t12Boosts[d.kind];b.level=Math.min(3,b.level+1);b.time=480;t12Event('nebula-boost',{kind:d.kind,level:b.level});}}
+  s.t12BoostDrops=s.t12BoostDrops.filter(d=>!d.done&&d.age<600);
+  if(now%20===0)s.hp=Math.min(s.maxHp,s.hp+s.t12Boosts[1].level);
+  if(now%6===0)s.mana=Math.min(s.maxMana,s.mana+s.t12Boosts[2].level);
+ }
+ if(s.kit==='summoner'){
+  const g=s.t12Guardian,target=r06Target(s,640*t10Scale(s));g.age++;g.attack=Math.max(0,g.attack-1);
+  const sc=t10Scale(s),tx=target?target.x-38*sc:p.x-38*sc,ty=target?target.y-12*sc:t10BodyFoot(s,p.y+p.h,sc)-50*sc;g.facing=target?(target.x>g.x?1:-1):p.facing;
+  g.x=approach(g.x,tx,6*t10Scale(s));g.y=approach(g.y,ty,5*t10Scale(s));
+  if(target&&Math.hypot(g.x-target.x,g.y-target.y)<95*t10Scale(s)&&now%20===0){g.attack=12;r06DamageTarget(target,40,'stardust-guardian');t12Event('stardust-guardian-hit');}
+ }
+}
+const t12MainBase=r04MainStep;r04MainStep=function(v){const s=state;t12MainBase(v);if(state===s&&s&&mode==='playing'&&!s.t11Transition)t12ClassStep(s,v);};
+const t12ArenaBase=r05ArenaStep;r05ArenaStep=function(v){const s=state;if(!s)return;t12ArenaBase({...v,auxEdge:false});if(state!==s||mode!=='playing'||s.t11Transition)return;t12SuppliesStep(s);t12ClassStep(s,v);};
+const t12PersistBase=r05Persist;r05Persist=function(){t12PersistBase();if(state?.r05Arena&&mainState)mainState.t12Blade=!!state.t12Blade;};
+const t12EquipBase=r07EquipDrop;r07EquipDrop=function(s,d){const ok=t12EquipBase(s,d);if(ok){s.t12Stealth=false;s.t12Boosts=[0,1,2].map(()=>({level:0,time:0}));s.t12BoostDrops=[];s.t12Guardian={x:s.p.x-45,y:s.p.y,age:0,attack:0};t12Event('set-equipped',{kit:s.kit});}return ok;};
+
+// Layered forest night and native tile-based ground. Geometry remains the supplied four-lane arena.
+const t12SceneCache=new Map();
+function t12Noise(x,y){let n=Math.imul(x+17,374761393)^Math.imul(y+53,668265263);n=Math.imul(n^(n>>>13),1274126177);return ((n^(n>>>16))>>>0)/4294967295;}
+function t12GroundTile(){if(t12SceneCache.has('dirt'))return t12SceneCache.get('dirt');const cv=document.createElement('canvas');cv.width=cv.height=32;const g=cv.getContext('2d');g.fillStyle='#604533';g.fillRect(0,0,32,32);for(let y=0;y<32;y+=2)for(let x=0;x<32;x+=2){const n=t12Noise(x,y);g.fillStyle=n>.82?'#8b6550':n<.23?'#47332d':'#70513b';g.fillRect(x,y,2,2);}g.fillStyle='#3e302b';g.fillRect(3,7,6,2);g.fillRect(20,20,8,2);t12SceneCache.set('dirt',cv);return cv;}
+function t12NightTree(kind,layer=0){
+ const key='night-tree:'+kind+':'+layer+':'+r08ImageRevision;
+ if(t12SceneCache.has(key))return t12SceneCache.get(key);
+ const source=t12TreeImage(kind),cv=document.createElement('canvas');cv.width=source.width;cv.height=source.height;
+ const g=cv.getContext('2d');g.imageSmoothingEnabled=false;g.drawImage(source,0,0);
+ g.globalCompositeOperation='source-atop';g.fillStyle=['rgba(13,29,47,.85)','rgba(19,38,49,.76)','rgba(23,49,50,.61)'][layer];g.fillRect(0,0,cv.width,cv.height);
+ t12SceneCache.set(key,cv);return cv;
+}
+function t12Background(s){const w=R06_VIEW.w,h=R06_VIEW.h;ctx.fillStyle='#0e1830';ctx.fillRect(0,0,w,h);
+ // Hard-edged pixel bands rather than a flat empty fill; stable parallax, no per-frame random flicker.
+ for(let i=0;i<6;i++){ctx.fillStyle=['#0f1b35','#12213d','#162946','#1c334b','#253e50','#314a53'][i];ctx.fillRect(0,150+i*86,w,90);}
+ for(let i=0;i<100;i++){const x=((i*197+29-s.cam*.018)%w+w)%w,y=25+(i*i*29)%365;ctx.globalAlpha=.4+.25*Math.sin(s.ticks*.01+i);ctx.fillStyle='#d4e0e4';ctx.fillRect(Math.round(x),y,i%17===0?2:1,1);}ctx.globalAlpha=1;
+ const moon=r06Images.t12Moon;if(moon)ctx.drawImage(moon,0,0,moon.width,Math.min(moon.width,moon.height),970-s.cam*.015,75,48,48);else{ctx.fillStyle='#c4d8db';ctx.beginPath();ctx.arc(986-s.cam*.015,102,24,0,Math.PI*2);ctx.fill();ctx.fillStyle='#94afb9';ctx.fillRect(975-s.cam*.015,91,8,7);ctx.fillRect(992-s.cam*.015,111,6,5);}
+ for(let layer=0;layer<3;layer++){const step=layer===0?104:layer===1?72:60,par=[.04,.10,.20][layer],baseY=390+layer*58-(s.camY+96)*.10,origin=Math.floor(s.cam*par/step)-2;ctx.save();ctx.globalAlpha=[.38,.50,.63][layer];for(let i=origin;i<origin+Math.ceil(w/step)+4;i++){const x=i*step-s.cam*par,height=105+t12Noise(i,layer)*145,im=t12NightTree(i%7===0?'boreal':i%3===0?'forest2':'forest',layer);ctx.drawImage(im,Math.round(x),Math.round(baseY-height),Math.round(height*.72),Math.round(height));}ctx.fillStyle=['#162738','#1b3040','#253a43'][layer];ctx.fillRect(0,Math.round(baseY)-2,w,h-baseY+2);ctx.restore();}
+
+}
+function t12DrawGround(s,c){const top=R07_ARENA.floor,tile=r06Images.t12Dirt;
+ ctx.save();ctx.imageSmoothingEnabled=false;ctx.fillStyle='#5d4232';ctx.fillRect(0,top,R06_VIEW.w,440);
+ for(let x=Math.floor(c/32)*32;x<c+R06_VIEW.w+32;x+=32)for(let y=top;y<top+440;y+=32){
+  const v=Math.floor(t12Noise(Math.floor(x/32),Math.floor(y/32))*3),sx=18+18*v;
+  if(tile)ctx.drawImage(tile,sx,18,16,16,Math.round(x-c),y,32,32);
+  else ctx.drawImage(t12GroundTile(),Math.round(x-c),y);
+ }
+ const shade=ctx.createLinearGradient(0,top,0,top+260);shade.addColorStop(0,'rgba(12,15,21,0)');shade.addColorStop(1,'rgba(12,15,21,.42)');ctx.fillStyle=shade;ctx.fillRect(0,top,R06_VIEW.w,440);
+ ctx.fillStyle='#213b2b';ctx.fillRect(0,top,R06_VIEW.w,5);ctx.fillStyle='#54783c';ctx.fillRect(0,top,R06_VIEW.w,2);
+ for(let x=Math.floor(c/8)*8;x<c+R06_VIEW.w+8;x+=8){const n=t12Noise(x,3);ctx.fillStyle=n>.5?'#6a8a48':'#365d31';ctx.fillRect(Math.round(x-c),top-2,5,3);if(n>.7){ctx.fillRect(Math.round(x-c+1),top-5,2,4);ctx.fillRect(Math.round(x-c+4),top-4,2,3);}}
+ ctx.restore();
+}
+
+const t12DrawProjectilesBase=r06DrawProjectiles;
+r06DrawProjectiles=function(s,c){const beams=s.projectiles.filter(b=>b.type==='terraBlade'),original=s.projectiles;s.projectiles=original.filter(b=>b.type!=='terraBlade');t12DrawProjectilesBase(s,c);s.projectiles=original;const sc=t10Scale(s);
+ for(const b of beams){const im=r06Images.t12TerraBeam||photos.beam;ctx.save();ctx.globalCompositeOperation='lighter';for(let i=0;i<b.trail.length;i+=2){const t=b.trail[i];ctx.globalAlpha=(i+1)/b.trail.length*.22;ctx.fillStyle='#73e987';ctx.fillRect(t.x-c-5*sc,t.y-3*sc,10*sc,6*sc);}ctx.globalAlpha=.95;ctx.translate(Math.round(b.x-c),Math.round(b.y));ctx.rotate(Math.atan2(b.vy,b.vx)+Math.PI/4);if(im)ctx.drawImage(im,-im.width*sc/2,-im.height*sc/2,im.width*sc,im.height*sc);ctx.restore();}
+ if(s.kit==='melee'){const p=s.p,cx=p.x+p.w/2-c,cy=t10BodyFoot(s,p.y+p.h,sc)-24*sc;ctx.save();ctx.globalCompositeOperation='lighter';for(let i=0;i<s.shield;i++){const a=s.ticks*.027+i*Math.PI*2/3,x=cx+Math.cos(a)*23*sc,y=cy+Math.sin(a)*20*sc;ctx.fillStyle='#e5813a';ctx.fillRect(x-3*sc,y-4*sc,6*sc,8*sc);ctx.fillStyle='#ffe5a0';ctx.fillRect(x-sc,y-2*sc,2*sc,4*sc);}ctx.restore();}
+ if(s.kit==='mage'){const cols=['#dc71d8','#df7997','#83a0ea'];for(const d of s.t12BoostDrops){ctx.save();ctx.translate(d.x-c,d.y);ctx.rotate(d.age*.045);ctx.fillStyle=cols[d.kind];ctx.fillRect(-5,-5,10,10);ctx.fillStyle='#fff2ff';ctx.fillRect(-2,-2,4,4);ctx.restore();}}
+ if(s.kit==='summoner'&&s.t12Guardian){const g=s.t12Guardian,im=r06Images.t12Guardian;ctx.save();ctx.globalAlpha=.83;ctx.globalCompositeOperation='source-over';
+ if(im){const fh=92,frame=Math.floor(g.age/9)%Math.max(1,Math.floor(im.height/fh));ctx.translate(Math.round(g.x-c),Math.round(g.y));ctx.scale((g.facing||s.p.facing)*sc,sc);ctx.drawImage(im,0,frame*fh,108,fh,-54,-46,108,fh);ctx.scale((g.facing||s.p.facing)/sc,1/sc);ctx.translate(-Math.round(g.x-c),-Math.round(g.y));}
+ if(g.attack){ctx.strokeStyle='#bedbf6';ctx.lineWidth=4*sc;ctx.beginPath();ctx.arc(g.x-c+14*sc,g.y,24*sc,-1.5,1.2);ctx.stroke();}ctx.restore();}
+};
+const t12BodyBase=r06DrawBody;r06DrawBody=function(g,x,foot,...args){const fade=g===ctx&&state?.kit==='ranger'&&state.t12Stealth;g.save();if(fade)g.globalAlpha*=.68;t12BodyBase(g,x,foot,...args);g.restore();};
+
+r06DrawArena=function(){const s=state,p=s.p,c=s.cam,yc=s.camY??-96;r05Viewport(true);ctx.clearRect(0,0,R06_VIEW.w,R06_VIEW.h);t12Background(s);ctx.save();ctx.translate(0,-yc);
+ // Non-colliding forest trees behind the arena and behind platforms. The entry stays open.
+ for(let x=690;x<R07_ARENA.width;x+=260)if(x-c>-120&&x-c<R06_VIEW.w+120)t12DrawTree(ctx,{x,y:496,variant:['forest','boreal','forest2'][Math.floor(x/260)%3],visualH:122+(x%3)*23,hp:3},c);
+ t12DrawGround(s,c);
+ for(const q of s.level.surfaces)if(q.oneWay)r05DrawWood(q,c);
+ for(const f of s.campfires)if(f.x-c>-130&&f.x-c<R06_VIEW.w+130)r07Furniture('campfire',f.x-c,f.y,s.ticks,f.phase);
+ for(const t of s.lamps)if(t.x-c>-110&&t.x-c<R06_VIEW.w+110)r07Furniture('torch',t.x-c,t.y,s.ticks,t.phase);
+ t12DrawChest(s,c);t11DrawPipe(s.pipe,c);
+ if(s.eye&&!s.eye.dead&&['charge','fastDash'].includes(s.eye.mode))for(let i=0;i<s.eye.trail.length;i+=3){ctx.save();ctx.globalAlpha=i/s.eye.trail.length*.18;r05DrawEye({...s.eye,...s.eye.trail[i],flash:0},c);ctx.restore();}
+ for(const m of s.servants)r05DrawServant(m,c);r05DrawEye(s.eye,c);r07DrawLoot(s,c);r06DrawProjectiles(s,c);r06DrawMount(s,c);
+ r06DrawBody(ctx,p.x+p.w/2-c,p.y+p.h,p.attack?p.attackFacing:p.facing,p.grounded&&Math.abs(p.vx)>.1?p.walk:0,!p.grounded,p.attack,0,1,r06Armor(s),r06Weapon(s),1);
+ if(s.t11Transition)t11DrawPipe(s.pipe,c);
+ for(const n of s.numbers){ctx.save();ctx.globalAlpha=Math.min(1,n.life/12);r05Text(n.text,n.x-c,n.y,16,n.color,'center');ctx.restore();}
+ ctx.restore();r07HUD(s);trioUI();
+};
+r04PauseHelp=function(){return state?.r05Arena?'宝箱自动打开。先拿云朵瓶与泰拉刃，再碰最右侧可疑眼球开战。空格跳跃，↓＋空格下穿，J 攻击，H 治疗。胜利后到原管道按↓返回。':'空格跳跃，J 使用，1/2/3 或点击工具栏选武器 / 平台 / 斧头，E 循环。粘鞍拾取即骑乘；站在管道口↓进入隐藏。';};
+const t12Diagnostics={version:T12_VERSION,artProfile:T12_ART_PROFILE,events:()=>t12Events,ready:Promise.all(r06AssetJobs),supplies:()=>state?.t12Supplies,weapon:()=>r06Weapon(state),layerOrder:()=>['background','platform-support','harvest-tree','platform-face','items','actor','pipe-rim-during-transition'],classState:()=>({kit:state?.kit,stealth:state?.t12Stealth,boosts:state?.t12Boosts,guardian:state?.t12Guardian}),init:()=>t12Init(state),attack:r06Attack,pose:()=>t10WorldPose(state),terrain:()=>state.level.surfaces.map(q=>({...q})),assetInfo:()=>Object.fromEntries(Object.entries(r06Images).map(([k,im])=>[k,{w:im.width,h:im.height,embedded:!!R06_ASSET_DATA[k]}])),renderAtlas(){const saved=state;const cv=document.createElement('canvas');cv.width=1000;cv.height=420;const g=cv.getContext('2d');g.fillStyle='#18283b';g.fillRect(0,0,1000,420);g.imageSmoothingEnabled=false;try{state=null;['solar','vortex','nebula','stardust'].forEach((armor,i)=>{g.fillStyle='#e4e8ef';g.font='16px sans-serif';g.fillText(armor,30+i*250,25);[0,1,2,3].forEach((j)=>{r06DrawBody(g,55+i*250+j*48,160,1,j===0?0:j*42,j===3,0,0,1,armor,'starfury',1.5);});r06DrawBody(g,125+i*250,370,-1,40,false,12,0,1,armor,'starfury',2.5);});}finally{state=saved;}return cv.toDataURL();}};
+Promise.all([readyPromise,...r06AssetJobs.filter((_,i)=>!!R06_ASSET_DATA[Object.keys(R06_IMAGE_PATHS)[i]])]).then(()=>{if(mode==='menu'&&isTrio()){portrait();t12UI();}});
+

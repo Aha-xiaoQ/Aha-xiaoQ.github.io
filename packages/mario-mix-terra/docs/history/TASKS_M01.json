@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "project": "mario-mix-terra",
+  "version": "terra-m01",
+  "updatedAt": "2026-09-16",
+  "tasks": [
+    {
+      "id": "M01-BASE",
+      "title": "原底稿重建与首批独立模块",
+      "status": "local-verified",
+      "evidence": "TEST_REPORT.md；不等于自然通关或线上发布"
+    },
+    {
+      "id": "M01-PLATFORM",
+      "title": "Windows / HTTP ESM / 实体设备复验",
+      "status": "ready",
+      "files": [
+        "scripts/",
+        "tests/",
+        "docs/ACCEPTANCE.md"
+      ],
+      "acceptance": "记录系统浏览器和候选 SHA；不跳过悬空目录链接测试"
+    },
+    {
+      "id": "M02-BINDINGS",
+      "title": "改键配置解析与菜单输入焦点模块",
+      "status": "planned",
+      "files": [
+        "src/compat/46-terra-bindings.js.part",
+        "src/content/actions.mjs"
+      ],
+      "acceptance": "保留历史配置迁移、冲突提示、原释放按键策略和存储键"
+    },
+    {
+      "id": "M02-INVENTORY",
+      "title": "箱子与物品交换事务",
+      "status": "planned",
+      "files": [
+        "src/compat/45-terra-inventory.js.part"
+      ],
+      "acceptance": "同一奖励只发一次；旧武器留地；提示与真实物品一致"
+    },
+    {
+      "id": "M02-SCENE",
+      "title": "隐藏场景生命周期边界",
+      "status": "planned",
+      "files": [
+        "src/compat/36-terra-actor-ui.js.part"
+      ],
+      "acceptance": "进入、返回、奖励、坐骑、音频清理各有回放；不得扩大 wrapper 链"
+    },
+    {
+      "id": "M02-RESOURCES",
+      "title": "原素材许可台账与按需加载原型",
+      "status": "planned",
+      "files": [
+        "content/resources.json",
+        "docs/REMOTE_SOURCES.json"
+      ],
+      "acceptance": "来源与授权分别记录，原型通过视觉/音频对照才替换加载器"
+    },
+    {
+      "id": "M01-PR",
+      "title": "一位外部贡献者完成一个小 PR",
+      "status": "ready",
+      "acceptance": "独立启动、修改单模块、提交测试和审核；目前没有真实外部 PR 完成证据"
+    }
+  ]
+}

@@ -1,0 +1,443 @@
+/* GENERATED from collab/project.json. Run npm run collab:build; do not edit. */
+globalThis.MM_PROJECT = {
+  "schemaVersion": 1,
+  "project": "混合马里奥 · 开发中心",
+  "release": "collab-r01",
+  "updatedAt": "2026-09-14",
+  "repository": "Aha-xiaoQ/Aha-xiaoQ.github.io",
+  "baseCommit": "ed76f0b668a9e7c1a8d8f71bed2489cb2b063c9e",
+  "phase": "第一轮 · 协作基建",
+  "deliveryStatus": "本地交付包；等待维护者推送与线上验收",
+  "summary": "先让每一次修改都有入口、有依据、有记录，再把游戏一步步做完整。",
+  "nextTask": "OPS-001",
+  "guardrails": [
+    "不直接推送或修改 GitHub 设置",
+    "不覆盖三期游戏本体与已有下载包",
+    "不把网页本地草稿说成全员已同步",
+    "不扩大现有游戏或第三方素材的许可范围"
+  ],
+  "episodes": [
+    {
+      "id": "mix-1",
+      "title": "混合马里奥 I",
+      "subtitle": "1-1 · 马里奥 / 比尔 / 洛克人",
+      "path": "games/mario-mix/play.html",
+      "detailPath": "games/mario-mix/index.html",
+      "sourceNote": "现有 HTML + JavaScript 多文件实现；本轮保留。"
+    },
+    {
+      "id": "mix-2",
+      "title": "混合马里奥 II",
+      "subtitle": "1-2 · 忍者龙剑传 × 坦克大战",
+      "path": "games/mario-mix-2/play.html",
+      "detailPath": "games/mario-mix-2/index.html",
+      "sourceNote": "现有约 11 MB HTML；本轮仅核对路径与哈希，未重构。"
+    },
+    {
+      "id": "mix-3",
+      "title": "混合马里奥 III",
+      "subtitle": "1-3 · 泰拉瑞亚",
+      "path": "games/mario-mix-3/play.html",
+      "detailPath": "games/mario-mix-3/index.html",
+      "sourceNote": "现有约 12 MB HTML；与未推送版本的对齐待完成。"
+    }
+  ],
+  "milestones": [
+    {
+      "id": "M1",
+      "title": "协作准备版",
+      "status": "local",
+      "description": "开发中心、启动、贡献规范、任务数据与续接流程。"
+    },
+    {
+      "id": "M2",
+      "title": "等价结构整理",
+      "status": "planned",
+      "description": "基线对齐与测试完成后，先抽离一个输入模块。"
+    },
+    {
+      "id": "M3",
+      "title": "首章共同验收",
+      "status": "planned",
+      "description": "先确认 1-1 至 1-4 的范围，再验证主线与隐藏关。"
+    },
+    {
+      "id": "M4",
+      "title": "完整主线扩展",
+      "status": "planned",
+      "description": "角色和世界按确认的范围增量推进，不承诺未核实日期。"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "COL-001",
+      "title": "明确启动入口与当前结构",
+      "area": "文档",
+      "status": "done",
+      "priority": "P0",
+      "owner": "Aha-xiaoQ",
+      "summary": "记录三期游戏的实际路径，分清现状与目标，不把示意目录写成已完成。",
+      "acceptance": [
+        "仓库根目录启动说明",
+        "三期入口可定位",
+        "明确本轮不改游戏玩法"
+      ],
+      "paths": [
+        "README.md",
+        "docs/collab/GETTING_STARTED.md",
+        "docs/collab/ARCHITECTURE.md"
+      ],
+      "dependsOn": [],
+      "evidence": "对应文档已写入 collab-r01；本地测试范围见 docs/collab/VALIDATION.md。",
+      "notes": "",
+      "issueUrl": ""
+    },
+    {
+      "id": "COL-002",
+      "title": "开发中心与本地状态草稿",
+      "area": "网站",
+      "status": "done",
+      "priority": "P0",
+      "owner": "Aha-xiaoQ",
+      "summary": "独立页面展示任务、三个游戏入口、文档和续接信息；管理操作只保存在当前浏览器。",
+      "acceptance": [
+        "任务筛选与详情可用",
+        "明确区分本地草稿与共享状态",
+        "支持导出 project.json",
+        "不替换笔记与已有游戏页面"
+      ],
+      "paths": [
+        "dev/index.html",
+        "dev/app.js",
+        "dev/model.js",
+        "assets/site-shell.js"
+      ],
+      "dependsOn": [],
+      "evidence": "开发中心源码已交付；交互验证记录见 docs/collab/VALIDATION.md。",
+      "notes": "",
+      "issueUrl": ""
+    },
+    {
+      "id": "COL-003",
+      "title": "无第三方依赖的开发命令与校验",
+      "area": "工具",
+      "status": "done",
+      "priority": "P0",
+      "owner": "Aha-xiaoQ",
+      "summary": "先提供可重复执行的本地命令，不引入全量打包或引擎迁移。",
+      "acceptance": [
+        "npm run dev 可以启动",
+        "check 校验数据和生成文件",
+        "测试覆盖状态模型与静态服务",
+        "doctor 区分增量包与完整仓库"
+      ],
+      "paths": [
+        "package.json",
+        "tools/dev-server.mjs",
+        "tools/check.mjs",
+        "tests"
+      ],
+      "dependsOn": [],
+      "evidence": "工具与测试已写入包；执行结果见 docs/collab/VALIDATION.md。",
+      "notes": "",
+      "issueUrl": ""
+    },
+    {
+      "id": "COL-004",
+      "title": "PR 模板与低权限 CI 配置",
+      "area": "协作",
+      "status": "review",
+      "priority": "P0",
+      "owner": "Aha-xiaoQ",
+      "summary": "配置文件已准备；必须由维护者推送后验证 GitHub 实际运行，再启用必须通过的检查。",
+      "acceptance": [
+        "Issue / PR 模板在 GitHub 正常展示",
+        "PR 检查首次成功",
+        "普通贡献者不获取发布权限"
+      ],
+      "paths": [
+        ".github",
+        "CONTRIBUTING.md",
+        "docs/collab/MAINTAINER_SETUP.md"
+      ],
+      "dependsOn": [
+        "COL-003"
+      ],
+      "evidence": "本地配置检查完成；远端 GitHub Actions 未运行，尚未启用分支保护。",
+      "notes": "",
+      "issueUrl": ""
+    },
+    {
+      "id": "COL-005",
+      "title": "文件化续接与手动交付流程",
+      "area": "文档",
+      "status": "done",
+      "priority": "P0",
+      "owner": "Aha-xiaoQ",
+      "summary": "新对话从仓库状态接手，而不是依赖聊天记忆；每轮交付只包含明确列出的变更。",
+      "acceptance": [
+        "HANDOFF 写明范围和下一步",
+        "AGENTS 明确禁止擅自推送",
+        "更新包有基础哈希与冲突检测"
+      ],
+      "paths": [
+        "AGENTS.md",
+        "docs/collab/HANDOFF.md",
+        "docs/collab/RELEASE_WORKFLOW.md"
+      ],
+      "dependsOn": [],
+      "evidence": "续接说明与安全应用工具随 collab-r01 交付。",
+      "notes": "",
+      "issueUrl": ""
+    },
+    {
+      "id": "OPS-001",
+      "title": "推送并验收协作准备版",
+      "area": "发布",
+      "status": "ready",
+      "priority": "P0",
+      "owner": "Aha-xiaoQ",
+      "summary": "应用增量包、检查改动后由维护者手动推送；确认开发中心和原站点正常。",
+      "acceptance": [
+        "先检查更新包冲突",
+        "页面部署后可访问 dev/",
+        "笔记与三期介绍能进入开发中心",
+        "三期游戏与下载入口没有退步"
+      ],
+      "paths": [
+        "docs/collab/RELEASE_WORKFLOW.md",
+        "dev/index.html"
+      ],
+      "dependsOn": [
+        "COL-001",
+        "COL-002",
+        "COL-003",
+        "COL-005"
+      ],
+      "evidence": "",
+      "notes": "",
+      "issueUrl": ""
+    },
+    {
+      "id": "SRC-001",
+      "title": "对齐最新游戏开发基线",
+      "area": "架构",
+      "status": "ready",
+      "priority": "P0",
+      "owner": "",
+      "summary": "逐项核对 main、最新离线 HTML 与最近试玩反馈，选择后续重构唯一源码。不得仅凭日期猜最新。",
+      "acceptance": [
+        "记录文件路径与 Git blob / SHA-256",
+        "对照第三期现有约 12 MB HTML",
+        "列出是否仍有未推送版本",
+        "保留旧版与可回退引用"
+      ],
+      "paths": [
+        "docs/collab/BASELINE.md",
+        "collab/runtime-baseline.json",
+        "games/mario-mix-3/play.html"
+      ],
+      "dependsOn": [],
+      "evidence": "",
+      "notes": "",
+      "issueUrl": ""
+    },
+    {
+      "id": "LIC-001",
+      "title": "逐项审计游戏代码与素材许可",
+      "area": "素材",
+      "status": "ready",
+      "priority": "P0",
+      "owner": "",
+      "summary": "先盘点，不把未知来源标成开源；本轮没有重新授权现有游戏。",
+      "acceptance": [
+        "记录来源与许可证据",
+        "区分原创 / 上游代码 / 第三方资产",
+        "未知许可进入待核验清单",
+        "有明确可运行的授权素材方案"
+      ],
+      "paths": [
+        "collab/assets-register.json",
+        "docs/collab/ASSETS.md",
+        "RIGHTS.md"
+      ],
+      "dependsOn": [],
+      "evidence": "",
+      "notes": "",
+      "issueUrl": ""
+    },
+    {
+      "id": "TEST-001",
+      "title": "录制三期操作与通关回归基线",
+      "area": "测试",
+      "status": "ready",
+      "priority": "P1",
+      "owner": "",
+      "summary": "固定浏览器、版本与输入方式，记录原有表现，再做等价拆分。",
+      "acceptance": [
+        "三期启动、暂停、重开与基础通关",
+        "隐藏关进出和结算",
+        "键盘、手柄与触屏分别记录",
+        "保留已知问题，不把未测写成通过"
+      ],
+      "paths": [
+        "docs/collab/GAMEPLAY_SPEC.md",
+        "docs/collab/VALIDATION.md"
+      ],
+      "dependsOn": [
+        "SRC-001"
+      ],
+      "evidence": "",
+      "notes": "",
+      "issueUrl": ""
+    },
+    {
+      "id": "INPUT-001",
+      "title": "手柄放置与改键回归检查",
+      "area": "输入",
+      "status": "blocked",
+      "priority": "P1",
+      "owner": "",
+      "summary": "依据用户反馈验证脚边前一格放置与自定义按键；先复现，再单独修复。",
+      "acceptance": [
+        "默认平地目标在面朝方向的脚边前一格",
+        "占用 / 越界有反馈",
+        "改键冲突、断连和恢复有明确定义"
+      ],
+      "paths": [
+        "docs/collab/GAMEPLAY_SPEC.md",
+        "games/mario-mix-3/play.html"
+      ],
+      "dependsOn": [
+        "SRC-001",
+        "TEST-001"
+      ],
+      "evidence": "",
+      "notes": "",
+      "issueUrl": ""
+    },
+    {
+      "id": "ITEM-001",
+      "title": "箱子与换武器掉落回归检查",
+      "area": "玩法",
+      "status": "blocked",
+      "priority": "P1",
+      "owner": "",
+      "summary": "验证碰箱开箱、名称效果提示、旧武器落地可换回；不认定线上版本仍有所有旧问题。",
+      "acceptance": [
+        "箱子只触发一次且奖励非空",
+        "换下的武器落地可重新拾取",
+        "防止原地自动拾取循环",
+        "名称效果与物品数据一致"
+      ],
+      "paths": [
+        "docs/collab/GAMEPLAY_SPEC.md",
+        "games/mario-mix-3/play.html"
+      ],
+      "dependsOn": [
+        "SRC-001",
+        "TEST-001"
+      ],
+      "evidence": "",
+      "notes": "",
+      "issueUrl": ""
+    },
+    {
+      "id": "ARCH-001",
+      "title": "提取纯输入模型试点",
+      "area": "架构",
+      "status": "blocked",
+      "priority": "P1",
+      "owner": "",
+      "summary": "只抽离一个可测试模块作为重构试点；不同时改变关卡、跳跃、碰撞和动画。",
+      "acceptance": [
+        "提取前后输入轨迹一致",
+        "原键位与手柄功能不退步",
+        "独立测试通过",
+        "文档明确其余仍为旧实现"
+      ],
+      "paths": [
+        "docs/collab/ARCHITECTURE.md",
+        "docs/collab/DECISIONS.md"
+      ],
+      "dependsOn": [
+        "SRC-001",
+        "TEST-001"
+      ],
+      "evidence": "",
+      "notes": "",
+      "issueUrl": ""
+    },
+    {
+      "id": "AUDIO-001",
+      "title": "角色与场景音频规则回归",
+      "area": "音频",
+      "status": "blocked",
+      "priority": "P1",
+      "owner": "",
+      "summary": "验证隐藏关、死亡、拉旗、胜利之间的切换；目标为一个主 BGM 所有者。",
+      "acceptance": [
+        "不会重复播放两条主 BGM",
+        "死亡或切场景不会残留旧曲",
+        "保留角色专属声音",
+        "先完成资源授权核验"
+      ],
+      "paths": [
+        "docs/collab/GAMEPLAY_SPEC.md",
+        "docs/collab/ASSETS.md"
+      ],
+      "dependsOn": [
+        "SRC-001",
+        "LIC-001",
+        "TEST-001"
+      ],
+      "evidence": "",
+      "notes": "",
+      "issueUrl": ""
+    },
+    {
+      "id": "DOC-001",
+      "title": "首次贡献者启动体验",
+      "area": "文档",
+      "status": "ready",
+      "priority": "P2",
+      "owner": "",
+      "summary": "由未参与制作的人按说明启动项目，记录缺失步骤与容易误解的路径。",
+      "acceptance": [
+        "记录设备、Node 版本与失败步骤",
+        "完成一个文档小 PR",
+        "不附带整站格式化"
+      ],
+      "paths": [
+        "docs/collab/GETTING_STARTED.md",
+        "CONTRIBUTING.md"
+      ],
+      "dependsOn": [],
+      "evidence": "",
+      "notes": "",
+      "issueUrl": ""
+    },
+    {
+      "id": "SCOPE-001",
+      "title": "确定首章与完整版范围",
+      "area": "策划",
+      "status": "ready",
+      "priority": "P1",
+      "owner": "",
+      "summary": "先约定角色、关卡、设备与验收组合；不要根据未核实的外部日期承诺发行。",
+      "acceptance": [
+        "确认角色接力还是全角色自由通关",
+        "定义第一章交付标准",
+        "列明暂不做项",
+        "以里程碑而非虚构百分比展示"
+      ],
+      "paths": [
+        "docs/collab/ROADMAP.md"
+      ],
+      "dependsOn": [],
+      "evidence": "",
+      "notes": "",
+      "issueUrl": ""
+    }
+  ]
+};

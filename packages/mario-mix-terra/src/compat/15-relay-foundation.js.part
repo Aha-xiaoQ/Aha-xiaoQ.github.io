@@ -1,0 +1,298 @@
+/* 0.5.0 Foundation repair.
+ * One shared block-reward/FX contract, explicit sprite facing contracts, and
+ * session boundaries. Canonical 1-2 tile coordinates are not redesigned.
+ */
+const R05_VERSION='0.5.0';
+const R05_IDS=['tank-p1','tank-p2','tank-p3','barbarian-slash','barbarian-impact','ryu-atlas05'];
+const r05Ready=Promise.all(R05_IDS.map(id=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>{R12_SPRITES[id]=im;resolve();};im.onerror=()=>reject(Error('Missing 0.5 asset: '+id));im.src=R12_EMBEDDED_IMAGES['relay12/assets/'+id+'.png'];})));
+window.__mixReady=Promise.all([window.__mixReady,r05Ready]);
+let r05FxDrawn=0,r05TankSprite='player-tank',r05Session=0,r05ClimbFrame=4,r05BossFrame='walk';
+
+// ---- Shared 1-2 question blocks, item emergence, native coin/debris animation ----
+function r05Debris(t,small=false){
+ const y=t.y*T,x=t.x*T;for(let i=0;i<(small?2:4);i++)particles.push({kind:'debris',x:x+(i%2)*8,y:y+Math.floor(i/2)*8,vx:i%2?1.35:-1.35,vy:i<2?-3.2:-1.8,life:48,under:hero==='ryu'&&room==='under'});
+}
+function r05DrawParticles(){r05FxDrawn=0;for(const p of particles){if(p.x<camera-32||p.x>camera+W+32)continue;
+ r05FxDrawn++;const x=Math.round(p.x-camera),y=Math.round(p.y);
+ if(p.kind==='coin')drawCoin(x,y,frame,true);
+ else if(p.kind==='debris')sprite('debris',x,y,Math.floor(p.life/5)%2===0,Math.floor(p.life/7)%2===0,p.under?'under':'normal');
+ else rect(x,y,2,2,p.color||'#ffe39a');
+}}
+function r05SpawnItem(t,type){
+ const d={x:t.x*T+2,y:t.y*T+2,targetY:t.y*T-14,w:12,h:12,vy:0,type,id:++r05Session+10000,emerge:32,blockX:t.x,blockY:t.y,anchored:hero==='tank'};
+ // Coin-block geometry is unchanged. A ceiling/boundary cannot hide a tank reward.
+ if(hero==='tank'&&r12TankCollides({...d,y:d.targetY})){
+  for(const [dx,dy] of [[0,16],[-16,0],[16,0]]){const q={...d,x:d.x+dx,y:t.y*T+2+dy};if(!r12TankCollides(q)){d.x=q.x;d.y=q.y;d.targetY=q.y;d.emerge=0;break;}}
+ }
+ ninja.drops.push(d);sfx('appear');r12Event('item-emerge',{item:type,tx:t.x,ty:t.y});
+}
+ninjaBump=function(t){
+ if(!t||t.used||t.bump>0||!(t.content||t.type==='question'))return false;
+ const item=t.content||'coin';t.bump=12;
+ if(item==='multi'){
+  if(!t.r05MultiStarted){t.count=10;t.r05MultiStarted=true;}t.count--;getCoin(t.x*T,t.y*T,true);
+  if(t.count>0){r12Event('block-reward',{tx:t.x,ty:t.y,item:'coin',remaining:t.count});return true;}
+ }else if(item==='coin')getCoin(t.x*T,t.y*T,true);
+ else r05SpawnItem(t,item==='power'?(hero==='tank'?(t.x<20?'star':t.x<100?'helmet':'timer'):t.x<50?'shuriken':t.x<120?'windmill':'flame'):item);
+ t.used=true;t.content=null;r12Event('block-reward',{tx:t.x,ty:t.y,item});return true;
+};
+const r05Break=r12Break;
+r12Break=function(t,by='sword'){
+ if(!t)return false;
+ if(t.routeExtension||t.protected)return false;
+ const old=t.parts??15,exists=tiles.has(tileKey(t.x,t.y));
+ const ok=r05Break(t,by);
+ if(exists&&(!tiles.has(tileKey(t.x,t.y))||(t.parts??15)!==old)){
+  r05Debris(t,tiles.has(tileKey(t.x,t.y)));sfx('break');
+ }
+ return ok;
+};
+const r05Give=r12Give;
+r12Give=function(type){r05Give(type);if(hero==='tank'&&['star','power'].includes(type)){r12.rankFlash=32;r12Event('tank-form',{rank:r12.tank.power,sprite:r12.tank.power?'tank-p'+r12.tank.power:'player-tank'});}};
+
+// ---- Audio: usable offline first; optional upstream downloads never gate playback ----
+// These loops are authored adaptations, NOT claimed to be original game recordings.
+// 0.8: removed tank melodic loop at its second historical definition.
+NINJA_TUNES.r05_boss={step:.13,loop:true,notes:[52,0,52,55,59,0,59,62,51,0,51,54,58,0,58,61,52,59,64,62,59,55,52,0,54,61,66,64,61,58,54,0]};
+const r05RemoteLoader=r03LoadSourceAudio;
+let r05LocalLoading=null;
+r03LoadSourceAudio=function(){
+ if(!audio)return Promise.resolve([]);if(r05LocalLoading)return r05LocalLoading;
+ const ac=audio;r03OriginalAudioStatus='loading';
+ r05LocalLoading=Promise.all(Object.entries(R03_EMBEDDED_AUDIO).map(async([key,data])=>{
+  try{const buf=await ac.decodeAudioData(Uint8Array.from(atob(data),c=>c.charCodeAt(0)).buffer);bank.set(key,{buffer:buf,gain:.6});r03SourceAudioKeys.add(key);return key;}catch(e){return null;}
+ })).then(v=>{r03OriginalAudioStatus='partial';return v;});return r05LocalLoading;
+};
+// No silent tank branch. Same BGM lifecycle for main route and defense.
+desiredMusic=function(){if(!r12IsHero())return r12OldDesired();if(mode!=='playing'||!r12||r12.target==='handoff'||r03IsSecret()&&r03Challenge?.won)return null;
+ if(hero==='tank')return 'tank_theme';return r12.area==='bar'?(r03SourceAudioKeys.has('r03_boss_theme')?'r03_boss_theme':'r05_boss'):'ryu_theme';};
+audioSync=function(){if(!r12IsHero())return r12OldSync();if(!audio)return;
+ if(mode==='paused'||document.hidden||!soundOn){stopMusic(true);return;}
+ ninjaMakeAudio();const key=desiredMusic();if(key)playMusic(key);else stopMusic(false);
+};
+const r05AudioPanel=updateAudioPanel;
+updateAudioPanel=function(){r05AudioPanel();if(r12IsHero()){
+ const n=$('audioBadge');if(n)n.textContent=soundOn?'BGM + FX':'MUTED';
+ if($('audioStatus'))$('audioStatus').textContent='离线可发声：新增角色配乐为自制改编；坦克开炮及既有马里奥音效为来源录音。';
+}};
+
+// ---- Explicit sprite facing, all four player upgrade bodies, actual boss attack pose ----
+r12DrawTank=function(g,x,y,dir,enemy=false,t=0,armored=false){
+ const rank=enemy?0:Math.max(0,Math.min(3,r12?.tank?.power||0));
+ const id=enemy?(armored?'enemy-armor':'enemy-basic'):rank?'tank-p'+rank:'player-tank',im=R12_SPRITES[id];
+ if(!im)return; if(!enemy)r05TankSprite=id;
+ g.save();g.imageSmoothingEnabled=false;g.translate(Math.round(x+6),Math.round(y+6));g.rotate((dir+1)*Math.PI/2);g.drawImage(im,-8,-8,16,16);
+ // Only track pixels animate; body shape is the source rank-specific frame.
+ if(Math.floor(t/5)%2){g.fillStyle=enemy?'#888888':'#8c7130';for(let y=-5;y<7;y+=4){g.fillRect(-7,y,2,1);g.fillRect(5,y+2,2,1);}}
+ if(!enemy&&r12?.rankFlash>0){g.strokeStyle='#fff2ab';g.lineWidth=1;g.strokeRect(-9,-9,18,18);}g.restore();
+};
+r12DrawRyu=function(g,x,y,face,pose,t=0){
+ const im=R12_SPRITES['ryu-atlas05']||R12_SPRITES.ryu;if(!im)return;let i=0;
+ if(pose==='run')i=1+Math.floor(t/6)%3;
+ else if(pose==='wall')i=4+Math.floor((ninja?.climbTravel||0)/8)%2;
+ else if(pose==='air')i=6+Math.floor(t/6)%4;
+ else if(pose==='crouch')i=24;
+ else if(pose==='hurt')i=6;
+ else if(pose==='slash')i=ninja?.attack>10?10:ninja?.attack>6?11:13;
+ else if(pose==='crouchSlash')i=ninja?.attack>10?25:ninja?.attack>6?26:28;
+ else if(pose==='throw')i=22;else if(pose==='win')i=20;
+ if(pose==='wall')r05ClimbFrame=i;
+ const cw=[11,13,22,26,28].includes(i)?52:26,sx=(i%10)*26+(i===5?-3:0);
+ g.save();g.translate(Math.round(x+6),Math.round(y));if(face<0)g.scale(-1,1);g.imageSmoothingEnabled=false;
+ g.drawImage(im,sx,Math.floor(i/10)*36,cw,36,-13,-34,cw,36);g.restore();
+};
+function r05BossBox(e){return {x:e.dir>0?e.x+e.w-4:e.x-25,y:e.y+9,w:29,h:28};}
+const r05DrawEnemy=r12DrawEnemy;
+r12DrawEnemy=function(e){
+ if(e.kind!=='barbarian'){if(e.kind==='hawk'&&e.vx)e.dir=e.vx>0?1:-1;return r05DrawEnemy(e);}
+ if(e.dead)return;
+ const strike=e.phase==='slash',im=R12_SPRITES[strike?(e.clock>=5&&e.clock<=14?'barbarian-impact':'barbarian-slash'):e.phase==='windup'?'barbarian-slash':'barbarian-walk'];r05BossFrame=strike?'slash':e.phase;
+ if(!im)return;ctx.save();ctx.translate(Math.round(e.x-camera+13),Math.round(e.y+e.h));if(e.dir<0)ctx.scale(-1,1);
+ if(e.flash&&frame%4<2)ctx.globalAlpha=.55;
+ // During windup the source walking arm is raised via an explicit axe cue; full source slash frame on attack.
+ ctx.drawImage(im,-28,-64,64,64);
+ if(e.phase==='windup'){rect(14,-57,3,27,'#b68958');rect(8,-58,14,8,'#f0c180');rect(10,-57,11,3,'#fff1c5');text('!',21,-65,'#ffd06d',1.2,true);}
+ ctx.restore();
+ if(strike&&e.clock>=5&&e.clock<=14){const h=r05BossBox(e);ctx.save();ctx.globalAlpha=.5;polygon(e.dir>0?[[h.x-camera,h.y],[h.x-camera+h.w,h.y+7],[h.x-camera+h.w,h.y+24],[h.x-camera,h.y+28]]:[[h.x-camera+h.w,h.y],[h.x-camera,h.y+7],[h.x-camera,h.y+24],[h.x-camera+h.w,h.y+28]],'#ffcc83');ctx.restore();}
+};
+const r05Enemies=r12NinjaEnemies;
+r12NinjaEnemies=function(){
+ if(r12.area!=='bar')return r05Enemies();const e=ninja.foes.find(e=>e.kind==='barbarian');if(!e||e.dead)return;
+ e.t++;e.clock++;if(e.hitLock)e.hitLock--;if(e.flash)e.flash--;
+ const change=(phase)=>{e.phase=phase;e.clock=0;r12Event('boss-phase',{phase,dir:e.dir});};
+ if(e.phase==='walk'){
+  e.dir=player.x+player.w/2<e.x+e.w/2?-1:1;
+  if(Math.abs(player.x-e.x)>48)r12Body(e,e.dir*.6,0);
+  if(e.clock>=72){e.swings=0;change('windup');}
+ }else if(e.phase==='windup'&&e.clock>=36){change('slash');ninjaSound('slash');}
+ else if(e.phase==='slash'){
+  if(e.clock>=5&&e.clock<=14&&overlap(r05BossBox(e),player))ninjaHurt(e);
+  if(e.clock>=24){e.swings++;change(e.swings<2?'windup':'recover');}
+ }else if(e.phase==='recover'&&e.clock>=54)change('walk');
+};
+
+// ---- Spatially connected secret path, proper solid walls, physical return pipe ----
+const R05_SHAFT={left:1280,right:1328,bottom:384,pipeX:1280,pipeY:352};
+const r05Load=r12Load;
+r12Load=function(area,preserve=false,spawn=null,keepGeometry=false){
+ const prevArea=r12?.area,carryReward=r03Rewards.ninja;
+ r05Load(area,preserve,spawn,keepGeometry);
+ if(ninja){ninja.climbTravel=0;ninja.descentActive=false;}
+ r12.pipeCooldown=24;r12.rankFlash=0;r12.spawnFrames=0;
+ if(area==='underground'&&hero==='ryu'){
+  for(let y=15;y<=19;y++)for(const x of [79,83]){put(tiles,x,y,'stone');at(x,y).routeExtension=true;}
+ }
+ if(area==='alley'){
+  Object.assign(player,{x:24,y:174,vx:0,vy:0});r12.spawnFrames=12;
+  r12Message('从竖井进入街巷 · 右侧门通向酒吧。',240);
+ }
+ if(area==='bar'){
+  Object.assign(player,{x:26,y:182,vx:0,vy:0,invuln:120});
+  r12.spawnFrames=18;r12Message('看斧手举斧 → 跳过连斩 → 收招时反击。',220);
+ }
+ if(area==='exit'&&hero==='ryu'&&prevArea&&prevArea!=='entrance'){
+  // Stand precisely on the original outlet, not fall into its adjacent staircase.
+  Object.assign(player,{x:17,y:150,vx:0,vy:0});r12.spawnFrames=26;r12.spawnFromY=176;r12.spawnToY=150;player.y=176;
+ }
+ if(hero==='ryu'&&carryReward&&!ninja.unlocked.includes('spin'))ninja.unlocked.push('spin');
+ // Ambient projectiles, trail particles and queued commands must not leak across scenes.
+ r04ClearCommands();r12Event('scene-ready',{area});
+};
+r03TryDescent=function(input){
+ if(hero!=='ryu'||r12.area!=='underground')return false;
+ const p=player,n=ninja,inside=p.x>=R05_SHAFT.left-.1&&p.x+p.w<=R05_SHAFT.right+.1;
+ if(inside&&n.wall&&input.down&&p.y+p.h>208){if(!n.descentActive)r12Event('cliff-descent-arm');n.descentActive=true;}
+ if(n.descentActive&&p.y+p.h<=208)n.descentActive=false;
+ if(n.descentActive&&inside&&input.down&&p.grounded&&Math.abs(p.y+p.h-R05_SHAFT.pipeY)<1&&p.x+p.w/2<R05_SHAFT.pipeX+30&&!r12.pipeCooldown){r12Event('cliff-descent',{x:p.x,y:p.y});r12Travel('alley');return true;}
+ return false;
+};
+const r05WinChallenge=r03WinChallenge;
+r03WinChallenge=function(kind){r05WinChallenge(kind);if(kind==='ninja'&&r12?.area==='bar'){
+ for(let x=13;x<=14;x++)for(let y=11;y<=12;y++)put(tiles,x,y,'pipe');
+ r12.pipeCooldown=30;r12Message('旋风斩已获得',160);
+}};
+// Replace layered common/player transition interception with one explicit route handler.
+r12CommonPlayer=function(input){
+ const p=player,n=ninja;if(r12.area==='defense')return;
+ for(let i=looseCoins.length-1;i>=0;i--)if(overlap(p,looseCoins[i])){getCoin(looseCoins[i].x,looseCoins[i].y);looseCoins.splice(i,1);}
+ for(let i=n.drops.length-1;i>=0;i--){const d=n.drops[i];if(!d.emerge&&overlap(p,d)){r12Give(d.type);n.drops.splice(i,1);}}
+ const area=r12.area;
+ if(area==='underground'){
+  const cp=p.x>1980?2:p.x>1440?1:0;
+  if(cp>r12.checkpointTier){r12.checkpointTier=cp;r12Checkpoint={hero,area,x:cp===1?1458:1984,y:hero==='ryu'?180:140};r12Message('区域检查点已记录');r12Event('checkpoint',{tier:cp});}
+  if(r12RelayActive&&hero==='ryu'&&!r12.handoff&&p.x>=1508&&p.y>130){r12SaveGeometry();r12.handoff=true;r12.transition=110;r12.target='handoff';r12Event('handoff-begin');stopMusic();return;}
+  if(!r12.pipeCooldown)for(const pipe of pipes){
+   const eligible=pipe.transport==='bonus'||hero==='tank'&&pipe.x===1792;
+   const aligned=p.x+p.w/2>pipe.x+4&&p.x+p.w/2<pipe.x+28;
+   const onTop=hero==='tank'?Math.abs(p.y+p.h-pipe.y)<3:Math.abs(p.y+p.h-pipe.y)<1.1&&p.grounded;
+   if(eligible&&aligned&&onTop&&input.down){r12Travel(hero==='tank'?'defense':'bonus');return;}
+  }
+  if(p.x>2800)r12.discovered.add('warp');
+  if(input.down&&!r12.pipeCooldown&&r12.def.warp)for(let i=0;i<3;i++){const x=(r12.def.warp.x+8+i*32)*2;
+   if(p.x+p.w/2>x+4&&p.x+p.w/2<x+28&&Math.abs(p.y+p.h-176)<3){r12Travel('exit');return;}}
+ }else if(area==='alley'){
+  if(p.x+p.w>=472&&p.y+p.h>190){r12Travel('bar');return;}
+ }else if(area==='bar'){
+  if(r03Challenge?.won&&!r12.pipeCooldown&&p.grounded&&input.down&&p.x+p.w/2>212&&p.x+p.w/2<236&&Math.abs(p.y+p.h-176)<1.1){r12Travel('exit');return;}
+ }
+ const q=r12.def.sidePipe;
+ if(q&&!r12.pipeCooldown&&input.right){const mouthX=q.x*2,mouthY=208-q.y*2;
+  if(Math.abs(p.x+p.w-mouthX)<3&&p.y>=mouthY-2&&p.y+p.h<=mouthY+33){r12Travel(q.transport==='return'?'underground':q.transport,q.transport==='return'?[1796,hero==='ryu'?150:132]:null);return;}}
+ if(area==='exit'&&p.x+p.w>=r12.def.flag){mode='flag';r12.clearTick=0;n.projectiles=[];stopMusic();oneShot('flag');r12Event('flag');}
+ let target=camera;if(p.x-camera>139)target=p.x-139;else if(p.x-camera<83)target=p.x-83;
+ camera=clamp(target,0,Math.max(0,r12.def.width-W));
+ const ty=hero==='ryu'&&n.descentActive?clamp(p.y-138,0,192):hero==='ryu'?Math.min(0,p.y-53):0;
+ r12.camY=Math.abs(ty-r12.camY)<.08?ty:r12.camY+(ty-r12.camY)*.17;
+ maxProgress=area==='exit'?FLAG_X:area==='underground'?p.x/r12.def.width*FLAG_X:0;
+};
+// Save local arena state on voluntary pipe travel. A fresh run still starts from a clean map.
+const r05SaveGeometry=r12SaveGeometry;
+r12SaveGeometry=function(){r05SaveGeometry();if(r12)Object.assign(r12World[r12.area],{hero,foes:ninja.foes,drops:ninja.drops,lanterns:ninja.lanterns});};
+const r05LoadState=r12Load;
+r12Load=function(area,preserve=false,spawn=null,keepGeometry=false){
+ const cached=r12World[area];r05LoadState(area,preserve,spawn,keepGeometry);
+ if(cached?.hero===hero&&preserve&&!r03IsSecret()){ninja.foes=cached.foes;ninja.drops=cached.drops;ninja.lanterns=cached.lanterns;}
+};
+
+// Keep the native level drawing; added shaft is entirely below the canonical floor.
+const r05MapDraw=r12DrawMap;
+r12DrawMap=function(){r05MapDraw();if(hero==='ryu'&&r12.area==='underground'){
+ const x=1280-camera;
+ rect(x,240,48,88,'#080c18');for(const t of tiles.values())if(t.routeExtension)drawBlock(t);
+ // Continuous dark wall below the original ledge. No secret label or bottom pipe.
+ for(let y=240;y<320;y+=16){rect(x-2,y,2,16,'#40536c');rect(x+48,y,2,16,'#40536c');}
+ }if(r12.area==='bar'&&r03Challenge?.won)r12DrawPipes();
+};
+
+// ---- Fresh-session reset precedes any menu rendering: no stale challenge or hero state ----
+function r05ClearSession(){
+ r04Clear();keys.clear();touch.clear();virtualInput=null;
+ r12=null;ninja=null;r03Challenge=null;r03Rewards={ninja:false,tank:false};r03Terrain=[];
+ r12World={};r12Checkpoint=null;r12RelayActive=false;
+ enemyShots=[];mixShots=[];shots=[];particles=[];floaters=[];items=[];enemies=[];
+ deathTick=0;flagY=48;freeze=0;stopMusic();stopEffects();r04RefreshTouch();
+}
+const r05Characters=showCharacters;
+showCharacters=function(){r12RelayRequested=false;r05ClearSession();r05Characters();selectHero(hero);};
+const r05Start=startGame;
+startGame=function(){const requested=r12RelayRequested||(mode==='win'&&r12RelayActive);r05ClearSession();r12RelayRequested=requested;r05Session++;r05Start();prepareAudio().catch(()=>{});};
+const r05Primary=handlePrimary;
+handlePrimary=function(){if(mode==='gameover'&&r12IsHero()&&r03Challenge?.failed){lives=3;r03StartChallenge(r03Challenge.kind);return;}r05Primary();};
+const r05UI=updateHeroUI;
+updateHeroUI=function(){if(r12IsHero()&&(!r12||!ninja)){$('heroStatus').textContent=heroHelp[hero];return;}return r05UI();};
+heroHelp.ryu='v0.5 · 先走原 1-2：问号奖励、金币、碎砖、升降台和奖励房恢复。贴墙 ↑↓，空格蹬墙；反向+跳跃也能蹬出。第一处悬崖按 ↓ 下行，落到井底管口后再按 ↓ 进入街巷。';
+heroHelp.tank='v0.5 · 方向键 / WASD 四向移动；最近按下方向优先。J / 空格射击。吃星星后车体和炮管一起升级。问号砖只能领一次，变实心后仍挡弹，请从另一侧攻击后面的问号砖。';
+
+// ---- Finish has flag slide, score/time conversion, walk/drive to the castle ----
+function r05FinishTick(){
+ if(hero==='tank')return r09FinishTank();
+ frame++;r12.ticks++;r12.clearTick++;const k=r12.clearTick;
+ if(k===1){r12.flagBonus=Math.max(100,Math.round((208-player.y)/32)*500);addScore(r12.flagBonus,player.x,player.y);player.vx=player.vy=0;}
+ if(k<62){flagY=Math.min(176,48+k*2.1);if(hero==='ryu'){player.x=r12.def.flag-12;player.y=approach(player.y,182,2);}}
+ if(k===62)oneShot('clear');
+ if(k>=64){player.x=Math.min(r12.def.castle+25,player.x+1.3);player.anim+=2;}
+ if(k>=70&&timeLeft>0){const count=Math.min(5,timeLeft);timeLeft-=count;score+=count*50;if(k%8===0)sfx('coin');}
+ camera=clamp(player.x-110,0,Math.max(0,r12.def.width-W));
+ updateParticles();
+ if(k>200&&timeLeft===0){
+  if(r12RelayActive&&hero==='ryu'&&r03Rewards.ninja){mode='playing';timeLeft=200;r12.transition=100;r12.target='handoff';return;}
+  mode='win';showOverlay('RESCUE RELAY / CHAPTER 02','1-2 突破成功','得分 '+score+' · 救援仍在继续。<br>“选人”会清空本次战场，开始全新的流程。','再玩一次 →');r12Event('win',{relay:r12RelayActive});
+ }
+ audioSync();
+}
+const r05Fixed=fixedUpdate;
+fixedUpdate=function(){
+ if(r12IsHero()&&r12){
+  if(mode==='flag'){r05FinishTick();return;}
+  if(mode==='playing'&&!r12.transition&&r12.spawnFrames>0){
+   r12.spawnFrames--;frame++;if(r12.spawnFromY!==undefined)player.y=r12.spawnToY+(r12.spawnFromY-r12.spawnToY)*r12.spawnFrames/26;
+   if(!r12.spawnFrames){player.vy=0;r04ClearCommands();}audioSync();return;
+  }
+ }
+ const old=r12,before=frame;r05Fixed();
+ if(r12&&r12IsHero()&&frame!==before){
+  if(r12.pipeCooldown>0)r12.pipeCooldown--;if(r12.rankFlash>0)r12.rankFlash--;
+  if(hero==='tank'&&mode==='playing'&&!r12.transition)for(const d of ninja.drops)if(d.emerge>0){d.emerge--;d.y=d.targetY+d.emerge*.5;}
+ }
+};
+const r05Draw=r12Draw;
+r12Draw=function(){r05Draw();if(!r12)return;updateAudioPanel();
+ if(mode==='playing'&&r12.area==='bar'&&!r03Challenge?.won){const e=ninja.foes[0];if(e){text(e.phase==='windup'?'WINDUP':e.phase==='slash'?'SLASH':e.phase==='recover'?'OPEN':'WATCH',128,40,e.phase==='recover'?'#a4e3ad':'#ffbf83',.75,true);}}
+};
+// Existing observers captured old function references: refresh only the test exports.
+if(window.__relayTest){
+ __relayTest.give=type=>r12Give(type);__relayTest.draw=()=>r12Draw();__relayTest.travel=(...a)=>r12Travel(...a);
+ __relayTest.foundation=()=>({version:R05_VERSION,session:r05Session,particles:particles.map(p=>({...p})),fxDrawn:r05FxDrawn,tankSprite:r05TankSprite,climbFrame:r05ClimbFrame,bossFrame:r05BossFrame,descent:ninja?.descentActive,spawnFrames:r12?.spawnFrames,pipeCooldown:r12?.pipeCooldown,camera:{x:camera,y:r12?.camY},mode,hero,challenge:!!r03Challenge});
+ __relayTest.r05Audio=()=>({bgm:bgm?.key,hasTank:bank.has('tank_theme'),sample:bank.get('tank_theme')?.buffer.getChannelData(0).slice(0,100),context:audio?.state});
+ __relayTest.auditSprite=(rank,dir=3)=>{const c=document.createElement('canvas');c.width=c.height=48;const g=c.getContext('2d');const p=r12.tank.power;r12.tank.power=rank;r12DrawTank(g,16,16,dir,false,0);r12.tank.power=p;return c.toDataURL();};
+ __relayTest.auditEnemy=e=>{ctx.clearRect(0,0,W,H);r12DrawEnemy(e);return canvas.toDataURL();};
+}
+selectHero(hero);
+
+// Native score/coin feedback remains visible alongside character-specific meters.
+const r05Hud=r12DrawHud;
+r12DrawHud=function(){r05Hud();if(r12.area==='defense')return;
+ rect(0,228,W,12,'#09121c');text('SCORE '+String(score).padStart(6,'0'),6,230,'#f0dfb4',.62);text('COIN '+String(coins).padStart(2,'0'),157,230,'#f2c977',.62);
+ const progress=r12.area==='exit'?1:r12.area==='underground'?player.x/3040:0;rect(6,239,244,1,'#29414d');rect(6,239,244*progress,1,hero==='tank'?'#d4a65b':'#80bfcc');
+};
+

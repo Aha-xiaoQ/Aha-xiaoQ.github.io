@@ -1,0 +1,22 @@
+{
+  "name": "mario-mix-worlds",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "description": "八世界32关参考地图、分区检查与协作模板",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/build.mjs --check",
+    "test": "node --test tests/*.test.mjs",
+    "new": "node scripts/preview.mjs --new",
+    "dev": "node scripts/preview.mjs --serve",
+    "preview:build": "node scripts/preview.mjs",
+    "pack": "node scripts/pack.mjs",
+    "verify": "npm run check && npm test",
+    "atlas": "node scripts/atlas-server.mjs"
+  },
+  "license": "SEE LICENSE IN NOTICE.md"
+}

@@ -1,0 +1,224 @@
+/* R11 — one installed runtime; native face/hand layers; physical chest/pipe route. */
+const T11_VERSION='R11 · 泰拉瑞亚 1-3';
+t10Helmet=true;
+r05EntryChoice=0;stageChoice=0;
+const t11Log=[];
+function t11Event(type,data={}) { t11Log.push({type,tick:state?.ticks,...data});if(t11Log.length>300)t11Log.shift();evt(type,data); }
+
+// Equal-size episode cards. No practice-room or sandbox-trio entry in the menu.
+t10Style.textContent='';
+card.innerHTML='<canvas width="64" height="80" aria-label="铂金套泰拉瑞亚主角"></canvas><strong>泰拉瑞亚</strong><small>关卡 1-3</small>';
+const t11Style=document.createElement('style');t11Style.textContent=`
+#trioStageChooser,#t10Previous,#t10Helmet,#r06Return,#r06Natural,#r05AudioOptions{display:none!important}
+#heroPicker{display:grid!important;grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:5px!important}
+#heroPicker[hidden]{display:none!important}
+#heroPicker [data-hero],body.t10-terra-menu #heroPicker [data-hero]{display:block!important;grid-column:auto!important;width:auto!important;min-height:143px!important;padding:8px 3px!important;text-align:center!important}
+#heroPicker [data-hero] canvas{display:block!important;width:48px!important;height:60px!important;margin:2px auto 8px!important;image-rendering:pixelated}
+#heroPicker [data-hero] strong{display:block!important;margin:5px 0!important;font-size:12px!important;white-space:nowrap}
+#heroPicker [data-hero] small{display:block!important;font-size:8px!important;line-height:1.5!important}
+#overlay.choosing .overlay-box{padding:14px 9px!important;width:100%!important;box-sizing:border-box!important}
+#overlay.choosing h2{font-size:25px!important;margin:7px 0!important}
+#overlay.choosing #overlayText{display:block!important;min-height:0!important;font-size:11px!important;margin:8px auto!important}
+#overlay.choosing .eyebrow{display:block!important}
+#t10Build{display:block;font:11px monospace;color:#d4e6be;padding:7px 0 2px}
+#t11ChestAction{font:inherit;font-size:11px;padding:6px 10px;border:1px solid #697a84;border-radius:5px;background:#243848;color:#e7e7db}
+@media(max-width:690px){#heroPicker{grid-template-columns:repeat(3,minmax(0,1fr))!important}#heroPicker [data-hero]{min-height:64px!important;padding:3px 1px!important}#heroPicker [data-hero] canvas{width:24px!important;height:30px!important;margin:0 auto!important}#heroPicker [data-hero] strong{font-size:9px!important;margin:1px!important}#heroPicker [data-hero] small{display:none!important}#overlay.choosing .eyebrow,#overlay.choosing #overlayText{display:none!important}#overlay.choosing h2{font-size:15px!important;margin:2px!important}#overlay.choosing .overlay-box{padding:5px!important}}
+`;document.head.append(t11Style);
+function t11Labels(){
+ document.body.classList.remove('t10-terra-menu');$('overlay').classList.remove('r04-choose');stageChooser.hidden=true;t10Previous.hidden=true;t10HelmetButton.hidden=true;
+ if(!isTrio())return;
+ $('bestLabel').textContent='R11';t10Build.textContent='R11 · 铂金套 / 自动骑乘 / 箱子与管道';
+ document.querySelector('header .offline').textContent='TERRARIA · 1-3';
+ if(mode==='menu'){$('overlayLabel').textContent='MARIO MIX / CHAPTER 03';$('overlayTitle').textContent='选择角色';$('overlayText').textContent='泰拉瑞亚 · 1-3｜星怒与铂金套，进入熟悉的树冠关卡。';$('mainAction').textContent='开始冒险 →';$('heroStatus').textContent='默认：泰拉瑞亚 · 星怒 / 铂金套';}
+ else $('heroStatus').textContent=(state.kit?r06Kit(state).armorName:'铂金套（含头盔）')+' · '+tools[state.tool]+' · 防御 '+r06Defense(state);
+ $('heroHelp').textContent='方向移动，空格跳跃，J 攻击。粘鞍拾取即骑乘；F 上下骑。站在主线管道口按↓进入隐藏。箱子附近按↑或右键开箱。L 召唤克眼；战斗期间不能返回，胜利后从入口管道按↓钻回。';
+ $('downLabel').textContent='管道↓ · 拾取眼球开战 · F 坐骑';
+ $('r06Return').hidden=true;$('r06Natural').hidden=true;
+ if(state?.r05Arena)$('relayMessage').textContent=state.phase==='battle'?'克苏鲁之眼战斗中：返回管道已锁定。':state.phase==='cleared'?'装备接触即换装并骑上 UFO；回到入口管道口按↓返回。':'入口木箱装有云朵瓶；靠近按↑或右键打开。按 L 召唤克眼。';
+ else if(state&&!state.noticeTime)$('relayMessage').textContent='1-3 全程泰拉瑞亚 · 问号砖粘鞍拾取即骑乘';
+ t11ChestButton.hidden=!state?.r05Arena;
+ t11ChestButton.disabled=!!state?.t11Chest?.opened||!t11NearChest(state);
+}
+const t11UIBase=r06UpdateUI;r06UpdateUI=function(){t11UIBase();t11Labels();};
+const t11SelectBase=selectHero;selectHero=function(v){const ok=t11SelectBase(v);r05EntryChoice=0;stageChoice=0;t11Labels();if(v===id)portrait();return ok;};
+chooseStage=function(){r05EntryChoice=0;stageChoice=0;stageChooser.hidden=true;};
+const t11OpenBase=openGame;openGame=function(){r05EntryChoice=0;stageChoice=0;t10Helmet=true;t11OpenBase();if(state){state.notice='星怒 / 铂金套开局 · 粘鞍拾取即骑乘';state.noticeTime=160;}};
+const t11MenuBase=showCharacters;showCharacters=function(){t11MenuBase();r05EntryChoice=0;t11Labels();portrait();};
+portrait=function(){const g=card.querySelector('canvas').getContext('2d');g.clearRect(0,0,64,80);g.imageSmoothingEnabled=false;
+ // Static full-body sprite, independent of a preceding mounted game state.
+ const oldState=state;try{state=null;r06DrawBody(g,32,76,1,0,false,0,0,1,'platinum','starfury',1.45);}finally{state=oldState;}
+};
+
+// Continuous scenery: no arbitrary 38px gaps cut into supporting trunks.
+drawTerraTerrain=function(s){if(s.secret){drawTerraArenaTerrain(s);return;}const c=s.cam,l=s.level;
+ const visible=l.surfaces.filter(q=>q.x<c+W+80&&q.x+q.w>c-80);
+ for(const q of visible)if(q.type==='tree'){
+  const x=q.x+q.w/2-4,bottom=Math.max(320,H+(s.r07CamY||0)+32);ctx.save();ctx.globalAlpha=.62;
+  for(let y=q.y+12;y<bottom;y+=8)ctx.drawImage(tiles13.trunk,0,0,8,8,Math.round(x-c),y,8,8);ctx.restore();
+ }
+ for(const t of s.trees||[])drawChopTree(t,c);
+ for(const q of visible.slice().sort((a,b)=>a.y-b.y)){
+  if(q.type==='tree')for(let dx=0;dx<q.w;dx+=16){const width=Math.min(16,q.w-dx),im=tiles13[dx===0?'treeLeft':dx+16>=q.w?'treeRight':'treeMid'];ctx.drawImage(im,0,0,width,16,Math.round(q.x+dx-c),q.y,width,16);}
+  else for(let x=q.x;x<q.x+q.w;x+=16)for(let y=q.y;y<q.y+q.h;y+=16)sprite(q.type==='floor'?'ground':'stone',x-c,y);
+ }
+};
+// Readability follows the entire helmet and mount, not merely the collider center.
+function t11Camera(s){
+ if(!s||s.t11Transition)return;
+ if(s.r05Arena){const wanted=clamp(s.p.y+s.p.h/2-R06_VIEW.h*.54,-540,-80);s.camY=approach(s.camY??-96,wanted,Math.max(3,Math.abs(s.p.vy)));return;}
+ const p=s.p,visualTop=t10BodyFoot(s,p.y+p.h,.75)-41;
+ const wanted=Math.min(0,visualTop-83);
+ s.r07CamY=approach(s.r07CamY||0,wanted,Math.max(4,Math.abs(p.vy)+1));
+ // Stop the HUD from clipping a rising helmet during an abrupt bounce.
+ if(visualTop-(s.r07CamY||0)<34)s.r07CamY=visualTop-34;
+}
+function t11DrawPipe(q,c=0){if(!q)return;const x=Math.round(q.x-c),y=q.y;
+ ctx.save();ctx.translate(x,y);for(let dy=16;dy<q.h;dy+=16)sprite('pipe_body',0,dy);sprite('pipe_top',0,0);ctx.restore();
+}
+drawTerraPipe=function(s){t11DrawPipe(s.pipe,s.cam);};
+// No floating text or tooltip gets painted on either pipe.
+
+function t11NearMouth(s){const p=s.p,q=s.pipe;if(!q)return false;const feet=p.y+p.h;
+ return Math.abs(p.x+p.w/2-(q.x+q.w/2))<=q.w*.42&&Math.abs(feet-q.y)<=8;
+}
+function t11PrepareRoom(s){
+ s.arenaReward=null;s.r06Drops=[];
+ s.pipe={id:'t11-exit-pipe',type:'pipe',x:40,y:464,w:32,h:32,solid:true};
+ s.level.surfaces=s.level.surfaces.filter(q=>q.id!=='t11-exit-pipe').concat(s.pipe);
+ s.t11Chest={x:236,y:468,w:32,h:28,opened:!!s.cloudJump,age:0};
+ s.campfires=s.campfires.filter(f=>Math.abs(f.x-252)>48||f.y!==496);
+ s.lamps=s.lamps.filter(f=>Math.abs(f.x-252)>32||f.y!==496);
+ s.direct=false;s.notice='靠近木箱按↑打开，取得云朵瓶。L 召唤克眼。';s.noticeTime=240;
+ t11Event('t11-room-ready',{chest:true,pipe:true});
+}
+const t11EnterBase=enterTerraSecret,t11ExitBase=exitSecret;
+function t11BeginPipe(direction){const s=state;
+ if(!s||mode!=='playing'||s.t11Transition||s.interactLock>0||!t11NearMouth(s))return false;
+ if(direction==='out'&&(!s.r05Arena||s.phase!=='cleared'||!s.bossClear)){
+  t11Event('t11-exit-locked',{phase:s.phase});return false;}
+ if(direction==='in'&&s.r05Arena)return false;
+ const wasMounted=s.mounted,mount=s.mountType; s.t10PendingMount=null;s.mounted=false;r07SetMountHeight(s,false);
+ const p=s.p,q=s.pipe;p.x=q.x+(q.w-p.w)/2;p.y=q.y-p.h;p.vx=0;p.vy=0;p.attack=0;p.grounded=false;p.support=null;
+ s.t11Transition={direction,phase:'sink',age:0,startY:p.y,endY:q.y,wasMounted,mount};
+ clearInput();t11Event('t11-pipe-start',{direction,wasMounted});return true;
+}
+enterTerraSecret=function(restart=false){
+ if(restart){if(!state?.r05Arena)return false;const ok=t11EnterBase(true,false);if(ok)t11PrepareRoom(state);return ok;}
+ return t11BeginPipe('in');
+};
+exitSecret=function(){return t11BeginPipe('out');};
+function t11TickPipe(){
+ const s=state,t=s.t11Transition;if(!t)return false;
+ s.ticks++;frame++;t.age++;const u=clamp(t.age/30,0,1);s.p.y=t.startY+(t.endY-t.startY)*(u*u*(3-2*u));s.p.vx=s.p.vy=0;
+ if(t.age<30)return true;
+ if(t.phase==='sink'){
+  let ok=false;if(t.direction==='in'){ok=t11EnterBase(false,false);if(ok)t11PrepareRoom(state);}else ok=t11ExitBase();
+  if(!ok){s.t11Transition=null;return true;}
+  const next=state,q=next.pipe,p=next.p;next.t10PendingMount=null;next.mounted=false;r07SetMountHeight(next,false);
+  p.x=q.x+(q.w-p.w)/2;p.y=q.y;p.vx=p.vy=0;p.attack=0;p.grounded=false;p.support=null;
+  next.interactLock=90;next.t11Transition={direction:t.direction,phase:'rise',age:0,startY:q.y,endY:q.y-p.h,wasMounted:t.wasMounted,mount:t.mount};
+  next.cam=next.r05Arena?0:clamp(p.x-110,0,next.level.width-W);if(!next.r05Arena)next.r07CamY=0;
+ }else{
+  const p=s.p,q=s.pipe;p.y=q.y-p.h;p.grounded=true;p.support=q.id;p.coyote=6;p.cloudAvailable=!!s.cloudJump;p.invuln=Math.max(90,p.invuln||0);s.t11Transition=null;s.interactLock=45;
+  if(t.wasMounted)t10RequestMount(s,t.mount,'pipe-emerge');
+  t11Camera(s);clearInput();t11Event('t11-pipe-complete',{direction:t.direction,area:s.r05Arena?'arena':'main',mounted:s.mounted});
+ }
+ return true;
+}
+terraInteractions=function(v){const s=state;for(const t of s.trees||[]){if(t.shake)t.shake--;if(t.fall&&t.fall<42)t.fall++;}
+ if(s.interactLock)s.interactLock--;
+ if(!s.secret&&v.y>.5&&!v.jump&&t11NearMouth(s))return t11BeginPipe('in');return false;
+};
+
+function t11NearChest(s){const q=s?.t11Chest,p=s?.p;if(!q||!p||s.t11Transition)return false;return Math.abs(p.x+p.w/2-q.x-q.w/2)<58&&Math.abs(p.y+p.h-(q.y+q.h))<44;}
+function t11OpenChest(){const s=state,q=s?.t11Chest;if(!q||q.opened||mode!=='playing'||!t11NearChest(s))return false;
+ q.opened=true;q.age=0;r06CollectCloud(s);terraSound('door');t11Event('t11-chest-opened',{reward:'cloudBottle'});r05Persist();return true;
+}
+const t11ChestButton=document.createElement('button');t11ChestButton.id='t11ChestAction';t11ChestButton.type='button';t11ChestButton.textContent='↑ · 打开木箱';t11ChestButton.onclick=()=>{t11OpenChest();canvas.focus({preventScroll:true});};r06SceneActions.append(t11ChestButton);
+canvas.addEventListener('contextmenu',e=>{if(state?.r05Arena&&t11NearChest(state)){e.preventDefault();t11OpenChest();}});
+canvas.addEventListener('pointerdown',e=>{if(e.button===2&&state?.r05Arena&&t11NearChest(state)){e.preventDefault();t11OpenChest();}},true);
+function t11DrawChest(s,c){const q=s.t11Chest,im=r06Images.chestItem;if(!q||!im)return;const x=q.x-c;
+ // Checked native Item_48 image; kept at 32x28, never upscaled into a fake atlas.
+ if(!q.opened)ctx.drawImage(im,x,q.y,32,28);
+ else{ctx.drawImage(im,0,10,32,18,x,q.y+10,32,18);ctx.drawImage(im,0,0,32,10,x,q.y-3,32,10);}
+ if(q.opened&&q.age<90){const bottle=r06Images.cloudBottle;if(bottle){ctx.save();ctx.globalAlpha=Math.min(1,(90-q.age)/20);ctx.drawImage(bottle,q.x+6-c,q.y-26-Math.min(18,q.age*.4),20,26);ctx.restore();}}
+}
+
+// Closed mouth is solid in both ordinary and mounted movement. No walking through pipe walls.
+const t11PhysicsBase=r05Physics;
+r05Physics=function(v){const s=state,p=s.p,old={x:p.x,y:p.y,w:p.w,h:p.h};t11PhysicsBase(v);const q=s.pipe;if(!q||s.t11Transition)return;
+ if(near(p,q)){
+  if(old.y+old.h<=q.y+1&&p.vy>=0){p.y=q.y-p.h;p.vy=0;p.grounded=true;p.support=q.id;}
+  else if(old.x+old.w<=q.x+1){p.x=q.x-p.w;p.vx=0;}
+  else if(old.x>=q.x+q.w-1){p.x=q.x+q.w;p.vx=0;}
+  else if(old.y>=q.y+q.h-1){p.y=q.y+q.h;p.vy=Math.max(0,p.vy);}
+ }
+};
+const t11MainStepBase=r04MainStep;
+r04MainStep=function(v){if(state?.t11Transition){if(mode==='playing')t11TickPipe();return;}const s=state;t11MainStepBase(v);if(state===s)t11Camera(s);};
+const t11ArenaStepBase=r05ArenaStep;
+r05ArenaStep=function(v){const s=state;if(!s||mode!=='playing')return;
+ if(s.t11Transition){t11TickPipe();return;}
+ if(v.y>.5&&!v.jump&&t11NearMouth(s)&&!s.interactLock){if(t11BeginPipe('out'))return;}
+ if(v.y<-.5&&!v.jump)t11OpenChest();
+ // Never pass the old unrestricted exit gesture to the inherited arena loop.
+ const safe={...v,auxEdge:!!v.auxEdge&&s.phase==='preparation'&&v.y<=0};t11ArenaStepBase(safe);
+ if(state===s){if(s.t11Chest?.opened)s.t11Chest.age++;t11Camera(s);}
+};
+// Guard direct DOM callbacks as well as keyboard routes.
+$('r06Return').onclick=()=>false;
+const t11SummonBase=r05Summon;r05Summon=function(){if(state?.t11Transition)return false;return t11SummonBase();};
+$('r06Summon').onclick=()=>{r05Summon();canvas.focus({preventScroll:true});};
+
+// During pipe motion only the part above the rim is visible, for player and weapon together.
+const t11DrawBodyBase=r06DrawBody;
+r06DrawBody=function(g,x,foot,...args){const s=state,clip=g===ctx&&!!s?.t11Transition;if(clip){g.save();g.beginPath();g.rect(-10000,-10000,20000,10000+s.pipe.y+1);g.clip();}
+ t11DrawBodyBase(g,x,foot,...args);if(clip)g.restore();};
+
+r06DrawArena=function(){const s=state,p=s.p,c=s.cam,yc=s.camY??-96;r05Viewport(true);ctx.clearRect(0,0,R06_VIEW.w,R06_VIEW.h);r06NightBackground(s);ctx.save();ctx.translate(0,-yc);
+ ctx.fillStyle='#443a35';ctx.fillRect(0,496,R06_VIEW.w,640);ctx.fillStyle='#52653d';ctx.fillRect(0,496,R06_VIEW.w,3);
+ ctx.fillStyle='#695342';for(let x=-(Math.floor(c)%32);x<R06_VIEW.w;x+=32){ctx.fillRect(x+3,509,16,3);ctx.fillRect(x+17,525,10,3);}
+ for(const q of s.level.surfaces)if(q.oneWay)r05DrawWood(q,c);
+ for(const f of s.campfires)if(f.x-c>-130&&f.x-c<R06_VIEW.w+130)r07Furniture('campfire',f.x-c,f.y,s.ticks,f.phase);
+ for(const t of s.lamps)if(t.x-c>-110&&t.x-c<R06_VIEW.w+110)r07Furniture('torch',t.x-c,t.y,s.ticks,t.phase);
+ t11DrawChest(s,c);t11DrawPipe(s.pipe,c);
+ if(s.phase==='preparation'){sheet(ctx,'suspiciousEye',[0,0,30,20],161-c,466+Math.sin(s.ticks*.055)*2,30,20);}
+ if(s.eye&&!s.eye.dead&&['charge','fastDash'].includes(s.eye.mode))for(let i=0;i<s.eye.trail.length;i+=3){ctx.save();ctx.globalAlpha=i/s.eye.trail.length*.2;r05DrawEye({...s.eye,...s.eye.trail[i],flash:0},c);ctx.restore();}
+ for(const m of s.servants)r05DrawServant(m,c);r05DrawEye(s.eye,c);r07DrawLoot(s,c);r06DrawProjectiles(s,c);r06DrawMount(s,c);
+ r06DrawBody(ctx,p.x+p.w/2-c,p.y+p.h,p.attack?p.attackFacing:p.facing,p.grounded&&Math.abs(p.vx)>.1?p.walk:0,!p.grounded,p.attack,0,1,r06Armor(s),r06Weapon(s),1);
+ if(s.t11Transition)t11DrawPipe(s.pipe,c);
+ for(const n of s.numbers){ctx.save();ctx.globalAlpha=Math.min(1,n.life/12);r05Text(n.text,n.x-c,n.y,16,n.color,'center');ctx.restore();}
+ ctx.restore();r07HUD(s);trioUI();
+};
+r04PauseHelp=function(){return state?.r05Arena?'空格跳跃，↓＋空格下穿，J 攻击，L 召唤，H 治疗。靠近木箱按↑打开。战斗期间不能返回；胜利后站在入口管道口按↓钻回。':'星怒 / 铂金套。空格跳跃，J 攻击，1/2/3 切工具。外部问号砖的粘鞍拾取即骑乘。站在管道口按↓进入隐藏。';};
+const t11Diagnostics={version:T11_VERSION,log:()=>t11Log,helmet:()=>t10Helmet,nearMouth:()=>state&&t11NearMouth(state),nearChest:()=>t11NearChest(state),chest:()=>state?.t11Chest,transition:()=>state?.t11Transition,openChest:t11OpenChest,
+ layers:()=>['skinHead','eyeWhite','eyeIris','hair','skinBody','platinumHead'],ready:Promise.all(r06AssetJobs)};
+Promise.all([readyPromise,...r06AssetJobs.slice(0,9)]).then(()=>{if(mode==='menu'){selectHero(id);t11Labels();portrait();render();}});
+// Asset jobs may settle after the first menu paint. Repaint the complete portrait once decoded.
+Promise.all(r06AssetJobs).then(()=>{if(mode==='menu'&&isTrio()){portrait();t11Labels();}});
+const t11LateLabels=t11Labels;
+t11Labels=function(){t11LateLabels();document.body.classList.toggle('t11-terra',isTrio());if(!isTrio())return;
+ if($('relayStart'))$('relayStart').hidden=true;
+ const intro=document.querySelector('.panel > p.intro:first-of-type');if(intro)intro.textContent='星怒与铂金全套（含头盔）。1-3 全程泰拉瑞亚；粘鞍拾取即骑乘，隐藏战胜利后从原管道返回。';
+ if(mode==='menu'){$('stateLabel').textContent='选择角色';$('distanceLabel').textContent='WORLD 1-3';$('relayMessage').textContent='默认泰拉瑞亚 · 点击开始进入 1-3 主线。隐藏战仅从关卡管道进入。';}
+ $('moveLabel').textContent='方向移动';$('downLabel').parentElement.lastElementChild.innerHTML='<kbd>↓</kbd> <kbd>↑</kbd> <kbd>F</kbd>';
+ const foot=document.querySelector('.source-note');if(foot&&foot.textContent.includes('不接力'))foot.textContent='混合马里奥 · 泰拉瑞亚 1-3';
+};
+t11Style.textContent+='body.t11-terra #relayStart{display:none!important}';
+// The added hotbar/hearts occupied y=34..80, exactly where original 1-3 high platforms live.
+// Keep only the classic 32px scoreboard on the canvas; equipment is shown in the side panel.
+drawEquipment=function(){};
+const t11ReadableCamera=t11Camera;
+t11Camera=function(s){if(!s||s.r05Arena||s.t11Transition)return t11ReadableCamera(s);const p=s.p,top=t10BodyFoot(s,p.y+p.h,.75)-41,wanted=Math.min(0,top-43);s.r07CamY=approach(s.r07CamY||0,wanted,Math.max(4,Math.abs(p.vy)+1));if(top-s.r07CamY<34)s.r07CamY=top-34;};
+const t11StateBase=newState;
+newState=function(){const s=t11StateBase();if(!s.secret){
+ // Optional harvest trees must fit above their support without intersecting the scoreboard.
+ s.trees=s.trees.filter(t=>t.y>=80).map(t=>({...t,h:Math.min(t.h,t.y-58)}));
+ }return s;};
+const t11StatusLabels=t11Labels;
+t11Labels=function(){t11StatusLabels();if(!isTrio()||!state)return;
+ $('heroStatus').textContent=(state.kit?r06Kit(state).armorName:'铂金全套')+' · '+tools[state.tool]+' · 生命 '+state.hp+'/'+state.maxHp+' · 木材 '+state.wood;
+};
+// Thumbnail readiness depends only on embedded sprites, never on optional remote music/scenery.
+Promise.all([readyPromise,...r06AssetJobs.filter((_,i)=>!!R06_ASSET_DATA[Object.keys(R06_IMAGE_PATHS)[i]])]).then(()=>{if(mode==='menu'&&isTrio()){portrait();t11Labels();}});
+

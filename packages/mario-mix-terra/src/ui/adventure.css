@@ -1,0 +1,204 @@
+/* M07 · Player interface. Candidate only; the website shell is not themed here.
+   Highest scope wins over inherited R03–R20 inline styles during migration. */
+html body[data-terra-ui="m07"]{--ui-bg:#0d171b;--ui-panel:#142328;--ui-raised:#1c3034;--ui-ink:#f2eddf;--ui-muted:#b7c6c5;--ui-edge:#4c6568;--ui-gold:#ebc989;--ui-size:16px;--ui-small:14px;background:radial-gradient(ellipse at 12% 0,#243b34 0,transparent 48%),#0d171b;color:var(--ui-ink);font:var(--ui-size)/1.65 "Microsoft YaHei",system-ui,sans-serif}
+html body[data-terra-ui="m07"] *,html body[data-terra-ui="m07"] *::before,html body[data-terra-ui="m07"] *::after{box-sizing:border-box}
+html body[data-terra-ui="m07"] [hidden]{display:none!important}
+html body[data-terra-ui="m07"] .app{max-width:1180px!important;margin:0 auto!important;padding:22px 24px 30px!important}
+html body[data-terra-ui="m07"] .app>header{display:flex!important;align-items:center;gap:10px;padding:0 0 18px!important;margin:0 0 22px!important;border-bottom:1px solid #4c656859}
+html body[data-terra-ui="m07"] .brand{margin-right:auto;gap:12px;min-width:0}
+html body[data-terra-ui="m07"] .brand .mark{width:36px;height:40px;font:700 22px/38px Georgia,serif;background:transparent;border:1px solid #b5a275;color:var(--ui-gold);border-radius:2px}
+html body[data-terra-ui="m07"] .brand h1{font-weight:700;font-size:22px;line-height:1.3;font-family:inherit;letter-spacing:.04em;margin:0;color:var(--ui-ink)}
+html body[data-terra-ui="m07"] .brand small{font-size:12px;line-height:1.6;font-family:inherit;letter-spacing:.08em;color:var(--ui-muted)}
+html body[data-terra-ui="m07"] .offline{font-size:12px;line-height:1.4;font-family:inherit;color:var(--ui-muted);padding:0;border:0;background:none;margin-left:8px}
+html body[data-terra-ui="m07"] .layout{display:grid!important;grid-template-columns:minmax(0,1fr) 260px!important;gap:24px!important;align-items:start}
+html body[data-terra-ui="m07"] .play-column{min-width:0}
+html body[data-terra-ui="m07"] .screen-shell{padding:4px!important;border:1px solid #5e7870!important;border-radius:4px!important;background:#0a1418!important;box-shadow:0 14px 44px #0004!important;margin:0 auto!important;max-width:100%!important}
+html body[data-terra-ui="m07"] #game{image-rendering:pixelated;outline:none}
+html body[data-terra-ui="m07"] .screen-top,html body[data-terra-ui="m07"] .stage-tools{display:none!important}
+html body[data-terra-ui="m07"] #stage{background:#172e35}
+html body[data-terra-ui="m07"] .m07-hud{position:absolute;pointer-events:none!important;z-index:4;image-rendering:auto!important;border:0;max-width:none!important;max-height:none!important}
+html body[data-terra-ui="m07"] #t15HudHits{z-index:5}
+html body[data-terra-ui="m07"] :is(button,summary,a){-webkit-tap-highlight-color:transparent}
+html body[data-terra-ui="m07"] button{font:inherit;font-size:14px!important;line-height:1.5!important;min-height:44px;cursor:pointer;border-radius:4px!important;text-transform:none;letter-spacing:0}
+html body[data-terra-ui="m07"] button.secondary,html body[data-terra-ui="m07"] .m05-focus,html body[data-terra-ui="m07"] .m06-help-button{padding:9px 15px!important;background:#1a2b30!important;border:1px solid #69817c!important;color:#f0ecde!important;box-shadow:none!important;transition:background-color .14s,border-color .14s}
+html body[data-terra-ui="m07"] button.secondary:hover,html body[data-terra-ui="m07"] .m05-focus:hover{background:#2a4242!important;border-color:#c2c2a6!important}
+html body[data-terra-ui="m07"] button:disabled{opacity:.5;cursor:not-allowed}
+html body[data-terra-ui="m07"] button.primary{background:var(--ui-gold)!important;color:#142328!important;border:1px solid #f8dda9!important;padding:13px 24px!important;box-shadow:none!important}
+html body[data-terra-ui="m07"] :focus-visible{outline:3px solid #f5d494!important;outline-offset:3px!important}
+html body[data-terra-ui="m07"] #t15HudHits button{min-height:0!important;min-width:0!important;padding:0!important;font-size:0!important;border:0!important;background:transparent!important;color:transparent!important}
+html body[data-terra-ui="m07"] .panel{display:block!important;padding:22px!important;background:var(--ui-panel)!important;border:1px solid #47625e!important;box-shadow:none!important;border-radius:4px!important;position:static!important}
+html body[data-terra-ui="m07"] .panel .kicker{font-weight:600;font-size:12px;line-height:1.6;font-family:inherit!important;color:var(--ui-gold)!important;letter-spacing:.14em!important;margin-bottom:8px}
+html body[data-terra-ui="m07"] .panel h2{font-size:23px!important;line-height:1.5!important;margin:0 0 10px!important;letter-spacing:0!important}
+html body[data-terra-ui="m07"] .panel>.intro:not([id]){color:var(--ui-muted)!important;font-size:15px!important;line-height:1.85!important;margin:0 0 20px!important}
+html body[data-terra-ui="m07"] :is(#heroHelp,#heroStatus,#gamepadStatus,#relayMessage,.panel>.control-row,.panel>.controls-title,.panel>.tip,.panel>hr,.m06-journey,#t15Help,.m06-first-steps){display:none!important}
+html body[data-terra-ui="m07"] .m07-context{border-top:1px solid #60776b66;padding:18px 0 0;margin-top:18px;font-size:14px}
+html body[data-terra-ui="m07"] .m07-context strong{font-size:15px;color:var(--ui-ink)}
+html body[data-terra-ui="m07"] .m07-context p{font-size:14px;line-height:1.85;color:var(--ui-muted);margin:8px 0}
+html body[data-terra-ui="m07"] .m07-recent{font-size:14px;border-top:1px solid #60776b66;margin-top:22px;padding-top:14px}
+html body[data-terra-ui="m07"] .m07-recent summary{min-height:40px;cursor:pointer;color:var(--ui-gold)}
+html body[data-terra-ui="m07"] .m07-recent ol{padding-left:18px;max-height:240px;overflow:auto;color:var(--ui-muted)}
+html body[data-terra-ui="m07"] .m07-recent li{padding-bottom:10px;overflow-wrap:anywhere}
+html body[data-terra-ui="m07"] .m07-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:14px auto 8px}
+html body[data-terra-ui="m07"] .m07-actions button{font-size:14px!important;flex:0 1 auto}
+html body[data-terra-ui="m07"] #pauseButton{background:#e3c58c!important;color:#152725!important;border-color:#e3c58c!important}
+html body[data-terra-ui="m07"] .m05-quick-guide{display:flex;flex-wrap:wrap;gap:18px;margin:10px 0 0;color:#c2cfcc;font-size:14px;align-items:center}
+html body[data-terra-ui="m07"] .m05-quick-item{display:inline-flex;align-items:center;gap:8px}
+html body[data-terra-ui="m07"] kbd{font:600 12px/1.5 ui-monospace,monospace;padding:3px 7px;border:1px solid #789189;background:#1b3034;color:#eee3c7;border-radius:3px;box-shadow:none}
+html body[data-terra-ui="m07"] .m07-notice{margin:12px 0;padding:14px 16px;border-left:3px solid var(--ui-gold);background:#1c3034;color:var(--ui-ink);font-size:15px;line-height:1.7;min-height:74px}
+html body[data-terra-ui="m07"] .m07-notice p{margin:4px 0 0;color:var(--ui-muted);font-size:14px;overflow-wrap:anywhere}
+html body[data-terra-ui="m07"] .tagline{display:none!important}
+html body[data-terra-ui="m07"] .footer{display:flex;flex-wrap:wrap;gap:12px 28px;border-top:1px solid #47625e66;padding-top:18px;margin-top:26px;color:var(--ui-muted);font-size:13px!important}
+html body[data-terra-ui="m07"] .footer a,html body[data-terra-ui="m07"] .source-note a{color:var(--ui-gold);text-underline-offset:4px}
+html body[data-terra-ui="m07"] .source-note{font-size:14px!important;line-height:1.85!important;color:var(--ui-muted);margin-top:16px}
+html body[data-terra-ui="m07"] .source-note summary{min-height:40px;cursor:pointer}
+/* Overlay is viewport-based, not squeezed into a 256x240 game view on a phone. */
+html body[data-terra-ui="m07"] #overlay:not(.hidden){display:flex!important;position:fixed!important;inset:0!important;z-index:1200!important;background:#0a141bed!important;padding:24px!important;align-items:center!important;justify-content:center!important;backdrop-filter:blur(5px)}
+html body[data-terra-ui="m07"] #overlay .overlay-box{width:min(760px,100%)!important;max-height:calc(100dvh - 48px)!important;overflow:auto!important;padding:32px!important;border:1px solid #7b8970!important;border-top:3px solid var(--ui-gold)!important;border-radius:6px!important;background:linear-gradient(145deg,#213833,#101f28)!important;box-shadow:0 24px 100px #0006!important;text-align:left!important}
+html body[data-terra-ui="m07"] #overlay:not(.choosing) .overlay-box{width:min(510px,100%)!important}
+html body[data-terra-ui="m07"] #overlayLabel{display:block!important;font-weight:600;font-size:12px;line-height:1.6;font-family:inherit!important;letter-spacing:.12em!important;color:#dbc591!important;margin:0 0 8px!important}
+html body[data-terra-ui="m07"] #overlayTitle{display:block!important;font-size:34px!important;line-height:1.35!important;color:#f7f0dd!important;margin:0 0 12px!important;font-weight:700!important;letter-spacing:0!important}
+html body[data-terra-ui="m07"] .m07-selection{font-size:16px;margin:0 0 4px;color:#f2d396;font-weight:700}
+html body[data-terra-ui="m07"] #overlayText{display:block!important;font-size:15px!important;line-height:1.75!important;color:#c6d2ce!important;margin:0 0 20px!important;min-height:0!important;max-width:65ch!important;text-align:left!important}
+html body[data-terra-ui="m07"] #heroPicker{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:10px!important;margin:0 0 20px!important;width:100%!important}
+html body[data-terra-ui="m07"] #heroPicker[hidden]{display:none!important}
+html body[data-terra-ui="m07"] #heroPicker button{position:relative;display:flex!important;flex-direction:column!important;align-items:center!important;gap:4px!important;min-height:142px!important;padding:12px 8px!important;background:#14292e!important;border:1px solid #526f6b!important;border-radius:4px!important;color:var(--ui-ink)!important;box-shadow:none!important;transform:none!important}
+html body[data-terra-ui="m07"] #heroPicker button[aria-pressed=true]{background:#34524b!important;border:2px solid #edcc89!important;padding:11px 7px!important}
+html body[data-terra-ui="m07"] #heroPicker canvas{display:block!important;width:42px!important;height:52px!important;margin:0!important;image-rendering:pixelated}
+html body[data-terra-ui="m07"] #heroPicker strong{font-size:17px!important;line-height:1.5!important;color:#f8efd8!important}
+html body[data-terra-ui="m07"] #heroPicker small{display:block!important;font-size:12px!important;line-height:1.5!important;color:#c0ceca!important;background:none!important;border:0!important;font-weight:400!important;white-space:normal!important}
+html body[data-terra-ui="m07"] .m07-chapter-badge{align-self:flex-start;font:600 12px/1.4 ui-monospace,monospace;color:#e2c998}
+html body[data-terra-ui="m07"] #mainAction{min-height:50px!important;min-width:180px!important;font-size:18px!important;margin:0 10px 0 0!important}
+html body[data-terra-ui="m07"] #overlayCharacters{min-height:48px!important;font-size:15px!important;padding:10px 16px!important;border:1px solid #839687!important;background:transparent!important;color:var(--ui-ink)!important;display:inline-flex}
+html body[data-terra-ui="m07"] #overlayHint{display:block!important;font-size:13px!important;line-height:1.6!important;color:#c2cfc5!important;margin:14px 0 0!important;letter-spacing:0!important;opacity:1!important}
+html body[data-terra-ui="m07"] .m07-overlay-aux{display:flex;gap:16px;border-top:1px solid #59786d70;margin-top:18px;padding-top:12px}
+html body[data-terra-ui="m07"] .m07-overlay-aux button{background:transparent!important;border:0!important;color:#dac899!important;padding:4px 0!important;font-size:14px!important}
+/* One scale for all HTML modal families: controls, help, settings, chest and confirmations. */
+html body[data-terra-ui="m07"] :is(.m07-dialog,.m06-help,#t21Bindings){width:min(760px,calc(100vw - 32px))!important;max-height:calc(100dvh - 32px)!important;padding:26px!important;border:1px solid #94a28b!important;border-top:3px solid var(--ui-gold)!important;border-radius:6px!important;background:#14272c!important;color:var(--ui-ink)!important;box-shadow:0 24px 100px #0008!important;font:var(--ui-size)/1.7 "Microsoft YaHei",system-ui,sans-serif!important;overflow:auto!important}
+html body[data-terra-ui="m07"] :is(.m07-dialog,.m06-help,#t21Bindings)::backdrop{background:#060f16e8}
+html body[data-terra-ui="m07"] :is(.m07-dialog,.m06-help,#t21Bindings)>header{display:flex!important;justify-content:space-between;gap:18px;align-items:center;position:sticky;top:-26px;background:#14272c;z-index:3;padding:6px 0 14px!important;margin:0!important;border-bottom:1px solid #526d6355}
+html body[data-terra-ui="m07"] :is(.m07-dialog,.m06-help,#t21Bindings) h2{font-size:27px!important;line-height:1.4!important;margin:0!important;color:#f0d69f!important}
+html body[data-terra-ui="m07"] :is(.m07-dialog,.m06-help,#t21Bindings) p{font-size:var(--ui-small)!important;line-height:1.75!important;color:#c2cfca!important}
+html body[data-terra-ui="m07"] :is(.m07-dialog,.m06-help,#t21Bindings) button{font:inherit!important;font-size:var(--ui-small)!important;line-height:1.5!important;min-height:44px!important;padding:8px 12px!important;border:1px solid #80998b!important;background:#263e3e!important;color:#f1e8d3!important;border-radius:4px!important;white-space:normal!important}
+html body[data-terra-ui="m07"] .m07-dialog summary{cursor:pointer;min-height:44px;font-size:17px;font-weight:600;color:#ebd49b}
+html body[data-terra-ui="m07"] .m05-display-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0}
+html body[data-terra-ui="m07"] .m05-display-options button[aria-pressed=true]{background:#e5ca92!important;color:#132328!important;border-color:#e5ca92!important}
+html body[data-terra-ui="m07"] :is(#m05Display,#t20Audio){padding:18px 0;border-bottom:1px solid #5d7a7055;margin:0}
+html body[data-terra-ui="m07"] .audio-panel{margin:8px 0!important;padding:0!important;border:0!important;background:none!important}
+html body[data-terra-ui="m07"] .audio-head{display:none!important}
+html body[data-terra-ui="m07"] .audio-level{display:grid;grid-template-columns:44px minmax(80px,1fr) 48px;gap:16px;align-items:center;min-height:48px;font-size:16px!important}
+html body[data-terra-ui="m07"] input[type=range]{width:100%;accent-color:#e3c68a;min-height:32px}
+html body[data-terra-ui="m07"] .m07-confirm{max-width:440px!important}
+html body[data-terra-ui="m07"] .m07-confirm-actions{display:flex;justify-content:flex-end;gap:12px;margin-top:22px}
+html body[data-terra-ui="m07"] #m07ConfirmAccept{background:#e7ca90!important;color:#17272b!important}
+html body[data-terra-ui="m07"] #t21Bindings table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:var(--ui-small)!important}
+html body[data-terra-ui="m07"] #t21Bindings :is(td,th){padding:10px 7px!important;border-bottom:1px solid #56736866;text-align:left;overflow-wrap:anywhere}
+html body[data-terra-ui="m07"] #t21Bindings th{font-size:14px!important;color:#e4cea2;background:#14272c;position:sticky;top:0}
+html body[data-terra-ui="m07"] #t21Bindings td:first-child{width:30%!important;font-size:var(--ui-small)!important;color:#e4e8df}
+html body[data-terra-ui="m07"] #t21Bindings .t21BindScroll{max-height:50dvh!important;overflow:auto}
+html body[data-terra-ui="m07"] #t21Bindings footer{display:flex;flex-wrap:wrap;gap:10px;padding-top:14px;position:sticky;bottom:-26px;background:#14272c;z-index:3}
+html body[data-terra-ui="m07"] #t21BindingStatus{min-height:30px!important;color:#f1d69a!important}
+html body[data-terra-ui="m07"] #t21BindRows button[data-capturing=true]{outline:2px solid var(--ui-gold)!important;background:#425746!important}
+html body[data-terra-ui="m07"] .m06-device{display:flex;gap:8px;margin-bottom:18px}
+html body[data-terra-ui="m07"] .m06-device button[aria-pressed=true]{background:#e5cb91!important;color:#102421!important;border-color:#e5cb91!important}
+html body[data-terra-ui="m07"] .m06-help-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+html body[data-terra-ui="m07"] .m06-help-card{padding:17px 18px;border:1px solid #536f67;background:#1b3234;border-radius:4px;min-width:0}
+html body[data-terra-ui="m07"] .m06-help-card h3{font-size:18px;margin:0;color:#f1e6cc}
+html body[data-terra-ui="m07"] .m06-help-card p{margin:7px 0 0}
+html body[data-terra-ui="m07"] .m06-help-card .m06-keys{color:#f2d597!important;font-weight:600;font-size:16px!important;overflow-wrap:anywhere}
+html body[data-terra-ui="m07"] .m06-feedback{border-top:1px solid #63837566;padding-top:16px;margin-top:20px}
+html body[data-terra-ui="m07"] .m06-feedback summary{font-size:14px;cursor:pointer;min-height:44px;color:#e4cf9b}
+html body[data-terra-ui="m07"] .m06-feedback textarea{width:100%;min-height:180px;resize:vertical;padding:12px;color:#f2eddf;background:#0c1d23;border:1px solid #78998b;font:14px/1.7 ui-monospace,monospace}
+html body[data-terra-ui="m07"] #t13ChestPanel{font:16px/1.7 "Microsoft YaHei",system-ui,sans-serif;z-index:1300}
+html body[data-terra-ui="m07"] #t13ChestPanel .t13ChestBox{background:#14272c;border:1px solid #94a28b;border-top:3px solid var(--ui-gold);border-radius:6px;padding:24px;max-height:calc(100dvh - 32px);overflow:auto}
+html body[data-terra-ui="m07"] #t13ChestPanel :is(p,#t13ChestItems){font-size:14px!important;line-height:1.75}
+html body[data-terra-ui="m07"] #toast{z-index:4000;font-size:15px;line-height:1.65;font-family:inherit!important;max-width:min(560px,calc(100vw - 32px));white-space:normal!important;overflow-wrap:anywhere;background:#183039f5!important;color:#f3e9d1!important;border:1px solid #b9a77b!important;border-radius:5px;padding:12px 18px;box-shadow:0 8px 30px #0005}
+html body[data-terra-ui="m07"] .touchkey{font-size:14px!important;min-width:44px!important;min-height:48px!important;background:#233b3f!important;border:1px solid #7b998d!important;color:#f4e7ca!important;border-radius:4px!important}
+html body[data-terra-ui="m07"] #r06SceneActions{display:none!important}
+html body[data-terra-ui="m07"][data-terra-focus=true] .layout{grid-template-columns:minmax(0,1fr)!important}
+html body[data-terra-ui="m07"][data-terra-focus=true] .panel{display:none!important}
+html body[data-terra-ui="m07"][data-terra-text=large]{--ui-size:20px;--ui-small:18px}
+html body[data-terra-ui="m07"][data-terra-text=large] :is(#overlayText,.m07-context p,.m07-notice p,.m07-selection){font-size:18px!important}
+html body[data-terra-ui="m07"][data-terra-text=large] #heroPicker small{font-size:15px!important}
+html body[data-terra-ui="m07"][data-terra-contrast=high]{--ui-panel:#05151d;--ui-muted:#e0e8e3;background:#061117}
+html body[data-terra-ui="m07"][data-terra-contrast=high] :is(.panel,.m07-dialog,.m06-help,#t21Bindings,#overlay .overlay-box){background:#06171f!important;border-color:#e8d69e!important}
+html body[data-terra-ui="m07"][data-terra-contrast=high] :is(#overlayText,.panel p,.m07-dialog p,.m06-help p,#t21Bindings p){color:#ecf0e8!important}
+html body[data-terra-ui="m07"][data-terra-motion=reduced] :is(button,.overlay-box,#toast){transition:none!important;animation:none!important}
+@media(prefers-reduced-motion:reduce){html body[data-terra-ui="m07"] :is(button,.overlay-box,#toast){transition:none!important;animation:none!important}}
+@media(min-width:960px){html body[data-terra-ui="m07"] .screen-shell:not(:fullscreen){width:min(100%,calc((100dvh - 235px)*16/15))!important;min-width:360px}html body[data-terra-ui="m07"].r05-arena .screen-shell:not(:fullscreen){width:min(100%,calc((100dvh - 235px)*16/9))!important}}
+@media(max-width:960px){html body[data-terra-ui="m07"] .layout{grid-template-columns:minmax(0,1fr)!important;gap:18px!important}html body[data-terra-ui="m07"] .panel{width:100%!important}html body[data-terra-ui="m07"] .offline{display:none}html body[data-terra-ui="m07"] .panel .m07-context{margin-top:10px}}
+@media(max-width:620px){
+ html body[data-terra-ui="m07"] .app{padding:14px 12px 24px!important}
+ html body[data-terra-ui="m07"] .app>header{flex-wrap:wrap!important;gap:8px;margin-bottom:14px!important;padding-bottom:12px!important}
+ html body[data-terra-ui="m07"] .brand{width:100%;margin-bottom:4px}
+ html body[data-terra-ui="m07"] .brand h1{font-size:20px}
+ html body[data-terra-ui="m07"] .app>header>button{min-height:40px!important;padding:6px 12px!important;font-size:14px!important}
+ html body[data-terra-ui="m07"] #overlay:not(.hidden){padding:12px!important}
+ html body[data-terra-ui="m07"] #overlay .overlay-box{padding:20px 16px!important;max-height:calc(100dvh - 24px)!important}
+ html body[data-terra-ui="m07"] #overlayTitle{font-size:28px!important}
+ html body[data-terra-ui="m07"] #overlayText{font-size:14px!important;line-height:1.65!important;margin-bottom:14px!important}
+ html body[data-terra-ui="m07"] #heroPicker{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important;margin-bottom:14px!important}
+ html body[data-terra-ui="m07"] #heroPicker button{min-height:122px!important;padding:9px 6px!important}
+ html body[data-terra-ui="m07"] #heroPicker canvas{width:32px!important;height:40px!important}
+ html body[data-terra-ui="m07"] #heroPicker strong{font-size:16px!important}
+ html body[data-terra-ui="m07"] #heroPicker small{font-size:12px!important}
+ html body[data-terra-ui="m07"] #mainAction{width:100%;min-width:0!important;margin-bottom:10px!important}
+ html body[data-terra-ui="m07"] #overlayHint{margin-top:6px!important}
+ html body[data-terra-ui="m07"] .m07-overlay-aux{margin-top:10px;padding-top:5px}
+ html body[data-terra-ui="m07"] :is(.m07-dialog,.m06-help,#t21Bindings){padding:18px 14px!important;width:calc(100vw - 16px)!important;max-height:calc(100dvh - 16px)!important}
+ html body[data-terra-ui="m07"] :is(.m07-dialog,.m06-help,#t21Bindings)>header{top:-18px;gap:8px}
+ html body[data-terra-ui="m07"] :is(.m07-dialog,.m06-help,#t21Bindings) h2{font-size:23px!important}
+ html body[data-terra-ui="m07"] .m05-display-options{grid-template-columns:1fr}
+ html body[data-terra-ui="m07"] .m06-help-grid{grid-template-columns:1fr}
+ html body[data-terra-ui="m07"] #t21Bindings :is(td,th){padding:8px 4px!important}
+ html body[data-terra-ui="m07"] #t21Bindings table button{padding:8px 5px!important;font-size:14px!important}
+ html body[data-terra-ui="m07"] .m07-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ html body[data-terra-ui="m07"] .m07-actions button{width:100%}
+ html body[data-terra-ui="m07"] .m05-quick-guide{gap:12px}
+}
+@media(max-height:550px){html body[data-terra-ui="m07"] #overlay .overlay-box{max-height:calc(100dvh - 20px)!important}html body[data-terra-ui="m07"] #heroPicker{grid-template-columns:repeat(3,minmax(0,1fr))!important}html body[data-terra-ui="m07"] #heroPicker button{min-height:112px!important}}
+
+html body[data-terra-ui="m07"] .m07-abilities {display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+html body[data-terra-ui="m07"] .m07-abilities button {flex:1 1 90px;white-space:normal;font-size:14px!important;padding:8px!important}
+html body[data-terra-ui="m07"] .m07-abilities[hidden]{display:none!important}
+
+/* The compact HUD reflows instead of shrinking text to seven pixels. The world aspect is unchanged. */
+html body[data-terra-ui="m07"] #overlayText{font-size:16px!important;text-align:left!important;line-height:1.75!important;max-width:none!important}
+html body[data-terra-ui="m07"] .m07-actions #charactersButton{width:auto!important;margin:0!important;grid-column:auto!important}
+html body[data-terra-ui="m07"] .m07-actions #pauseButton{background:#223b3d!important;color:#efe5cd!important}
+html body[data-terra-ui="m07"] .m07-compact-hud{background:#142a30;border:1px solid #657f74;border-top:2px solid #d5bc7d;border-radius:4px;padding:10px;margin-bottom:10px}
+html body[data-terra-ui="m07"] .m07-compact-hud[hidden]{display:none!important}
+html body[data-terra-ui="m07"][data-hud-layout=compact] #t15HudHits{display:none!important}
+html body[data-terra-ui="m07"] .m07-hud-meta{font-size:13px;line-height:1.6;color:#d4ded5;margin-bottom:6px;white-space:normal}
+html body[data-terra-ui="m07"] .m07-hud-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:8px}
+html body[data-terra-ui="m07"] .m07-hud-stats>*{margin:0;padding:4px 0;border:0;border-radius:0;background:none!important;text-align:left;font-size:14px!important;color:#f0e9d8;min-height:36px;line-height:1.4}
+html body[data-terra-ui="m07"] .m07-hud-stats meter{display:block;width:100%;height:10px}
+html body[data-terra-ui="m07"] meter::-webkit-meter-bar{background:#07151d;border:0}
+html body[data-terra-ui="m07"] meter::-webkit-meter-optimum-value{background:#86bab1}
+html body[data-terra-ui="m07"] .m07-hud-stats button meter::-webkit-meter-optimum-value{background:#d48f92}
+html body[data-terra-ui="m07"] .m07-compact-slots{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px}
+html body[data-terra-ui="m07"] .m07-compact-slots button{margin:0!important;padding:12px 0 0!important;min-height:52px;position:relative;min-width:0!important;background:#1c363c!important;color:#efe7d4;border:1px solid #648578!important}
+html body[data-terra-ui="m07"] .m07-compact-slots button[aria-pressed=true]{border:2px solid #eed294!important;background:#3f5649!important}
+html body[data-terra-ui="m07"] .m07-compact-slots canvas{width:24px;height:24px;image-rendering:pixelated;display:block;margin:0 auto}
+html body[data-terra-ui="m07"] .m07-slot-num{position:absolute;left:3px;top:0;font-size:12px;line-height:14px}
+html body[data-terra-ui="m07"] .m07-slot-count{font-size:12px;line-height:14px;display:block;min-height:14px;color:#fae9ba}
+html body[data-terra-ui="m07"] .m07-selected-tool{font-size:14px;line-height:1.6;margin:6px 0 0;color:#ecdbb5}
+html body[data-terra-ui="m07"] .m07-compact-boss{font-size:14px;color:#f2cc9e;margin-top:8px}
+html body[data-terra-ui="m07"] .m07-compact-boss meter{width:100%;height:10px}
+html body[data-terra-ui="m07"] #t21Bindings[data-capturing=true] #t21BindingStatus{border-left:3px solid #e5c57e;padding:8px 12px;background:#263e3e}
+html body[data-terra-ui="m07"] #r06Media{font-size:14px!important;color:#d2ded8!important;margin:10px 0!important}
+html body[data-terra-ui="m07"] #r06Media :is(p,div,label,input,select){font-size:14px!important;line-height:1.7!important}
+@media(max-width:620px){html body[data-terra-ui="m07"] .m07-actions #charactersButton{width:100%!important}html body[data-terra-ui="m07"] #overlayText{font-size:14px!important}}
+
+html body[data-terra-ui="m07"] :is(.panel h2,.panel>.intro:not([id]),#overlayText){display:block!important}
+html body[data-terra-ui="m07"]:is([data-player-mode=menu],[data-player-mode=paused],[data-player-mode=gameover],[data-player-mode=respawn],[data-player-mode=win]){overflow:hidden}
+html body[data-terra-ui="m07"]:has(dialog[open]){overflow:hidden}
+
+html body[data-terra-ui="m07"] .app>header>button{margin:0!important;align-self:center;vertical-align:middle}
+html body[data-terra-ui="m07"] .m07-abilities button{background:#243c3d!important;color:#f0e7d3!important;border:1px solid #759184!important;border-radius:4px!important;min-height:44px!important}
+html body[data-terra-ui="m07"] .m07-abilities button:disabled{opacity:.48;cursor:not-allowed}
+html body[data-terra-ui="m07"] .source-note{font-size:14px!important;line-height:1.8!important}
+html body[data-terra-ui="m07"] .m07-credit-section{border-top:1px solid #3b5558;padding-top:12px;margin-top:14px}
+html body[data-terra-ui="m07"] .m07-credit-section h3{font-size:16px;color:#e2cfa9;margin:0 0 8px}
+
+html body[data-terra-ui="m07"] .audio-level output{font:inherit!important;font-size:14px!important;color:#f2e6c9!important;text-align:right;min-width:44px}
+html body[data-terra-ui="m07"] #t20Audio>summary{font-size:17px!important;font-weight:600!important;color:#ebd49b!important}

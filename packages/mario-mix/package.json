@@ -1,0 +1,19 @@
+{
+  "name": "mario-mix-collaboration",
+  "private": true,
+  "version": "0.5.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "check": "node scripts/cli.mjs check",
+    "audit": "node scripts/cli.mjs audit",
+    "build": "node scripts/cli.mjs build",
+    "dev": "node scripts/cli.mjs dev",
+    "verify": "npm run check && npm test && npm run build",
+    "release:check": "node scripts/cli.mjs release-check",
+    "docs:build": "node scripts/work-items.mjs"
+  }
+}

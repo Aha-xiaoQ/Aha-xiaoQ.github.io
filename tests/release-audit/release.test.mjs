@@ -1,0 +1,15 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import {fileURLToPath} from 'node:url';
+import {checkRelease} from '../../scripts/release-audit/check.mjs';import {check} from '../../scripts/public-content/check.mjs';import{validateProject}from '../../assets/journal/model.mjs';import {render} from '../../assets/journal/render.mjs';
+const ROOT=fileURLToPath(new URL('../../',import.meta.url)),read=p=>fs.readFileSync(ROOT+p),project=()=>JSON.parse(read('content/development/projects/mario-mix.json'));
+const source='notes/mario-mix/docs/terra-source/index.html';
+function changed(p,fn){return file=>file===p?Buffer.from(fn(read(file).toString())):read(file);}
+test('release check inspects six generated primary pages and does not approve deployment',()=>{const r=checkRelease(ROOT);assert.equal(r.version,project().currentRelease.version);assert.equal(r.checkedPages,6);assert.equal(r.currentGuides,3);assert.equal(r.deployed,false);assert.equal(r.manualReview,'not-evaluated');assert.equal(r.approvalSupplied,false);});
+test('content report derives its version from data',()=>assert.deepEqual(check(ROOT).versions,{'mario-mix':project().currentRelease.version}));
+test('a second h1 fails the local artifact gate',()=>assert.throws(()=>checkRelease(ROOT,{reader:changed(source,s=>s.replace('</main>','<h1>extra</h1></main>'))}),/one h1/));
+test('duplicate ids fail the local artifact gate',()=>assert.throws(()=>checkRelease(ROOT,{reader:changed(source,s=>s.replace('</main>','<span id="main"></span></main>'))}),/Duplicate/));
+test('missing download semantics fails the local artifact gate',()=>assert.throws(()=>checkRelease(ROOT,{reader:changed(source,s=>s.replace(/ download/g,''))}),/download/));
+test('source tutorial is keyboard-copyable with a live result and real code text',()=>{const s=read(source).toString();assert.match(s,/data-copy-code/);assert.match(s,/role="status" data-copy-status/);assert.match(s,/<pre tabindex="0"/);assert.match(s,/npm run verify/);});
+test('new game releases can omit documentation-only revision',()=>{const p=project();delete p.currentRelease.documentationRevision;validateProject(p);});
+test('supplied documentation-only revision is still validated',()=>{const p=project();for(const value of [0,-1,'16',null]){p.currentRelease.documentationRevision=value;assert.throws(()=>validateProject(p),/字段/);}});
+test('HTTPS ZIP is not mislabeled as guaranteed same-origin download',()=>{const p=project();delete p.currentRelease;p.docs[0].action={label:'外部源码',href:'https://example.org/source.zip'};const html=render({projectId:p.id,view:'docs',doc:p.docs[0].id},{projects:[p],catalog:{}});assert.match(html,/target="_blank"/);assert.doesNotMatch(html,/href="https:\/\/example.org\/source.zip" download/);});
+test('guide copying has failure feedback, detached-node protection and no automatic requests',()=>{const s=read('assets/journal/runtime.mjs').toString();assert.match(s,/block.isConnected/);assert.match(s,/copyRequests.get\(block\)!==ticket/);assert.match(s,/range.selectNodeContents\(code\)/);assert.match(s,/clipboard.writeText\(code.textContent\)/);});

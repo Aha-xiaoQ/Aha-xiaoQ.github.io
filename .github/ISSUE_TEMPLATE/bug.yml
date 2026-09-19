@@ -1,0 +1,66 @@
+name: 游戏或网站问题
+description: 提供版本、操作设备和可复现步骤。
+title: '[Bug] '
+body:
+- type: markdown
+  attributes:
+    value: 请勿上传密钥或私人信息。没有复现的旧反馈请注明“待验证”。
+- type: dropdown
+  id: episode
+  attributes:
+    label: 影响范围
+    options:
+    - 网站 / 开发中心
+    - 第一期 · 1-1
+    - 第二期 · 1-2
+    - 第三期 · 1-3
+    - 其他 / 不确定
+  validations:
+    required: true
+- type: input
+  id: version
+  attributes:
+    label: 版本 / 文件 / 提交 SHA
+    description: 填写页面构建编号或实际 HTML 文件名；不知道就写不确定。
+  validations:
+    required: true
+- type: input
+  id: environment
+  attributes:
+    label: 系统、浏览器与输入设备
+    description: 例如 Windows / Chrome / Xbox 手柄；请按实际填写。
+  validations:
+    required: true
+- type: textarea
+  id: steps
+  attributes:
+    label: 复现步骤
+  validations:
+    required: true
+- type: textarea
+  id: expected
+  attributes:
+    label: 预期表现
+  validations:
+    required: true
+- type: textarea
+  id: actual
+  attributes:
+    label: 实际表现
+  validations:
+    required: true
+- type: textarea
+  id: evidence
+  attributes:
+    label: 截图、短录屏或控制台错误
+  validations:
+    required: false
+- type: checkboxes
+  id: checked
+  attributes:
+    label: 提交前确认
+    options:
+    - label: 我已搜索已有问题，且没有将尚未验证的猜测写成事实。
+      required: true
+  validations:
+    required: true

@@ -1,0 +1,3596 @@
+{
+  "schemaVersion": 2,
+  "level": "7-2",
+  "stage": {
+    "id": "template-7-2",
+    "title": "7-2 · 区域 1（地形检查）",
+    "driver": "platform-v1",
+    "status": "draft",
+    "entryRoom": "area-0",
+    "entrySpawn": "inspection-start",
+    "rooms": {
+      "area-0": "classic-7-2-area-0"
+    },
+    "characters": [
+      "lab-runner",
+      "lab-scout"
+    ],
+    "requiredCapabilities": [
+      "jump"
+    ],
+    "overlays": {},
+    "audio": "map-kit-silent",
+    "note": "分区几何检查，不是整关通关。原房间连接、条件循环与未实现机制保留在模板 topology / coverage；静态机关只用于检查位置。"
+  },
+  "inspectionStages": [
+    {
+      "id": "template-7-2",
+      "title": "7-2 · 区域 1（地形检查）",
+      "driver": "platform-v1",
+      "status": "draft",
+      "entryRoom": "area-0",
+      "entrySpawn": "inspection-start",
+      "rooms": {
+        "area-0": "classic-7-2-area-0"
+      },
+      "characters": [
+        "lab-runner",
+        "lab-scout"
+      ],
+      "requiredCapabilities": [
+        "jump"
+      ],
+      "overlays": {},
+      "audio": "map-kit-silent",
+      "note": "分区几何检查，不是整关通关。原房间连接、条件循环与未实现机制保留在模板 topology / coverage；静态机关只用于检查位置。"
+    },
+    {
+      "id": "inspect-7-2-area-2",
+      "title": "7-2 · 区域 3（地形检查）",
+      "driver": "platform-v1",
+      "status": "draft",
+      "entryRoom": "area-2",
+      "entrySpawn": "inspection-start",
+      "rooms": {
+        "area-2": "classic-7-2-area-2"
+      },
+      "characters": [
+        "lab-runner",
+        "lab-scout"
+      ],
+      "requiredCapabilities": [
+        "jump"
+      ],
+      "overlays": {},
+      "audio": "map-kit-silent",
+      "note": "分区几何检查，不是整关通关。原房间连接、条件循环与未实现机制保留在模板 topology / coverage；静态机关只用于检查位置。"
+    }
+  ],
+  "maps": [
+    {
+      "id": "classic-7-2-area-0",
+      "title": "7-2 · 区域 1",
+      "tileSize": 16,
+      "width": 384,
+      "height": 240,
+      "provenance": {
+        "kind": "transcribed",
+        "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+        "review": "pending",
+        "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+      },
+      "geometry": [
+        {
+          "id": "r000",
+          "x": 0,
+          "y": 208,
+          "w": 384,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r001",
+          "x": 160,
+          "y": 176,
+          "w": 39,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r002",
+          "x": 192,
+          "y": 144,
+          "w": 32,
+          "h": 64,
+          "collision": "solid"
+        }
+      ],
+      "objects": [
+        {
+          "id": "inspection-start",
+          "kind": "spawn",
+          "x": 24,
+          "y": 184,
+          "w": 12,
+          "h": 24
+        }
+      ]
+    },
+    {
+      "id": "classic-7-2-area-1",
+      "title": "7-2 · 区域 2",
+      "tileSize": 16,
+      "width": 3280,
+      "height": 240,
+      "provenance": {
+        "kind": "transcribed",
+        "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+        "review": "pending",
+        "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+      },
+      "geometry": [
+        {
+          "id": "r000",
+          "x": 0,
+          "y": 208,
+          "w": 1072,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r001",
+          "x": 192,
+          "y": 160,
+          "w": 16,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r003",
+          "x": 304,
+          "y": 144,
+          "w": 48,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r006",
+          "x": 544,
+          "y": 128,
+          "w": 16,
+          "h": 80,
+          "collision": "solid"
+        },
+        {
+          "id": "r008",
+          "x": 688,
+          "y": 144,
+          "w": 32,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r010",
+          "x": 816,
+          "y": 144,
+          "w": 16,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r012",
+          "x": 1040,
+          "y": 160,
+          "w": 16,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r013",
+          "x": 1056,
+          "y": 128,
+          "w": 16,
+          "h": 80,
+          "collision": "solid"
+        },
+        {
+          "id": "r015",
+          "x": 1152,
+          "y": 208,
+          "w": 960,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r016",
+          "x": 1152,
+          "y": 128,
+          "w": 16,
+          "h": 80,
+          "collision": "solid"
+        },
+        {
+          "id": "r017",
+          "x": 1168,
+          "y": 160,
+          "w": 16,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r019",
+          "x": 1264,
+          "y": 160,
+          "w": 32,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r020",
+          "x": 1064,
+          "y": 32,
+          "w": 32,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r023",
+          "x": 1328,
+          "y": 80,
+          "w": 16,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r025",
+          "x": 1344,
+          "y": 48,
+          "w": 16,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r026",
+          "x": 1440,
+          "y": 160,
+          "w": 16,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r031",
+          "x": 1648,
+          "y": 144,
+          "w": 32,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r032",
+          "x": 1648,
+          "y": 80,
+          "w": 16,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r035",
+          "x": 1856,
+          "y": 128,
+          "w": 32,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r037",
+          "x": 1936,
+          "y": 144,
+          "w": 16,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r039",
+          "x": 2080,
+          "y": 144,
+          "w": 16,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r040",
+          "x": 2096,
+          "y": 176,
+          "w": 16,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r042",
+          "x": 2112,
+          "y": 32,
+          "w": 16,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r043",
+          "x": 2128,
+          "y": 64,
+          "w": 128,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r048",
+          "x": 2256,
+          "y": 208,
+          "w": 272,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r049",
+          "x": 2256,
+          "y": 176,
+          "w": 16,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r050",
+          "x": 2272,
+          "y": 144,
+          "w": 16,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r052",
+          "x": 2368,
+          "y": 176,
+          "w": 16,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r053",
+          "x": 2400,
+          "y": 160,
+          "w": 16,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r055",
+          "x": 2512,
+          "y": 80,
+          "w": 16,
+          "h": 128,
+          "collision": "solid"
+        },
+        {
+          "id": "r056",
+          "x": 2528,
+          "y": 80,
+          "w": 32,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r058",
+          "x": 2608,
+          "y": 80,
+          "w": 32,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r059",
+          "x": 2640,
+          "y": 80,
+          "w": 16,
+          "h": 128,
+          "collision": "solid"
+        },
+        {
+          "id": "r060",
+          "x": 2640,
+          "y": 208,
+          "w": 640,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r063-0-0",
+          "x": 2768,
+          "y": 144,
+          "w": 80,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r063-0-1",
+          "x": 2768,
+          "y": 80,
+          "w": 80,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r064",
+          "x": 2784,
+          "y": 48,
+          "w": 16,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r066-0-0",
+          "x": 2896,
+          "y": 144,
+          "w": 64,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r069",
+          "x": 2976,
+          "y": 192,
+          "w": 80,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r070",
+          "x": 2992,
+          "y": 176,
+          "w": 64,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r071",
+          "x": 3008,
+          "y": 160,
+          "w": 48,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r072",
+          "x": 3024,
+          "y": 144,
+          "w": 32,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r073",
+          "x": 3024,
+          "y": 32,
+          "w": 176,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r074",
+          "x": 3040,
+          "y": 112,
+          "w": 32,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r075",
+          "x": 3056,
+          "y": 32,
+          "w": 224,
+          "h": 176,
+          "collision": "solid"
+        }
+      ],
+      "objects": [
+        {
+          "id": "r002-0-0",
+          "kind": "coin",
+          "x": 240,
+          "y": 194,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r002-1-0",
+          "kind": "coin",
+          "x": 256,
+          "y": 194,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r005-0-0",
+          "kind": "coin",
+          "x": 448,
+          "y": 80,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r005-1-0",
+          "kind": "coin",
+          "x": 464,
+          "y": 80,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r005-2-0",
+          "kind": "coin",
+          "x": 480,
+          "y": 80,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r007-0-0",
+          "kind": "coin",
+          "x": 592,
+          "y": 194,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r007-1-0",
+          "kind": "coin",
+          "x": 608,
+          "y": 194,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r007-2-0",
+          "kind": "coin",
+          "x": 624,
+          "y": 194,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r014-0-0",
+          "kind": "coin",
+          "x": 1092,
+          "y": 162,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r014-1-0",
+          "kind": "coin",
+          "x": 1108,
+          "y": 162,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r014-2-0",
+          "kind": "coin",
+          "x": 1124,
+          "y": 162,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r030-0-0",
+          "kind": "coin",
+          "x": 1632,
+          "y": 178,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r030-1-0",
+          "kind": "coin",
+          "x": 1648,
+          "y": 178,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r030-2-0",
+          "kind": "coin",
+          "x": 1664,
+          "y": 178,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r034-0-0",
+          "kind": "coin",
+          "x": 1824,
+          "y": 98,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r034-1-0",
+          "kind": "coin",
+          "x": 1840,
+          "y": 98,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r034-2-0",
+          "kind": "coin",
+          "x": 1856,
+          "y": 98,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r044",
+          "kind": "coin",
+          "x": 2144,
+          "y": 178,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r045-0-0",
+          "kind": "coin",
+          "x": 2160,
+          "y": 194,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r045-1-0",
+          "kind": "coin",
+          "x": 2176,
+          "y": 194,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r045-2-0",
+          "kind": "coin",
+          "x": 2192,
+          "y": 194,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r046",
+          "kind": "coin",
+          "x": 2208,
+          "y": 178,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r057-0-0",
+          "kind": "coin",
+          "x": 2562,
+          "y": 144,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r057-0-1",
+          "kind": "coin",
+          "x": 2562,
+          "y": 192,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r057-1-0",
+          "kind": "coin",
+          "x": 2578,
+          "y": 144,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r057-1-1",
+          "kind": "coin",
+          "x": 2578,
+          "y": 192,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r057-2-0",
+          "kind": "coin",
+          "x": 2594,
+          "y": 144,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r057-2-1",
+          "kind": "coin",
+          "x": 2594,
+          "y": 192,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "inspection-start",
+          "kind": "spawn",
+          "x": 24,
+          "y": 184,
+          "w": 12,
+          "h": 24
+        }
+      ]
+    },
+    {
+      "id": "classic-7-2-area-2",
+      "title": "7-2 · 区域 3",
+      "tileSize": 16,
+      "width": 672,
+      "height": 240,
+      "provenance": {
+        "kind": "transcribed",
+        "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+        "review": "pending",
+        "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+      },
+      "geometry": [
+        {
+          "id": "r000",
+          "x": 0,
+          "y": 208,
+          "w": 672,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r001",
+          "x": 0,
+          "y": 176,
+          "w": 32,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r002",
+          "x": 32,
+          "y": 192,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r003",
+          "x": 48,
+          "y": 176,
+          "w": 16,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r004",
+          "x": 64,
+          "y": 160,
+          "w": 16,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r005",
+          "x": 80,
+          "y": 144,
+          "w": 16,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r006",
+          "x": 96,
+          "y": 128,
+          "w": 16,
+          "h": 80,
+          "collision": "solid"
+        },
+        {
+          "id": "r007",
+          "x": 112,
+          "y": 112,
+          "w": 16,
+          "h": 96,
+          "collision": "solid"
+        },
+        {
+          "id": "r008",
+          "x": 128,
+          "y": 96,
+          "w": 16,
+          "h": 112,
+          "collision": "solid"
+        },
+        {
+          "id": "r009",
+          "x": 144,
+          "y": 80,
+          "w": 16,
+          "h": 128,
+          "collision": "solid"
+        },
+        {
+          "id": "r010",
+          "x": 160,
+          "y": 80,
+          "w": 16,
+          "h": 128,
+          "collision": "solid"
+        },
+        {
+          "id": "r011-base",
+          "x": 304,
+          "y": 192,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        }
+      ],
+      "objects": [
+        {
+          "id": "inspection-start",
+          "kind": "spawn",
+          "x": 24,
+          "y": 152,
+          "w": 12,
+          "h": 24
+        }
+      ]
+    }
+  ],
+  "rooms": [
+    {
+      "roomId": "area-0",
+      "label": "区域 1",
+      "setting": "Overworld",
+      "origin": {
+        "area": 0,
+        "part": "base"
+      },
+      "declaredWidth": null,
+      "underwater": false,
+      "inspectionOnly": true,
+      "previewSupported": true,
+      "map": {
+        "id": "classic-7-2-area-0",
+        "title": "7-2 · 区域 1",
+        "tileSize": 16,
+        "width": 384,
+        "height": 240,
+        "provenance": {
+          "kind": "transcribed",
+          "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+          "review": "pending",
+          "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+        },
+        "geometry": [
+          {
+            "id": "r000",
+            "x": 0,
+            "y": 208,
+            "w": 384,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r001",
+            "x": 160,
+            "y": 176,
+            "w": 39,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r002",
+            "x": 192,
+            "y": 144,
+            "w": 32,
+            "h": 64,
+            "collision": "solid"
+          }
+        ],
+        "objects": [
+          {
+            "id": "inspection-start",
+            "kind": "spawn",
+            "x": 24,
+            "y": 184,
+            "w": 12,
+            "h": 24
+          }
+        ]
+      },
+      "markers": [
+        {
+          "id": "r001-transport",
+          "kind": "source-transport-not-simulated",
+          "source": {
+            "thing": "PipeHorizontal",
+            "transport": 1,
+            "x": 80,
+            "y": 16
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r001"
+          },
+          "x": 160,
+          "y": 176
+        }
+      ],
+      "semantics": [
+        {
+          "id": "r000",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 192,
+            "x": 0,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 0,
+            "y": 208,
+            "w": 384,
+            "h": 32
+          }
+        },
+        {
+          "id": "r001",
+          "kind": "PipeHorizontal",
+          "source": {
+            "thing": "PipeHorizontal",
+            "transport": 1,
+            "x": 80,
+            "y": 16
+          },
+          "referenceRect": {
+            "x": 160,
+            "y": 176,
+            "w": 39,
+            "h": 32
+          }
+        },
+        {
+          "id": "r002",
+          "kind": "PipeVertical",
+          "source": {
+            "height": 32,
+            "x": 96,
+            "y": 32,
+            "thing": "PipeVertical",
+            "width": 16
+          },
+          "referenceRect": {
+            "x": 192,
+            "y": 144,
+            "w": 32,
+            "h": 64
+          }
+        }
+      ],
+      "sourceRecordCount": 3
+    },
+    {
+      "roomId": "area-1",
+      "label": "区域 2",
+      "setting": "Underwater",
+      "origin": {
+        "area": 1,
+        "part": "base"
+      },
+      "declaredWidth": null,
+      "underwater": true,
+      "inspectionOnly": true,
+      "previewSupported": false,
+      "map": {
+        "id": "classic-7-2-area-1",
+        "title": "7-2 · 区域 2",
+        "tileSize": 16,
+        "width": 3280,
+        "height": 240,
+        "provenance": {
+          "kind": "transcribed",
+          "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+          "review": "pending",
+          "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+        },
+        "geometry": [
+          {
+            "id": "r000",
+            "x": 0,
+            "y": 208,
+            "w": 1072,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r001",
+            "x": 192,
+            "y": 160,
+            "w": 16,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r003",
+            "x": 304,
+            "y": 144,
+            "w": 48,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r006",
+            "x": 544,
+            "y": 128,
+            "w": 16,
+            "h": 80,
+            "collision": "solid"
+          },
+          {
+            "id": "r008",
+            "x": 688,
+            "y": 144,
+            "w": 32,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r010",
+            "x": 816,
+            "y": 144,
+            "w": 16,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r012",
+            "x": 1040,
+            "y": 160,
+            "w": 16,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r013",
+            "x": 1056,
+            "y": 128,
+            "w": 16,
+            "h": 80,
+            "collision": "solid"
+          },
+          {
+            "id": "r015",
+            "x": 1152,
+            "y": 208,
+            "w": 960,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r016",
+            "x": 1152,
+            "y": 128,
+            "w": 16,
+            "h": 80,
+            "collision": "solid"
+          },
+          {
+            "id": "r017",
+            "x": 1168,
+            "y": 160,
+            "w": 16,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r019",
+            "x": 1264,
+            "y": 160,
+            "w": 32,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r020",
+            "x": 1064,
+            "y": 32,
+            "w": 32,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r023",
+            "x": 1328,
+            "y": 80,
+            "w": 16,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r025",
+            "x": 1344,
+            "y": 48,
+            "w": 16,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r026",
+            "x": 1440,
+            "y": 160,
+            "w": 16,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r031",
+            "x": 1648,
+            "y": 144,
+            "w": 32,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r032",
+            "x": 1648,
+            "y": 80,
+            "w": 16,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r035",
+            "x": 1856,
+            "y": 128,
+            "w": 32,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r037",
+            "x": 1936,
+            "y": 144,
+            "w": 16,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r039",
+            "x": 2080,
+            "y": 144,
+            "w": 16,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r040",
+            "x": 2096,
+            "y": 176,
+            "w": 16,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r042",
+            "x": 2112,
+            "y": 32,
+            "w": 16,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r043",
+            "x": 2128,
+            "y": 64,
+            "w": 128,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r048",
+            "x": 2256,
+            "y": 208,
+            "w": 272,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r049",
+            "x": 2256,
+            "y": 176,
+            "w": 16,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r050",
+            "x": 2272,
+            "y": 144,
+            "w": 16,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r052",
+            "x": 2368,
+            "y": 176,
+            "w": 16,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r053",
+            "x": 2400,
+            "y": 160,
+            "w": 16,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r055",
+            "x": 2512,
+            "y": 80,
+            "w": 16,
+            "h": 128,
+            "collision": "solid"
+          },
+          {
+            "id": "r056",
+            "x": 2528,
+            "y": 80,
+            "w": 32,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r058",
+            "x": 2608,
+            "y": 80,
+            "w": 32,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r059",
+            "x": 2640,
+            "y": 80,
+            "w": 16,
+            "h": 128,
+            "collision": "solid"
+          },
+          {
+            "id": "r060",
+            "x": 2640,
+            "y": 208,
+            "w": 640,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r063-0-0",
+            "x": 2768,
+            "y": 144,
+            "w": 80,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r063-0-1",
+            "x": 2768,
+            "y": 80,
+            "w": 80,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r064",
+            "x": 2784,
+            "y": 48,
+            "w": 16,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r066-0-0",
+            "x": 2896,
+            "y": 144,
+            "w": 64,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r069",
+            "x": 2976,
+            "y": 192,
+            "w": 80,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r070",
+            "x": 2992,
+            "y": 176,
+            "w": 64,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r071",
+            "x": 3008,
+            "y": 160,
+            "w": 48,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r072",
+            "x": 3024,
+            "y": 144,
+            "w": 32,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r073",
+            "x": 3024,
+            "y": 32,
+            "w": 176,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r074",
+            "x": 3040,
+            "y": 112,
+            "w": 32,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r075",
+            "x": 3056,
+            "y": 32,
+            "w": 224,
+            "h": 176,
+            "collision": "solid"
+          }
+        ],
+        "objects": [
+          {
+            "id": "r002-0-0",
+            "kind": "coin",
+            "x": 240,
+            "y": 194,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r002-1-0",
+            "kind": "coin",
+            "x": 256,
+            "y": 194,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r005-0-0",
+            "kind": "coin",
+            "x": 448,
+            "y": 80,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r005-1-0",
+            "kind": "coin",
+            "x": 464,
+            "y": 80,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r005-2-0",
+            "kind": "coin",
+            "x": 480,
+            "y": 80,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r007-0-0",
+            "kind": "coin",
+            "x": 592,
+            "y": 194,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r007-1-0",
+            "kind": "coin",
+            "x": 608,
+            "y": 194,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r007-2-0",
+            "kind": "coin",
+            "x": 624,
+            "y": 194,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r014-0-0",
+            "kind": "coin",
+            "x": 1092,
+            "y": 162,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r014-1-0",
+            "kind": "coin",
+            "x": 1108,
+            "y": 162,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r014-2-0",
+            "kind": "coin",
+            "x": 1124,
+            "y": 162,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r030-0-0",
+            "kind": "coin",
+            "x": 1632,
+            "y": 178,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r030-1-0",
+            "kind": "coin",
+            "x": 1648,
+            "y": 178,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r030-2-0",
+            "kind": "coin",
+            "x": 1664,
+            "y": 178,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r034-0-0",
+            "kind": "coin",
+            "x": 1824,
+            "y": 98,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r034-1-0",
+            "kind": "coin",
+            "x": 1840,
+            "y": 98,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r034-2-0",
+            "kind": "coin",
+            "x": 1856,
+            "y": 98,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r044",
+            "kind": "coin",
+            "x": 2144,
+            "y": 178,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r045-0-0",
+            "kind": "coin",
+            "x": 2160,
+            "y": 194,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r045-1-0",
+            "kind": "coin",
+            "x": 2176,
+            "y": 194,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r045-2-0",
+            "kind": "coin",
+            "x": 2192,
+            "y": 194,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r046",
+            "kind": "coin",
+            "x": 2208,
+            "y": 178,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r057-0-0",
+            "kind": "coin",
+            "x": 2562,
+            "y": 144,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r057-0-1",
+            "kind": "coin",
+            "x": 2562,
+            "y": 192,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r057-1-0",
+            "kind": "coin",
+            "x": 2578,
+            "y": 144,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r057-1-1",
+            "kind": "coin",
+            "x": 2578,
+            "y": 192,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r057-2-0",
+            "kind": "coin",
+            "x": 2594,
+            "y": 144,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r057-2-1",
+            "kind": "coin",
+            "x": 2594,
+            "y": 192,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "inspection-start",
+            "kind": "spawn",
+            "x": 24,
+            "y": 184,
+            "w": 12,
+            "h": 24
+          }
+        ]
+      },
+      "markers": [
+        {
+          "id": "r004",
+          "kind": "enemy-blooper",
+          "source": {
+            "thing": "Blooper",
+            "x": 184,
+            "y": 16
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "r004"
+          },
+          "x": 368,
+          "y": 176
+        },
+        {
+          "id": "r009",
+          "kind": "enemy-blooper",
+          "source": {
+            "thing": "Blooper",
+            "x": 376,
+            "y": 32
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "r009"
+          },
+          "x": 752,
+          "y": 144
+        },
+        {
+          "id": "r011",
+          "kind": "enemy-blooper",
+          "source": {
+            "thing": "Blooper",
+            "x": 448,
+            "y": 24
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "r011"
+          },
+          "x": 896,
+          "y": 160
+        },
+        {
+          "id": "r018",
+          "kind": "enemy-cheepcheep",
+          "source": {
+            "thing": "CheepCheep",
+            "x": 616,
+            "y": 24
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "r018"
+          },
+          "x": 1232,
+          "y": 160
+        },
+        {
+          "id": "r021",
+          "kind": "enemy-cheepcheep",
+          "source": {
+            "thing": "CheepCheep",
+            "x": 640,
+            "y": 48
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "r021"
+          },
+          "x": 1280,
+          "y": 112
+        },
+        {
+          "id": "r022",
+          "kind": "enemy-cheepcheep",
+          "source": {
+            "thing": "CheepCheep",
+            "x": 656,
+            "y": 16
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "r022"
+          },
+          "x": 1312,
+          "y": 176
+        },
+        {
+          "id": "r024",
+          "kind": "enemy-blooper",
+          "source": {
+            "thing": "Blooper",
+            "x": 672,
+            "y": 40
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "r024"
+          },
+          "x": 1344,
+          "y": 128
+        },
+        {
+          "id": "r027",
+          "kind": "enemy-blooper",
+          "source": {
+            "thing": "Blooper",
+            "x": 760,
+            "y": 80
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "r027"
+          },
+          "x": 1520,
+          "y": 48
+        },
+        {
+          "id": "r028",
+          "kind": "enemy-cheepcheep",
+          "source": {
+            "thing": "CheepCheep",
+            "x": 760,
+            "y": 56
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "r028"
+          },
+          "x": 1520,
+          "y": 96
+        },
+        {
+          "id": "r029",
+          "kind": "enemy-cheepcheep",
+          "source": {
+            "thing": "CheepCheep",
+            "smart": true,
+            "x": 784,
+            "y": 80
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "r029"
+          },
+          "x": 1568,
+          "y": 48
+        },
+        {
+          "id": "r033",
+          "kind": "enemy-blooper",
+          "source": {
+            "thing": "Blooper",
+            "x": 848,
+            "y": 16
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "r033"
+          },
+          "x": 1696,
+          "y": 176
+        },
+        {
+          "id": "r036",
+          "kind": "enemy-cheepcheep",
+          "source": {
+            "thing": "CheepCheep",
+            "x": 944,
+            "y": 72
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "r036"
+          },
+          "x": 1888,
+          "y": 64
+        },
+        {
+          "id": "r038",
+          "kind": "enemy-cheepcheep",
+          "source": {
+            "thing": "CheepCheep",
+            "smart": true,
+            "x": 1032,
+            "y": 24
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "r038"
+          },
+          "x": 2064,
+          "y": 160
+        },
+        {
+          "id": "r041",
+          "kind": "enemy-cheepcheep",
+          "source": {
+            "thing": "CheepCheep",
+            "x": 1056,
+            "y": 16
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "r041"
+          },
+          "x": 2112,
+          "y": 176
+        },
+        {
+          "id": "r047",
+          "kind": "enemy-cheepcheep",
+          "source": {
+            "thing": "CheepCheep",
+            "x": 1100,
+            "y": 40
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "r047"
+          },
+          "x": 2200,
+          "y": 128
+        },
+        {
+          "id": "r051",
+          "kind": "enemy-cheepcheep",
+          "source": {
+            "thing": "CheepCheep",
+            "x": 1160,
+            "y": 32
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "r051"
+          },
+          "x": 2320,
+          "y": 144
+        },
+        {
+          "id": "r054",
+          "kind": "enemy-cheepcheep",
+          "source": {
+            "thing": "CheepCheep",
+            "smart": true,
+            "x": 1206,
+            "y": 56
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "r054"
+          },
+          "x": 2412,
+          "y": 96
+        },
+        {
+          "id": "r061",
+          "kind": "enemy-cheepcheep",
+          "source": {
+            "thing": "CheepCheep",
+            "x": 1320,
+            "y": 80
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "r061"
+          },
+          "x": 2640,
+          "y": 48
+        },
+        {
+          "id": "r062",
+          "kind": "enemy-cheepcheep",
+          "source": {
+            "thing": "CheepCheep",
+            "x": 1344,
+            "y": 16,
+            "smart": true
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "r062"
+          },
+          "x": 2688,
+          "y": 176
+        },
+        {
+          "id": "r065",
+          "kind": "enemy-cheepcheep",
+          "source": {
+            "thing": "CheepCheep",
+            "x": 1408,
+            "y": 40
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "r065"
+          },
+          "x": 2816,
+          "y": 128
+        },
+        {
+          "id": "r066-attribute-yum",
+          "kind": "source-attribute-review",
+          "source": {
+            "macro": "Fill",
+            "thing": "Stone",
+            "width": 32,
+            "x": 1448,
+            "y": 32,
+            "yum": 2,
+            "Yheight": 32
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "r066"
+          },
+          "x": 2896,
+          "y": 144
+        },
+        {
+          "id": "r066-attribute-yheight",
+          "kind": "source-attribute-review",
+          "source": {
+            "macro": "Fill",
+            "thing": "Stone",
+            "width": 32,
+            "x": 1448,
+            "y": 32,
+            "yum": 2,
+            "Yheight": 32
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "r066"
+          },
+          "x": 2896,
+          "y": 144
+        },
+        {
+          "id": "r067",
+          "kind": "enemy-cheepcheep",
+          "source": {
+            "thing": "CheepCheep",
+            "smart": true,
+            "x": 1472,
+            "y": 72
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "r067"
+          },
+          "x": 2944,
+          "y": 64
+        },
+        {
+          "id": "r068",
+          "kind": "enemy-cheepcheep",
+          "source": {
+            "thing": "CheepCheep",
+            "smart": true,
+            "x": 1496,
+            "y": 48
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "r068"
+          },
+          "x": 2992,
+          "y": 112
+        },
+        {
+          "id": "r074-target",
+          "kind": "missing-source-transport",
+          "source": {
+            "thing": "PipeHorizontal",
+            "x": 1520,
+            "y": 48,
+            "width": 16
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "r074"
+          },
+          "x": 3040,
+          "y": 112
+        },
+        {
+          "id": "r076",
+          "kind": "enemy-blooper",
+          "source": {
+            "thing": "Blooper",
+            "x": 208,
+            "y": 46
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "r076"
+          },
+          "x": 416,
+          "y": 116
+        },
+        {
+          "id": "r077",
+          "kind": "enemy-blooper",
+          "source": {
+            "thing": "Blooper",
+            "x": 424,
+            "y": 46
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "r077"
+          },
+          "x": 848,
+          "y": 116
+        },
+        {
+          "id": "r078",
+          "kind": "enemy-blooper",
+          "source": {
+            "thing": "Blooper",
+            "x": 624,
+            "y": 54
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "r078"
+          },
+          "x": 1248,
+          "y": 100
+        },
+        {
+          "id": "r079",
+          "kind": "enemy-blooper",
+          "source": {
+            "thing": "Blooper",
+            "x": 728,
+            "y": 16
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "r079"
+          },
+          "x": 1456,
+          "y": 176
+        },
+        {
+          "id": "r080",
+          "kind": "enemy-cheepcheep",
+          "source": {
+            "thing": "CheepCheep",
+            "x": 816,
+            "y": 24
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "r080"
+          },
+          "x": 1632,
+          "y": 160
+        },
+        {
+          "id": "r081",
+          "kind": "enemy-blooper",
+          "source": {
+            "thing": "Blooper",
+            "x": 1208,
+            "y": 38
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "r081"
+          },
+          "x": 2416,
+          "y": 132
+        },
+        {
+          "id": "r082",
+          "kind": "enemy-blooper",
+          "source": {
+            "thing": "Blooper",
+            "x": 1392,
+            "y": 14
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "r082"
+          },
+          "x": 2784,
+          "y": 180
+        },
+        {
+          "id": "r083",
+          "kind": "enemy-blooper",
+          "source": {
+            "thing": "Blooper",
+            "x": 1440,
+            "y": 14
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "r083"
+          },
+          "x": 2880,
+          "y": 180
+        },
+        {
+          "id": "environment",
+          "kind": "underwater-physics",
+          "source": {
+            "x": 0,
+            "y": 88
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "environment"
+          },
+          "x": 0,
+          "y": 32
+        }
+      ],
+      "semantics": [
+        {
+          "id": "r000",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 536,
+            "x": 0,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 0,
+            "y": 208,
+            "w": 1072,
+            "h": 32
+          }
+        },
+        {
+          "id": "r001",
+          "kind": "Coral",
+          "source": {
+            "thing": "Coral",
+            "height": 24,
+            "x": 96,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 192,
+            "y": 160,
+            "w": 16,
+            "h": 48
+          }
+        },
+        {
+          "id": "r003",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 24,
+            "x": 152,
+            "y": 32
+          },
+          "referenceRect": {
+            "x": 304,
+            "y": 144,
+            "w": 48,
+            "h": 16
+          }
+        },
+        {
+          "id": "r006",
+          "kind": "Coral",
+          "source": {
+            "thing": "Coral",
+            "height": 40,
+            "x": 272,
+            "y": 40
+          },
+          "referenceRect": {
+            "x": 544,
+            "y": 128,
+            "w": 16,
+            "h": 80
+          }
+        },
+        {
+          "id": "r008",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 16,
+            "x": 344,
+            "y": 32
+          },
+          "referenceRect": {
+            "x": 688,
+            "y": 144,
+            "w": 32,
+            "h": 16
+          }
+        },
+        {
+          "id": "r010",
+          "kind": "Coral",
+          "source": {
+            "thing": "Coral",
+            "height": 32,
+            "x": 408,
+            "y": 32
+          },
+          "referenceRect": {
+            "x": 816,
+            "y": 144,
+            "w": 16,
+            "h": 64
+          }
+        },
+        {
+          "id": "r012",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 24,
+            "x": 520,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 1040,
+            "y": 160,
+            "w": 16,
+            "h": 48
+          }
+        },
+        {
+          "id": "r013",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 40,
+            "x": 528,
+            "y": 40
+          },
+          "referenceRect": {
+            "x": 1056,
+            "y": 128,
+            "w": 16,
+            "h": 80
+          }
+        },
+        {
+          "id": "r015",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 480,
+            "x": 576,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 1152,
+            "y": 208,
+            "w": 960,
+            "h": 32
+          }
+        },
+        {
+          "id": "r016",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 40,
+            "x": 576,
+            "y": 40
+          },
+          "referenceRect": {
+            "x": 1152,
+            "y": 128,
+            "w": 16,
+            "h": 80
+          }
+        },
+        {
+          "id": "r017",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 24,
+            "x": 584,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 1168,
+            "y": 160,
+            "w": 16,
+            "h": 48
+          }
+        },
+        {
+          "id": "r019",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 16,
+            "height": 24,
+            "x": 632,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 1264,
+            "y": 160,
+            "w": 32,
+            "h": 48
+          }
+        },
+        {
+          "id": "r020",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 16,
+            "height": 24,
+            "x": 532,
+            "y": 88
+          },
+          "referenceRect": {
+            "x": 1064,
+            "y": 32,
+            "w": 32,
+            "h": 48
+          }
+        },
+        {
+          "id": "r023",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 664,
+            "y": 64,
+            "height": 24
+          },
+          "referenceRect": {
+            "x": 1328,
+            "y": 80,
+            "w": 16,
+            "h": 48
+          }
+        },
+        {
+          "id": "r025",
+          "kind": "Coral",
+          "source": {
+            "thing": "Coral",
+            "height": 16,
+            "x": 672,
+            "y": 80
+          },
+          "referenceRect": {
+            "x": 1344,
+            "y": 48,
+            "w": 16,
+            "h": 32
+          }
+        },
+        {
+          "id": "r026",
+          "kind": "Coral",
+          "source": {
+            "thing": "Coral",
+            "height": 24,
+            "x": 720,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 1440,
+            "y": 160,
+            "w": 16,
+            "h": 48
+          }
+        },
+        {
+          "id": "r031",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 16,
+            "x": 824,
+            "y": 32
+          },
+          "referenceRect": {
+            "x": 1648,
+            "y": 144,
+            "w": 32,
+            "h": 16
+          }
+        },
+        {
+          "id": "r032",
+          "kind": "Coral",
+          "source": {
+            "thing": "Coral",
+            "height": 32,
+            "x": 824,
+            "y": 64
+          },
+          "referenceRect": {
+            "x": 1648,
+            "y": 80,
+            "w": 16,
+            "h": 64
+          }
+        },
+        {
+          "id": "r035",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 16,
+            "x": 928,
+            "y": 40
+          },
+          "referenceRect": {
+            "x": 1856,
+            "y": 128,
+            "w": 32,
+            "h": 16
+          }
+        },
+        {
+          "id": "r037",
+          "kind": "Coral",
+          "source": {
+            "thing": "Coral",
+            "height": 32,
+            "x": 968,
+            "y": 32
+          },
+          "referenceRect": {
+            "x": 1936,
+            "y": 144,
+            "w": 16,
+            "h": 64
+          }
+        },
+        {
+          "id": "r039",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 32,
+            "x": 1040,
+            "y": 32
+          },
+          "referenceRect": {
+            "x": 2080,
+            "y": 144,
+            "w": 16,
+            "h": 64
+          }
+        },
+        {
+          "id": "r040",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 16,
+            "x": 1048,
+            "y": 16
+          },
+          "referenceRect": {
+            "x": 2096,
+            "y": 176,
+            "w": 16,
+            "h": 32
+          }
+        },
+        {
+          "id": "r042",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 24,
+            "x": 1056,
+            "y": 88
+          },
+          "referenceRect": {
+            "x": 2112,
+            "y": 32,
+            "w": 16,
+            "h": 48
+          }
+        },
+        {
+          "id": "r043",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 64,
+            "x": 1064,
+            "y": 72
+          },
+          "referenceRect": {
+            "x": 2128,
+            "y": 64,
+            "w": 128,
+            "h": 16
+          }
+        },
+        {
+          "id": "r048",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 136,
+            "x": 1128,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 2256,
+            "y": 208,
+            "w": 272,
+            "h": 32
+          }
+        },
+        {
+          "id": "r049",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 16,
+            "x": 1128,
+            "y": 16
+          },
+          "referenceRect": {
+            "x": 2256,
+            "y": 176,
+            "w": 16,
+            "h": 32
+          }
+        },
+        {
+          "id": "r050",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 32,
+            "x": 1136,
+            "y": 32
+          },
+          "referenceRect": {
+            "x": 2272,
+            "y": 144,
+            "w": 16,
+            "h": 64
+          }
+        },
+        {
+          "id": "r052",
+          "kind": "Coral",
+          "source": {
+            "thing": "Coral",
+            "height": 16,
+            "x": 1184,
+            "y": 16
+          },
+          "referenceRect": {
+            "x": 2368,
+            "y": 176,
+            "w": 16,
+            "h": 32
+          }
+        },
+        {
+          "id": "r053",
+          "kind": "Coral",
+          "source": {
+            "thing": "Coral",
+            "height": 24,
+            "x": 1200,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 2400,
+            "y": 160,
+            "w": 16,
+            "h": 48
+          }
+        },
+        {
+          "id": "r055",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 64,
+            "x": 1256,
+            "y": 64
+          },
+          "referenceRect": {
+            "x": 2512,
+            "y": 80,
+            "w": 16,
+            "h": 128
+          }
+        },
+        {
+          "id": "r056",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 16,
+            "x": 1264,
+            "y": 64
+          },
+          "referenceRect": {
+            "x": 2528,
+            "y": 80,
+            "w": 32,
+            "h": 16
+          }
+        },
+        {
+          "id": "r058",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 16,
+            "x": 1304,
+            "y": 64
+          },
+          "referenceRect": {
+            "x": 2608,
+            "y": 80,
+            "w": 32,
+            "h": 16
+          }
+        },
+        {
+          "id": "r059",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 64,
+            "x": 1320,
+            "y": 64
+          },
+          "referenceRect": {
+            "x": 2640,
+            "y": 80,
+            "w": 16,
+            "h": 128
+          }
+        },
+        {
+          "id": "r060",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 320,
+            "x": 1320,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 2640,
+            "y": 208,
+            "w": 640,
+            "h": 32
+          }
+        },
+        {
+          "id": "r063-0-0",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 40,
+            "x": 1384,
+            "y": 32
+          },
+          "referenceRect": {
+            "x": 2768,
+            "y": 144,
+            "w": 80,
+            "h": 16
+          }
+        },
+        {
+          "id": "r063-0-1",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 40,
+            "x": 1384,
+            "y": 64
+          },
+          "referenceRect": {
+            "x": 2768,
+            "y": 80,
+            "w": 80,
+            "h": 16
+          }
+        },
+        {
+          "id": "r064",
+          "kind": "Coral",
+          "source": {
+            "thing": "Coral",
+            "height": 16,
+            "x": 1392,
+            "y": 80
+          },
+          "referenceRect": {
+            "x": 2784,
+            "y": 48,
+            "w": 16,
+            "h": 32
+          }
+        },
+        {
+          "id": "r066-0-0",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 32,
+            "x": 1448,
+            "y": 32,
+            "yum": 2,
+            "Yheight": 32
+          },
+          "referenceRect": {
+            "x": 2896,
+            "y": 144,
+            "w": 64,
+            "h": 16
+          }
+        },
+        {
+          "id": "r069",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 40,
+            "x": 1488,
+            "y": 8
+          },
+          "referenceRect": {
+            "x": 2976,
+            "y": 192,
+            "w": 80,
+            "h": 16
+          }
+        },
+        {
+          "id": "r070",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 32,
+            "x": 1496,
+            "y": 16
+          },
+          "referenceRect": {
+            "x": 2992,
+            "y": 176,
+            "w": 64,
+            "h": 16
+          }
+        },
+        {
+          "id": "r071",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 24,
+            "x": 1504,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 3008,
+            "y": 160,
+            "w": 48,
+            "h": 16
+          }
+        },
+        {
+          "id": "r072",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 16,
+            "x": 1512,
+            "y": 32,
+            "height": 32
+          },
+          "referenceRect": {
+            "x": 3024,
+            "y": 144,
+            "w": 32,
+            "h": 64
+          }
+        },
+        {
+          "id": "r073",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 88,
+            "x": 1512,
+            "y": 88
+          },
+          "referenceRect": {
+            "x": 3024,
+            "y": 32,
+            "w": 176,
+            "h": 16
+          }
+        },
+        {
+          "id": "r074",
+          "kind": "PipeHorizontal",
+          "source": {
+            "thing": "PipeHorizontal",
+            "x": 1520,
+            "y": 48,
+            "width": 16
+          },
+          "referenceRect": {
+            "x": 3040,
+            "y": 112,
+            "w": 32,
+            "h": 32
+          }
+        },
+        {
+          "id": "r075",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 112,
+            "height": 88,
+            "x": 1528,
+            "y": 88
+          },
+          "referenceRect": {
+            "x": 3056,
+            "y": 32,
+            "w": 224,
+            "h": 176
+          }
+        }
+      ],
+      "sourceRecordCount": 84
+    },
+    {
+      "roomId": "area-2",
+      "label": "区域 3",
+      "setting": "Overworld",
+      "origin": {
+        "area": 2,
+        "part": "base"
+      },
+      "declaredWidth": null,
+      "underwater": false,
+      "inspectionOnly": true,
+      "previewSupported": true,
+      "map": {
+        "id": "classic-7-2-area-2",
+        "title": "7-2 · 区域 3",
+        "tileSize": 16,
+        "width": 672,
+        "height": 240,
+        "provenance": {
+          "kind": "transcribed",
+          "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+          "review": "pending",
+          "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+        },
+        "geometry": [
+          {
+            "id": "r000",
+            "x": 0,
+            "y": 208,
+            "w": 672,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r001",
+            "x": 0,
+            "y": 176,
+            "w": 32,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r002",
+            "x": 32,
+            "y": 192,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r003",
+            "x": 48,
+            "y": 176,
+            "w": 16,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r004",
+            "x": 64,
+            "y": 160,
+            "w": 16,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r005",
+            "x": 80,
+            "y": 144,
+            "w": 16,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r006",
+            "x": 96,
+            "y": 128,
+            "w": 16,
+            "h": 80,
+            "collision": "solid"
+          },
+          {
+            "id": "r007",
+            "x": 112,
+            "y": 112,
+            "w": 16,
+            "h": 96,
+            "collision": "solid"
+          },
+          {
+            "id": "r008",
+            "x": 128,
+            "y": 96,
+            "w": 16,
+            "h": 112,
+            "collision": "solid"
+          },
+          {
+            "id": "r009",
+            "x": 144,
+            "y": 80,
+            "w": 16,
+            "h": 128,
+            "collision": "solid"
+          },
+          {
+            "id": "r010",
+            "x": 160,
+            "y": 80,
+            "w": 16,
+            "h": 128,
+            "collision": "solid"
+          },
+          {
+            "id": "r011-base",
+            "x": 304,
+            "y": 192,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          }
+        ],
+        "objects": [
+          {
+            "id": "inspection-start",
+            "kind": "spawn",
+            "x": 24,
+            "y": 152,
+            "w": 12,
+            "h": 24
+          }
+        ]
+      },
+      "markers": [
+        {
+          "id": "r001-plant",
+          "kind": "enemy-piranha",
+          "source": {
+            "macro": "Pipe",
+            "height": 16,
+            "piranha": true,
+            "entrance": 2,
+            "x": 0,
+            "y": 16
+          },
+          "sourcePath": {
+            "area": 2,
+            "part": "base",
+            "record": "r001"
+          },
+          "x": 0,
+          "y": 176
+        },
+        {
+          "id": "r011",
+          "kind": "flagpole-finish",
+          "source": {
+            "macro": "EndOutsideCastle",
+            "transport": {
+              "map": "7-3"
+            },
+            "x": 152,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 2,
+            "part": "base",
+            "record": "r011"
+          },
+          "x": 304,
+          "y": 208
+        },
+        {
+          "id": "r011-transport",
+          "kind": "source-transport-not-simulated",
+          "source": {
+            "macro": "EndOutsideCastle",
+            "transport": {
+              "map": "7-3"
+            },
+            "x": 152,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 2,
+            "part": "base",
+            "record": "r011"
+          },
+          "x": 304,
+          "y": 208
+        }
+      ],
+      "semantics": [
+        {
+          "id": "r000",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 336,
+            "x": 0,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 0,
+            "y": 208,
+            "w": 672,
+            "h": 32
+          }
+        },
+        {
+          "id": "r001",
+          "kind": "PipeVertical",
+          "source": {
+            "height": 16,
+            "piranha": true,
+            "entrance": 2,
+            "x": 0,
+            "y": 16,
+            "thing": "PipeVertical",
+            "width": 16
+          },
+          "referenceRect": {
+            "x": 0,
+            "y": 176,
+            "w": 32,
+            "h": 32
+          }
+        },
+        {
+          "id": "r002",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 16,
+            "y": 8
+          },
+          "referenceRect": {
+            "x": 32,
+            "y": 192,
+            "w": 16,
+            "h": 16
+          }
+        },
+        {
+          "id": "r003",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 16,
+            "x": 24,
+            "y": 16
+          },
+          "referenceRect": {
+            "x": 48,
+            "y": 176,
+            "w": 16,
+            "h": 32
+          }
+        },
+        {
+          "id": "r004",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 24,
+            "x": 32,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 64,
+            "y": 160,
+            "w": 16,
+            "h": 48
+          }
+        },
+        {
+          "id": "r005",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 32,
+            "x": 40,
+            "y": 32
+          },
+          "referenceRect": {
+            "x": 80,
+            "y": 144,
+            "w": 16,
+            "h": 64
+          }
+        },
+        {
+          "id": "r006",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 40,
+            "x": 48,
+            "y": 40
+          },
+          "referenceRect": {
+            "x": 96,
+            "y": 128,
+            "w": 16,
+            "h": 80
+          }
+        },
+        {
+          "id": "r007",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 48,
+            "x": 56,
+            "y": 48
+          },
+          "referenceRect": {
+            "x": 112,
+            "y": 112,
+            "w": 16,
+            "h": 96
+          }
+        },
+        {
+          "id": "r008",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 56,
+            "x": 64,
+            "y": 56
+          },
+          "referenceRect": {
+            "x": 128,
+            "y": 96,
+            "w": 16,
+            "h": 112
+          }
+        },
+        {
+          "id": "r009",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 64,
+            "x": 72,
+            "y": 64
+          },
+          "referenceRect": {
+            "x": 144,
+            "y": 80,
+            "w": 16,
+            "h": 128
+          }
+        },
+        {
+          "id": "r010",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 80,
+            "y": 64,
+            "height": 64
+          },
+          "referenceRect": {
+            "x": 160,
+            "y": 80,
+            "w": 16,
+            "h": 128
+          }
+        },
+        {
+          "id": "r011-base",
+          "kind": "Stone",
+          "source": {
+            "macro": "EndOutsideCastle",
+            "transport": {
+              "map": "7-3"
+            },
+            "x": 152,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 304,
+            "y": 192,
+            "w": 16,
+            "h": 16
+          }
+        }
+      ],
+      "sourceRecordCount": 12
+    }
+  ],
+  "topology": {
+    "locations": [
+      {
+        "area": 0,
+        "entry": "Walking"
+      },
+      {
+        "area": 1
+      },
+      {
+        "area": 2,
+        "entry": "PipeVertical"
+      }
+    ],
+    "areas": [
+      {
+        "area": 0,
+        "setting": "Overworld",
+        "underwater": false,
+        "exit": null,
+        "sections": []
+      },
+      {
+        "area": 1,
+        "setting": "Underwater",
+        "underwater": true,
+        "exit": null,
+        "sections": []
+      },
+      {
+        "area": 2,
+        "setting": "Overworld",
+        "underwater": false,
+        "exit": null,
+        "sections": []
+      }
+    ],
+    "links": [
+      {
+        "from": {
+          "area": 0,
+          "part": "base",
+          "record": "r001"
+        },
+        "kind": "location",
+        "target": 1
+      },
+      {
+        "from": {
+          "area": 2,
+          "part": "base",
+          "record": "r011"
+        },
+        "kind": "world",
+        "target": {
+          "map": "7-3"
+        }
+      }
+    ],
+    "issues": [
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r066",
+        "kind": "source-attribute-review",
+        "field": "yum"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r066",
+        "kind": "source-attribute-review",
+        "field": "Yheight"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r074",
+        "kind": "horizontal-pipe-without-transport"
+      }
+    ]
+  },
+  "coverage": {
+    "placementRecords": 99,
+    "areas": 3,
+    "sectionViews": 0,
+    "views": 3,
+    "geometry": 60,
+    "objects": 31,
+    "pending": [
+      "enemy-blooper",
+      "enemy-cheepcheep",
+      "enemy-piranha",
+      "flagpole-finish",
+      "missing-source-transport",
+      "source-attribute-review",
+      "source-transport-not-simulated",
+      "underwater-physics"
+    ],
+    "details": [
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r001-transport",
+        "kind": "source-transport-not-simulated"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r004",
+        "kind": "enemy-blooper"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r009",
+        "kind": "enemy-blooper"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r011",
+        "kind": "enemy-blooper"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r018",
+        "kind": "enemy-cheepcheep"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r021",
+        "kind": "enemy-cheepcheep"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r022",
+        "kind": "enemy-cheepcheep"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r024",
+        "kind": "enemy-blooper"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r027",
+        "kind": "enemy-blooper"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r028",
+        "kind": "enemy-cheepcheep"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r029",
+        "kind": "enemy-cheepcheep"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r033",
+        "kind": "enemy-blooper"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r036",
+        "kind": "enemy-cheepcheep"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r038",
+        "kind": "enemy-cheepcheep"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r041",
+        "kind": "enemy-cheepcheep"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r047",
+        "kind": "enemy-cheepcheep"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r051",
+        "kind": "enemy-cheepcheep"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r054",
+        "kind": "enemy-cheepcheep"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r061",
+        "kind": "enemy-cheepcheep"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r062",
+        "kind": "enemy-cheepcheep"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r065",
+        "kind": "enemy-cheepcheep"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r066-attribute-yum",
+        "kind": "source-attribute-review"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r066-attribute-yheight",
+        "kind": "source-attribute-review"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r067",
+        "kind": "enemy-cheepcheep"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r068",
+        "kind": "enemy-cheepcheep"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r074-target",
+        "kind": "missing-source-transport"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r076",
+        "kind": "enemy-blooper"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r077",
+        "kind": "enemy-blooper"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r078",
+        "kind": "enemy-blooper"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r079",
+        "kind": "enemy-blooper"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r080",
+        "kind": "enemy-cheepcheep"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r081",
+        "kind": "enemy-blooper"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r082",
+        "kind": "enemy-blooper"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r083",
+        "kind": "enemy-blooper"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "environment",
+        "kind": "underwater-physics"
+      },
+      {
+        "roomId": "area-2",
+        "sourceRecord": "r001-plant",
+        "kind": "enemy-piranha"
+      },
+      {
+        "roomId": "area-2",
+        "sourceRecord": "r011",
+        "kind": "flagpole-finish"
+      },
+      {
+        "roomId": "area-2",
+        "sourceRecord": "r011-transport",
+        "kind": "source-transport-not-simulated"
+      }
+    ],
+    "geometryReview": "reference-transcribed-pending-original-review",
+    "playability": "partition-inspection-not-level-completion",
+    "underwaterAreas": 1,
+    "sourceIssues": 3
+  },
+  "source": {
+    "repository": "umaim/Mario",
+    "commit": "980c275358704a49f868567aeec5bdfb347c4781",
+    "path": "Source/settings/maps.js",
+    "gitBlob": "657d750ad65bb06c0e63a3d8958736f9236ec3c0",
+    "range": "Worlds 1–8 gameplay layout transcription",
+    "url": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+    "method": "Manual transcription of gameplay placement records, area locations and section definitions. Pure background scenery omitted; not a byte-identical source export or original-game certification.",
+    "omittedVisuals": [
+      "Pattern",
+      "DecorativeBack",
+      "DecorativeDot",
+      "CustomText"
+    ]
+  }
+}

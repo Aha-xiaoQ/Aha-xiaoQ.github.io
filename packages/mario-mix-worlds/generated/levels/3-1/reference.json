@@ -1,0 +1,802 @@
+{
+  "repository": "umaim/Mario",
+  "commit": "980c275358704a49f868567aeec5bdfb347c4781",
+  "path": "Source/settings/maps.js",
+  "gitBlob": "657d750ad65bb06c0e63a3d8958736f9236ec3c0",
+  "range": "Worlds 1–8 gameplay layout transcription",
+  "url": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+  "method": "Manual transcription of gameplay placement records, area locations and section definitions. Pure background scenery omitted; not a byte-identical source export or original-game certification.",
+  "omittedVisuals": [
+    "Pattern",
+    "DecorativeBack",
+    "DecorativeDot",
+    "CustomText"
+  ],
+  "map": {
+    "name": "3-1",
+    "time": 300,
+    "locations": [
+      {
+        "area": 0,
+        "entry": "Plain"
+      },
+      {
+        "area": 0,
+        "entry": "PipeVertical"
+      },
+      {
+        "area": 0,
+        "xloc": 1272
+      },
+      {
+        "area": 1
+      },
+      {
+        "area": 2,
+        "entry": "Vine"
+      }
+    ],
+    "areas": [
+      {
+        "setting": "Overworld Night Alt",
+        "creation": [
+          {
+            "macro": "Floor",
+            "width": 360,
+            "x": 0,
+            "y": 0
+          },
+          {
+            "thing": "Block",
+            "x": 128,
+            "y": 32
+          },
+          {
+            "thing": "Block",
+            "x": 152,
+            "y": 40
+          },
+          {
+            "thing": "Block",
+            "contents": "Mushroom",
+            "x": 176,
+            "y": 40
+          },
+          {
+            "thing": "Koopa",
+            "jumping": true,
+            "x": 200,
+            "y": 12
+          },
+          {
+            "macro": "Fill",
+            "thing": "Brick",
+            "xnum": 3,
+            "x": 208,
+            "y": 32
+          },
+          {
+            "thing": "Koopa",
+            "jumping": true,
+            "x": 224,
+            "y": 20
+          },
+          {
+            "macro": "Pipe",
+            "height": 24,
+            "piranha": true,
+            "x": 256,
+            "y": 0
+          },
+          {
+            "thing": "Goomba",
+            "x": 296,
+            "y": 8
+          },
+          {
+            "macro": "Pipe",
+            "height": 32,
+            "piranha": true,
+            "transport": 3,
+            "x": 304,
+            "y": 0
+          },
+          {
+            "macro": "Floor",
+            "width": 232,
+            "x": 384,
+            "y": 0
+          },
+          {
+            "macro": "Fill",
+            "thing": "Goomba",
+            "xnum": 3,
+            "xwidth": 12,
+            "x": 424,
+            "y": 8
+          },
+          {
+            "macro": "Pipe",
+            "height": 24,
+            "piranha": true,
+            "x": 456,
+            "y": 0
+          },
+          {
+            "thing": "Brick",
+            "x": 488,
+            "y": 32
+          },
+          {
+            "thing": "Koopa",
+            "x": 520,
+            "y": 12
+          },
+          {
+            "macro": "Pipe",
+            "height": 16,
+            "piranha": true,
+            "entrance": 1,
+            "x": 536,
+            "y": 0
+          },
+          {
+            "thing": "Stone",
+            "x": 584,
+            "y": 8
+          },
+          {
+            "thing": "Stone",
+            "height": 16,
+            "x": 592,
+            "y": 16
+          },
+          {
+            "thing": "Stone",
+            "height": 24,
+            "x": 600,
+            "y": 24
+          },
+          {
+            "thing": "Stone",
+            "height": 32,
+            "x": 608,
+            "y": 32
+          },
+          {
+            "macro": "Water",
+            "width": 64,
+            "x": 616,
+            "y": 10
+          },
+          {
+            "macro": "Bridge",
+            "width": 64,
+            "x": 616,
+            "y": 32
+          },
+          {
+            "macro": "Fill",
+            "thing": "Goomba",
+            "xnum": 3,
+            "xwidth": 12,
+            "x": 656,
+            "y": 40
+          },
+          {
+            "thing": "Block",
+            "contents": "Mushroom1Up",
+            "hidden": true,
+            "x": 656,
+            "y": 64
+          },
+          {
+            "macro": "Floor",
+            "x": 680,
+            "y": 0
+          },
+          {
+            "thing": "Stone",
+            "height": 32,
+            "x": 680,
+            "y": 32
+          },
+          {
+            "macro": "Water",
+            "width": 16,
+            "x": 688,
+            "y": 10
+          },
+          {
+            "macro": "Floor",
+            "width": 320,
+            "x": 704,
+            "y": 0
+          },
+          {
+            "thing": "Stone",
+            "height": 32,
+            "x": 704,
+            "y": 32
+          },
+          {
+            "thing": "Stone",
+            "height": 16,
+            "x": 712,
+            "y": 16
+          },
+          {
+            "thing": "Brick",
+            "contents": "Star",
+            "x": 720,
+            "y": 64
+          },
+          {
+            "macro": "Fill",
+            "thing": "Brick",
+            "xnum": 2,
+            "x": 728,
+            "y": 64
+          },
+          {
+            "macro": "Fill",
+            "thing": "Goomba",
+            "xnum": 2,
+            "xwidth": 12,
+            "x": 752,
+            "y": 8
+          },
+          {
+            "thing": "Koopa",
+            "x": 808,
+            "y": 12
+          },
+          {
+            "macro": "Pipe",
+            "height": 32,
+            "piranha": true,
+            "x": 824,
+            "y": 0
+          },
+          {
+            "macro": "Fill",
+            "thing": "Brick",
+            "xnum": 11,
+            "x": 888,
+            "y": 32
+          },
+          {
+            "macro": "Fill",
+            "thing": "Brick",
+            "xnum": 2,
+            "x": 888,
+            "y": 64
+          },
+          {
+            "thing": "HammerBro",
+            "x": 904,
+            "y": 44
+          },
+          {
+            "thing": "Block",
+            "x": 904,
+            "y": 64
+          },
+          {
+            "macro": "Fill",
+            "thing": "Brick",
+            "xnum": 3,
+            "x": 912,
+            "y": 64
+          },
+          {
+            "thing": "HammerBro",
+            "x": 936,
+            "y": 12
+          },
+          {
+            "thing": "Block",
+            "contents": "Mushroom",
+            "x": 936,
+            "y": 64
+          },
+          {
+            "macro": "Fill",
+            "thing": "Brick",
+            "xnum": 3,
+            "x": 944,
+            "y": 64
+          },
+          {
+            "macro": "Fill",
+            "thing": "Brick",
+            "xnum": 3,
+            "x": 1032,
+            "y": 40
+          },
+          {
+            "macro": "Fill",
+            "thing": "Brick",
+            "xnum": 2,
+            "x": 1032,
+            "y": 64
+          },
+          {
+            "thing": "Brick",
+            "contents": [
+              "Vine",
+              {
+                "entrance": 4
+              }
+            ],
+            "x": 1048,
+            "y": 64
+          },
+          {
+            "macro": "Floor",
+            "width": 80,
+            "x": 1056,
+            "y": 0
+          },
+          {
+            "thing": "Stone",
+            "x": 1088,
+            "y": 8
+          },
+          {
+            "thing": "Stone",
+            "height": 16,
+            "x": 1096,
+            "y": 16
+          },
+          {
+            "thing": "Stone",
+            "height": 24,
+            "x": 1104,
+            "y": 24
+          },
+          {
+            "thing": "Stone",
+            "height": 32,
+            "x": 1112,
+            "y": 32
+          },
+          {
+            "thing": "Goomba",
+            "x": 1112,
+            "y": 40
+          },
+          {
+            "thing": "Stone",
+            "height": 40,
+            "x": 1120,
+            "y": 40
+          },
+          {
+            "thing": "Goomba",
+            "x": 1120,
+            "y": 48
+          },
+          {
+            "thing": "Stone",
+            "height": 48,
+            "x": 1128,
+            "y": 48
+          },
+          {
+            "macro": "Floor",
+            "width": 264,
+            "x": 1152,
+            "y": 0
+          },
+          {
+            "thing": "Koopa",
+            "x": 1192,
+            "y": 12
+          },
+          {
+            "macro": "Fill",
+            "thing": "Brick",
+            "xnum": 2,
+            "ynum": 2,
+            "xwidth": 16,
+            "yheight": 32,
+            "x": 1200,
+            "y": 32
+          },
+          {
+            "macro": "Fill",
+            "thing": "Block",
+            "ynum": 2,
+            "yheight": 32,
+            "x": 1208,
+            "y": 32
+          },
+          {
+            "thing": "Koopa",
+            "x": 1216,
+            "y": 76
+          },
+          {
+            "macro": "Fill",
+            "thing": "Goomba",
+            "xnum": 3,
+            "xwidth": 12,
+            "x": 1232,
+            "y": 8
+          },
+          {
+            "macro": "Fill",
+            "thing": "Brick",
+            "xnum": 2,
+            "ynum": 2,
+            "xwidth": 16,
+            "yheight": 32,
+            "x": 1240,
+            "y": 32
+          },
+          {
+            "thing": "Block",
+            "contents": "Mushroom",
+            "x": 1248,
+            "y": 32
+          },
+          {
+            "thing": "Block",
+            "x": 1248,
+            "y": 64
+          },
+          {
+            "thing": "Koopa",
+            "jumping": true,
+            "x": 1320,
+            "y": 12
+          },
+          {
+            "thing": "Brick",
+            "x": 1328,
+            "y": 32
+          },
+          {
+            "thing": "Brick",
+            "contents": "Coin",
+            "x": 1336,
+            "y": 32
+          },
+          {
+            "thing": "Koopa",
+            "jumping": true,
+            "x": 1344,
+            "y": 18
+          },
+          {
+            "macro": "Fill",
+            "thing": "Brick",
+            "xnum": 3,
+            "x": 1344,
+            "y": 32
+          },
+          {
+            "thing": "Koopa",
+            "x": 1360,
+            "y": 44
+          },
+          {
+            "thing": "Koopa",
+            "jumping": true,
+            "x": 1368,
+            "y": 12
+          },
+          {
+            "thing": "Stone",
+            "height": 24,
+            "x": 1392,
+            "y": 24
+          },
+          {
+            "thing": "Stone",
+            "height": 48,
+            "x": 1400,
+            "y": 48
+          },
+          {
+            "macro": "Floor",
+            "width": 320,
+            "x": 1440,
+            "y": 0
+          },
+          {
+            "thing": "Stone",
+            "x": 1464,
+            "y": 8
+          },
+          {
+            "thing": "Stone",
+            "height": 16,
+            "x": 1472,
+            "y": 16
+          },
+          {
+            "thing": "Stone",
+            "height": 24,
+            "x": 1480,
+            "y": 24
+          },
+          {
+            "thing": "Stone",
+            "height": 32,
+            "x": 1488,
+            "y": 32
+          },
+          {
+            "thing": "Stone",
+            "height": 40,
+            "x": 1496,
+            "y": 40
+          },
+          {
+            "thing": "Stone",
+            "height": 48,
+            "x": 1504,
+            "y": 48
+          },
+          {
+            "thing": "Koopa",
+            "x": 1504,
+            "y": 60
+          },
+          {
+            "thing": "Stone",
+            "height": 56,
+            "x": 1512,
+            "y": 56
+          },
+          {
+            "thing": "Stone",
+            "width": 16,
+            "height": 64,
+            "x": 1520,
+            "y": 64
+          },
+          {
+            "thing": "Koopa",
+            "x": 1528,
+            "y": 76
+          },
+          {
+            "macro": "EndOutsideCastle",
+            "transport": {
+              "map": "3-2"
+            },
+            "x": 1600,
+            "y": 0
+          }
+        ]
+      },
+      {
+        "setting": "Underworld",
+        "creation": [
+          {
+            "macro": "Floor",
+            "width": 136,
+            "x": 0,
+            "y": 0
+          },
+          {
+            "macro": "Fill",
+            "thing": "Brick",
+            "ynum": 11,
+            "x": 0,
+            "y": 8
+          },
+          {
+            "macro": "Fill",
+            "thing": "Brick",
+            "xnum": 2,
+            "ynum": 4,
+            "xwidth": 72,
+            "x": 24,
+            "y": 40
+          },
+          {
+            "macro": "Fill",
+            "thing": "Brick",
+            "xnum": 2,
+            "xwidth": 56,
+            "x": 32,
+            "y": 32
+          },
+          {
+            "macro": "Fill",
+            "thing": "Brick",
+            "xnum": 2,
+            "ynum": 2,
+            "xwidth": 56,
+            "x": 32,
+            "y": 56
+          },
+          {
+            "macro": "Fill",
+            "thing": "Coin",
+            "xnum": 2,
+            "xwidth": 56,
+            "x": 33,
+            "y": 39
+          },
+          {
+            "macro": "Fill",
+            "thing": "Brick",
+            "xnum": 2,
+            "xwidth": 40,
+            "x": 40,
+            "y": 40
+          },
+          {
+            "thing": "Brick",
+            "contents": "Mushroom",
+            "x": 40,
+            "y": 64
+          },
+          {
+            "macro": "Fill",
+            "thing": "Coin",
+            "xnum": 2,
+            "xwidth": 40,
+            "x": 41,
+            "y": 47
+          },
+          {
+            "macro": "Fill",
+            "thing": "Brick",
+            "xnum": 2,
+            "xwidth": 24,
+            "x": 48,
+            "y": 48
+          },
+          {
+            "macro": "Fill",
+            "thing": "Coin",
+            "xnum": 2,
+            "ynum": 2,
+            "xwidth": 24,
+            "yheight": 16,
+            "x": 49,
+            "y": 55
+          },
+          {
+            "macro": "Fill",
+            "thing": "Brick",
+            "xnum": 2,
+            "ynum": 2,
+            "x": 56,
+            "y": 56
+          },
+          {
+            "macro": "Fill",
+            "thing": "Coin",
+            "xnum": 2,
+            "ynum": 2,
+            "xwidth": 8,
+            "yheight": 8,
+            "x": 57,
+            "y": 71
+          },
+          {
+            "thing": "Brick",
+            "x": 80,
+            "y": 64
+          },
+          {
+            "thing": "PipeHorizontal",
+            "entrance": 1,
+            "x": 104,
+            "y": 16
+          },
+          {
+            "thing": "PipeVertical",
+            "height": 88,
+            "x": 120,
+            "y": 88
+          }
+        ]
+      },
+      {
+        "setting": "Sky Night",
+        "creation": [
+          {
+            "thing": "Stone",
+            "width": 32,
+            "x": 0,
+            "y": 0
+          },
+          {
+            "thing": "Stone",
+            "width": 624,
+            "x": 40,
+            "y": 0
+          },
+          {
+            "thing": "Platform",
+            "width": 24,
+            "transport": true,
+            "x": 128,
+            "y": 24
+          },
+          {
+            "macro": "Fill",
+            "thing": "Coin",
+            "xnum": 16,
+            "xwidth": 8,
+            "x": 121,
+            "y": 55
+          },
+          {
+            "thing": "Stone",
+            "x": 256,
+            "y": 40
+          },
+          {
+            "macro": "Fill",
+            "thing": "Coin",
+            "xnum": 16,
+            "xwidth": 8,
+            "x": 273,
+            "y": 55
+          },
+          {
+            "thing": "Stone",
+            "height": 16,
+            "x": 408,
+            "y": 48
+          },
+          {
+            "macro": "Fill",
+            "thing": "Coin",
+            "xnum": 7,
+            "xwidth": 8,
+            "x": 425,
+            "y": 63
+          },
+          {
+            "thing": "Stone",
+            "height": 16,
+            "x": 488,
+            "y": 48
+          },
+          {
+            "thing": "Stone",
+            "width": 16,
+            "x": 536,
+            "y": 56
+          },
+          {
+            "macro": "Fill",
+            "thing": "Stone",
+            "xnum": 5,
+            "xwidth": 16,
+            "x": 568,
+            "y": 56
+          },
+          {
+            "macro": "Fill",
+            "thing": "Coin",
+            "xnum": 10,
+            "xwidth": 8,
+            "x": 569,
+            "y": 63
+          },
+          {
+            "macro": "Fill",
+            "thing": "Coin",
+            "xnum": 3,
+            "xwidth": 8,
+            "x": 681,
+            "y": 15
+          }
+        ],
+        "exit": 2,
+        "blockBoundaries": false
+      }
+    ]
+  }
+}

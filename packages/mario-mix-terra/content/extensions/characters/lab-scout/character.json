@@ -1,0 +1,28 @@
+{
+  "id": "lab-scout",
+  "title": "侦察者 · 二段跳",
+  "driver": "platform-v1",
+  "capabilities": [
+    "jump",
+    "double-jump",
+    "attack",
+    "platform-drop"
+  ],
+  "motion": {
+    "speed": 2.4,
+    "acceleration": 0.22,
+    "gravity": 0.3,
+    "jumpSpeed": 6.2,
+    "maxFall": 6,
+    "width": 12,
+    "height": 24,
+    "maxHealth": 3
+  },
+  "appearance": {
+    "body": "#f7f5ed",
+    "accent": "#55bed3",
+    "shape": "scout"
+  },
+  "audio": null,
+  "note": "原创几何占位角色，用于验证框架接口；不是马里奥或泰拉角色手感/素材。"
+}

@@ -1,0 +1,1 @@
+function t17Stick(x,y,d=t17Input.deadzone){x=Number.isFinite(x)?clamp(x,-1,1):0;y=Number.isFinite(y)?clamp(y,-1,1):0;const len=Math.hypot(x,y);if(len<=d)return [0,0];const m=Math.min(1,(len-d)/(1-d));return [x/len*m,y/len*m];}

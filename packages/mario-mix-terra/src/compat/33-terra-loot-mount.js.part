@@ -1,0 +1,290 @@
+/* R07: complete arena lanes, contact-based equipment drops, vanilla Slime mount.
+ * Scope: Sandbox Trio / Terraria only. Episode-two objects and maps are not modified.
+ * Mount reference: Terraria 1.4.0.5 Mount.cs ID 3; physics are converted to this engine.
+ */
+const R07_VERSION='R08 · 四层战场 / 落地换装 / 史莱姆坐骑';
+const R07_ARENA=Object.freeze({width:3072,floor:496,rows:[304,208,112,16],torchStep:160,campfireStep:640});
+const R07_SLIME=Object.freeze({runSpeed:4,acceleration:.18,jumpSpeed:8.25,jumpHold:12,verticalScale:2,gravity:.44,maxFall:10,stompDamage:40,frames:4,frameDelay:12});
+const r07Clone=v=>JSON.parse(JSON.stringify(v));
+const r07Slime=s=>!!(s?.mounted&&s.mountType==='slime');
+const r07UFO=s=>!!(s?.mounted&&s.mountType==='ufo');
+const r07Scale=s=>s.r05Arena?1:.75;
+const r07MountName=s=>s?.mountType==='slime'?'史莱姆':'UFO';
+const R07_COPY_FIELDS=['slimeOwned','ufoOwned','mountType','kitSupplies','r07LootSave'];
+function r07Init(s,base=null){
+ for(const [k,v] of Object.entries({slimeOwned:false,ufoOwned:false,mountType:null,kitSupplies:{},r07LootSave:null}))s[k]=base?.[k]!==undefined?r07Clone(base[k]):v;
+ s.r07=true;s.mountOwned=!!(s.slimeOwned||s.ufoOwned);s.mounted=false;s.r07Loot=[];s.r07LootSpawned=false;s.lootCooldown=0;s.r07Regen=0;s.campfireBuff=false;s.r07CamY=0;
+ s.p.slimeHold=0;s.p.slimeFrame=0;s.p.slimeTicks=0;s.p.slimeBounce=0;s.p.r07MountHeight=false;
+ s.notice='星怒 / 铂金套开局；外部问号砖掉落粘鞍。碰到拾取，F 骑乘史莱姆。';s.noticeTime=380;
+}
+const r07NewStateBase=newState;
+newState=function(){const s=r07NewStateBase();r07Init(s);return s;};
+const r07CopyBase=r06CopyLoadout;
+r06CopyLoadout=function(from,to){r07CopyBase(from,to);for(const k of R07_COPY_FIELDS)if(from[k]!==undefined)to[k]=r07Clone(from[k]);to.mountOwned=!!(to.slimeOwned||to.ufoOwned);};
+r05Terrain=function(){return [{id:'arena-floor',type:'floor',x:0,y:R07_ARENA.floor,w:R07_ARENA.width,h:96,solid:true},...R07_ARENA.rows.map((y,i)=>({id:'r07-lane-'+i,type:'wood-platform',x:0,y,w:R07_ARENA.width,h:6,oneWay:true,permanent:true}))];};
+const r07EnterBase=enterTerraSecret;
+enterTerraSecret=function(restart=false,direct=false){
+ if(!restart&&state?.mounted){state.mounted=false;r07SetMountHeight(state,false);}const ok=r07EnterBase(restart,direct);if(!ok)return ok;const s=state;r07Init(s,mainState);
+ // This room is supplied in full. Construction and recovery cannot consume time or materials.
+ s.built=[];s.tool=0;s.targetReason=null;if(r05Builder)r05Builder.platforms.clear();s.buildHeld=false;
+ s.camY=-96;s.arenaReward.y=360;s.arenaReward.used=!!s.cloudJump;
+ s.lamps=[];s.campfires=[];
+ for(const [i,y] of R07_ARENA.rows.entries()){
+  for(let x=48;x<R07_ARENA.width;x+=R07_ARENA.torchStep)s.lamps.push({x,y,phase:(x+i*13)%8});
+  for(let x=368+(i%2)*160;x<R07_ARENA.width-48;x+=R07_ARENA.campfireStep)s.campfires.push({x,y,phase:(x+i*19)%8});
+ }
+ // One campfire near the entrance; no collision box or obstruction to running.
+ s.campfires.push({x:112,y:496,phase:0});s.lamps=s.lamps.filter(t=>!s.campfires.some(f=>f.y===t.y&&Math.abs(f.x-t.x)<48));
+ s.notice=s.bossClear?'克眼已击败：触碰地上的装备换套装，随时可换。':'四层木台均已贯通；无需搭建。空格逐层上跳，↓＋空格下穿；L 召唤克眼。';s.noticeTime=400;
+ if(s.bossClear){if(mainState.r07LootSave){s.r07Loot=r07Clone(mainState.r07LootSave);s.r07LootSpawned=true;}else r07SpawnLoot(s);}
+ r06UpdateUI();return true;
+};
+const r07PersistBase=r05Persist;
+r05Persist=function(){if(state?.r05Arena){state.r07LootSave=state.r07LootSpawned?r07Clone(state.r07Loot):null;}r07PersistBase();};
+// Leave empty-handed is allowed. The untouched equipment stays in the room.
+exitSecret=function(){
+ if(!state?.r05Arena)return r06OldExit();
+ r05Persist();r06CloseRewards();state.rewardPending=false;
+ const ok=r06OldExit();if(state&&!state.r05Arena){state.mounted=false;state.p.h=32;state.p.y=176;state.p.r07MountHeight=false;state.minions=[];if(state.kit==='summoner')r06CreateMinions(state);}
+ r06SyncKitTools();r06SyncMusic();return ok;
+};
+r05Build=function(){if(state?.r05Arena){state.tool=0;state.buildHeld=false;state.targetReason=null;}};
+const r07SelectBase=r05SelectTool;
+r05SelectTool=function(tool){if(state?.r05Arena){state.tool=0;state.p.attack=0;state.buildHeld=false;r05CancelPointer();r06SyncKitTools();if(tool!==0)note('战场四层平台已铺满，不需要施工。J 攻击，↓＋空格下穿。');return;}r07SelectBase(tool);};
+// Original R06 dialog is retired. Victory never pauses movement or auto-picks a class.
+r06RewardBox.hidden=true;r06RewardBox.setAttribute('aria-hidden','true');
+r06OpenRewards=function(){if(!state?.bossClear)return false;r07SpawnLoot(state);r06CloseRewards();return true;};
+r06ChooseKit=function(){return false;};
+function r07SpawnLoot(s){
+ if(s.r07LootSpawned)return;s.r07LootSpawned=true;s.rewardPending=false;r06CloseRewards();
+ const c=clamp(s.p.x+s.p.w/2,410,R07_ARENA.width-410);
+ s.r07Loot=R06_KITS.map((k,i)=>({kit:k.id,x:c+(i-1.5)*184,y:Math.min(360,s.eye?.y??340),w:34,h:34,vy:-2-i*.25,age:0,grounded:false,blocked:false}));
+ s.lootCooldown=50;r06Chat('四套装备已掉落到地面：触碰即换装，其他套装保留。','#e9d393');note('向下穿到地面，自由选择战士 / 射手 / 法师 / 召唤师；碰到就穿上。');evt('r07-loot-spawn',{classes:s.r07Loot.map(d=>d.kit)});
+}
+function r07BankKit(s){if(!s.kit)return;s.kitSupplies[s.kit]={ammo:s.ammo,mana:s.mana,manaPotions:s.manaPotions,shield:s.shield,shieldTicks:s.shieldTicks};}
+function r07EquipDrop(s,d){
+ const k=R06_KITS.find(k=>k.id===d.kit);if(!k||s.lootCooldown>0||d.blocked||d.age<45||!d.grounded||s.kit===k.id)return false;
+ const old=s.kit;r07BankKit(s);const banked=s.kitSupplies[k.id];s.kit=k.id;s.ufoOwned=true;s.mountOwned=true;s.mountType='ufo';s.mounted=false;r07SetMountHeight(s,false);
+ s.maxMana=k.mana;s.mana=banked?Math.min(k.mana,banked.mana):k.mana;s.ammo=banked?.ammo??(k.id==='ranger'?9999:0);s.manaPotions=banked?.manaPotions??(k.id==='mage'?100:0);
+ s.shield=banked?.shield??3;s.shieldTicks=banked?.shieldTicks??0;if(!banked)s.healPotions=Math.max(s.healPotions,10);s.tool=0;s.p.attack=0;s.p.cooldown=0;s.projectiles=[];s.minions=[];s.prismCharge=0;s.whipAge=28;s.lootCooldown=24;
+ // Swap back onto the same physical spot. It cannot be re-collected until stepped away.
+ if(old){d.kit=old;d.age=45;d.blocked=true;d.vy=0;d.grounded=true;}else{s.r07Loot=s.r07Loot.filter(q=>q!==d);}
+ if(k.id==='summoner')r06CreateMinions(s);r06SyncKitTools();r05Persist();
+ r06Chat('已穿上'+k.armorName+'，装备'+k.weaponName+'。','#e5dcac');note('已换装：'+k.name+'。原套装放回地面，可走开再碰回去。F 骑乘；V 切换已拥有的坐骑。');evt('r07-contact-equip',{kit:k.id,previous:old});return true;
+}
+function r07LootStep(s){
+ if(s.lootCooldown>0)s.lootCooldown--;
+ for(const d of [...s.r07Loot]){
+  d.age++;if(!d.grounded){d.vy=Math.min(8,d.vy+.24);d.y+=d.vy;if(d.y+d.h>=R07_ARENA.floor){d.y=R07_ARENA.floor-d.h;d.vy=0;d.grounded=true;}}
+  const box={x:d.x-17,y:d.y,w:34,h:d.h};
+  if(d.blocked&&Math.abs(s.p.x+s.p.w/2-d.x)>58)d.blocked=false;
+  if(near(s.p,box))r07EquipDrop(s,d);
+ }
+}
+function r07CollectSaddle(s){if(s.slimeOwned)return;s.slimeOwned=true;s.mountOwned=true;if(!s.ufoOwned)s.mountType='slime';s.score+=1000;
+ r06Chat('获得粘鞍！F 骑乘史莱姆：长按跳跃连跳，下落踩敌反弹。','#91c7f4');note('史莱姆坐骑已解锁 · F 上下骑；长按空格连续跳。');evt('r07-slimy-saddle-collected');terraSound('build',{volume:.6});}
+updateDrops=function(ss){const s=state,p=s.p;for(const d of s.drops){if(d.done)continue;d.kind='slimySaddle';d.w=22;d.h=17;d.age++;
+ if(d.age<24)d.y-=.65;else{const foot=d.y+d.h;d.vy=Math.min(5,d.vy+.22);d.y+=d.vy;for(const q of ss)if(d.x+d.w>q.x&&d.x<q.x+q.w&&foot<=q.y+1&&d.y+d.h>=q.y&&d.vy>=0){d.y=q.y-d.h;d.vy=0;break;}}
+ if(d.age>10&&near(p,d)){d.done=true;r07CollectSaddle(s);}}
+};
+function r07SetMountHeight(s,on){const p=s.p,base=s.r05Arena?42:32,boost=s.r05Arena?20:15,target=base+(on?boost:0);if(p.h!==target){p.y-=target-p.h;p.h=target;}p.r07MountHeight=on;}
+r06ToggleMount=function(){const s=state;if(!s||mode!=='playing')return;
+ if(!s.slimeOwned&&!s.ufoOwned){note('外部问号砖掉落粘鞍；触碰拾取后按 F 骑乘史莱姆。');return;}
+ if(!s.mountType)s.mountType=s.slimeOwned?'slime':'ufo';if(!s.mounted&&s.mountType==='slime'){const targetH=s.r05Arena?62:47,candidate={...s.p,y:s.p.y+s.p.h-targetH,h:targetH},ss=s.r05Arena?s.level.surfaces:solids();if(ss.some(q=>q.solid&&near(candidate,q))){note('头顶空间不足，移动到开阔位置再骑乘。');return;}}s.mounted=!s.mounted;
+ r07SetMountHeight(s,s.mounted&&s.mountType==='slime');s.p.slimeHold=0;s.p.slimeTicks=0;s.p.attack=0;
+ // Mounting preserves falling/running momentum. Do not reset vy or invent hovering for slime.
+ if(s.mountType==='ufo'){s.p.vy=0;s.p.grounded=false;s.p.support=null;}
+ note(s.mounted?(s.mountType==='slime'?'史莱姆：长按空格连续高跳，下落踩敌弹起；F 下骑。':'UFO：方向飞行，空格上升；F 下骑。'):'已下坐骑');evt('r07-mount',{mounted:s.mounted,mount:s.mountType});
+};
+function r07CycleMount(){const s=state;if(!s||mode!=='playing'||!s.slimeOwned||!s.ufoOwned)return;const mounted=s.mounted;
+ s.mounted=false;r07SetMountHeight(s,false);s.mountType=s.mountType==='slime'?'ufo':'slime';if(mounted)r06ToggleMount();else note('当前坐骑：'+r07MountName(s)+'；F 骑乘。');}
+window.addEventListener('keydown',e=>{if(isTrio()&&state&&mode==='playing'&&!e.repeat&&e.code==='KeyV'&&!['INPUT','TEXTAREA','SELECT'].includes(e.target?.tagName)){e.preventDefault();r07CycleMount();}},true);
+function r07SlimePhysics(s,v,ss,arena){
+ const p=s.p,sc=r07Scale(s);if(arena)for(const k of ['invuln','hurtLock','cooldown','drop'])if(p[k]>0)p[k]--;
+ const support=ss.find(q=>q.id===p.support),oldFeet=p.y+p.h,oldY=p.y;
+ if(p.slimeBounce>0)p.slimeBounce--;
+ if(arena&&v.y>0&&v.jumpEdge&&support&&!support.solid){p.drop=18;p.dropRow=support.y;p.y+=2;p.vy=2*sc;p.grounded=false;p.support=null;p.slimeHold=0;p.coyote=0;}
+ else if((v.jump||v.jumpEdge)&&p.grounded&&p.drop===0&&!p.hurtLock){p.vy=-R07_SLIME.jumpSpeed*2*sc;p.slimeHold=R07_SLIME.jumpHold;p.grounded=false;p.support=null;p.coyote=0;p.buffer=0;evt('r07-slime-jump');}
+  else if(v.jumpEdge&&!p.grounded&&p.cloudAvailable&&s.cloudJump&&p.drop===0){p.vy=-R07_SLIME.jumpSpeed*2*sc;p.slimeHold=R07_SLIME.jumpHold;p.cloudAvailable=false;evt('r07-slime-cloud-jump');}
+ const move=s.tool!==0&&v.auxiliary?0:v.x;
+ if(!p.hurtLock){p.vx=approach(p.vx,move*R07_SLIME.runSpeed*sc,(move?R07_SLIME.acceleration:.18)*sc);if(move){p.facing=Math.sign(move);if(p.attack)p.attackFacing=p.facing;}}
+ p.x=clamp(p.x+p.vx,arena?8:(s.tool===0?s.cam:0),s.level.width-p.w-(arena?8:0));
+ for(const q of ss)if(q.solid&&near(p,q)){if(p.vx>0)p.x=q.x-p.w;else if(p.vx<0)p.x=q.x+q.w;p.vx=0;}
+ if(v.jump&&p.slimeHold>0&&p.vy<0){p.vy=-R07_SLIME.jumpSpeed*2*sc;p.slimeHold--;}
+ else {p.slimeHold=0;p.vy=Math.min(R07_SLIME.maxFall*2*sc,p.vy+R07_SLIME.gravity*2*sc);}
+ p.y+=p.vy;p.grounded=false;p.support=null;let land=null;
+ for(const q of ss){if(p.x+p.w<=q.x||p.x>=q.x+q.w)continue;if(arena&&p.drop&&!q.solid&&q.y<=p.dropRow+8)continue;
+  if(p.vy>=0&&oldFeet<=q.y+1&&p.y+p.h>=q.y){if(!land||q.y<land.y)land=q;}
+  else if(q.solid&&p.vy<0&&oldY>=q.y+q.h-1&&p.y<q.y+q.h){p.y=q.y+q.h;p.vy=0;p.slimeHold=0;if(q.type==='reward'&&!q.used){q.used=true;q.bump=12;if(arena){s.r06Drops.push({x:q.x,y:q.y-28,w:20,h:26,age:0,vy:-2});evt('arena-question-bump');}else{s.drops.push({x:q.x+1,y:q.y-2,w:22,h:17,vy:-1,age:0,done:false,kind:'slimySaddle'});evt('reward-bump');}sourceSound('bump');}}
+ }
+ if(land){p.y=land.y-p.h;p.vy=0;p.grounded=true;p.support=land.id;p.cloudAvailable=!!s.cloudJump;p.coyote=6;s.buildGroundRow=land.y;
+  if(!arena&&p.x>700&&p.x>s.checkpoint.x+240&&land.type==='tree'&&p.x>land.x+4&&p.x<land.x+land.w-22)s.checkpoint={x:p.x,y:land.y-32};}
+ p.walk+=Math.abs(p.vx)*.8;p.slimeTicks++;p.slimeFrame=p.grounded?(Math.abs(p.vx)>.1?Math.floor(p.slimeTicks/12)%4:0):1;p.slimeOldFeet=oldFeet;
+ if(arena&&p.y>580){p.x=154;p.y=496-p.h;p.vy=0;p.grounded=true;p.support='arena-floor';}
+}
+function r07Stomp(s){
+ if(!r07Slime(s)||s.p.slimeBounce>0||s.p.vy<=0)return false;const p=s.p,sc=r07Scale(s),feet=p.y+p.h,previous=p.slimeOldFeet??feet-p.vy;
+ const targets=r06AllTargets(s);for(const t of targets){const top=t.y-t.h/2;if(previous<=top+8*sc&&feet>=top&&Math.abs(p.x+p.w/2-t.x)<p.w/2+t.w/2){
+  r06DamageTarget(t,R07_SLIME.stompDamage,'slime-stomp');p.y=top-p.h;p.vy=-R07_SLIME.jumpSpeed*2*sc;p.slimeHold=0;p.slimeBounce=10;p.invuln=Math.max(p.invuln,6);p.grounded=false;p.support=null;evt('r07-slime-stomp',{target:t.id,damage:40});return true;}}
+ return false;
+}
+const r07HurtBase=hurt;
+hurt=function(e){if(r07Slime(state)&&r07Stomp(state))return;r07HurtBase(e);};
+const r07EnemiesBase=updateEnemies;
+updateEnemies=function(ss){r07Stomp(state);r07EnemiesBase(ss);};
+const r07PhysicsBase=r05Physics;
+r05Physics=function(v){const s=state;if(r07Slime(s)){
+ r07SlimePhysics(s,v,s.level.surfaces.concat(s.built),true);
+ // Cloud bottle remains an accessory from the arena's own question block.
+ const q=s.arenaReward;for(const d of s.r06Drops){d.age++;const foot=d.y+d.h;d.vy=Math.min(5,d.vy+.25);d.y+=d.vy;for(const t of s.level.surfaces)if(d.x+d.w>t.x&&d.x<t.x+t.w&&foot<=t.y+1&&d.y+d.h>=t.y&&d.vy>=0){d.y=t.y-d.h;d.vy=0;break;}if(d.age>12&&near(s.p,d)){d.done=true;r06CollectCloud(s);}}s.r06Drops=s.r06Drops.filter(d=>!d.done);if(q?.bump)q.bump--;
+ }else r07PhysicsBase(v);
+ r07Stomp(s);const p=s.p;s.cam=approach(s.cam,clamp(p.x+p.w/2-R06_VIEW.w*.44,0,R07_ARENA.width-R06_VIEW.w),Math.abs(p.vx)+4);
+ const target=clamp(p.y+p.h/2-R06_VIEW.h*.54,-540,-80);s.camY=approach(s.camY||-96,target,Math.max(3,Math.abs(p.vy)*.85));r05SyncPointer();
+};
+const r07ArenaStepBase=r05ArenaStep;
+r05ArenaStep=function(v){if(!state||mode!=='playing')return;const s=state;
+ r07ArenaStepBase({...v,toolEdge:false});if(state!==s||mode!=='playing')return;
+ if(s.phase==='cleared')r07LootStep(s);
+ const p=s.p;s.campfireBuff=s.campfires.some(f=>Math.abs(p.x+p.w/2-f.x)<400&&Math.abs(p.y+p.h/2-f.y)<240);
+ if(s.campfireBuff&&s.hp<s.maxHp&&p.invuln===0){if(++s.r07Regen>=120){s.hp=Math.min(s.maxHp,s.hp+1);s.r07Regen=0;}}else s.r07Regen=0;
+};
+const r07MainStepBase=r04MainStep;
+r04MainStep=function(v){const s=state;r07MainStepBase(v);if(state===s&&s&&!s.r05Arena){const want=Math.min(0,s.p.y-68);s.r07CamY=approach(s.r07CamY||0,want,Math.max(2,Math.abs(s.p.vy)));}};
+const r07StartFlagBase=startFlag;
+startFlag=function(){const s=state;if(s){s.mounted=false;r07SetMountHeight(s,false);s.r07CamY=0;}r07StartFlagBase();};
+// Native 58x48 four-frame Slime sheet. The player sits above it; no rubber stretching.
+const r07DrawMountBase=r06DrawMount;
+r06DrawMount=function(s,c){if(!r07Slime(s)){r07DrawMountBase(s,c);return;}const p=s.p,sc=r07Scale(s),f=p.slimeFrame||0,im=r06Images.slimeMount;if(!im)return;
+ const y=p.y+p.h;ctx.save();ctx.translate(Math.round(p.x+p.w/2-c),Math.round(y));ctx.scale(p.facing*sc,sc);ctx.imageSmoothingEnabled=false;ctx.drawImage(im,0,f*48,58,48,-29,-46,58,48);ctx.restore();};
+const r07BodyBase=r06DrawBody;
+r06DrawBody=function(g,x,foot,face,walk=0,air=false,attack=0,tool=0,opacity=1,armor='platinum',weapon='starfury',scale=.75){const s=state;if(r07Slime(s)){const f=s.p.slimeFrame||0;foot-=(20+[0,2,0,-2][f])*scale;walk=0;air=true;}r07BodyBase(g,x,foot,face,walk,air,attack,tool,opacity,armor,weapon,scale);};
+// Placed furniture is cut from Tiles_4 / Tiles_215, NOT stretched inventory pictures.
+function r07Furniture(kind,x,y,ticks,phase=0){
+ const fire=kind==='campfire',im=r06Images[fire?'campfireTiles':'torchTiles'];
+ const radius=fire?128:104,cx=x,cy=y-(fire?20:14);
+ const glow=ctx.createRadialGradient(cx,cy,2,cx,cy,radius);glow.addColorStop(0,fire?'rgba(255,184,90,.18)':'rgba(255,200,128,.12)');glow.addColorStop(.55,'rgba(245,164,75,.045)');glow.addColorStop(1,'rgba(230,150,70,0)');ctx.fillStyle=glow;ctx.fillRect(cx-radius,cy-radius,radius*2,radius*2);
+ if(im){if(fire){const frame=Math.floor(ticks/8+phase)%8;for(let row=0;row<2;row++)for(let col=0;col<3;col++)ctx.drawImage(im,col*18,frame*36+row*18,16,16,Math.round(x-24+col*16),Math.round(y-32+row*16),16,16);}
+  else {ctx.drawImage(im,0,0,20,20,Math.round(x-10),Math.round(y-20),20,20);}}
+ else {const key=fire?'campfirePlaced':'torchPlaced',fallback=r06Images[key];if(fallback){const width=fire?48:20,height=fire?32:20;ctx.drawImage(fallback,Math.round(x-width/2),Math.round(y-height),width,height);}}
+}
+r06Torch=function(x,y,t){r07Furniture('torch',x,y,t);};
+function r07DrawLoot(s,c){for(const d of s.r07Loot){const k=R06_KITS.find(k=>k.id===d.kit),x=d.x-c,bob=d.grounded?Math.sin((s.ticks+d.x)/21)*2:0;
+ if(x<-100||x>R06_VIEW.w+100)continue;ctx.save();ctx.globalAlpha=d.blocked?.7:1;r06Icon(ctx,k.weapon,x,d.y+15+bob,33);
+ const head=r06Images[k.armor+'Head'];if(head)ctx.drawImage(head,0,0,40,56,x-20,d.y-7+bob,40,56);
+ r05Text(k.name,x,d.y-37,13,k.color,'center');r05Text(k.weaponName.split(' / ')[0],x,d.y-20,10,'#dedfd8','center');ctx.restore();}}
+const r07ArenaDrawBase=r06DrawArena;
+r06DrawArena=function(){const s=state,p=s.p,c=s.cam,yc=s.camY||-96;r05Viewport(true);ctx.clearRect(0,0,R06_VIEW.w,R06_VIEW.h);r06NightBackground(s);ctx.save();ctx.translate(0,-yc);
+ // Terrain and light emitters precede actors; they cannot cover the player's feet.
+ ctx.fillStyle='#443a35';ctx.fillRect(0,496,R06_VIEW.w,480);ctx.fillStyle='#52653d';ctx.fillRect(0,496,R06_VIEW.w,3);ctx.fillStyle='#695342';for(let x=-(Math.floor(c)%32);x<R06_VIEW.w;x+=32){ctx.fillRect(x+3,509,16,3);ctx.fillRect(x+17,525,10,3);}
+ for(const q of s.level.surfaces)if(q.oneWay)r05DrawWood(q,c);
+ for(const f of s.campfires)if(f.x-c>-130&&f.x-c<R06_VIEW.w+130)r07Furniture('campfire',f.x-c,f.y,s.ticks,f.phase);
+ for(const t of s.lamps)if(t.x-c>-110&&t.x-c<R06_VIEW.w+110)r07Furniture('torch',t.x-c,t.y,s.ticks,t.phase);
+ ctx.save();ctx.translate(Math.round(40-c),464);sprite('pipe_top',0,0);sprite('pipe_body',0,16);ctx.restore();
+ const q=s.arenaReward;if(q)sprite(q.used?'block_used':'question'+[0,0,1,2,1,0][Math.floor(s.ticks/8)%6],q.x-c,q.y-(q.bump?Math.sin(q.bump/12*Math.PI)*4:0));
+ for(const d of s.r06Drops)r06Sprite(ctx,'cloudBottle',d.x-c,d.y,d.w,d.h);
+ if(s.phase==='preparation'){sheet(ctx,'suspiciousEye',[0,0,30,20],161-c,466+Math.sin(s.ticks*.055)*2,30,20);r05Text('L 召唤',176-c,449,12,'#d9c6ae','center');}
+ if(s.eye&&!s.eye.dead&&['charge','fastDash'].includes(s.eye.mode))for(let i=0;i<s.eye.trail.length;i+=3){ctx.save();ctx.globalAlpha=i/s.eye.trail.length*.2;r05DrawEye({...s.eye,...s.eye.trail[i],flash:0},c);ctx.restore();}
+ for(const m of s.servants)r05DrawServant(m,c);r05DrawEye(s.eye,c);r07DrawLoot(s,c);r06DrawProjectiles(s,c);r06DrawMount(s,c);
+ r06DrawBody(ctx,p.x+p.w/2-c,p.y+p.h,p.attack?p.attackFacing:p.facing,p.grounded&&Math.abs(p.vx)>.1?p.walk:0,!p.grounded,p.attack,0,1,r06Armor(s),r06Weapon(s),1);
+ for(const n of s.numbers){ctx.save();ctx.globalAlpha=Math.min(1,n.life/12);r05Text(n.text,n.x-c,n.y,16,n.color,'center');ctx.restore();}ctx.restore();r07HUD(s);trioUI();
+};
+function r07HUD(s){const w=R06_VIEW.w,h=R06_VIEW.h,k=r06Kit(s);ctx.fillStyle='#091126ed';ctx.fillRect(0,0,w,74);
+ r05Text('TERRARIA  /  WORLD 1-3',18,12,17,'#ebe4c9');r05Text('R14 · 近身挖掘 / 火把 · '+(s.phase==='battle'?'自动锁定克眼':s.phase==='cleared'?'地面触碰换装':'无需搭建'),18,40,12,'#b5c5d5');
+ ctx.fillStyle='#354348';ctx.fillRect(406,8,49,49);ctx.strokeStyle='#c8bc8e';ctx.strokeRect(406.5,8.5,48,48);r06Icon(ctx,r06Weapon(s),431,33,30);r05Text('J',410,11,10,'#d9e0e4');
+ r05Text(k?k.armorName:'铂金套 · 防御 20',478,12,13,k?.color||'#c7d0dd');r05Text((s.cloudJump?'云朵瓶 ✓':'入口木箱：云朵瓶')+' · '+(s.mountOwned?(s.mounted?r07MountName(s)+'骑乘中':'F '+r07MountName(s)):'无坐骑'),478,38,11,'#b4c4d6');
+ if(s.campfireBuff)r05Text('篝火：恢复加成',816,13,11,'#e3ad7c');
+ r05Text('生命 '+s.hp+' / '+s.maxHp,w-20,9,14,'#f0cbc7','right');for(let i=0;i<10;i++){ctx.globalAlpha=s.hp>s.maxHp/10*i?1:.22;if(photos.heart)ctx.drawImage(photos.heart,w-192+i*17,32,15,15);}ctx.globalAlpha=1;
+ if(s.kit==='mage')r05Text('魔力 '+s.mana+'/'+s.maxMana,w-20,55,10,'#aabbec','right');if(s.kit==='ranger')r05Text('叶绿弹 '+s.ammo,w-20,55,10,'#b6dbab','right');
+ ctx.fillStyle='#080f23ee';ctx.fillRect(0,h-27,w,27);r05Text('方向移动   空格跳跃   ↓＋空格下穿   按住 J 攻击',16,h-21,11,'#becbd7');r05Text('拾取眼球开战   H 治疗   F 坐骑   V 换坐骑   R 重试   战后管道↓返回',w-17,h-21,11,'#becbd7','right');
+ if(s.phase==='preparation'&&s.noticeTime){r05Text('先拿云朵瓶与风暴弓，再拾取最右侧眼球。',w/2,94,14,'#e0dfd0','center');r05Text('击败克眼后可挖矿；地下宝箱按 L / ↑ / 右键打开。',w/2,117,12,'#adbdcf','center');}
+ if(s.phase==='cleared'&&(!s.t13World||s.p.y<620)){r05Text('四职业装备落在地面 · 碰到即穿上 · 可自由换回',w/2,96,14,'#e5d29f','center');if(k)r05Text('当前：'+k.name+' / '+k.weaponName,w/2,119,12,k.color,'center');}
+ if(s.phase==='battle'&&s.eye&&!s.eye.dead){const e=s.eye,x=w/2-230,y=h-71;ctx.fillStyle='#10152be8';ctx.fillRect(x,y,460,31);ctx.strokeStyle='#866452';ctx.strokeRect(x+.5,y+.5,459,30);ctx.fillStyle='#42292f';ctx.fillRect(x+6,y+21,448,5);ctx.fillStyle=e.phase===2?'#d67768':'#b66866';ctx.fillRect(x+6,y+21,448*e.hp/e.maxHp,5);r05Text('克苏鲁之眼'+(e.mode==='transform'?' · 变形':e.phase===2?' · 第二阶段':''),x+9,y+3,11,'#e6c6ad');r05Text(e.hp+' / '+e.maxHp,x+450,y+3,11,'#e6c6ad','right');
+  const ex=e.x-s.cam,ey=e.y-(s.camY||0);if(ex<0||ex>w||ey<76||ey>h-30)r05Text('◆ 克眼',clamp(ex,24,w-24),clamp(ey,88,h-100),12,'#e7aaaa',ex>w?'right':'left');}
+ for(const [i,m] of s.r06Chats.slice(-3).entries()){ctx.save();ctx.globalAlpha=Math.min(1,m.life/80);r05Text(m.text,22,h-145+i*22,12,m.color);ctx.restore();}
+}
+const r07EquipmentBase=drawEquipment;
+drawEquipment=function(s){r07EquipmentBase(s);if(s.slimeOwned){r06Icon(ctx,'slimySaddle',112,46,17);ctx.fillStyle='#21304ce8';ctx.fillRect(7,68,72,10);ctx.font='6px sans-serif';ctx.fillStyle='#c8e8f6';ctx.fillText(s.mounted?r07MountName(s)+'骑乘中':'F: '+r07MountName(s),8,75);}};
+const r07UIBase=r06UpdateUI;
+r06UpdateUI=function(){r07UIBase();if(!isTrio())return;$('bestLabel').textContent='R08';const s=state;
+ if(!s){$('overlayText').textContent='R08：四层完整战场；胜利装备掉地，触碰换装。外部问号砖给原图史莱姆坐骑。饥荒、我的世界仍重构中。';return;}
+ $('bestLabel').textContent='R08';$('jumpLabel').textContent=r07Slime(s)?'长按空格连跳 · 下落踩敌反弹':'空格跳跃 · ↓＋空格下穿';$('downLabel').textContent=s.r05Arena?'无需施工 · F 骑乘 · V 换坐骑':'1/2/3 工具 · F 坐骑 · H 治疗';
+ $('heroHelp').textContent='R08：四层平台均贯通，间隔火把与篝火；克眼胜利后四套装备掉在地面，接触换装，换下的套装放回原位。外部问号砖给粘鞍，内场仍给云朵瓶。史莱姆长按跳跃连跳，下落踩敌弹起。音乐需联网读取，失败不会替换成别的曲。';
+ $('r06Mount').disabled=!s.mountOwned;$('r06Mount').textContent=s.mounted?'F · 下坐骑':'F · 骑乘'+r07MountName(s);$('r06Retry').textContent='R · 重新挑战';
+ $('moveLabel').textContent='左右移动；战场不用搭台';if(s.r05Arena)$('relayMessage').textContent=s.noticeTime?s.notice:'J 自动追踪 · 四层换位躲避 · 胜利后触碰地面装备';
+ const failed=Object.values(r06AssetStatus).filter(a=>a.state==='unavailable').length;if(failed)$('r06AssetReport').textContent+=' 火把与篝火的摆放原图已内嵌；完整篝火动画图集需联网。';
+};
+
+const r07RetryBase=retry;
+retry=function(){if(state&&!state.r05Arena){state.mounted=false;state.p.h=32;state.p.r07MountHeight=false;state.p.slimeHold=0;}return r07RetryBase.apply(this,arguments);};
+
+// DOM handlers keep function values: rebind after overriding the R06 mount routine.
+$('r06Mount').onclick=()=>{r06ToggleMount();canvas.focus({preventScroll:true});};
+const r07PauseHelpBase=r04PauseHelp;
+r04PauseHelp=function(){if(!isTrio())return r07PauseHelpBase();return state?.r05Arena?'四层贯通战场，无需施工。J 自动瞄准；空格跳跃，↓＋空格下穿；L 召唤；H 治疗；F 骑乘，V 换坐骑。胜利后触碰地面套装换装。':'星怒 / 铂金套。外部问号砖掉粘鞍，触碰拾取后 F 骑乘；长按空格连续高跳，下落踩敌反弹。E 切换主线工具，J 使用；管道按 ↓ / L 进入。';};
+
+// Original resource routing. No replacement soundtrack and no unverified "playing" flag.
+// Both network addresses refer to the same pinned source commit. Local import never falls back.
+function r07MediaURLs(root,path){return [root+path,root.replace('https://raw.githubusercontent.com/','https://cdn.jsdelivr.net/gh/').replace(/\/([0-9a-f]{40})\//,'@$1/')+path];}
+function r07SetupMusic(){
+ for(const [key,t] of Object.entries(r06Music)){
+  t.urls=r07MediaURLs(R06_MUSIC_ROOT,t.file);Object.assign(t,{sourceIndex:0,state:'not-loaded',busy:false,nextTry:0,generation:0,startedAt:0,failures:[],restorePending:true,cached:false});
+  const a=new Audio();t.audio=a;a.loop=true;a.preload='none';a.src=t.urls[0];
+  a.addEventListener('canplay',()=>{if(t.state!=='playing')t.state='ready';});
+  a.addEventListener('playing',()=>{t.busy=false;t.state='playing';if(!t.local&&!t.cached)r08CacheAudio(key,a.currentSrc||a.src);});
+  a.addEventListener('error',()=>{t.busy=false;
+   if(t.cacheURL&&!t.local){URL.revokeObjectURL(t.cacheURL);t.cacheURL=null;t.cached=false;r08DeleteCache('audio:original:'+key);t.sourceIndex=0;a.src=t.urls[0];t.state='not-loaded';t.nextTry=0;t.generation++;if(r06MusicKey===key)r06SyncMusic();}
+   else if(t.local){t.state='local-decode-error';t.nextTry=Infinity;}else r07NextMusicSource(key);
+  });
+  a.addEventListener('pause',()=>{if(t.state==='playing')t.state='ready';});
+  r08RestoreMusic(key);
+ }
+}
+
+function r07NextMusicSource(key){const t=r06Music[key];if(t.local||t.state==='network-unavailable')return;
+ t.failures.push({src:t.audio.currentSrc||t.audio.src,code:t.audio.error?.code||0});t.audio.pause();t.generation++;t.busy=false;
+ if(++t.sourceIndex<t.urls.length){t.audio.src=t.urls[t.sourceIndex];t.state='not-loaded';t.nextTry=0;t.startedAt=0;if(key===r06MusicKey)r06SyncMusic();}
+ else{t.state='network-unavailable';t.nextTry=Infinity;}
+}
+async function r07LoadImage(key,path){
+ const embedded=R06_ASSET_DATA[key];
+ r06AssetStatus[key]={path,embedded:!!embedded,state:'loading',sourcesTried:0,origin:embedded?'embedded':'pending'};
+ const cached=embedded?null:await r08ReadCache('image:'+key);
+ const cacheURL=cached?.blob instanceof Blob?URL.createObjectURL(cached.blob):null;
+ const urls=embedded?[embedded]:[...(cacheURL?[cacheURL]:[]),...r07MediaURLs(R06_RAW,path)];
+ return new Promise(resolve=>{let index=0,done=false,timer;
+  const attempt=()=>{const im=new Image(),i=index++,url=urls[i];r06AssetStatus[key].sourcesTried=index;
+   if(/^https:/.test(url))im.crossOrigin='anonymous';
+   const fail=()=>{clearTimeout(timer);if(done||i!==index-1)return;if(url===cacheURL){r08DeleteCache('image:'+key);URL.revokeObjectURL(cacheURL);}if(index<urls.length)attempt();else{done=true;r06AssetStatus[key].state='unavailable';r08ImageRevision++;resolve(false);}};
+   im.onload=()=>{if(done||i!==index-1)return;if(!im.naturalWidth||!im.naturalHeight){fail();return;}clearTimeout(timer);done=true;r06Images[key]=im;Object.assign(r06AssetStatus[key],{state:'ready',size:[im.width,im.height],origin:embedded?'embedded':url===cacheURL?'cache':'network'});r08ImageRevision++;
+    if(url===cacheURL){r08CacheHits++;URL.revokeObjectURL(cacheURL);}else if(!embedded)r08RememberImage(key,im);resolve(true);};
+   im.onerror=fail;timer=setTimeout(fail,9000);im.src=url;
+  };attempt();
+ });
+}
+
+r06SyncMusic=function(){const enabled=isTrio()&&state&&['playing','flag'].includes(mode)&&soundOn&&!document.hidden&&r06MusicUnlocked;
+ const key=enabled?(state.r05Arena?(state.phase==='battle'?'boss':'night'):'day'):null;
+ for(const [k,t] of Object.entries(r06Music))if(k!==key){if(!t.audio.paused)t.audio.pause();if(t.busy){t.generation++;t.busy=false;}}
+ const changed=r06MusicKey!==key;r06MusicKey=key;if(!key)return;const t=r06Music[key];t.audio.volume=r06MusicVolume;
+ if(changed&&t.state!=='network-unavailable'){t.nextTry=0;}
+ if(t.busy&&performance.now()-t.startedAt>11000&&!t.local){r07NextMusicSource(key);return;}
+ if(t.restorePending||t.state==='network-unavailable'||t.state==='local-decode-error'||!t.audio.paused||t.busy||performance.now()<t.nextTry)return;
+ t.busy=true;t.state='loading';t.startedAt=performance.now();t.nextTry=t.startedAt+2500;const generation=++t.generation;
+ t.audio.play().then(()=>{if(t.generation!==generation)return;t.busy=false;if(r06MusicKey!==key)t.audio.pause();else if(!t.audio.paused)t.state='playing';}).catch(err=>{
+  if(t.generation!==generation)return;t.busy=false;if(err.name==='NotAllowedError'){t.state='waiting-user-or-network';return;}
+  if(err.name==='AbortError'){if(r06MusicKey!==key)t.state='ready';return;}
+  if(t.local){t.state='local-decode-error';t.nextTry=Infinity;}else r07NextMusicSource(key);
+ });
+};
+const r07RetryMediaBase=$('r06RetryMedia').onclick;
+$('r06RetryMedia').onclick=()=>{
+ for(const [key,path] of Object.entries(R06_IMAGE_PATHS))if(r06AssetStatus[key].state==='unavailable')r07LoadImage(key,path);
+ for(const t of Object.values(r06Music))if(!t.local){t.audio.pause();t.sourceIndex=0;t.generation++;t.audio.src=t.urls[0];t.state='not-loaded';t.nextTry=0;t.busy=false;t.failures=[];}
+ r06MusicUnlocked=true;r06SyncMusic();
+};
+
+// The crossover's musical jingles must not overlap the Terraria stream.
+// Ordinary collision/coin effects stay as in R06; other episode-two characters are untouched.
+const r07SourceSoundBase=sourceSound;
+sourceSound=function(key,options={}){if(isTrio()&&['clear','flag','hurry','gameover'].includes(key))return 0;return r07SourceSoundBase(key,options);};
+

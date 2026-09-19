@@ -1,0 +1,256 @@
+/* 0.6 — character presentation/rules. Canonical 1-2 geometry is unchanged.
+ * Tank pictures and 18 PCM recordings derive from the user's supplied pack.
+ * Wall control follows the NES NG-II manual; spin/Boss are explicit crossover additions.
+ */
+const R06_VERSION='0.6.0';
+let r06Palette=0,r06Music=false,r06Engine=null,r06EngineContext=null,r06Effects=[],r06Death=null,r06UID=90000;
+const R06_AUDIO_MAP={r12_cannon:'shot',r12_blast:'enemydeath',r12_steel:'steel',ninja_pickup:'pickup',ninja_hit:'armorhit',ninja_gate:null,ninja_death:'death',tank_clear:'result',tank_flag:null,clear:'result',flag:null,death:'death',gameover:'gameover',pause:'pause',break:'brick',bump:'steel',appear:'appear',coin:'tally',powerup:'upgrade',oneup:'life'};
+const r06Ready=Promise.all(['tank-colors06','tank-explosion06'].map(id=>new Promise((ok,fail)=>{const im=new Image();im.onload=()=>{R12_SPRITES[id]=im;ok();};im.onerror=()=>fail(Error('Missing 0.6 sprite '+id));im.src=R12_EMBEDDED_IMAGES['relay12/assets/'+id+'.png'];})));
+window.__mixReady=Promise.all([window.__mixReady,r06Ready]);
+function r06InstallAudio(){
+ if(!audio||r06EngineContext===audio)return;
+ for(const [key,a] of Object.entries(R06_AUDIO_PCM)){
+  const bytes=Uint8Array.from(atob(a.pcm),c=>c.charCodeAt(0)),view=new DataView(bytes.buffer);
+  const buffer=audio.createBuffer(1,bytes.length/2,a.rate),samples=buffer.getChannelData(0);
+  for(let i=0;i<samples.length;i++)samples[i]=view.getInt16(i*2,true)/32768;
+  bank.set(key,{buffer,gain:a.gain});r03SourceAudioKeys.add(key);
+ }
+ r06EngineContext=audio;r12Event('tank-pack-audio-ready',{count:Object.keys(R06_AUDIO_PCM).length});
+}
+const r06AudioInit=audioInit;
+audioInit=function(resume=true){const out=r06AudioInit(resume);r06InstallAudio();return out;};
+const r06OneShot=oneShot;
+oneShot=function(key,options={}){
+ if(hero==='tank'&&Object.prototype.hasOwnProperty.call(R06_AUDIO_MAP,key)){
+  const k=R06_AUDIO_MAP[key];if(k===null)return 0;key='t06_'+k;
+ }
+ return r06OneShot(key,options);
+};
+function r06Sound(name,options={}){return oneShot('t06_'+name,options);}
+function r06StopEngine(){if(!r06Engine)return;try{r06Engine.node.stop();r06Engine.node.disconnect();r06Engine.gain.disconnect();}catch{}r06Engine=null;}
+function r06EngineSync(){
+ const run=hero==='tank'&&r12&&mode==='playing'&&!r12.transition&&!r12.spawnFrames&&!r03Challenge?.tally08?.active&&soundOn&&!document.hidden&&audio?.state==='running'&&(Math.abs(player.vx)+Math.abs(player.vy)>.001);
+ if(!run){r06StopEngine();return;}
+ if(r06Engine)return;
+ const item=bank.get('t06_engine');if(!item)return;
+ const node=audio.createBufferSource(),gain=audio.createGain();node.buffer=item.buffer;node.loop=true;gain.gain.value=item.gain;node.connect(gain);gain.connect(effectsBus);node.start();r06Engine={node,gain};audioLogEvent('engine-start','t06_engine');
+}
+const r06AudioSync=audioSync;
+audioSync=function(){
+ r06AudioSync();r06EngineSync();
+ if(hero==='tank'&&r12&&audio){
+  if(!r06Music&&bgm)stopMusic(true);
+  if(mode==='playing'&&!r12.transition&&soundOn&&!document.hidden&&!r12.r06IntroDone&&bank.has('t06_start')){
+   r12.r06IntroDone=true;
+   if(['entrance','defense'].includes(r12.area))r12.r06IntroUntil=r06Sound('start',{volume:.75});
+  }
+  if(bgm?.key==='tank_theme')setGain(bgm.gain,bank.get('tank_theme').gain*(audio.currentTime<(r12.r06IntroUntil||0)?.2:.55),.03);
+ }
+};
+const r06Desired=desiredMusic;
+desiredMusic=function(){if(hero==='tank'&&!r06Music)return null;return r06Desired();};
+const r06Panel=updateAudioPanel;
+updateAudioPanel=function(){r06Panel();if(hero==='tank'){
+ if($('audioBadge'))$('audioBadge').textContent=soundOn?'PACK AUDIO 18':'MUTED';
+ if($('audioStatus'))$('audioStatus').textContent='素材包声音：开场 / 履带 / 开炮 / 爆炸 / 拾取 / 结算。坦克不使用额外循环配乐。';
+}};
+
+// Source sheet: four palettes × four body families × four directions × two tracks.
+function r06TankFrame(dir,rank,track){return rank*8+((dir+1)%4)*2+(Math.floor(track/5)%2);}
+function r06EnemyPalette(e){
+ if(e?.bonus&&!e.bonusSpent&&Math.floor(frame/6)%2===0)return 3;
+ if(e?.tankKind!=='armor')return 2;
+ if(e.hp>=4)return 1;
+ if(e.hp===3)return Math.floor(frame/8)%2?1:2;
+ if(e.hp===2)return Math.floor(frame/8)%2?0:2;
+ return 2;
+}
+r12DrawTank=function(g,x,y,dir,enemy=false,t=0,armored=false,entity=null){
+ const rank=enemy?({basic:0,fast:1,power:2,armor:3}[entity?.tankKind]??(armored?3:0)):clamp(r12?.tank?.power||0,0,3);
+ const palette=enemy?r06EnemyPalette(entity||{tankKind:armored?'armor':'basic',hp:armored?4:1}):r06Palette;
+ const im=R12_SPRITES['tank-colors06'];if(!im)return;
+ const f=r06TankFrame(dir,rank,entity?.r06Track??t);
+ g.save();g.imageSmoothingEnabled=false;g.drawImage(im,f*16,palette*16,16,16,Math.round(x-2),Math.round(y-2),16,16);
+ if(!enemy){r05TankSprite='pack06-'+palette+'-'+rank;if(r12?.rankFlash>0){g.strokeStyle='#fff1a6';g.lineWidth=1;g.strokeRect(Math.round(x-3),Math.round(y-3),18,18);}}
+ g.restore();
+};
+const r06DrawEnemy=r12DrawEnemy;
+r12DrawEnemy=function(e){
+ if(e.kind!=='tank')return r06DrawEnemy(e);if(e.dead)return;
+ if(e.spawn>0){const x=Math.round(e.x-camera+6),y=Math.round(e.y+6),s=3+Math.floor(e.spawn/7)%5;rect(x-s,y-1,s*2+1,3,'#fff8cf');rect(x-1,y-s,3,s*2+1,'#fff8cf');return;}
+ r12DrawTank(ctx,e.x-camera,e.y,e.dir,true,e.t,e.tankKind==='armor',e);
+};
+const r06TankMove=r12TankMove;
+r12TankMove=function(b,dir,speed){const x=b.x,y=b.y,result=r06TankMove(b,dir,speed);if(result)b.r06Track=(b.r06Track||0)+Math.abs(b.x-x)+Math.abs(b.y-y);return result;};
+function r06MarkEnemies(){if(hero!=='tank'||!ninja)return;for(const e of ninja.foes){if(e.kind!=='tank'||e.r06Marked)continue;e.r06Marked=true;if(r12.area==='underground'&&e.id===7)e.tankKind='power';e.bonus??=(e.id<700&&e.id%4===1);e.bonusSpent??=false;e.r06Track=0;}}
+const r06Load=r12Load;
+r12Load=function(...args){r06Effects=[];r06Death=null;r06StopEngine();r06Load(...args);r06MarkEnemies();};
+function r06Explosion(x,y,big=true){r06Effects.push({x,y,age:0,life:big?30:14,big,area:r12?.area});}
+function r06FxTick(){for(const e of r06Effects)e.age++;r06Effects=r06Effects.filter(e=>e.age<e.life&&e.area===r12?.area);}
+
+// A red carrier drops once on its FIRST damaging hit, not only when destroyed.
+function r06RewardSpot(){
+ const start={x:player.x,y:player.y,w:12,h:12},q=[start],seen=new Set(),valid=[];
+ const lo=r12.area==='defense'?24:Math.max(16,camera+4),hi=r12.area==='defense'?220:Math.min(r12.def.width-28,camera+W-16);
+ const top=r12.area==='defense'?24:48,bottom=r12.area==='defense'?220:196;
+ for(let at=0;at<q.length&&at<1600;at++){
+  const p=q[at],key=p.x.toFixed(2)+','+p.y.toFixed(2);if(seen.has(key))continue;seen.add(key);
+  if(p.x<lo||p.x>hi||p.y<top||p.y>bottom||r12TankCollides(p))continue;
+  if(Math.abs(p.x-player.x)+Math.abs(p.y-player.y)>48&&!ninja.foes.some(e=>!e.dead&&overlap(p,e)))valid.push(p);
+  for(const [dx,dy] of R12_DIR)q.push({...p,x:p.x+dx*8,y:p.y+dy*8});
+ }
+ return valid.length?valid[(r06UID*13)%valid.length]:start;
+}
+function r06DropBonus(e){
+ if(!e.bonus||e.bonusSpent)return;e.bonusSpent=true;e.bonus=false;
+ const type=r07NextBonus();
+ const p=r06RewardSpot();ninja.drops=ninja.drops.filter(d=>!d.fromCarrier);
+ ninja.drops.push({...p,type,id:++r06UID,fromCarrier:true,anchored:true,emerge:16,targetY:p.y,ttl:900});
+ r06Sound('appear');r12Message('奖励车命中 · '+({star:'星星',helmet:'护盾',timer:'时钟',grenade:'手雷',life:'生命',shovel:'铁铲'}[type])+'已出现',120);r12Event('carrier-drop',{id:e.id,item:type,x:p.x,y:p.y});
+}
+r12Kill=function(e,noScore=false){
+ if(e.dead)return;e.dead=true;
+ const points=hero==='tank'?({basic:100,fast:200,power:300,armor:400}[e.tankKind]||100):100;
+ if(!noScore)addScore(points,e.x,e.y);
+ r07DefeatPresentation(e);
+ r12Event('enemy-defeated',{kind:e.tankKind||e.kind,points:noScore?0:points});
+};
+r12DamageEnemy=function(e,amount=1){
+ if(e.dead||e.spawn)return;
+ if(e.kind==='barbarian'){
+  if(e.hitLock)return;e.hitLock=12;e.hp-=amount;e.flash=9;ninjaSound('hit');r12Event('boss-hit',{hp:e.hp});
+  if(e.hp<=0){r12Kill(e);r03WinChallenge('ninja');}return;
+ }
+ if(hero==='tank')r06DropBonus(e);
+ e.hp-=amount;e.flash=9;
+ if(e.hp<=0)r12Kill(e);else if(hero==='tank')r06Sound('armorhit');else ninjaSound('hit');
+};
+const r06NinjaGive=r12Give;
+r12Give=function(type){
+ if(hero!=='tank')return r06NinjaGive(type);
+ const t=r12.tank;let clip='pickup';
+ if(type==='star'||type==='power'){t.power=Math.min(3,t.power+1);r12.rankFlash=32;clip='upgrade';r12Event('tank-form',{rank:t.power,sprite:'pack06-'+r06Palette+'-'+t.power});}
+ else if(type==='helmet'||type==='health')t.shield=600;
+ else if(type==='timer')t.freeze=360;
+ else if(type==='life'){lives++;clip='life';}
+ else if(type==='grenade'){for(const e of ninja.foes)if(!e.dead&&e.x>=camera-20&&e.x<camera+W+20)r12Kill(e,true);r12.shake=8;clip='grenade';}
+ else if(type==='shovel'){
+  t.shovel=900;
+  if(r12.area==='defense'){
+   const c=r03Challenge;
+   for(let x=112;x<=136;x+=8)for(let y=208;y<=224;y+=8){if(x>112&&x<136&&y>208)continue;
+    let b=c.blocks.find(b=>b.x===x&&b.y===y);if(!b){b={x,y,w:8,h:8,type:'brick',dead:false};c.blocks.push(b);}
+    b.type='steel';b.dead=false;b.shovelGuard=true;
+   }
+  }else t.shield=Math.max(t.shield,240); // No base in the scrolling route: explicit escort adaptation.
+ }
+ addScore(500,player.x,player.y);r06Sound(clip);r12Message(({star:'火力升级 · 车体已变化',power:'火力升级',helmet:'护盾已开启',health:'护盾已开启',timer:'敌军暂停',grenade:'清除当前区域敌军',life:'生命 +1',shovel:r12.area==='defense'?'基地临时钢墙':'主路铁铲：短时护盾'})[type]||'补给',140);
+ r12Event('pickup',{item:type,points:500});updateHeroUI();
+};
+// Bullet origin stays at the muzzle, quotas count LIVE player shells only.
+r12TankShot=function(b,friendly=true){
+ const t=r12.tank,dir=b.dir??t.dir,[dx,dy]=R12_DIR[dir],power=friendly?t.power:0;
+ const own=ninja.projectiles.filter(s=>s.life>0&&s.kind==='shell'&&s.friendly===friendly&&(friendly||s.owner===b.id));
+ if(own.length>=(friendly&&power>=2?2:1))return false;
+ const speed=friendly?(power===0?3:4.8):(b.tankKind==='power'?4:2.4);
+ ninja.projectiles.push({kind:'shell',friendly,x:b.x+b.w/2+dx*8-2,y:b.y+b.h/2+dy*8-2,w:4,h:4,vx:dx*speed,vy:dy*speed,life:140,owner:b.id,age:0,hit:new Set(),power});
+ if(friendly){t.cool=power>=2?6:4;r12.shake=1;r12Event('cannon',{power});r06Sound('shot');}
+ return true;
+};
+
+// NG-II-style wall controls: no sword while attached. Shoot OUT from the wall.
+// Spin remains an NG-I-inspired bonus, intentionally not a claim of a pure NG-II port.
+ninjaThrow=function(){
+ const n=ninja,w=R12_WEAPONS[n.weapon];if(!w||n.cool||n.hit)return false;
+ if(n.weapon==='spin'){
+  if(player.grounded||n.wall){r12Message('旋风斩：离开墙面，跳起按攻击键。',70);return false;}
+  if(n.spirit<5){ninjaSound('empty');return false;}
+  n.spirit-=5;n.cool=28;n.spin=24;n.spinHit=new Set();ninjaSound('slash');r12Event('weapon',{weapon:'spin',cost:5});return true;
+ }
+ const dir=n.wall?(n.r06Aim||-n.wall):player.facing;
+ const box={x:dir>0?player.x+player.w:player.x-10,y:player.y+player.h-17,w:n.weapon==='flame'?12:9,h:n.weapon==='flame'?12:9};
+ if(n.wall&&solids(box).length){r12Message('面前是墙 · 朝外发射忍术，不扣能量。',60);return false;}
+ if(n.spirit<w.cost){ninjaSound('empty');r12Message('忍术能量不足',60);return false;}
+ n.spirit-=w.cost;n.cool=24;n.throwPose=10;n.throwDir=dir;
+ n.projectiles.push({...box,kind:n.weapon,friendly:true,vx:dir*(n.weapon==='flame'?2.6:3.8),vy:n.weapon==='flame'?-2.1:0,life:n.weapon==='windmill'?160:95,age:0,hit:new Set()});
+ ninjaSound('throw');r12Event('weapon',{weapon:n.weapon,cost:w.cost,wall:!!n.wall,dir});return true;
+};
+const r06GroundSwing=ninjaSwing;
+ninjaSwing=function(){if(ninja.wall)return ninjaThrow();if(ninja.weapon==='spin'&&!player.grounded)return ninjaThrow();return r06GroundSwing();};
+const r06RyuPlayer=r12NinjaPlayer;
+r12NinjaPlayer=function(input){ninja.r06Aim=input.horizontal||0;if(ninja.throwPose>0)ninja.throwPose--;return r06RyuPlayer(input);};
+const r06DrawRyu=r12DrawRyu;
+r12DrawRyu=function(g,x,y,face,pose,t){if(hero==='ryu'&&ninja?.throwPose>0&&mode==='playing'&&!ninja.hit){pose='throw';face=ninja.throwDir;}r06DrawRyu(g,x,y,face,pose,t);};
+
+// Separate fatal presentation. Tanks explode in-place; never do Mario's hop.
+const r06LegacyDie=die;
+die=function(){
+ if(!r12IsHero())return r06LegacyDie();if(mode!=='playing')return;
+ mode='dying';deathTick=0;lives--;player.vx=player.vy=0;ninja.attack=0;ninja.wall=0;ninja.spin=0;ninja.command=null;ninja.throwPose=0;
+ r04ClearCommands();r06StopEngine();stopMusic();stopEffects();r06Death={hero,x:player.x,y:player.y,frame};
+ if(hero==='tank'){r06Explosion(player.x+6,player.y+6);r06Sound('death');}else ninjaSound('death');
+ r12Event('death',{lives,presentation:hero==='tank'?'tank-explosion':'ninja-fall'});
+};
+const r06ResetLife=resetLife;
+resetLife=function(){r06Death=null;r06Effects=[];r06ResetLife();};
+const r06Clear=r05ClearSession;
+r05ClearSession=function(){r06StopEngine();r06Effects=[];r06Death=null;r06Clear();};
+const r06Fixed=fixedUpdate;
+fixedUpdate=function(){
+ if(!r12IsHero()||!r12)return r06Fixed();
+ if(mode==='dying'&&r06Death){
+  frame++;r12.ticks++;deathTick++;r06FxTick();
+  if(hero==='ryu'&&deathTick>14){player.vy=Math.min(3.5,player.vy+.2);player.y+=player.vy;}
+  if(deathTick>=80){if(lives>0)resetLife();else{mode='gameover';showOverlay('RESCUE RELAY / 1-2','重新整队','生命耗尽。重开或选人都会清理旧状态。','重新出发 →');if(hero==='tank')r06Sound('gameover');}}
+  audioSync();return;
+ }
+ const f=frame;r06Fixed();if(!r12||!ninja||f===frame)return;r06FxTick();r06MarkEnemies();
+ if(mode==='playing'&&!r12.transition){
+  for(const d of ninja.drops)if(d.fromCarrier&&d.ttl>0)d.ttl--;ninja.drops=ninja.drops.filter(d=>!d.fromCarrier||d.ttl>0);
+  if(r12.tank.shovel>0&&!--r12.tank.shovel&&r12.area==='defense')for(const b of r03Challenge.blocks)if(b.shovelGuard){b.type='brick';b.dead=false;b.shovelGuard=false;}
+ }
+};
+const r06DropDraw=r12DrawDrop;
+r12DrawDrop=function(d){if(d.fromCarrier&&d.ttl<180&&Math.floor(frame/8)%2)return;r06DropDraw(d);};
+const r06Draw=r12Draw;
+r12Draw=function(){r06Draw();if(!r12)return;
+ const im=R12_SPRITES['tank-explosion06'];if(im)for(const e of r06Effects){
+  const seq=[0,1,2,3,2,1],i=seq[Math.min(5,Math.floor(e.age*6/e.life))],sz=e.big?40:20;
+  ctx.drawImage(im,i*64,0,64,64,Math.round(e.x-camera-sz/2),Math.round(e.y-r12.camY-sz/2),sz,sz);
+ }
+ if(hero==='tank')updateAudioPanel();
+};
+// Menu options change appearance/audio ONLY, never firepower or lives.
+function r06Portrait(){const button=document.querySelector('[data-hero="tank"]'),g=button?.querySelector('canvas').getContext('2d');if(!g)return;g.setTransform(1,0,0,1,0,0);g.clearRect(0,0,64,80);g.save();g.scale(2,2);r12DrawTank(g,10,18,3,false,0);g.restore();}
+const r06Options=document.createElement('div');r06Options.id='tankOptions06';r06Options.innerHTML='<span>车体配色</span> <button type="button" data-tank-palette="0" aria-pressed="true">金色</button> <button type="button" data-tank-palette="1" aria-pressed="false">绿色</button>';
+$('heroPicker').after(r06Options);
+r06Options.querySelectorAll('[data-tank-palette]').forEach(b=>b.addEventListener('click',()=>{r06Palette=Number(b.dataset.tankPalette);r06Options.querySelectorAll('[data-tank-palette]').forEach(v=>v.setAttribute('aria-pressed',String(v===b)));r06Portrait();}));
+// 0.8: tank continuous-music option removed, not merely unchecked.
+const r06Style=document.createElement('style');r06Style.textContent='#tankOptions06{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:6px;font:12px system-ui;margin:8px 0;color:#dfdbca}#tankOptions06[hidden]{display:none}#tankOptions06 button{background:#243a46;border:1px solid #718f95;color:#f1e8c6;padding:4px 10px;cursor:pointer}#tankOptions06 button[aria-pressed=true]{border-color:#f3ce6c;background:#465147}#tankOptions06 label{font-size:11px}';r06Style.textContent+=`
+.overlay.choosing .overlay-box{box-sizing:border-box;max-height:100%;overflow-y:auto;scrollbar-width:thin}
+@media(max-width:690px),(max-height:540px){
+.overlay.choosing{padding:8px!important}
+.overlay.choosing h2{font-size:16px!important;margin:3px 0!important}
+.overlay.choosing .eyebrow,.overlay.choosing #overlayText,.overlay.choosing .overlay-hint{display:none!important}
+.overlay.choosing .hero-picker{margin:5px 0!important;gap:4px!important}
+.overlay.choosing .hero-picker button{min-height:56px!important;padding:4px 2px!important}
+.overlay.choosing .hero-picker canvas{width:24px!important;height:30px!important}
+.overlay.choosing .hero-picker strong{font-size:9px!important;white-space:nowrap}
+.overlay.choosing .hero-picker small{display:none}
+#tankOptions06{gap:4px;margin:5px 0;font-size:10px}
+#tankOptions06 button{padding:2px 8px;font-size:10px;min-height:24px}
+#tankOptions06 label{font-size:9px}
+.overlay.choosing #mainAction{font-size:11px!important;padding:5px 10px!important}
+.overlay.choosing #relayStart{font-size:9px!important;padding:5px 8px!important;margin:5px auto 0!important}
+}
+`;document.head.appendChild(r06Style);
+const r06Select=selectHero;selectHero=function(id){r06Select(id);r06Options.hidden=hero!=='tank'||mode!=='menu';r06Portrait();};
+const r06Hide=hideOverlay;hideOverlay=function(){r06Hide();r06Options.hidden=true;};
+heroHelp.tank='v0.9 · 素材包彩色车体与真实音效。方向键/WASD 四向移动，J/空格开炮。红色闪烁车：命中一次出奖励；绿色装甲车：四发击破。金/绿玩家配色可选，星星升级同步更换车体。';
+heroHelp.ryu='v0.9 · 横版 1-2。空格跳跃，J 攻击。挂墙 ↑↓，反向+跳跃蹬出；挂墙 J/L 向外投忍术，不挥刀。取得旋风斩后空中 J 发动。L 忍术、E 切换为混合版快捷键。';
+r06Ready.then(()=>{r06Portrait();selectHero(hero);});
+if(window.__relayTest){
+ __relayTest.give=t=>r12Give(t);__relayTest.die=()=>die();__relayTest.damage=()=>hero==='tank'?r12TankHurt({x:player.x-20}):ninjaHurt({x:player.x-20,w:10});
+ __relayTest.r06=()=>({version:R06_VERSION,palette:r06Palette,music:r06Music,engine:!!r06Engine,effects:r06Effects.map(e=>({...e})),audioLoaded:Object.keys(R06_AUDIO_PCM).filter(k=>bank.has(k)),death:r06Death});
+}
+

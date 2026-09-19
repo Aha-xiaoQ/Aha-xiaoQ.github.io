@@ -1,0 +1,322 @@
+/* 0.4.0 input / feel repair. No map, progression, or asset replacements.
+ * Input events are latched until a 60 Hz simulation tick, not sampled away.
+ * All helpers remain inside the original game's closure; only tests export debug state.
+ */
+const R04_FEEL = Object.freeze({
+ version:'0.4.0', speed:2.1, groundAccel:.8, groundBrake:1.05,
+ airAccel:.5, airBrake:.35, crouchSpeed:.85, jumpSpeed:5.6,
+ gravity:.28, fallCap:5.0, jumpCut:3.4, jumpBuffer:8, coyote:6,
+ climbSpeed:1.35, descendSpeed:1.4, wallJumpX:2.65, wallJumpY:5.35,
+ wallCommit:4, wallRegrab:10, mantleHeight:5, commandBuffer:8,
+ slashFrames:14, slashCooldown:18, tankSpeed:1.4,
+ turnAssist:3.5, iceFrames:20
+});
+let r04TickInput=null,r04Previous={},r04Pending={},r04Serial=0;
+const r04KeyOrder=new Map(),r04TouchOrder=new Map();
+let r04DirOrder={left:0,right:0,up:0,down:0},r04PadHeld={},r04SampleHeld={},r04PadOrder={};
+const R04_KEY={ArrowLeft:'left',KeyA:'left',ArrowRight:'right',KeyD:'right',ArrowUp:'up',KeyW:'up',ArrowDown:'down',KeyS:'down',Space:'jump',KeyK:'jump',KeyZ:'jump',KeyJ:'run',KeyX:'run',ShiftLeft:'run',ShiftRight:'run',KeyL:'special',KeyE:'cycle'};
+const R04_DIR_NAMES=['right','down','left','up'];
+const r04Playing=()=>r12IsHero()&&['playing','dying','flag'].includes(mode);
+function r04Queue(a){r04Pending[a]=true;if(R04_DIR_NAMES.includes(a))r04DirOrder[a]=++r04Serial;}
+function r04Clear(){r04Pending={};r04Previous={};r04SampleHeld={};r04PadHeld={};r04PadOrder={};r04KeyOrder.clear();r04TouchOrder.clear();r04DirOrder={left:0,right:0,up:0,down:0};r04TickInput=null;}
+function r04ClearCommands(){r04Pending={};if(ninja){ninja.buffer=0;ninja.command=null;}if(r12)r12.tank.fireBuffer=0;}
+// Capture relay controls before legacy handlers. Global/menu commands retain their handlers.
+window.addEventListener('keydown',e=>{
+ const a=R04_KEY[e.code];if(!a||!r04Playing())return;
+ if(e.ctrlKey||e.metaKey||e.altKey)return;
+ if(e.target instanceof HTMLInputElement||e.target instanceof HTMLTextAreaElement||e.target?.isContentEditable)return;
+ e.preventDefault();e.stopImmediatePropagation();
+ if(!keys.has(e.code)){keys.add(e.code);r04KeyOrder.set(e.code,++r04Serial);if(mode==='playing'&&!r12?.transition)r04Queue(a);else if(R04_DIR_NAMES.includes(a))r04DirOrder[a]=r04Serial;}
+ audioInit();
+},true);
+window.addEventListener('keyup',e=>{
+ if(!R04_KEY[e.code])return;keys.delete(e.code);r04KeyOrder.delete(e.code);
+ if(r12IsHero()&&mode!=='menu'){e.preventDefault();e.stopImmediatePropagation();}
+},true);
+window.addEventListener('blur',()=>{r04Clear();keys.clear();touch.clear();},true);
+document.addEventListener('visibilitychange',()=>{if(document.hidden){r04Clear();keys.clear();touch.clear();}},true);
+function r04RefreshTouch(){for(const b of document.querySelectorAll('[data-action]'))b.classList.toggle('pressed',[...touch.values()].includes(b.dataset.action));}
+function r04TouchSet(id,a){const prev=touch.get(id);if(prev===a)return;if(a){touch.set(id,a);r04TouchOrder.set(id,++r04Serial);if(mode==='playing'&&!r12?.transition)r04Queue(a);}else{touch.delete(id);r04TouchOrder.delete(id);}r04RefreshTouch();}
+document.addEventListener('pointerdown',e=>{
+ const b=e.target.closest?.('[data-action]');if(!b||!r04Playing())return;
+ e.preventDefault();e.stopImmediatePropagation();audioInit();r04TouchSet(e.pointerId,b.dataset.action);b.setPointerCapture(e.pointerId);
+},true);
+document.addEventListener('pointermove',e=>{
+ if(!r04TouchOrder.has(e.pointerId)||!r12IsHero())return;
+ const b=document.elementFromPoint(e.clientX,e.clientY)?.closest?.('[data-action]');
+ e.preventDefault();e.stopImmediatePropagation();
+ // Maintain capture while a finger briefly leaves a button, but never a stuck direction.
+ const oldOrder=r04TouchOrder.get(e.pointerId);r04TouchSet(e.pointerId,b?.dataset.action||null);if(!b)r04TouchOrder.set(e.pointerId,oldOrder);
+},true);
+for(const event of ['pointerup','pointercancel','lostpointercapture'])document.addEventListener(event,e=>{
+ if(!r04TouchOrder.has(e.pointerId))return;r04TouchSet(e.pointerId,null);r04TouchOrder.delete(e.pointerId);
+},true);
+function r04RawInput(){
+ const t={left:false,right:false,up:false,down:false,jump:false,run:false,special:false,cycle:false};
+ if(virtualInput){Object.assign(t,virtualInput);return t;}
+ for(const c of keys){const a=R04_KEY[c];if(a)t[a]=true;}
+ for(const a of touch.values())t[a]=true;
+ try{const pad=Array.from(navigator.getGamepads?.()||[]).find(p=>p?.connected!==false&&p);if(pad){
+  const ph={};const pressed=i=>!!pad.buttons[i]?.pressed;
+  for(const [a,axis,sign,button] of [['left',0,-1,14],['right',0,1,15],['up',1,-1,12],['down',1,1,13]])ph[a]=pressed(button)||(pad.axes[axis]||0)*sign>(r04PadHeld[a]?.25:.4);
+  ph.jump=pressed(0)&&!padActionConsumed;ph.run=pressed(1)||pressed(2);ph.special=pressed(3);ph.cycle=pressed(4);
+  for(const [a,v] of Object.entries(ph)){if(v&&!r04PadHeld[a]){r04Queue(a);if(R04_DIR_NAMES.includes(a))r04PadOrder[a]=r04DirOrder[a];}if(!v)delete r04PadOrder[a];t[a]||=v;}r04PadHeld=ph;
+ }}catch{}
+ return t;
+}
+function r04Sample(){
+ const t=r04RawInput();for(const a of R04_DIR_NAMES)if(t[a]&&!r04SampleHeld[a]&&!r04Pending[a])r04DirOrder[a]=++r04Serial;
+ if(!virtualInput)for(const a of R04_DIR_NAMES){const ranks=[r04PadOrder[a]||0];for(const [code,v] of r04KeyOrder)if(keys.has(code)&&R04_KEY[code]===a)ranks.push(v);for(const [id,v] of r04TouchOrder)if(touch.get(id)===a)ranks.push(v);r04DirOrder[a]=Math.max(...ranks);}
+ for(const a of ['jump','run','special','cycle','down','up'])t[a+'Pressed']=!!r04Pending[a]||!!(t[a]&&!r04Previous[a]);
+ t.moveDir=t.moveDir??R04_DIR_NAMES.reduce((best,a,i)=>t[a]&&(best===null||r04DirOrder[a]>r04DirOrder[R04_DIR_NAMES[best]])?i:best,null);
+ t.horizontal=t.left&&t.right?(r04DirOrder.left>r04DirOrder.right?-1:1):t.left?-1:t.right?1:0;
+ r04SampleHeld={...t};r04Pending={};return t;
+}
+const r04LegacyInput=getInput;
+getInput=function(){return r12IsHero()?(r04TickInput||r04RawInput()):r04LegacyInput();};
+const r04PrevStart=startGame;
+startGame=function(){r04Clear();return r04PrevStart();};
+const r04PrevChars=showCharacters;
+showCharacters=function(){r04Clear();return r04PrevChars();};
+const r04PrevPause=togglePause;
+togglePause=function(){const before=mode;r04PrevPause();if(r12IsHero()&&before!==mode){r04Clear();r04ClearCommands();}};
+const r04PrevLoad=r12Load;
+r12Load=function(area,preserve=false,spawn=null,keepGeometry=false){
+ const heldKeys=new Set(keys),heldTouches=new Map(touch),prior=r04TickInput||r04RawInput();
+ r04PrevLoad(area,preserve,spawn,keepGeometry);
+ // Area changes preserve held movement; menu/start/focus changes deliberately do not.
+ for(const k of heldKeys)keys.add(k);for(const [id,a] of heldTouches)touch.set(id,a);
+ r04Pending={};r04Previous={...prior};r04RefreshTouch();
+ if(ninja){ninja.command=null;ninja.kickCommit=0;ninja.wall=0;ninja.buffer=0;ninja.coyote=0;}
+ if(r12){r12.tank.fireBuffer=0;r12.tank.glide=0;r12.tank.turnAssist=0;r12.r04Area=area;}
+};
+// Deterministic, swept movement with exact surface contact, including stationary grounding.
+const r04OldNinjaMove=ninjaMove;
+ninjaMove=function(dx,dy){
+ if(!r12||hero!=='ryu')return r04OldNinjaMove(dx,dy);
+ const p=player,eps=.001;const chunks=Math.max(1,Math.ceil(Math.max(Math.abs(dx),Math.abs(dy))/3));
+ p.grounded=false;
+ for(let i=0;i<chunks;i++){
+  const sx=dx/chunks,sy=dy/chunks;
+  if(sx){p.x+=sx;const walls=solids(p);if(walls.length){p.x=sx>0?Math.min(p.x,...walls.map(t=>t.x*T-p.w)):Math.max(p.x,...walls.map(t=>(t.x+1)*T));p.vx=0;dx=0;}}
+  if(sy){p.y+=sy;let hits=solids(p);
+   // A tiny head-corner correction, not passage through a ceiling.
+   if(sy<0&&hits.length===1){const b=hits[0],left=p.x+p.w-b.x*T,right=(b.x+1)*T-p.x;const shift=left>0&&left<=2.5?-left:right>0&&right<=2.5?right:0;
+    if(shift&&!solids({...p,x:p.x+shift}).length){p.x+=shift;hits=[];}}
+   if(hits.length){if(sy>0){p.y=Math.min(p.y,...hits.map(t=>t.y*T-p.h));p.grounded=true;}else{p.y=Math.max(p.y,...hits.map(t=>(t.y+1)*T));const candidate=hits.filter(t=>t.content||t.type==='question').sort((a,b)=>Math.abs(a.x*T+8-(p.x+p.w/2))-Math.abs(b.x*T+8-(p.x+p.w/2)))[0];if(candidate)ninjaBump(candidate);}p.vy=0;dy=0;}
+  }
+ }
+ if(p.vy>=0&&!p.grounded){const foot={x:p.x+eps,y:p.y+p.h,w:p.w-2*eps,h:.4};if(solids(foot).length){p.grounded=true;p.vy=0;}}
+};
+function r04Mantle(side){
+ const p=player,bottom=p.y+p.h;
+ const face=solids({x:side>0?p.x+p.w:p.x-1,y:p.y,w:1,h:p.h+1});
+ for(const tile of face){const top=tile.y*T,raise=bottom-top;if(raise<-.01||raise>R04_FEEL.mantleHeight)continue;
+  const x=p.x+side*2,y=top-p.h;
+  if(solids({x:p.x,y,w:p.w,h:p.h}).length||solids({x,y,w:p.w,h:p.h}).length)continue;
+  let safe=true;for(let k=1;k<=2;k++)if(solids({x:p.x+side*k,y,w:p.w,h:p.h}).length){safe=false;break;}
+  if(!safe)continue;p.x=x;p.y=y;p.vx=0;p.vy=0;p.grounded=true;ninja.wall=0;r12Event('mantle',{side});return true;
+ }return false;
+}
+ninjaSwing=function(){const n=ninja;if(n.cool||n.hit)return false;n.attack=R04_FEEL.slashFrames;n.cool=R04_FEEL.slashCooldown;n.attackId++;n.hitIds.clear();ninjaSound('slash');r12Event('sword');return true;};
+r12NinjaPlayer=function(input){
+ const p=player,n=ninja,c=R04_FEEL,d=input.horizontal??((input.right?1:0)-(input.left?1:0));
+ for(const k of ['invuln','star'])if(p[k]>0)p[k]--;
+ for(const k of ['cool','attack','wallLock','kickCommit'])if(n[k]>0)n[k]--;
+ if(input.cyclePressed){n.weapon=n.unlocked[(n.unlocked.indexOf(n.weapon)+1)%n.unlocked.length];r12Message(R12_WEAPONS[n.weapon].label,65);}
+ if(input.jumpPressed)n.buffer=c.jumpBuffer;else if(n.buffer)n.buffer--;
+ if(p.grounded)n.coyote=c.coyote;else if(n.coyote)n.coyote--;
+ if(input.specialPressed||(input.up&&input.runPressed))n.command={kind:'special',ttl:c.commandBuffer};
+ else if(input.runPressed)n.command={kind:'slash',ttl:c.commandBuffer};
+ else if(n.command&&--n.command.ttl<=0)n.command=null;
+ const wantCrouch=input.down&&p.grounded&&!input.jumpPressed&&!n.wall,desired=wantCrouch?16:26;
+ if(desired<p.h||!solids({x:p.x,y:p.y+p.h-desired,w:p.w,h:desired}).length){p.y+=p.h-desired;p.h=desired;}p.crouch=p.h===16;
+ // At the marked cliff only: DOWN from the outermost 4 px catches the ledge.
+ // No activation on a free fall, no activation without DOWN, and no map mutation.
+ if(!n.hit&&r12.area==='underground'&&p.grounded&&input.down&&!input.jumpPressed){
+  const side=p.x>=1270&&p.x<=1280?-1:p.x>=1328&&p.x<=1338?1:0;
+  if(side){const x=side<0?1280:1316,y=186;if(!solids({x,y,w:p.w,h:26}).length){p.x=x;p.y=y;p.h=26;p.crouch=false;p.grounded=false;p.vx=p.vy=0;n.wall=side;n.coyote=0;n.descentGrip=true;r12Event('cliff-edge-catch',{side});}}
+ }
+ if(!input.down||input.jumpPressed)n.descentGrip=false;
+ const previousBottom=p.y+p.h;
+ if(n.hit){n.hit--;n.wall=0;p.vy=Math.min(c.fallCap,p.vy+c.gravity);ninjaMove(p.vx,p.vy);p.vx*=.94;}
+ else{
+  if(d)p.facing=d;
+  const oldWall=n.wall,l=ninjaTouchWall(-1),r=ninjaTouchWall(1);let wall=0;
+  if(!p.grounded){
+   // Do not magnetically arrest an ordinary upward jump against a wall.
+   const catchAllowed=p.vy>=0||input.up||input.down||oldWall;
+   if(catchAllowed){if(r&&(d>0||oldWall===1||input.up||input.down))wall=1;else if(l&&(d<0||oldWall===-1||input.up||input.down))wall=-1;}
+   if(oldWall&&d===-oldWall&&!n.descentGrip&&!n.buffer&&!input.runPressed&&!input.specialPressed&&!input.run&&!input.special){wall=0;n.wallFrom=oldWall;n.wallLock=c.wallRegrab;}
+   if(n.wallLock&&wall===n.wallFrom)wall=0;
+  }
+  n.wall=wall;if(wall&&!oldWall)r12Event('wall-grab',{side:wall});
+  let jumped=false;
+  if(n.buffer&&(n.wall||n.coyote)){
+   if(n.wall){const side=n.wall;p.vx=-side*c.wallJumpX;p.vy=-c.wallJumpY;p.facing=-side;n.wallFrom=side;n.wallLock=c.wallRegrab;n.kickCommit=c.wallCommit;n.wall=0;ninjaSound('wall');r12Event('wall-jump',{side});}
+   else{p.vy=-c.jumpSpeed;ninjaSound('jump');r12Event('jump');}
+   p.grounded=false;n.coyote=0;n.buffer=0;jumped=true;
+  }
+  if(n.wall){p.facing=n.wall;p.vx=0;p.vy=input.up?-c.climbSpeed:input.down?c.descendSpeed:0;
+   if(!(input.up&&r04Mantle(n.wall))){const oldY=p.y;ninjaMove(0,p.vy);n.climbTravel=(n.climbTravel||0)+Math.abs(p.y-oldY);if(input.up)r04Mantle(n.wall);if(n.wall&&!ninjaTouchWall(n.wall)){n.wall=0;p.vy=Math.min(0,p.vy);}}
+  }else{
+   if(!n.kickCommit){const speed=p.crouch?c.crouchSpeed:c.speed;const accel=d?(p.grounded?c.groundAccel:c.airAccel):(p.grounded?c.groundBrake:c.airBrake);p.vx=approach(p.vx,d*speed,accel);}
+   if(!jumped&&!input.jump&&p.vy<-c.jumpCut)p.vy=-c.jumpCut;
+   p.vy=Math.min(c.fallCap,p.vy+c.gravity);ninjaMove(p.vx,p.vy);
+  }
+  for(const lift of r12.lifts)if(p.vy>=0&&p.x+p.w>lift.x&&p.x<lift.x+lift.w&&previousBottom<=lift.y-lift.vy+2&&p.y+p.h>=lift.y&&p.y<lift.y){p.y=lift.y-p.h;p.vy=0;p.grounded=true;r12.discovered.add('lift');}
+  if(n.command&&!n.cool){const kind=n.command.kind;n.command=null;if(kind==='slash')ninjaSwing();else ninjaThrow();}
+ }
+ n.jumpHeld=!!input.jump;n.attackHeld=!!input.run;n.specialHeld=!!input.special;n.cycleHeld=!!input.cycle;
+ p.anim+=Math.abs(p.vx);p.x=clamp(p.x,16,r12.def.width-p.w-16);p.y=Math.max(-24,p.y);
+ if(r03TryDescent(input))return;if(p.y>(n.descentActive?430:H+24)){r12Event('pit');die();return;}
+ // Body damage is resolved AFTER active sword/projectile hits in r12Combat.
+ r12CommonPlayer(input);
+};
+// Exact axis clipping removes fractional stand-off from walls. No contact damage.
+function r04TankBoxes(b,who){
+ let boxes;
+ if(r12.area==='defense')boxes=[...r03Challenge.blocks.filter(b=>!b.dead),r03Challenge.base];
+ else boxes=solids(b).filter(t=>t.type!=='ground').flatMap(t=>r03TileParts(t)).concat(r08LiftBoxes());
+ const bodies=ninja.foes.filter(e=>e!==who&&!e.dead&&!e.spawn);if(who!==player)bodies.push(player);
+ return boxes.concat(bodies);
+}
+r12TankMove=function(b,dir,speed){
+ if(!Number.isFinite(speed)||speed<=0)return false;
+ const [dx,dy]=R12_DIR[dir],initial={x:b.x,y:b.y},limit=r12.area==='defense'?{l:24,r:232,t:24,b:232}:{l:16,r:r12.def.width-16,t:48,b:208};
+ let move=speed;
+ move=Math.min(move,dx>0?limit.r-b.x-b.w:dx<0?b.x-limit.l:dy>0?limit.b-b.y-b.h:b.y-limit.t);
+ const swept={x:b.x+(dx<0?-speed:0),y:b.y+(dy<0?-speed:0),w:b.w+(dx?speed:0),h:b.h+(dy?speed:0)};
+ for(const o of r04TankBoxes(swept,b)){
+  if(!o)continue;
+  const cross=dx?b.y<o.y+o.h-.001&&b.y+b.h>o.y+.001:b.x<o.x+o.w-.001&&b.x+b.w>o.x+.001;if(!cross)continue;
+  const dist=dx>0?o.x-b.x-b.w:dx<0?b.x-o.x-o.w:dy>0?o.y-b.y-b.h:b.y-o.y-o.h;
+  if(dist>=-.001)move=Math.min(move,Math.max(0,dist));
+  else if(overlap(b,o)){
+   const q={...b,x:b.x+dx*speed,y:b.y+dy*speed};
+   const area=z=>Math.max(0,Math.min(z.x+z.w,o.x+o.w)-Math.max(z.x,o.x))*Math.max(0,Math.min(z.y+z.h,o.y+o.h)-Math.max(z.y,o.y));
+   if(area(q)>area(b)+.001)move=0;
+  }
+ }
+ move=Math.max(0,move);b.x+=dx*move;b.y+=dy*move;return Math.abs(b.x-initial.x)+Math.abs(b.y-initial.y)>.0001;
+};
+function r04TurnAssist(dir){
+ const p=player,axis=dir%2===0?'y':'x',origin=p[axis];
+ const offset=r12.area==='defense'?0:2,cell=Math.floor((origin-offset)/8);
+ const targets=[cell*8+offset,(cell+1)*8+offset].sort((a,b)=>Math.abs(a-origin)-Math.abs(b-origin));
+ for(const target of targets){const delta=target-origin;if(Math.abs(delta)<.001||Math.abs(delta)>3.5)continue;
+  const [dx,dy]=R12_DIR[dir],q={...p,[axis]:target},forward={...q,x:q.x+dx*R04_FEEL.tankSpeed,y:q.y+dy*R04_FEEL.tankSpeed};
+  const bodies=ninja.foes.filter(e=>!e.dead&&!e.spawn);
+  if(r12TankCollides(q)||r12TankCollides(forward)||bodies.some(e=>overlap(q,e)||overlap(forward,e)))continue;
+  let safe=true;for(let k=1;k<=4;k++)if(r12TankCollides({...p,[axis]:origin+delta*k/4}))safe=false;
+  if(!safe)continue;p[axis]=target;r12Event('tank-corner-align',{axis,delta});return true;
+ }return false;
+}
+r12TankPlayer=function(input){
+ const p=player,t=r12.tank,c=R04_FEEL;for(const k of ['shield','freeze','cool','turnAssist'])if(t[k]>0)t[k]--;if(p.invuln)p.invuln--;
+ const dir=input.moveDir??null,onIce=r03Terrain.some(s=>s.kind==='ice'&&overlap(p,s)),ox=p.x,oy=p.y;
+ if(input.runPressed||input.jumpPressed)t.fireBuffer=c.commandBuffer;else if(t.fireBuffer)t.fireBuffer--;
+ if(dir!==null){if(dir%2!==t.dir%2)t.turnAssist=18;t.dir=dir;p.dir=dir;t.glide=onIce?c.iceFrames:0;t.glideDir=dir;
+  const moved=r12TankMove(p,dir,c.tankSpeed);if(!moved&&r04TurnAssist(dir)){r12TankMove(p,dir,c.tankSpeed);t.turnAssist=0;}
+ }else if(onIce&&t.glide>0){t.glide--;if(!r12TankMove(p,t.glideDir,c.tankSpeed*t.glide/c.iceFrames))t.glide=0;}else t.glide=0;
+ p.vx=p.x-ox;p.vy=p.y-oy;if(Math.abs(p.vx)+Math.abs(p.vy)>.001)t.track++;
+ if((input.run||input.jump||t.fireBuffer)&&!t.cool){const count=ninja.projectiles.length;r12TankShot(p);if(ninja.projectiles.length>count)t.fireBuffer=0;}
+ p.grounded=true;p.facing=t.dir===2?-1:1;r12CommonPlayer(input);
+};
+// Shared simultaneous projectile stepping prevents opposite fast shots tunnelling.
+function r04Projectiles(defense=false){
+ const n=ninja,p=player,c=r03Challenge;
+ for(const s of n.projectiles){s.age=(s.age||0)+1;s.life--;
+  if(s.kind==='windmill'&&s.age>30){const a=Math.atan2(p.y+p.h/2-s.y,p.x+p.w/2-s.x);s.vx=approach(s.vx,Math.cos(a)*3.8,.28);s.vy=approach(s.vy,Math.sin(a)*3.8,.28);if(overlap(s,p))s.life=0;}
+ }
+ const steps=Math.max(1,Math.ceil(Math.max(0,...n.projectiles.map(s=>Math.max(Math.abs(s.vx||0),Math.abs(s.vy||0))))/1.5));
+ for(let k=0;k<steps;k++){
+  for(const s of n.projectiles)if(s.life>0){s.x+=s.vx/steps;s.y+=s.vy/steps;}
+  if(hero==='tank')for(const a of n.projectiles)if(a.friendly&&a.life>0)for(const b of n.projectiles)if(!b.friendly&&b.life>0&&overlap(a,b)){a.life=b.life=0;ninjaDust(a.x,a.y);r12Event('shell-cancel');if(typeof r06Sound==='function')r06Sound('cancel');}
+  for(const s of n.projectiles){if(s.life<=0)continue;
+   if(defense){const wall=c.blocks.find(w=>!w.dead&&overlap(s,w));if(wall){r07DefenseImpact(wall,s);s.life=0;continue;}
+    if(overlap(s,c.base)){s.life=0;if(c.won)continue;c.failed=true;mode='gameover';stopMusic();if(typeof r06Sound==='function'){r06Sound('death');r06Sound('gameover',{delay:.65});}showOverlay('BASE LOST','基地失守','炮弹击中了鹰徽。坦克车体接触不造成伤害。','重试基地挑战 →');r12Event('base-destroyed',{friendly:s.friendly});return;}
+   }else{if(hero==='tank'&&r08LiftBoxes().some(l=>overlap(s,l))){s.life=0;r06Sound('steel');ninjaDust(s.x,s.y);r12Event('lift-shell-hit');continue;}const hit=solids(s).find(t=>hero!=='tank'||t.type!=='ground');if(hit){if(hero==='tank'){r12.r03Impact=s;r12Break(hit,'cannon');}else if(s.friendly&&hit.content)ninjaBump(hit);if(s.kind!=='windmill'){s.life=0;ninjaDust(s.x,s.y);continue;}}}
+   if(s.friendly){for(const e of n.foes)if(!e.dead&&!e.spawn&&overlap(s,e)&&!s.hit?.has(e.id)){s.hit?.add(e.id);r12DamageEnemy(e,s.kind==='flame'?2:1);if(s.kind!=='windmill'&&s.kind!=='flame')s.life=0;break;}
+    for(const l of n.lanterns)if(!l.dead&&overlap(s,l)){l.dead=true;n.drops.push({...l,w:12,h:12,vy:-1.5});if(s.kind!=='windmill')s.life=0;}
+   }else if(mode==='playing'&&overlap(s,p)){hero==='tank'?r12TankHurt(s):ninjaHurt(s);s.life=0;}
+   if(defense?(s.x<24||s.x>232||s.y<24||s.y>232):(s.y<(hero==='tank'?24:-48)||s.y>(hero==='tank'?240:370)))s.life=0;
+  }
+ }
+ n.projectiles=n.projectiles.filter(s=>s.life>0&&(defense||(s.x>camera-(hero==='tank'?12:160)&&s.x<camera+W+(hero==='tank'?12:160))));
+}
+r12Combat=function(){
+ const n=ninja,p=player;
+ if(hero==='ryu'&&n.attack>=3&&n.attack<=12){
+  const boxes=r07SwordBoxes();const box=boxes[0],hits=b=>boxes.some(q=>overlap(q,b));
+  for(const e of n.foes)if(!e.dead&&hits(e)&&!n.hitIds.has('e'+e.id)){n.hitIds.add('e'+e.id);r12DamageEnemy(e);}
+  for(const l of n.lanterns)if(!l.dead&&hits(l)){l.dead=true;n.drops.push({...l,w:12,h:12,vy:-2});ninjaDust(l.x,l.y);}
+  for(const t of [...new Set(boxes.flatMap(q=>solids(q)))])if(!n.hitIds.has('t'+tileKey(t.x,t.y))){n.hitIds.add('t'+tileKey(t.x,t.y));r12Break(t);}
+  for(const s of n.projectiles)if(!s.friendly&&hits(s)){s.life=0;r12Event('parry');}
+ }
+ r04Projectiles(false);
+ if(hero==='ryu'){
+  if(n.spin>0){const box={x:p.x-16,y:p.y-9,w:44,h:44};for(const e of n.foes)if(!e.dead&&overlap(box,e)&&!n.spinHit.has(e.id)){n.spinHit.add(e.id);r12DamageEnemy(e,2);}}
+  for(const e of n.foes)if(mode==='playing'&&!e.dead&&!e.spawn&&overlap(p,e)){if(p.star)r12Kill(e);else ninjaHurt(e);break;}
+  for(const it of n.drops){if(it.emerge>0){it.emerge--;it.y=it.targetY+it.emerge*.5;it.vy=0;continue;}it.vy=Math.min(3,(it.vy||0)+.15);it.y+=it.vy;for(const t of solids(it))if(it.vy>0){it.y=t.y*T-it.h;it.vy=0;}}
+ }
+ for(const f of n.fx){f.x+=f.vx;f.y+=f.vy;f.vy+=.055;f.life--;}n.fx=n.fx.filter(f=>f.life>0);for(const t of tiles.values())if(t.bump)t.bump--;updateParticles();
+};
+const r04OldCommon=r12CommonPlayer;
+r12CommonPlayer=function(input){
+ const prevCamera=camera,prevY=r12.camY,area=r12.area;
+ r04OldCommon(input);if(r12.area!==area||r12.area==='defense')return;
+ const p=player;let desired=prevCamera;
+ if(p.x-prevCamera>139)desired=p.x-139;else if(p.x-prevCamera<83)desired=p.x-83;
+ camera=clamp(desired,0,Math.max(0,r12.def.width-W));
+ // Preserve original area-descent camera target, avoid a one-frame vertical snap.
+ const targetY=r12.camY;r12.camY=Math.abs(targetY-prevY)<.12?targetY:prevY+(targetY-prevY)*.25;
+};
+// Defense uses the same controller, collision solver and projectile ordering as the main map.
+r03DefenseTick=function(input){
+ const c=r03Challenge,t=r12.tank;c.clock++;frame++;r12.ticks++;if(r12.messageTime)r12.messageTime--;if(r12.shake>0)r12.shake--;
+ if(c.failed)return;
+ if(c.won){r12TankPlayer(input);r04Projectiles(true);r07DefenseExit(input);updateParticles();return;}
+ if(c.spawned<c.total&&ninja.foes.filter(e=>!e.dead).length<2&&c.spawnClock--<=0){const x=[24,124,220][c.spawned%3],spawn={x,y:24,w:12,h:12};
+  if(!overlap(spawn,player)&&!ninja.foes.some(e=>!e.dead&&overlap(spawn,e))){ninja.foes.push({kind:'tank',tankKind:'basic',bonus:c.spawned===1,bonusSpent:false,id:700+c.spawned,x,y:24,w:12,h:12,dir:1,t:0,cool:100,hp:1,maxHp:1,dead:false,spawn:50,turn:0});c.spawned++;c.spawnClock=150;}}
+ r12TankPlayer(input);
+ for(const d of ninja.drops)if(!d.gone&&!d.emerge&&overlap(player,d)){r12Give(d.type);d.gone=true;}ninja.drops=ninja.drops.filter(d=>!d.gone);
+ if(!t.freeze)for(const e of ninja.foes){if(e.dead)continue;if(e.spawn){e.spawn--;continue;}e.t++;if(e.cool)e.cool--;if(e.flash)e.flash--;
+  if(e.t%70===1)e.dir=e.y>190?(e.x<114?0:e.x>138?2:1):e.t%210<140?1:((e.id%2)?0:2);
+  if(!r12TankMove(e,e.dir,.55)&&e.t%40===0)e.dir=(e.dir+1)%4;
+  if(!e.cool){r12TankShot(e,false);e.cool=100;}}
+ r04Projectiles(true);c.kills=ninja.foes.filter(e=>e.dead).length;updateParticles(); // Live arena debris/floating scores must age even while enemies are frozen.
+ for(const f of ninja.fx){f.x+=f.vx;f.y+=f.vy;f.life--;}ninja.fx=ninja.fx.filter(f=>f.life>0);
+ if(mode==='playing'&&c.spawned===c.total&&c.kills===c.total&&!c.failed)r03WinChallenge('tank');
+};
+// One input snapshot per physics step; all layers see the same edges.
+const r04PreviousFixed=fixedUpdate;
+fixedUpdate=function(){
+ if(!r12IsHero()||!r12)return r04PreviousFixed();
+ if(r12.area==='defense')pollMixPad();
+ r04TickInput=r04Sample();
+ if(mode!=='playing'||r12.transition){r04TickInput.jumpPressed=false;r04TickInput.runPressed=false;r04TickInput.specialPressed=false;r04TickInput.cyclePressed=false;}
+ const seen={...r04TickInput};try{r04PreviousFixed();}finally{r04Previous=seen;r04TickInput=null;}
+};
+// Keep familiar controls; J remains one slash per press. L no longer loses sub-frame taps.
+heroHelp.ryu='手感修订 0.4 · ←→ / AD 移动；空格 / K / Z 跳跃（轻点低跳、按住高跳）；J 挥刀（短缓冲，不是按住自动连砍）；L 忍术；E 切换。贴墙 ↑↓，跳跃蹬墙；低矮处 ↓+方向挪动。';
+heroHelp.tank='手感修订 0.4 · 方向键 / WASD 四向移动；最后按下的方向优先。J / 空格开炮，可按住连射。转弯处小幅对齐，不穿墙。碰敌车只阻挡；河流挡车不挡弹。';
+const r04OldSelect=selectHero;
+selectHero=function(id){const out=r04OldSelect(id);if(mode==='menu')r04Clear();if(r04Up)r04Up.hidden=!r12IsHero();if(r04Pad)r04Pad.classList.toggle('r04-relay',r12IsHero());if(hero==='ryu'&&$('jumpLabel'))$('jumpLabel').textContent='轻点低跳 / 按住高跳';return out;};
+// A real four-way touch pad, not an UP button separated from its other directions.
+const r04Pad=document.querySelector('.touchbar > .pad'),r04Up=document.querySelector('#ninjaTouch [data-action="up"]');
+if(r04Pad&&r04Up){r04Pad.prepend(r04Up);r04Pad.classList.add('r04-dpad');}
+const r04Style=document.createElement('style');r04Style.textContent=`
+.r04-dpad{display:grid!important;grid-template-columns:repeat(3,44px);grid-template-rows:repeat(2,44px);gap:5px!important;align-content:center}
+.r04-dpad:not(.r04-relay){grid-template-rows:44px}.r04-dpad:not(.r04-relay) .touchkey{grid-row:1!important}
+.r04-dpad [data-action="up"]{grid-column:2;grid-row:1}.r04-dpad [data-action="left"]{grid-column:1;grid-row:2}.r04-dpad [data-action="down"]{grid-column:2;grid-row:2}.r04-dpad [data-action="right"]{grid-column:3;grid-row:2}
+.r04-dpad .touchkey{width:44px;height:44px;min-width:44px;padding:0;font-size:18px}.touchkey{touch-action:none;user-select:none;-webkit-user-select:none}
+@media(max-height:540px) and (orientation:landscape){.r04-dpad{position:fixed;left:12px;bottom:14px;z-index:40}.touchbar>.actionpad{position:fixed;right:12px;bottom:14px;z-index:40}#ninjaTouch{left:auto;right:12px;top:auto;bottom:76px;flex-direction:row}}
+`;document.head.appendChild(r04Style);
+if(window.__relayTest){
+ __relayTest.feel=()=>({config:R04_FEEL,command:ninja?.command,buffer:ninja?.buffer,coyote:ninja?.coyote,kickCommit:ninja?.kickCommit,wallLock:ninja?.wallLock,input:r04TickInput||r04RawInput(),camera:{x:camera,y:r12?.camY},pending:{...r04Pending}});
+ __relayTest.nativeFrames=function(n=1){for(let i=0;i<n;i++)fixedUpdate();draw();return this.state();};
+}
+
+selectHero(hero);
+

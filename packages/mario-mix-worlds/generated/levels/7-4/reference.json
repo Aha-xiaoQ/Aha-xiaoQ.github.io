@@ -1,0 +1,768 @@
+{
+  "repository": "umaim/Mario",
+  "commit": "980c275358704a49f868567aeec5bdfb347c4781",
+  "path": "Source/settings/maps.js",
+  "gitBlob": "657d750ad65bb06c0e63a3d8958736f9236ec3c0",
+  "range": "Worlds 1–8 gameplay layout transcription",
+  "url": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+  "method": "Manual transcription of gameplay placement records, area locations and section definitions. Pure background scenery omitted; not a byte-identical source export or original-game certification.",
+  "omittedVisuals": [
+    "Pattern",
+    "DecorativeBack",
+    "DecorativeDot",
+    "CustomText"
+  ],
+  "map": {
+    "name": "7-4",
+    "locations": [
+      {
+        "area": 0,
+        "entry": "Castle"
+      }
+    ],
+    "areas": [
+      {
+        "setting": "Castle",
+        "creation": [
+          {
+            "macro": "StartInsideCastle",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "thing": "Stone",
+            "width": 128,
+            "height": 24,
+            "x": 0,
+            "y": 88
+          },
+          {
+            "macro": "Floor",
+            "width": 88,
+            "x": 40,
+            "y": 24
+          },
+          {
+            "macro": "Water",
+            "width": 88,
+            "x": 128,
+            "y": 0
+          },
+          {
+            "thing": "Stone",
+            "width": 128,
+            "x": 128,
+            "y": 88
+          },
+          {
+            "thing": "Platform",
+            "width": 16,
+            "falling": true,
+            "x": 144,
+            "y": 48
+          },
+          {
+            "thing": "Podoboo",
+            "x": 160,
+            "y": -32
+          },
+          {
+            "thing": "Platform",
+            "width": 16,
+            "falling": true,
+            "x": 176,
+            "y": 40
+          },
+          {
+            "macro": "Floor",
+            "width": 40,
+            "x": 216,
+            "y": 24
+          },
+          {
+            "thing": "Stone",
+            "width": 32,
+            "height": 16,
+            "x": 224,
+            "y": 80
+          },
+          {
+            "macro": "Section",
+            "x": 256,
+            "y": 0
+          }
+        ],
+        "sections": [
+          {
+            "before": {
+              "width": 48,
+              "creation": [
+                {
+                  "macro": "Floor",
+                  "width": 48,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "thing": "Stone",
+                  "width": 48,
+                  "x": 0,
+                  "y": 88
+                },
+                {
+                  "thing": "Stone",
+                  "width": 32,
+                  "x": 16,
+                  "y": 32
+                },
+                {
+                  "thing": "Stone",
+                  "width": 16,
+                  "x": 32,
+                  "y": 40
+                },
+                {
+                  "thing": "Stone",
+                  "width": 8,
+                  "x": 40,
+                  "y": 48
+                }
+              ]
+            },
+            "stretch": {
+              "width": 8,
+              "creation": [
+                {
+                  "macro": "Floor",
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "macro": "SectionPass",
+                  "height": 24,
+                  "x": 0,
+                  "y": 24
+                },
+                {
+                  "thing": "Stone",
+                  "height": 32,
+                  "x": 0,
+                  "y": 56
+                },
+                {
+                  "macro": "SectionFail",
+                  "height": 24,
+                  "x": 0,
+                  "y": 80
+                },
+                {
+                  "thing": "Stone",
+                  "x": 0,
+                  "y": 88
+                }
+              ]
+            },
+            "after": {
+              "width": 24,
+              "creation": [
+                {
+                  "macro": "Floor",
+                  "width": 24,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "thing": "Stone",
+                  "width": 24,
+                  "x": 0,
+                  "y": 88
+                },
+                {
+                  "macro": "Section",
+                  "section": 1,
+                  "x": 24,
+                  "y": 0
+                }
+              ]
+            }
+          },
+          {
+            "before": {
+              "width": 8,
+              "creation": [
+                {
+                  "macro": "Floor",
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "thing": "Stone",
+                  "x": 0,
+                  "y": 24
+                },
+                {
+                  "thing": "Stone",
+                  "x": 0,
+                  "y": 88
+                }
+              ]
+            },
+            "stretch": {
+              "width": 8,
+              "creation": [
+                {
+                  "macro": "Floor",
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "macro": "SectionFail",
+                  "height": 16,
+                  "x": 0,
+                  "y": 16
+                },
+                {
+                  "thing": "Stone",
+                  "x": 0,
+                  "y": 24
+                },
+                {
+                  "macro": "SectionPass",
+                  "height": 24,
+                  "x": 0,
+                  "y": 48
+                },
+                {
+                  "thing": "Stone",
+                  "x": 0,
+                  "y": 56
+                },
+                {
+                  "macro": "SectionFail",
+                  "height": 24,
+                  "x": 0,
+                  "y": 80
+                },
+                {
+                  "thing": "Stone",
+                  "x": 0,
+                  "y": 88
+                }
+              ]
+            },
+            "after": {
+              "width": 32,
+              "creation": [
+                {
+                  "macro": "Floor",
+                  "width": 32,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "thing": "Stone",
+                  "x": 0,
+                  "y": 24
+                },
+                {
+                  "thing": "Stone",
+                  "width": 32,
+                  "x": 0,
+                  "y": 88
+                },
+                {
+                  "macro": "Section",
+                  "section": 2,
+                  "x": 32,
+                  "y": 0
+                }
+              ]
+            }
+          },
+          {
+            "stretch": {
+              "width": 8,
+              "creation": [
+                {
+                  "macro": "Floor",
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "macro": "SectionFail",
+                  "height": 24,
+                  "x": 0,
+                  "y": 24
+                },
+                {
+                  "thing": "Stone",
+                  "height": 32,
+                  "x": 0,
+                  "y": 56
+                },
+                {
+                  "macro": "SectionPass",
+                  "height": 24,
+                  "x": 0,
+                  "y": 80
+                },
+                {
+                  "thing": "Stone",
+                  "x": 0,
+                  "y": 88
+                }
+              ]
+            },
+            "after": {
+              "width": 80,
+              "creation": [
+                {
+                  "macro": "Floor",
+                  "width": 80,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "thing": "Stone",
+                  "x": 0,
+                  "y": 40
+                },
+                {
+                  "thing": "Stone",
+                  "width": 16,
+                  "x": 0,
+                  "y": 48
+                },
+                {
+                  "thing": "Stone",
+                  "width": 32,
+                  "x": 0,
+                  "y": 56
+                },
+                {
+                  "thing": "Stone",
+                  "width": 80,
+                  "x": 0,
+                  "y": 88
+                },
+                {
+                  "thing": "Stone",
+                  "width": 24,
+                  "height": 24,
+                  "x": 40,
+                  "y": 24
+                },
+                {
+                  "macro": "SectionDecider",
+                  "pass": 3,
+                  "fail": 0,
+                  "x": 80,
+                  "y": 0
+                }
+              ]
+            }
+          },
+          {
+            "before": {
+              "width": 136,
+              "creation": [
+                {
+                  "macro": "Floor",
+                  "width": 24,
+                  "x": 0,
+                  "y": 24
+                },
+                {
+                  "thing": "Stone",
+                  "width": 136,
+                  "x": 0,
+                  "y": 88
+                },
+                {
+                  "macro": "Floor",
+                  "width": 32,
+                  "x": 24,
+                  "y": 0
+                },
+                {
+                  "thing": "Stone",
+                  "width": 16,
+                  "x": 48,
+                  "y": 56
+                },
+                {
+                  "macro": "Water",
+                  "width": 24,
+                  "x": 56,
+                  "y": 0
+                },
+                {
+                  "thing": "Stone",
+                  "width": 24,
+                  "x": 72,
+                  "y": 56
+                },
+                {
+                  "macro": "Floor",
+                  "x": 80,
+                  "y": 0
+                },
+                {
+                  "thing": "CastleBlock",
+                  "fireballs": 6,
+                  "direction": 1,
+                  "x": 80,
+                  "y": 48
+                },
+                {
+                  "macro": "Water",
+                  "width": 24,
+                  "x": 88,
+                  "y": 0
+                },
+                {
+                  "thing": "Stone",
+                  "width": 32,
+                  "x": 104,
+                  "y": 56
+                },
+                {
+                  "macro": "Floor",
+                  "width": 24,
+                  "x": 112,
+                  "y": 0
+                }
+              ]
+            },
+            "stretch": {
+              "width": 8,
+              "creation": [
+                {
+                  "macro": "SectionFail",
+                  "height": 24,
+                  "x": 0,
+                  "y": 24
+                },
+                {
+                  "macro": "SectionPass",
+                  "height": 24,
+                  "x": 0,
+                  "y": 80
+                },
+                {
+                  "macro": "Floor",
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "thing": "Stone",
+                  "height": 32,
+                  "x": 0,
+                  "y": 56
+                },
+                {
+                  "thing": "Stone",
+                  "x": 0,
+                  "y": 88
+                }
+              ]
+            },
+            "after": {
+              "width": 80,
+              "creation": [
+                {
+                  "macro": "Section",
+                  "section": 4,
+                  "x": 0,
+                  "y": 0
+                }
+              ]
+            }
+          },
+          {
+            "before": {
+              "width": 64,
+              "creation": [
+                {
+                  "macro": "Floor",
+                  "width": 64,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "thing": "Stone",
+                  "width": 64,
+                  "x": 0,
+                  "y": 88
+                },
+                {
+                  "thing": "Stone",
+                  "width": 24,
+                  "x": 16,
+                  "y": 56
+                },
+                {
+                  "thing": "Stone",
+                  "width": 24,
+                  "x": 24,
+                  "y": 24
+                },
+                {
+                  "thing": "Stone",
+                  "x": 56,
+                  "y": 56
+                }
+              ]
+            },
+            "stretch": {
+              "width": 8,
+              "creation": [
+                {
+                  "macro": "Floor",
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "thing": "Stone",
+                  "x": 0,
+                  "y": 24
+                },
+                {
+                  "thing": "Stone",
+                  "x": 0,
+                  "y": 56
+                },
+                {
+                  "thing": "Stone",
+                  "x": 0,
+                  "y": 88
+                }
+              ]
+            },
+            "after": {
+              "width": 64,
+              "creation": [
+                {
+                  "macro": "Floor",
+                  "width": 64,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "thing": "Stone",
+                  "x": 0,
+                  "y": 24
+                },
+                {
+                  "thing": "Stone",
+                  "width": 64,
+                  "x": 0,
+                  "y": 88
+                },
+                {
+                  "thing": "Stone",
+                  "width": 24,
+                  "x": 24,
+                  "y": 56
+                },
+                {
+                  "thing": "Stone",
+                  "width": 24,
+                  "x": 32,
+                  "y": 24
+                },
+                {
+                  "macro": "Section",
+                  "section": 5,
+                  "x": 64,
+                  "y": 0
+                }
+              ]
+            }
+          },
+          {
+            "before": {
+              "width": 32,
+              "creation": [
+                {
+                  "macro": "Floor",
+                  "width": 16,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "thing": "Stone",
+                  "height": 32,
+                  "x": 0,
+                  "y": 56
+                },
+                {
+                  "thing": "Stone",
+                  "width": 32,
+                  "x": 0,
+                  "y": 88
+                },
+                {
+                  "thing": "Stone",
+                  "width": 24,
+                  "x": 8,
+                  "y": 56
+                },
+                {
+                  "macro": "Floor",
+                  "x": 16,
+                  "y": 8
+                },
+                {
+                  "macro": "Floor",
+                  "x": 24,
+                  "y": 16
+                }
+              ]
+            },
+            "stretch": {
+              "width": 8,
+              "creation": [
+                {
+                  "macro": "Floor",
+                  "x": 0,
+                  "y": 24
+                },
+                {
+                  "macro": "SectionPass",
+                  "height": 24,
+                  "x": 0,
+                  "y": 80
+                },
+                {
+                  "thing": "Stone",
+                  "x": 0,
+                  "y": 56
+                },
+                {
+                  "macro": "SectionFail",
+                  "height": 24,
+                  "x": 0,
+                  "y": 48
+                },
+                {
+                  "thing": "Stone",
+                  "x": 0,
+                  "y": 88
+                }
+              ]
+            },
+            "after": {
+              "width": 56,
+              "creation": [
+                {
+                  "macro": "Floor",
+                  "width": 56,
+                  "x": 0,
+                  "y": 24
+                },
+                {
+                  "thing": "Stone",
+                  "width": 56,
+                  "x": 0,
+                  "y": 88
+                },
+                {
+                  "macro": "SectionDecider",
+                  "height": 56,
+                  "pass": 6,
+                  "fail": 3,
+                  "x": 56,
+                  "y": 80
+                }
+              ]
+            }
+          },
+          {
+            "before": {
+              "width": 272,
+              "creation": [
+                {
+                  "macro": "Floor",
+                  "width": 24,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "thing": "Stone",
+                  "width": 272,
+                  "x": 0,
+                  "y": 88
+                },
+                {
+                  "macro": "Floor",
+                  "width": 24,
+                  "x": 24,
+                  "y": 24
+                },
+                {
+                  "macro": "Floor",
+                  "width": 16,
+                  "x": 48,
+                  "y": 0
+                },
+                {
+                  "macro": "Floor",
+                  "width": 64,
+                  "x": 64,
+                  "y": 24
+                },
+                {
+                  "macro": "Floor",
+                  "width": 16,
+                  "x": 128,
+                  "y": 0
+                },
+                {
+                  "macro": "Floor",
+                  "width": 16,
+                  "x": 144,
+                  "y": 24
+                },
+                {
+                  "macro": "Floor",
+                  "width": 16,
+                  "x": 160,
+                  "y": 0
+                },
+                {
+                  "macro": "Floor",
+                  "width": 16,
+                  "x": 176,
+                  "y": 24
+                },
+                {
+                  "macro": "Floor",
+                  "width": 16,
+                  "x": 192,
+                  "y": 0
+                },
+                {
+                  "macro": "Floor",
+                  "width": 64,
+                  "x": 208,
+                  "y": 24
+                },
+                {
+                  "macro": "EndInsideCastle",
+                  "spawnType": "HammerBro",
+                  "throwing": false,
+                  "transport": {
+                    "map": "8-1"
+                  },
+                  "x": 272,
+                  "y": 0
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

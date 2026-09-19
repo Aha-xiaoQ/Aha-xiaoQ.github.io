@@ -1,0 +1,359 @@
+/* R10: installed INSIDE the existing game closure, after all R08 initialization.
+ * The final build asserts a single extension and single runtime installation.
+ * Native sprite pixels are layered here; mechanics are a browser adaptation. */
+const T10_VERSION = 'TERRARIA 1-3';
+let t10Installed = true, t10Helmet = true;
+const t10TintCache = new Map();
+const t10Ready = Promise.all(r06AssetJobs);
+const t10Scale = s => s?.r05Arena ? 1 : .75;
+function t10Tint(key, rgb) {
+ const im=r06Images[key]||photos[key]; if(!im)return null;
+ const cacheKey=key+':'+rgb.join(',')+':'+im.width+':'+im.height;
+ if(t10TintCache.has(cacheKey))return t10TintCache.get(cacheKey);
+ const c=document.createElement('canvas');c.width=im.width;c.height=im.height;
+ const g=c.getContext('2d');g.drawImage(im,0,0);const data=g.getImageData(0,0,c.width,c.height);
+ for(let i=0;i<data.data.length;i+=4){for(let j=0;j<3;j++)data.data[i+j]=Math.round(data.data[i+j]*rgb[j]/255);}
+ g.putImageData(data,0,0);t10TintCache.set(cacheKey,c);return c;
+}
+function t10Face(g,bob=0) {
+ const parts=[['skinHead',[255,207,167]],['eyeWhite',null],['eyeIris',[44,83,111]],['hair',[151,99,52]]];
+ for(const [key,color] of parts){const im=color?t10Tint(key,color):r06Images[key];if(im)g.drawImage(im,0,0,40,56,-20,-54+bob,40,56);}
+}
+// Every hand, hilt, muzzle and collision ray uses this one local pose.
+const T10_ITEMS={
+ starfury:{grip:[6,36],tip:[37,5],scale:1,style:'swing'},
+ zenith:{grip:[7,48],tip:[49,6],scale:1,style:'swing'},
+ axe:{grip:[4,26],tip:[27,5],scale:1,style:'swing'},
+ kaleidoscope:{grip:[6,32],tip:[28,5],scale:1,style:'whip'},
+ sdmg:{grip:[35,24],tip:[64,17],scale:.9,style:'gun'},
+ lastPrism:{grip:[13,24],tip:[13,4],scale:1,style:'prism'}
+};
+function t10BodyFoot(s,foot,scale) {
+ if(!s?.mounted)return foot;
+ if(s.mountType==='slime')return foot-(28+[0,2,0,-2][s.p.slimeFrame||0])*scale;
+ return foot-3*scale;
+}
+function t10Pose(s,attack=s?.p.attack||0,tool=s?.tool||0) {
+ const p=s?.p||{facing:1,attackFacing:1,aim:0};
+ const key=tool===2?(s?.t21Axe==='lucy'?'lucy':'axe'):tool===1?'wood':r06Weapon(s||{});
+ const weapon=key==='terraprisma'?'kaleidoscope':key;
+ const def=T10_ITEMS[weapon]||T10_ITEMS.starfury;
+ const using=attack>0||weapon==='lastPrism'&&s?.prismCharge>0;
+ const duration=p.t10SwingDuration||22;
+ const u=clamp(1-attack/duration,0,1),e=u*u*(3-2*u);
+ const aim=p.aim||0;
+ let theta=using?-2.30+4.1*e:1.65, blade=theta-.30;
+ if(def.style==='gun'||def.style==='prism'){theta=aim+.11;blade=aim;}
+ if(def.style==='whip'&&using){theta=-1.8+3.4*clamp((s.whipAge||0)/28,0,1);blade=theta;}
+ const shoulder={x:-7,y:-27},length=Math.hypot(18,8),hand={x:shoulder.x+Math.cos(theta)*length,y:shoulder.y+Math.sin(theta)*length};
+ const rotation=def.style==='gun'?blade:def.style==='prism'?blade+Math.PI/2:blade+Math.PI/4;
+ const grip=def.grip,tip=def.tip,dx=(tip[0]-grip[0])*def.scale,dy=(tip[1]-grip[1])*def.scale;
+ const end={x:hand.x+dx*Math.cos(rotation)-dy*Math.sin(rotation),y:hand.y+dx*Math.sin(rotation)+dy*Math.cos(rotation)};
+ return {weapon,def,using,shoulder,hand,end,theta,rotation,u,face:attack?p.attackFacing||p.facing:p.facing};
+}
+function t10WorldPose(s,attack=s.p.attack,tool=s.tool) {
+ const local=t10Pose(s,attack,tool),sc=t10Scale(s),foot=t10BodyFoot(s,s.p.y+s.p.h,sc),cx=s.p.x+s.p.w/2;
+ const convert=q=>({x:cx+q.x*local.face*sc,y:foot+q.y*sc});
+ return {...local,hand:convert(local.hand),end:convert(local.end),shoulder:convert(local.shoulder),scale:sc,foot};
+}
+function t10NativeLayer(g,key,rect,x=-20,y=-54){const im=r06Images[key]||photos[key];if(!im)return;const [sx,sy,w,h]=rect,sw=Math.min(w,im.width-sx),sh=Math.min(h,im.height-sy);if(sw>0&&sh>0)g.drawImage(im,sx,sy,sw,sh,x,y,sw,sh);}
+r06DrawBody=function(g,x,foot,face,walk=0,air=false,attack=0,tool=0,opacity=1,armor='platinum',weapon='starfury',scale=.75){
+ if(!ready)return;
+ const s=state,slime=!!(s?.mounted&&s.mountType==='slime'),ufo=!!(s?.mounted&&s.mountType==='ufo');
+ const n=slime||ufo?0:air?5:walk?6+Math.floor(walk/5)%14:0;
+ const bob=slime||ufo?0:[7,8,9,14,15,16].includes(n)?-2:0;
+ const part=k=>r06Images[armor+k]?armor+k:'platinum'+k;
+ const pose=t10Pose(s,attack,tool);face=face||1;
+ g.save();g.translate(Math.round(x),Math.round(t10BodyFoot(s,foot,scale)));g.scale(face*scale,scale);g.globalAlpha*=opacity;g.imageSmoothingEnabled=false;
+ // Back arm, legs and torso, then skin/eyes/hair. NO reuse of the old head-only helmet renderer.
+ const skin=t10Tint('skinBody',[255,207,167]);if(skin)g.drawImage(skin,320,0,40,56,-20,-54+bob,40,56);t10NativeLayer(g,part('Body'),[320,0,40,56],-20,-54+bob);
+ t10NativeLayer(g,part('Legs'),[0,n*56,40,56]);
+ t10NativeLayer(g,part('Body'),[0,0,40,56],-20,-54+bob);
+ t10Face(g,bob);
+ if(t10Helmet)t10NativeLayer(g,part('Head'),[0,0,40,56],-20,-54+bob);
+ if(pose.using&&tool!==1){
+  const im=r06Images[pose.weapon]||photos[pose.weapon];
+  if(im){g.save();g.translate(pose.hand.x,pose.hand.y+bob);g.rotate(pose.rotation);g.drawImage(im,-pose.def.grip[0]*pose.def.scale,-pose.def.grip[1]*pose.def.scale,im.width*pose.def.scale,im.height*pose.def.scale);g.restore();}
+ }
+ if(tool===1&&attack)sheet(g,'wood',[0,0,24,14],6,-26,20,12);
+ // Native forearm cel has shoulder (12,28), hand (30,36). Rotate the whole cel about its shoulder.
+ if(pose.using){g.save();g.translate(pose.shoulder.x,pose.shoulder.y+bob);g.rotate(pose.theta-Math.atan2(8,18));if(skin)g.drawImage(skin,200,0,40,56,-12,-28,40,56);t10NativeLayer(g,part('Body'),[200,0,40,56],-12,-28);g.restore();}
+ else {if(skin)g.drawImage(skin,80,0,40,56,-20,-54+bob,40,56);t10NativeLayer(g,part('Body'),[80,0,40,56],-20,-54+bob);}
+ g.restore();
+};
+person=function(g,x,foot,face,walk=0,air=false,attack=0,tool=0,opacity=1){r06DrawBody(g,x,foot,face,walk,air,attack,tool,opacity,r06Armor(state||{}),r06Weapon(state||{}),.75);};
+
+// Collecting a mount queues a physical mounting transition, not merely an unlock.
+function t10RequestMount(s,type,reason='pickup') {
+ if(!s||!['slime','ufo'].includes(type))return false;
+ s.mountType=type;s.mountOwned=true;s[type==='slime'?'slimeOwned':'ufoOwned']=true;
+ s.t10PendingMount={type,reason};return t10ApplyMount(s);
+}
+function t10ApplyMount(s) {
+ const req=s?.t10PendingMount;if(!req)return false;const p=s.p,type=req.type;
+ const target=type==='slime'?(s.r05Arena?62:47):(s.r05Arena?42:32);
+ const candidate={...p,y:p.y+p.h-target,h:target},ss=s.r05Arena?s.level.surfaces:solids();
+ if(ss.some(q=>q.solid&&near(candidate,q))){s.t10MountBlocked=true;return false;}
+ const was=s.mounted;s.mountType=type;s.mounted=true;r07SetMountHeight(s,type==='slime');
+ s.t10PendingMount=null;s.t10MountBlocked=false;p.slimeHold=0;p.slimeTicks=p.slimeTicks||0;
+ if(!was){p.attack=0;if(type==='ufo'){p.vy=0;p.grounded=false;p.support=null;}}
+ note(type==='slime'?'粘鞍已拾取 · 已自动骑乘史莱姆':'奖励已装备 · 已自动骑乘 UFO');
+ evt('t10-auto-mounted',{mount:type,reason:req.reason});terraSound('mount');return true;
+}
+r07CollectSaddle=function(s){if(s.slimeOwned)return;s.score+=1000;t10RequestMount(s,'slime');evt('r07-slimy-saddle-collected',{autoMounted:s.mounted});r06Chat('获得粘鞍！自动骑乘史莱姆；长按空格连续跳跃。','#9bc9ff');terraSound('pickup');};
+const t10EquipBase=r07EquipDrop;
+r07EquipDrop=function(s,d){const ok=t10EquipBase(s,d);if(ok)t10RequestMount(s,'ufo','class-reward');return ok;};
+const t10MainStepBase=r04MainStep;
+r04MainStep=function(v){const s=state;if(s&&mode==='playing')t10ApplyMount(s);t10MainStepBase(v);if(state===s&&mode==='playing'){t10ApplyMount(s);t10TickParticles(s);}};
+const t10ArenaStepBase=r05ArenaStep;
+r05ArenaStep=function(v){const s=state;if(s&&mode==='playing')t10ApplyMount(s);t10ArenaStepBase(v);if(state===s&&mode==='playing'){t10ApplyMount(s);t10TickParticles(s);}};
+const t10ToggleBase=r06ToggleMount;
+r06ToggleMount=function(){if(state)state.t10PendingMount=null;return t10ToggleBase();};
+$('r06Mount').onclick=()=>{r06ToggleMount();canvas.focus({preventScroll:true});};
+const t10EnterBase=enterTerraSecret;
+enterTerraSecret=function(restart=false,direct=false){const mounted=state?.mounted,type=state?.mountType;const ok=t10EnterBase(restart,direct);if(ok){state.t10Particles=[];state.t10Visual='native-face-hilt';if(mounted&&!restart)t10RequestMount(state,type,'pipe-transfer');}return ok;};
+const t10ExitBase=exitSecret;
+exitSecret=function(){const on=state?.mounted,type=state?.mountType;const ok=t10ExitBase();if(ok&&on)t10RequestMount(state,type,'return-main');return ok;};
+const t10RetryBase=retry;
+retry=function(){if(state){state.t10PendingMount=null;state.mounted=false;r07SetMountHeight(state,false);}t10RetryBase();};
+
+// Draw the checked native four-frame mount without stretching or an airborne leg pose.
+r06DrawMount=function(s,c){if(!s.mounted)return;const p=s.p,sc=t10Scale(s),cx=p.x+p.w/2-c,feet=p.y+p.h;
+ if(s.mountType==='slime'){const im=r06Images.slimeMount,f=p.slimeFrame||0;if(im){ctx.save();ctx.translate(Math.round(cx),Math.round(feet));ctx.scale(p.facing*sc,sc);ctx.drawImage(im,0,f*48,58,48,-29,-46,58,48);ctx.restore();}}
+ else{const im=r06Images.ufo;if(im){const h=im.height/8,f=Math.floor(s.ticks/6)%4;ctx.drawImage(im,0,f*h,im.width,h,Math.round(cx-39*sc),Math.round(feet-16*sc),78*sc,h*sc);}}
+};
+
+// Populate actual surfaces; no enemies are spawned inside gaps or allowed to die before activation.
+function t10MakeFoe(kind,surface,x,i,skin='blue') {
+ const size=kind==='zombie'?[18,32]:kind==='slime'?[22,18]:kind==='caveBat'?[20,14]:[26,20];
+ const hp=kind==='zombie'?45:kind==='slime'?(skin==='green'?18:skin==='purple'?40:25):kind==='caveBat'?20:60;
+ const flying=['demonEye','caveBat'].includes(kind),y=flying?Math.max(55,surface.y-65):surface.y-size[1];
+ return {id:'t10-foe-'+i,kind,skin,x,y,w:size[0],h:size[1],hp,maxHp:hp,vx:0,vy:0,age:i*7,dir:-1,dead:0,flash:0,knock:0,active:false,grounded:!flying,flying,spawnX:x,spawnY:y,home:surface.id,jumpWait:20+i%5*9,hop:0,hitBy:-1};
+}
+function t10Populate(s){
+ const original=s.foes;const cameo=[];for(const kind of ['goomba','koopa']){const e=original.find(e=>e.kind===kind);if(e)cameo.push({...e,id:'t10-cameo-'+kind,active:false});}
+ const plats=s.level.surfaces.filter(q=>q.type==='tree'&&q.w>=48).sort((a,b)=>a.x-b.x);
+ const foeKinds=['slime','slime','zombie','slime','demonEye','zombie','caveBat','slime','demonEye','slime','zombie','caveBat','slime','demonEye'];
+ const chosen=plats.filter(q=>q.x>=256&&q.x<2080);
+ const extra=[];for(let i=0;i<Math.min(foeKinds.length,chosen.length);i++){const q=chosen[i],x=q.x+Math.min(q.w-28,Math.max(12,q.w*.62));extra.push(t10MakeFoe(foeKinds[i],q,x,i,['blue','green','purple'][i%3]));}
+ const end=s.level.surfaces.find(q=>q.id==='floor-end');if(end)extra.push(t10MakeFoe('zombie',end,2145,30),t10MakeFoe('slime',end,2310,31,'purple'));
+ s.foes=[...cameo,...extra];s.t10Roster=true;s.t10Particles=[];s.t10Visual='native-face-hilt';
+}
+const t10NewBase=newState;
+newState=function(){const s=t10NewBase();if(s.stage===0)t10Populate(s);return s;};
+const t10OldEnemies=updateEnemies;
+updateEnemies=function(ss){const s=state,p=s.p;
+ const terra=s.foes.filter(e=>['slime','zombie','demonEye','caveBat'].includes(e.kind)),others=s.foes.filter(e=>!terra.includes(e));
+ const all=s.foes;s.foes=others;t10OldEnemies(ss);s.foes=all;
+ for(const e of terra){
+  if(e.dead){if(e.dead<45){e.dead++;e.x+=e.vx;e.vy+=.22;e.y+=e.vy;}continue;}
+  if(e.x>s.cam+W+48&&!e.active)continue;if(e.x<s.cam-90)continue;e.active=true;e.age++;if(e.flash)e.flash--;
+  const knock=e.knock>0;if(knock){e.knock--;e.vx*=.92;}
+  else if(e.flying){const targetX=p.x+p.w/2,targetY=p.y+p.h*.4,dx=targetX-e.x-e.w/2,dy=targetY-e.y-e.h/2,d=Math.hypot(dx,dy)||1;
+   const speed=e.kind==='caveBat'?2.05:1.65;e.vx=approach(e.vx,dx/d*speed,e.kind==='caveBat'?.065:.038);e.vy=approach(e.vy,dy/d*speed+Math.sin((e.age+e.spawnX)/19)*.22,.035);e.dir=e.vx<0?-1:1;
+  }else if(e.kind==='slime'){
+   if(e.grounded){e.vx=0;if(--e.jumpWait<=0){e.hop++;e.dir=p.x<e.x?-1:1;const high=e.hop%3===0;e.vy=high?-5.9:-3.7;e.vx=e.dir*(high?1.65:1.05);e.grounded=false;e.jumpWait=high?52:34;}}
+  }else{e.dir=p.x<e.x?-1:1;e.vx=e.dir*.7;if(e.grounded&&p.y+p.h<e.y-12&&Math.abs(p.x-e.x)<90&&e.age%55===0){e.vy=-5.4;e.grounded=false;}}
+  if(e.flying){e.x+=e.vx;e.y+=e.vy;}else{
+   const before=e.y+e.h;e.x+=e.vx;
+   for(const q of ss)if(q.solid&&near(e,q)){if(e.vx>0)e.x=q.x-e.w;else if(e.vx<0)e.x=q.x+q.w;if(e.kind==='zombie'&&e.grounded){e.vy=-5.4;e.grounded=false;}e.vx=0;}
+   e.vy=Math.min(7,e.vy+.28);e.y+=e.vy;e.grounded=false;let landing=null;
+   for(const q of ss)if(e.x+e.w>q.x&&e.x<q.x+q.w&&before<=q.y+1&&e.y+e.h>=q.y&&e.vy>=0&&(!landing||q.y<landing.y))landing=q;
+   if(landing){e.y=landing.y-e.h;e.vy=0;e.grounded=true;}
+   if(e.y>290){e.dead=45;continue;}
+  }
+  if(near(p,e)){if(r07Slime(s)&&r07Stomp(s))continue;hurt(e);}
+ }
+};
+let t10SlimeOriginal=null;const t10SlimeColors=new Map();
+const t10SlimeJob=new Promise(resolve=>{const im=new Image();im.onload=()=>{t10SlimeOriginal=im;resolve();};im.onerror=()=>resolve();im.src=TRIO_ASSETS.slime;});
+function t10SlimeImage(skin){if(!t10SlimeOriginal)return photos.slime;if(t10SlimeColors.has(skin))return t10SlimeColors.get(skin);
+ const c=document.createElement('canvas');c.width=t10SlimeOriginal.width;c.height=t10SlimeOriginal.height;const g=c.getContext('2d');g.drawImage(t10SlimeOriginal,0,0);const data=g.getImageData(0,0,c.width,c.height),rgb=skin==='green'?[94,202,83]:skin==='purple'?[175,100,223]:[86,151,254];
+ for(let i=0;i<data.data.length;i+=4){const v=Math.max(data.data[i],data.data[i+1],data.data[i+2])/255;for(let j=0;j<3;j++)data.data[i+j]=Math.round(rgb[j]*v);}g.putImageData(data,0,0);t10SlimeColors.set(skin,c);return c;
+}
+function t10DrawFoe(e,c){const sc=.75;let im,fw,fh,f=0;
+ if(e.kind==='slime'){im=t10SlimeImage(e.skin);fw=32;fh=26;f=e.grounded?(Math.floor(e.age/12)%2):1;}
+ else if(e.kind==='demonEye'){im=r06Images.demonEye;fw=38;fh=24;f=Math.floor(e.age/7)%2;}
+ else if(e.kind==='zombie'){im=r06Images.zombie;fw=38;fh=48;f=e.grounded?Math.floor(e.age/8)%3:1;}
+ else if(e.kind==='caveBat'){im=r06Images.caveBat;fw=44;fh=40;f=Math.floor(e.age/5)%4;}
+ else return false;
+ if(!im)return false;
+ ctx.save();ctx.translate(Math.round(e.x+e.w/2-c),Math.round(e.y+e.h));ctx.scale(e.dir<0?sc:-sc,sc);ctx.imageSmoothingEnabled=false;ctx.drawImage(im,0,f*fh,fw,fh,-fw/2,-fh+2,fw,fh);ctx.restore();return true;
+}
+
+// Keep every trunk in the scenery layer; platform walking space is cut out of supports.
+drawTerraTerrain=function(s){if(s.secret){drawTerraArenaTerrain(s);return;}const l=s.level,c=s.cam,visible=l.surfaces.filter(q=>q.x<c+W+40&&q.x+q.w>c-40);
+ for(const q of visible.filter(q=>q.type==='tree')){
+  const x=q.x+q.w/2-5,start=q.y+12;let end=H;
+  for(const other of l.surfaces)if(other!==q&&other.y>q.y&&x+10>other.x&&x<other.x+other.w)end=Math.min(end,other.y-38);
+  ctx.save();ctx.globalAlpha=.64;for(let y=start;y<end;y+=8)ctx.drawImage(tiles13.trunk,Math.round(x-c),Math.round(y),10,Math.min(8,end-y));ctx.restore();
+ }
+ for(const t of s.trees||[])drawChopTree(t,c);
+ // All solid/top tiles are drawn after background tree stems, regardless of source order.
+ for(const q of visible.slice().sort((a,b)=>a.y-b.y)){
+  if(q.type==='tree'){for(let dx=0;dx<q.w;dx+=16)ctx.drawImage(tiles13[dx===0?'treeLeft':dx+16>=q.w?'treeRight':'treeMid'],Math.round(q.x-c+dx),Math.round(q.y));}
+  else for(let x=q.x;x<q.x+q.w;x+=16)for(let y=q.y;y<q.y+q.h;y+=16)sprite(q.type==='floor'?'ground':'stone',x-c,y);
+ }
+};
+const t10TreeBase=drawChopTree;
+drawChopTree=function(t,c){const p=state?.p,nearPlayer=p&&Math.abs(p.x+p.w/2-t.x)<32&&p.y<t.y&&p.y+p.h>t.y-t.h-24;ctx.save();if(nearPlayer)ctx.globalAlpha*=.5;t10TreeBase(t,c);ctx.restore();};
+function t10Burst(s,x,y,kind,n=6){if(!s.t10Particles)s.t10Particles=[];for(let i=0;i<n;i++)s.t10Particles.push({x,y,vx:(Math.sin(i*2.4+s.ticks)*1.6),vy:-1-Math.abs(Math.cos(i*1.7))*1.7,age:0,kind});}
+function t10TickParticles(s){if(!s.t10Particles)return;for(const f of s.t10Particles){f.age++;f.x+=f.vx;f.y+=f.vy;f.vy+=.12;}s.t10Particles=s.t10Particles.filter(f=>f.age<28);}
+const t10ChopBase=chopTree;
+chopTree=function(){const s=state,old=s.wood,ok=t10ChopBase();if(ok){t10Burst(s,s.p.x+s.p.w/2+s.p.facing*15,s.p.y+16,'wood',s.wood>old?14:6);if(s.wood>old)terraSound('treeFell');}return ok;};
+const t10HitBase=hitEnemy;
+hitEnemy=function(e,d,dir,kind){const dead=!!e.dead;t10HitBase(e,d,dir,kind);if(!dead){t10Burst(state,e.x+e.w/2,e.y+e.h/2,e.kind==='slime'?'gel':'hit',6);if(e.dead)terraSound('npcDeath');}};
+
+// Tool-specific use styles; one hilt transform drives both drawing and hit testing.
+function t10Attack(v={}) {
+ const s=state,p=s.p;if(p.cooldown>0)return;const aim=r06Arm(s,v),target=aim.target,sc=t10Scale(s);
+ p.t10SwingDuration=s.kit==='summoner'?28:22;p.attack=p.t10SwingDuration;s.attackId++;
+ const world=t10WorldPose(s),x=world.hand.x,y=world.hand.y,tx=target?target.x:x+aim.facing*220*sc,ty=target?target.y:y+Math.sin(aim.angle)*100*sc;
+ p.t10PreviousBlade=null;
+ if(!s.kit){p.cooldown=22;terraSound('swing',{volume:.72});if(!s.starCooldown){
+  const sx=tx+((s.attackId%2)?-130:130)*sc,sy=Math.min(y,ty)-430*sc;
+  const dx=tx-sx,dy=ty-sy,d=Math.hypot(dx,dy)||1;
+  r06Shoot(s,{type:'star',x:sx,y:sy,vx:dx/d*25*sc,vy:dy/d*25*sc,damage:44,life:100,angle:0,pierce:2,passY:ty,attackId:s.attackId});s.starCooldown=22;}}
+ else if(s.kit==='melee'){p.cooldown=18;terraSound('swing',{volume:.55});for(let i=0;i<3;i++)r06Shoot(s,{type:'zenith',x,y,ox:x,oy:y,tx,ty,side:i-1,life:36,attackId:s.attackId,damage:190,skin:['zenith','starfury','sword'][i]});}
+ else if(s.kit==='ranger'){p.cooldown=5;const start=world.end,a=Math.atan2(ty-start.y,tx-start.x),speed=18*sc;terraSound('gun',{volume:.38});r06Shoot(s,{type:'bullet',x:start.x,y:start.y,vx:Math.cos(a)*speed,vy:Math.sin(a)*speed,speed,life:110,damage:95});}
+ else if(s.kit==='summoner'){p.cooldown=28;s.whipAge=0;s.whipId=s.attackId;terraSound('swing',{volume:.5});}
+ evt('t10-weapon-use',{weapon:r06Weapon(s),source:aim.source,hand:world.hand,muzzle:world.end,rate:1});
+}
+r06Attack=t10Attack;r05Attack=t10Attack;
+function t10HitArc(s,targets) {
+ const p=s.p,pose=t10WorldPose(s),prev=p.t10PreviousBlade;
+ if(p.attack>0&&pose.u>.12&&pose.u<.84){for(const t of targets){if(t.obj.r06Melee===s.attackId)continue;const box={x:t.x-t.w/2,y:t.y-t.h/2,w:t.w,h:t.h};
+  if(segmentHits(pose.hand,pose.end,box,3*pose.scale)||prev&&segmentHits(prev.end,pose.end,box,4*pose.scale)){
+   t.obj.r06Melee=s.attackId;r06DamageTarget(t,22,'starfury-blade');}
+ }}p.t10PreviousBlade={hand:pose.hand,end:pose.end};
+}
+function t10PrismOrigin(s){return t10WorldPose(s,10,0).end;}
+r06DrawProjectiles=function(s,c){const sc=t10Scale(s);ctx.save();ctx.imageSmoothingEnabled=false;
+ for(const b of s.projectiles){
+  for(let i=0;i<b.trail.length;i+=2){const t=b.trail[i];ctx.globalAlpha=(i+1)/b.trail.length*.32;ctx.fillStyle=b.type==='bullet'?'#88d95a':b.type==='zenith'?'#9cdeee':'#f2d774';ctx.fillRect(Math.round(t.x-c-sc),Math.round(t.y-sc),2*sc,2*sc);}
+  ctx.globalAlpha=1;ctx.save();ctx.translate(Math.round(b.x-c),Math.round(b.y));
+  if(b.type==='bullet'){ctx.rotate(Math.atan2(b.vy,b.vx));ctx.fillStyle='#78ba49';ctx.fillRect(-7*sc,-sc,10*sc,2*sc);ctx.fillStyle='#ddf5bc';ctx.fillRect(0,-sc,4*sc,2*sc);}
+  else{const key=b.type==='zenith'?b.skin||'zenith':'star',im=r06Images[key]||photos[key];ctx.rotate((b.angle||0)+(b.type==='zenith'?Math.PI/4:0));if(im)ctx.drawImage(im,-im.width*sc/2,-im.height*sc/2,im.width*sc,im.height*sc);}
+  ctx.restore();
+ }
+ const pose=t10WorldPose(s),p=s.p;
+ if(s.kit==='mage'&&s.prismCharge>0){const origin=t10PrismOrigin(s),angle=p.attackFacing<0?Math.PI-p.aim:p.aim,charge=s.prismCharge/180,spread=(1-charge)*.18,colors=['#ee6262','#eeae64','#ece17d','#86d6a0','#7ccfe5','#bc8de0'];
+  ctx.globalCompositeOperation='lighter';for(let i=0;i<6;i++){const an=angle+(i-2.5)*spread;ctx.strokeStyle=colors[i];ctx.globalAlpha=.75*(s.t17PrismFade??1);ctx.lineWidth=(1.5+charge*2.6)*sc;ctx.beginPath();ctx.moveTo(origin.x-c,origin.y);ctx.lineTo(origin.x-c+Math.cos(an)*1200*sc,origin.y+Math.sin(an)*1200*sc);ctx.stroke();}
+  ctx.globalCompositeOperation='source-over';ctx.globalAlpha=1;
+ }
+ for(const m of s.minions||[]){const im=r06Images.terraprisma;if(!im)continue;for(let i=0;i<m.trail.length;i+=2){const t=m.trail[i];ctx.globalAlpha=i/m.trail.length*.2;ctx.drawImage(im,t.x-c-im.width*sc*.35,t.y-im.height*sc*.35,im.width*sc*.7,im.height*sc*.7);}ctx.globalAlpha=1;ctx.save();ctx.translate(m.x-c,m.y);ctx.rotate(m.angle+Math.PI/4);ctx.drawImage(im,-im.width*sc/2,-im.height*sc/2,im.width*sc,im.height*sc);ctx.restore();}
+ if(s.kit==='summoner'&&s.whipAge>=0&&s.whipAge<28){const hand=pose.hand,a=p.attackFacing<0?Math.PI-p.aim:p.aim,len=Math.sin(s.whipAge/28*Math.PI)*240*sc;
+  ctx.beginPath();ctx.strokeStyle='#dca0cf';ctx.lineWidth=2*sc;ctx.moveTo(hand.x-c,hand.y);for(let i=1;i<=14;i++){const u=i/14,bend=Math.sin(u*Math.PI)*Math.sin(s.whipAge/28*Math.PI*2)*25*sc;ctx.lineTo(hand.x-c+Math.cos(a)*len*u-Math.sin(a)*bend,hand.y+Math.sin(a)*len*u+Math.cos(a)*bend);}ctx.stroke();}
+ for(const f of s.t10Particles||[]){ctx.globalAlpha=1-f.age/28;ctx.fillStyle=f.kind==='wood'?'#c18a50':f.kind==='gel'?'#6daafe':'#c97f78';ctx.fillRect(Math.round(f.x-c),Math.round(f.y),2*sc,2*sc);}ctx.globalAlpha=1;
+ for(const f of s.r06FX||[]){if(f.type==='cloud'){ctx.globalAlpha=(1-f.age/32)*.8;ctx.fillStyle='#e1eaf5';for(let i=0;i<5;i++)ctx.fillRect(f.x-c-12+i*5+(i-2)*f.age*.15,f.y+Math.sin(i)*3+f.age*.35,8*sc,3*sc);}}
+ ctx.restore();
+};
+
+// Original-audio event routing. Never alias a missing Terraria effect to Mario's bank.
+const T10_SOUND_ROOT='https://raw.githubusercontent.com/FergusGriggs/Fegaria-Remastered/6adefebfe2e6a71aed05f289683474d88ce5d9f3/res/sounds/';
+const T10_SOUND_FILES={death:'player_killed.wav',pickup:'grab.wav',coin:'coins.wav',gun:'gun_shot.wav',npcDeath:'npc_killed_0.wav',treeFell:'grass.wav',menu:'menu_open.wav',chat:'chat.wav',door:'door_opened.wav'};
+const t10SoundStatus=Object.fromEntries(Object.keys(T10_SOUND_FILES).map(k=>[k,{state:'not-loaded',file:T10_SOUND_FILES[k],embedded:false}]));
+const t10AudioHistory=[];let t10LoadingSounds=null,t10LoadEpoch=0;
+async function t10LoadSounds(force=false){
+ if(!audio)return;if(t10LoadingSounds&&!force)return t10LoadingSounds;
+ const epoch=++t10LoadEpoch;
+ t10LoadingSounds=Promise.all(Object.entries(T10_SOUND_FILES).map(async([key,file])=>{
+  const st=t10SoundStatus[key];if(st.local||st.state==='ready')return;st.state='loading';
+  const cached=await r08ReadCache('audio:t10:'+key);
+  const candidates=[...(cached?.blob?[cached.blob]:[]),...r07MediaURLs(T10_SOUND_ROOT,file).reverse()];
+  for(const source of candidates){try{
+   let bytes;if(source instanceof Blob)bytes=await source.arrayBuffer();else{const ctrl=new AbortController(),timer=setTimeout(()=>ctrl.abort(),6500);try{const response=await fetch(source,{signal:ctrl.signal});if(!response.ok)throw Error('HTTP '+response.status);bytes=await response.arrayBuffer();if(bytes.byteLength>4*1024*1024)throw Error('oversized');}finally{clearTimeout(timer);}}
+   const buffer=await audio.decodeAudioData(bytes.slice(0));let peak=0;for(let ch=0;ch<buffer.numberOfChannels;ch++){const d=buffer.getChannelData(ch);for(let i=0;i<d.length;i++)peak=Math.max(peak,Math.abs(d[i]));}
+   if(peak<1e-6)throw Error('silent data');if(st.local||epoch!==t10LoadEpoch)return;
+   bank.set('trio13_'+key,{buffer,gain:Math.min(2,.72/peak)});Object.assign(st,{state:'ready',duration:buffer.duration,peak,origin:source instanceof Blob?'cache':'network'});
+   if(!(source instanceof Blob))r08WriteCache('audio:t10:'+key,{blob:new Blob([bytes],{type:'audio/wav'}),kind:'original',savedAt:Date.now()});return;
+  }catch(err){st.error=err.name||String(err);}}
+  if(!st.local)st.state='unavailable';
+ })).finally(()=>t10UpdateAudioStatus());return t10LoadingSounds;
+}
+const t10TerraBase=terraSound;
+terraSound=function(key,options={}){
+ const aliases={mount:'pickup',heal:'pickup',clear:'chat',flag:'chat',appear:'pickup',powerup:'pickup',bump:'break',pause:'menu',firework:'chat'};key=aliases[key]||key;
+ if(!soundOn||!audio||document.hidden||mode==='paused'&&!options.ui)return 0;
+ const entry=bank.get('trio13_'+key);t10AudioHistory.push({key,tick:state?.ticks||0,played:!!entry});if(t10AudioHistory.length>120)t10AudioHistory.shift();
+ return entry?t10TerraBase(key,{...options,rate:1}):0;
+};
+sourceSound=function(key,options={}){if(isTrio()){if(['hurry','gameover','jump_small','jump_super'].includes(key))return 0;return terraSound(key,options);}return r07SourceSoundBase(key,options);};
+const t10SoundOpen=openGame;
+openGame=function(){t10SoundOpen();t10LoadSounds();r06MusicUnlocked=true;r06SyncMusic();};
+const t10HurtArena=r05Hurt;
+r05Hurt=function(amount,x){const before=state?.hp,ok=t10HurtArena(amount,x);if(before>0&&state?.hp===0)terraSound('death');return ok;};
+const t10HitEye=r05HitEye;
+r05HitEye=function(d,kind){const before=state?.bossClear;t10HitEye(d,kind);if(!before&&state?.bossClear){terraSound('npcDeath');terraSound('chat',{volume:.5});}};
+const t10HealBase=r06Heal;
+r06Heal=function(){const before=state?.hp;t10HealBase();if(state?.hp>before)terraSound('heal');};
+$('r06Heal').onclick=()=>r06Heal();
+const t10MusicSync=r06SyncMusic;
+r06SyncMusic=function(){for(const t of Object.values(r06Music)){t.audio.playbackRate=1;t.audio.defaultPlaybackRate=1;t.audio.preservesPitch=true;}return t10MusicSync();};
+// A failed IndexedDB open must not suppress a user's explicit audio unlock indefinitely.
+setTimeout(()=>{for(const t of Object.values(r06Music))if(t.restorePending){t.restorePending=false;t.nextTry=0;}},2200);
+
+const t10AudioButton=document.createElement('button');t10AudioButton.type='button';t10AudioButton.id='t10AudioEnable';t10AudioButton.textContent='启用 / 重试泰拉原声';
+const t10SoundText=document.createElement('div');t10SoundText.id='t10SoundStatus';
+r06Media.append(t10AudioButton,t10SoundText);
+function t10UpdateAudioStatus(){
+ const readyS=Object.values(t10SoundStatus).filter(s=>s.state==='ready'||s.local).length;
+ const missing=Object.entries(t10SoundStatus).filter(([,s])=>s.state==='unavailable').map(([k])=>({death:'死亡',pickup:'拾取',coin:'金币',gun:'枪声',npcDeath:'敌人死亡',treeFell:'砍倒',menu:'菜单',chat:'提示',door:'开门'}[k]||k));
+ t10SoundText.textContent='动作音：5 项内嵌；新增事件音 '+readyS+'/'+Object.keys(t10SoundStatus).length+' 已解码'+(missing.length?'。网络未取得：'+missing.join('、'):'')+'。原曲按 1.00× 播放，不做加速补偿。';
+}
+t10AudioButton.onclick=async()=>{audioInit();if(audio?.state==='suspended')await audio.resume();soundOn=true;r06MusicUnlocked=true;for(const t of Object.values(r06Music)){if(!t.local){t.sourceIndex=0;t.audio.src=t.urls[0];t.state='not-loaded';t.restorePending=false;}t.nextTry=0;t.busy=false;}await loadExtraAudio();t10LoadSounds(true);r06SyncMusic();t10UpdateAudioStatus();};
+const t10Slot=$('r06MusicSlot');for(const [key,label] of Object.entries({death:'死亡',pickup:'拾取 / 骑乘',coin:'金币',gun:'枪声',npcDeath:'敌人死亡',treeFell:'砍倒树木',chat:'击败 / 结算提示'})){const o=document.createElement('option');o.value='sfx:'+key;o.textContent='音效 · '+label;t10Slot.appendChild(o);}
+$('r06MusicImport').removeEventListener('change',r08ImportMedia);
+$('r06MusicImport').addEventListener('change',async e=>{const key=t10Slot.value;if(!key.startsWith('sfx:'))return r08ImportMedia(e);const f=e.target.files?.[0];if(!f||f.size>4*1024*1024)return;audioInit();try{const buffer=await audio.decodeAudioData(await f.arrayBuffer()),k=key.slice(4);bank.set('trio13_'+k,{buffer,gain:1});Object.assign(t10SoundStatus[k],{state:'ready',local:true,duration:buffer.duration});t10UpdateAudioStatus();}catch{t10SoundText.textContent='导入的音效未能解码。';}});
+
+// 1-3 now has exactly one playable identity. Previous episodes remain behind a separate button.
+card.querySelector('strong').textContent='泰拉瑞亚';
+const t10Small=card.querySelectorAll('small');if(t10Small[0])t10Small[0].textContent='WORLD 1-3 · 经典棕发角色';if(t10Small[1])t10Small[1].textContent='星怒 · 史莱姆 · 克苏鲁之眼';
+stageChooser.querySelector('.trio-choice-title').innerHTML='泰拉瑞亚 · WORLD 1-3';
+stageChooser.querySelector('.r05-pending')?.remove();
+const t10Style=document.createElement('style');t10Style.textContent=`
+body.t10-terra-menu #heroPicker{display:block!important}body.t10-terra-menu #heroPicker [data-hero]:not([data-hero="sandboxTrio"]){display:none!important}
+body.t10-terra-menu #heroPicker [data-hero="sandboxTrio"]{width:100%;min-height:65px!important;grid-template-columns:54px 1fr!important}
+body.t10-terra-menu #heroPicker [data-hero="sandboxTrio"] strong{grid-row:auto!important;font-size:17px}
+body.t10-terra-menu #heroPicker [data-hero="sandboxTrio"] canvas{width:40px!important;height:50px!important}
+#t10Previous,#t10Helmet,#t10AudioEnable{font:inherit;font-size:11px;padding:6px 10px;border:1px solid #64777d;border-radius:5px;background:#20343d;color:#e3e9e4;margin:5px 6px 2px 0}
+#t10Build{display:block;font:11px monospace;color:#d4e6be;padding:8px 0 2px}#t10SoundStatus{line-height:1.6;margin-top:8px}
+`;
+document.head.appendChild(t10Style);
+const t10Previous=document.createElement('button');t10Previous.type='button';t10Previous.id='t10Previous';t10Previous.textContent='查看往期 1-1 / 1-2 角色';stageChooser.after(t10Previous);
+t10Previous.onclick=()=>{document.body.classList.remove('t10-terra-menu');stageChooser.hidden=true;t10Previous.hidden=true;};
+const t10HelmetButton=document.createElement('button');t10HelmetButton.type='button';t10HelmetButton.id='t10Helmet';t10HelmetButton.textContent='外观：显示经典棕发';r06SceneActions.appendChild(t10HelmetButton);
+t10HelmetButton.onclick=()=>{t10Helmet=!t10Helmet;t10HelmetButton.textContent=t10Helmet?'外观：显示护甲头盔':'外观：显示经典棕发';render();};
+const t10Build=document.createElement('span');t10Build.id='t10Build';t10Build.textContent='';document.querySelector('.screen-shell')?.appendChild(t10Build);
+const t10UIBase=r06UpdateUI;
+r06UpdateUI=function(){t10UIBase();if(!isTrio()){t10HelmetButton.hidden=true;return;}t10HelmetButton.hidden=false;$('bestLabel').textContent='WORLD 1-3';t10Previous.hidden=mode!=='menu';
+ if(!state){$('overlayTitle').textContent='泰拉瑞亚 · 1-3';$('overlayText').textContent='本关只有泰拉瑞亚。星怒 / 铂金防御开局，原版玩家脸部和动作分层；拾取粘鞍后自动骑乘。';$('mainAction').textContent=r05EntryChoice?'进入克眼准备场 →':'开始泰拉瑞亚 1-3 →';}
+ else{$('heroStatus').textContent='经典棕发 / '+(state.kit?r06Kit(state).armorName:'铂金护甲')+' · '+tools[state.tool]+' · 防御 '+r06Defense(state);$('heroHelp').textContent='J 使用当前武器；斧头按 3。外部问号砖掉粘鞍，拾取自动骑上史莱姆；低顶挡住时走到开阔处自动骑上。克眼胜利后碰到套装，自动换装并骑上 UFO。F 手动上下骑，V 切换已拥有坐骑。';$('relayMessage').textContent=state.t10MountBlocked?'已拾取坐骑：头顶空间不足，走出低顶后自动骑乘。':state.noticeTime?state.notice:'免费试玩 · 泰拉瑞亚 1-3';}
+ document.querySelector('header .offline').textContent='TERRARIA · 1-3';
+ const brand=document.querySelector('header .brand small');if(brand)brand.textContent='MARIO MIX / TERRARIA 1-3';
+ const title=document.querySelector('.panel > h2');if(title)title.innerHTML='泰拉瑞亚，<br>闯进马里奥 1-3。';
+ t10UpdateAudioStatus();
+};
+const t10MenuBase=showCharacters;
+showCharacters=function(){t10MenuBase();document.body.classList.add('t10-terra-menu');selectHero(id);r06UpdateUI();};
+// Wait only for the embedded character layers before making the default selection.
+Promise.all([readyPromise,...r06AssetJobs.filter((_,i)=>false)]).then(()=>{if(mode==='menu'){showCharacters();selectHero(id);portrait();render();}});
+const t10Diagnostics={version:T10_VERSION,ready:Promise.all([t10Ready,t10SlimeJob]),pose:()=>state?t10WorldPose(state):null,roster:()=>state?.foes.map(e=>({id:e.id,kind:e.kind,x:e.x,y:e.y,active:e.active,dead:e.dead})),audio:()=>({rate:Object.fromEntries(Object.entries(r06Music).map(([k,t])=>[k,t.audio.playbackRate])),status:t10SoundStatus,history:t10AudioHistory}),collect:()=>r07CollectSaddle(state),drawBody:(...args)=>r06DrawBody(...args),sound:terraSound,loadSounds:t10LoadSounds,requestMount:t10RequestMount,faceKeys:['skinHead','eyeWhite','eyeIris','hair'],mode:()=>mode};
+
+// Final UI labels run after selectHero() as well as the throttled HUD. This prevents
+// its inherited R06 intro from overwriting the new menu in the same event-loop turn.
+card.innerHTML='<canvas width="64" height="80" aria-label="泰拉瑞亚经典棕发角色"></canvas><div class="t10-card-text"><strong>泰拉瑞亚</strong><small>WORLD 1-3 · 星怒 / 铂金防御</small><small>原版玩家分层 · 粘鞍拾取即骑乘</small></div>';
+t10Style.textContent+='body.t10-terra-menu #heroPicker [data-hero="sandboxTrio"]{display:flex!important;gap:14px;padding:12px!important}body.t10-terra-menu #heroPicker [data-hero="sandboxTrio"] canvas{flex:0 0 44px;width:44px!important;height:55px!important;margin:0 4px!important}body.t10-terra-menu .t10-card-text{flex:1}body.t10-terra-menu .t10-card-text small{font-size:10px;line-height:1.7}';
+portrait=function(){const g=card.querySelector('canvas').getContext('2d');g.clearRect(0,0,64,80);g.imageSmoothingEnabled=false;r06DrawBody(g,32,73,1,0,false,0,0,1,'platinum','starfury',1.5);};
+function t10Labels(){if(!isTrio())return;
+ const introduction='经典棕发角色、星怒与铂金防御。1-3 全程仅泰拉瑞亚；拾取粘鞍自动骑乘，克眼奖励接触即换装并骑上 UFO。';
+ const p=document.querySelector('.panel > p.intro:first-of-type');if(p)p.textContent=introduction;
+ if(mode==='menu'){$('overlayLabel').textContent='TERRARIA / WORLD 1-3';$('overlayTitle').textContent='泰拉瑞亚 · 1-3';$('overlayText').textContent=introduction;$('heroHelp').textContent='主线保留 1-3 的树冠、移动平台和终点。克眼准备场是可选隐藏挑战；本关不切换饥荒或我的世界。';$('heroStatus').textContent='默认：泰拉瑞亚 · WORLD 1-3';$('mainAction').textContent=r05EntryChoice?'进入克眼准备场 →':'开始泰拉瑞亚 1-3 →';}
+ $('actionLabel').textContent=state?.tool===2?'砍伐 / 回收':'使用当前武器';$('jumpLabel').textContent='空格跳跃；↓＋空格下穿';$('fullButton').textContent='全屏';
+}
+const t10SelectBase=selectHero;
+selectHero=function(v){const r=t10SelectBase(v);if(v===id){t10Labels();portrait();}return r;};
+const t10LastUI=r06UpdateUI;
+r06UpdateUI=function(){t10LastUI();t10Labels();};
+Promise.all(r06AssetJobs.slice(0,7)).then(()=>{if(mode==='menu'&&isTrio()){portrait();t10Labels();}});
+

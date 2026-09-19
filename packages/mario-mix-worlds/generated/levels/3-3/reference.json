@@ -1,0 +1,357 @@
+{
+  "repository": "umaim/Mario",
+  "commit": "980c275358704a49f868567aeec5bdfb347c4781",
+  "path": "Source/settings/maps.js",
+  "gitBlob": "657d750ad65bb06c0e63a3d8958736f9236ec3c0",
+  "range": "Worlds 1–8 gameplay layout transcription",
+  "url": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+  "method": "Manual transcription of gameplay placement records, area locations and section definitions. Pure background scenery omitted; not a byte-identical source export or original-game certification.",
+  "omittedVisuals": [
+    "Pattern",
+    "DecorativeBack",
+    "DecorativeDot",
+    "CustomText"
+  ],
+  "map": {
+    "name": "3-3",
+    "time": 300,
+    "locations": [
+      {
+        "area": 0,
+        "entry": "Plain"
+      }
+    ],
+    "areas": [
+      {
+        "setting": "Overworld Night",
+        "creation": [
+          {
+            "macro": "Floor",
+            "width": 128,
+            "x": 0,
+            "y": 0
+          },
+          {
+            "macro": "Tree",
+            "width": 40,
+            "x": 144,
+            "y": 24
+          },
+          {
+            "macro": "Tree",
+            "width": 48,
+            "x": 176,
+            "y": 48
+          },
+          {
+            "thing": "Goomba",
+            "x": 208,
+            "y": 56
+          },
+          {
+            "thing": "Platform",
+            "width": 24,
+            "sliding": true,
+            "begin": 228,
+            "end": 260,
+            "x": 240,
+            "y": 72
+          },
+          {
+            "macro": "Tree",
+            "width": 24,
+            "x": 240,
+            "y": 0
+          },
+          {
+            "macro": "Fill",
+            "thing": "Coin",
+            "xnum": 2,
+            "xwidth": 8,
+            "x": 249,
+            "y": 7
+          },
+          {
+            "thing": "Platform",
+            "width": 24,
+            "sliding": true,
+            "begin": 244,
+            "end": 276,
+            "x": 264,
+            "y": 40
+          },
+          {
+            "macro": "Tree",
+            "width": 56,
+            "x": 288,
+            "y": 8
+          },
+          {
+            "thing": "Coin",
+            "x": 298,
+            "y": 55
+          },
+          {
+            "macro": "Fill",
+            "thing": "Coin",
+            "xnum": 3,
+            "xwidth": 8,
+            "x": 337,
+            "y": 55
+          },
+          {
+            "macro": "Tree",
+            "width": 32,
+            "x": 344,
+            "y": 32
+          },
+          {
+            "macro": "Tree",
+            "width": 80,
+            "x": 368,
+            "y": 16
+          },
+          {
+            "macro": "Tree",
+            "width": 48,
+            "x": 376,
+            "y": 48
+          },
+          {
+            "thing": "Block",
+            "contents": "Mushroom",
+            "x": 392,
+            "y": 80
+          },
+          {
+            "macro": "Fill",
+            "thing": "Coin",
+            "xnum": 3,
+            "xwidth": 8,
+            "x": 417,
+            "y": 31
+          },
+          {
+            "thing": "Koopa",
+            "smart": true,
+            "x": 416,
+            "y": 60
+          },
+          {
+            "thing": "Koopa",
+            "smart": true,
+            "x": 432,
+            "y": 28
+          },
+          {
+            "macro": "Tree",
+            "width": 32,
+            "x": 440,
+            "y": 80
+          },
+          {
+            "macro": "Fill",
+            "thing": "Coin",
+            "xnum": 2,
+            "xwidth": 8,
+            "x": 449,
+            "y": 87
+          },
+          {
+            "thing": "Platform",
+            "width": 24,
+            "falling": true,
+            "x": 482,
+            "y": 56
+          },
+          {
+            "macro": "Tree",
+            "width": 128,
+            "x": 520,
+            "y": 0
+          },
+          {
+            "macro": "Tree",
+            "width": 24,
+            "x": 520,
+            "y": 48
+          },
+          {
+            "macro": "Fill",
+            "thing": "Coin",
+            "xnum": 3,
+            "xwidth": 32,
+            "x": 529,
+            "y": 55
+          },
+          {
+            "macro": "Tree",
+            "width": 24,
+            "x": 552,
+            "y": 48
+          },
+          {
+            "thing": "Koopa",
+            "smart": true,
+            "x": 584,
+            "y": 12
+          },
+          {
+            "macro": "Tree",
+            "width": 24,
+            "x": 584,
+            "y": 48
+          },
+          {
+            "macro": "Tree",
+            "width": 24,
+            "x": 616,
+            "y": 72
+          },
+          {
+            "thing": "Coin",
+            "x": 625,
+            "y": 79
+          },
+          {
+            "macro": "Scale",
+            "between": 56,
+            "dropRight": 44,
+            "x": 660,
+            "y": 86
+          },
+          {
+            "macro": "Tree",
+            "width": 32,
+            "x": 672,
+            "y": 16
+          },
+          {
+            "thing": "Platform",
+            "width": 24,
+            "falling": true,
+            "x": 752,
+            "y": 32
+          },
+          {
+            "thing": "Platform",
+            "width": 24,
+            "falling": true,
+            "x": 768,
+            "y": 64
+          },
+          {
+            "macro": "Tree",
+            "width": 24,
+            "x": 776,
+            "y": 32
+          },
+          {
+            "thing": "Platform",
+            "width": 24,
+            "falling": true,
+            "x": 824,
+            "y": 16
+          },
+          {
+            "macro": "Tree",
+            "width": 32,
+            "x": 832,
+            "y": 64
+          },
+          {
+            "macro": "Fill",
+            "thing": "Coin",
+            "xnum": 2,
+            "xwidth": 8,
+            "x": 841,
+            "y": 71
+          },
+          {
+            "macro": "Tree",
+            "width": 40,
+            "x": 856,
+            "y": 16
+          },
+          {
+            "thing": "Coin",
+            "x": 865,
+            "y": 23
+          },
+          {
+            "macro": "Tree",
+            "width": 24,
+            "x": 864,
+            "y": 48
+          },
+          {
+            "thing": "Coin",
+            "x": 873,
+            "y": 55
+          },
+          {
+            "thing": "Koopa",
+            "smart": true,
+            "jumping": true,
+            "floating": true,
+            "begin": 14,
+            "end": 66,
+            "x": 912,
+            "y": 66
+          },
+          {
+            "macro": "Tree",
+            "width": 24,
+            "x": 928,
+            "y": 0
+          },
+          {
+            "macro": "Tree",
+            "width": 96,
+            "solidTrunk": true,
+            "x": 952,
+            "y": 24
+          },
+          {
+            "macro": "Fill",
+            "thing": "Koopa",
+            "xnum": 2,
+            "xwidth": 14,
+            "smart": true,
+            "x": 992,
+            "y": 36
+          },
+          {
+            "thing": "Platform",
+            "width": 24,
+            "x": 1056,
+            "y": 56
+          },
+          {
+            "macro": "Scale",
+            "between": 32,
+            "dropRight": 48,
+            "x": 1100,
+            "y": 86
+          },
+          {
+            "macro": "Floor",
+            "width": 256,
+            "x": 1152,
+            "y": 0
+          },
+          {
+            "macro": "EndOutsideCastle",
+            "large": true,
+            "walls": 15,
+            "transport": {
+              "map": "3-4"
+            },
+            "x": 1208,
+            "y": 0
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "locations": [
+    {
+      "area": 0,
+      "entry": "Plain"
+    },
+    {
+      "area": 0,
+      "entry": "PipeVertical"
+    },
+    {
+      "area": 0,
+      "xloc": 1032
+    },
+    {
+      "area": 1
+    },
+    {
+      "area": 2,
+      "entry": "Plain"
+    }
+  ],
+  "areas": [
+    {
+      "area": 0,
+      "setting": "Overworld Alt",
+      "underwater": false,
+      "exit": null,
+      "sections": []
+    },
+    {
+      "area": 1,
+      "setting": "Underwater",
+      "underwater": true,
+      "exit": null,
+      "sections": []
+    },
+    {
+      "area": 2,
+      "setting": "Sky",
+      "underwater": false,
+      "exit": 2,
+      "sections": []
+    }
+  ],
+  "links": [
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r021"
+      },
+      "kind": "location",
+      "target": 3
+    },
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r034"
+      },
+      "kind": "vine",
+      "target": {
+        "entrance": 4
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r075"
+      },
+      "kind": "world",
+      "target": {
+        "map": "5-3"
+      }
+    },
+    {
+      "from": {
+        "area": 1,
+        "part": "base",
+        "record": "r035"
+      },
+      "kind": "location",
+      "target": 1
+    },
+    {
+      "from": {
+        "area": 2,
+        "part": "base",
+        "record": "r002"
+      },
+      "kind": "location",
+      "target": true
+    }
+  ],
+  "issues": []
+}

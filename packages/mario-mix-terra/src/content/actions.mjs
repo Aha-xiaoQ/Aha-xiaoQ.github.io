@@ -1,0 +1,11 @@
+/** A fresh configuration object for each runtime; no shared mutable defaults. */
+export function createActionDefinitions(){return {
+ left:{name:'向左',code:'KeyA',keys:['KeyA','ArrowLeft'],pad:[14]},right:{name:'向右',code:'KeyD',keys:['KeyD','ArrowRight'],pad:[15]},
+ up:{name:'向上',code:'KeyW',keys:['KeyW','ArrowUp'],pad:[12]},down:{name:'向下 / 下穿',code:'KeyS',keys:['KeyS','ArrowDown'],pad:[13]},
+ jump:{name:'跳跃 / 跳车',code:'Space',keys:['Space','KeyK','KeyZ'],pad:[0]},attack:{name:'攻击 / 使用',code:'KeyJ',keys:['KeyJ','KeyX','ShiftLeft','ShiftRight'],pad:[1]},
+ toolPrev:{name:'上一个工具',code:'BracketLeft',keys:['BracketLeft'],pad:[4]},toolNext:{name:'下一个工具',code:'BracketRight',keys:['BracketRight'],pad:[5]},
+ weapon:{name:'切换已有武器',code:'KeyQ',keys:['KeyQ'],pad:[2]},mount:{name:'上下坐骑',code:'KeyF',keys:['KeyF'],pad:[3]},
+ interact:{name:'交互 / 管道',code:'KeyE',keys:['KeyE','KeyL'],pad:[6]},heal:{name:'治疗',code:'KeyH',keys:['KeyH'],pad:[10]},
+ recall:{name:'魔镜返程',code:'KeyB',keys:['KeyB'],pad:[6]},pause:{name:'暂停',code:'KeyP',keys:['KeyP','Escape'],pad:[7]},
+ torch:{name:'快速放火把',code:'KeyG',keys:['KeyG'],pad:[]},mountCycle:{name:'切换坐骑种类',code:'KeyV',keys:['KeyV'],pad:[]}
+};}

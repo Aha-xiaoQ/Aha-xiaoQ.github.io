@@ -1,0 +1,22 @@
+name: 回归问题
+description: 报告第三期工程候选中的可复现问题
+title: "[Terra regression] "
+body:
+  - type: input
+    id: version
+    attributes:
+      label: 工程版本 / 候选 SHA
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 最少复现步骤、预期与实际
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: 系统、浏览器、键盘或手柄型号
+    validations:
+      required: true

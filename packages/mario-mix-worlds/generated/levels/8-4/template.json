@@ -1,0 +1,6125 @@
+{
+  "schemaVersion": 2,
+  "level": "8-4",
+  "stage": {
+    "id": "template-8-4",
+    "title": "8-4 · 区域 1（地形检查）",
+    "driver": "platform-v1",
+    "status": "draft",
+    "entryRoom": "area-0",
+    "entrySpawn": "inspection-start",
+    "rooms": {
+      "area-0": "classic-8-4-area-0"
+    },
+    "characters": [
+      "lab-runner",
+      "lab-scout"
+    ],
+    "requiredCapabilities": [
+      "jump"
+    ],
+    "overlays": {},
+    "audio": "map-kit-silent",
+    "note": "分区几何检查，不是整关通关。原房间连接、条件循环与未实现机制保留在模板 topology / coverage；静态机关只用于检查位置。"
+  },
+  "inspectionStages": [
+    {
+      "id": "template-8-4",
+      "title": "8-4 · 区域 1（地形检查）",
+      "driver": "platform-v1",
+      "status": "draft",
+      "entryRoom": "area-0",
+      "entrySpawn": "inspection-start",
+      "rooms": {
+        "area-0": "classic-8-4-area-0"
+      },
+      "characters": [
+        "lab-runner",
+        "lab-scout"
+      ],
+      "requiredCapabilities": [
+        "jump"
+      ],
+      "overlays": {},
+      "audio": "map-kit-silent",
+      "note": "分区几何检查，不是整关通关。原房间连接、条件循环与未实现机制保留在模板 topology / coverage；静态机关只用于检查位置。"
+    },
+    {
+      "id": "inspect-8-4-area-0-section-0-stretch",
+      "title": "8-4 · 区域 1 / 段 1 / stretch（地形检查）",
+      "driver": "platform-v1",
+      "status": "draft",
+      "entryRoom": "area-0-section-0-stretch",
+      "entrySpawn": "inspection-start",
+      "rooms": {
+        "area-0-section-0-stretch": "classic-8-4-area-0-section-0-stretch"
+      },
+      "characters": [
+        "lab-runner",
+        "lab-scout"
+      ],
+      "requiredCapabilities": [
+        "jump"
+      ],
+      "overlays": {},
+      "audio": "map-kit-silent",
+      "note": "分区几何检查，不是整关通关。原房间连接、条件循环与未实现机制保留在模板 topology / coverage；静态机关只用于检查位置。"
+    },
+    {
+      "id": "inspect-8-4-area-0-section-0-after",
+      "title": "8-4 · 区域 1 / 段 1 / after（地形检查）",
+      "driver": "platform-v1",
+      "status": "draft",
+      "entryRoom": "area-0-section-0-after",
+      "entrySpawn": "inspection-start",
+      "rooms": {
+        "area-0-section-0-after": "classic-8-4-area-0-section-0-after"
+      },
+      "characters": [
+        "lab-runner",
+        "lab-scout"
+      ],
+      "requiredCapabilities": [
+        "jump"
+      ],
+      "overlays": {},
+      "audio": "map-kit-silent",
+      "note": "分区几何检查，不是整关通关。原房间连接、条件循环与未实现机制保留在模板 topology / coverage；静态机关只用于检查位置。"
+    },
+    {
+      "id": "inspect-8-4-area-1",
+      "title": "8-4 · 区域 2（地形检查）",
+      "driver": "platform-v1",
+      "status": "draft",
+      "entryRoom": "area-1",
+      "entrySpawn": "inspection-start",
+      "rooms": {
+        "area-1": "classic-8-4-area-1"
+      },
+      "characters": [
+        "lab-runner",
+        "lab-scout"
+      ],
+      "requiredCapabilities": [
+        "jump"
+      ],
+      "overlays": {},
+      "audio": "map-kit-silent",
+      "note": "分区几何检查，不是整关通关。原房间连接、条件循环与未实现机制保留在模板 topology / coverage；静态机关只用于检查位置。"
+    },
+    {
+      "id": "inspect-8-4-area-1-section-0-before",
+      "title": "8-4 · 区域 2 / 段 1 / before（地形检查）",
+      "driver": "platform-v1",
+      "status": "draft",
+      "entryRoom": "area-1-section-0-before",
+      "entrySpawn": "inspection-start",
+      "rooms": {
+        "area-1-section-0-before": "classic-8-4-area-1-section-0-before"
+      },
+      "characters": [
+        "lab-runner",
+        "lab-scout"
+      ],
+      "requiredCapabilities": [
+        "jump"
+      ],
+      "overlays": {},
+      "audio": "map-kit-silent",
+      "note": "分区几何检查，不是整关通关。原房间连接、条件循环与未实现机制保留在模板 topology / coverage；静态机关只用于检查位置。"
+    },
+    {
+      "id": "inspect-8-4-area-1-section-0-stretch",
+      "title": "8-4 · 区域 2 / 段 1 / stretch（地形检查）",
+      "driver": "platform-v1",
+      "status": "draft",
+      "entryRoom": "area-1-section-0-stretch",
+      "entrySpawn": "inspection-start",
+      "rooms": {
+        "area-1-section-0-stretch": "classic-8-4-area-1-section-0-stretch"
+      },
+      "characters": [
+        "lab-runner",
+        "lab-scout"
+      ],
+      "requiredCapabilities": [
+        "jump"
+      ],
+      "overlays": {},
+      "audio": "map-kit-silent",
+      "note": "分区几何检查，不是整关通关。原房间连接、条件循环与未实现机制保留在模板 topology / coverage；静态机关只用于检查位置。"
+    },
+    {
+      "id": "inspect-8-4-area-1-section-0-after",
+      "title": "8-4 · 区域 2 / 段 1 / after（地形检查）",
+      "driver": "platform-v1",
+      "status": "draft",
+      "entryRoom": "area-1-section-0-after",
+      "entrySpawn": "inspection-start",
+      "rooms": {
+        "area-1-section-0-after": "classic-8-4-area-1-section-0-after"
+      },
+      "characters": [
+        "lab-runner",
+        "lab-scout"
+      ],
+      "requiredCapabilities": [
+        "jump"
+      ],
+      "overlays": {},
+      "audio": "map-kit-silent",
+      "note": "分区几何检查，不是整关通关。原房间连接、条件循环与未实现机制保留在模板 topology / coverage；静态机关只用于检查位置。"
+    },
+    {
+      "id": "inspect-8-4-area-2",
+      "title": "8-4 · 区域 3（地形检查）",
+      "driver": "platform-v1",
+      "status": "draft",
+      "entryRoom": "area-2",
+      "entrySpawn": "inspection-start",
+      "rooms": {
+        "area-2": "classic-8-4-area-2"
+      },
+      "characters": [
+        "lab-runner",
+        "lab-scout"
+      ],
+      "requiredCapabilities": [
+        "jump"
+      ],
+      "overlays": {},
+      "audio": "map-kit-silent",
+      "note": "分区几何检查，不是整关通关。原房间连接、条件循环与未实现机制保留在模板 topology / coverage；静态机关只用于检查位置。"
+    },
+    {
+      "id": "inspect-8-4-area-2-section-0-before",
+      "title": "8-4 · 区域 3 / 段 1 / before（地形检查）",
+      "driver": "platform-v1",
+      "status": "draft",
+      "entryRoom": "area-2-section-0-before",
+      "entrySpawn": "inspection-start",
+      "rooms": {
+        "area-2-section-0-before": "classic-8-4-area-2-section-0-before"
+      },
+      "characters": [
+        "lab-runner",
+        "lab-scout"
+      ],
+      "requiredCapabilities": [
+        "jump"
+      ],
+      "overlays": {},
+      "audio": "map-kit-silent",
+      "note": "分区几何检查，不是整关通关。原房间连接、条件循环与未实现机制保留在模板 topology / coverage；静态机关只用于检查位置。"
+    },
+    {
+      "id": "inspect-8-4-area-2-section-0-stretch",
+      "title": "8-4 · 区域 3 / 段 1 / stretch（地形检查）",
+      "driver": "platform-v1",
+      "status": "draft",
+      "entryRoom": "area-2-section-0-stretch",
+      "entrySpawn": "inspection-start",
+      "rooms": {
+        "area-2-section-0-stretch": "classic-8-4-area-2-section-0-stretch"
+      },
+      "characters": [
+        "lab-runner",
+        "lab-scout"
+      ],
+      "requiredCapabilities": [
+        "jump"
+      ],
+      "overlays": {},
+      "audio": "map-kit-silent",
+      "note": "分区几何检查，不是整关通关。原房间连接、条件循环与未实现机制保留在模板 topology / coverage；静态机关只用于检查位置。"
+    },
+    {
+      "id": "inspect-8-4-area-2-section-0-after",
+      "title": "8-4 · 区域 3 / 段 1 / after（地形检查）",
+      "driver": "platform-v1",
+      "status": "draft",
+      "entryRoom": "area-2-section-0-after",
+      "entrySpawn": "inspection-start",
+      "rooms": {
+        "area-2-section-0-after": "classic-8-4-area-2-section-0-after"
+      },
+      "characters": [
+        "lab-runner",
+        "lab-scout"
+      ],
+      "requiredCapabilities": [
+        "jump"
+      ],
+      "overlays": {},
+      "audio": "map-kit-silent",
+      "note": "分区几何检查，不是整关通关。原房间连接、条件循环与未实现机制保留在模板 topology / coverage；静态机关只用于检查位置。"
+    },
+    {
+      "id": "inspect-8-4-area-4",
+      "title": "8-4 · 区域 5（地形检查）",
+      "driver": "platform-v1",
+      "status": "draft",
+      "entryRoom": "area-4",
+      "entrySpawn": "inspection-start",
+      "rooms": {
+        "area-4": "classic-8-4-area-4"
+      },
+      "characters": [
+        "lab-runner",
+        "lab-scout"
+      ],
+      "requiredCapabilities": [
+        "jump"
+      ],
+      "overlays": {},
+      "audio": "map-kit-silent",
+      "note": "分区几何检查，不是整关通关。原房间连接、条件循环与未实现机制保留在模板 topology / coverage；静态机关只用于检查位置。"
+    }
+  ],
+  "maps": [
+    {
+      "id": "classic-8-4-area-0",
+      "title": "8-4 · 区域 1",
+      "tileSize": 16,
+      "width": 512,
+      "height": 240,
+      "provenance": {
+        "kind": "transcribed",
+        "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+        "review": "pending",
+        "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+      },
+      "geometry": [
+        {
+          "id": "r000-0",
+          "x": 0,
+          "y": 112,
+          "w": 48,
+          "h": 128,
+          "collision": "solid"
+        },
+        {
+          "id": "r000-24",
+          "x": 48,
+          "y": 128,
+          "w": 16,
+          "h": 112,
+          "collision": "solid"
+        },
+        {
+          "id": "r000-32",
+          "x": 64,
+          "y": 144,
+          "w": 16,
+          "h": 96,
+          "collision": "solid"
+        },
+        {
+          "id": "r001",
+          "x": 0,
+          "y": 32,
+          "w": 512,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r002",
+          "x": 80,
+          "y": 160,
+          "w": 16,
+          "h": 80,
+          "collision": "solid"
+        },
+        {
+          "id": "r004",
+          "x": 176,
+          "y": 208,
+          "w": 128,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r005",
+          "x": 304,
+          "y": 176,
+          "w": 32,
+          "h": 64,
+          "collision": "solid"
+        }
+      ],
+      "objects": [
+        {
+          "id": "inspection-start",
+          "kind": "spawn",
+          "x": 24,
+          "y": 88,
+          "w": 12,
+          "h": 24
+        }
+      ]
+    },
+    {
+      "id": "classic-8-4-area-0-section-0-stretch",
+      "title": "8-4 · 区域 1 / 段 1 / stretch",
+      "tileSize": 16,
+      "width": 256,
+      "height": 240,
+      "provenance": {
+        "kind": "transcribed",
+        "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+        "review": "pending",
+        "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+      },
+      "geometry": [
+        {
+          "id": "r000",
+          "x": 0,
+          "y": 208,
+          "w": 16,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r001",
+          "x": 0,
+          "y": 32,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        }
+      ],
+      "objects": [
+        {
+          "id": "inspection-start",
+          "kind": "spawn",
+          "x": 24,
+          "y": 24,
+          "w": 12,
+          "h": 24
+        }
+      ]
+    },
+    {
+      "id": "classic-8-4-area-0-section-0-after",
+      "title": "8-4 · 区域 1 / 段 1 / after",
+      "tileSize": 16,
+      "width": 848,
+      "height": 240,
+      "provenance": {
+        "kind": "transcribed",
+        "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+        "review": "pending",
+        "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+      },
+      "geometry": [
+        {
+          "id": "r000",
+          "x": 0,
+          "y": 176,
+          "w": 32,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r001",
+          "x": 0,
+          "y": 32,
+          "w": 848,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r002",
+          "x": 32,
+          "y": 208,
+          "w": 144,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r004",
+          "x": 176,
+          "y": 160,
+          "w": 64,
+          "h": 80,
+          "collision": "solid"
+        },
+        {
+          "id": "r006",
+          "x": 304,
+          "y": 208,
+          "w": 32,
+          "h": 8,
+          "collision": "oneway",
+          "motion": {
+            "axis": "x",
+            "min": 280,
+            "max": 464,
+            "speed": 0.75
+          }
+        },
+        {
+          "id": "r007",
+          "x": 512,
+          "y": 160,
+          "w": 96,
+          "h": 80,
+          "collision": "solid"
+        },
+        {
+          "id": "r008",
+          "x": 528,
+          "y": 96,
+          "w": 64,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r009",
+          "x": 608,
+          "y": 128,
+          "w": 32,
+          "h": 112,
+          "collision": "solid"
+        },
+        {
+          "id": "r010",
+          "x": 640,
+          "y": 160,
+          "w": 112,
+          "h": 80,
+          "collision": "solid"
+        },
+        {
+          "id": "r011",
+          "x": 752,
+          "y": 112,
+          "w": 32,
+          "h": 128,
+          "collision": "solid"
+        },
+        {
+          "id": "r012",
+          "x": 784,
+          "y": 160,
+          "w": 64,
+          "h": 80,
+          "collision": "solid"
+        }
+      ],
+      "objects": [
+        {
+          "id": "inspection-start",
+          "kind": "spawn",
+          "x": 24,
+          "y": 152,
+          "w": 12,
+          "h": 24
+        }
+      ]
+    },
+    {
+      "id": "classic-8-4-area-1",
+      "title": "8-4 · 区域 2",
+      "tileSize": 16,
+      "width": 256,
+      "height": 240,
+      "provenance": {
+        "kind": "transcribed",
+        "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+        "review": "pending",
+        "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+      },
+      "geometry": [
+        {
+          "id": "r000",
+          "x": 0,
+          "y": 176,
+          "w": 32,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r001",
+          "x": 0,
+          "y": 32,
+          "w": 32,
+          "h": 16,
+          "collision": "solid"
+        }
+      ],
+      "objects": [
+        {
+          "id": "inspection-start",
+          "kind": "spawn",
+          "x": 24,
+          "y": 152,
+          "w": 12,
+          "h": 24
+        }
+      ]
+    },
+    {
+      "id": "classic-8-4-area-1-section-0-before",
+      "title": "8-4 · 区域 2 / 段 1 / before",
+      "tileSize": 16,
+      "width": 656,
+      "height": 240,
+      "provenance": {
+        "kind": "transcribed",
+        "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+        "review": "pending",
+        "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+      },
+      "geometry": [
+        {
+          "id": "r000",
+          "x": 0,
+          "y": 32,
+          "w": 656,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r001",
+          "x": 0,
+          "y": 208,
+          "w": 80,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r002",
+          "x": 80,
+          "y": 160,
+          "w": 32,
+          "h": 80,
+          "collision": "solid"
+        },
+        {
+          "id": "r003",
+          "x": 112,
+          "y": 208,
+          "w": 128,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r005",
+          "x": 240,
+          "y": 176,
+          "w": 32,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r006",
+          "x": 272,
+          "y": 208,
+          "w": 128,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r009",
+          "x": 400,
+          "y": 160,
+          "w": 32,
+          "h": 80,
+          "collision": "solid"
+        },
+        {
+          "id": "r011",
+          "x": 480,
+          "y": 208,
+          "w": 176,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r013",
+          "x": 560,
+          "y": 144,
+          "w": 32,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r014",
+          "x": 560,
+          "y": 96,
+          "w": 32,
+          "h": 48,
+          "collision": "solid"
+        }
+      ],
+      "objects": [
+        {
+          "id": "inspection-start",
+          "kind": "spawn",
+          "x": 24,
+          "y": 184,
+          "w": 12,
+          "h": 24
+        }
+      ]
+    },
+    {
+      "id": "classic-8-4-area-1-section-0-stretch",
+      "title": "8-4 · 区域 2 / 段 1 / stretch",
+      "tileSize": 16,
+      "width": 256,
+      "height": 240,
+      "provenance": {
+        "kind": "transcribed",
+        "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+        "review": "pending",
+        "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+      },
+      "geometry": [
+        {
+          "id": "r000",
+          "x": 0,
+          "y": 208,
+          "w": 16,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r001",
+          "x": 0,
+          "y": 32,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        }
+      ],
+      "objects": [
+        {
+          "id": "inspection-start",
+          "kind": "spawn",
+          "x": 24,
+          "y": 24,
+          "w": 12,
+          "h": 24
+        }
+      ]
+    },
+    {
+      "id": "classic-8-4-area-1-section-0-after",
+      "title": "8-4 · 区域 2 / 段 1 / after",
+      "tileSize": 16,
+      "width": 256,
+      "height": 240,
+      "provenance": {
+        "kind": "transcribed",
+        "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+        "review": "pending",
+        "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+      },
+      "geometry": [
+        {
+          "id": "r000",
+          "x": 0,
+          "y": 176,
+          "w": 32,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r001",
+          "x": 0,
+          "y": 32,
+          "w": 32,
+          "h": 16,
+          "collision": "solid"
+        }
+      ],
+      "objects": [
+        {
+          "id": "inspection-start",
+          "kind": "spawn",
+          "x": 24,
+          "y": 152,
+          "w": 12,
+          "h": 24
+        }
+      ]
+    },
+    {
+      "id": "classic-8-4-area-2",
+      "title": "8-4 · 区域 3",
+      "tileSize": 16,
+      "width": 256,
+      "height": 240,
+      "provenance": {
+        "kind": "transcribed",
+        "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+        "review": "pending",
+        "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+      },
+      "geometry": [
+        {
+          "id": "r000",
+          "x": 0,
+          "y": 176,
+          "w": 32,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r001",
+          "x": 0,
+          "y": 32,
+          "w": 32,
+          "h": 16,
+          "collision": "solid"
+        }
+      ],
+      "objects": [
+        {
+          "id": "inspection-start",
+          "kind": "spawn",
+          "x": 24,
+          "y": 152,
+          "w": 12,
+          "h": 24
+        }
+      ]
+    },
+    {
+      "id": "classic-8-4-area-2-section-0-before",
+      "title": "8-4 · 区域 3 / 段 1 / before",
+      "tileSize": 16,
+      "width": 528,
+      "height": 240,
+      "provenance": {
+        "kind": "transcribed",
+        "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+        "review": "pending",
+        "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+      },
+      "geometry": [
+        {
+          "id": "r000",
+          "x": 0,
+          "y": 32,
+          "w": 528,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r001",
+          "x": 0,
+          "y": 208,
+          "w": 16,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r002",
+          "x": 16,
+          "y": 160,
+          "w": 96,
+          "h": 80,
+          "collision": "solid"
+        },
+        {
+          "id": "r003",
+          "x": 112,
+          "y": 128,
+          "w": 32,
+          "h": 112,
+          "collision": "solid"
+        },
+        {
+          "id": "r005",
+          "x": 144,
+          "y": 160,
+          "w": 96,
+          "h": 80,
+          "collision": "solid"
+        },
+        {
+          "id": "r006",
+          "x": 240,
+          "y": 112,
+          "w": 32,
+          "h": 128,
+          "collision": "solid"
+        },
+        {
+          "id": "r007",
+          "x": 272,
+          "y": 160,
+          "w": 96,
+          "h": 80,
+          "collision": "solid"
+        },
+        {
+          "id": "r009",
+          "x": 432,
+          "y": 160,
+          "w": 64,
+          "h": 80,
+          "collision": "solid"
+        },
+        {
+          "id": "r010",
+          "x": 496,
+          "y": 128,
+          "w": 32,
+          "h": 112,
+          "collision": "solid"
+        }
+      ],
+      "objects": [
+        {
+          "id": "inspection-start",
+          "kind": "spawn",
+          "x": 24,
+          "y": 136,
+          "w": 12,
+          "h": 24
+        }
+      ]
+    },
+    {
+      "id": "classic-8-4-area-2-section-0-stretch",
+      "title": "8-4 · 区域 3 / 段 1 / stretch",
+      "tileSize": 16,
+      "width": 256,
+      "height": 240,
+      "provenance": {
+        "kind": "transcribed",
+        "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+        "review": "pending",
+        "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+      },
+      "geometry": [
+        {
+          "id": "r000",
+          "x": 0,
+          "y": 160,
+          "w": 16,
+          "h": 80,
+          "collision": "solid"
+        },
+        {
+          "id": "r001",
+          "x": 0,
+          "y": 32,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        }
+      ],
+      "objects": [
+        {
+          "id": "inspection-start",
+          "kind": "spawn",
+          "x": 24,
+          "y": 24,
+          "w": 12,
+          "h": 24
+        }
+      ]
+    },
+    {
+      "id": "classic-8-4-area-2-section-0-after",
+      "title": "8-4 · 区域 3 / 段 1 / after",
+      "tileSize": 16,
+      "width": 256,
+      "height": 240,
+      "provenance": {
+        "kind": "transcribed",
+        "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+        "review": "pending",
+        "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+      },
+      "geometry": [
+        {
+          "id": "r000",
+          "x": 0,
+          "y": 208,
+          "w": 48,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r001",
+          "x": 0,
+          "y": 32,
+          "w": 80,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r002",
+          "x": 48,
+          "y": 176,
+          "w": 32,
+          "h": 64,
+          "collision": "solid"
+        }
+      ],
+      "objects": [
+        {
+          "id": "inspection-start",
+          "kind": "spawn",
+          "x": 24,
+          "y": 184,
+          "w": 12,
+          "h": 24
+        }
+      ]
+    },
+    {
+      "id": "classic-8-4-area-3",
+      "title": "8-4 · 区域 4",
+      "tileSize": 16,
+      "width": 1152,
+      "height": 240,
+      "provenance": {
+        "kind": "transcribed",
+        "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+        "review": "pending",
+        "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+      },
+      "geometry": [
+        {
+          "id": "r000",
+          "x": 0,
+          "y": 32,
+          "w": 32,
+          "h": 208,
+          "collision": "solid"
+        },
+        {
+          "id": "r001",
+          "x": 32,
+          "y": 208,
+          "w": 16,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r002",
+          "x": 48,
+          "y": 176,
+          "w": 32,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r003",
+          "x": 80,
+          "y": 208,
+          "w": 1072,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r004",
+          "x": 96,
+          "y": 160,
+          "w": 80,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r005",
+          "x": 96,
+          "y": 48,
+          "w": 80,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r006",
+          "x": 96,
+          "y": 32,
+          "w": 1056,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r007",
+          "x": 176,
+          "y": 144,
+          "w": 112,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r008",
+          "x": 176,
+          "y": 48,
+          "w": 112,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r012",
+          "x": 624,
+          "y": 160,
+          "w": 48,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r013",
+          "x": 624,
+          "y": 48,
+          "w": 48,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r019",
+          "x": 1072,
+          "y": 144,
+          "w": 80,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r020",
+          "x": 1072,
+          "y": 48,
+          "w": 80,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r021",
+          "x": 1088,
+          "y": 112,
+          "w": 39,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r022",
+          "x": 1104,
+          "y": 96,
+          "w": 48,
+          "h": 48,
+          "collision": "solid"
+        }
+      ],
+      "objects": [
+        {
+          "id": "inspection-start",
+          "kind": "spawn",
+          "x": 24,
+          "y": 8,
+          "w": 12,
+          "h": 24
+        }
+      ]
+    },
+    {
+      "id": "classic-8-4-area-4",
+      "title": "8-4 · 区域 5",
+      "tileSize": 16,
+      "width": 976,
+      "height": 240,
+      "provenance": {
+        "kind": "transcribed",
+        "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+        "review": "pending",
+        "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+      },
+      "geometry": [
+        {
+          "id": "r000",
+          "x": 0,
+          "y": 176,
+          "w": 32,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r001",
+          "x": 0,
+          "y": 32,
+          "w": 464,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r002",
+          "x": 32,
+          "y": 208,
+          "w": 80,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r003",
+          "x": 112,
+          "y": 176,
+          "w": 32,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r004",
+          "x": 144,
+          "y": 208,
+          "w": 144,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r008",
+          "x": 368,
+          "y": 160,
+          "w": 96,
+          "h": 80,
+          "collision": "solid"
+        },
+        {
+          "id": "r009",
+          "x": 368,
+          "y": 48,
+          "w": 96,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r010-roof",
+          "x": 464,
+          "y": 32,
+          "w": 512,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r010-bridge",
+          "x": 464,
+          "y": 160,
+          "w": 208,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r010-floor",
+          "x": 672,
+          "y": 208,
+          "w": 304,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r010-step",
+          "x": 672,
+          "y": 144,
+          "w": 48,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r010-ceiling",
+          "x": 688,
+          "y": 48,
+          "w": 32,
+          "h": 48,
+          "collision": "solid"
+        }
+      ],
+      "objects": [
+        {
+          "id": "inspection-start",
+          "kind": "spawn",
+          "x": 24,
+          "y": 152,
+          "w": 12,
+          "h": 24
+        }
+      ]
+    }
+  ],
+  "rooms": [
+    {
+      "roomId": "area-0",
+      "label": "区域 1",
+      "setting": "Castle",
+      "origin": {
+        "area": 0,
+        "part": "base"
+      },
+      "declaredWidth": null,
+      "underwater": false,
+      "inspectionOnly": true,
+      "previewSupported": true,
+      "map": {
+        "id": "classic-8-4-area-0",
+        "title": "8-4 · 区域 1",
+        "tileSize": 16,
+        "width": 512,
+        "height": 240,
+        "provenance": {
+          "kind": "transcribed",
+          "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+          "review": "pending",
+          "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+        },
+        "geometry": [
+          {
+            "id": "r000-0",
+            "x": 0,
+            "y": 112,
+            "w": 48,
+            "h": 128,
+            "collision": "solid"
+          },
+          {
+            "id": "r000-24",
+            "x": 48,
+            "y": 128,
+            "w": 16,
+            "h": 112,
+            "collision": "solid"
+          },
+          {
+            "id": "r000-32",
+            "x": 64,
+            "y": 144,
+            "w": 16,
+            "h": 96,
+            "collision": "solid"
+          },
+          {
+            "id": "r001",
+            "x": 0,
+            "y": 32,
+            "w": 512,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r002",
+            "x": 80,
+            "y": 160,
+            "w": 16,
+            "h": 80,
+            "collision": "solid"
+          },
+          {
+            "id": "r004",
+            "x": 176,
+            "y": 208,
+            "w": 128,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r005",
+            "x": 304,
+            "y": 176,
+            "w": 32,
+            "h": 64,
+            "collision": "solid"
+          }
+        ],
+        "objects": [
+          {
+            "id": "inspection-start",
+            "kind": "spawn",
+            "x": 24,
+            "y": 88,
+            "w": 12,
+            "h": 24
+          }
+        ]
+      },
+      "markers": [
+        {
+          "id": "r003",
+          "kind": "lava-volume",
+          "source": {
+            "macro": "Water",
+            "width": 40,
+            "x": 48,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r003"
+          },
+          "x": 96,
+          "y": 208
+        },
+        {
+          "id": "r005-plant",
+          "kind": "enemy-piranha",
+          "source": {
+            "macro": "Pipe",
+            "height": "Infinity",
+            "piranha": true,
+            "entrance": 1,
+            "x": 152,
+            "y": 16
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r005"
+          },
+          "x": 304,
+          "y": 176
+        },
+        {
+          "id": "r006",
+          "kind": "conditional-section",
+          "source": {
+            "macro": "Section",
+            "x": 168,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r006"
+          },
+          "x": 336,
+          "y": 208
+        },
+        {
+          "id": "section-mode",
+          "kind": "conditional-section-runtime",
+          "source": {
+            "x": 0,
+            "y": 88
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "section"
+          },
+          "x": 0,
+          "y": 32
+        }
+      ],
+      "semantics": [
+        {
+          "id": "r000-0",
+          "kind": "Stone",
+          "source": {
+            "x": 0
+          },
+          "referenceRect": {
+            "x": 0,
+            "y": 112,
+            "w": 48,
+            "h": 128
+          }
+        },
+        {
+          "id": "r000-24",
+          "kind": "Stone",
+          "source": {
+            "x": 24
+          },
+          "referenceRect": {
+            "x": 48,
+            "y": 128,
+            "w": 16,
+            "h": 112
+          }
+        },
+        {
+          "id": "r000-32",
+          "kind": "Stone",
+          "source": {
+            "x": 32
+          },
+          "referenceRect": {
+            "x": 64,
+            "y": 144,
+            "w": 16,
+            "h": 96
+          }
+        },
+        {
+          "id": "r001",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 256,
+            "x": 0,
+            "y": 88
+          },
+          "referenceRect": {
+            "x": 0,
+            "y": 32,
+            "w": 512,
+            "h": 16
+          }
+        },
+        {
+          "id": "r002",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "x": 40,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 80,
+            "y": 160,
+            "w": 16,
+            "h": 80
+          }
+        },
+        {
+          "id": "r004",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 64,
+            "x": 88,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 176,
+            "y": 208,
+            "w": 128,
+            "h": 32
+          }
+        },
+        {
+          "id": "r005",
+          "kind": "PipeVertical",
+          "source": {
+            "height": "Infinity",
+            "piranha": true,
+            "entrance": 1,
+            "x": 152,
+            "y": 16,
+            "thing": "PipeVertical",
+            "width": 16
+          },
+          "referenceRect": {
+            "x": 304,
+            "y": 176,
+            "w": 32,
+            "h": 64
+          }
+        }
+      ],
+      "sourceRecordCount": 7
+    },
+    {
+      "roomId": "area-0-section-0-stretch",
+      "label": "区域 1 / 段 1 / stretch",
+      "setting": "Castle",
+      "origin": {
+        "area": 0,
+        "section": 0,
+        "part": "stretch"
+      },
+      "declaredWidth": 8,
+      "underwater": false,
+      "inspectionOnly": true,
+      "previewSupported": true,
+      "map": {
+        "id": "classic-8-4-area-0-section-0-stretch",
+        "title": "8-4 · 区域 1 / 段 1 / stretch",
+        "tileSize": 16,
+        "width": 256,
+        "height": 240,
+        "provenance": {
+          "kind": "transcribed",
+          "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+          "review": "pending",
+          "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+        },
+        "geometry": [
+          {
+            "id": "r000",
+            "x": 0,
+            "y": 208,
+            "w": 16,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r001",
+            "x": 0,
+            "y": 32,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          }
+        ],
+        "objects": [
+          {
+            "id": "inspection-start",
+            "kind": "spawn",
+            "x": 24,
+            "y": 24,
+            "w": 12,
+            "h": 24
+          }
+        ]
+      },
+      "markers": [
+        {
+          "id": "section-mode",
+          "kind": "conditional-section-runtime",
+          "source": {
+            "x": 0,
+            "y": 88
+          },
+          "sourcePath": {
+            "area": 0,
+            "section": 0,
+            "part": "stretch",
+            "record": "section"
+          },
+          "x": 0,
+          "y": 32
+        }
+      ],
+      "semantics": [
+        {
+          "id": "r000",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "x": 0,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 0,
+            "y": 208,
+            "w": 16,
+            "h": 32
+          }
+        },
+        {
+          "id": "r001",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 0,
+            "y": 88
+          },
+          "referenceRect": {
+            "x": 0,
+            "y": 32,
+            "w": 16,
+            "h": 16
+          }
+        }
+      ],
+      "sourceRecordCount": 2
+    },
+    {
+      "roomId": "area-0-section-0-after",
+      "label": "区域 1 / 段 1 / after",
+      "setting": "Castle",
+      "origin": {
+        "area": 0,
+        "section": 0,
+        "part": "after"
+      },
+      "declaredWidth": 424,
+      "underwater": false,
+      "inspectionOnly": true,
+      "previewSupported": true,
+      "map": {
+        "id": "classic-8-4-area-0-section-0-after",
+        "title": "8-4 · 区域 1 / 段 1 / after",
+        "tileSize": 16,
+        "width": 848,
+        "height": 240,
+        "provenance": {
+          "kind": "transcribed",
+          "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+          "review": "pending",
+          "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+        },
+        "geometry": [
+          {
+            "id": "r000",
+            "x": 0,
+            "y": 176,
+            "w": 32,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r001",
+            "x": 0,
+            "y": 32,
+            "w": 848,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r002",
+            "x": 32,
+            "y": 208,
+            "w": 144,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r004",
+            "x": 176,
+            "y": 160,
+            "w": 64,
+            "h": 80,
+            "collision": "solid"
+          },
+          {
+            "id": "r006",
+            "x": 304,
+            "y": 208,
+            "w": 32,
+            "h": 8,
+            "collision": "oneway",
+            "motion": {
+              "axis": "x",
+              "min": 280,
+              "max": 464,
+              "speed": 0.75
+            }
+          },
+          {
+            "id": "r007",
+            "x": 512,
+            "y": 160,
+            "w": 96,
+            "h": 80,
+            "collision": "solid"
+          },
+          {
+            "id": "r008",
+            "x": 528,
+            "y": 96,
+            "w": 64,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r009",
+            "x": 608,
+            "y": 128,
+            "w": 32,
+            "h": 112,
+            "collision": "solid"
+          },
+          {
+            "id": "r010",
+            "x": 640,
+            "y": 160,
+            "w": 112,
+            "h": 80,
+            "collision": "solid"
+          },
+          {
+            "id": "r011",
+            "x": 752,
+            "y": 112,
+            "w": 32,
+            "h": 128,
+            "collision": "solid"
+          },
+          {
+            "id": "r012",
+            "x": 784,
+            "y": 160,
+            "w": 64,
+            "h": 80,
+            "collision": "solid"
+          }
+        ],
+        "objects": [
+          {
+            "id": "inspection-start",
+            "kind": "spawn",
+            "x": 24,
+            "y": 152,
+            "w": 12,
+            "h": 24
+          }
+        ]
+      },
+      "markers": [
+        {
+          "id": "r000-transport",
+          "kind": "source-transport-not-simulated",
+          "source": {
+            "height": "Infinity",
+            "piranha": true,
+            "transport": 1,
+            "x": 0,
+            "y": 16,
+            "thing": "PipeVertical",
+            "width": 16
+          },
+          "sourcePath": {
+            "area": 0,
+            "section": 0,
+            "part": "after",
+            "record": "r000"
+          },
+          "x": 0,
+          "y": 176
+        },
+        {
+          "id": "r000-plant",
+          "kind": "enemy-piranha",
+          "source": {
+            "macro": "Pipe",
+            "height": "Infinity",
+            "piranha": true,
+            "transport": 1,
+            "x": 0,
+            "y": 16
+          },
+          "sourcePath": {
+            "area": 0,
+            "section": 0,
+            "part": "after",
+            "record": "r000"
+          },
+          "x": 0,
+          "y": 176
+        },
+        {
+          "id": "r003-0-0",
+          "kind": "enemy-goomba",
+          "source": {
+            "thing": "Goomba",
+            "x": 36,
+            "y": 8
+          },
+          "sourcePath": {
+            "area": 0,
+            "section": 0,
+            "part": "after",
+            "record": "r003"
+          },
+          "x": 72,
+          "y": 192
+        },
+        {
+          "id": "r003-1-0",
+          "kind": "enemy-goomba",
+          "source": {
+            "thing": "Goomba",
+            "x": 48,
+            "y": 8
+          },
+          "sourcePath": {
+            "area": 0,
+            "section": 0,
+            "part": "after",
+            "record": "r003"
+          },
+          "x": 96,
+          "y": 192
+        },
+        {
+          "id": "r003-2-0",
+          "kind": "enemy-goomba",
+          "source": {
+            "thing": "Goomba",
+            "x": 60,
+            "y": 8
+          },
+          "sourcePath": {
+            "area": 0,
+            "section": 0,
+            "part": "after",
+            "record": "r003"
+          },
+          "x": 120,
+          "y": 192
+        },
+        {
+          "id": "r005",
+          "kind": "lava-volume",
+          "source": {
+            "macro": "Water",
+            "width": 136,
+            "x": 120,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "section": 0,
+            "part": "after",
+            "record": "r005"
+          },
+          "x": 240,
+          "y": 208
+        },
+        {
+          "id": "r006-timing",
+          "kind": "platform-timing",
+          "source": {
+            "thing": "Platform",
+            "width": 16,
+            "sliding": true,
+            "begin": 140,
+            "end": 232,
+            "speed": 2,
+            "x": 152,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "section": 0,
+            "part": "after",
+            "record": "r006"
+          },
+          "x": 304,
+          "y": 208
+        },
+        {
+          "id": "r009-transport",
+          "kind": "source-transport-not-simulated",
+          "source": {
+            "height": "Infinity",
+            "piranha": true,
+            "transport": 2,
+            "x": 304,
+            "y": 40,
+            "thing": "PipeVertical",
+            "width": 16
+          },
+          "sourcePath": {
+            "area": 0,
+            "section": 0,
+            "part": "after",
+            "record": "r009"
+          },
+          "x": 608,
+          "y": 128
+        },
+        {
+          "id": "r009-plant",
+          "kind": "enemy-piranha",
+          "source": {
+            "macro": "Pipe",
+            "height": "Infinity",
+            "piranha": true,
+            "transport": 2,
+            "x": 304,
+            "y": 40
+          },
+          "sourcePath": {
+            "area": 0,
+            "section": 0,
+            "part": "after",
+            "record": "r009"
+          },
+          "x": 608,
+          "y": 128
+        },
+        {
+          "id": "r011-plant",
+          "kind": "enemy-piranha",
+          "source": {
+            "macro": "Pipe",
+            "height": "Infinity",
+            "piranha": true,
+            "x": 376,
+            "y": 48
+          },
+          "sourcePath": {
+            "area": 0,
+            "section": 0,
+            "part": "after",
+            "record": "r011"
+          },
+          "x": 752,
+          "y": 112
+        },
+        {
+          "id": "r013",
+          "kind": "conditional-section",
+          "source": {
+            "macro": "Section",
+            "x": 424,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "section": 0,
+            "part": "after",
+            "record": "r013"
+          },
+          "x": 848,
+          "y": 208
+        },
+        {
+          "id": "section-mode",
+          "kind": "conditional-section-runtime",
+          "source": {
+            "x": 0,
+            "y": 88
+          },
+          "sourcePath": {
+            "area": 0,
+            "section": 0,
+            "part": "after",
+            "record": "section"
+          },
+          "x": 0,
+          "y": 32
+        }
+      ],
+      "semantics": [
+        {
+          "id": "r000",
+          "kind": "PipeVertical",
+          "source": {
+            "height": "Infinity",
+            "piranha": true,
+            "transport": 1,
+            "x": 0,
+            "y": 16,
+            "thing": "PipeVertical",
+            "width": 16
+          },
+          "referenceRect": {
+            "x": 0,
+            "y": 176,
+            "w": 32,
+            "h": 64
+          }
+        },
+        {
+          "id": "r001",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 424,
+            "x": 0,
+            "y": 88
+          },
+          "referenceRect": {
+            "x": 0,
+            "y": 32,
+            "w": 848,
+            "h": 16
+          }
+        },
+        {
+          "id": "r002",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 72,
+            "x": 16,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 32,
+            "y": 208,
+            "w": 144,
+            "h": 32
+          }
+        },
+        {
+          "id": "r004",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 32,
+            "x": 88,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 176,
+            "y": 160,
+            "w": 64,
+            "h": 80
+          }
+        },
+        {
+          "id": "r006",
+          "kind": "Platform",
+          "source": {
+            "thing": "Platform",
+            "width": 16,
+            "sliding": true,
+            "begin": 140,
+            "end": 232,
+            "speed": 2,
+            "x": 152,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 304,
+            "y": 208,
+            "w": 32,
+            "h": 8
+          }
+        },
+        {
+          "id": "r007",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 48,
+            "x": 256,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 512,
+            "y": 160,
+            "w": 96,
+            "h": 80
+          }
+        },
+        {
+          "id": "r008",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 32,
+            "x": 264,
+            "y": 56
+          },
+          "referenceRect": {
+            "x": 528,
+            "y": 96,
+            "w": 64,
+            "h": 16
+          }
+        },
+        {
+          "id": "r009",
+          "kind": "PipeVertical",
+          "source": {
+            "height": "Infinity",
+            "piranha": true,
+            "transport": 2,
+            "x": 304,
+            "y": 40,
+            "thing": "PipeVertical",
+            "width": 16
+          },
+          "referenceRect": {
+            "x": 608,
+            "y": 128,
+            "w": 32,
+            "h": 112
+          }
+        },
+        {
+          "id": "r010",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 56,
+            "x": 320,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 640,
+            "y": 160,
+            "w": 112,
+            "h": 80
+          }
+        },
+        {
+          "id": "r011",
+          "kind": "PipeVertical",
+          "source": {
+            "height": "Infinity",
+            "piranha": true,
+            "x": 376,
+            "y": 48,
+            "thing": "PipeVertical",
+            "width": 16
+          },
+          "referenceRect": {
+            "x": 752,
+            "y": 112,
+            "w": 32,
+            "h": 128
+          }
+        },
+        {
+          "id": "r012",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 32,
+            "x": 392,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 784,
+            "y": 160,
+            "w": 64,
+            "h": 80
+          }
+        }
+      ],
+      "sourceRecordCount": 14
+    },
+    {
+      "roomId": "area-1",
+      "label": "区域 2",
+      "setting": "Castle",
+      "origin": {
+        "area": 1,
+        "part": "base"
+      },
+      "declaredWidth": null,
+      "underwater": false,
+      "inspectionOnly": true,
+      "previewSupported": true,
+      "map": {
+        "id": "classic-8-4-area-1",
+        "title": "8-4 · 区域 2",
+        "tileSize": 16,
+        "width": 256,
+        "height": 240,
+        "provenance": {
+          "kind": "transcribed",
+          "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+          "review": "pending",
+          "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+        },
+        "geometry": [
+          {
+            "id": "r000",
+            "x": 0,
+            "y": 176,
+            "w": 32,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r001",
+            "x": 0,
+            "y": 32,
+            "w": 32,
+            "h": 16,
+            "collision": "solid"
+          }
+        ],
+        "objects": [
+          {
+            "id": "inspection-start",
+            "kind": "spawn",
+            "x": 24,
+            "y": 152,
+            "w": 12,
+            "h": 24
+          }
+        ]
+      },
+      "markers": [
+        {
+          "id": "r000-plant",
+          "kind": "enemy-piranha",
+          "source": {
+            "macro": "Pipe",
+            "height": "Infinity",
+            "piranha": true,
+            "entrance": 2,
+            "x": 0,
+            "y": 16
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "r000"
+          },
+          "x": 0,
+          "y": 176
+        },
+        {
+          "id": "r002",
+          "kind": "conditional-section",
+          "source": {
+            "macro": "Section",
+            "x": 16,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "r002"
+          },
+          "x": 32,
+          "y": 208
+        },
+        {
+          "id": "section-mode",
+          "kind": "conditional-section-runtime",
+          "source": {
+            "x": 0,
+            "y": 88
+          },
+          "sourcePath": {
+            "area": 1,
+            "part": "base",
+            "record": "section"
+          },
+          "x": 0,
+          "y": 32
+        }
+      ],
+      "semantics": [
+        {
+          "id": "r000",
+          "kind": "PipeVertical",
+          "source": {
+            "height": "Infinity",
+            "piranha": true,
+            "entrance": 2,
+            "x": 0,
+            "y": 16,
+            "thing": "PipeVertical",
+            "width": 16
+          },
+          "referenceRect": {
+            "x": 0,
+            "y": 176,
+            "w": 32,
+            "h": 64
+          }
+        },
+        {
+          "id": "r001",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 16,
+            "x": 0,
+            "y": 88
+          },
+          "referenceRect": {
+            "x": 0,
+            "y": 32,
+            "w": 32,
+            "h": 16
+          }
+        }
+      ],
+      "sourceRecordCount": 3
+    },
+    {
+      "roomId": "area-1-section-0-before",
+      "label": "区域 2 / 段 1 / before",
+      "setting": "Castle",
+      "origin": {
+        "area": 1,
+        "section": 0,
+        "part": "before"
+      },
+      "declaredWidth": 328,
+      "underwater": false,
+      "inspectionOnly": true,
+      "previewSupported": true,
+      "map": {
+        "id": "classic-8-4-area-1-section-0-before",
+        "title": "8-4 · 区域 2 / 段 1 / before",
+        "tileSize": 16,
+        "width": 656,
+        "height": 240,
+        "provenance": {
+          "kind": "transcribed",
+          "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+          "review": "pending",
+          "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+        },
+        "geometry": [
+          {
+            "id": "r000",
+            "x": 0,
+            "y": 32,
+            "w": 656,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r001",
+            "x": 0,
+            "y": 208,
+            "w": 80,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r002",
+            "x": 80,
+            "y": 160,
+            "w": 32,
+            "h": 80,
+            "collision": "solid"
+          },
+          {
+            "id": "r003",
+            "x": 112,
+            "y": 208,
+            "w": 128,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r005",
+            "x": 240,
+            "y": 176,
+            "w": 32,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r006",
+            "x": 272,
+            "y": 208,
+            "w": 128,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r009",
+            "x": 400,
+            "y": 160,
+            "w": 32,
+            "h": 80,
+            "collision": "solid"
+          },
+          {
+            "id": "r011",
+            "x": 480,
+            "y": 208,
+            "w": 176,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r013",
+            "x": 560,
+            "y": 144,
+            "w": 32,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r014",
+            "x": 560,
+            "y": 96,
+            "w": 32,
+            "h": 48,
+            "collision": "solid"
+          }
+        ],
+        "objects": [
+          {
+            "id": "inspection-start",
+            "kind": "spawn",
+            "x": 24,
+            "y": 184,
+            "w": 12,
+            "h": 24
+          }
+        ]
+      },
+      "markers": [
+        {
+          "id": "r002-plant",
+          "kind": "enemy-piranha",
+          "source": {
+            "macro": "Pipe",
+            "height": "Infinity",
+            "piranha": true,
+            "x": 40,
+            "y": 24
+          },
+          "sourcePath": {
+            "area": 1,
+            "section": 0,
+            "part": "before",
+            "record": "r002"
+          },
+          "x": 80,
+          "y": 160
+        },
+        {
+          "id": "r004-0-0",
+          "kind": "enemy-beetle",
+          "source": {
+            "thing": "Beetle",
+            "x": 88,
+            "y": 8.5
+          },
+          "sourcePath": {
+            "area": 1,
+            "section": 0,
+            "part": "before",
+            "record": "r004"
+          },
+          "x": 176,
+          "y": 191
+        },
+        {
+          "id": "r004-1-0",
+          "kind": "enemy-beetle",
+          "source": {
+            "thing": "Beetle",
+            "x": 104,
+            "y": 8.5
+          },
+          "sourcePath": {
+            "area": 1,
+            "section": 0,
+            "part": "before",
+            "record": "r004"
+          },
+          "x": 208,
+          "y": 191
+        },
+        {
+          "id": "r005-transport",
+          "kind": "source-transport-not-simulated",
+          "source": {
+            "height": "Infinity",
+            "piranha": true,
+            "transport": 1,
+            "x": 120,
+            "y": 16,
+            "thing": "PipeVertical",
+            "width": 16
+          },
+          "sourcePath": {
+            "area": 1,
+            "section": 0,
+            "part": "before",
+            "record": "r005"
+          },
+          "x": 240,
+          "y": 176
+        },
+        {
+          "id": "r005-plant",
+          "kind": "enemy-piranha",
+          "source": {
+            "macro": "Pipe",
+            "height": "Infinity",
+            "piranha": true,
+            "transport": 1,
+            "x": 120,
+            "y": 16
+          },
+          "sourcePath": {
+            "area": 1,
+            "section": 0,
+            "part": "before",
+            "record": "r005"
+          },
+          "x": 240,
+          "y": 176
+        },
+        {
+          "id": "r007",
+          "kind": "enemy-koopa",
+          "source": {
+            "thing": "Koopa",
+            "jumping": true,
+            "x": 176,
+            "y": 32
+          },
+          "sourcePath": {
+            "area": 1,
+            "section": 0,
+            "part": "before",
+            "record": "r007"
+          },
+          "x": 352,
+          "y": 144
+        },
+        {
+          "id": "r008",
+          "kind": "enemy-koopa",
+          "source": {
+            "thing": "Koopa",
+            "jumping": true,
+            "x": 192,
+            "y": 24
+          },
+          "sourcePath": {
+            "area": 1,
+            "section": 0,
+            "part": "before",
+            "record": "r008"
+          },
+          "x": 384,
+          "y": 160
+        },
+        {
+          "id": "r009-plant",
+          "kind": "enemy-piranha",
+          "source": {
+            "macro": "Pipe",
+            "height": "Infinity",
+            "piranha": true,
+            "x": 200,
+            "y": 24
+          },
+          "sourcePath": {
+            "area": 1,
+            "section": 0,
+            "part": "before",
+            "record": "r009"
+          },
+          "x": 400,
+          "y": 160
+        },
+        {
+          "id": "r010",
+          "kind": "lava-volume",
+          "source": {
+            "macro": "Water",
+            "width": 24,
+            "x": 216,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 1,
+            "section": 0,
+            "part": "before",
+            "record": "r010"
+          },
+          "x": 432,
+          "y": 208
+        },
+        {
+          "id": "r012",
+          "kind": "hidden-block",
+          "source": {
+            "thing": "Block",
+            "hidden": true,
+            "x": 264,
+            "y": 32
+          },
+          "sourcePath": {
+            "area": 1,
+            "section": 0,
+            "part": "before",
+            "record": "r012"
+          },
+          "x": 528,
+          "y": 144
+        },
+        {
+          "id": "r014-transport",
+          "kind": "source-transport-not-simulated",
+          "source": {
+            "height": 24,
+            "transport": 3,
+            "x": 280,
+            "y": 56,
+            "thing": "PipeVertical",
+            "width": 16
+          },
+          "sourcePath": {
+            "area": 1,
+            "section": 0,
+            "part": "before",
+            "record": "r014"
+          },
+          "x": 560,
+          "y": 96
+        },
+        {
+          "id": "r015",
+          "kind": "enemy-koopa",
+          "source": {
+            "thing": "Koopa",
+            "jumping": true,
+            "x": 304,
+            "y": 28
+          },
+          "sourcePath": {
+            "area": 1,
+            "section": 0,
+            "part": "before",
+            "record": "r015"
+          },
+          "x": 608,
+          "y": 152
+        },
+        {
+          "id": "r016",
+          "kind": "enemy-koopa",
+          "source": {
+            "thing": "Koopa",
+            "jumping": true,
+            "x": 320,
+            "y": 36
+          },
+          "sourcePath": {
+            "area": 1,
+            "section": 0,
+            "part": "before",
+            "record": "r016"
+          },
+          "x": 640,
+          "y": 136
+        },
+        {
+          "id": "section-mode",
+          "kind": "conditional-section-runtime",
+          "source": {
+            "x": 0,
+            "y": 88
+          },
+          "sourcePath": {
+            "area": 1,
+            "section": 0,
+            "part": "before",
+            "record": "section"
+          },
+          "x": 0,
+          "y": 32
+        }
+      ],
+      "semantics": [
+        {
+          "id": "r000",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 328,
+            "x": 0,
+            "y": 88
+          },
+          "referenceRect": {
+            "x": 0,
+            "y": 32,
+            "w": 656,
+            "h": 16
+          }
+        },
+        {
+          "id": "r001",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 40,
+            "x": 0,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 0,
+            "y": 208,
+            "w": 80,
+            "h": 32
+          }
+        },
+        {
+          "id": "r002",
+          "kind": "PipeVertical",
+          "source": {
+            "height": "Infinity",
+            "piranha": true,
+            "x": 40,
+            "y": 24,
+            "thing": "PipeVertical",
+            "width": 16
+          },
+          "referenceRect": {
+            "x": 80,
+            "y": 160,
+            "w": 32,
+            "h": 80
+          }
+        },
+        {
+          "id": "r003",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 64,
+            "x": 56,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 112,
+            "y": 208,
+            "w": 128,
+            "h": 32
+          }
+        },
+        {
+          "id": "r005",
+          "kind": "PipeVertical",
+          "source": {
+            "height": "Infinity",
+            "piranha": true,
+            "transport": 1,
+            "x": 120,
+            "y": 16,
+            "thing": "PipeVertical",
+            "width": 16
+          },
+          "referenceRect": {
+            "x": 240,
+            "y": 176,
+            "w": 32,
+            "h": 64
+          }
+        },
+        {
+          "id": "r006",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 64,
+            "x": 136,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 272,
+            "y": 208,
+            "w": 128,
+            "h": 32
+          }
+        },
+        {
+          "id": "r009",
+          "kind": "PipeVertical",
+          "source": {
+            "height": "Infinity",
+            "piranha": true,
+            "x": 200,
+            "y": 24,
+            "thing": "PipeVertical",
+            "width": 16
+          },
+          "referenceRect": {
+            "x": 400,
+            "y": 160,
+            "w": 32,
+            "h": 80
+          }
+        },
+        {
+          "id": "r011",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 88,
+            "x": 240,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 480,
+            "y": 208,
+            "w": 176,
+            "h": 32
+          }
+        },
+        {
+          "id": "r013",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 16,
+            "x": 280,
+            "y": 32
+          },
+          "referenceRect": {
+            "x": 560,
+            "y": 144,
+            "w": 32,
+            "h": 16
+          }
+        },
+        {
+          "id": "r014",
+          "kind": "PipeVertical",
+          "source": {
+            "height": 24,
+            "transport": 3,
+            "x": 280,
+            "y": 56,
+            "thing": "PipeVertical",
+            "width": 16
+          },
+          "referenceRect": {
+            "x": 560,
+            "y": 96,
+            "w": 32,
+            "h": 48
+          }
+        }
+      ],
+      "sourceRecordCount": 17
+    },
+    {
+      "roomId": "area-1-section-0-stretch",
+      "label": "区域 2 / 段 1 / stretch",
+      "setting": "Castle",
+      "origin": {
+        "area": 1,
+        "section": 0,
+        "part": "stretch"
+      },
+      "declaredWidth": 8,
+      "underwater": false,
+      "inspectionOnly": true,
+      "previewSupported": true,
+      "map": {
+        "id": "classic-8-4-area-1-section-0-stretch",
+        "title": "8-4 · 区域 2 / 段 1 / stretch",
+        "tileSize": 16,
+        "width": 256,
+        "height": 240,
+        "provenance": {
+          "kind": "transcribed",
+          "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+          "review": "pending",
+          "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+        },
+        "geometry": [
+          {
+            "id": "r000",
+            "x": 0,
+            "y": 208,
+            "w": 16,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r001",
+            "x": 0,
+            "y": 32,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          }
+        ],
+        "objects": [
+          {
+            "id": "inspection-start",
+            "kind": "spawn",
+            "x": 24,
+            "y": 24,
+            "w": 12,
+            "h": 24
+          }
+        ]
+      },
+      "markers": [
+        {
+          "id": "section-mode",
+          "kind": "conditional-section-runtime",
+          "source": {
+            "x": 0,
+            "y": 88
+          },
+          "sourcePath": {
+            "area": 1,
+            "section": 0,
+            "part": "stretch",
+            "record": "section"
+          },
+          "x": 0,
+          "y": 32
+        }
+      ],
+      "semantics": [
+        {
+          "id": "r000",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "x": 0,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 0,
+            "y": 208,
+            "w": 16,
+            "h": 32
+          }
+        },
+        {
+          "id": "r001",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 0,
+            "y": 88
+          },
+          "referenceRect": {
+            "x": 0,
+            "y": 32,
+            "w": 16,
+            "h": 16
+          }
+        }
+      ],
+      "sourceRecordCount": 2
+    },
+    {
+      "roomId": "area-1-section-0-after",
+      "label": "区域 2 / 段 1 / after",
+      "setting": "Castle",
+      "origin": {
+        "area": 1,
+        "section": 0,
+        "part": "after"
+      },
+      "declaredWidth": 16,
+      "underwater": false,
+      "inspectionOnly": true,
+      "previewSupported": true,
+      "map": {
+        "id": "classic-8-4-area-1-section-0-after",
+        "title": "8-4 · 区域 2 / 段 1 / after",
+        "tileSize": 16,
+        "width": 256,
+        "height": 240,
+        "provenance": {
+          "kind": "transcribed",
+          "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+          "review": "pending",
+          "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+        },
+        "geometry": [
+          {
+            "id": "r000",
+            "x": 0,
+            "y": 176,
+            "w": 32,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r001",
+            "x": 0,
+            "y": 32,
+            "w": 32,
+            "h": 16,
+            "collision": "solid"
+          }
+        ],
+        "objects": [
+          {
+            "id": "inspection-start",
+            "kind": "spawn",
+            "x": 24,
+            "y": 152,
+            "w": 12,
+            "h": 24
+          }
+        ]
+      },
+      "markers": [
+        {
+          "id": "r000-plant",
+          "kind": "enemy-piranha",
+          "source": {
+            "macro": "Pipe",
+            "height": "Infinity",
+            "piranha": true,
+            "x": 0,
+            "y": 16
+          },
+          "sourcePath": {
+            "area": 1,
+            "section": 0,
+            "part": "after",
+            "record": "r000"
+          },
+          "x": 0,
+          "y": 176
+        },
+        {
+          "id": "r002",
+          "kind": "conditional-section",
+          "source": {
+            "macro": "Section",
+            "x": 16,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 1,
+            "section": 0,
+            "part": "after",
+            "record": "r002"
+          },
+          "x": 32,
+          "y": 208
+        },
+        {
+          "id": "section-mode",
+          "kind": "conditional-section-runtime",
+          "source": {
+            "x": 0,
+            "y": 88
+          },
+          "sourcePath": {
+            "area": 1,
+            "section": 0,
+            "part": "after",
+            "record": "section"
+          },
+          "x": 0,
+          "y": 32
+        }
+      ],
+      "semantics": [
+        {
+          "id": "r000",
+          "kind": "PipeVertical",
+          "source": {
+            "height": "Infinity",
+            "piranha": true,
+            "x": 0,
+            "y": 16,
+            "thing": "PipeVertical",
+            "width": 16
+          },
+          "referenceRect": {
+            "x": 0,
+            "y": 176,
+            "w": 32,
+            "h": 64
+          }
+        },
+        {
+          "id": "r001",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 16,
+            "x": 0,
+            "y": 88
+          },
+          "referenceRect": {
+            "x": 0,
+            "y": 32,
+            "w": 32,
+            "h": 16
+          }
+        }
+      ],
+      "sourceRecordCount": 3
+    },
+    {
+      "roomId": "area-2",
+      "label": "区域 3",
+      "setting": "Castle",
+      "origin": {
+        "area": 2,
+        "part": "base"
+      },
+      "declaredWidth": null,
+      "underwater": false,
+      "inspectionOnly": true,
+      "previewSupported": true,
+      "map": {
+        "id": "classic-8-4-area-2",
+        "title": "8-4 · 区域 3",
+        "tileSize": 16,
+        "width": 256,
+        "height": 240,
+        "provenance": {
+          "kind": "transcribed",
+          "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+          "review": "pending",
+          "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+        },
+        "geometry": [
+          {
+            "id": "r000",
+            "x": 0,
+            "y": 176,
+            "w": 32,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r001",
+            "x": 0,
+            "y": 32,
+            "w": 32,
+            "h": 16,
+            "collision": "solid"
+          }
+        ],
+        "objects": [
+          {
+            "id": "inspection-start",
+            "kind": "spawn",
+            "x": 24,
+            "y": 152,
+            "w": 12,
+            "h": 24
+          }
+        ]
+      },
+      "markers": [
+        {
+          "id": "r000-plant",
+          "kind": "enemy-piranha",
+          "source": {
+            "macro": "Pipe",
+            "height": "Infinity",
+            "piranha": true,
+            "entrance": 3,
+            "x": 0,
+            "y": 16
+          },
+          "sourcePath": {
+            "area": 2,
+            "part": "base",
+            "record": "r000"
+          },
+          "x": 0,
+          "y": 176
+        },
+        {
+          "id": "r002",
+          "kind": "conditional-section",
+          "source": {
+            "macro": "Section",
+            "x": 16,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 2,
+            "part": "base",
+            "record": "r002"
+          },
+          "x": 32,
+          "y": 208
+        },
+        {
+          "id": "section-mode",
+          "kind": "conditional-section-runtime",
+          "source": {
+            "x": 0,
+            "y": 88
+          },
+          "sourcePath": {
+            "area": 2,
+            "part": "base",
+            "record": "section"
+          },
+          "x": 0,
+          "y": 32
+        }
+      ],
+      "semantics": [
+        {
+          "id": "r000",
+          "kind": "PipeVertical",
+          "source": {
+            "height": "Infinity",
+            "piranha": true,
+            "entrance": 3,
+            "x": 0,
+            "y": 16,
+            "thing": "PipeVertical",
+            "width": 16
+          },
+          "referenceRect": {
+            "x": 0,
+            "y": 176,
+            "w": 32,
+            "h": 64
+          }
+        },
+        {
+          "id": "r001",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 16,
+            "x": 0,
+            "y": 88
+          },
+          "referenceRect": {
+            "x": 0,
+            "y": 32,
+            "w": 32,
+            "h": 16
+          }
+        }
+      ],
+      "sourceRecordCount": 3
+    },
+    {
+      "roomId": "area-2-section-0-before",
+      "label": "区域 3 / 段 1 / before",
+      "setting": "Castle",
+      "origin": {
+        "area": 2,
+        "section": 0,
+        "part": "before"
+      },
+      "declaredWidth": 264,
+      "underwater": false,
+      "inspectionOnly": true,
+      "previewSupported": true,
+      "map": {
+        "id": "classic-8-4-area-2-section-0-before",
+        "title": "8-4 · 区域 3 / 段 1 / before",
+        "tileSize": 16,
+        "width": 528,
+        "height": 240,
+        "provenance": {
+          "kind": "transcribed",
+          "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+          "review": "pending",
+          "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+        },
+        "geometry": [
+          {
+            "id": "r000",
+            "x": 0,
+            "y": 32,
+            "w": 528,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r001",
+            "x": 0,
+            "y": 208,
+            "w": 16,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r002",
+            "x": 16,
+            "y": 160,
+            "w": 96,
+            "h": 80,
+            "collision": "solid"
+          },
+          {
+            "id": "r003",
+            "x": 112,
+            "y": 128,
+            "w": 32,
+            "h": 112,
+            "collision": "solid"
+          },
+          {
+            "id": "r005",
+            "x": 144,
+            "y": 160,
+            "w": 96,
+            "h": 80,
+            "collision": "solid"
+          },
+          {
+            "id": "r006",
+            "x": 240,
+            "y": 112,
+            "w": 32,
+            "h": 128,
+            "collision": "solid"
+          },
+          {
+            "id": "r007",
+            "x": 272,
+            "y": 160,
+            "w": 96,
+            "h": 80,
+            "collision": "solid"
+          },
+          {
+            "id": "r009",
+            "x": 432,
+            "y": 160,
+            "w": 64,
+            "h": 80,
+            "collision": "solid"
+          },
+          {
+            "id": "r010",
+            "x": 496,
+            "y": 128,
+            "w": 32,
+            "h": 112,
+            "collision": "solid"
+          }
+        ],
+        "objects": [
+          {
+            "id": "inspection-start",
+            "kind": "spawn",
+            "x": 24,
+            "y": 136,
+            "w": 12,
+            "h": 24
+          }
+        ]
+      },
+      "markers": [
+        {
+          "id": "r003-plant",
+          "kind": "enemy-piranha",
+          "source": {
+            "macro": "Pipe",
+            "height": "Infinity",
+            "piranha": true,
+            "x": 56,
+            "y": 40
+          },
+          "sourcePath": {
+            "area": 2,
+            "section": 0,
+            "part": "before",
+            "record": "r003"
+          },
+          "x": 112,
+          "y": 128
+        },
+        {
+          "id": "r004",
+          "kind": "spawn-zone-CheepsStart",
+          "source": {
+            "macro": "CheepsStart",
+            "x": 72,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 2,
+            "section": 0,
+            "part": "before",
+            "record": "r004"
+          },
+          "x": 144,
+          "y": 208
+        },
+        {
+          "id": "r006-transport",
+          "kind": "source-transport-not-simulated",
+          "source": {
+            "height": "Infinity",
+            "piranha": true,
+            "transport": 1,
+            "x": 120,
+            "y": 48,
+            "thing": "PipeVertical",
+            "width": 16
+          },
+          "sourcePath": {
+            "area": 2,
+            "section": 0,
+            "part": "before",
+            "record": "r006"
+          },
+          "x": 240,
+          "y": 112
+        },
+        {
+          "id": "r006-plant",
+          "kind": "enemy-piranha",
+          "source": {
+            "macro": "Pipe",
+            "height": "Infinity",
+            "piranha": true,
+            "transport": 1,
+            "x": 120,
+            "y": 48
+          },
+          "sourcePath": {
+            "area": 2,
+            "section": 0,
+            "part": "before",
+            "record": "r006"
+          },
+          "x": 240,
+          "y": 112
+        },
+        {
+          "id": "r008",
+          "kind": "lava-volume",
+          "source": {
+            "macro": "Water",
+            "width": 32,
+            "x": 184,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 2,
+            "section": 0,
+            "part": "before",
+            "record": "r008"
+          },
+          "x": 368,
+          "y": 208
+        },
+        {
+          "id": "r010-transport",
+          "kind": "source-transport-not-simulated",
+          "source": {
+            "height": "Infinity",
+            "piranha": true,
+            "transport": 4,
+            "x": 248,
+            "y": 40,
+            "thing": "PipeVertical",
+            "width": 16
+          },
+          "sourcePath": {
+            "area": 2,
+            "section": 0,
+            "part": "before",
+            "record": "r010"
+          },
+          "x": 496,
+          "y": 128
+        },
+        {
+          "id": "r010-plant",
+          "kind": "enemy-piranha",
+          "source": {
+            "macro": "Pipe",
+            "height": "Infinity",
+            "piranha": true,
+            "transport": 4,
+            "x": 248,
+            "y": 40
+          },
+          "sourcePath": {
+            "area": 2,
+            "section": 0,
+            "part": "before",
+            "record": "r010"
+          },
+          "x": 496,
+          "y": 128
+        },
+        {
+          "id": "r011",
+          "kind": "spawn-zone-CheepsStop",
+          "source": {
+            "macro": "CheepsStop",
+            "x": 264,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 2,
+            "section": 0,
+            "part": "before",
+            "record": "r011"
+          },
+          "x": 528,
+          "y": 208
+        },
+        {
+          "id": "section-mode",
+          "kind": "conditional-section-runtime",
+          "source": {
+            "x": 0,
+            "y": 88
+          },
+          "sourcePath": {
+            "area": 2,
+            "section": 0,
+            "part": "before",
+            "record": "section"
+          },
+          "x": 0,
+          "y": 32
+        }
+      ],
+      "semantics": [
+        {
+          "id": "r000",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 264,
+            "x": 0,
+            "y": 88
+          },
+          "referenceRect": {
+            "x": 0,
+            "y": 32,
+            "w": 528,
+            "h": 16
+          }
+        },
+        {
+          "id": "r001",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "x": 0,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 0,
+            "y": 208,
+            "w": 16,
+            "h": 32
+          }
+        },
+        {
+          "id": "r002",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 48,
+            "x": 8,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 16,
+            "y": 160,
+            "w": 96,
+            "h": 80
+          }
+        },
+        {
+          "id": "r003",
+          "kind": "PipeVertical",
+          "source": {
+            "height": "Infinity",
+            "piranha": true,
+            "x": 56,
+            "y": 40,
+            "thing": "PipeVertical",
+            "width": 16
+          },
+          "referenceRect": {
+            "x": 112,
+            "y": 128,
+            "w": 32,
+            "h": 112
+          }
+        },
+        {
+          "id": "r005",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 48,
+            "x": 72,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 144,
+            "y": 160,
+            "w": 96,
+            "h": 80
+          }
+        },
+        {
+          "id": "r006",
+          "kind": "PipeVertical",
+          "source": {
+            "height": "Infinity",
+            "piranha": true,
+            "transport": 1,
+            "x": 120,
+            "y": 48,
+            "thing": "PipeVertical",
+            "width": 16
+          },
+          "referenceRect": {
+            "x": 240,
+            "y": 112,
+            "w": 32,
+            "h": 128
+          }
+        },
+        {
+          "id": "r007",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 48,
+            "x": 136,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 272,
+            "y": 160,
+            "w": 96,
+            "h": 80
+          }
+        },
+        {
+          "id": "r009",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 32,
+            "x": 216,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 432,
+            "y": 160,
+            "w": 64,
+            "h": 80
+          }
+        },
+        {
+          "id": "r010",
+          "kind": "PipeVertical",
+          "source": {
+            "height": "Infinity",
+            "piranha": true,
+            "transport": 4,
+            "x": 248,
+            "y": 40,
+            "thing": "PipeVertical",
+            "width": 16
+          },
+          "referenceRect": {
+            "x": 496,
+            "y": 128,
+            "w": 32,
+            "h": 112
+          }
+        }
+      ],
+      "sourceRecordCount": 12
+    },
+    {
+      "roomId": "area-2-section-0-stretch",
+      "label": "区域 3 / 段 1 / stretch",
+      "setting": "Castle",
+      "origin": {
+        "area": 2,
+        "section": 0,
+        "part": "stretch"
+      },
+      "declaredWidth": 8,
+      "underwater": false,
+      "inspectionOnly": true,
+      "previewSupported": true,
+      "map": {
+        "id": "classic-8-4-area-2-section-0-stretch",
+        "title": "8-4 · 区域 3 / 段 1 / stretch",
+        "tileSize": 16,
+        "width": 256,
+        "height": 240,
+        "provenance": {
+          "kind": "transcribed",
+          "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+          "review": "pending",
+          "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+        },
+        "geometry": [
+          {
+            "id": "r000",
+            "x": 0,
+            "y": 160,
+            "w": 16,
+            "h": 80,
+            "collision": "solid"
+          },
+          {
+            "id": "r001",
+            "x": 0,
+            "y": 32,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          }
+        ],
+        "objects": [
+          {
+            "id": "inspection-start",
+            "kind": "spawn",
+            "x": 24,
+            "y": 24,
+            "w": 12,
+            "h": 24
+          }
+        ]
+      },
+      "markers": [
+        {
+          "id": "section-mode",
+          "kind": "conditional-section-runtime",
+          "source": {
+            "x": 0,
+            "y": 88
+          },
+          "sourcePath": {
+            "area": 2,
+            "section": 0,
+            "part": "stretch",
+            "record": "section"
+          },
+          "x": 0,
+          "y": 32
+        }
+      ],
+      "semantics": [
+        {
+          "id": "r000",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "x": 0,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 0,
+            "y": 160,
+            "w": 16,
+            "h": 80
+          }
+        },
+        {
+          "id": "r001",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 0,
+            "y": 88
+          },
+          "referenceRect": {
+            "x": 0,
+            "y": 32,
+            "w": 16,
+            "h": 16
+          }
+        }
+      ],
+      "sourceRecordCount": 2
+    },
+    {
+      "roomId": "area-2-section-0-after",
+      "label": "区域 3 / 段 1 / after",
+      "setting": "Castle",
+      "origin": {
+        "area": 2,
+        "section": 0,
+        "part": "after"
+      },
+      "declaredWidth": 40,
+      "underwater": false,
+      "inspectionOnly": true,
+      "previewSupported": true,
+      "map": {
+        "id": "classic-8-4-area-2-section-0-after",
+        "title": "8-4 · 区域 3 / 段 1 / after",
+        "tileSize": 16,
+        "width": 256,
+        "height": 240,
+        "provenance": {
+          "kind": "transcribed",
+          "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+          "review": "pending",
+          "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+        },
+        "geometry": [
+          {
+            "id": "r000",
+            "x": 0,
+            "y": 208,
+            "w": 48,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r001",
+            "x": 0,
+            "y": 32,
+            "w": 80,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r002",
+            "x": 48,
+            "y": 176,
+            "w": 32,
+            "h": 64,
+            "collision": "solid"
+          }
+        ],
+        "objects": [
+          {
+            "id": "inspection-start",
+            "kind": "spawn",
+            "x": 24,
+            "y": 184,
+            "w": 12,
+            "h": 24
+          }
+        ]
+      },
+      "markers": [
+        {
+          "id": "r002-plant",
+          "kind": "enemy-piranha",
+          "source": {
+            "macro": "Pipe",
+            "height": "Infinity",
+            "piranha": true,
+            "x": 24,
+            "y": 16
+          },
+          "sourcePath": {
+            "area": 2,
+            "section": 0,
+            "part": "after",
+            "record": "r002"
+          },
+          "x": 48,
+          "y": 176
+        },
+        {
+          "id": "r003",
+          "kind": "conditional-section",
+          "source": {
+            "macro": "Section",
+            "x": 40,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 2,
+            "section": 0,
+            "part": "after",
+            "record": "r003"
+          },
+          "x": 80,
+          "y": 208
+        },
+        {
+          "id": "section-mode",
+          "kind": "conditional-section-runtime",
+          "source": {
+            "x": 0,
+            "y": 88
+          },
+          "sourcePath": {
+            "area": 2,
+            "section": 0,
+            "part": "after",
+            "record": "section"
+          },
+          "x": 0,
+          "y": 32
+        }
+      ],
+      "semantics": [
+        {
+          "id": "r000",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 24,
+            "x": 0,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 0,
+            "y": 208,
+            "w": 48,
+            "h": 32
+          }
+        },
+        {
+          "id": "r001",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 40,
+            "x": 0,
+            "y": 88
+          },
+          "referenceRect": {
+            "x": 0,
+            "y": 32,
+            "w": 80,
+            "h": 16
+          }
+        },
+        {
+          "id": "r002",
+          "kind": "PipeVertical",
+          "source": {
+            "height": "Infinity",
+            "piranha": true,
+            "x": 24,
+            "y": 16,
+            "thing": "PipeVertical",
+            "width": 16
+          },
+          "referenceRect": {
+            "x": 48,
+            "y": 176,
+            "w": 32,
+            "h": 64
+          }
+        }
+      ],
+      "sourceRecordCount": 4
+    },
+    {
+      "roomId": "area-3",
+      "label": "区域 4",
+      "setting": "Underwater Castle",
+      "origin": {
+        "area": 3,
+        "part": "base"
+      },
+      "declaredWidth": null,
+      "underwater": true,
+      "inspectionOnly": true,
+      "previewSupported": false,
+      "map": {
+        "id": "classic-8-4-area-3",
+        "title": "8-4 · 区域 4",
+        "tileSize": 16,
+        "width": 1152,
+        "height": 240,
+        "provenance": {
+          "kind": "transcribed",
+          "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+          "review": "pending",
+          "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+        },
+        "geometry": [
+          {
+            "id": "r000",
+            "x": 0,
+            "y": 32,
+            "w": 32,
+            "h": 208,
+            "collision": "solid"
+          },
+          {
+            "id": "r001",
+            "x": 32,
+            "y": 208,
+            "w": 16,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r002",
+            "x": 48,
+            "y": 176,
+            "w": 32,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r003",
+            "x": 80,
+            "y": 208,
+            "w": 1072,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r004",
+            "x": 96,
+            "y": 160,
+            "w": 80,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r005",
+            "x": 96,
+            "y": 48,
+            "w": 80,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r006",
+            "x": 96,
+            "y": 32,
+            "w": 1056,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r007",
+            "x": 176,
+            "y": 144,
+            "w": 112,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r008",
+            "x": 176,
+            "y": 48,
+            "w": 112,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r012",
+            "x": 624,
+            "y": 160,
+            "w": 48,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r013",
+            "x": 624,
+            "y": 48,
+            "w": 48,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r019",
+            "x": 1072,
+            "y": 144,
+            "w": 80,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r020",
+            "x": 1072,
+            "y": 48,
+            "w": 80,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r021",
+            "x": 1088,
+            "y": 112,
+            "w": 39,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r022",
+            "x": 1104,
+            "y": 96,
+            "w": 48,
+            "h": 48,
+            "collision": "solid"
+          }
+        ],
+        "objects": [
+          {
+            "id": "inspection-start",
+            "kind": "spawn",
+            "x": 24,
+            "y": 8,
+            "w": 12,
+            "h": 24
+          }
+        ]
+      },
+      "markers": [
+        {
+          "id": "r009",
+          "kind": "hidden-block",
+          "source": {
+            "thing": "CastleBlock",
+            "fireballs": 6,
+            "hidden": true,
+            "x": 160,
+            "y": 46
+          },
+          "sourcePath": {
+            "area": 3,
+            "part": "base",
+            "record": "r009"
+          },
+          "x": 320,
+          "y": 116
+        },
+        {
+          "id": "r010",
+          "kind": "enemy-blooper",
+          "source": {
+            "thing": "Blooper",
+            "x": 224,
+            "y": 16
+          },
+          "sourcePath": {
+            "area": 3,
+            "part": "base",
+            "record": "r010"
+          },
+          "x": 448,
+          "y": 176
+        },
+        {
+          "id": "r011",
+          "kind": "hidden-block",
+          "source": {
+            "thing": "CastleBlock",
+            "fireballs": 6,
+            "hidden": true,
+            "x": 248,
+            "y": 22
+          },
+          "sourcePath": {
+            "area": 3,
+            "part": "base",
+            "record": "r011"
+          },
+          "x": 496,
+          "y": 164
+        },
+        {
+          "id": "r014",
+          "kind": "hidden-block",
+          "source": {
+            "thing": "CastleBlock",
+            "fireballs": 6,
+            "hidden": true,
+            "x": 320,
+            "y": 54
+          },
+          "sourcePath": {
+            "area": 3,
+            "part": "base",
+            "record": "r014"
+          },
+          "x": 640,
+          "y": 100
+        },
+        {
+          "id": "r015",
+          "kind": "enemy-blooper",
+          "source": {
+            "thing": "Blooper",
+            "x": 408,
+            "y": 24
+          },
+          "sourcePath": {
+            "area": 3,
+            "part": "base",
+            "record": "r015"
+          },
+          "x": 816,
+          "y": 160
+        },
+        {
+          "id": "r016",
+          "kind": "enemy-blooper",
+          "source": {
+            "thing": "Blooper",
+            "x": 424,
+            "y": 56
+          },
+          "sourcePath": {
+            "area": 3,
+            "part": "base",
+            "record": "r016"
+          },
+          "x": 848,
+          "y": 96
+        },
+        {
+          "id": "r017",
+          "kind": "hidden-block",
+          "source": {
+            "thing": "CastleBlock",
+            "fireballs": 6,
+            "hidden": true,
+            "x": 446,
+            "y": 38
+          },
+          "sourcePath": {
+            "area": 3,
+            "part": "base",
+            "record": "r017"
+          },
+          "x": 892,
+          "y": 132
+        },
+        {
+          "id": "r018",
+          "kind": "hidden-block",
+          "source": {
+            "thing": "CastleBlock",
+            "fireballs": 6,
+            "hidden": true,
+            "x": 512,
+            "y": 44
+          },
+          "sourcePath": {
+            "area": 3,
+            "part": "base",
+            "record": "r018"
+          },
+          "x": 1024,
+          "y": 120
+        },
+        {
+          "id": "r021-transport",
+          "kind": "source-transport-not-simulated",
+          "source": {
+            "thing": "PipeHorizontal",
+            "transport": 5,
+            "x": 544,
+            "y": 48
+          },
+          "sourcePath": {
+            "area": 3,
+            "part": "base",
+            "record": "r021"
+          },
+          "x": 1088,
+          "y": 112
+        },
+        {
+          "id": "environment",
+          "kind": "underwater-physics",
+          "source": {
+            "x": 0,
+            "y": 88
+          },
+          "sourcePath": {
+            "area": 3,
+            "part": "base",
+            "record": "environment"
+          },
+          "x": 0,
+          "y": 32
+        }
+      ],
+      "semantics": [
+        {
+          "id": "r000",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 16,
+            "x": 0,
+            "y": 88
+          },
+          "referenceRect": {
+            "x": 0,
+            "y": 32,
+            "w": 32,
+            "h": 208
+          }
+        },
+        {
+          "id": "r001",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "x": 16,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 32,
+            "y": 208,
+            "w": 16,
+            "h": 32
+          }
+        },
+        {
+          "id": "r002",
+          "kind": "PipeVertical",
+          "source": {
+            "height": "Infinity",
+            "entrance": 4,
+            "x": 24,
+            "y": 16,
+            "thing": "PipeVertical",
+            "width": 16
+          },
+          "referenceRect": {
+            "x": 48,
+            "y": 176,
+            "w": 32,
+            "h": 64
+          }
+        },
+        {
+          "id": "r003",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 536,
+            "x": 40,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 80,
+            "y": 208,
+            "w": 1072,
+            "h": 32
+          }
+        },
+        {
+          "id": "r004",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 40,
+            "height": 24,
+            "x": 48,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 96,
+            "y": 160,
+            "w": 80,
+            "h": 48
+          }
+        },
+        {
+          "id": "r005",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 40,
+            "height": 16,
+            "x": 48,
+            "y": 80
+          },
+          "referenceRect": {
+            "x": 96,
+            "y": 48,
+            "w": 80,
+            "h": 32
+          }
+        },
+        {
+          "id": "r006",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 528,
+            "x": 48,
+            "y": 88
+          },
+          "referenceRect": {
+            "x": 96,
+            "y": 32,
+            "w": 1056,
+            "h": 16
+          }
+        },
+        {
+          "id": "r007",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 56,
+            "height": 32,
+            "x": 88,
+            "y": 32
+          },
+          "referenceRect": {
+            "x": 176,
+            "y": 144,
+            "w": 112,
+            "h": 64
+          }
+        },
+        {
+          "id": "r008",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 56,
+            "height": 24,
+            "x": 88,
+            "y": 80
+          },
+          "referenceRect": {
+            "x": 176,
+            "y": 48,
+            "w": 112,
+            "h": 48
+          }
+        },
+        {
+          "id": "r012",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 24,
+            "height": 24,
+            "x": 312,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 624,
+            "y": 160,
+            "w": 48,
+            "h": 48
+          }
+        },
+        {
+          "id": "r013",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 24,
+            "height": 24,
+            "x": 312,
+            "y": 80
+          },
+          "referenceRect": {
+            "x": 624,
+            "y": 48,
+            "w": 48,
+            "h": 48
+          }
+        },
+        {
+          "id": "r019",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 40,
+            "height": 32,
+            "x": 536,
+            "y": 32
+          },
+          "referenceRect": {
+            "x": 1072,
+            "y": 144,
+            "w": 80,
+            "h": 64
+          }
+        },
+        {
+          "id": "r020",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 40,
+            "height": 24,
+            "x": 536,
+            "y": 80
+          },
+          "referenceRect": {
+            "x": 1072,
+            "y": 48,
+            "w": 80,
+            "h": 48
+          }
+        },
+        {
+          "id": "r021",
+          "kind": "PipeHorizontal",
+          "source": {
+            "thing": "PipeHorizontal",
+            "transport": 5,
+            "x": 544,
+            "y": 48
+          },
+          "referenceRect": {
+            "x": 1088,
+            "y": 112,
+            "w": 39,
+            "h": 32
+          }
+        },
+        {
+          "id": "r022",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 24,
+            "height": 24,
+            "x": 552,
+            "y": 56
+          },
+          "referenceRect": {
+            "x": 1104,
+            "y": 96,
+            "w": 48,
+            "h": 48
+          }
+        }
+      ],
+      "sourceRecordCount": 23
+    },
+    {
+      "roomId": "area-4",
+      "label": "区域 5",
+      "setting": "Castle",
+      "origin": {
+        "area": 4,
+        "part": "base"
+      },
+      "declaredWidth": null,
+      "underwater": false,
+      "inspectionOnly": true,
+      "previewSupported": true,
+      "map": {
+        "id": "classic-8-4-area-4",
+        "title": "8-4 · 区域 5",
+        "tileSize": 16,
+        "width": 976,
+        "height": 240,
+        "provenance": {
+          "kind": "transcribed",
+          "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+          "review": "pending",
+          "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+        },
+        "geometry": [
+          {
+            "id": "r000",
+            "x": 0,
+            "y": 176,
+            "w": 32,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r001",
+            "x": 0,
+            "y": 32,
+            "w": 464,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r002",
+            "x": 32,
+            "y": 208,
+            "w": 80,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r003",
+            "x": 112,
+            "y": 176,
+            "w": 32,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r004",
+            "x": 144,
+            "y": 208,
+            "w": 144,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r008",
+            "x": 368,
+            "y": 160,
+            "w": 96,
+            "h": 80,
+            "collision": "solid"
+          },
+          {
+            "id": "r009",
+            "x": 368,
+            "y": 48,
+            "w": 96,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r010-roof",
+            "x": 464,
+            "y": 32,
+            "w": 512,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r010-bridge",
+            "x": 464,
+            "y": 160,
+            "w": 208,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r010-floor",
+            "x": 672,
+            "y": 208,
+            "w": 304,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r010-step",
+            "x": 672,
+            "y": 144,
+            "w": 48,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r010-ceiling",
+            "x": 688,
+            "y": 48,
+            "w": 32,
+            "h": 48,
+            "collision": "solid"
+          }
+        ],
+        "objects": [
+          {
+            "id": "inspection-start",
+            "kind": "spawn",
+            "x": 24,
+            "y": 152,
+            "w": 12,
+            "h": 24
+          }
+        ]
+      },
+      "markers": [
+        {
+          "id": "r000-plant",
+          "kind": "enemy-piranha",
+          "source": {
+            "macro": "Pipe",
+            "height": "Infinity",
+            "piranha": true,
+            "entrance": 5,
+            "x": 0,
+            "y": 16
+          },
+          "sourcePath": {
+            "area": 4,
+            "part": "base",
+            "record": "r000"
+          },
+          "x": 0,
+          "y": 176
+        },
+        {
+          "id": "r003-transport",
+          "kind": "source-transport-not-simulated",
+          "source": {
+            "height": "Infinity",
+            "piranha": true,
+            "transport": 1,
+            "x": 56,
+            "y": 16,
+            "thing": "PipeVertical",
+            "width": 16
+          },
+          "sourcePath": {
+            "area": 4,
+            "part": "base",
+            "record": "r003"
+          },
+          "x": 112,
+          "y": 176
+        },
+        {
+          "id": "r003-plant",
+          "kind": "enemy-piranha",
+          "source": {
+            "macro": "Pipe",
+            "height": "Infinity",
+            "piranha": true,
+            "transport": 1,
+            "x": 56,
+            "y": 16
+          },
+          "sourcePath": {
+            "area": 4,
+            "part": "base",
+            "record": "r003"
+          },
+          "x": 112,
+          "y": 176
+        },
+        {
+          "id": "r005",
+          "kind": "enemy-hammerbro",
+          "source": {
+            "thing": "HammerBro",
+            "x": 112,
+            "y": 12
+          },
+          "sourcePath": {
+            "area": 4,
+            "part": "base",
+            "record": "r005"
+          },
+          "x": 224,
+          "y": 184
+        },
+        {
+          "id": "r006",
+          "kind": "lava-volume",
+          "source": {
+            "macro": "Water",
+            "width": 56,
+            "x": 128,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 4,
+            "part": "base",
+            "record": "r006"
+          },
+          "x": 256,
+          "y": 208
+        },
+        {
+          "id": "r007",
+          "kind": "enemy-podoboo",
+          "source": {
+            "thing": "Podoboo",
+            "x": 160,
+            "y": -32
+          },
+          "sourcePath": {
+            "area": 4,
+            "part": "base",
+            "record": "r007"
+          },
+          "x": 320,
+          "y": 272
+        },
+        {
+          "id": "r010-boss",
+          "kind": "enemy-bowser",
+          "source": {
+            "thing": "Bowser",
+            "x": 301,
+            "y": 42,
+            "throwing": true
+          },
+          "sourcePath": {
+            "area": 4,
+            "part": "base",
+            "record": "r010"
+          },
+          "x": 602,
+          "y": 124
+        },
+        {
+          "id": "r010-axe",
+          "kind": "bridge-axe-finish",
+          "source": {
+            "thing": "CastleAxe",
+            "x": 336,
+            "y": 40
+          },
+          "sourcePath": {
+            "area": 4,
+            "part": "base",
+            "record": "r010"
+          },
+          "x": 672,
+          "y": 128
+        },
+        {
+          "id": "r010",
+          "kind": "castle-finish",
+          "source": {
+            "macro": "EndInsideCastle",
+            "spawnType": "Bowser",
+            "throwing": true,
+            "npc": "Peach",
+            "transport": {
+              "map": "1-1"
+            },
+            "x": 232,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 4,
+            "part": "base",
+            "record": "r010"
+          },
+          "x": 464,
+          "y": 208
+        },
+        {
+          "id": "r010-transport",
+          "kind": "source-transport-not-simulated",
+          "source": {
+            "macro": "EndInsideCastle",
+            "spawnType": "Bowser",
+            "throwing": true,
+            "npc": "Peach",
+            "transport": {
+              "map": "1-1"
+            },
+            "x": 232,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 4,
+            "part": "base",
+            "record": "r010"
+          },
+          "x": 464,
+          "y": 208
+        }
+      ],
+      "semantics": [
+        {
+          "id": "r000",
+          "kind": "PipeVertical",
+          "source": {
+            "height": "Infinity",
+            "piranha": true,
+            "entrance": 5,
+            "x": 0,
+            "y": 16,
+            "thing": "PipeVertical",
+            "width": 16
+          },
+          "referenceRect": {
+            "x": 0,
+            "y": 176,
+            "w": 32,
+            "h": 64
+          }
+        },
+        {
+          "id": "r001",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 232,
+            "x": 0,
+            "y": 88
+          },
+          "referenceRect": {
+            "x": 0,
+            "y": 32,
+            "w": 464,
+            "h": 16
+          }
+        },
+        {
+          "id": "r002",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 40,
+            "x": 16,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 32,
+            "y": 208,
+            "w": 80,
+            "h": 32
+          }
+        },
+        {
+          "id": "r003",
+          "kind": "PipeVertical",
+          "source": {
+            "height": "Infinity",
+            "piranha": true,
+            "transport": 1,
+            "x": 56,
+            "y": 16,
+            "thing": "PipeVertical",
+            "width": 16
+          },
+          "referenceRect": {
+            "x": 112,
+            "y": 176,
+            "w": 32,
+            "h": 64
+          }
+        },
+        {
+          "id": "r004",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 72,
+            "x": 72,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 144,
+            "y": 208,
+            "w": 144,
+            "h": 32
+          }
+        },
+        {
+          "id": "r008",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 48,
+            "x": 184,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 368,
+            "y": 160,
+            "w": 96,
+            "h": 80
+          }
+        },
+        {
+          "id": "r009",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 48,
+            "height": 16,
+            "x": 184,
+            "y": 80
+          },
+          "referenceRect": {
+            "x": 368,
+            "y": 48,
+            "w": 96,
+            "h": 32
+          }
+        },
+        {
+          "id": "r010-roof",
+          "kind": "Stone",
+          "source": {
+            "x": 232,
+            "y": 88
+          },
+          "referenceRect": {
+            "x": 464,
+            "y": 32,
+            "w": 512,
+            "h": 16
+          }
+        },
+        {
+          "id": "r010-bridge",
+          "kind": "CastleBridge",
+          "source": {
+            "x": 232,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 464,
+            "y": 160,
+            "w": 208,
+            "h": 32
+          }
+        },
+        {
+          "id": "r010-floor",
+          "kind": "Floor",
+          "source": {
+            "x": 336
+          },
+          "referenceRect": {
+            "x": 672,
+            "y": 208,
+            "w": 304,
+            "h": 32
+          }
+        },
+        {
+          "id": "r010-step",
+          "kind": "Stone",
+          "source": {
+            "x": 336
+          },
+          "referenceRect": {
+            "x": 672,
+            "y": 144,
+            "w": 48,
+            "h": 64
+          }
+        },
+        {
+          "id": "r010-ceiling",
+          "kind": "Stone",
+          "source": {
+            "x": 344
+          },
+          "referenceRect": {
+            "x": 688,
+            "y": 48,
+            "w": 32,
+            "h": 48
+          }
+        }
+      ],
+      "sourceRecordCount": 11
+    }
+  ],
+  "topology": {
+    "locations": [
+      {
+        "area": 0,
+        "entry": "Castle"
+      },
+      {
+        "area": 0,
+        "entry": "PipeVertical"
+      },
+      {
+        "area": 1,
+        "entry": "PipeVertical"
+      },
+      {
+        "area": 2,
+        "entry": "PipeVertical"
+      },
+      {
+        "area": 3,
+        "xloc": 0,
+        "entry": "PipeVertical"
+      },
+      {
+        "area": 4,
+        "entry": "PipeVertical"
+      }
+    ],
+    "areas": [
+      {
+        "area": 0,
+        "setting": "Castle",
+        "underwater": false,
+        "exit": null,
+        "sections": [
+          {
+            "stretch": {
+              "width": 8,
+              "creation": [
+                {
+                  "macro": "Floor",
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "thing": "Stone",
+                  "x": 0,
+                  "y": 88
+                }
+              ]
+            },
+            "after": {
+              "width": 424,
+              "creation": [
+                {
+                  "macro": "Pipe",
+                  "height": "Infinity",
+                  "piranha": true,
+                  "transport": 1,
+                  "x": 0,
+                  "y": 16
+                },
+                {
+                  "thing": "Stone",
+                  "width": 424,
+                  "x": 0,
+                  "y": 88
+                },
+                {
+                  "macro": "Floor",
+                  "width": 72,
+                  "x": 16,
+                  "y": 0
+                },
+                {
+                  "macro": "Fill",
+                  "thing": "Goomba",
+                  "xnum": 3,
+                  "xwidth": 12,
+                  "x": 36,
+                  "y": 8
+                },
+                {
+                  "macro": "Floor",
+                  "width": 32,
+                  "x": 88,
+                  "y": 24
+                },
+                {
+                  "macro": "Water",
+                  "width": 136,
+                  "x": 120,
+                  "y": 0
+                },
+                {
+                  "thing": "Platform",
+                  "width": 16,
+                  "sliding": true,
+                  "begin": 140,
+                  "end": 232,
+                  "speed": 2,
+                  "x": 152,
+                  "y": 0
+                },
+                {
+                  "macro": "Floor",
+                  "width": 48,
+                  "x": 256,
+                  "y": 24
+                },
+                {
+                  "thing": "Stone",
+                  "width": 32,
+                  "x": 264,
+                  "y": 56
+                },
+                {
+                  "macro": "Pipe",
+                  "height": "Infinity",
+                  "piranha": true,
+                  "transport": 2,
+                  "x": 304,
+                  "y": 40
+                },
+                {
+                  "macro": "Floor",
+                  "width": 56,
+                  "x": 320,
+                  "y": 24
+                },
+                {
+                  "macro": "Pipe",
+                  "height": "Infinity",
+                  "piranha": true,
+                  "x": 376,
+                  "y": 48
+                },
+                {
+                  "macro": "Floor",
+                  "width": 32,
+                  "x": 392,
+                  "y": 24
+                },
+                {
+                  "macro": "Section",
+                  "x": 424,
+                  "y": 0
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "area": 1,
+        "setting": "Castle",
+        "underwater": false,
+        "exit": null,
+        "sections": [
+          {
+            "before": {
+              "width": 328,
+              "creation": [
+                {
+                  "thing": "Stone",
+                  "width": 328,
+                  "x": 0,
+                  "y": 88
+                },
+                {
+                  "macro": "Floor",
+                  "width": 40,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "macro": "Pipe",
+                  "height": "Infinity",
+                  "piranha": true,
+                  "x": 40,
+                  "y": 24
+                },
+                {
+                  "macro": "Floor",
+                  "width": 64,
+                  "x": 56,
+                  "y": 0
+                },
+                {
+                  "macro": "Fill",
+                  "thing": "Beetle",
+                  "xnum": 2,
+                  "xwidth": 16,
+                  "x": 88,
+                  "y": 8.5
+                },
+                {
+                  "macro": "Pipe",
+                  "height": "Infinity",
+                  "piranha": true,
+                  "transport": 1,
+                  "x": 120,
+                  "y": 16
+                },
+                {
+                  "macro": "Floor",
+                  "width": 64,
+                  "x": 136,
+                  "y": 0
+                },
+                {
+                  "thing": "Koopa",
+                  "jumping": true,
+                  "x": 176,
+                  "y": 32
+                },
+                {
+                  "thing": "Koopa",
+                  "jumping": true,
+                  "x": 192,
+                  "y": 24
+                },
+                {
+                  "macro": "Pipe",
+                  "height": "Infinity",
+                  "piranha": true,
+                  "x": 200,
+                  "y": 24
+                },
+                {
+                  "macro": "Water",
+                  "width": 24,
+                  "x": 216,
+                  "y": 0
+                },
+                {
+                  "macro": "Floor",
+                  "width": 88,
+                  "x": 240,
+                  "y": 0
+                },
+                {
+                  "thing": "Block",
+                  "hidden": true,
+                  "x": 264,
+                  "y": 32
+                },
+                {
+                  "thing": "Stone",
+                  "width": 16,
+                  "x": 280,
+                  "y": 32
+                },
+                {
+                  "macro": "Pipe",
+                  "height": 24,
+                  "transport": 3,
+                  "x": 280,
+                  "y": 32
+                },
+                {
+                  "thing": "Koopa",
+                  "jumping": true,
+                  "x": 304,
+                  "y": 28
+                },
+                {
+                  "thing": "Koopa",
+                  "jumping": true,
+                  "x": 320,
+                  "y": 36
+                }
+              ]
+            },
+            "stretch": {
+              "width": 8,
+              "creation": [
+                {
+                  "macro": "Floor",
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "thing": "Stone",
+                  "x": 0,
+                  "y": 88
+                }
+              ]
+            },
+            "after": {
+              "width": 16,
+              "creation": [
+                {
+                  "macro": "Pipe",
+                  "height": "Infinity",
+                  "piranha": true,
+                  "x": 0,
+                  "y": 16
+                },
+                {
+                  "thing": "Stone",
+                  "width": 16,
+                  "x": 0,
+                  "y": 88
+                },
+                {
+                  "macro": "Section",
+                  "x": 16,
+                  "y": 0
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "area": 2,
+        "setting": "Castle",
+        "underwater": false,
+        "exit": null,
+        "sections": [
+          {
+            "before": {
+              "width": 264,
+              "creation": [
+                {
+                  "thing": "Stone",
+                  "width": 264,
+                  "x": 0,
+                  "y": 88
+                },
+                {
+                  "macro": "Floor",
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "macro": "Floor",
+                  "width": 48,
+                  "x": 8,
+                  "y": 24
+                },
+                {
+                  "macro": "Pipe",
+                  "height": "Infinity",
+                  "piranha": true,
+                  "x": 56,
+                  "y": 40
+                },
+                {
+                  "macro": "CheepsStart",
+                  "x": 72,
+                  "y": 0
+                },
+                {
+                  "macro": "Floor",
+                  "width": 48,
+                  "x": 72,
+                  "y": 24
+                },
+                {
+                  "macro": "Pipe",
+                  "height": "Infinity",
+                  "piranha": true,
+                  "transport": 1,
+                  "x": 120,
+                  "y": 48
+                },
+                {
+                  "macro": "Floor",
+                  "width": 48,
+                  "x": 136,
+                  "y": 24
+                },
+                {
+                  "macro": "Water",
+                  "width": 32,
+                  "x": 184,
+                  "y": 0
+                },
+                {
+                  "macro": "Floor",
+                  "width": 32,
+                  "x": 216,
+                  "y": 24
+                },
+                {
+                  "macro": "Pipe",
+                  "height": "Infinity",
+                  "piranha": true,
+                  "transport": 4,
+                  "x": 248,
+                  "y": 40
+                },
+                {
+                  "macro": "CheepsStop",
+                  "x": 264,
+                  "y": 0
+                }
+              ]
+            },
+            "stretch": {
+              "width": 8,
+              "creation": [
+                {
+                  "macro": "Floor",
+                  "x": 0,
+                  "y": 24
+                },
+                {
+                  "thing": "Stone",
+                  "x": 0,
+                  "y": 88
+                }
+              ]
+            },
+            "after": {
+              "width": 40,
+              "creation": [
+                {
+                  "macro": "Floor",
+                  "width": 24,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "thing": "Stone",
+                  "width": 40,
+                  "x": 0,
+                  "y": 88
+                },
+                {
+                  "macro": "Pipe",
+                  "height": "Infinity",
+                  "piranha": true,
+                  "x": 24,
+                  "y": 16
+                },
+                {
+                  "macro": "Section",
+                  "x": 40,
+                  "y": 0
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "area": 3,
+        "setting": "Underwater Castle",
+        "underwater": true,
+        "exit": null,
+        "sections": []
+      },
+      {
+        "area": 4,
+        "setting": "Castle",
+        "underwater": false,
+        "exit": null,
+        "sections": []
+      }
+    ],
+    "links": [
+      {
+        "from": {
+          "area": 0,
+          "part": "base",
+          "record": "r006"
+        },
+        "kind": "Section",
+        "target": {
+          "macro": "Section",
+          "x": 168,
+          "y": 0
+        }
+      },
+      {
+        "from": {
+          "area": 0,
+          "section": 0,
+          "part": "after",
+          "record": "r000"
+        },
+        "kind": "location",
+        "target": 1
+      },
+      {
+        "from": {
+          "area": 0,
+          "section": 0,
+          "part": "after",
+          "record": "r009"
+        },
+        "kind": "location",
+        "target": 2
+      },
+      {
+        "from": {
+          "area": 0,
+          "section": 0,
+          "part": "after",
+          "record": "r013"
+        },
+        "kind": "Section",
+        "target": {
+          "macro": "Section",
+          "x": 424,
+          "y": 0
+        }
+      },
+      {
+        "from": {
+          "area": 1,
+          "part": "base",
+          "record": "r002"
+        },
+        "kind": "Section",
+        "target": {
+          "macro": "Section",
+          "x": 16,
+          "y": 0
+        }
+      },
+      {
+        "from": {
+          "area": 1,
+          "section": 0,
+          "part": "before",
+          "record": "r005"
+        },
+        "kind": "location",
+        "target": 1
+      },
+      {
+        "from": {
+          "area": 1,
+          "section": 0,
+          "part": "before",
+          "record": "r014"
+        },
+        "kind": "location",
+        "target": 3
+      },
+      {
+        "from": {
+          "area": 1,
+          "section": 0,
+          "part": "after",
+          "record": "r002"
+        },
+        "kind": "Section",
+        "target": {
+          "macro": "Section",
+          "x": 16,
+          "y": 0
+        }
+      },
+      {
+        "from": {
+          "area": 2,
+          "part": "base",
+          "record": "r002"
+        },
+        "kind": "Section",
+        "target": {
+          "macro": "Section",
+          "x": 16,
+          "y": 0
+        }
+      },
+      {
+        "from": {
+          "area": 2,
+          "section": 0,
+          "part": "before",
+          "record": "r006"
+        },
+        "kind": "location",
+        "target": 1
+      },
+      {
+        "from": {
+          "area": 2,
+          "section": 0,
+          "part": "before",
+          "record": "r010"
+        },
+        "kind": "location",
+        "target": 4
+      },
+      {
+        "from": {
+          "area": 2,
+          "section": 0,
+          "part": "after",
+          "record": "r003"
+        },
+        "kind": "Section",
+        "target": {
+          "macro": "Section",
+          "x": 40,
+          "y": 0
+        }
+      },
+      {
+        "from": {
+          "area": 3,
+          "part": "base",
+          "record": "r021"
+        },
+        "kind": "location",
+        "target": 5
+      },
+      {
+        "from": {
+          "area": 4,
+          "part": "base",
+          "record": "r003"
+        },
+        "kind": "location",
+        "target": 1
+      },
+      {
+        "from": {
+          "area": 4,
+          "part": "base",
+          "record": "r010"
+        },
+        "kind": "world",
+        "target": {
+          "map": "1-1"
+        }
+      }
+    ],
+    "issues": []
+  },
+  "coverage": {
+    "placementRecords": 103,
+    "areas": 5,
+    "sectionViews": 8,
+    "views": 13,
+    "geometry": 79,
+    "objects": 13,
+    "pending": [
+      "bridge-axe-finish",
+      "castle-finish",
+      "conditional-section",
+      "conditional-section-runtime",
+      "enemy-beetle",
+      "enemy-blooper",
+      "enemy-bowser",
+      "enemy-goomba",
+      "enemy-hammerbro",
+      "enemy-koopa",
+      "enemy-piranha",
+      "enemy-podoboo",
+      "hidden-block",
+      "lava-volume",
+      "platform-timing",
+      "source-transport-not-simulated",
+      "spawn-zone-CheepsStart",
+      "spawn-zone-CheepsStop",
+      "underwater-physics"
+    ],
+    "details": [
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r003",
+        "kind": "lava-volume"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r005-plant",
+        "kind": "enemy-piranha"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r006",
+        "kind": "conditional-section"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "section-mode",
+        "kind": "conditional-section-runtime"
+      },
+      {
+        "roomId": "area-0-section-0-stretch",
+        "sourceRecord": "section-mode",
+        "kind": "conditional-section-runtime"
+      },
+      {
+        "roomId": "area-0-section-0-after",
+        "sourceRecord": "r000-transport",
+        "kind": "source-transport-not-simulated"
+      },
+      {
+        "roomId": "area-0-section-0-after",
+        "sourceRecord": "r000-plant",
+        "kind": "enemy-piranha"
+      },
+      {
+        "roomId": "area-0-section-0-after",
+        "sourceRecord": "r003-0-0",
+        "kind": "enemy-goomba"
+      },
+      {
+        "roomId": "area-0-section-0-after",
+        "sourceRecord": "r003-1-0",
+        "kind": "enemy-goomba"
+      },
+      {
+        "roomId": "area-0-section-0-after",
+        "sourceRecord": "r003-2-0",
+        "kind": "enemy-goomba"
+      },
+      {
+        "roomId": "area-0-section-0-after",
+        "sourceRecord": "r005",
+        "kind": "lava-volume"
+      },
+      {
+        "roomId": "area-0-section-0-after",
+        "sourceRecord": "r006-timing",
+        "kind": "platform-timing"
+      },
+      {
+        "roomId": "area-0-section-0-after",
+        "sourceRecord": "r009-transport",
+        "kind": "source-transport-not-simulated"
+      },
+      {
+        "roomId": "area-0-section-0-after",
+        "sourceRecord": "r009-plant",
+        "kind": "enemy-piranha"
+      },
+      {
+        "roomId": "area-0-section-0-after",
+        "sourceRecord": "r011-plant",
+        "kind": "enemy-piranha"
+      },
+      {
+        "roomId": "area-0-section-0-after",
+        "sourceRecord": "r013",
+        "kind": "conditional-section"
+      },
+      {
+        "roomId": "area-0-section-0-after",
+        "sourceRecord": "section-mode",
+        "kind": "conditional-section-runtime"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r000-plant",
+        "kind": "enemy-piranha"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "r002",
+        "kind": "conditional-section"
+      },
+      {
+        "roomId": "area-1",
+        "sourceRecord": "section-mode",
+        "kind": "conditional-section-runtime"
+      },
+      {
+        "roomId": "area-1-section-0-before",
+        "sourceRecord": "r002-plant",
+        "kind": "enemy-piranha"
+      },
+      {
+        "roomId": "area-1-section-0-before",
+        "sourceRecord": "r004-0-0",
+        "kind": "enemy-beetle"
+      },
+      {
+        "roomId": "area-1-section-0-before",
+        "sourceRecord": "r004-1-0",
+        "kind": "enemy-beetle"
+      },
+      {
+        "roomId": "area-1-section-0-before",
+        "sourceRecord": "r005-transport",
+        "kind": "source-transport-not-simulated"
+      },
+      {
+        "roomId": "area-1-section-0-before",
+        "sourceRecord": "r005-plant",
+        "kind": "enemy-piranha"
+      },
+      {
+        "roomId": "area-1-section-0-before",
+        "sourceRecord": "r007",
+        "kind": "enemy-koopa"
+      },
+      {
+        "roomId": "area-1-section-0-before",
+        "sourceRecord": "r008",
+        "kind": "enemy-koopa"
+      },
+      {
+        "roomId": "area-1-section-0-before",
+        "sourceRecord": "r009-plant",
+        "kind": "enemy-piranha"
+      },
+      {
+        "roomId": "area-1-section-0-before",
+        "sourceRecord": "r010",
+        "kind": "lava-volume"
+      },
+      {
+        "roomId": "area-1-section-0-before",
+        "sourceRecord": "r012",
+        "kind": "hidden-block"
+      },
+      {
+        "roomId": "area-1-section-0-before",
+        "sourceRecord": "r014-transport",
+        "kind": "source-transport-not-simulated"
+      },
+      {
+        "roomId": "area-1-section-0-before",
+        "sourceRecord": "r015",
+        "kind": "enemy-koopa"
+      },
+      {
+        "roomId": "area-1-section-0-before",
+        "sourceRecord": "r016",
+        "kind": "enemy-koopa"
+      },
+      {
+        "roomId": "area-1-section-0-before",
+        "sourceRecord": "section-mode",
+        "kind": "conditional-section-runtime"
+      },
+      {
+        "roomId": "area-1-section-0-stretch",
+        "sourceRecord": "section-mode",
+        "kind": "conditional-section-runtime"
+      },
+      {
+        "roomId": "area-1-section-0-after",
+        "sourceRecord": "r000-plant",
+        "kind": "enemy-piranha"
+      },
+      {
+        "roomId": "area-1-section-0-after",
+        "sourceRecord": "r002",
+        "kind": "conditional-section"
+      },
+      {
+        "roomId": "area-1-section-0-after",
+        "sourceRecord": "section-mode",
+        "kind": "conditional-section-runtime"
+      },
+      {
+        "roomId": "area-2",
+        "sourceRecord": "r000-plant",
+        "kind": "enemy-piranha"
+      },
+      {
+        "roomId": "area-2",
+        "sourceRecord": "r002",
+        "kind": "conditional-section"
+      },
+      {
+        "roomId": "area-2",
+        "sourceRecord": "section-mode",
+        "kind": "conditional-section-runtime"
+      },
+      {
+        "roomId": "area-2-section-0-before",
+        "sourceRecord": "r003-plant",
+        "kind": "enemy-piranha"
+      },
+      {
+        "roomId": "area-2-section-0-before",
+        "sourceRecord": "r004",
+        "kind": "spawn-zone-CheepsStart"
+      },
+      {
+        "roomId": "area-2-section-0-before",
+        "sourceRecord": "r006-transport",
+        "kind": "source-transport-not-simulated"
+      },
+      {
+        "roomId": "area-2-section-0-before",
+        "sourceRecord": "r006-plant",
+        "kind": "enemy-piranha"
+      },
+      {
+        "roomId": "area-2-section-0-before",
+        "sourceRecord": "r008",
+        "kind": "lava-volume"
+      },
+      {
+        "roomId": "area-2-section-0-before",
+        "sourceRecord": "r010-transport",
+        "kind": "source-transport-not-simulated"
+      },
+      {
+        "roomId": "area-2-section-0-before",
+        "sourceRecord": "r010-plant",
+        "kind": "enemy-piranha"
+      },
+      {
+        "roomId": "area-2-section-0-before",
+        "sourceRecord": "r011",
+        "kind": "spawn-zone-CheepsStop"
+      },
+      {
+        "roomId": "area-2-section-0-before",
+        "sourceRecord": "section-mode",
+        "kind": "conditional-section-runtime"
+      },
+      {
+        "roomId": "area-2-section-0-stretch",
+        "sourceRecord": "section-mode",
+        "kind": "conditional-section-runtime"
+      },
+      {
+        "roomId": "area-2-section-0-after",
+        "sourceRecord": "r002-plant",
+        "kind": "enemy-piranha"
+      },
+      {
+        "roomId": "area-2-section-0-after",
+        "sourceRecord": "r003",
+        "kind": "conditional-section"
+      },
+      {
+        "roomId": "area-2-section-0-after",
+        "sourceRecord": "section-mode",
+        "kind": "conditional-section-runtime"
+      },
+      {
+        "roomId": "area-3",
+        "sourceRecord": "r009",
+        "kind": "hidden-block"
+      },
+      {
+        "roomId": "area-3",
+        "sourceRecord": "r010",
+        "kind": "enemy-blooper"
+      },
+      {
+        "roomId": "area-3",
+        "sourceRecord": "r011",
+        "kind": "hidden-block"
+      },
+      {
+        "roomId": "area-3",
+        "sourceRecord": "r014",
+        "kind": "hidden-block"
+      },
+      {
+        "roomId": "area-3",
+        "sourceRecord": "r015",
+        "kind": "enemy-blooper"
+      },
+      {
+        "roomId": "area-3",
+        "sourceRecord": "r016",
+        "kind": "enemy-blooper"
+      },
+      {
+        "roomId": "area-3",
+        "sourceRecord": "r017",
+        "kind": "hidden-block"
+      },
+      {
+        "roomId": "area-3",
+        "sourceRecord": "r018",
+        "kind": "hidden-block"
+      },
+      {
+        "roomId": "area-3",
+        "sourceRecord": "r021-transport",
+        "kind": "source-transport-not-simulated"
+      },
+      {
+        "roomId": "area-3",
+        "sourceRecord": "environment",
+        "kind": "underwater-physics"
+      },
+      {
+        "roomId": "area-4",
+        "sourceRecord": "r000-plant",
+        "kind": "enemy-piranha"
+      },
+      {
+        "roomId": "area-4",
+        "sourceRecord": "r003-transport",
+        "kind": "source-transport-not-simulated"
+      },
+      {
+        "roomId": "area-4",
+        "sourceRecord": "r003-plant",
+        "kind": "enemy-piranha"
+      },
+      {
+        "roomId": "area-4",
+        "sourceRecord": "r005",
+        "kind": "enemy-hammerbro"
+      },
+      {
+        "roomId": "area-4",
+        "sourceRecord": "r006",
+        "kind": "lava-volume"
+      },
+      {
+        "roomId": "area-4",
+        "sourceRecord": "r007",
+        "kind": "enemy-podoboo"
+      },
+      {
+        "roomId": "area-4",
+        "sourceRecord": "r010-boss",
+        "kind": "enemy-bowser"
+      },
+      {
+        "roomId": "area-4",
+        "sourceRecord": "r010-axe",
+        "kind": "bridge-axe-finish"
+      },
+      {
+        "roomId": "area-4",
+        "sourceRecord": "r010",
+        "kind": "castle-finish"
+      },
+      {
+        "roomId": "area-4",
+        "sourceRecord": "r010-transport",
+        "kind": "source-transport-not-simulated"
+      }
+    ],
+    "geometryReview": "reference-transcribed-pending-original-review",
+    "playability": "partition-inspection-not-level-completion",
+    "underwaterAreas": 1,
+    "sourceIssues": 0
+  },
+  "source": {
+    "repository": "umaim/Mario",
+    "commit": "980c275358704a49f868567aeec5bdfb347c4781",
+    "path": "Source/settings/maps.js",
+    "gitBlob": "657d750ad65bb06c0e63a3d8958736f9236ec3c0",
+    "range": "Worlds 1–8 gameplay layout transcription",
+    "url": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+    "method": "Manual transcription of gameplay placement records, area locations and section definitions. Pure background scenery omitted; not a byte-identical source export or original-game certification.",
+    "omittedVisuals": [
+      "Pattern",
+      "DecorativeBack",
+      "DecorativeDot",
+      "CustomText"
+    ]
+  }
+}

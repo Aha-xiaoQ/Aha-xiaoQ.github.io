@@ -1,0 +1,149 @@
+/* R15 — one in-game HUD. The canvas keeps its original 16:15 / 16:9 view.
+ * No toolbar spacer, no duplicated full-width header/footer, and no combat changes.
+ */
+const T15_VERSION='R15 · 一体化 HUD';
+const T15_BUILD='R15-integrated-hud-20260913';
+const t15IconJobs=[];
+for(const [k,url] of Object.entries(T15_UI_IMAGES)){
+ t15IconJobs.push(new Promise(resolve=>{const im=new Image();im.onload=()=>{r06Images[k]=im;r08ImageRevision++;resolve(true);};im.onerror=()=>resolve(false);im.src=url;}));
+}
+const t15Style=document.createElement('style');t15Style.textContent=`
+/* Retain the legacy elements for their internal handlers but remove their layout. */
+body.t15-terra #t13Dock,body.t15-terra #t12Toolbar,body.t15-terra #t10Build,
+body.t15-terra .screen-top,body.t15-terra .stage-tools,body.t15-terra #upgradeNotice{display:none!important}
+body.t15-terra .screen-shell{width:100%!important;max-width:100%!important;margin:0 auto;padding:5px;border-radius:7px;overflow:visible}
+body.t15-terra #stage{width:100%!important;height:auto!important;max-width:none!important;max-height:none!important;aspect-ratio:16/15!important;position:relative;overflow:hidden;background:#5c94fc}
+body.t15-terra #stage.r05-arena{aspect-ratio:16/9!important}
+body.t15-terra #stage #game{display:block;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:contain}
+body.t15-terra #heroHelp,body.t15-terra #gamepadStatus,body.t15-terra .panel>.controls-title,
+body.t15-terra .panel>.control-row,body.t15-terra .panel>.tip,body.t15-terra .panel>hr{display:none!important}
+body.t15-terra #heroStatus{font-size:12px;line-height:1.75;margin:10px 0 16px;color:#b8cfca}
+body.t15-terra .panel #charactersButton{width:100%;margin:0 0 12px}
+body.t15-terra .panel #fullButton{font-size:12px}
+body.t15-terra .panel{display:block!important}
+body.t15-terra #r06SceneActions{margin-top:12px}
+#t15Help{border:1px solid #344f5a;background:#13263277;border-radius:7px;margin:14px 0;padding:12px 14px;font-size:12px;line-height:1.85;color:#bfced1}
+#t15Help[hidden]{display:none!important}#t15Help summary{cursor:pointer;color:#e5d4af;font-size:13px;font-weight:600}
+#t15Help .t15Keys{display:grid;grid-template-columns:1fr auto;gap:9px 12px;margin-top:13px}#t15Help kbd{font-size:10px;min-width:17px;padding:2px 4px}
+#t15Help p{margin:12px 0 0;color:#9fb2b8;font-size:11px;line-height:1.8}
+#t15HudHits{position:absolute;left:0;top:0;z-index:5;pointer-events:none}
+#t15HudHits[hidden]{display:none!important}
+#t15HudHits button,#t15HudHits .t15HitInfo{position:absolute;margin:0;padding:0;background:transparent!important;border:0!important;border-radius:0;box-shadow:none!important;pointer-events:auto;min-width:0;min-height:0;touch-action:manipulation;color:transparent;font-size:0}
+#t15HudHits button:focus-visible{outline:2px solid #fff0ab;outline-offset:0;background:#fff4aa18!important}
+#t15HudHits button:hover{background:#fff9d915!important}
+#t15HudHits .t15HitInfo{cursor:default}
+.t15-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+/* Fullscreen uses all available height, not height minus an obsolete toolbar. */
+body.t15-terra .screen-shell:fullscreen{display:flex;align-items:center;justify-content:center;width:100vw!important;height:100dvh!important;max-width:none!important;padding:0!important;margin:0!important;border:0!important;border-radius:0;overflow:hidden;background:#080f15}
+body.t15-terra .screen-shell:fullscreen #stage{flex:none!important;width:min(100vw,106.666667dvh)!important;height:min(100dvh,93.75vw)!important;max-height:100dvh!important;max-width:100vw!important;margin:0!important;aspect-ratio:16/15!important}
+body.t15-terra .screen-shell:fullscreen #stage.r05-arena{width:min(100vw,177.777778dvh)!important;height:min(100dvh,56.25vw)!important;aspect-ratio:16/9!important}
+body.t15-terra .screen-shell:fullscreen #game{width:100%!important;height:100%!important;object-fit:contain}
+body.t15-terra #stage:fullscreen{width:100vw!important;height:100dvh!important;display:grid;place-items:center;background:#080f15}
+body.t15-terra #stage:fullscreen #game{object-fit:contain;width:100%!important;height:100%!important}
+@media(max-width:850px){body.t15-terra.r05-arena .panel{display:block!important;margin-top:18px}}
+@media(max-width:690px){body.t15-terra .screen-shell{padding:3px}#t15Help{margin:12px 0;padding:11px 12px}body.t15-terra #heroStatus{display:none}body.t15-terra .panel{margin-top:14px}}
+@media(max-height:540px) and (orientation:landscape){body.t15-terra .layout{display:block}body.t15-terra .play-column{display:block}body.t15-terra .screen-shell{width:min(100%,calc((100dvh - 22px)*16/15))!important;margin:auto}body.t15-terra.r05-arena .screen-shell{width:min(100%,calc((100dvh - 22px)*16/9))!important}}
+`;document.head.append(t15Style);
+const t15Hits=document.createElement('div');t15Hits.id='t15HudHits';t15Hits.setAttribute('role','group');t15Hits.setAttribute('aria-label','道具、生命、魔力与饰品');t15Hits.hidden=true;$('stage').append(t15Hits);
+const t15Slots=[];
+function t15ClearPointer(){clearInput();r05CancelPointer();t13Pointer.active=t13Pointer.down=false;}
+for(let i=0;i<6;i++){const b=document.createElement('button');b.type='button';b.dataset.t15Tool=String(i);b.setAttribute('aria-pressed',String(i===0));b.onpointerdown=e=>{e.stopPropagation();};b.onclick=e=>{e.preventDefault();e.stopPropagation();if(!state||mode!=='playing')return;t15ClearPointer();r06DigitTool(i);canvas.focus({preventScroll:true});render();};t15Hits.append(b);t15Slots.push(b);}
+const t15HP=document.createElement('button');t15HP.type='button';t15HP.id='t15Health';t15HP.onclick=e=>{e.stopPropagation();if(mode!=='playing')return;t15ClearPointer();r06Heal();canvas.focus({preventScroll:true});render();};t15Hits.append(t15HP);
+const t15MP=document.createElement('div');t15MP.className='t15HitInfo';t15MP.id='t15Mana';t15Hits.append(t15MP);
+const t15Gear=document.createElement('div');t15Gear.className='t15HitInfo';t15Gear.id='t15Gear';t15Hits.append(t15Gear);
+const t15Live=document.createElement('div');t15Live.className='t15-sr';t15Live.id='t15State';t15Live.setAttribute('aria-live','off');$('stage').append(t15Live);
+const t15Help=document.createElement('details');t15Help.id='t15Help';t15Help.innerHTML=`<summary>操作指南</summary><div class="t15Keys">
+<span>移动 / 跳跃</span><span><kbd>方向</kbd> <kbd>空格</kbd></span>
+<span>六格工具 / 循环</span><span><kbd>1–6</kbd> <kbd>E</kbd></span>
+<span>使用工具、武器</span><span><kbd>J</kbd> / 左键</span>
+<span>铜镐向近处挖掘</span><span><kbd>4</kbd> 方向＋<kbd>J</kbd></span>
+<span>手持火把 / 快速插火把</span><span><kbd>5</kbd> / <kbd>G</kbd></span>
+<span>切换已有武器</span><span><kbd>Q</kbd></span>
+<span>地下宝箱</span><span><kbd>L</kbd> / ↑ / 右键</span>
+<span>治疗 / 上下坐骑</span><span><kbd>H</kbd> / <kbd>F</kbd></span>
+<span>切坐骑 / 魔镜返程</span><span><kbd>V</kbd> / <kbd>B</kbd></span>
+<span>下穿木平台 / 钻管道</span><span>↓＋空格 / ↓</span>
+<span>暂停 / 重试 / 选人</span><span><kbd>P</kbd> <kbd>R</kbd> <kbd>C</kbd></span>
+</div><p>左上角道具格可直接点击；鼠标悬停可查看名称和数量。点击生命区域可治疗。饰品按实际取得情况显示，未取得的不显示。</p><p>隐藏箱自动弹出供给，最后拾取右侧眼球开战。战斗中不能挖掘或返程；胜利后从原管道返回，或继续向地下探索。全屏保留原画面比例，按 Esc 可退出。</p>`;
+const t15Buttons=document.querySelector('.panel .buttons');t15Buttons.before(t15Help);
+const t15IconCache=new Map();
+function t15Icon(g,key,x,y,size){
+ if(key==='manaSymbol'){g.save();g.translate(x,y);g.beginPath();for(let i=0;i<10;i++){const a=-Math.PI/2+i*Math.PI/5,r=size*(i%2?.22:.5);const xx=Math.cos(a)*r,yy=Math.sin(a)*r;i?g.lineTo(xx,yy):g.moveTo(xx,yy);}g.closePath();g.fillStyle='#8dc9ff';g.fill();g.strokeStyle='#c6eaff';g.lineWidth=.7;g.stroke();g.restore();return;}
+ if(key.endsWith('Head')){const im=r06Images[key];if(!im)return;let cv=t15IconCache.get(key);if(!cv){try{const tmp=document.createElement('canvas');tmp.width=40;tmp.height=56;const t=tmp.getContext('2d');t.drawImage(im,0,0,40,56,0,0,40,56);const a=t.getImageData(0,0,40,56).data;let x0=40,y0=56,x1=0,y1=0;for(let yy=0;yy<56;yy++)for(let xx=0;xx<40;xx++)if(a[(yy*40+xx)*4+3]>20){x0=Math.min(x0,xx);y0=Math.min(y0,yy);x1=Math.max(x1,xx);y1=Math.max(y1,yy);}cv=document.createElement('canvas');cv.width=x1-x0+1;cv.height=y1-y0+1;if(cv.width<1||cv.height<1)return;cv.getContext('2d').drawImage(tmp,x0,y0,cv.width,cv.height,0,0,cv.width,cv.height);t15IconCache.set(key,cv);}catch{return;}}
+  const sc=Math.min(size/cv.width,size/cv.height);g.drawImage(cv,Math.round(x-cv.width*sc/2),Math.round(y-cv.height*sc/2),cv.width*sc,cv.height*sc);return;
+ }
+ r06Icon(g,key,x,y,size);
+}
+function t15Model(s){
+ const bag=s.t13Inventory||{},weapon=r06Weapon(s),kit=r06Kit(s),gear=[{key:r06Armor(s)+'Head',name:(kit?.armorName||'铂金套')+' · 防御 '+r06Defense(s)}];
+ if(s.cloudJump)gear.push({key:'cloudBottle',name:'云朵瓶'});
+ if(s.t13Accessories?.boots)gear.push({key:'hudBoots',name:'赫尔墨斯靴'});
+ if(s.t13Accessories?.regen)gear.push({key:'hudRegen',name:'再生手环'});
+ if(s.mountOwned)gear.push({key:s.mountType==='ufo'?'ufo':'slimySaddle',name:(s.mountType==='ufo'?'UFO':'史莱姆')+(s.mounted?' · 骑乘中':' · 可骑乘')});
+ if(s.campfireBuff)gear.push({key:'campfireItem',name:'篝火恢复'});
+ const names=[kit&&!s.t13WeaponOverride?kit.weaponName:({starfury:'星怒',stormbow:'代达罗斯风暴弓',terraBlade:'泰拉刃'}[weapon]||weapon),'木平台','铜斧','铜镐','火把','篝火'];
+ const counts=[weapon==='stormbow'?bag.arrows:weapon==='sdmg'?s.ammo:null,s.wood,null,null,bag.torch,null];
+ return{hp:s.hp,maxHp:s.maxHp,mana:s.mana,maxMana:s.maxMana,defense:r06Defense(s),wood:s.wood,torch:bag.torch||0,arrows:bag.arrows||0,ammo:s.ammo||0,potions:s.healPotions||0,healCooldown:s.healCooldown||0,tool:s.tool,weapon,names,counts,keys:[weapon,'wood','axe','pickaxe','torchPlaced','campfireItem'],gear,score:s.score||0,coins:s.coins||0,time:Math.max(0,Math.floor(s.time||0)),phase:s.phase,kit:s.kit,mounted:!!s.mounted};
+}
+function t15Layout(s){const wide=!!s.r05Arena,viewW=wide?R06_VIEW.w:W,viewH=wide?R06_VIEW.h:H,uiW=wide&&t14CanvasRect().width>=720?1024:512,unit=viewW/uiW;
+ return {wide,viewW,viewH,uiW,unit,uiH:viewH/unit,height:61,slots:Array.from({length:6},(_,i)=>({x:12+i*36,y:24,w:32,h:32})),hp:{x:uiW-234,y:5,w:222,h:15},mp:{x:uiW-234,y:21,w:222,h:15},gear:{x:uiW-234,y:40,w:222,h:18}};
+}
+const T15_GLYPHS={'0':['111','101','101','101','111'],'1':['010','110','010','010','111'],'2':['111','001','111','100','111'],'3':['111','001','111','001','111'],'4':['101','101','111','001','001'],'5':['111','100','111','001','111'],'6':['111','100','111','101','111'],'7':['111','001','010','010','010'],'8':['111','101','111','101','111'],'9':['111','101','111','001','111'],'D':['110','101','101','101','110'],'E':['111','100','110','100','111'],'F':['111','100','110','100','100'],'K':['101','110','100','110','101'],'+':['000','010','111','010','000'],'-':['000','000','111','000','000'],'/':['001','001','010','100','100'],'×':['000','101','010','101','000'],'.':['000','000','000','000','010'],' ':['000','000','000','000','000']};
+function t15Text(text,x,y,size=12,color='#f2f3e8',align='left'){
+ const str=String(text).toUpperCase();ctx.save();
+ if(false&&state&&!state.r05Arena&&[...str].every(c=>T15_GLYPHS[c])){const px=2,advance=8,width=str.length*advance-2;let xx=Math.round((align==='right'?x-width:align==='center'?x-width/2:x)/2)*2,yy=Math.round(y/2)*2;ctx.fillStyle='#081e3266';for(let i=0;i<str.length;i++)for(let r=0;r<5;r++)for(let c=0;c<3;c++)if(T15_GLYPHS[str[i]][r][c]==='1')ctx.fillRect(xx+i*advance+c*px+2,yy+r*px+2,px,px);ctx.fillStyle=color;for(let i=0;i<str.length;i++)for(let r=0;r<5;r++)for(let c=0;c<3;c++)if(T15_GLYPHS[str[i]][r][c]==='1')ctx.fillRect(xx+i*advance+c*px,yy+r*px,px,px);}
+ else{ctx.font=`bold ${size}px ui-monospace,Consolas,monospace`;ctx.textAlign=align;ctx.textBaseline='top';ctx.fillStyle='#071a2cbb';ctx.fillText(str,Math.round(x)+1,Math.round(y)+1);ctx.fillStyle=color;ctx.fillText(str,Math.round(x),Math.round(y));}ctx.restore();
+}
+function t15Meter(q,ratio,color,light){ctx.fillStyle='#0a21347a';ctx.fillRect(q.x,q.y,q.w,q.h);ctx.fillStyle='#52667499';ctx.fillRect(q.x,q.y,q.w,1);const n=Math.round(q.w*clamp(ratio,0,1));ctx.fillStyle=color;ctx.fillRect(q.x,q.y+1,n,q.h-1);ctx.fillStyle=light;ctx.fillRect(q.x,q.y+1,n,1);}
+/*@terra-module:hud-paint*/let t15HitSignature='',t15LabelSignature='';
+function t15SetBox(el,q,scale){el.style.left=(q.x*scale)+'px';el.style.top=(q.y*scale)+'px';el.style.width=(q.w*scale)+'px';el.style.height=(q.h*scale)+'px';}
+function t15Sync(s){const active=isTrio();document.body.classList.toggle('t15-terra',active);t15Help.hidden=!active;
+ t15Hits.hidden=!active||!s||mode!=='playing';if(!active){t13Dock.hidden=true;t12Toolbar.hidden=true;const tip=document.querySelector('.panel .tip');if(tip)tip.hidden=false;return;}
+ $('bestLabel').textContent='R15';document.querySelector('header .offline').textContent='TERRARIA · 1-3';t10Build.textContent=T15_VERSION;
+ $('heroHelp').textContent='';$('fullButton').textContent='全屏';$('charactersButton').textContent='选择角色';
+ const tip=document.querySelector('.panel .tip');if(tip)tip.hidden=true;
+ if(!s||mode==='menu'){$('overlayText').textContent='铂金套与星怒开局。穿过主线管道，挑战克眼并探索地下矿区。';return;}
+ const l=t15Layout(s),m=t15Model(s),r=t14CanvasRect(),st=$('stage').getBoundingClientRect(),scale=r.width/l.uiW;
+ const geometry=[r.width,r.height,r.left-st.left,r.top-st.top,l.uiW,mode].join('|');
+ if(geometry!==t15HitSignature){t15HitSignature=geometry;t15Hits.style.left=(r.left-st.left)+'px';t15Hits.style.top=(r.top-st.top)+'px';t15Hits.style.width=r.width+'px';t15Hits.style.height=r.height+'px';for(let i=0;i<6;i++)t15SetBox(t15Slots[i],l.slots[i],scale);t15SetBox(t15HP,l.hp,scale);t15SetBox(t15MP,l.mp,scale);t15SetBox(t15Gear,l.gear,scale);}
+ const signature=[m.hp,m.maxHp,m.mana,m.maxMana,m.tool,m.weapon,m.wood,m.torch,m.ammo,m.arrows,m.potions,m.healCooldown>0,m.gear.map(x=>x.name).join('/')].join('|');
+ if(signature!==t15LabelSignature){t15LabelSignature=signature;for(let i=0;i<6;i++){const text=m.names[i]+(m.counts[i]!==null&&m.counts[i]!==undefined?' · '+m.counts[i]:'');t15Slots[i].title=text;t15Slots[i].setAttribute('aria-label',text);t15Slots[i].setAttribute('aria-pressed',String(i===m.tool));}
+  t15HP.title='生命 '+m.hp+'/'+m.maxHp+' · 治疗药水 '+m.potions;t15HP.setAttribute('aria-label',t15HP.title);t15HP.disabled=m.hp>=m.maxHp||m.potions<=0||m.healCooldown>0;
+  t15MP.title='魔力 '+m.mana+'/'+m.maxMana;t15MP.setAttribute('aria-label',t15MP.title);t15Gear.title=m.gear.map(x=>x.name).join(' / ');t15Gear.setAttribute('aria-label',t15Gear.title);
+  t15Live.textContent=['生命 '+m.hp+'/'+m.maxHp,'魔力 '+m.mana+'/'+m.maxMana,'当前工具 '+m.names[m.tool],'饰品 '+t15Gear.title].join('；');
+ }
+ $('heroStatus').textContent=(r06Kit(s)?.armorName||'铂金套')+' · '+m.names[0];
+ if(s.r05Arena){$('relayMessage').textContent=s.phase==='battle'?'克苏鲁之眼':s.p.y>=T13.top+80?'地下探索':s.phase==='cleared'?'克眼已击败 · 奖励已解锁':'隐藏战场';}
+ else $('relayMessage').textContent='WORLD 1-3 · 泰拉瑞亚';
+}
+// Restore the previously requested G shortcut without an additional screen toolbar.
+function t15QuickTorch(){const s=state;if(!s||mode!=='playing'||s.t11Transition||s.ticks-(s.t15QuickTick??-999)<12)return false;s.t15QuickTick=s.ticks;
+ const raw={x:s.p.x+s.p.w/2+s.p.facing*18,y:s.p.y+s.p.h-10,pointer:false,dx:s.p.facing,dy:0},target=t14ChooseTorch(s,raw);const ok=t13Place(s,target,4);if(ok)r05Persist();return ok;
+}
+window.addEventListener('keydown',e=>{if(!isTrio()||e.target?.closest?.('input,textarea,select,[contenteditable="true"]'))return;if(e.code==='KeyG'){e.preventDefault();if(!e.repeat)t15QuickTorch();}},true);
+// The actual recovered R14 has 113 seed lights. Top up to the 143-light baseline
+// previously delivered in this conversation without altering any terrain cells.
+function t15KeepLights(w){if(!w||w.t15LightBaseline)return;for(let i=0;i<24000&&w.torches.length<143;i++){
+ const c=3+Math.floor(t13Hash(i,47,15)*(w.cols-6)),r=7+Math.floor(t13Hash(i,91,15)*(w.rows-12));if(t13At(w,c,r)||t13At(w,c,r-1))continue;
+ if(!t13At(w,c,r+1)&&!t13At(w,c-1,r)&&!t13At(w,c+1,r))continue;const x=c*16+8,y=T13.top+(r+1)*16;
+ if(w.torches.some(t=>Math.hypot(t.x-x,t.y-y)<88)||w.chests.some(q=>Math.abs(q.x+16-x)<38&&Math.abs(q.y+q.h-y)<34))continue;w.torches.push({x,y,phase:i%8,wall:true,source:'r15-preserved-baseline'});
+ }w.t15LightBaseline=true;w.revision++;}
+const t15WorldBase=t13GenerateWorld;t13GenerateWorld=function(){const w=t15WorldBase();t15KeepLights(w);return w;};
+const t15RoomBase=t11PrepareRoom;t11PrepareRoom=function(s){t15RoomBase(s);t15KeepLights(s.t13World);};
+// The old full-width combat header/footer and help text are intentionally absent.
+r07HUD=function(){};drawEquipment=function(){};drawTerraHiddenHUD=function(){};
+const t15UIBase=r06UpdateUI;r06UpdateUI=function(){t15UIBase();t15Sync(state);};
+const t15SelectBase=selectHero;selectHero=function(){const result=t15SelectBase.apply(this,arguments);t15Sync(state);return result;};
+const t15RenderBase=render;
+render=function(){const result=t15RenderBase();t15DrawHUD(state);t15Sync(state);return result;};
+// Pause overlay stays short. The full instructions are outside the game canvas.
+r04PauseHelp=function(){return '游戏已暂停';};
+const t15PauseBase=togglePause;togglePause=function(){t15PauseBase();if(isTrio()&&mode==='paused'){$('overlayText').textContent='游戏已暂停';$('overlayHint').textContent='';}t15Sync(state);};
+document.addEventListener('fullscreenchange',()=>{t15HitSignature='';if(isTrio())requestAnimationFrame(()=>render());});
+window.addEventListener('resize',()=>{t15HitSignature='';});
+const t15Diagnostics={version:T15_VERSION,build:T15_BUILD,ready:Promise.all(t15IconJobs),model:()=>state?t15Model(state):null,layout:()=>state?t15Layout(state):null,hud:()=>state?.t15Hud,quickTorch:t15QuickTorch,
+ boxes:()=>({canvas:t14CanvasRect(),stage:(()=>{const r=$('stage').getBoundingClientRect();return{x:r.x,y:r.y,w:r.width,h:r.height};})(),slots:t15Slots.map(b=>{const r=b.getBoundingClientRect();return{x:r.x,y:r.y,w:r.width,h:r.height,pressed:b.getAttribute('aria-pressed')};})}),
+ inspect:()=>({oldToolbarHidden:getComputedStyle(t13Dock).display==='none',helpOutside:!$('stage').contains(t15Help),visible:!t15Hits.hidden})};
+Promise.all([readyPromise,...t15IconJobs]).then(()=>{t15Sync(state);if(isTrio())render();});
+
+const T16_ASSET_DATA={"cart":"__TERRA_ASSET_media-175__","rail":"__TERRA_ASSET_media-176__"};

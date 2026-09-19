@@ -1,0 +1,79 @@
+{
+  "locations": [
+    {
+      "area": 0,
+      "entry": "Walking"
+    },
+    {
+      "area": 1
+    },
+    {
+      "area": 2,
+      "entry": "PipeVertical"
+    }
+  ],
+  "areas": [
+    {
+      "area": 0,
+      "setting": "Overworld",
+      "underwater": false,
+      "exit": null,
+      "sections": []
+    },
+    {
+      "area": 1,
+      "setting": "Underwater",
+      "underwater": true,
+      "exit": null,
+      "sections": []
+    },
+    {
+      "area": 2,
+      "setting": "Overworld",
+      "underwater": false,
+      "exit": null,
+      "sections": []
+    }
+  ],
+  "links": [
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r001"
+      },
+      "kind": "location",
+      "target": 1
+    },
+    {
+      "from": {
+        "area": 2,
+        "part": "base",
+        "record": "r011"
+      },
+      "kind": "world",
+      "target": {
+        "map": "7-3"
+      }
+    }
+  ],
+  "issues": [
+    {
+      "roomId": "area-1",
+      "sourceRecord": "r066",
+      "kind": "source-attribute-review",
+      "field": "yum"
+    },
+    {
+      "roomId": "area-1",
+      "sourceRecord": "r066",
+      "kind": "source-attribute-review",
+      "field": "Yheight"
+    },
+    {
+      "roomId": "area-1",
+      "sourceRecord": "r074",
+      "kind": "horizontal-pipe-without-transport"
+    }
+  ]
+}

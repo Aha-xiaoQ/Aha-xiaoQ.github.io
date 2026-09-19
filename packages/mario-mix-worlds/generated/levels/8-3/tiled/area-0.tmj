@@ -1,0 +1,1536 @@
+{
+  "type": "map",
+  "version": "1.10",
+  "orientation": "orthogonal",
+  "renderorder": "right-down",
+  "width": 240,
+  "height": 15,
+  "tilewidth": 16,
+  "tileheight": 16,
+  "infinite": false,
+  "nextlayerid": 4,
+  "nextobjectid": 81,
+  "tilesets": [],
+  "layers": [
+    {
+      "id": 1,
+      "name": "collision",
+      "type": "objectgroup",
+      "visible": true,
+      "opacity": 1,
+      "x": 0,
+      "y": 0,
+      "draworder": "index",
+      "objects": [
+        {
+          "id": 1,
+          "name": "r000",
+          "type": "solid",
+          "x": 0,
+          "y": 208,
+          "width": 1104,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r000\",\"x\":0,\"y\":208,\"w\":1104,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "r001",
+          "type": "solid",
+          "x": 288,
+          "y": 176,
+          "width": 16,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r001\",\"x\":288,\"y\":176,\"w\":16,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "name": "r003",
+          "type": "solid",
+          "x": 544,
+          "y": 160,
+          "width": 16,
+          "height": 48,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003\",\"x\":544,\"y\":160,\"w\":16,\"h\":48,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "name": "r004",
+          "type": "solid",
+          "x": 848,
+          "y": 162,
+          "width": 32,
+          "height": 46,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r004\",\"x\":848,\"y\":162,\"w\":32,\"h\":46,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "name": "r005-0-0",
+          "type": "solid",
+          "x": 960,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005-0-0\",\"x\":960,\"y\":144,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "name": "r005-1-0",
+          "type": "solid",
+          "x": 976,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005-1-0\",\"x\":976,\"y\":144,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "name": "r005-2-0",
+          "type": "solid",
+          "x": 992,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005-2-0\",\"x\":992,\"y\":144,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "name": "r005-3-0",
+          "type": "solid",
+          "x": 1008,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005-3-0\",\"x\":1008,\"y\":144,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "name": "r005-4-0",
+          "type": "solid",
+          "x": 1024,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005-4-0\",\"x\":1024,\"y\":144,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "name": "r005-5-0",
+          "type": "solid",
+          "x": 1040,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005-5-0\",\"x\":1040,\"y\":144,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "name": "r005-6-0",
+          "type": "solid",
+          "x": 1056,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005-6-0\",\"x\":1056,\"y\":144,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "name": "r005-7-0",
+          "type": "solid",
+          "x": 1072,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005-7-0\",\"x\":1072,\"y\":144,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "name": "r006-0-0",
+          "type": "solid",
+          "x": 960,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r006-0-0\",\"x\":960,\"y\":80,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 14,
+          "name": "r006-1-0",
+          "type": "solid",
+          "x": 976,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r006-1-0\",\"x\":976,\"y\":80,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 15,
+          "name": "r006-2-0",
+          "type": "solid",
+          "x": 992,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r006-2-0\",\"x\":992,\"y\":80,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 16,
+          "name": "r006-3-0",
+          "type": "solid",
+          "x": 1008,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r006-3-0\",\"x\":1008,\"y\":80,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 17,
+          "name": "r006-4-0",
+          "type": "solid",
+          "x": 1024,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r006-4-0\",\"x\":1024,\"y\":80,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 18,
+          "name": "r006-5-0",
+          "type": "solid",
+          "x": 1040,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r006-5-0\",\"x\":1040,\"y\":80,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 19,
+          "name": "r009",
+          "type": "solid",
+          "x": 1056,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r009\",\"x\":1056,\"y\":80,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 20,
+          "name": "r010",
+          "type": "solid",
+          "x": 1072,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r010\",\"x\":1072,\"y\":80,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 21,
+          "name": "r011",
+          "type": "solid",
+          "x": 1136,
+          "y": 208,
+          "width": 64,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r011\",\"x\":1136,\"y\":208,\"w\":64,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 22,
+          "name": "r012",
+          "type": "solid",
+          "x": 1136,
+          "y": 144,
+          "width": 16,
+          "height": 64,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r012\",\"x\":1136,\"y\":144,\"w\":16,\"h\":64,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 23,
+          "name": "r013",
+          "type": "solid",
+          "x": 1152,
+          "y": 160,
+          "width": 16,
+          "height": 48,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r013\",\"x\":1152,\"y\":160,\"w\":16,\"h\":48,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 24,
+          "name": "r014",
+          "type": "solid",
+          "x": 1168,
+          "y": 176,
+          "width": 16,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r014\",\"x\":1168,\"y\":176,\"w\":16,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 25,
+          "name": "r015",
+          "type": "solid",
+          "x": 1184,
+          "y": 192,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r015\",\"x\":1184,\"y\":192,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 26,
+          "name": "r016",
+          "type": "solid",
+          "x": 1232,
+          "y": 208,
+          "width": 752,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r016\",\"x\":1232,\"y\":208,\"w\":752,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 27,
+          "name": "r017",
+          "type": "solid",
+          "x": 1376,
+          "y": 176,
+          "width": 16,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r017\",\"x\":1376,\"y\":176,\"w\":16,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 28,
+          "name": "r019",
+          "type": "solid",
+          "x": 1520,
+          "y": 160,
+          "width": 16,
+          "height": 48,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r019\",\"x\":1520,\"y\":160,\"w\":16,\"h\":48,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 29,
+          "name": "r020",
+          "type": "solid",
+          "x": 1744,
+          "y": 144,
+          "width": 32,
+          "height": 64,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r020\",\"x\":1744,\"y\":144,\"w\":32,\"h\":64,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 30,
+          "name": "r021-0-0",
+          "type": "solid",
+          "x": 1840,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r021-0-0\",\"x\":1840,\"y\":144,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 31,
+          "name": "r021-1-0",
+          "type": "solid",
+          "x": 1856,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r021-1-0\",\"x\":1856,\"y\":144,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 32,
+          "name": "r021-2-0",
+          "type": "solid",
+          "x": 1872,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r021-2-0\",\"x\":1872,\"y\":144,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 33,
+          "name": "r021-3-0",
+          "type": "solid",
+          "x": 1888,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r021-3-0\",\"x\":1888,\"y\":144,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 34,
+          "name": "r021-4-0",
+          "type": "solid",
+          "x": 1904,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r021-4-0\",\"x\":1904,\"y\":144,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 35,
+          "name": "r021-5-0",
+          "type": "solid",
+          "x": 1920,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r021-5-0\",\"x\":1920,\"y\":144,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 36,
+          "name": "r021-6-0",
+          "type": "solid",
+          "x": 1936,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r021-6-0\",\"x\":1936,\"y\":144,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 37,
+          "name": "r021-7-0",
+          "type": "solid",
+          "x": 1952,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r021-7-0\",\"x\":1952,\"y\":144,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 38,
+          "name": "r022",
+          "type": "solid",
+          "x": 1840,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r022\",\"x\":1840,\"y\":80,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 39,
+          "name": "r023",
+          "type": "solid",
+          "x": 1856,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r023\",\"x\":1856,\"y\":80,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 40,
+          "name": "r025-0-0",
+          "type": "solid",
+          "x": 1872,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r025-0-0\",\"x\":1872,\"y\":80,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 41,
+          "name": "r025-1-0",
+          "type": "solid",
+          "x": 1888,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r025-1-0\",\"x\":1888,\"y\":80,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 42,
+          "name": "r025-2-0",
+          "type": "solid",
+          "x": 1904,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r025-2-0\",\"x\":1904,\"y\":80,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 43,
+          "name": "r025-3-0",
+          "type": "solid",
+          "x": 1920,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r025-3-0\",\"x\":1920,\"y\":80,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 44,
+          "name": "r025-4-0",
+          "type": "solid",
+          "x": 1936,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r025-4-0\",\"x\":1936,\"y\":80,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 45,
+          "name": "r025-5-0",
+          "type": "solid",
+          "x": 1952,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r025-5-0\",\"x\":1952,\"y\":80,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 46,
+          "name": "r027",
+          "type": "solid",
+          "x": 2016,
+          "y": 208,
+          "width": 32,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r027\",\"x\":2016,\"y\":208,\"w\":32,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 47,
+          "name": "r028",
+          "type": "solid",
+          "x": 2016,
+          "y": 162,
+          "width": 32,
+          "height": 46,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r028\",\"x\":2016,\"y\":162,\"w\":32,\"h\":46,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 48,
+          "name": "r029",
+          "type": "solid",
+          "x": 2080,
+          "y": 208,
+          "width": 1072,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r029\",\"x\":2080,\"y\":208,\"w\":1072,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 49,
+          "name": "r033",
+          "type": "solid",
+          "x": 2688,
+          "y": 160,
+          "width": 32,
+          "height": 48,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r033\",\"x\":2688,\"y\":160,\"w\":32,\"h\":48,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 50,
+          "name": "r036",
+          "type": "solid",
+          "x": 3040,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r036\",\"x\":3040,\"y\":144,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 51,
+          "name": "r037",
+          "type": "solid",
+          "x": 3120,
+          "y": 176,
+          "width": 16,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r037\",\"x\":3120,\"y\":176,\"w\":16,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 52,
+          "name": "r038",
+          "type": "solid",
+          "x": 3168,
+          "y": 176,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r038\",\"x\":3168,\"y\":176,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 53,
+          "name": "r039",
+          "type": "solid",
+          "x": 3200,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r039\",\"x\":3200,\"y\":144,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 54,
+          "name": "r040",
+          "type": "solid",
+          "x": 3232,
+          "y": 112,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r040\",\"x\":3232,\"y\":112,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 55,
+          "name": "r041",
+          "type": "solid",
+          "x": 3264,
+          "y": 80,
+          "width": 32,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r041\",\"x\":3264,\"y\":80,\"w\":32,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 56,
+          "name": "r042",
+          "type": "solid",
+          "x": 3328,
+          "y": 208,
+          "width": 512,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r042\",\"x\":3328,\"y\":208,\"w\":512,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 57,
+          "name": "r043-base",
+          "type": "solid",
+          "x": 3424,
+          "y": 192,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r043-base\",\"x\":3424,\"y\":192,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "objects",
+      "type": "objectgroup",
+      "visible": true,
+      "opacity": 1,
+      "x": 0,
+      "y": 0,
+      "draworder": "index",
+      "objects": [
+        {
+          "id": 58,
+          "name": "inspection-start",
+          "type": "spawn",
+          "x": 24,
+          "y": 184,
+          "width": 12,
+          "height": 24,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"inspection-start\",\"kind\":\"spawn\",\"x\":24,\"y\":184,\"w\":12,\"h\":24}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "pending-mechanics",
+      "type": "objectgroup",
+      "visible": true,
+      "opacity": 1,
+      "x": 0,
+      "y": 0,
+      "draworder": "index",
+      "objects": [
+        {
+          "id": 59,
+          "name": "r001-fire",
+          "type": "cannon-fire",
+          "x": 288,
+          "y": 176,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r001-fire\",\"kind\":\"cannon-fire\",\"source\":{\"thing\":\"Cannon\",\"height\":16,\"x\":144,\"y\":16},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r001\"},\"x\":288,\"y\":176}"
+            }
+          ]
+        },
+        {
+          "id": 60,
+          "name": "r002",
+          "type": "enemy-koopa",
+          "x": 480,
+          "y": 144,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r002\",\"kind\":\"enemy-koopa\",\"source\":{\"thing\":\"Koopa\",\"jumping\":true,\"x\":240,\"y\":32},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r002\"},\"x\":480,\"y\":144}"
+            }
+          ]
+        },
+        {
+          "id": 61,
+          "name": "r003-fire",
+          "type": "cannon-fire",
+          "x": 544,
+          "y": 160,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-fire\",\"kind\":\"cannon-fire\",\"source\":{\"thing\":\"Cannon\",\"height\":24,\"x\":272,\"y\":24},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r003\"},\"x\":544,\"y\":160}"
+            }
+          ]
+        },
+        {
+          "id": 62,
+          "name": "r004-plant",
+          "type": "enemy-piranha",
+          "x": 848,
+          "y": 162,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r004-plant\",\"kind\":\"enemy-piranha\",\"source\":{\"macro\":\"Pipe\",\"height\":23,\"piranha\":true,\"x\":424,\"y\":23},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r004\"},\"x\":848,\"y\":162}"
+            }
+          ]
+        },
+        {
+          "id": 63,
+          "name": "r007",
+          "type": "enemy-hammerbro",
+          "x": 1008,
+          "y": 184,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r007\",\"kind\":\"enemy-hammerbro\",\"source\":{\"thing\":\"HammerBro\",\"x\":504,\"y\":12},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r007\"},\"x\":1008,\"y\":184}"
+            }
+          ]
+        },
+        {
+          "id": 64,
+          "name": "r008",
+          "type": "enemy-hammerbro",
+          "x": 1040,
+          "y": 120,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r008\",\"kind\":\"enemy-hammerbro\",\"source\":{\"thing\":\"HammerBro\",\"x\":520,\"y\":44},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r008\"},\"x\":1040,\"y\":120}"
+            }
+          ]
+        },
+        {
+          "id": 65,
+          "name": "r009-contents",
+          "type": "block-contents",
+          "x": 1056,
+          "y": 80,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r009-contents\",\"kind\":\"block-contents\",\"source\":{\"thing\":\"Brick\",\"contents\":\"Mushroom\",\"x\":528,\"y\":64},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r009\"},\"x\":1056,\"y\":80}"
+            }
+          ]
+        },
+        {
+          "id": 66,
+          "name": "r017-fire",
+          "type": "cannon-fire",
+          "x": 1376,
+          "y": 176,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r017-fire\",\"kind\":\"cannon-fire\",\"source\":{\"thing\":\"Cannon\",\"height\":16,\"x\":688,\"y\":16},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r017\"},\"x\":1376,\"y\":176}"
+            }
+          ]
+        },
+        {
+          "id": 67,
+          "name": "r018",
+          "type": "enemy-koopa",
+          "x": 1488,
+          "y": 160,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r018\",\"kind\":\"enemy-koopa\",\"source\":{\"thing\":\"Koopa\",\"jumping\":true,\"x\":744,\"y\":24},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r018\"},\"x\":1488,\"y\":160}"
+            }
+          ]
+        },
+        {
+          "id": 68,
+          "name": "r023-contents",
+          "type": "block-contents",
+          "x": 1856,
+          "y": 80,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r023-contents\",\"kind\":\"block-contents\",\"source\":{\"thing\":\"Brick\",\"contents\":\"Mushroom\",\"x\":928,\"y\":64},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r023\"},\"x\":1856,\"y\":80}"
+            }
+          ]
+        },
+        {
+          "id": 69,
+          "name": "r024",
+          "type": "enemy-hammerbro",
+          "x": 1872,
+          "y": 120,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r024\",\"kind\":\"enemy-hammerbro\",\"source\":{\"thing\":\"HammerBro\",\"x\":936,\"y\":44},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r024\"},\"x\":1872,\"y\":120}"
+            }
+          ]
+        },
+        {
+          "id": 70,
+          "name": "r026",
+          "type": "enemy-hammerbro",
+          "x": 1904,
+          "y": 184,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r026\",\"kind\":\"enemy-hammerbro\",\"source\":{\"thing\":\"HammerBro\",\"x\":952,\"y\":12},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r026\"},\"x\":1904,\"y\":184}"
+            }
+          ]
+        },
+        {
+          "id": 71,
+          "name": "r028-plant",
+          "type": "enemy-piranha",
+          "x": 2016,
+          "y": 162,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r028-plant\",\"kind\":\"enemy-piranha\",\"source\":{\"macro\":\"Pipe\",\"height\":23,\"piranha\":true,\"x\":1008,\"y\":23},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r028\"},\"x\":2016,\"y\":162}"
+            }
+          ]
+        },
+        {
+          "id": 72,
+          "name": "r030",
+          "type": "enemy-koopa",
+          "x": 2192,
+          "y": 184,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r030\",\"kind\":\"enemy-koopa\",\"source\":{\"thing\":\"Koopa\",\"x\":1096,\"y\":12},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r030\"},\"x\":2192,\"y\":184}"
+            }
+          ]
+        },
+        {
+          "id": 73,
+          "name": "r031",
+          "type": "enemy-hammerbro",
+          "x": 2336,
+          "y": 184,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r031\",\"kind\":\"enemy-hammerbro\",\"source\":{\"thing\":\"HammerBro\",\"x\":1168,\"y\":12},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r031\"},\"x\":2336,\"y\":184}"
+            }
+          ]
+        },
+        {
+          "id": 74,
+          "name": "r032",
+          "type": "enemy-hammerbro",
+          "x": 2540,
+          "y": 184,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r032\",\"kind\":\"enemy-hammerbro\",\"source\":{\"thing\":\"HammerBro\",\"x\":1270,\"y\":12},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r032\"},\"x\":2540,\"y\":184}"
+            }
+          ]
+        },
+        {
+          "id": 75,
+          "name": "r033-plant",
+          "type": "enemy-piranha",
+          "x": 2688,
+          "y": 160,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r033-plant\",\"kind\":\"enemy-piranha\",\"source\":{\"macro\":\"Pipe\",\"height\":24,\"piranha\":true,\"x\":1344,\"y\":24},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r033\"},\"x\":2688,\"y\":160}"
+            }
+          ]
+        },
+        {
+          "id": 76,
+          "name": "r034",
+          "type": "enemy-hammerbro",
+          "x": 2832,
+          "y": 184,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r034\",\"kind\":\"enemy-hammerbro\",\"source\":{\"thing\":\"HammerBro\",\"x\":1416,\"y\":12},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r034\"},\"x\":2832,\"y\":184}"
+            }
+          ]
+        },
+        {
+          "id": 77,
+          "name": "r035",
+          "type": "enemy-hammerbro",
+          "x": 2960,
+          "y": 184,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r035\",\"kind\":\"enemy-hammerbro\",\"source\":{\"thing\":\"HammerBro\",\"x\":1480,\"y\":12},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r035\"},\"x\":2960,\"y\":184}"
+            }
+          ]
+        },
+        {
+          "id": 78,
+          "name": "r036-contents",
+          "type": "block-contents",
+          "x": 3040,
+          "y": 144,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r036-contents\",\"kind\":\"block-contents\",\"source\":{\"thing\":\"Brick\",\"contents\":\"Coin\",\"x\":1520,\"y\":32},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r036\"},\"x\":3040,\"y\":144}"
+            }
+          ]
+        },
+        {
+          "id": 79,
+          "name": "r043",
+          "type": "flagpole-finish",
+          "x": 3424,
+          "y": 208,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r043\",\"kind\":\"flagpole-finish\",\"source\":{\"macro\":\"EndOutsideCastle\",\"castleDistance\":48,\"large\":true,\"walls\":13,\"transport\":{\"map\":\"8-4\"},\"x\":1712,\"y\":0},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r043\"},\"x\":3424,\"y\":208}"
+            }
+          ]
+        },
+        {
+          "id": 80,
+          "name": "r043-transport",
+          "type": "source-transport-not-simulated",
+          "x": 3424,
+          "y": 208,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r043-transport\",\"kind\":\"source-transport-not-simulated\",\"source\":{\"macro\":\"EndOutsideCastle\",\"castleDistance\":48,\"large\":true,\"walls\":13,\"transport\":{\"map\":\"8-4\"},\"x\":1712,\"y\":0},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r043\"},\"x\":3424,\"y\":208}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "properties": [
+    {
+      "name": "room",
+      "type": "string",
+      "value": "area-0"
+    },
+    {
+      "name": "underwater",
+      "type": "bool",
+      "value": false
+    },
+    {
+      "name": "inspectionOnly",
+      "type": "bool",
+      "value": true
+    },
+    {
+      "name": "referenceReview",
+      "type": "string",
+      "value": "pending"
+    }
+  ]
+}

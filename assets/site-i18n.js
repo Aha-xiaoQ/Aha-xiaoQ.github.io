@@ -118,6 +118,7 @@
       games: '从经典关卡到跨界角色，选择一款开始冒险。',
       tools: '实用小工具与可亲手操作的实验。',
       notes: '学习、折腾和动手过程中的随手记录。',
+      dev: '混合马里奥 · 项目记录与社区协作。',
       about: '在下_小Q。做项目，也做工具，偶尔做点游戏。',
     };
     const description = descriptions[info.page] || globalThis.SITE_DATA?.items?.find(item => item.slug === info.itemSlug)?.summary || '请到游戏页查看当前作品。';

@@ -1,0 +1,38 @@
+name: 认领或讨论一项任务
+description: 用于开发中心任务认领、新方案与范围确认。
+title: '[Task] '
+body:
+- type: input
+  id: task_id
+  attributes:
+    label: 开发中心任务 ID
+    description: 例如 DOC-001；这是内部任务 ID，不是 GitHub Issue 编号。
+  validations:
+    required: false
+- type: textarea
+  id: scope
+  attributes:
+    label: 准备解决什么
+    description: 说明修改范围与不包含的内容。
+  validations:
+    required: true
+- type: textarea
+  id: acceptance
+  attributes:
+    label: 怎样验收
+    description: 列出复现方式、设备与通过条件。
+  validations:
+    required: true
+- type: textarea
+  id: approach
+  attributes:
+    label: 方案、相关路径与前置依赖
+  validations:
+    required: false
+- type: textarea
+  id: rights
+  attributes:
+    label: 新增代码或素材的来源与许可
+    description: 没有新增资源请写无；未知许可先讨论，不上传素材。
+  validations:
+    required: true

@@ -1,0 +1,5 @@
+#!/usr/bin/env node
+import{fileURLToPath}from'node:url';import path from'node:path';import{readOptional}from'../lib/safe-path.mjs';import{sync}from'./sync.mjs';import{archiveBytes}from'../../packages/mario-mix-levels/scripts/pack.mjs';
+export const ROOT=fileURLToPath(new URL('../../',import.meta.url));
+export function check(root=ROOT){sync(root,{check:true});const kit=path.join(root,'packages/mario-mix-levels'),outputs=archiveBytes(kit);for(const [name,b]of outputs){const p=name.includes('_Source')?'downloads/source/'+name:'downloads/templates/'+name;const actual=readOptional(root,p);if(!actual||!actual.equals(b))throw Error('公开下载与地图工具源码不一致：'+p+'；运行 npm run levels:pack 并核对修改。');}const c=JSON.parse(readOptional(root,'packages/mario-mix-levels/data/campaign.json')),m=JSON.parse(readOptional(root,'packages/mario-mix-levels/data/generated/world-1.json'));return{campaign:c.chapters.length,templates:m.maps.length,rooms:m.maps.reduce((n,x)=>n+x.rooms.length,0),archives:outputs.size};}
+if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url))try{console.log(check());}catch(e){console.error(e.message);process.exitCode=1;}

@@ -1,0 +1,6 @@
+function t21EquipWeapon(s,kind,spill=true){t21Ensure(s);const old=r06Weapon(s);if(old===kind)return false;
+ if(spill)t21SpillOld(s,old);
+ s.t13Owned=s.t13Owned.filter(k=>k!==old);if(!s.t13Owned.includes(kind))s.t13Owned.push(kind);
+ s.t13Weapon=kind;s.t13WeaponOverride=!!s.kit;s.tool=0;s.p.attack=s.p.cooldown=0;s.minions=[];s.prismCharge=0;s.whipAge=99;
+ r06SyncKitTools();t21Event('weapon-exchange',{old,new:kind});return true;
+}

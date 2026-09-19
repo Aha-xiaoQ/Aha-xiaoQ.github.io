@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "release": "workshop-r07",
+  "deployment": "not-performed",
+  "items": [
+    {
+      "id": "R07-COLLECTION",
+      "implementation": "complete",
+      "verification": "automated-component",
+      "scope": "统一游戏和项目列表；静态动态同源"
+    },
+    {
+      "id": "R07-MEDIA",
+      "implementation": "complete",
+      "verification": "synthetic-sprite-and-cropped-poster-fixture",
+      "scope": "六种预设、素材契约、失败占位"
+    },
+    {
+      "id": "R07-INSTALL",
+      "implementation": "complete",
+      "verification": "automated-install-rollback",
+      "scope": "R06 四种来源兼容与保护"
+    },
+    {
+      "id": "R07-LIVE-ASSETS",
+      "implementation": "awaiting-maintainer",
+      "verification": "not-performed",
+      "scope": "原始 Q咪、完整封面、背景、字体、真实转场"
+    },
+    {
+      "id": "R07-PUBLISH",
+      "implementation": "awaiting-maintainer",
+      "verification": "not-performed",
+      "scope": "Windows、完整网站验收及真实 GitHub 发布"
+    }
+  ]
+}

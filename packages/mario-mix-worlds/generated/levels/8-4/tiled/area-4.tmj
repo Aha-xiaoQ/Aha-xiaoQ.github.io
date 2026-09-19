@@ -1,0 +1,498 @@
+{
+  "type": "map",
+  "version": "1.10",
+  "orientation": "orthogonal",
+  "renderorder": "right-down",
+  "width": 61,
+  "height": 15,
+  "tilewidth": 16,
+  "tileheight": 16,
+  "infinite": false,
+  "nextlayerid": 4,
+  "nextobjectid": 24,
+  "tilesets": [],
+  "layers": [
+    {
+      "id": 1,
+      "name": "collision",
+      "type": "objectgroup",
+      "visible": true,
+      "opacity": 1,
+      "x": 0,
+      "y": 0,
+      "draworder": "index",
+      "objects": [
+        {
+          "id": 1,
+          "name": "r000",
+          "type": "solid",
+          "x": 0,
+          "y": 176,
+          "width": 32,
+          "height": 64,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r000\",\"x\":0,\"y\":176,\"w\":32,\"h\":64,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "r001",
+          "type": "solid",
+          "x": 0,
+          "y": 32,
+          "width": 464,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r001\",\"x\":0,\"y\":32,\"w\":464,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "name": "r002",
+          "type": "solid",
+          "x": 32,
+          "y": 208,
+          "width": 80,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r002\",\"x\":32,\"y\":208,\"w\":80,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "name": "r003",
+          "type": "solid",
+          "x": 112,
+          "y": 176,
+          "width": 32,
+          "height": 64,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003\",\"x\":112,\"y\":176,\"w\":32,\"h\":64,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "name": "r004",
+          "type": "solid",
+          "x": 144,
+          "y": 208,
+          "width": 144,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r004\",\"x\":144,\"y\":208,\"w\":144,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "name": "r008",
+          "type": "solid",
+          "x": 368,
+          "y": 160,
+          "width": 96,
+          "height": 80,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r008\",\"x\":368,\"y\":160,\"w\":96,\"h\":80,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "name": "r009",
+          "type": "solid",
+          "x": 368,
+          "y": 48,
+          "width": 96,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r009\",\"x\":368,\"y\":48,\"w\":96,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "name": "r010-roof",
+          "type": "solid",
+          "x": 464,
+          "y": 32,
+          "width": 512,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r010-roof\",\"x\":464,\"y\":32,\"w\":512,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "name": "r010-bridge",
+          "type": "solid",
+          "x": 464,
+          "y": 160,
+          "width": 208,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r010-bridge\",\"x\":464,\"y\":160,\"w\":208,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "name": "r010-floor",
+          "type": "solid",
+          "x": 672,
+          "y": 208,
+          "width": 304,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r010-floor\",\"x\":672,\"y\":208,\"w\":304,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "name": "r010-step",
+          "type": "solid",
+          "x": 672,
+          "y": 144,
+          "width": 48,
+          "height": 64,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r010-step\",\"x\":672,\"y\":144,\"w\":48,\"h\":64,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "name": "r010-ceiling",
+          "type": "solid",
+          "x": 688,
+          "y": 48,
+          "width": 32,
+          "height": 48,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r010-ceiling\",\"x\":688,\"y\":48,\"w\":32,\"h\":48,\"collision\":\"solid\"}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "objects",
+      "type": "objectgroup",
+      "visible": true,
+      "opacity": 1,
+      "x": 0,
+      "y": 0,
+      "draworder": "index",
+      "objects": [
+        {
+          "id": 13,
+          "name": "inspection-start",
+          "type": "spawn",
+          "x": 24,
+          "y": 152,
+          "width": 12,
+          "height": 24,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"inspection-start\",\"kind\":\"spawn\",\"x\":24,\"y\":152,\"w\":12,\"h\":24}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "pending-mechanics",
+      "type": "objectgroup",
+      "visible": true,
+      "opacity": 1,
+      "x": 0,
+      "y": 0,
+      "draworder": "index",
+      "objects": [
+        {
+          "id": 14,
+          "name": "r000-plant",
+          "type": "enemy-piranha",
+          "x": 0,
+          "y": 176,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r000-plant\",\"kind\":\"enemy-piranha\",\"source\":{\"macro\":\"Pipe\",\"height\":\"Infinity\",\"piranha\":true,\"entrance\":5,\"x\":0,\"y\":16},\"sourcePath\":{\"area\":4,\"part\":\"base\",\"record\":\"r000\"},\"x\":0,\"y\":176}"
+            }
+          ]
+        },
+        {
+          "id": 15,
+          "name": "r003-transport",
+          "type": "source-transport-not-simulated",
+          "x": 112,
+          "y": 176,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-transport\",\"kind\":\"source-transport-not-simulated\",\"source\":{\"height\":\"Infinity\",\"piranha\":true,\"transport\":1,\"x\":56,\"y\":16,\"thing\":\"PipeVertical\",\"width\":16},\"sourcePath\":{\"area\":4,\"part\":\"base\",\"record\":\"r003\"},\"x\":112,\"y\":176}"
+            }
+          ]
+        },
+        {
+          "id": 16,
+          "name": "r003-plant",
+          "type": "enemy-piranha",
+          "x": 112,
+          "y": 176,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-plant\",\"kind\":\"enemy-piranha\",\"source\":{\"macro\":\"Pipe\",\"height\":\"Infinity\",\"piranha\":true,\"transport\":1,\"x\":56,\"y\":16},\"sourcePath\":{\"area\":4,\"part\":\"base\",\"record\":\"r003\"},\"x\":112,\"y\":176}"
+            }
+          ]
+        },
+        {
+          "id": 17,
+          "name": "r005",
+          "type": "enemy-hammerbro",
+          "x": 224,
+          "y": 184,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005\",\"kind\":\"enemy-hammerbro\",\"source\":{\"thing\":\"HammerBro\",\"x\":112,\"y\":12},\"sourcePath\":{\"area\":4,\"part\":\"base\",\"record\":\"r005\"},\"x\":224,\"y\":184}"
+            }
+          ]
+        },
+        {
+          "id": 18,
+          "name": "r006",
+          "type": "lava-volume",
+          "x": 256,
+          "y": 208,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r006\",\"kind\":\"lava-volume\",\"source\":{\"macro\":\"Water\",\"width\":56,\"x\":128,\"y\":0},\"sourcePath\":{\"area\":4,\"part\":\"base\",\"record\":\"r006\"},\"x\":256,\"y\":208}"
+            }
+          ]
+        },
+        {
+          "id": 19,
+          "name": "r007",
+          "type": "enemy-podoboo",
+          "x": 320,
+          "y": 272,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r007\",\"kind\":\"enemy-podoboo\",\"source\":{\"thing\":\"Podoboo\",\"x\":160,\"y\":-32},\"sourcePath\":{\"area\":4,\"part\":\"base\",\"record\":\"r007\"},\"x\":320,\"y\":272}"
+            }
+          ]
+        },
+        {
+          "id": 20,
+          "name": "r010-boss",
+          "type": "enemy-bowser",
+          "x": 602,
+          "y": 124,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r010-boss\",\"kind\":\"enemy-bowser\",\"source\":{\"thing\":\"Bowser\",\"x\":301,\"y\":42,\"throwing\":true},\"sourcePath\":{\"area\":4,\"part\":\"base\",\"record\":\"r010\"},\"x\":602,\"y\":124}"
+            }
+          ]
+        },
+        {
+          "id": 21,
+          "name": "r010-axe",
+          "type": "bridge-axe-finish",
+          "x": 672,
+          "y": 128,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r010-axe\",\"kind\":\"bridge-axe-finish\",\"source\":{\"thing\":\"CastleAxe\",\"x\":336,\"y\":40},\"sourcePath\":{\"area\":4,\"part\":\"base\",\"record\":\"r010\"},\"x\":672,\"y\":128}"
+            }
+          ]
+        },
+        {
+          "id": 22,
+          "name": "r010",
+          "type": "castle-finish",
+          "x": 464,
+          "y": 208,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r010\",\"kind\":\"castle-finish\",\"source\":{\"macro\":\"EndInsideCastle\",\"spawnType\":\"Bowser\",\"throwing\":true,\"npc\":\"Peach\",\"transport\":{\"map\":\"1-1\"},\"x\":232,\"y\":0},\"sourcePath\":{\"area\":4,\"part\":\"base\",\"record\":\"r010\"},\"x\":464,\"y\":208}"
+            }
+          ]
+        },
+        {
+          "id": 23,
+          "name": "r010-transport",
+          "type": "source-transport-not-simulated",
+          "x": 464,
+          "y": 208,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r010-transport\",\"kind\":\"source-transport-not-simulated\",\"source\":{\"macro\":\"EndInsideCastle\",\"spawnType\":\"Bowser\",\"throwing\":true,\"npc\":\"Peach\",\"transport\":{\"map\":\"1-1\"},\"x\":232,\"y\":0},\"sourcePath\":{\"area\":4,\"part\":\"base\",\"record\":\"r010\"},\"x\":464,\"y\":208}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "properties": [
+    {
+      "name": "room",
+      "type": "string",
+      "value": "area-4"
+    },
+    {
+      "name": "underwater",
+      "type": "bool",
+      "value": false
+    },
+    {
+      "name": "inspectionOnly",
+      "type": "bool",
+      "value": true
+    },
+    {
+      "name": "referenceReview",
+      "type": "string",
+      "value": "pending"
+    }
+  ]
+}

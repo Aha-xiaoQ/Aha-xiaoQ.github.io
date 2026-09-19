@@ -1,0 +1,8 @@
+function originalRoute(e){ if(e.type==='keydown'||e.type==='keyup'){
+  if(mode==='paused'&&e.type==='keydown'&&!e.repeat&&t21Binds.pause.keys.includes(e.code)){togglePause();t17ResetActions();return true;}if(!['playing','flag'].includes(mode)&&!t21KeyHeld.has(e.code))return t21EarlyBase(e);
+  const action=Object.keys(t21Binds).find(k=>t21Binds[k].keys.includes(e.code)),mapped=t21KeyHeld.get(e.code)||(action&&T21_ACTIONS[action].code);
+  if(mapped){if(e.type==='keydown')t21KeyHeld.set(e.code,mapped);else t21KeyHeld.delete(e.code);const proxy={type:e.type,code:mapped,key:e.key,target:e.target,repeat:e.repeat,ctrlKey:e.ctrlKey,metaKey:e.metaKey,altKey:e.altKey};return t21EarlyBase(proxy);}
+  if(t17Keys.has(e.code)&&!/^Digit[1-6]$|^Key[CR]$|^Enter$/.test(e.code))return true;
+ }
+return t21EarlyBase(e);
+}

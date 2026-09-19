@@ -1,0 +1,96 @@
+/* Unified placement and physical inventory transactions. Installed after R20.
+   All gameplay time is the existing 60Hz update, not a second timer. */
+const T21_LOG=[];
+function t21Event(type,data={}){T21_LOG.push({type,tick:state?.ticks||0,...data});if(T21_LOG.length>1200)T21_LOG.shift();}
+/*@terra-module:item-definitions*/
+let t21DropSerial=0;
+function t21Ensure(s){if(!s)return;s.t21Notices??=[];s.t21OwnedAccessories??=[];s.t21ExtraShots??=[];s.t21Hostile??=[];s.t13Drops??=[];s.t13Owned??=['starfury'];s.t13Accessories??={};s.t13Inventory??={};}
+/*@terra-module:pickup-notice*/
+function t21MouseTarget(s){if(t20Device!=='keyboard'||t17Input.source!=='mouse'||!t17Input.lastMouse)return null;t13SamplePointer({clientX:t17Input.lastMouse[0],clientY:t17Input.lastMouse[1]});return t13Pointer.active?{x:t13Pointer.x,y:t13Pointer.y,pointer:true}:null;}
+const t21OldRaw=t14RawTarget;
+t14RawTarget=function(s,v={}){
+ const exact=t21MouseTarget(s);if(exact)return exact;
+ const p=s.p,dx=Math.abs(v.x||0)>.25?Math.sign(v.x):p.facing,dy=Math.abs(v.y||0)>.55?Math.sign(v.y):0;
+ if([1,4,5].includes(s.tool)){
+  const base=s.r05Arena?T13.top:0,feet=p.y+p.h;
+  // The nearest wholly free column in front of the feet, not a point from the torso.
+  const col=Math.floor((p.x+p.w/2)/16)+dx;
+  const support=solids().find(q=>q.id===p.support),footY=p.grounded&&support? support.y:feet;
+  let row=Math.floor((footY-base+.8)/16);
+  if(s.tool!==1)row--; // standing furniture rests ON the support; platforms extend its top.
+  if(dy<0)row--;else if(dy>0&&s.tool===1)row++;
+  return{x:col*16+8,y:base+row*16+8,c:col,r:row,dx,dy,pointer:false,footPlacement:true};
+ }
+ // Ignore stale mouse/stick target when the controller owns input.
+ return{x:p.x+p.w/2+(dy&&!v.x?0:dx*(p.w/2+8)),y:dy>0?p.y+p.h+8:dy<0?p.y-8:p.y+p.h*.52,dx:dy&&!v.x?0:dx,dy,pointer:false};
+};
+t13ToolTarget=function(s,v={}){const raw=t14RawTarget(s,v);if(s.tool===3)return t14ChooseMine(s,raw);if(s.tool===4){if(raw.footPlacement){const t={...raw,kind:'torch'},reason=t14TorchSpot(s,t);return{...t,valid:!reason,reason};}return t14ChooseTorch(s,raw);}return raw;};
+const t21OldPlace=t13Place;
+t13Place=function(s,t,type){const ok=t21OldPlace(s,t,type);t21Event('placement',{type,ok:!!ok,target:{x:t.x,y:t.y},feet:s.p.y+s.p.h,device:t20Device});return ok;};
+
+function t21Drop(s,kind,count,x,y,extra={}){t21Ensure(s);const size=s.r05Arena?16:12;const d={id:'drop-'+(++t21DropSerial),kind,count:Math.max(1,count||1),x,y,w:size,h:size,vx:0,vy:-2.8,age:0,grounded:false,pickDelay:28,t21:true,...extra};s.t13Drops.push(d);if(s.t13World)s.t13World.drops=s.t13Drops;return d;}
+function t21SpillOld(s,kind){if(!kind||!T21_ITEMS[kind]?.weapon)return;const p=s.p;const d=t21Drop(s,kind,1,p.x+p.w/2-6,p.y+p.h-17,{vx:-p.facing*1.3,vy:-2.8,pickDelay:60,mustLeave:true,oldWeapon:true,lockX:p.x+p.w/2,lockY:p.y+p.h});t21Event('old-weapon-dropped',{kind,id:d.id});return d;}
+/*@terra-module:weapon-exchange*/
+function t21Collect(s,kind,count){const item=T21_ITEMS[kind];if(!item){t13Collect(s,kind,count);return;}
+ t21Ensure(s);if(item.weapon){if(r06Weapon(s)===kind)return false;t21EquipWeapon(s,kind);}
+ else if(item.accessory){if(kind==='cloudBottle')r06CollectCloud(s);else{s.t13Accessories[item.flag]=true;if(kind==='blizzard'){s.cloudJump=true;s.p.cloudAvailable=true;}}if(!s.t21OwnedAccessories.includes(kind))s.t21OwnedAccessories.push(kind);}
+ else if(kind==='healing')s.healPotions=(s.healPotions||0)+count;
+ else if(kind==='manaPotion')s.manaPotions=(s.manaPotions||0)+count;
+ else if(kind==='arrows')s.t13Inventory.arrows=(s.t13Inventory.arrows||0)+count;
+ else if(kind==='heart'){s.maxHp=Math.min(400,s.maxHp+20*count);s.hp=Math.min(s.maxHp,s.hp+20*count);}
+ else if(kind==='lucy'||kind==='copperAxe'){const was=s.t21Axe||'copperAxe';if(was===kind)return false;t21Drop(s,was,1,s.p.x,s.p.y,{pickDelay:60,mustLeave:true});s.t21Axe=kind;s.tool=2;r06SyncKitTools();}
+ else if(kind==='silverCoin'){s.score+=count*10;s.t13Inventory.silverCoin=(s.t13Inventory.silverCoin||0)+count;}
+ else if(kind==='wood')s.wood+=count;
+ else s.t13Inventory[kind]=(s.t13Inventory[kind]||0)+count;
+ terraSound('pickup',{volume:.5});t21Toast(s,kind,count);r05Persist();return true;
+}
+// Physical drops are durable until picked up. Exchanged equipment requires leaving
+// its contact area before it may be collected again, avoiding involuntary ping-pong.
+t13DropStep=function(s){t21Ensure(s);const p=s.p;
+ for(const d of [...s.t13Drops]){d.age=(d.age||0)+1;d.w??=10;d.h??=10;
+  const close={x:d.x-18,y:d.y-18,w:d.w+36,h:d.h+36};if(d.mustLeave&&(Number.isFinite(d.lockX)?Math.hypot(p.x+p.w/2-d.lockX,p.y+p.h-d.lockY)>48*t10Scale(s):!near(p,close)))d.mustLeave=false;
+  const can=d.age>(d.pickDelay??18)&&!d.mustLeave;
+  const dx=p.x+p.w/2-d.x-d.w/2,dy=p.y+p.h*.6-d.y-d.h/2,dist=Math.hypot(dx,dy);
+  const previous={x:d.x,y:d.y,w:d.w,h:d.h};
+  if(can&&dist<34*t10Scale(s)&&t14Visible(s,{x:d.x+d.w/2,y:d.y+d.h/2})){d.vx=approach(d.vx,dx/(dist||1)*3.5,.45);d.vy=approach(d.vy,dy/(dist||1)*3.5,.45);}
+  else{d.vx*=.94;d.vy=Math.min(6,(d.vy||0)+.22);}
+  d.x+=d.vx;d.y+=d.vy;
+  const bounds={x:Math.min(previous.x,d.x)-1,y:Math.min(previous.y,d.y)-1,w:d.w+Math.abs(d.vx)+2,h:d.h+Math.abs(d.vy)+2};
+  for(const q of t13PhysicalSurfaces(s,bounds)){
+   if(d.x+d.w>q.x&&d.x<q.x+q.w&&previous.y+d.h<=q.y+.5&&d.y+d.h>=q.y&&d.vy>=0){d.y=q.y-d.h;d.vy=0;d.vx*=.65;d.grounded=true;}
+   else if(q.solid&&near(d,q)&&previous.y<q.y+q.h&&previous.y+d.h>q.y){d.x=previous.x;d.vx=0;}
+  }
+  if(can&&near(p,d)){if(T21_ITEMS[d.kind]){if(t21Collect(s,d.kind,d.count)!==false)d.done=true;else{d.mustLeave=true;d.lockX=p.x+p.w/2;d.lockY=p.y+p.h;d.pickDelay=d.age+35;}}else{d.done=true;t13Collect(s,d.kind||'healing',d.count);}}
+  if(d.y>(s.r05Arena?T13.top+T13.rows*16+32:280)){
+   if(T21_ITEMS[d.kind]?.weapon||T21_ITEMS[d.kind]?.accessory){const safe=s.r05Arena?{x:156,y:440}:{x:p.x,y:Math.min(140,p.y-20)};Object.assign(d,safe,{vx:0,vy:0,mustLeave:false,pickDelay:d.age+30});}else d.done=true;
+  }
+ }
+ s.t13Drops=s.t13Drops.filter(d=>!d.done);if(s.t13World)s.t13World.drops=s.t13Drops;
+};
+// Spawn once, then the empty opened chest remains visibly empty. Contents are not
+// silently deposited in inventory, even when entering on top of a closed chest.
+/*@terra-module:chest-spill*/
+t20TouchLoot=function(s){if(s.t11Transition)return;if(s.t11Chest&&!s.t11Chest.opened&&near(s.p,{x:s.t11Chest.x-5,y:s.t11Chest.y-5,w:42,h:40}))t12Open();for(const c of s.t13World?.chests||[])if(near(s.p,{x:c.x-4,y:c.y-4,w:40,h:36}))t21Open(s,c);};
+t13OpenNearby=function(){return !!state&&mode==='playing'&&t21Open(state,t13ClosestChest(state));};
+t13TakeChest=function(){const c=state?.t13World?.chests.find(x=>x.id===t13OpenChestId);return t21Open(state,c);};
+// The starter bow also uses the same exchange path, so the initial Starfury is not lost.
+const t21SupplyBase=t12SuppliesStep;
+t12SuppliesStep=function(s){const was=r06Weapon(s),before=s.t12Supplies?.find(x=>x.kind==='stormbow')?.done;t21SupplyBase(s);if(!before&&s.t12Supplies?.find(x=>x.kind==='stormbow')?.done&&r06Weapon(s)!==was){t21SpillOld(s,was);s.t13Owned=s.t13Owned.filter(x=>x!==was);t21Toast(s,'stormbow');r05Persist();}};
+const t21KitBase=r07EquipDrop;
+r07EquipDrop=function(s,d){const was=r06Weapon(s),oldKit=s.kit;const ok=t21KitBase(s,d);if(ok){if(!oldKit||s.t13WeaponOverride)t21SpillOld(s,was);const current=r06Weapon(s);s.t13Owned=s.t13Owned.filter(x=>x!==was);if(!s.t13Owned.includes(current))s.t13Owned.push(current);t21Event('kit-exchange',{old:oldKit,new:s.kit});}return ok;};
+const t21CopyBase=r06CopyLoadout;r06CopyLoadout=function(a,b){t21CopyBase(a,b);for(const k of ['t21OwnedAccessories','t21Axe'])if(a[k]!==undefined)b[k]=structuredClone(a[k]);};
+const t21GenBase=t13GenerateWorld;
+t13GenerateWorld=function(){const w=t21GenBase();const pools=[['cloudBottle','boots','band','mirror'],['boots','shackle','sharkNecklace'],['band','cloudBottle','mirror'],['anklet','claws','boomstick'],['iceBlade','flurry','blizzard'],['band','boots','cloudBottle'],['mirror','band','boots'],['cloudBottle','band','boots'],['band','cloudBottle','mirror'],['boomstick','band','mirror']];
+ w.chests.forEach((c,i)=>{const bid=clamp(t17DeepBiome(Math.floor(c.x/16),Math.floor((c.y-T13.top)/16)),0,pools.length-1),pool=pools[bid]||pools[0];c.t21Biome=bid;c.items=[{kind:i===0?'terraBlade':pool[i%pool.length],count:1},{kind:'healing',count:2+i%3},{kind:i%3===0?'manaPotion':'torch',count:i%3===0?2:20+i%4*5},{kind:i%2?'silverCoin':'wood',count:i%2?12+i:25}];c.empty=false;c.opened=false;c.t21Spilled=false;});return w;};
+const t21DropDrawBase=r06DrawProjectiles;
+r06DrawProjectiles=function(s,c){const all=s.t13Drops;s.t13Drops=all.filter(d=>!d.t21);try{t21DropDrawBase(s,c);}finally{s.t13Drops=all;}
+ for(const d of all){if(!d.t21)continue;const item=T21_ITEMS[d.kind]||{name:'补给',effect:'可拾取补给',icon:null};const im=item.icon&&(r06Images[item.icon]||photos[item.icon]);if(!im){/*@terra-module:missing-pickup-paint*/continue;}const size=s.r05Arena?22:14,ratio=Math.min(size/im.width,size/im.height);ctx.save();ctx.globalAlpha=d.mustLeave?.62:1;ctx.imageSmoothingEnabled=false;ctx.drawImage(im,d.x+d.w/2-im.width*ratio/2-c,d.y+d.h-im.height*ratio,im.width*ratio,im.height*ratio);ctx.restore();}
+};
+const t21HudBase=t15Model;t15Model=function(s){const m=t21HudBase(s);for(const k of ['anklet','claws','blizzard'])if(s.t13Accessories?.[k])m.gear.push({key:T21_ITEMS[k].icon,name:T21_ITEMS[k].name+' · '+T21_ITEMS[k].effect});if(T21_ITEMS[r06Weapon(s)])m.names[0]=T21_ITEMS[r06Weapon(s)].name;if(s.t21Axe==='lucy'){m.names[2]='露西斧';m.keys[2]='lucy';}return m;};
+const t21ToolsBase=r06SyncKitTools;r06SyncKitTools=function(){t21ToolsBase();if(state){const d=T21_ITEMS[r06Weapon(state)];if(d)tools[0]=d.name;tools[2]=state.t21Axe==='lucy'?'露西斧':'铜斧';}};
+/*@terra-module:notice-paint*/const t21StepInventory=step;step=function(v){const s=state;t21Ensure(s);if(s?.t21Notices?.length){s.t21Notices[0].age++;if(s.t21Notices[0].age>210)s.t21Notices.shift();}const r=t21StepInventory(v);return r;};
+const t21RenderInventory=render;render=function(){const r=t21RenderInventory();if(isTrio()&&state&&mode==='playing')t21DrawNotices(state);return r;};
+
+// Backtracking with a weapon lets the player recover gear behind the camera.
+const t21BacktrackBase=r04MainStep;r04MainStep=function(v){return t21BacktrackBase(v);};
+

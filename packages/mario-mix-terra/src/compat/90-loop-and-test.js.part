@@ -1,0 +1,16 @@
+/* END SANDBOX TRIO R04 */
+/*@terra-module:stage-controller*//*@terra-module:clock*/
+// Deterministic test hook, enabled only by explicitly adding ?test=1.
+if((new URLSearchParams(location.search).has('test')||document.documentElement.dataset.test==='1')){manual=true;window.__test={
+ start(){startGame();draw()},step(n,input={}){virtualInput={left:false,right:false,down:false,jump:false,run:false,...input};for(let i=0;i<n;i++)fixedUpdate();virtualInput=null;draw();return this.state()},
+ nativeStep(n){virtualInput=null;for(let i=0;i<n;i++)fixedUpdate();draw();return this.state()},
+ state(){return{mode,room,frame,score,coins,lives,timeLeft,camera,checkpoint,freeze,player:{...player},enemies:enemies.map(e=>({...e})),items:items.map(e=>({...e})),shots:shots.map(e=>({...e})),looseCoins:looseCoins.map(e=>({...e})),flagPhase,flagBonus,pipes:pipes.map(p=>({...p})),tiles:[...tiles.values()].filter(t=>t.type!=='ground'&&t.type!=='pipe').map(t=>({...t}))}},
+ place(x,y,power=0){setSize(power);player.x=x;player.y=y;player.vx=0;player.vy=0;player.grounded=false;camera=room==='surface'?clamp(x-110,0,LEVEL_WIDTH-W):0;mode='playing';freeze=0;hideOverlay();draw()},
+ power(n){setSize(n);draw()},bump(x,y){let t=tiles.get(tileKey(x,y));if(t)bumpTile(t);draw()},clearEnemies(){enemies.length=0},
+ spawn(type,x,y){const e={x,y,w:14,h:type==='turtle'?22:14,vx:-.5,vy:0,type,active:true,dead:0,flipped:false,shell:false,shellTimer:0,combo:0,safe:0,anim:0};enemies.push(e);return e},
+ damage(){damage()},die(){die()},resume(){handlePrimary()},pause(){togglePause()},setTime(t){timeLeft=t},
+ enterUnder(){loadRoom('under');player.x=32;player.y=48;mode='playing';hideOverlay();draw()},draw,
+ settings:{tileSize:T,width:W,height:H,worldWidth:LEVEL_WIDTH},
+ physics:{walkSpeed:1.5,runSpeed:2.5,walkAccel:.037109375,runAccel:.0556640625,groundDecel:.05078125},
+ };draw();}
+})();

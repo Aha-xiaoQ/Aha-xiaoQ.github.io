@@ -1,0 +1,231 @@
+/* 0.8 — moving colliders, shared FX clock, safe reward exit and exclusive cues.
+ * No canonical-map edits. Tank victory uses the existing user-supplied result clip.
+ * Tally is a presentation of score already earned, NOT a second score award.
+ */
+const R08_VERSION='0.8.0';
+let r08IgnoredLift=null,r08Cue=null,r08CueSerial=0,r08AudioPrevMode='menu';
+const R08_EXIT={x:192,y:192,bottom:232};
+
+function r08LiftBoxes(){return hero==='tank'&&r12?.area==='underground'?(r12.lifts||[]).filter(l=>l!==r08IgnoredLift):[];}
+const r08OldTankCollision=r12TankCollides;
+r12TankCollides=function(b){return r08OldTankCollision(b)||r08LiftBoxes().some(l=>overlap(b,l));};
+function r08UpdateLifts(){
+ if(!r12)return;
+ if(hero!=='tank'){
+  for(const l of r12.lifts){const old=l.y,stood=player.grounded&&player.x+player.w>l.x&&player.x<l.x+l.w&&Math.abs(player.y+player.h-old)<2;
+   l.y+=l.vy;const wrapped=l.y>236||l.y<28;if(l.y>236)l.y=28;if(l.y<28)l.y=236;
+   if(stood&&!wrapped){const b={...player,y:player.y+l.vy};if(!solids(b).length)player.y=b.y;}
+  }return;
+ }
+ // Three platforms in one generator keep their spacing, including when blocked.
+ // A moving face pushes a vehicle only through collision-checked space. If pinned,
+ // the whole generator waits for one tick instead of crushing or overlapping it.
+ const bodies=[player,...ninja.foes.filter(e=>!e.dead&&!e.spawn)];
+ const groups=[...new Set(r12.lifts.map(l=>Math.floor(l.id/3)))];
+ for(const group of groups){
+  const lifts=r12.lifts.filter(l=>Math.floor(l.id/3)===group);
+  const saved=lifts.map(l=>({l,y:l.y}));const positions=bodies.map(b=>({b,x:b.x,y:b.y,track:b.r06Track}));let ok=true;
+  for(const l of lifts){l.y+=l.vy;if(l.y>236)l.y=28;if(l.y<28)l.y=236;}
+  for(const {l,y} of saved){if(Math.abs(l.y-y)>2)continue;
+   for(const b of bodies){if(!overlap(b,l))continue;
+    const delta=l.vy>0?l.y+l.h-b.y+.001:b.y+b.h-l.y+.001;
+    r08IgnoredLift=l;
+    try{r12TankMove(b,l.vy>0?1:3,Math.max(0,delta));}finally{r08IgnoredLift=null;}
+    if(overlap(b,l)){ok=false;break;}
+   }if(!ok)break;
+  }
+  if(!ok){for(const s of saved)s.l.y=s.y;for(const s of positions){s.b.x=s.x;s.b.y=s.y;s.b.r06Track=s.track;}}
+ }
+}
+
+// One music-cue slot: intro and result cannot overlap. It is not in the SFX voice
+// pool (12 shooting sounds must never evict a 7.755-second victory recording).
+function r08DetachCue(remember=false){
+ const c=r08Cue;if(!c)return;
+ if(c.node){if(remember&&audio)c.offset=Math.min(c.duration,c.offset+Math.max(0,audio.currentTime-c.started));
+  const node=c.node;c.node=null;node.onended=null;try{node.stop();node.disconnect();c.gain.disconnect();}catch{}c.gain=null;
+  audioLogEvent(remember?'cue-pause':'cue-stop',c.key,{role:c.role,offset:c.offset});
+ }
+ if(!remember)r08Cue=null;
+}
+function r08CueSync(){
+ const c=r08Cue;if(!c||!audio)return;
+ const playable=soundOn&&!document.hidden&&mode!=='paused'&&audio.state==='running';
+ if(!playable){r08DetachCue(true);return;}
+ if(c.done||c.node)return;
+ if(c.offset>=c.duration-.003){c.done=true;return;}
+ const item=bank.get(c.key);if(!item)return;
+ const node=audio.createBufferSource(),gain=audio.createGain();node.buffer=item.buffer;node.loop=false;
+ gain.gain.value=item.gain*(c.role==='intro'?.8:1);node.connect(gain);gain.connect(musicBus);
+ c.node=node;c.gain=gain;c.started=audio.currentTime;
+ node.onended=()=>{if(r08Cue===c&&c.node===node){c.node=null;c.done=true;c.offset=c.duration;c.gain=null;audioLogEvent('cue-ended',c.key,{role:c.role});}try{node.disconnect();gain.disconnect();}catch{}};
+ node.start(0,c.offset);audioLogEvent('cue-start',c.key,{role:c.role,offset:c.offset,id:c.id});
+}
+function r08StartCue(key,role){
+ if(!audio||!bank.has(key))return 0;
+ if(r08Cue?.key===key&&r08Cue.role===role)return audio.currentTime+Math.max(0,r08Cue.duration-r08Cue.offset);
+ r08DetachCue(false);stopMusic(false);heldTrack=null;r06StopEngine();
+ // A victory cancels pending entrance/death/combat voices, but not future tally ticks.
+ if(role!=='intro')stopEffects();
+ r07NormaliseAudio();r08Cue={key,role,offset:0,duration:bank.get(key).buffer.duration,node:null,gain:null,started:0,done:false,id:++r08CueSerial};
+ r08CueSync();return audio.currentTime+r08Cue.duration;
+}
+const r08OldOneShot=oneShot;
+oneShot=function(key,options={}){
+ if(hero==='tank'){
+  if(['flag','tank_flag'].includes(key))return 0; // Never map a flag to the entrance cue.
+  if(['clear','tank_clear','t06_result'].includes(key)){
+   const role=mode==='flag'||mode==='win'?'flag-result':'defense-result';
+   const owner=role==='flag-result'?r12:r03Challenge;
+   if(owner?.r08ResultRequested)return 0;
+   if(owner)owner.r08ResultRequested=true;
+   return r08StartCue(role==='flag-result'?'t06_result':'t09_stage_done',role);
+  }
+  if(['t06_start','r03_tank_start'].includes(key)){
+   if(mode!=='playing'||r03Challenge?.won||r08Cue?.role.includes('result'))return 0;
+   return r08StartCue('t06_start','intro');
+  }
+ }
+ return r08OldOneShot(key,options);
+};
+const r08OldDesired=desiredMusic;
+desiredMusic=function(){return hero==='tank'?null:r08OldDesired();};
+audioSync=function(){
+ if(!audio)return;
+ mixAudio();r07NormaliseAudio();
+ if(!r12IsHero()){r08DetachCue(false);r06StopEngine();return r12OldSync();}
+ if(hero==='tank'){
+  r06Music=false;stopMusic(false);heldTrack=null;
+  if(mode!==r08AudioPrevMode){
+   if(mode==='flag'){if(!(r08AudioPrevMode==='paused'&&r08Cue?.role==='flag-result'))r08DetachCue(false);r06StopEngine();stopEffects();}
+   else if(['menu','dying','gameover'].includes(mode))r08DetachCue(false);
+   r08AudioPrevMode=mode;
+  }
+  if(r12?.r08IntroPending&&mode==='playing'&&!r12.transition&&!r12.spawnFrames&&bank.has('t06_start')){
+   r12.r08IntroPending=false;r08StartCue('t06_start','intro');
+  }
+  r08CueSync();r06EngineSync();return;
+ }
+ r08DetachCue(false);r06StopEngine();
+ if(mode==='paused'||document.hidden||!soundOn){stopMusic(true);return;}
+ ninjaMakeAudio();const key=desiredMusic();if(key)playMusic(key);else{stopMusic(false);heldTrack=null;}
+};
+const r08OldResetAudio=resetGameAudio;
+resetGameAudio=function(){r08DetachCue(false);r06StopEngine();r08AudioPrevMode='menu';return r08OldResetAudio();};
+const r08OldClear=r05ClearSession;
+r05ClearSession=function(){r08DetachCue(false);r06StopEngine();r08AudioPrevMode='menu';r08OldClear();};
+const r08OldLoad=r12Load;
+r12Load=function(...args){
+ const target=args[0],previous=r12?.area;
+ if(['entrance','defense'].includes(target)||hero!=='tank')r08DetachCue(false);
+ r08OldLoad(...args);
+ if(hero==='tank'){
+  r12.r08IntroPending=['entrance','defense'].includes(target);
+  if(target==='defense')r03Challenge.tally08=null;
+ }
+ r08AudioPrevMode=mode;
+};
+const r08OldPanel=updateAudioPanel;
+updateAudioPanel=function(){r08OldPanel();if(hero==='tank'){
+ if($('audioBadge'))$('audioBadge').textContent=!soundOn?'MUTED':r08Cue?.node?'PACK MUSIC':'PACK FX';
+ if($('audioStatus'))$('audioStatus').textContent='坦克：开场短曲 / 履带 / 地下计数与完成提示 / 最终奖励曲。无额外循环曲。';
+}};
+// Resume only on user interaction, and resync completed/suspended cues explicitly.
+document.addEventListener('visibilitychange',()=>audioSync());
+for(const kind of ['pointerdown','keydown'])document.addEventListener(kind,()=>{
+ if(audio&&audio.state==='suspended'&&soundOn)audio.resume().then(audioSync).catch(()=>{});
+},true);
+
+// Keep the kill ledger even when grenade kills do not earn direct kill points.
+const r08OldKill=r12Kill;
+r12Kill=function(e,noScore=false){
+ const count=hero==='tank'&&r12?.area==='defense'&&!e.dead&&e.kind==='tank';
+ if(count){const c=r03Challenge;c.ledger08??={};const type=e.tankKind||'basic';const row=c.ledger08[type]??={count:0,points:0};row.count++;row.points+=noScore?0:({basic:100,fast:200,power:300,armor:400}[type]||100);}
+ return r08OldKill(e,noScore);
+};
+const r08OldWin=r03WinChallenge;
+r03WinChallenge=function(kind){
+ if(kind!=='tank')return r08OldWin(kind);
+ const c=r03Challenge;if(!c||c.won)return;
+ c.won=true;c.wonAt=frame;r12.r08IntroPending=false;
+ if(!r03Rewards.tank){r03Rewards.tank=true;r12.tank.power=3;r12.tank.shield=600;r12Event('secret-reward',{kind:'tank',reward:'max-power-shield'});}
+ ninja.projectiles=[];player.vx=player.vy=0;r04ClearCommands();
+ const types=['basic','fast','power','armor'];
+ const rows=types.map(type=>({type,count:c.ledger08?.[type]?.count??ninja.foes.filter(e=>e.dead&&e.tankKind===type).length,points:c.ledger08?.[type]?.points??0,shown:0,shownPoints:0}));
+ c.tally08={active:true,clock:0,duration:330,rows,total:0,points:0,totalFlash:0,releaseSeen:false,lastTick:-1,scoreAtWin:score};
+ c.exitPipe=null;pipes=[];r12.message='';r12.messageTime=0;r06StopEngine();stopEffects();r08DetachCue(false);r06Sound('tally',{volume:.7});
+ r12Event('defense-tally-start',{kills:rows.reduce((a,b)=>a+b.count,0),earned:rows.reduce((a,b)=>a+b.points,0)});
+};
+function r08OpenDefenseExit(){
+ const c=r03Challenge;if(!c||c.exitPipe)return;
+ // Clear only the pre-existing exit approach. Install the obstacle AFTER finding
+ // a free vehicle position; never leave a vehicle embedded in newly-created tiles.
+ for(const b of c.blocks)if(b.x>=184&&b.y>=168)b.dead=true;
+ const q={...R08_EXIT},foot={x:q.x,y:q.y,w:32,h:q.bottom-q.y};
+ if(overlap(player,foot)){
+  const before={x:player.x,y:player.y};player.x=clamp(player.x,q.x+4,q.x+20);player.y=q.y-player.h-1;
+  r12Event('defense-exit-clearance',{from:before,to:{x:player.x,y:player.y}});
+ }
+ c.exitPipe=q;
+ for(let x=q.x;x<q.x+32;x+=8)for(let y=q.y;y<q.bottom;y+=8)c.blocks.push({x,y,w:8,h:8,type:'pipe',dead:false});
+ pipes=[q];r12.pipeCooldown=20;r04ClearCommands();player.vx=player.vy=0;r12.tank.cool=8;
+ r12Message('基地守护成功 · 满级火力与护盾',120);r12Event('defense-exit-open');
+}
+function r08TallyTick(input){
+ const c=r03Challenge,t=c.tally08;t.clock++;frame++;r12.ticks++;
+ if(r12.shake>0)r12.shake--;updateParticles();
+ for(const f of ninja.fx){f.x+=f.vx;f.y+=f.vy;f.life--;}ninja.fx=ninja.fx.filter(f=>f.life>0);
+ player.vx=player.vy=0;
+ if(!input.run&&!input.jump)t.releaseSeen=true;
+ // Fresh press can finish the display early; a held final shot cannot dismiss it.
+ const skip=t.clock>60&&t.releaseSeen&&(input.runPressed||input.jumpPressed);
+ const countTicks=16,rowTicks=54,begin=30;
+ for(let i=0;i<4;i++){
+  const r=t.rows[i],elapsed=t.clock-begin-i*rowTicks;
+  const shown=skip?r.count:clamp(Math.floor(elapsed/countTicks),0,r.count);
+  if(shown!==r.shown){r.shown=shown;r.shownPoints=r.count?Math.round(r.points*shown/r.count):0;r.flash=10;r06Sound('tally',{volume:.5});}
+  if(r.flash>0)r.flash--;
+ }
+ if(t.clock>=begin+4*rowTicks||skip){
+  if(!t.totalShown){t.totalShown=true;t.totalFlash=18;oneShot('tank_clear');}
+  t.total=t.rows.reduce((n,r)=>n+r.count,0);t.points=t.rows.reduce((n,r)=>n+r.points,0);
+ }
+ if(t.totalFlash>0)t.totalFlash--;
+ if(t.clock>=t.duration||skip){
+  t.active=false;for(const r of t.rows){r.shown=r.count;r.shownPoints=r.points;}r08OpenDefenseExit();
+  r12Event('defense-tally-end',{skipped:skip,scoreUnchanged:score===t.scoreAtWin});
+ }
+}
+const r08OldDefenseTick=r03DefenseTick;
+r03DefenseTick=function(input){if(r03Challenge?.tally08?.active){r08TallyTick(input);return;}return r08OldDefenseTick(input);};
+// The tank can't keep firing into its new exit while the score display is active.
+const r08OldTankShot=r12TankShot;
+r12TankShot=function(...args){if(r03Challenge?.tally08?.active)return false;return r08OldTankShot(...args);};
+// Map overlay draws must guard the intentionally delayed exit.
+const r08OldVertical=r07VerticalPipe;
+r07VerticalPipe=function(q){if(q)return r08OldVertical(q);};
+function r08DrawTally(){
+ const t=r03Challenge?.tally08;if(r12?.area!=='defense'||!t?.active)return;
+ ctx.save();ctx.setTransform(1,0,0,1,0,0);
+ rect(36,31,188,188,'#000');rect(38,33,184,1,'#8d8061');rect(38,217,184,1,'#8d8061');
+ text('STAGE 01 CLEAR',128,43,'#f6d589',.9,true);text('I-PLAYER',53,64,'#f27b68',.8);
+ text(String(t.scoreAtWin).padStart(6,'0'),164,64,'#f5e7a3',.8,false); // right-aligned below
+ // Align numeric columns with the built-in pixel-font widths, no external fonts.
+ const labels=['BASIC','FAST','POWER','ARMOR'];
+ for(let i=0;i<4;i++){
+  const r=t.rows[i],y=88+i*24,visible=t.clock>=30+i*54;
+  const e={tankKind:r.type,hp:1,bonus:false,r06Track:0};r12DrawTank(ctx,51,y+1,3,true,0,r.type==='armor',e);
+  const col=r.flash>0?(r.flash>5?'#fff8d5':'#f4c862'):'#e8e8dc';
+  text(labels[i],74,y+1,'#9d9e98',.62);
+  if(visible){text(String(r.shown).padStart(2,'0'),120,y+1,col,.85);text(String(r.shownPoints).padStart(4,'0'),151,y+1,col,.85);}
+ }
+ rect(50,187,156,1,'#b7ac8b');text('TOTAL',52,198,'#ede7d4',.8);
+ if(t.totalShown){text(String(t.total).padStart(2,'0'),120,198,t.totalFlash>9?'#fff8d5':'#f3cd6d',.85);text(String(t.points).padStart(4,'0'),151,198,'#f3cd6d',.85);}
+ ctx.restore();
+}
+const r08OldDraw=r12Draw;
+r12Draw=function(){r08OldDraw();r08DrawTally();};
+if(window.__relayTest){
+ __relayTest.r08=()=>({version:R08_VERSION,cue:r08Cue?{key:r08Cue.key,role:r08Cue.role,active:!!r08Cue.node,offset:r08Cue.offset,duration:r08Cue.duration,done:r08Cue.done}:null,tally:r03Challenge?.tally08?JSON.parse(JSON.stringify(r03Challenge.tally08)):null,exit:r03Challenge?.exitPipe||null,liveParticles:particles.length,liveFloaters:floaters.length,music:desiredMusic(),engine:!!r06Engine});
+}
+

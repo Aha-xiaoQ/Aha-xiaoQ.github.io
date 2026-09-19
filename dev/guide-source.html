@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>开发栏目内部内容源</title></head><body>
+<div class="mm-dev" data-dev-component="guide" lang="zh-CN" data-i18n-skip><div class="dev-subnav" role="navigation" aria-label="开发栏目内导航"><a href="index.html">项目记录</a><a href="guide.html" aria-current="location">参与指南</a></div><div class="guide"><p class="eyebrow">YOUR FIRST CONTRIBUTION</p><h2>先跑起来，再改一件事。</h2><p>这是现有网站与三期游戏的协作准备版，不是重新实现的游戏，也不是联机模式。代码、画面、玩法和测试都可以贡献，但先看清自己的改动边界。</p>
+<h2>01 · 在仓库根目录启动</h2><p>使用 Node.js 22 或更新版本。本轮协作工具没有第三方 npm 依赖，无需先执行 <code>npm install</code>。在已有完整仓库根目录运行：</p><pre><code>npm run dev
+# 浏览器访问 http://127.0.0.1:4173/dev/</code></pre><p>Windows 也可双击根目录的 <code>start-dev.cmd</code>。终端保持打开，Ctrl+C 停止。端口占用时使用 <code>npm run dev -- --port 4174</code>。</p><p class="notice">下载的增量更新包不是完整游戏仓库。先按包内说明应用到原仓库；不要删除原目录。直接打开开发中心可以预览，但完整网站与三期游戏依赖原有文件。</p>
+<table><thead><tr><th>用途</th><th>仓库内路径</th></tr></thead><tbody><tr><td>开发中心</td><td><code>dev/index.html</code></td></tr><tr><td>第一期 · 1-1</td><td><code>games/mario-mix/play.html</code></td></tr><tr><td>第二期 · 1-2</td><td><code>games/mario-mix-2/play.html</code></td></tr><tr><td>第三期 · 1-3</td><td><code>games/mario-mix-3/play.html</code></td></tr><tr><td>共享任务状态</td><td><code>collab/project.json</code></td></tr></tbody></table>
+<h2>02 · 从一个任务开始</h2><p>在开发中心选一个任务，阅读验收标准和前置事项。卡片 ID（例如 DOC-001）不是 GitHub Issue 编号；打开表单并提交后才会创建实际 Issue。先确认无人重复认领，再 Fork、创建分支、提交小范围 PR。</p><p><a href="../CONTRIBUTING.md">阅读完整贡献指南</a>。大规模重构、新角色、素材替换先讨论，不在一个 PR 中混合调手感、改地图和全仓格式化。</p>
+<h2>03 · 改状态，并让它真正共享</h2><p>网页里的“编辑本地状态”只是当前浏览器的草稿。点击导出 <code>project.json</code> 后，将其放回仓库的 <code>collab/project.json</code>，核对修改日期、下次任务和交付状态，再运行：</p><pre><code>npm run collab:build
+npm run check
+npm test
+npm run doctor</code></pre><p>提交状态源及两个生成文件：<code>dev/project-data.js</code>、<code>collab/TASKS.md</code>。标记任务完成必须填写验收依据；前置任务未完成时不会允许伪装为完成。</p><p><code>doctor</code> 负责检查原游戏入口是否存在；它不会验证游戏能否通关。<code>check</code> 和自动测试主要覆盖协作工具，也不能代替手柄和音频实测。</p>
+<h2>04 · 每次中断，留下可恢复的记录</h2><p>下一轮从 <code>AGENTS.md</code>、<code>docs/collab/HANDOFF.md</code>、任务状态和验证记录读取进度。用 <code>npm run handoff</code> 输出续接说明，或直接在开发中心复制。</p><p>先读取 GitHub 当前 main，再对照记录的 SHA 与本地版本。不能把旧聊天中的“最新版”当成事实。每轮只交付一份带文件清单、基线和回退说明的更新包，由维护者手动推送。</p>
+<h2>05 · 这几件事不要跳过</h2><p>游戏代码与素材的许可审计仍在待办中。网站 MIT 不自动覆盖游戏、人物、音乐和音效；不得仅因为素材位于 GitHub 就认定可再分发。新增资源需要来源和授权依据，不清楚时使用已明确授权的占位素材。</p><p>本轮已准备 GitHub 模板与低权限检查文件，但分支保护、外部贡献工作流审批以及首次远端检查，仍需维护者按 <a href="../docs/collab/MAINTAINER_SETUP.md">设置清单</a> 完成。文件存在不等于 GitHub 设置已经生效。</p><div class="actions"><a class="button primary" href="index.html#board">去看任务 →</a><a class="button" href="../docs/collab/VALIDATION.md">查看实际验证范围</a></div></div></div>
+
+</body></html>

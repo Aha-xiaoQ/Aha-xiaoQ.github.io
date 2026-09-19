@@ -1,0 +1,425 @@
+{
+  "type": "map",
+  "version": "1.10",
+  "orientation": "orthogonal",
+  "renderorder": "right-down",
+  "width": 33,
+  "height": 15,
+  "tilewidth": 16,
+  "tileheight": 16,
+  "infinite": false,
+  "nextlayerid": 4,
+  "nextobjectid": 20,
+  "tilesets": [],
+  "layers": [
+    {
+      "id": 1,
+      "name": "collision",
+      "type": "objectgroup",
+      "visible": true,
+      "opacity": 1,
+      "x": 0,
+      "y": 0,
+      "draworder": "index",
+      "objects": [
+        {
+          "id": 1,
+          "name": "r000",
+          "type": "solid",
+          "x": 0,
+          "y": 32,
+          "width": 528,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r000\",\"x\":0,\"y\":32,\"w\":528,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "r001",
+          "type": "solid",
+          "x": 0,
+          "y": 208,
+          "width": 16,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r001\",\"x\":0,\"y\":208,\"w\":16,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "name": "r002",
+          "type": "solid",
+          "x": 16,
+          "y": 160,
+          "width": 96,
+          "height": 80,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r002\",\"x\":16,\"y\":160,\"w\":96,\"h\":80,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "name": "r003",
+          "type": "solid",
+          "x": 112,
+          "y": 128,
+          "width": 32,
+          "height": 112,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003\",\"x\":112,\"y\":128,\"w\":32,\"h\":112,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "name": "r005",
+          "type": "solid",
+          "x": 144,
+          "y": 160,
+          "width": 96,
+          "height": 80,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005\",\"x\":144,\"y\":160,\"w\":96,\"h\":80,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "name": "r006",
+          "type": "solid",
+          "x": 240,
+          "y": 112,
+          "width": 32,
+          "height": 128,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r006\",\"x\":240,\"y\":112,\"w\":32,\"h\":128,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "name": "r007",
+          "type": "solid",
+          "x": 272,
+          "y": 160,
+          "width": 96,
+          "height": 80,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r007\",\"x\":272,\"y\":160,\"w\":96,\"h\":80,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "name": "r009",
+          "type": "solid",
+          "x": 432,
+          "y": 160,
+          "width": 64,
+          "height": 80,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r009\",\"x\":432,\"y\":160,\"w\":64,\"h\":80,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "name": "r010",
+          "type": "solid",
+          "x": 496,
+          "y": 128,
+          "width": 32,
+          "height": 112,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r010\",\"x\":496,\"y\":128,\"w\":32,\"h\":112,\"collision\":\"solid\"}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "objects",
+      "type": "objectgroup",
+      "visible": true,
+      "opacity": 1,
+      "x": 0,
+      "y": 0,
+      "draworder": "index",
+      "objects": [
+        {
+          "id": 10,
+          "name": "inspection-start",
+          "type": "spawn",
+          "x": 24,
+          "y": 136,
+          "width": 12,
+          "height": 24,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"inspection-start\",\"kind\":\"spawn\",\"x\":24,\"y\":136,\"w\":12,\"h\":24}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "pending-mechanics",
+      "type": "objectgroup",
+      "visible": true,
+      "opacity": 1,
+      "x": 0,
+      "y": 0,
+      "draworder": "index",
+      "objects": [
+        {
+          "id": 11,
+          "name": "r003-plant",
+          "type": "enemy-piranha",
+          "x": 112,
+          "y": 128,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-plant\",\"kind\":\"enemy-piranha\",\"source\":{\"macro\":\"Pipe\",\"height\":\"Infinity\",\"piranha\":true,\"x\":56,\"y\":40},\"sourcePath\":{\"area\":2,\"section\":0,\"part\":\"before\",\"record\":\"r003\"},\"x\":112,\"y\":128}"
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "name": "r004",
+          "type": "spawn-zone-CheepsStart",
+          "x": 144,
+          "y": 208,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r004\",\"kind\":\"spawn-zone-CheepsStart\",\"source\":{\"macro\":\"CheepsStart\",\"x\":72,\"y\":0},\"sourcePath\":{\"area\":2,\"section\":0,\"part\":\"before\",\"record\":\"r004\"},\"x\":144,\"y\":208}"
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "name": "r006-transport",
+          "type": "source-transport-not-simulated",
+          "x": 240,
+          "y": 112,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r006-transport\",\"kind\":\"source-transport-not-simulated\",\"source\":{\"height\":\"Infinity\",\"piranha\":true,\"transport\":1,\"x\":120,\"y\":48,\"thing\":\"PipeVertical\",\"width\":16},\"sourcePath\":{\"area\":2,\"section\":0,\"part\":\"before\",\"record\":\"r006\"},\"x\":240,\"y\":112}"
+            }
+          ]
+        },
+        {
+          "id": 14,
+          "name": "r006-plant",
+          "type": "enemy-piranha",
+          "x": 240,
+          "y": 112,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r006-plant\",\"kind\":\"enemy-piranha\",\"source\":{\"macro\":\"Pipe\",\"height\":\"Infinity\",\"piranha\":true,\"transport\":1,\"x\":120,\"y\":48},\"sourcePath\":{\"area\":2,\"section\":0,\"part\":\"before\",\"record\":\"r006\"},\"x\":240,\"y\":112}"
+            }
+          ]
+        },
+        {
+          "id": 15,
+          "name": "r008",
+          "type": "lava-volume",
+          "x": 368,
+          "y": 208,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r008\",\"kind\":\"lava-volume\",\"source\":{\"macro\":\"Water\",\"width\":32,\"x\":184,\"y\":0},\"sourcePath\":{\"area\":2,\"section\":0,\"part\":\"before\",\"record\":\"r008\"},\"x\":368,\"y\":208}"
+            }
+          ]
+        },
+        {
+          "id": 16,
+          "name": "r010-transport",
+          "type": "source-transport-not-simulated",
+          "x": 496,
+          "y": 128,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r010-transport\",\"kind\":\"source-transport-not-simulated\",\"source\":{\"height\":\"Infinity\",\"piranha\":true,\"transport\":4,\"x\":248,\"y\":40,\"thing\":\"PipeVertical\",\"width\":16},\"sourcePath\":{\"area\":2,\"section\":0,\"part\":\"before\",\"record\":\"r010\"},\"x\":496,\"y\":128}"
+            }
+          ]
+        },
+        {
+          "id": 17,
+          "name": "r010-plant",
+          "type": "enemy-piranha",
+          "x": 496,
+          "y": 128,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r010-plant\",\"kind\":\"enemy-piranha\",\"source\":{\"macro\":\"Pipe\",\"height\":\"Infinity\",\"piranha\":true,\"transport\":4,\"x\":248,\"y\":40},\"sourcePath\":{\"area\":2,\"section\":0,\"part\":\"before\",\"record\":\"r010\"},\"x\":496,\"y\":128}"
+            }
+          ]
+        },
+        {
+          "id": 18,
+          "name": "r011",
+          "type": "spawn-zone-CheepsStop",
+          "x": 528,
+          "y": 208,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r011\",\"kind\":\"spawn-zone-CheepsStop\",\"source\":{\"macro\":\"CheepsStop\",\"x\":264,\"y\":0},\"sourcePath\":{\"area\":2,\"section\":0,\"part\":\"before\",\"record\":\"r011\"},\"x\":528,\"y\":208}"
+            }
+          ]
+        },
+        {
+          "id": 19,
+          "name": "section-mode",
+          "type": "conditional-section-runtime",
+          "x": 0,
+          "y": 32,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"section-mode\",\"kind\":\"conditional-section-runtime\",\"source\":{\"x\":0,\"y\":88},\"sourcePath\":{\"area\":2,\"section\":0,\"part\":\"before\",\"record\":\"section\"},\"x\":0,\"y\":32}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "properties": [
+    {
+      "name": "room",
+      "type": "string",
+      "value": "area-2-section-0-before"
+    },
+    {
+      "name": "underwater",
+      "type": "bool",
+      "value": false
+    },
+    {
+      "name": "inspectionOnly",
+      "type": "bool",
+      "value": true
+    },
+    {
+      "name": "referenceReview",
+      "type": "string",
+      "value": "pending"
+    }
+  ]
+}

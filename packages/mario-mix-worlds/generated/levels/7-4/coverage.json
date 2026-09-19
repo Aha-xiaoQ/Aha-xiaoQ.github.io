@@ -1,0 +1,269 @@
+{
+  "placementRecords": 108,
+  "areas": 1,
+  "sectionViews": 18,
+  "views": 19,
+  "geometry": 92,
+  "objects": 19,
+  "pending": [
+    "bridge-axe-finish",
+    "castle-finish",
+    "conditional-section",
+    "conditional-section-runtime",
+    "conditional-sectiondecider",
+    "conditional-sectionfail",
+    "conditional-sectionpass",
+    "enemy-bowser",
+    "enemy-podoboo",
+    "falling-platform",
+    "lava-volume",
+    "rotating-firebar",
+    "source-transport-not-simulated"
+  ],
+  "details": [
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r003",
+      "kind": "lava-volume"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r005-motion",
+      "kind": "falling-platform"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r006",
+      "kind": "enemy-podoboo"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r007-motion",
+      "kind": "falling-platform"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r010",
+      "kind": "conditional-section"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "section-mode",
+      "kind": "conditional-section-runtime"
+    },
+    {
+      "roomId": "area-0-section-0-before",
+      "sourceRecord": "section-mode",
+      "kind": "conditional-section-runtime"
+    },
+    {
+      "roomId": "area-0-section-0-stretch",
+      "sourceRecord": "r001",
+      "kind": "conditional-sectionpass"
+    },
+    {
+      "roomId": "area-0-section-0-stretch",
+      "sourceRecord": "r003",
+      "kind": "conditional-sectionfail"
+    },
+    {
+      "roomId": "area-0-section-0-stretch",
+      "sourceRecord": "section-mode",
+      "kind": "conditional-section-runtime"
+    },
+    {
+      "roomId": "area-0-section-0-after",
+      "sourceRecord": "r002",
+      "kind": "conditional-section"
+    },
+    {
+      "roomId": "area-0-section-0-after",
+      "sourceRecord": "section-mode",
+      "kind": "conditional-section-runtime"
+    },
+    {
+      "roomId": "area-0-section-1-before",
+      "sourceRecord": "section-mode",
+      "kind": "conditional-section-runtime"
+    },
+    {
+      "roomId": "area-0-section-1-stretch",
+      "sourceRecord": "r001",
+      "kind": "conditional-sectionfail"
+    },
+    {
+      "roomId": "area-0-section-1-stretch",
+      "sourceRecord": "r003",
+      "kind": "conditional-sectionpass"
+    },
+    {
+      "roomId": "area-0-section-1-stretch",
+      "sourceRecord": "r005",
+      "kind": "conditional-sectionfail"
+    },
+    {
+      "roomId": "area-0-section-1-stretch",
+      "sourceRecord": "section-mode",
+      "kind": "conditional-section-runtime"
+    },
+    {
+      "roomId": "area-0-section-1-after",
+      "sourceRecord": "r003",
+      "kind": "conditional-section"
+    },
+    {
+      "roomId": "area-0-section-1-after",
+      "sourceRecord": "section-mode",
+      "kind": "conditional-section-runtime"
+    },
+    {
+      "roomId": "area-0-section-2-stretch",
+      "sourceRecord": "r001",
+      "kind": "conditional-sectionfail"
+    },
+    {
+      "roomId": "area-0-section-2-stretch",
+      "sourceRecord": "r003",
+      "kind": "conditional-sectionpass"
+    },
+    {
+      "roomId": "area-0-section-2-stretch",
+      "sourceRecord": "section-mode",
+      "kind": "conditional-section-runtime"
+    },
+    {
+      "roomId": "area-0-section-2-after",
+      "sourceRecord": "r006",
+      "kind": "conditional-sectiondecider"
+    },
+    {
+      "roomId": "area-0-section-2-after",
+      "sourceRecord": "section-mode",
+      "kind": "conditional-section-runtime"
+    },
+    {
+      "roomId": "area-0-section-3-before",
+      "sourceRecord": "r004",
+      "kind": "lava-volume"
+    },
+    {
+      "roomId": "area-0-section-3-before",
+      "sourceRecord": "r007-fire",
+      "kind": "rotating-firebar"
+    },
+    {
+      "roomId": "area-0-section-3-before",
+      "sourceRecord": "r008",
+      "kind": "lava-volume"
+    },
+    {
+      "roomId": "area-0-section-3-before",
+      "sourceRecord": "section-mode",
+      "kind": "conditional-section-runtime"
+    },
+    {
+      "roomId": "area-0-section-3-stretch",
+      "sourceRecord": "r000",
+      "kind": "conditional-sectionfail"
+    },
+    {
+      "roomId": "area-0-section-3-stretch",
+      "sourceRecord": "r001",
+      "kind": "conditional-sectionpass"
+    },
+    {
+      "roomId": "area-0-section-3-stretch",
+      "sourceRecord": "section-mode",
+      "kind": "conditional-section-runtime"
+    },
+    {
+      "roomId": "area-0-section-3-after",
+      "sourceRecord": "r000",
+      "kind": "conditional-section"
+    },
+    {
+      "roomId": "area-0-section-3-after",
+      "sourceRecord": "section-mode",
+      "kind": "conditional-section-runtime"
+    },
+    {
+      "roomId": "area-0-section-4-before",
+      "sourceRecord": "section-mode",
+      "kind": "conditional-section-runtime"
+    },
+    {
+      "roomId": "area-0-section-4-stretch",
+      "sourceRecord": "section-mode",
+      "kind": "conditional-section-runtime"
+    },
+    {
+      "roomId": "area-0-section-4-after",
+      "sourceRecord": "r005",
+      "kind": "conditional-section"
+    },
+    {
+      "roomId": "area-0-section-4-after",
+      "sourceRecord": "section-mode",
+      "kind": "conditional-section-runtime"
+    },
+    {
+      "roomId": "area-0-section-5-before",
+      "sourceRecord": "section-mode",
+      "kind": "conditional-section-runtime"
+    },
+    {
+      "roomId": "area-0-section-5-stretch",
+      "sourceRecord": "r001",
+      "kind": "conditional-sectionpass"
+    },
+    {
+      "roomId": "area-0-section-5-stretch",
+      "sourceRecord": "r003",
+      "kind": "conditional-sectionfail"
+    },
+    {
+      "roomId": "area-0-section-5-stretch",
+      "sourceRecord": "section-mode",
+      "kind": "conditional-section-runtime"
+    },
+    {
+      "roomId": "area-0-section-5-after",
+      "sourceRecord": "r002",
+      "kind": "conditional-sectiondecider"
+    },
+    {
+      "roomId": "area-0-section-5-after",
+      "sourceRecord": "section-mode",
+      "kind": "conditional-section-runtime"
+    },
+    {
+      "roomId": "area-0-section-6-before",
+      "sourceRecord": "r011-boss",
+      "kind": "enemy-bowser"
+    },
+    {
+      "roomId": "area-0-section-6-before",
+      "sourceRecord": "r011-axe",
+      "kind": "bridge-axe-finish"
+    },
+    {
+      "roomId": "area-0-section-6-before",
+      "sourceRecord": "r011",
+      "kind": "castle-finish"
+    },
+    {
+      "roomId": "area-0-section-6-before",
+      "sourceRecord": "r011-transport",
+      "kind": "source-transport-not-simulated"
+    },
+    {
+      "roomId": "area-0-section-6-before",
+      "sourceRecord": "section-mode",
+      "kind": "conditional-section-runtime"
+    }
+  ],
+  "geometryReview": "reference-transcribed-pending-original-review",
+  "playability": "partition-inspection-not-level-completion",
+  "underwaterAreas": 0,
+  "sourceIssues": 0
+}

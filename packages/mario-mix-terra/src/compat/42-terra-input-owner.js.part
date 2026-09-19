@@ -1,0 +1,170 @@
+/* R17 — one shared input/aim path. No enemy query occurs in player aiming.
+ * Standard Gamepad: LS move, RS aim, RT use, A/LT jump, X interact,
+ * B mount, LB/R3 tools, Y weapon, R3 mount type, L3 heal, Back mirror.
+ * Existing projectile/minion homing is intentionally not removed.
+ */
+const T17_BUILD='release-1.0';
+const t17Input={buttons:[],previous:[],blocked:new Set(),keyBlocked:new Set(),axes:[0,0,0,0],connected:false,index:null,id:null,source:'facing',explicit:false,dx:1,dy:0,radius:1,mouseDown:false,mouseBlocked:false,inactive:false,menuDir:0,menuRepeat:0,dialogIndex:0,mode:null,deadzone:.22,lastMouse:null,lastState:null};
+const t17Keys=new Set(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','KeyA','KeyD','KeyW','KeyS','Space','KeyK','KeyZ','KeyJ','KeyX','ShiftLeft','ShiftRight','KeyL','KeyE','KeyC','KeyP','Escape','KeyR','Enter','KeyQ','KeyF','KeyV','KeyB','KeyH','KeyG','Digit1','Digit2','Digit3','Digit4','Digit5','Digit6','BracketLeft','BracketRight']);
+/*@terra-module:stick*/
+function t17Pressed(b){return !!b?.pressed||(Number(b?.value)||0)>.28;}
+function t17MaskHeld(){for(let i=0;i<t17Input.buttons.length;i++)if(t17Input.buttons[i])t17Input.blocked.add(i);for(const k of held)t17Input.keyBlocked.add(k);t17Input.mouseBlocked=t17Input.mouseDown;t17Input.mouseDown=false;t13Pointer.down=false;r05Pointer.down=r05Pointer.pressed=false;pending={};}
+function t17ResetActions(){t17MaskHeld();held.clear();keys.clear();touch.clear();pending={};prev={};r05CancelPointer();t13Pointer.down=false;}
+function t17Action(i){return !!t17Input.buttons[i]&&!t17Input.blocked.has(i);}
+function t17Edge(i){return t17Action(i)&&!t17Input.previous[i];}
+function t17SetAim(dx,dy,source){const n=Math.hypot(dx,dy);if(n<.001)return;t17Input.dx=dx/n;t17Input.dy=dy/n;t17Input.radius=Math.min(1,n);t17Input.source=source;t17Input.explicit=true;}
+function t17PrepareState(s){if(t17Input.lastState===s)return;t17Input.lastState=s;t17Input.explicit=false;t17Input.source='facing';t17Input.dx=s?.p?.facing||1;t17Input.dy=0;t17Input.radius=1;t17Input.mouseDown=false;r05Pointer.down=r05Pointer.pressed=t13Pointer.down=false;/* Transition handlers mask held actions; do not eat fresh first-frame movement. */}
+function t17AimPoint(s,v={},tools=false){
+ const p=s.p,sc=t10Scale(s),origin={x:p.x+p.w/2,y:p.y+p.h/2};
+ // Direct test/virtual input and normal pad input use the same mathematical path.
+ if(Math.hypot(v.aimX||0,v.aimY||0)>.2)t17SetAim(v.aimX,v.aimY,'stick');
+ if(t17Input.source==='mouse'&&t17Input.explicit&&t13Pointer.active){r05SyncPointer();return {x:t13Pointer.x,y:t13Pointer.y,source:'mouse',pointer:true};}
+ let dx=t17Input.dx,dy=t17Input.dy;
+ if(!t17Input.explicit){dx=v.x||p.facing;dy=v.y||0;const d=Math.hypot(dx,dy)||1;dx/=d;dy/=d;}
+ const reach=tools?52*sc:260*sc;
+ return {x:origin.x+dx*reach,y:origin.y+dy*reach,dx,dy,source:t17Input.explicit?t17Input.source:'facing',pointer:false};
+}
+r05Aim=function(v={}){const s=state,p=s.p,target=t17AimPoint(s,v),dx=target.x-p.x-p.w/2,dy=target.y-p.y-p.h/2;return {angle:Math.atan2(dy,Math.abs(dx)),facing:Math.abs(dx)>.001?Math.sign(dx):p.facing,source:target.source,target};};
+t13Aim=function(s,v={}){const a=r05Aim(v);s.p.attackFacing=s.p.facing=a.facing;s.p.aim=a.angle;s.p.attackSource=a.source;return {x:a.target.x,y:a.target.y};};
+// Smart mining selects the nearest reachable cell in the manually chosen direction;
+// it never changes an attack target, and mouse clicks retain exact-cell selection.
+const t17RawBase=t14RawTarget;
+t14RawTarget=function(s,v={}){if(!t17Input.explicit&&!Math.hypot(v.aimX||0,v.aimY||0))return t17RawBase(s,v);const a=t17AimPoint(s,v,true);if(a.pointer)return a;const dx=Math.abs(a.dx)>.3?Math.sign(a.dx):0,dy=Math.abs(a.dy)>.3?Math.sign(a.dy):0;return {...a,dx,dy,pointer:s.tool!==3};};
+// No unsolicited boarding when the summon item is collected.
+r05Summon=function(){const ok=t16SummonBase();if(ok&&state?.r05Arena)t16Init(state);return ok;};
+// A minecart is a persistent object on the rail, not an inventory teleport.
+t16Board=function(reason='manual',range=112){
+ const s=state;if(!s?.r05Arena||mode!=='playing'||s.t11Transition||s.t13Recalling)return false;t16Init(s);const cart=s.t16Cart,p=s.p;
+ if(cart.on)return true;if((s.t16BoardLock||0)>0)return false;
+ const q=t16RailPoint(cart.d),distance=Math.hypot(q.x-p.x-p.w/2,q.y-p.y-p.h);
+ if(distance>range)return false;const box={x:q.x-p.w/2,y:q.y-42,w:p.w,h:42};if(t13PhysicalSurfaces(s,box).some(a=>a.solid&&near(box,a)))return false;
+ const from={x:p.x+p.w/2,y:p.y+p.h};r07SetMountHeight(s,false);s.t10PendingMount=null;s.mounted=true;s.mountType='minecart';s.mountOwned=true;
+ Object.assign(cart,{on:true,speed:Math.max(2,Math.min(5,Math.abs(p.vx))),dir:cart.dir||1,wantedDir:0,keys:0,board:distance>22?T16_RAIL.boardingTicks:0,from,reason});
+ p.h=42;p.hurtLock=0;p.grounded=true;p.vy=0;p.support='t16-rail';p.buffer=0;p.drop=0;p.cloudAvailable=!!s.cloudJump;
+ if(!cart.board){p.x=q.x-p.w/2;p.y=q.y-p.h;}evt('t17-board',{reason,d:cart.d});return true;
+};
+const t17LeaveBase=t16Leave;
+t16Leave=function(jump=false){const ok=t17LeaveBase(jump);if(ok){state.t17CartMustLeave=true;state.t16Cart.speed=0;state.t16BoardLock=24;}return ok;};
+r06ToggleMount=function(){const s=state;if(!s||mode!=='playing'||s.t11Transition)return false;if(s.t16Cart?.on)return t16Leave(false);if(s.mounted)return t16MountBase();if(s.r05Arena&&t16Board('button'))return true;
+ if(s.ufoOwned||s.slimeOwned){if(!['ufo','slime'].includes(s.mountType))s.mountType=s.ufoOwned?'ufo':'slime';s.mountOwned=true;return t16MountBase();}note(s.r05Arena?'靠近停放的矿车，按坐骑键上车。':'尚未获得坐骑。');return false;};
+r07CycleMount=function(){const s=state;if(!s||mode!=='playing')return;const opts=[...(s.slimeOwned?['slime']:[]),...(s.ufoOwned?['ufo']:[])];if(!opts.length){note('矿车在轨道上；靠近停放的矿车后按坐骑键。');return;}const next=opts[(opts.indexOf(s.mountType)+1)%opts.length];if(s.t16Cart?.on)t16Leave();else if(s.mounted){s.mounted=false;r07SetMountHeight(s,false);}s.mountType=next;t10RequestMount(s,next,'cycle');};
+function t17Interact(){const s=state;if(!s||mode!=='playing'||s.t11Transition)return false;if(s.t11Chest&&!s.t11Chest.opened&&Math.hypot(s.t11Chest.x+16-s.p.x-s.p.w/2,s.t11Chest.y+28-s.p.y-s.p.h)<76){return t12Open();}if(t13ClosestChest(s)&&t13OpenNearby())return true;
+ const p=s.p,q=s.pipe;if(q&&Math.abs(p.x+p.w/2-q.x-q.w/2)<50&&Math.abs(p.y+p.h-q.y)<60){if(s.r05Arena){if(s.phase==='battle'){note('击败克眼后才能从原管道返回。');return false;}return exitSecret();}return enterTerraSecret();}
+ return false;
+}
+const t17ChestOpenBase=t13OpenNearby,t17ChestCloseBase=t13CloseChest;
+t13OpenNearby=function(){const ok=t17ChestOpenBase();if(ok){state.t17ChestLatch=t13OpenChestId;t17ResetActions();t17Input.dialogIndex=0;t17UpdateChest();}return ok;};
+t13CloseChest=function(){t17MaskHeld();t17ChestCloseBase();};
+function t17TakeAll(){if(mode!=='inventory')return;t13TakeChest();t13CloseChest();}
+function t17UpdateChest(){if(mode!=='inventory')return;$('t13ChestTake').textContent='全部取出 · X / Enter';$('t13ChestClose').textContent='关闭 · B / Esc';$('t13ChestHint').textContent='左摇杆/方向键选择，A 确认；X 一键取走并关闭。菜单中不会攻击或上下坐骑。';const a=[$('t13ChestTake'),$('t13ChestClose')].filter(b=>!b.disabled);t17Input.dialogIndex=clamp(t17Input.dialogIndex,0,a.length-1);a.forEach((b,i)=>b.classList.toggle('t17-selected',i===t17Input.dialogIndex));a[t17Input.dialogIndex]?.focus({preventScroll:true});}
+$('t13ChestTake').onclick=t17TakeAll;$('t13ChestClose').onclick=t13CloseChest;
+const t17ChestPanelBase=t13UpdateChestPanel;t13UpdateChestPanel=function(){t17ChestPanelBase();t17UpdateChest();};
+function t17MenuNavigate(d){if(mode==='inventory'){const a=[$('t13ChestTake'),$('t13ChestClose')].filter(b=>!b.disabled);t17Input.dialogIndex=(t17Input.dialogIndex+d+a.length)%a.length;t17UpdateChest();}
+ else if(mode==='menu'){const ids=Object.keys(heroNames);selectHero(ids[(ids.indexOf(hero)+d+ids.length)%ids.length]);}
+ else{padDialogIndex=(padDialogIndex+d+2)%2;focusPadDialog();}}
+function t17Confirm(){if(mode==='inventory'){const a=[$('t13ChestTake'),$('t13ChestClose')].filter(b=>!b.disabled);a[t17Input.dialogIndex]?.click();}
+ else if(mode==='menu')handlePrimary();else if(['paused','respawn','win','gameover'].includes(mode))focusPadDialog()?.click();t17MaskHeld();}
+function t17Perform(action){if(mode!=='playing'||!state?.p||state.t11Transition)return;
+ if(action==='interact')t17Interact();else if(action==='mount')r06ToggleMount();else if(action==='weapon')t13CycleWeapon();else if(action==='mountCycle')r07CycleMount();else if(action==='heal')r06Heal();else if(action==='recall')t13Recall();
+ else if(action==='toolPrev')r06DigitTool((state.tool+5)%6);else if(action==='toolNext')r06DigitTool((state.tool+1)%6);else if(action==='torch')t15QuickTorch();
+}
+const t17PollBase=pollMixPad;
+pollMixPad=function(){if(!isTrio())return t17PollBase();
+ t17Input.previous=t17Input.buttons.slice();let pads=[];try{pads=Array.from(navigator.getGamepads?.()||[]).filter(p=>p&&p.connected!==false);}catch{}
+ let pad=pads.find(p=>p.index===t17Input.index);const active=pads.find(p=>p.index!==t17Input.index&&(p.buttons||[]).some(t17Pressed));if(active)pad=active;if(!pad)pad=pads[0]||null;
+ const lost=t17Input.connected&&(!pad||pad.id!==t17Input.id||pad.index!==t17Input.index);if(lost){t17ResetActions();if(['playing','flag'].includes(mode))togglePause();}
+ t17Input.connected=!!pad;t17Input.index=pad?.index??null;t17Input.id=pad?.id??null;padState=pad;
+ t17Input.buttons=pad?Array.from(pad.buttons||[],t17Pressed):[];t17Input.axes=pad?Array.from(pad.axes||[]):[0,0,0,0];
+ for(const i of t17Input.blocked)if(!t17Input.buttons[i])t17Input.blocked.delete(i);
+ const label=$('gamepadStatus');if(label)label.textContent=pad?('手柄已连接 · '+(pad.mapping==='standard'?'标准布局':'北通/非标准布局')+' · 坐骑 '+t21Binds.mount.pad.map(t25PadLabel).join('/')+' · 按键设置可实时校准'):'手柄：连接后按一下按钮 · 键鼠也可直接游玩';
+ if(t17Input.inactive){t17MaskHeld();return;}
+ if(t17Input.mode!==mode){t17Input.mode=mode;t17Input.menuDir=0;t17Input.menuRepeat=0;padDialogIndex=0;if(['paused','respawn','win','gameover'].includes(mode))focusPadDialog();}
+ const ls=t17Stick(t17Input.axes[0],t17Input.axes[1]),rs=t17Stick(t17Input.axes[2],t17Input.axes[3]);
+ // Connection alone never steals focus; any button, D-pad, or stick movement does.
+ const padActive=t17Input.buttons.some(Boolean)||Math.hypot(...ls)>.01||Math.hypot(...rs)>.01;
+ if(padActive)t20Own('gamepad');
+ const horizontal=(t17Action(15)?1:0)-(t17Action(14)?1:0),vertical=(t17Action(13)?1:0)-(t17Action(12)?1:0),d=Math.sign(horizontal||vertical||(Math.abs(ls[0])>.45?ls[0]:Math.abs(ls[1])>.45?ls[1]:0));
+ if(['menu','inventory','paused','respawn','win','gameover'].includes(mode)){
+  if(d){if(d!==t17Input.menuDir||++t17Input.menuRepeat>=22){t17MenuNavigate(d);t17Input.menuRepeat=d!==t17Input.menuDir?0:14;}}else t17Input.menuRepeat=0;t17Input.menuDir=d;
+  if(mode==='inventory'){if(t17Edge(1))t13CloseChest();else if(t17Edge(2))t17TakeAll();else if(t17Edge(0))t17Confirm();}
+  else if(t17Edge(9)&&mode==='paused'){togglePause();t17MaskHeld();}
+  else if(t17Edge(0))t17Confirm();
+  else if(t17Edge(1)&&mode==='paused'){showCharacters();t17MaskHeld();}
+  return;
+ }
+ if(t17Edge(9)){togglePause();t17MaskHeld();return;}
+ if(mode!=='playing')return;
+ t17PrepareState(state);
+ const activeLs=Math.hypot(...ls)>.01;
+ const changedLs=activeLs&&Math.hypot(ls[0]-t20LastLs[0],ls[1]-t20LastLs[1])>.08;
+ const pressed=t17Input.buttons.some((b,i)=>b&&!t17Input.previous[i]);
+ if(changedLs||pressed)t20Own('gamepad');t20LastLs=ls.slice();
+ if(t20Device==='gamepad'){const dx=horizontal||ls[0],dy=vertical||ls[1];if(Math.hypot(dx,dy)>.01)t20LeftAim=[dx,dy];}
+ for(const [i,a]of [[6,'mount'],[4,'toolPrev'],[5,'toolNext'],[10,'heal'],[11,'weapon'],[8,'recall']])if(t17Edge(i)){t17Perform(a);if(mode!=='playing')break;}
+};
+readInput=function(){
+ const ls=t17Stick(t17Input.axes[0],t17Input.axes[1]);const pad=t20Device==='gamepad';
+ const k=c=>!pad&&held.has(c)&&!t17Input.keyBlocked.has(c),active=mode==='playing'&&!t17Input.inactive;
+ let x=(k('KeyD')||k('ArrowRight')?1:0)-(k('KeyA')||k('ArrowLeft')?1:0),y=(k('KeyS')||k('ArrowDown')?1:0)-(k('KeyW')||k('ArrowUp')?1:0);
+ if(pad){x=(t17Action(15)?1:0)-(t17Action(14)?1:0)||ls[0];y=(t17Action(13)?1:0)-(t17Action(12)?1:0)||ls[1];}
+ const v={x,y,aimX:0,aimY:0,jump:k('Space')||k('KeyK')||k('KeyZ')||pad&&t17Action(0),action:k('KeyJ')||k('KeyX')||k('ShiftLeft')||k('ShiftRight')||pad&&t17Action(1)||!pad&&t17Input.mouseDown,auxiliary:false,auxEdge:false,tool:false,toolEdge:false};
+ for(const a of touch.values()){if(a==='left')v.x=-1;else if(a==='right')v.x=1;else if(a==='up')v.y=-1;else if(a==='down')v.y=1;else if(a==='jump')v.jump=true;else if(a==='run')v.action=true;else if(a==='special'&&!prev.auxiliary){t17Interact();v.auxiliary=true;}}
+ v.action=active&&(v.action||!!pending.action);v.jump=active&&v.jump;v.jumpEdge=active&&(!!pending.jump||v.jump&&!prev.jump);if(!active)v.x=v.y=0;pending={};
+ t13Pointer.down=active&&!pad&&t17Input.mouseDown&&!t17Input.mouseBlocked;r05Pointer.down=t13Pointer.down;r05Pointer.pressed=false;return v;
+};
+// Installed ahead of legacy listeners by build.py so a key has exactly one owner.
+t17Early.handle=function(e){if(!isTrio())return false;if(['blur','focus'].includes(e.type)&&e.target!==window)return false;
+ if(e.type==='blur'||e.type==='visibilitychange'&&document.hidden){t17Input.inactive=true;t17ResetActions();if(['playing','flag'].includes(mode))togglePause();return false;}
+ if(e.type==='focus'||e.type==='visibilitychange'&&!document.hidden){t17Input.inactive=false;return false;}
+ if(e.type==='keyup'){held.delete(e.code);keys.delete(e.code);t17Input.keyBlocked.delete(e.code);return t17Keys.has(e.code);}
+ if(e.type==='keydown'){
+  if(!t17Keys.has(e.code)||e.ctrlKey||e.metaKey||e.altKey||e.target?.closest?.('input,textarea,select,[contenteditable="true"]'))return false;
+  r06KeyboardAudio();if(t17Input.keyBlocked.has(e.code))return true;
+  if(mode==='inventory'){if(e.repeat)return true;if(['Escape','KeyF','KeyB'].includes(e.code))t13CloseChest();else if(e.code==='Space')t17Confirm();else if(['Enter','KeyL','KeyE','KeyX'].includes(e.code))t17TakeAll();else if(['ArrowDown','ArrowRight','KeyD','KeyS'].includes(e.code))t17MenuNavigate(1);else if(['ArrowUp','ArrowLeft','KeyA','KeyW'].includes(e.code))t17MenuNavigate(-1);t17Input.keyBlocked.add(e.code);return true;}
+  if(['menu','paused','respawn','win','gameover'].includes(mode)){if(e.repeat)return true;if(['Enter','Space','KeyK','KeyZ'].includes(e.code))t17Confirm();else if(['Escape','KeyP'].includes(e.code)&&mode==='paused')togglePause();else if(['ArrowDown','ArrowRight','KeyD','KeyS'].includes(e.code))t17MenuNavigate(1);else if(['ArrowUp','ArrowLeft','KeyA','KeyW'].includes(e.code))t17MenuNavigate(-1);else if(e.code==='KeyC')showCharacters();t17Input.keyBlocked.add(e.code);return true;}
+  if(e.code==='KeyP'||e.code==='Escape'){if(!e.repeat){togglePause();t17MaskHeld();}return true;}
+  if(mode!=='playing')return true;
+  if(!e.repeat)t20Own('keyboard','key');
+  const map={KeyL:'interact',KeyE:'interact',KeyF:'mount',KeyQ:'weapon',KeyV:'mountCycle',KeyH:'heal',KeyB:'recall',BracketRight:'toolNext',BracketLeft:'toolPrev',KeyG:'torch'};
+  if(map[e.code]){if(!e.repeat)t17Perform(map[e.code]);return true;}
+  if(e.code.startsWith('Digit')){if(!e.repeat)r06DigitTool(+e.code.slice(-1)-1);return true;}
+  if(e.code==='KeyC'){if(!e.repeat)showCharacters();return true;}if(e.code==='KeyR'){if(!e.repeat){if(state?.secret)handleHiddenRestart();else retry();}return true;}
+  held.add(e.code);if(!e.repeat){if(['Space','KeyK','KeyZ'].includes(e.code))pending.jump=true;if(['KeyJ','KeyX','ShiftLeft','ShiftRight'].includes(e.code))pending.action=true;}return true;
+ }
+ if(e.type==='pointerup'||e.type==='pointercancel'){t17Input.mouseDown=false;t17Input.mouseBlocked=false;t13Pointer.down=r05Pointer.down=r05Pointer.pressed=false;return false;}
+ if(e.type==='pointermove'||e.type==='pointerdown'){
+  if(e.target!==canvas)return false;if(mode!=='playing')return true;const point=[e.clientX,e.clientY];const moved=!t17Input.lastMouse||Math.hypot(point[0]-t17Input.lastMouse[0],point[1]-t17Input.lastMouse[1])>.5;
+  if(moved||e.type==='pointerdown'){t20Own('keyboard','pointer');t17Input.lastMouse=point;t13SamplePointer(e);if(t13Pointer.active){t17Input.source='mouse';t17Input.explicit=true;}}
+  if(e.type==='pointerdown'){canvas.focus({preventScroll:true});if(e.button===2)t17Interact();else if(e.button===0&&!t17Input.mouseBlocked){t17Input.mouseDown=true;t13Pointer.down=true;pending.action=true;try{canvas.setPointerCapture(e.pointerId);}catch{}}}
+  return true;
+ }
+ if(e.type==='wheel'&&e.target===canvas){if(mode==='playing'&&Math.abs(e.deltaY)>0)t17Perform(e.deltaY>0?'toolNext':'toolPrev');return true;}
+ return false;
+};
+const t17ClearBase=clearInput;clearInput=function(){t17MaskHeld();t17ClearBase();};
+const t17StepBase=step;
+step=function(v){const before=state;if(before)t17PrepareState(before);const out=t17StepBase(v);const s=state;if(s!==before){if(s)t17PrepareState(s);return out;}if(!s||mode!=='playing'||s.t11Transition)return out;
+ if(s.t16BoardLock>0)s.t16BoardLock--;
+ if(t17Input.explicit&&!s.p.attack&&!s.p.hurtLock){const a=r05Aim(v);s.p.facing=a.facing;s.p.aim=a.angle;}
+ return out;
+};
+const t17SyncBase=t15Sync;t15Sync=function(s){t17SyncBase(s);if(!isTrio())return;$('bestLabel').textContent='R17';document.querySelector('header .offline').textContent='TERRARIA · 1-3';t10Build.textContent='R17 · 双摇杆 / 键鼠适配';
+ const mountButton=$('r06Mount');if(mountButton){mountButton.textContent=s?.t16Cart?.on?'F · 下矿车':s?.mounted?'F · 下坐骑':s?.ufoOwned&&s.mountType==='ufo'?'F · 骑乘 UFO':s?.slimeOwned&&s.mountType==='slime'?'F · 骑乘史莱姆':'F · 上下坐骑';mountButton.textContent+=' / '+t21Binds.mount.pad.map(i=>T21_PAD_NAMES[i]||('按钮 '+i)).join('/');mountButton.title='RB / 键盘 F：靠近停放的矿车上车，或上下已获得的坐骑；可在按键设置更改。';}
+};
+const t17RenderBase=render;
+render=function(){const out=t17RenderBase();if(!isTrio()||!state)return out;const s=state;
+ if(mode==='inventory')t17UpdateChest();
+ if(mode==='playing'&&s.tool===0&&t20Device==='keyboard'&&t17Input.source==='mouse'&&t17Input.explicit){const a=t17AimPoint(s),w=s.r05Arena?R06_VIEW.w:W,h=s.r05Arena?R06_VIEW.h:H,x=a.x-s.cam,y=a.y-(s.r05Arena?(s.camY??-96):s.r07CamY||0),sz=s.r05Arena?5:3;
+  if(x>3&&x<w-3&&y>38&&y<h-3){ctx.save();ctx.setTransform(canvas.width/w,0,0,canvas.height/h,0,0);ctx.lineWidth=s.r05Arena?1.25:.75;ctx.strokeStyle='#171e29';ctx.beginPath();ctx.arc(x,y,sz+1,0,Math.PI*2);ctx.stroke();ctx.strokeStyle='#fff3cf';ctx.beginPath();ctx.moveTo(x-sz-2,y);ctx.lineTo(x-2,y);ctx.moveTo(x+2,y);ctx.lineTo(x+sz+2,y);ctx.moveTo(x,y-sz-2);ctx.lineTo(x,y-2);ctx.moveTo(x,y+2);ctx.lineTo(x,y+sz+2);ctx.stroke();ctx.restore();}}
+ return out;};
+const t17Style=document.createElement('style');t17Style.textContent='#t13ChestPanel button.t17-selected{outline:3px solid #fff0a6;outline-offset:3px}#t15Help table{width:100%;border-collapse:collapse;font-size:11px;line-height:1.65}#t15Help th,#t15Help td{text-align:left;padding:5px;border-bottom:1px solid #55637266}#t15Help th{color:#e8d9b6}';document.head.append(t17Style);
+t15Help.innerHTML=`<summary>操作指南 · 手柄 / 键鼠</summary><table><thead><tr><th>动作</th><th>标准手柄</th><th>键盘 / 鼠标</th></tr></thead><tbody>
+<tr><td>移动</td><td>左摇杆 / 十字键</td><td>WASD / 方向键</td></tr><tr><td>手动瞄准</td><td>右摇杆，松开保留方向</td><td>鼠标</td></tr><tr><td>攻击 / 使用工具</td><td>RT / R2</td><td>左键 / J</td></tr><tr><td>跳跃 / 跳下矿车</td><td>A / × 或 LT / L2</td><td>空格 / K / Z</td></tr>
+<tr><td>交互 / 取走宝箱物品</td><td>X / □</td><td>E / L / 右键；箱内 Enter</td></tr><tr><td>上下坐骑 / 关闭宝箱</td><td>B / ○</td><td>F；箱内 Esc</td></tr><tr><td>切工具</td><td>LB/R3 · L1/R1</td><td>1–6 / [ ] / 滚轮</td></tr><tr><td>切已有武器</td><td>Y / △</td><td>Q</td></tr><tr><td>切已获得的坐骑</td><td>按下右摇杆 R3</td><td>V</td></tr><tr><td>治疗</td><td>按下左摇杆 L3</td><td>H / 点生命图标</td></tr><tr><td>返程魔镜</td><td>Back / View</td><td>B</td></tr><tr><td>下穿木平台 / UFO下降</td><td>下＋跳跃 / 左摇杆向下</td><td>S＋空格 / S</td></tr><tr><td>暂停</td><td>Start / Options</td><td>P / Esc</td></tr></tbody></table>
+<p>普通武器只按手动准星瞄准，不额外锁定怪物。叶绿弹和召唤物保留现有的自身追踪行为。弹药无限，魔力、木材与消耗品仍有数量限制。</p>
+<p>矿车只在靠近停放位置后按 B / F 上车，不会接触自动登车；召唤 Boss 不会强制上车。空格 / A / LT 跳车，车辆留在下车位置；上下坐骑和切工具按住不会反复触发。矿车松开左摇杆继续巡航，下方向刹车，右摇杆只管瞄准。</p>
+<p>所有宝箱只按 X / E / L / 鼠标右键打开，不再接触自动打开。地下箱内 X / Enter 一键取走并关闭，B / Esc 只关闭，A 确认所选按钮。地表补给箱按交互后弹出三件道具，最右眼球拾取后开战。箱内暂停战斗，退出时不会误攻击或误上车。战斗中不能返程；获胜后从原管道返回。</p>
+<p>按键可以在“按键设置”中调整，保存后立即生效。</p>`;
+$('r06Mount').onclick=()=>{r06ToggleMount();canvas.focus({preventScroll:true});render();};t16CartButton.onclick=()=>{r06ToggleMount();canvas.focus({preventScroll:true});render();};
+const t17Diagnostics={build:T17_BUILD,inspect:()=>({mode,source:t17Input.source,explicit:t17Input.explicit,aim:[t17Input.dx,t17Input.dy],connected:t17Input.connected,axes:t17Input.axes,buttons:t17Input.buttons,blocked:[...t17Input.blocked],keyBlocked:[...t17Input.keyBlocked],cart:state?.t16Cart,chest:t13OpenChestId}),aim:(v={})=>r05Aim(v),input:()=>readInput(),interact:t17Interact,board:t16Board,leave:t16Leave,clear:t17ResetActions};
+

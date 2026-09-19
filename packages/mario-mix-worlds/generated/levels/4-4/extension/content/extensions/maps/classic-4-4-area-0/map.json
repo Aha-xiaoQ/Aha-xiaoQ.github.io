@@ -1,0 +1,97 @@
+{
+  "id": "classic-4-4-area-0",
+  "title": "4-4 · 区域 1",
+  "tileSize": 16,
+  "width": 256,
+  "height": 240,
+  "provenance": {
+    "kind": "transcribed",
+    "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+    "review": "pending",
+    "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+  },
+  "geometry": [
+    {
+      "id": "r000-0",
+      "x": 0,
+      "y": 112,
+      "w": 48,
+      "h": 128,
+      "collision": "solid"
+    },
+    {
+      "id": "r000-24",
+      "x": 48,
+      "y": 128,
+      "w": 16,
+      "h": 112,
+      "collision": "solid"
+    },
+    {
+      "id": "r000-32",
+      "x": 64,
+      "y": 144,
+      "w": 16,
+      "h": 96,
+      "collision": "solid"
+    },
+    {
+      "id": "r000-floor",
+      "x": 80,
+      "y": 160,
+      "w": 16,
+      "h": 80,
+      "collision": "solid"
+    },
+    {
+      "id": "r001",
+      "x": 0,
+      "y": 32,
+      "w": 96,
+      "h": 48,
+      "collision": "solid"
+    },
+    {
+      "id": "r002",
+      "x": 96,
+      "y": 160,
+      "w": 16,
+      "h": 80,
+      "collision": "solid"
+    },
+    {
+      "id": "r003",
+      "x": 96,
+      "y": 32,
+      "w": 160,
+      "h": 16,
+      "collision": "solid"
+    },
+    {
+      "id": "r005",
+      "x": 144,
+      "y": 160,
+      "w": 32,
+      "h": 80,
+      "collision": "solid"
+    },
+    {
+      "id": "r007",
+      "x": 208,
+      "y": 160,
+      "w": 48,
+      "h": 80,
+      "collision": "solid"
+    }
+  ],
+  "objects": [
+    {
+      "id": "inspection-start",
+      "kind": "spawn",
+      "x": 24,
+      "y": 88,
+      "w": 12,
+      "h": 24
+    }
+  ]
+}

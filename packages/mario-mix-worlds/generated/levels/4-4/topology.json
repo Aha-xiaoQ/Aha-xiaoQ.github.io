@@ -1,0 +1,555 @@
+{
+  "locations": [
+    {
+      "area": 0,
+      "entry": "Castle"
+    }
+  ],
+  "areas": [
+    {
+      "area": 0,
+      "setting": "Castle",
+      "underwater": false,
+      "exit": null,
+      "sections": [
+        {
+          "before": {
+            "width": 400,
+            "creation": [
+              {
+                "macro": "Floor",
+                "width": 400,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "thing": "Stone",
+                "width": 400,
+                "x": 0,
+                "y": 88
+              },
+              {
+                "thing": "Stone",
+                "width": 48,
+                "height": 32,
+                "x": 16,
+                "y": 56
+              },
+              {
+                "macro": "Fill",
+                "thing": "Stone",
+                "xnum": 5,
+                "xwidth": 16,
+                "height": 32,
+                "x": 72,
+                "y": 56
+              },
+              {
+                "thing": "Stone",
+                "width": 24,
+                "height": 32,
+                "x": 152,
+                "y": 56
+              },
+              {
+                "thing": "Stone",
+                "width": 48,
+                "x": 176,
+                "y": 56
+              },
+              {
+                "macro": "Pipe",
+                "height": 24,
+                "piranha": true,
+                "x": 192,
+                "y": 0
+              },
+              {
+                "thing": "Stone",
+                "width": 136,
+                "height": 32,
+                "x": 224,
+                "y": 56
+              },
+              {
+                "thing": "CastleBlock",
+                "fireballs": 6,
+                "hidden": true,
+                "x": 296,
+                "y": 56
+              },
+              {
+                "thing": "CastleBlock",
+                "fireballs": 6,
+                "hidden": true,
+                "x": 352,
+                "y": 32
+              },
+              {
+                "macro": "SectionFail",
+                "width": 40,
+                "height": 24,
+                "x": 384,
+                "y": 24
+              },
+              {
+                "macro": "SectionPass",
+                "width": 40,
+                "height": 24,
+                "x": 394,
+                "y": 80
+              }
+            ]
+          },
+          "stretch": {
+            "width": 8,
+            "creation": [
+              {
+                "macro": "Floor",
+                "x": 0,
+                "y": 0
+              },
+              {
+                "thing": "Stone",
+                "height": 32,
+                "x": 0,
+                "y": 56
+              },
+              {
+                "thing": "Stone",
+                "x": 0,
+                "y": 88
+              }
+            ]
+          },
+          "after": {
+            "width": 40,
+            "creation": [
+              {
+                "macro": "Floor",
+                "width": 40,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "thing": "Stone",
+                "width": 40,
+                "x": 0,
+                "y": 88
+              },
+              {
+                "thing": "Stone",
+                "width": 24,
+                "height": 24,
+                "x": 16,
+                "y": 80
+              },
+              {
+                "thing": "Stone",
+                "width": 24,
+                "height": 24,
+                "x": 16,
+                "y": 24
+              },
+              {
+                "macro": "SectionDecider",
+                "pass": 1,
+                "fail": 0,
+                "x": 40,
+                "y": 0
+              }
+            ]
+          }
+        },
+        {
+          "before": {
+            "width": 320,
+            "creation": [
+              {
+                "macro": "Floor",
+                "width": 64,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "thing": "Stone",
+                "width": 336,
+                "x": 0,
+                "y": 88
+              },
+              {
+                "thing": "Stone",
+                "width": 16,
+                "x": 48,
+                "y": 24
+              },
+              {
+                "macro": "Water",
+                "width": 16,
+                "x": 64,
+                "y": 0
+              },
+              {
+                "thing": "Stone",
+                "width": 16,
+                "x": 72,
+                "y": 40
+              },
+              {
+                "macro": "Floor",
+                "x": 80,
+                "y": 16
+              },
+              {
+                "thing": "Stone",
+                "width": 40,
+                "x": 80,
+                "y": 24
+              },
+              {
+                "macro": "Water",
+                "width": 32,
+                "x": 88,
+                "y": 0
+              },
+              {
+                "thing": "Stone",
+                "x": 104,
+                "y": 48
+              },
+              {
+                "thing": "Stone",
+                "height": 16,
+                "x": 112,
+                "y": 40
+              },
+              {
+                "macro": "Floor",
+                "width": 216,
+                "x": 120,
+                "y": 0
+              },
+              {
+                "thing": "Stone",
+                "height": 16,
+                "x": 120,
+                "y": 56
+              },
+              {
+                "thing": "Stone",
+                "width": 208,
+                "x": 128,
+                "y": 24
+              },
+              {
+                "thing": "Stone",
+                "width": 16,
+                "x": 128,
+                "y": 56
+              },
+              {
+                "thing": "Stone",
+                "width": 32,
+                "x": 160,
+                "y": 56
+              },
+              {
+                "thing": "Stone",
+                "height": 24,
+                "x": 200,
+                "y": 48
+              },
+              {
+                "thing": "Stone",
+                "width": 24,
+                "x": 200,
+                "y": 56
+              },
+              {
+                "thing": "Stone",
+                "width": 96,
+                "x": 240,
+                "y": 56
+              },
+              {
+                "thing": "CastleBlock",
+                "fireballs": 6,
+                "hidden": true,
+                "x": 280,
+                "y": 56
+              },
+              {
+                "thing": "CastleBlock",
+                "fireballs": 6,
+                "hidden": true,
+                "x": 328,
+                "y": 24
+              },
+              {
+                "macro": "SectionPass",
+                "width": 40,
+                "height": 16,
+                "x": 360,
+                "y": 16
+              },
+              {
+                "macro": "SectionFail",
+                "width": 40,
+                "height": 24,
+                "x": 360,
+                "y": 48
+              },
+              {
+                "macro": "SectionFail",
+                "width": 40,
+                "height": 24,
+                "x": 360,
+                "y": 80
+              }
+            ]
+          },
+          "stretch": {
+            "width": 8,
+            "creation": [
+              {
+                "macro": "Floor",
+                "x": 0,
+                "y": 0
+              },
+              {
+                "thing": "Stone",
+                "x": 0,
+                "y": 24
+              },
+              {
+                "thing": "Stone",
+                "x": 0,
+                "y": 56
+              },
+              {
+                "thing": "Stone",
+                "x": 0,
+                "y": 88
+              }
+            ]
+          },
+          "after": {
+            "width": 136,
+            "creation": [
+              {
+                "macro": "Floor",
+                "width": 80,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "thing": "Stone",
+                "height": 40,
+                "x": 0,
+                "y": 64
+              },
+              {
+                "thing": "Stone",
+                "x": 0,
+                "y": 88
+              },
+              {
+                "thing": "Stone",
+                "width": 16,
+                "height": 24,
+                "x": 8,
+                "y": 88
+              },
+              {
+                "macro": "Floor",
+                "width": 32,
+                "x": 72,
+                "y": 24
+              },
+              {
+                "thing": "Stone",
+                "width": 64,
+                "x": 72,
+                "y": 88
+              },
+              {
+                "macro": "Floor",
+                "width": 32,
+                "x": 96,
+                "y": 0
+              },
+              {
+                "macro": "Floor",
+                "width": 16,
+                "x": 120,
+                "y": 24
+              },
+              {
+                "macro": "SectionDecider",
+                "pass": 2,
+                "x": 136,
+                "y": 0
+              }
+            ]
+          }
+        },
+        {
+          "before": {
+            "width": 256,
+            "creation": [
+              {
+                "macro": "EndInsideCastle",
+                "spawnType": "SpinyEgg",
+                "transport": {
+                  "map": "5-1"
+                },
+                "x": 0,
+                "y": 0
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r008"
+      },
+      "kind": "Section",
+      "target": {
+        "macro": "Section",
+        "section": 0,
+        "x": 128,
+        "y": 0
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "section": 0,
+        "part": "before",
+        "record": "r010"
+      },
+      "kind": "SectionFail",
+      "target": {
+        "macro": "SectionFail",
+        "width": 40,
+        "height": 24,
+        "x": 384,
+        "y": 24
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "section": 0,
+        "part": "before",
+        "record": "r011"
+      },
+      "kind": "SectionPass",
+      "target": {
+        "macro": "SectionPass",
+        "width": 40,
+        "height": 24,
+        "x": 394,
+        "y": 80
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "section": 0,
+        "part": "after",
+        "record": "r004"
+      },
+      "kind": "SectionDecider",
+      "target": {
+        "macro": "SectionDecider",
+        "pass": 1,
+        "fail": 0,
+        "x": 40,
+        "y": 0
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "section": 1,
+        "part": "before",
+        "record": "r020"
+      },
+      "kind": "SectionPass",
+      "target": {
+        "macro": "SectionPass",
+        "width": 40,
+        "height": 16,
+        "x": 360,
+        "y": 16
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "section": 1,
+        "part": "before",
+        "record": "r021"
+      },
+      "kind": "SectionFail",
+      "target": {
+        "macro": "SectionFail",
+        "width": 40,
+        "height": 24,
+        "x": 360,
+        "y": 48
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "section": 1,
+        "part": "before",
+        "record": "r022"
+      },
+      "kind": "SectionFail",
+      "target": {
+        "macro": "SectionFail",
+        "width": 40,
+        "height": 24,
+        "x": 360,
+        "y": 80
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "section": 1,
+        "part": "after",
+        "record": "r008"
+      },
+      "kind": "SectionDecider",
+      "target": {
+        "macro": "SectionDecider",
+        "pass": 2,
+        "x": 136,
+        "y": 0
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "section": 2,
+        "part": "before",
+        "record": "r000"
+      },
+      "kind": "world",
+      "target": {
+        "map": "5-1"
+      }
+    }
+  ],
+  "issues": []
+}

@@ -1,0 +1,193 @@
+/* R16: ecological regions, unlimited ammunition and a closed minecart arena.
+ * Original verified Mount_Minecart.png / Tiles_314.png. Circuit routing is custom.
+ * The Mario platform collision geometry is preserved; only the arena lanes move.
+ */
+const T16_BUILD='R16-biomes-infinite-ammo-minecart-20260913';
+const T16_BIOMES=[
+ {id:'forest',name:'森林',sky:['#528fd2','#a1c4d7'],night:['#101a31','#2d5146'],soil:'#78614b',leaf:'#508544',mist:'#729f70'},
+ {id:'desert',name:'沙漠',sky:['#aaadba','#e3c89b'],night:['#221e35','#847250'],soil:'#cca666',leaf:'#7d9252',mist:'#c4a473'},
+ {id:'crimson',name:'猩红',sky:['#756875','#bb9691'],night:['#20142a','#60333e'],soil:'#9c5355',leaf:'#a6424c',mist:'#954a61'},
+ {id:'jungle',name:'丛林',sky:['#488789','#add6b2'],night:['#0b2329','#205642'],soil:'#537746',leaf:'#248b48',mist:'#4c9971'},
+ {id:'snow',name:'雪原',sky:['#87b5d3','#e0e8df'],night:['#182841','#567b98'],soil:'#c3d8db',leaf:'#abced2',mist:'#c3d7dc'}
+];
+const T16_RAIL={maxSpeed:13,acceleration:.04,brake:.20,boardingTicks:26,
+ // Each side is two 45-degree slopes; no vertical rail and no upside-down car.
+ points:[[384,400],[2688,400],[2928,160],[2688,-80],[384,-80],[144,160]],segments:[],length:0};
+for(let i=0;i<T16_RAIL.points.length;i++){
+ const a=T16_RAIL.points[i],b=T16_RAIL.points[(i+1)%T16_RAIL.points.length],len=Math.hypot(b[0]-a[0],b[1]-a[1]);
+ T16_RAIL.segments.push({a,b,len,start:T16_RAIL.length,dx:(b[0]-a[0])/len,dy:(b[1]-a[1])/len});T16_RAIL.length+=len;
+}
+const t16Ready=Promise.all(Object.entries(T16_ASSET_DATA).map(([key,url])=>new Promise(resolve=>{
+ const im=new Image();im.onload=()=>{r06Images['t16'+key]=im;r08ImageRevision++;resolve(true)};im.onerror=()=>resolve(false);im.src=url;
+})));
+const t16SceneCache=new Map(),t16ImageIds=new WeakMap();let t16NextImage=0;
+function t16BiomeAt(x,s=state){const width=s?.r05Arena?3072:2400;return T16_BIOMES[clamp(Math.floor(Math.max(0,x)/width*5),0,4)];}
+function t16MixColor(a,b,t){const x=parseInt(a.slice(1),16),y=parseInt(b.slice(1),16);let out='#';for(let k of [16,8,0])out+=Math.round(((x>>k)&255)*(1-t)+((y>>k)&255)*t).toString(16).padStart(2,'0');return out;}
+function t16Tint(im,color,strength=.5){if(!im)return null;if(!t16ImageIds.has(im))t16ImageIds.set(im,++t16NextImage);const key=t16ImageIds.get(im)+':'+color+':'+strength;if(t16SceneCache.has(key))return t16SceneCache.get(key);
+ const cv=document.createElement('canvas');cv.width=im.width;cv.height=im.height;const g=cv.getContext('2d');g.drawImage(im,0,0);g.globalCompositeOperation='source-atop';g.globalAlpha=strength;g.fillStyle=color;g.fillRect(0,0,cv.width,cv.height);t16SceneCache.set(key,cv);return cv;}
+function t16SetInfinite(s){if(!s)return;s.t16InfiniteAmmo=true;/* Keep JSON-safe numeric inventory values; firing never decrements them. */
+ if(s.kit==='ranger'&&s.ammo<=0)s.ammo=1;if(s.t13Inventory&&s.t13Inventory.arrows<=0)s.t13Inventory.arrows=1;
+}
+const t16AttackBase=r06Attack;
+r06Attack=function(v={}){const s=state;if(!s)return;t16SetInfinite(s);return t16AttackBase(v);};r05Attack=r06Attack;
+const t16ModelBase=t15Model;
+t15Model=function(s){const m=t16ModelBase(s);if(m.weapon==='stormbow'||m.weapon==='sdmg')m.counts[0]='∞';
+ if(s.r05Arena&&s.t16CartOwned){m.gear=m.gear.filter(g=>!['ufo','slimySaddle','t16cart'].includes(g.key));m.gear.push({key:s.mounted&&s.mountType==='minecart'?'t16cart':s.mountType==='ufo'?'ufo':s.slimeOwned?'slimySaddle':'t16cart',name:s.mounted&&s.mountType==='minecart'?'矿车 · 巡航中':'矿车轨道可骑乘'});}return m;};
+// The infinity symbol uses the normal UI font, not the narrow legacy 3px glyphs.
+function t16RailPoint(distance){const d=((distance%T16_RAIL.length)+T16_RAIL.length)%T16_RAIL.length;const seg=T16_RAIL.segments.find(a=>d<a.start+a.len)||T16_RAIL.segments.at(-1),u=(d-seg.start)/seg.len;return{x:seg.a[0]+(seg.b[0]-seg.a[0])*u,y:seg.a[1]+(seg.b[1]-seg.a[1])*u,dx:seg.dx,dy:seg.dy,d,segment:T16_RAIL.segments.indexOf(seg)};}
+function t16NearestRail(x,y){let best=null;for(const seg of T16_RAIL.segments){const t=clamp(((x-seg.a[0])*seg.dx+(y-seg.a[1])*seg.dy)/seg.len,0,1),px=seg.a[0]+seg.dx*t*seg.len,py=seg.a[1]+seg.dy*t*seg.len,dist=Math.hypot(x-px,y-py);if(!best||dist<best.dist)best={x:px,y:py,dist,d:seg.start+t*seg.len};}return best;}
+function t16Init(s){if(!s)return;t16SetInfinite(s);s.t16Biome=t16BiomeAt(s.p.x,s).id;if(s.r05Arena){s.t16CartOwned=true;s.t16Cart=s.t16Cart||{on:false,d:16,speed:0,dir:1,laps:0,total:0,keys:0,board:0};}
+ if(!s.t16Ecology){s.t16Ecology=true;
+ if(!s.r05Arena)for(const q of s.level.surfaces.filter(q=>q.type==='tree'&&q.w>=64&&q.y>=90&&q.x>=260&&q.x<2110)){const x=q.x+Math.min(q.w-18,Math.max(18,q.w*.42));if(!(s.trees||[]).some(t=>Math.abs(t.x-x)<48)){const visualH=Math.max(30,Math.min(60,q.y-36));s.trees.push({id:'t16-plant-'+q.id,x,y:q.y,h:visualH,visualH,variant:'forest',hp:3,t13Cut:0,t13Gone:false,shake:0,fall:0,rewarded:false});}}
+ for(const t of s.trees||[]){t.t16Biome=t16BiomeAt(t.x,s).id;t.variant=t.t16Biome==='snow'?'boreal':t.t16Biome==='jungle'?'forest2':'forest';}
+  for(const e of s.foes||[])t16AdaptFoe(e,s);
+ }
+}
+function t16AdaptFoe(e,s){if(!e||['goomba','koopa'].includes(e.kind))return;const b=t16BiomeAt(e.spawnX??e.x,s);e.t16Biome=b.id;
+ if(e.kind==='slime')e.skin=b.id==='desert'?'sand':b.id==='crimson'?'crimson':b.id==='jungle'?'jungle':b.id==='snow'?'ice':'green';
+ if(e.flying){e.t16Flight=b.id==='desert'?'swoop':b.id==='crimson'?'charge':b.id==='jungle'?'flutter':b.id==='snow'?'glide':'normal';}
+}
+const t16NewBase=newState;newState=function(){const s=t16NewBase();t16Init(s);return s;};
+const t16RoomBase=t11PrepareRoom;
+t11PrepareRoom=function(s){t16RoomBase(s);
+ // The old cloud question tile is no longer drawn after the chest replacement.
+ // Remove its stale solid collider rather than letting an invisible block stop UFOs.
+ s.level.surfaces=s.level.surfaces.filter(q=>q.id!=='arena-cloud-question');
+ s.t16Ecology=false;t16Init(s);
+ s.t16Cart={on:false,d:16,speed:0,dir:1,laps:0,total:0,keys:0,board:0};
+ // Boarding platform is the rail itself. No block is added to the mining grid.
+ for(const [id,x,y,w] of [['t16-rail-lower',384,400,2304],['t16-rail-upper',384,-80,2304]])if(!s.level.surfaces.some(q=>q.id===id))s.level.surfaces.push({id,x,y,w,h:3,oneWay:true,permanent:true,type:'rail'});
+};
+function t16Board(reason='manual',range=112){const s=state;if(!s?.r05Arena||mode!=='playing'||s.t11Transition||s.t13Recalling)return false;t16Init(s);const p=s.p,q=t16NearestRail(p.x+p.w/2,p.y+p.h);if(q.dist>range)return false;
+ const box={x:q.x-p.w/2,y:q.y-42,w:p.w,h:42};if(t13PhysicalSurfaces(s,box).some(a=>a.solid&&near(box,a)))return false;
+ const oldFoot=p.y+p.h,oldX=p.x+p.w/2;r07SetMountHeight(s,false);s.t10PendingMount=null;s.mounted=true;s.mountType='minecart';s.mountOwned=true;
+ const cart=s.t16Cart;Object.assign(cart,{on:true,d:q.d,speed:Math.max(2,Math.abs(p.vx)),dir:1,wantedDir:0,keys:0,board:T16_RAIL.boardingTicks,from:{x:oldX,y:oldFoot},reason});
+ p.hurtLock=0;p.grounded=true;p.vy=0;p.support='t16-rail';p.buffer=0;p.drop=0;p.cloudAvailable=!!s.cloudJump;evt('t16-board',{reason,x:q.x,y:q.y});return true;
+}
+function t16Leave(jump=false){const s=state;if(!s?.t16Cart?.on)return false;const p=s.p,cart=s.t16Cart,pt=t16RailPoint(cart.d);cart.on=false;cart.board=0;s.mounted=false;s.mountType=s.ufoOwned?'ufo':s.slimeOwned?'slime':null;s.mountOwned=!!(s.ufoOwned||s.slimeOwned||s.t16CartOwned);
+ p.h=42;p.x=pt.x-p.w/2;p.y=pt.y-p.h;p.vx=clamp(pt.dx*cart.speed*cart.dir,-7,7);p.vy=jump?-7.3:2;p.drop=18;p.dropRow=pt.y;p.grounded=false;p.support=null;p.buffer=p.coyote=0;p.jumpHeld=0;s.t16BoardLock=20;evt('t16-dismount',{jump});return true;
+}
+const t16MountBase=r06ToggleMount;
+r06ToggleMount=function(){const s=state;if(s?.r05Arena){if(s.t16Cart?.on)return t16Leave();if(!s.mounted&&t16Board())return true;}return t16MountBase();};
+$('r06Mount').onclick=()=>{r06ToggleMount();canvas.focus({preventScroll:true});render();};
+const t16CycleBase=r07CycleMount;
+r07CycleMount=function(){const s=state;if(!s?.r05Arena)return t16CycleBase();const opts=['minecart',...(s.slimeOwned?['slime']:[]),...(s.ufoOwned?['ufo']:[])],next=opts[(opts.indexOf(s.mountType)+1)%opts.length];if(s.t16Cart?.on)t16Leave();else if(s.mounted){s.mounted=false;r07SetMountHeight(s,false);}s.t10PendingMount=null;if(next==='minecart')return t16Board('cycle');s.mountType=next;return t10RequestMount(s,next,'cycle');};
+const t16ApplyMountBase=t10ApplyMount;
+t10ApplyMount=function(s){if(s?.t16Cart?.on&&s.t10PendingMount){s.t16Cart.on=false;s.t16Cart.board=0;}return t16ApplyMountBase(s);};
+const t16SummonBase=r05Summon;
+r05Summon=function(){const ok=t16SummonBase();if(ok&&state?.r05Arena){t16Init(state);t16Board('eye-pickup',140);}return ok;};
+const t16PhysicsBase=r05Physics;
+r05Physics=function(v){const s=state,p=s.p,cart=s.t16Cart;if(!cart?.on||!s.mounted||s.mountType!=='minecart'){if(cart)cart.on=false;return t16PhysicsBase(v);}
+ if(v.jumpEdge){t16Leave(true);return t16PhysicsBase({...v,jumpEdge:false});}
+ for(const k of ['invuln','hurtLock','cooldown','drop'])if(p[k]>0)p[k]--;
+ const oldX=p.x,oldY=p.y,pt=t16RailPoint(cart.d);let x=pt.x,y=pt.y;
+ if(cart.board>0){const u=1-(--cart.board)/T16_RAIL.boardingTicks,e=u*u*(3-2*u);x=cart.from.x+(pt.x-cart.from.x)*e;y=cart.from.y+(pt.y-cart.from.y)*e;}
+ else{
+  // Tap a direction to set travel; releasing the key keeps cruising. Down brakes.
+  const k=Math.sign(v.x||0);if(k&&k!==cart.keys){const axis=Math.sign(pt.dx)||1;cart.wantedDir=k*axis;}
+  cart.keys=k;const reversing=cart.wantedDir&&cart.wantedDir!==cart.dir;const tip=Math.min(Math.abs(cart.d-(2304+Math.hypot(240,240))),Math.abs(cart.d-(4608+3*Math.hypot(240,240))));const target=v.y>.5||reversing?0:tip<65?8.5:T16_RAIL.maxSpeed;cart.speed=approach(cart.speed,target,target<cart.speed?T16_RAIL.brake:T16_RAIL.acceleration);if(reversing&&cart.speed<.01){cart.dir=cart.wantedDir;cart.wantedDir=0;}
+  // Original pressure/booster rail section beside the boarding point gets the cart moving.
+  if(cart.d<160&&cart.speed<9&&!v.y&&!reversing)cart.speed=Math.min(9,cart.speed+.16);
+  const delta=cart.speed*cart.dir,old=cart.d;cart.d=(cart.d+delta+T16_RAIL.length)%T16_RAIL.length;cart.total+=Math.abs(delta);cart.laps=Math.floor(cart.total/T16_RAIL.length);if(Math.abs(cart.d-old)>T16_RAIL.length/2)evt('t16-rail-lap',{laps:cart.laps});const next=t16RailPoint(cart.d);x=next.x;y=next.y;
+ }
+ p.x=x-p.w/2;p.y=y-p.h;p.vx=p.x-oldX;p.vy=p.y-oldY;p.grounded=true;p.support='t16-rail';p.cloudAvailable=!!s.cloudJump;p.walk+=Math.abs(p.vx)*.8;
+ if(!p.attack&&!v.action&&Math.abs(p.vx)>.1)p.facing=Math.sign(p.vx);
+ s.cam=approach(s.cam,clamp(x-R06_VIEW.w*.44,0,3072-R06_VIEW.w),Math.abs(p.vx)+5);r05SyncPointer();
+};
+const t16RecallBase=t13Recall;t13Recall=function(){if(state?.phase!=='battle'&&state?.t16Cart?.on)t16Leave();return t16RecallBase();};
+const t16RetryBase=retry;retry=function(){if(state?.t16Cart)state.t16Cart.on=false;return t16RetryBase();};
+const t16FootBase=t10BodyFoot;t10BodyFoot=function(s,foot,scale){if(s?.mounted&&s.mountType==='minecart')return foot-8*scale;return t16FootBase(s,foot,scale);};
+function t16DrawCart(s,c,parked=false){const im=r06Images.t16cart;if(!im)return;const p=s.p,pt=t16RailPoint(s.t16Cart?.d??16),x=parked?pt.x:p.x+p.w/2,y=parked?pt.y:p.y+p.h;
+ const moving=!parked&&s.t16Cart.speed>.3,frame=moving?Math.floor(s.t16Cart.total/9)%3:0;const dir=Math.sign(pt.dx*(s.t16Cart?.dir||1))||1,angle=Math.atan2(pt.dy,Math.abs(pt.dx))*Math.sign(pt.dx);
+ ctx.save();ctx.translate(Math.round(x-c),Math.round(y));ctx.rotate(clamp(angle,-Math.PI/4,Math.PI/4));ctx.scale(dir,1);ctx.imageSmoothingEnabled=false;ctx.drawImage(im,0,frame*34,50,34,-25,-32,50,34);ctx.restore();
+}
+const t16MountDrawBase=r06DrawMount;r06DrawMount=function(s,c){if(s.mounted&&s.mountType==='minecart')return;return t16MountDrawBase(s,c);};
+const t16BodyBase=r06DrawBody;
+r06DrawBody=function(g,x,foot,face,walk=0,air=false,attack=0,tool=0,opacity=1,armor='platinum',weapon='starfury',scale=.75){const cart=state?.mounted&&state.mountType==='minecart';t16BodyBase(g,x,foot,face,cart?0:walk,cart?true:air,attack,tool,opacity,armor,weapon,scale);if(cart&&g===ctx)t16DrawCart(state,state.cam);};
+function t16DrawRails(s){const im=r06Images.t16rail;if(!im)return;const c=s.cam,yc=s.camY||0;ctx.save();ctx.imageSmoothingEnabled=false;
+ for(const seg of T16_RAIL.segments){const horizontal=Math.abs(seg.dy)<.1;const count=Math.round(Math.abs(seg.b[0]-seg.a[0])/16);for(let i=0;i<count;i++){
+  const u=(i+.5)/count,x=seg.a[0]+(seg.b[0]-seg.a[0])*u,y=seg.a[1]+(seg.b[1]-seg.a[1])*u;if(x<c-24||x>c+R06_VIEW.w+24||y<yc-24||y>yc+R06_VIEW.h+24)continue;
+  const rising=seg.dy/seg.dx<0;const sx=horizontal?18:rising?18:0,sy=horizontal?0:54;ctx.drawImage(im,sx,sy,16,16,Math.round(x-c-8),Math.round(y-8),16,16);
+  if(horizontal&&y===400&&x>384&&x<544&&i%2===0)ctx.drawImage(im,36,126,16,16,Math.round(x-c-8),Math.round(y-8),16,16);
+ }}
+ // Native junction cels join opposite slopes at the endpoints.
+ for(const [x,y]of [[144,160],[2928,160]])if(x>c-32&&x<c+R06_VIEW.w+32)ctx.drawImage(im,0,36,32,16,x-c-16,y-8,32,16);
+ if(!s.t16Cart?.on)t16DrawCart(s,c,true);ctx.restore();
+}
+function t16Cactus(g,x,y,h,t=0){const q=Math.max(2,Math.round(h/28));g.save();g.translate(Math.round(x),Math.round(y));g.scale(q/2,q/2);g.fillStyle='#284f37';g.fillRect(-5,-h*2/q,10,h*2/q);g.fillStyle='#708e4e';g.fillRect(-3,-h*2/q+2,6,h*2/q-2);g.fillStyle='#a6ae64';g.fillRect(-3,-h*2/q+4,2,h*2/q-8);
+ g.fillStyle='#3b6340';g.fillRect(3,-33,14,7);g.fillRect(12,-49,6,22);g.fillRect(-17,-21,14,7);g.fillRect(-18,-35,6,20);g.fillStyle='#b4b67b';for(let i=8;i<h*2/q;i+=9){g.fillRect(-6,-i,2,1);g.fillRect(4,-i-3,2,1);}g.restore();}
+const t16TreeBase=t12DrawTree;
+t12DrawTree=function(g,t,c=0,scale=1){const b=T16_BIOMES.find(a=>a.id===(t.t16Biome||t16BiomeAt(t.x).id))||T16_BIOMES[0];if(b.id==='forest'||b.id==='snow')return t16TreeBase(g,{...t,variant:b.id==='snow'?'boreal':t.variant},c,scale);
+ if(t.hp<=0&&t.fall>=42)return t16TreeBase(g,t,c,scale);const h=t.visualH||70;if(b.id==='desert'){g.save();if(t.shake)g.translate(Math.sin(t.shake)*1.5,0);t16Cactus(g,t.x-c,t.y,h*scale);g.restore();return;}
+ const original=r06Images['t12Tree_'+(b.id==='jungle'?'forest2':'forest')]||t12TreeImage(b.id==='jungle'?'forest2':'forest');const im=t16Tint(original,b.leaf,b.id==='crimson'?.58:.25),width=im.width/im.height*h*scale;
+ g.save();g.translate(Math.round(t.x-c),Math.round(t.y));if(t.shake)g.rotate(Math.sin(t.shake)*.03);g.drawImage(im,-width/2,-h*scale,width,h*scale);
+ if(b.id==='jungle'){g.strokeStyle='#316746';g.lineWidth=2*scale;for(let i=0;i<4;i++){const x=(i-1.5)*width*.18;g.beginPath();g.moveTo(x,-h*.70*scale);g.quadraticCurveTo(x+6,-h*.4*scale,x-2,-h*.12*scale);g.stroke();g.fillStyle='#54a35a';for(let j=0;j<4;j++)g.fillRect(x+(j%2?1:-4),-h*(.58-j*.12)*scale,5*scale,2*scale);}}
+ else{g.fillStyle='#d77b73';for(let i=0;i<5;i++)g.fillRect((i-2)*width*.11,-h*(.55+(i%3)*.08)*scale,3*scale,2*scale);}g.restore();};
+function t16DrawSky(s,arena=false){const w=arena?R06_VIEW.w:W,h=arena?R06_VIEW.h:H,b=t16BiomeAt(s.p.x+s.p.w/2,s),pal=arena?b.night:b.sky;ctx.save();const grad=ctx.createLinearGradient(0,0,0,h);grad.addColorStop(0,pal[0]);grad.addColorStop(1,pal[1]);ctx.fillStyle=grad;ctx.fillRect(0,0,w,h);
+ if(arena){for(let i=0;i<70;i++){ctx.fillStyle=i%4?'#aec2cf88':'#dce5cfcc';ctx.fillRect(Math.round(((i*179-s.cam*.03)%w+w)%w),18+(i*i*23)%Math.max(100,h*.55),1,1);}const moon=r06Images.t12Moon;if(moon)ctx.drawImage(moon,0,0,Math.min(moon.width,50),Math.min(moon.width,50),w*.78-s.cam*.012,70,46,46);}
+ for(let layer=0;layer<3;layer++){const py=arena?Math.min(130,(s.camY+96)*.10):Math.min(24,(s.r07CamY||0)*.12),base=h*(.68+layer*.10)-py,step=arena?70:35,origin=Math.floor(s.cam*.07/step)-2;ctx.fillStyle=t16MixColor(pal[1],b.leaf,.22+layer*.12);ctx.beginPath();ctx.moveTo(0,h);for(let x=-20;x<w+30;x+=10){const v=x+s.cam*(.015+layer*.03);const yy=base+Math.sin(v*.016+layer)*h*.04+Math.sin(v*.036)*h*.024;ctx.lineTo(x,Math.round(yy));}ctx.lineTo(w,h);ctx.fill();
+  if(b.id!=='desert'){ctx.save();ctx.globalAlpha=.18+layer*.10;for(let i=origin;i<origin+w/step+5;i++){const xx=i*step-s.cam*(.04+layer*.04),ht=(arena?100:34)*(1+t12Noise(i,layer)*.8);const im=t12TreeImage(b.id==='snow'?'boreal':b.id==='jungle'?'forest2':'forest');ctx.drawImage(t16Tint(im,b.leaf,.55),Math.round(xx),Math.round(base-ht),Math.round(ht*.6),Math.round(ht));}ctx.restore();}}
+ ctx.restore();}
+t12Background=function(s){t16DrawSky(s,true);};
+// A native Mario cap stays 16 px high. Region palettes do not change collision widths.
+function t16DrawMainTerrain(s){const c=s.cam,vis=s.level.surfaces.filter(q=>q.x<c+W+90&&q.x+q.w>c-90),bottom=Math.max(336,H+(s.r07CamY||0)+48);
+ for(const q of vis)if(q.type==='tree'){const left=q.x+16,width=q.w-32,b=t16BiomeAt(q.x+q.w/2,s);if(width<=0)continue;const im=b.id==='forest'?tiles13.trunk:t16Tint(tiles13.trunk,b.soil,b.id==='snow'?.65:.40);for(let x=left;x<left+width;x+=8)for(let y=q.y+16;y<bottom;y+=8)ctx.drawImage(im,0,0,Math.min(8,left+width-x),8,Math.round(x-c),y,Math.min(8,left+width-x),8);}
+ for(const t of s.trees||[])drawChopTree(t,c);
+ for(const q of vis.slice().sort((a,b)=>a.y-b.y)){if(q.type==='tree'){for(let dx=0;dx<q.w;dx+=16){const width=Math.min(16,q.w-dx),b=t16BiomeAt(q.x+dx,s),src=tiles13[dx===0?'treeLeft':dx+16>=q.w?'treeRight':'treeMid'],im=b.id==='forest'?src:t16Tint(src,b.id==='crimson'?b.leaf:b.soil,b.id==='snow'?.74:.55);ctx.drawImage(im,0,0,width,16,Math.round(q.x+dx-c),q.y,width,16);}}
+  else for(let x=q.x;x<q.x+q.w;x+=16)for(let y=q.y;y<q.y+q.h;y+=16){sprite(q.type==='floor'?'ground':'stone',x-c,y);const b=t16BiomeAt(x,s);if(b.id!=='forest'){ctx.save();ctx.globalAlpha=b.id==='snow'?.48:.28;ctx.fillStyle=b.soil;ctx.fillRect(x-c,y,16,16);ctx.restore();}}}
+ for(const t of s.t14Torches||[])if(t.x-c> -25&&t.x-c<W+25){ctx.save();ctx.translate(t.x-c,t.y);ctx.scale(.75,.75);r07Furniture('torch',0,0,s.ticks,t.phase||0);ctx.restore();}
+}
+drawTerraTerrain=function(s){if(s.secret)return drawTerraArenaTerrain(s);t16DrawMainTerrain(s);};
+const t16WorldDrawBase=t13DrawWorld;
+t13DrawWorld=function(s){t16WorldDrawBase(s);const w=s.t13World,c=s.cam,yc=s.camY||0;
+ ctx.save();for(let x=Math.max(0,Math.floor(c/16));x<Math.min(w.cols,Math.ceil((c+R06_VIEW.w)/16));x++){const b=t16BiomeAt(x*16,s);if(b.id==='forest')continue;for(let y=Math.max(0,Math.floor((yc-T13.top)/16));y<Math.min(w.rows,Math.ceil((yc+R06_VIEW.h-T13.top)/16));y++){const tile=t13At(w,x,y);if(!tile)continue;ctx.globalAlpha=tile>=3?.14:b.id==='snow'?.50:.34;ctx.fillStyle=b.soil;ctx.fillRect(x*16-c,T13.top+y*16,16,16);}}
+ ctx.globalAlpha=1;ctx.restore();t16DrawRails(s);
+};
+// Recognisable biome motion and original sprite silhouettes; no additional Mario cameos.
+const t16FoeDrawBase=t10DrawFoe;
+t10DrawFoe=function(e,c){if(!e.t16Biome)return t16FoeDrawBase(e,c);let src,fw,fh,count,angle=0;const b=T16_BIOMES.find(a=>a.id===e.t16Biome);
+ if(e.kind==='slime'){src=t10SlimeOriginal||photos.slime;fw=32;fh=26;count=2;}
+ else if(e.kind==='caveBat'){src=r06Images.caveBat;fw=44;fh=40;count=4;}
+ else if(e.kind==='demonEye'){src=r06Images.demonEye;fw=38;fh=24;count=2;}
+ else if(e.kind==='zombie'){src=r06Images.zombie;fw=38;fh=48;count=3;}
+ else return t16FoeDrawBase(e,c);if(!src||!b)return t16FoeDrawBase(e,c);
+ const col=b.id==='desert'?'#d3a255':b.id==='crimson'?'#c55261':b.id==='snow'?'#c2e5ff':b.id==='jungle'?'#53b955':null;
+ if(!col)return t16FoeDrawBase(e,c);const im=t16Tint(src,col,b.id==='snow'?.45:.47),f=e.kind==='slime'?(e.grounded?Math.floor(e.age/12)%2:1):Math.floor(e.age/(e.kind==='caveBat'?5:8))%count;
+ ctx.save();ctx.translate(Math.round(e.x+e.w/2-c),Math.round(e.y+e.h));ctx.scale(e.dir<0?.75:-.75,.75);ctx.drawImage(im,0,f*fh,fw,fh,-fw/2,-fh+2,fw,fh);ctx.restore();return true;
+};
+const t16EnemiesBase=updateEnemies;
+updateEnemies=function(ss){t16EnemiesBase(ss);const s=state;for(const e of s.foes||[]){if(e.dead||!e.active||!e.flying||e.knock>0)continue;const dx=s.p.x-e.x,dy=s.p.y-e.y;
+ if(e.t16Flight==='swoop'&&e.age%170>120){e.vx=approach(e.vx,Math.sign(dx)*2.7,.06);e.vy=approach(e.vy,Math.sign(dy)*2.2,.04);}
+ if(e.t16Flight==='charge'&&e.age%160===0){e.vx=Math.sign(dx)*3.2;e.vy=clamp(dy*.015,-2.4,2.4);e.knock=18;}
+ if(e.t16Flight==='flutter')e.y+=Math.sin(e.age*.15)*.35;
+ }};
+function t16Weather(s){const b=t16BiomeAt(s.p.x,s),arena=!!s.r05Arena,w=arena?R06_VIEW.w:W,h=arena?R06_VIEW.h:H;if(!['snow','crimson','jungle','desert'].includes(b.id))return;ctx.save();ctx.globalAlpha=b.id==='snow'?.62:.25;ctx.fillStyle=b.id==='snow'?'#eaf7ff':b.id==='crimson'?'#e8a09a':b.id==='jungle'?'#b7d896':'#f6daa0';for(let i=0;i<(arena?25:12);i++){const speed=b.id==='desert'?1.1:.2,xx=((i*73+s.ticks*speed-s.cam*.12)%w+w)%w,yy=(i*39+s.ticks*(b.id==='snow'?.32:.11))%h;if(yy<34)continue;ctx.fillRect(Math.round(xx),Math.round(yy),b.id==='desert'?3:1,1);}ctx.restore();}
+const t16SyncBase=t15Sync;
+t15Sync=function(s){t16SyncBase(s);if(!isTrio())return;$('bestLabel').textContent='R16';document.querySelector('header .offline').textContent='TERRARIA · 1-3';t10Build.textContent='R16 · 五区生态 / 循环矿车';if(s){$('relayMessage').textContent=t16BiomeAt(s.p.x,s).name+(s.t16Cart?.on?' · 矿车巡航':s.phase==='battle'?' · 克苏鲁之眼':s.r05Arena?' · 隐藏矿区':' · WORLD 1-3');}}
+const t16BaseStep=step;
+step=function(v){const s=state;if(s)t16SetInfinite(s);const out=t16BaseStep(v);if(state===s&&s){if(s.t16Cart?.on&&(!s.mounted||s.mountType!=='minecart'||mode==='dying'))s.t16Cart.on=false;s.t16Biome=t16BiomeAt(s.p.x,s).id;}return out;};
+// Small mount action in the existing outside panel; never a new game-screen strip.
+const t16CartButton=document.createElement('button');t16CartButton.id='t16CartButton';t16CartButton.textContent='矿车 / F';t16CartButton.type='button';t16CartButton.style.cssText='font:inherit;font-size:12px;margin:8px 0;padding:7px 12px;border:1px solid #60778a;border-radius:5px;background:#223745;color:#eee3c2;cursor:pointer';t15Help.before(t16CartButton);t16CartButton.onclick=()=>{t15ClearPointer();r06ToggleMount();canvas.focus({preventScroll:true});render();};
+const t16RenderBase=render;
+render=function(){const out=t16RenderBase();if(isTrio()&&state&&mode!=='menu'){t16Weather(state);t15DrawHUD(state);}t16CartButton.hidden=!isTrio()||!state?.r05Arena||mode==='menu';if(state?.t16Cart?.on)t16CartButton.textContent='矿车下车 / F / RB';else t16CartButton.textContent='矿车上车 / F / RB';return out;};
+t15Help.insertAdjacentHTML('beforeend','<p><b>R16：</b>箭矢、子弹无限（∞）；木材、火把、药水和魔力仍照常消耗。隐藏场四层木台整体上移一层；最右眼球拾取后自动登上轨道矿车。靠近轨道按 F 也可上车，松开方向键保持巡航，↓刹车，轻按左右改变行驶方向，空格跳车，F 下车。J / 左键边行驶边射击。获胜后按 F 下车，到地面拾取套装；接触奖励仍自动骑上 UFO。矿车不提供无敌。循环线路是本混合关卡的自定义连接，使用原版矿车及轨道图。</p>');
+const t16Diagnostics={build:T16_BUILD,ready:t16Ready,biomes:T16_BIOMES,rail:T16_RAIL,point:t16RailPoint,nearest:t16NearestRail,board:t16Board,leave:t16Leave,
+ inspect:()=>state?{biome:t16BiomeAt(state.p.x,state).id,infiniteAmmo:state.t16InfiniteAmmo,cart:state.t16Cart,rows:state.level.surfaces.filter(q=>q.id.startsWith('r07-lane')).map(q=>q.y),ammo:state.ammo,arrows:state.t13Inventory?.arrows}:null};
+
+const T17_ASSET_DATA={"cactus": "__TERRA_ASSET_media-177__"};
+let t20Device='keyboard',t20LastLs=[0,0],t20LeftAim=[1,0];
+function t20Own(device,input='auto'){
+ const changed=device!==t20Device;if(device!=='gamepad'&&device!=='keyboard')return;
+ if(changed){t20Device=device;pending={};prev={};}
+ if(device==='gamepad'){
+  // A pad owns movement/aim as soon as it produces real input. Clear every
+  // pointer latch so an old mouse position cannot leave a reticle or steer a shot.
+  t17Input.mouseDown=false;t17Input.mouseBlocked=false;
+  t13Pointer.active=t13Pointer.down=false;r05Pointer.active=r05Pointer.down=r05Pointer.pressed=false;
+  t17Input.lastMouse=null;t17Input.source='gamepad';t17Input.explicit=false;
+ }else if(changed||input==='key'){
+  // A keyboard key takes ownership without resurrecting a stale mouse target.
+  t13Pointer.active=t13Pointer.down=false;r05Pointer.active=r05Pointer.down=r05Pointer.pressed=false;
+  t17Input.lastMouse=null;t17Input.source='facing';t17Input.explicit=false;
+ }
+}

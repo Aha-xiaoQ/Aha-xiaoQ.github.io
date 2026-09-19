@@ -1,0 +1,561 @@
+{
+  "schemaVersion": 1,
+  "revision": 21,
+  "updatedAt": "2026-09-19",
+  "levels": [
+    {
+      "id": "1-1",
+      "title": "地上原野",
+      "characters": [
+        "魂斗罗 · 比尔",
+        "洛克人"
+      ],
+      "status": "released",
+      "summary": "不同武器与射击方式，闯过熟悉的地上关卡。",
+      "playHref": "/games/mario-mix/play.html",
+      "introHref": "/games/mario-mix/",
+      "templateStatus": "reference-draft",
+      "missing": [
+        "原版逐格核验",
+        "道具方块与敌人行为",
+        "角色跨图适配"
+      ],
+      "owner": "",
+      "issueUrl": null
+    },
+    {
+      "id": "1-2",
+      "title": "地下通道",
+      "characters": [
+        "忍者龙剑传",
+        "坦克大战"
+      ],
+      "status": "released",
+      "summary": "忍者与坦克接力，横版动作与俯视战斗交替。",
+      "playHref": "/games/mario-mix-2/play.html",
+      "introHref": "/games/mario-mix-2/",
+      "templateStatus": "reference-draft",
+      "missing": [
+        "循环升降台",
+        "跳关连接",
+        "敌人行为"
+      ],
+      "owner": "",
+      "issueUrl": null
+    },
+    {
+      "id": "1-3",
+      "title": "树梢高地",
+      "characters": [
+        "泰拉瑞亚"
+      ],
+      "status": "released",
+      "summary": "探索地表与地下，收集装备，挑战地下 Boss。",
+      "playHref": "/games/mario-mix-3/play.html",
+      "introHref": "/games/mario-mix-3/",
+      "templateStatus": "reference-draft",
+      "missing": [
+        "平台运动时序",
+        "飞行敌人",
+        "泰拉角色跨图适配"
+      ],
+      "owner": "",
+      "issueUrl": null
+    },
+    {
+      "id": "1-4",
+      "title": "城堡回廊",
+      "characters": [
+        "奥日"
+      ],
+      "status": "active",
+      "summary": "奥日城堡关正在开发，暂未提供正式试玩。",
+      "playHref": null,
+      "introHref": null,
+      "templateStatus": "reference-draft",
+      "missing": [
+        "旋转火焰棒",
+        "城堡 Boss 与断桥结算",
+        "奥日完整动作适配"
+      ],
+      "owner": "",
+      "issueUrl": null
+    },
+    {
+      "id": "2-1",
+      "title": "原野与天空支路",
+      "characters": [],
+      "status": "planned",
+      "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+      "playHref": null,
+      "introHref": null,
+      "templateStatus": "reference-draft",
+      "missing": [
+        "原版地图独立核验",
+        "正式角色与机关接入",
+        "自然流程与实机验收"
+      ],
+      "owner": "",
+      "issueUrl": null
+    },
+    {
+      "id": "2-2",
+      "title": "水下航道",
+      "characters": [],
+      "status": "planned",
+      "summary": "水下路线与出入口已整理，适合研究游泳、浮力与水中战斗。",
+      "playHref": null,
+      "introHref": null,
+      "templateStatus": "reference-draft",
+      "missing": [
+        "游泳与水流驱动",
+        "水下敌人行为",
+        "原版核验与房间衔接"
+      ],
+      "owner": "",
+      "issueUrl": null
+    },
+    {
+      "id": "2-3",
+      "title": "飞鱼长桥",
+      "characters": [],
+      "status": "planned",
+      "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+      "playHref": null,
+      "introHref": null,
+      "templateStatus": "reference-draft",
+      "missing": [
+        "原版地图独立核验",
+        "正式角色与机关接入",
+        "自然流程与实机验收"
+      ],
+      "owner": "",
+      "issueUrl": null
+    },
+    {
+      "id": "2-4",
+      "title": "熔岩与升降台",
+      "characters": [],
+      "status": "planned",
+      "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+      "playHref": null,
+      "introHref": null,
+      "templateStatus": "reference-draft",
+      "missing": [
+        "原版地图独立核验",
+        "正式角色与机关接入",
+        "自然流程与实机验收"
+      ],
+      "owner": "",
+      "issueUrl": null
+    },
+    {
+      "id": "3-1",
+      "title": "夜间原野",
+      "characters": [],
+      "status": "planned",
+      "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+      "playHref": null,
+      "introHref": null,
+      "templateStatus": "reference-draft",
+      "missing": [
+        "原版地图独立核验",
+        "正式角色与机关接入",
+        "自然流程与实机验收"
+      ],
+      "owner": "",
+      "issueUrl": null
+    },
+    {
+      "id": "3-2",
+      "title": "夜行长路",
+      "characters": [],
+      "status": "planned",
+      "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+      "playHref": null,
+      "introHref": null,
+      "templateStatus": "reference-draft",
+      "missing": [
+        "原版地图独立核验",
+        "正式角色与机关接入",
+        "自然流程与实机验收"
+      ],
+      "owner": "",
+      "issueUrl": null
+    },
+    {
+      "id": "3-3",
+      "title": "树顶与平衡台",
+      "characters": [],
+      "status": "planned",
+      "summary": "平台位置与高度已整理，可据此设计角色的跳跃与空中能力。",
+      "playHref": null,
+      "introHref": null,
+      "templateStatus": "reference-draft",
+      "missing": [
+        "原版地图独立核验",
+        "正式角色与机关接入",
+        "自然流程与实机验收"
+      ],
+      "owner": "",
+      "issueUrl": null
+    },
+    {
+      "id": "3-4",
+      "title": "火焰城堡",
+      "characters": [],
+      "status": "planned",
+      "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+      "playHref": null,
+      "introHref": null,
+      "templateStatus": "reference-draft",
+      "missing": [
+        "原版地图独立核验",
+        "正式角色与机关接入",
+        "自然流程与实机验收"
+      ],
+      "owner": "",
+      "issueUrl": null
+    },
+    {
+      "id": "4-1",
+      "title": "云下原野",
+      "characters": [],
+      "status": "planned",
+      "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+      "playHref": null,
+      "introHref": null,
+      "templateStatus": "reference-draft",
+      "missing": [
+        "原版地图独立核验",
+        "正式角色与机关接入",
+        "自然流程与实机验收"
+      ],
+      "owner": "",
+      "issueUrl": null
+    },
+    {
+      "id": "4-2",
+      "title": "地下岔路与跳关区",
+      "characters": [],
+      "status": "planned",
+      "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+      "playHref": null,
+      "introHref": null,
+      "templateStatus": "reference-draft",
+      "missing": [
+        "原版地图独立核验",
+        "正式角色与机关接入",
+        "自然流程与实机验收"
+      ],
+      "owner": "",
+      "issueUrl": null
+    },
+    {
+      "id": "4-3",
+      "title": "蘑菇高台",
+      "characters": [],
+      "status": "planned",
+      "summary": "平台位置与高度已整理，可据此设计角色的跳跃与空中能力。",
+      "playHref": null,
+      "introHref": null,
+      "templateStatus": "reference-draft",
+      "missing": [
+        "原版地图独立核验",
+        "正式角色与机关接入",
+        "自然流程与实机验收"
+      ],
+      "owner": "",
+      "issueUrl": null
+    },
+    {
+      "id": "4-4",
+      "title": "双段循环城堡",
+      "characters": [],
+      "status": "planned",
+      "summary": "保留分段条件与返回关系，适合设计路线判断和城堡机关。",
+      "playHref": null,
+      "introHref": null,
+      "templateStatus": "reference-draft",
+      "missing": [
+        "条件分段与循环路线",
+        "城堡机关与结算",
+        "原版地图独立核验"
+      ],
+      "owner": "",
+      "issueUrl": null
+    },
+    {
+      "id": "5-1",
+      "title": "炮台原野",
+      "characters": [],
+      "status": "planned",
+      "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+      "playHref": null,
+      "introHref": null,
+      "templateStatus": "reference-draft",
+      "missing": [
+        "原版地图独立核验",
+        "正式角色与机关接入",
+        "自然流程与实机验收"
+      ],
+      "owner": "",
+      "issueUrl": null
+    },
+    {
+      "id": "5-2",
+      "title": "高台与水下支路",
+      "characters": [],
+      "status": "planned",
+      "summary": "平台位置与高度已整理，可据此设计角色的跳跃与空中能力。",
+      "playHref": null,
+      "introHref": null,
+      "templateStatus": "reference-draft",
+      "missing": [
+        "原版地图独立核验",
+        "正式角色与机关接入",
+        "自然流程与实机验收"
+      ],
+      "owner": "",
+      "issueUrl": null
+    },
+    {
+      "id": "5-3",
+      "title": "树顶弹幕",
+      "characters": [],
+      "status": "planned",
+      "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+      "playHref": null,
+      "introHref": null,
+      "templateStatus": "reference-draft",
+      "missing": [
+        "原版地图独立核验",
+        "正式角色与机关接入",
+        "自然流程与实机验收"
+      ],
+      "owner": "",
+      "issueUrl": null
+    },
+    {
+      "id": "5-4",
+      "title": "双倍火焰城堡",
+      "characters": [],
+      "status": "planned",
+      "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+      "playHref": null,
+      "introHref": null,
+      "templateStatus": "reference-draft",
+      "missing": [
+        "原版地图独立核验",
+        "正式角色与机关接入",
+        "自然流程与实机验收"
+      ],
+      "owner": "",
+      "issueUrl": null
+    },
+    {
+      "id": "6-1",
+      "title": "夜间阶梯",
+      "characters": [],
+      "status": "planned",
+      "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+      "playHref": null,
+      "introHref": null,
+      "templateStatus": "reference-draft",
+      "missing": [
+        "原版地图独立核验",
+        "正式角色与机关接入",
+        "自然流程与实机验收"
+      ],
+      "owner": "",
+      "issueUrl": null
+    },
+    {
+      "id": "6-2",
+      "title": "多入口管道原野",
+      "characters": [],
+      "status": "planned",
+      "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+      "playHref": null,
+      "introHref": null,
+      "templateStatus": "reference-draft",
+      "missing": [
+        "原版地图独立核验",
+        "正式角色与机关接入",
+        "自然流程与实机验收"
+      ],
+      "owner": "",
+      "issueUrl": null
+    },
+    {
+      "id": "6-3",
+      "title": "夜间平衡台",
+      "characters": [],
+      "status": "planned",
+      "summary": "平台位置与高度已整理，可据此设计角色的跳跃与空中能力。",
+      "playHref": null,
+      "introHref": null,
+      "templateStatus": "reference-draft",
+      "missing": [
+        "原版地图独立核验",
+        "正式角色与机关接入",
+        "自然流程与实机验收"
+      ],
+      "owner": "",
+      "issueUrl": null
+    },
+    {
+      "id": "6-4",
+      "title": "交错火焰城堡",
+      "characters": [],
+      "status": "planned",
+      "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+      "playHref": null,
+      "introHref": null,
+      "templateStatus": "reference-draft",
+      "missing": [
+        "原版地图独立核验",
+        "正式角色与机关接入",
+        "自然流程与实机验收"
+      ],
+      "owner": "",
+      "issueUrl": null
+    },
+    {
+      "id": "7-1",
+      "title": "炮台与锤兵",
+      "characters": [],
+      "status": "planned",
+      "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+      "playHref": null,
+      "introHref": null,
+      "templateStatus": "reference-draft",
+      "missing": [
+        "原版地图独立核验",
+        "正式角色与机关接入",
+        "自然流程与实机验收"
+      ],
+      "owner": "",
+      "issueUrl": null
+    },
+    {
+      "id": "7-2",
+      "title": "水下回廊",
+      "characters": [],
+      "status": "planned",
+      "summary": "水下路线与出入口已整理，适合研究游泳、浮力与水中战斗。",
+      "playHref": null,
+      "introHref": null,
+      "templateStatus": "reference-draft",
+      "missing": [
+        "游泳与水流驱动",
+        "水下敌人行为",
+        "原版核验与房间衔接"
+      ],
+      "owner": "",
+      "issueUrl": null
+    },
+    {
+      "id": "7-3",
+      "title": "飞鱼与长桥",
+      "characters": [],
+      "status": "planned",
+      "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+      "playHref": null,
+      "introHref": null,
+      "templateStatus": "reference-draft",
+      "missing": [
+        "原版地图独立核验",
+        "正式角色与机关接入",
+        "自然流程与实机验收"
+      ],
+      "owner": "",
+      "issueUrl": null
+    },
+    {
+      "id": "7-4",
+      "title": "多段循环城堡",
+      "characters": [],
+      "status": "planned",
+      "summary": "保留分段条件与返回关系，适合设计路线判断和城堡机关。",
+      "playHref": null,
+      "introHref": null,
+      "templateStatus": "reference-draft",
+      "missing": [
+        "条件分段与循环路线",
+        "城堡机关与结算",
+        "原版地图独立核验"
+      ],
+      "owner": "",
+      "issueUrl": null
+    },
+    {
+      "id": "8-1",
+      "title": "长距离跳跃原野",
+      "characters": [],
+      "status": "planned",
+      "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+      "playHref": null,
+      "introHref": null,
+      "templateStatus": "reference-draft",
+      "missing": [
+        "原版地图独立核验",
+        "正式角色与机关接入",
+        "自然流程与实机验收"
+      ],
+      "owner": "",
+      "issueUrl": null
+    },
+    {
+      "id": "8-2",
+      "title": "炮台与断续台阶",
+      "characters": [],
+      "status": "planned",
+      "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+      "playHref": null,
+      "introHref": null,
+      "templateStatus": "reference-draft",
+      "missing": [
+        "原版地图独立核验",
+        "正式角色与机关接入",
+        "自然流程与实机验收"
+      ],
+      "owner": "",
+      "issueUrl": null
+    },
+    {
+      "id": "8-3",
+      "title": "城墙与锤兵",
+      "characters": [],
+      "status": "planned",
+      "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+      "playHref": null,
+      "introHref": null,
+      "templateStatus": "reference-draft",
+      "missing": [
+        "原版地图独立核验",
+        "正式角色与机关接入",
+        "自然流程与实机验收"
+      ],
+      "owner": "",
+      "issueUrl": null
+    },
+    {
+      "id": "8-4",
+      "title": "管道迷宫与水下城堡",
+      "characters": [],
+      "status": "planned",
+      "summary": "保留分段条件与返回关系，适合设计路线判断和城堡机关。",
+      "playHref": null,
+      "introHref": null,
+      "templateStatus": "reference-draft",
+      "missing": [
+        "条件分段与循环路线",
+        "城堡机关与结算",
+        "原版地图独立核验"
+      ],
+      "owner": "",
+      "issueUrl": null
+    }
+  ]
+}

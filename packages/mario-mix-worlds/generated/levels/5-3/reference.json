@@ -1,0 +1,362 @@
+{
+  "repository": "umaim/Mario",
+  "commit": "980c275358704a49f868567aeec5bdfb347c4781",
+  "path": "Source/settings/maps.js",
+  "gitBlob": "657d750ad65bb06c0e63a3d8958736f9236ec3c0",
+  "range": "Worlds 1–8 gameplay layout transcription",
+  "url": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+  "method": "Manual transcription of gameplay placement records, area locations and section definitions. Pure background scenery omitted; not a byte-identical source export or original-game certification.",
+  "omittedVisuals": [
+    "Pattern",
+    "DecorativeBack",
+    "DecorativeDot",
+    "CustomText"
+  ],
+  "map": {
+    "name": "5-3",
+    "time": 300,
+    "locations": [
+      {
+        "entry": "Plain"
+      }
+    ],
+    "areas": [
+      {
+        "setting": "Overworld",
+        "creation": [
+          {
+            "macro": "Floor",
+            "x": 0,
+            "y": 0,
+            "width": 128
+          },
+          {
+            "macro": "BulletBillsStart",
+            "width": 128
+          },
+          {
+            "macro": "CastleSmall",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "macro": "Tree",
+            "x": 144,
+            "y": 8,
+            "width": 32
+          },
+          {
+            "macro": "Tree",
+            "x": 192,
+            "y": 32,
+            "width": 64,
+            "solidTrunk": true
+          },
+          {
+            "macro": "Tree",
+            "x": 208,
+            "y": 64,
+            "width": 40
+          },
+          {
+            "macro": "Fill",
+            "x": 217,
+            "y": 71,
+            "thing": "Coin",
+            "xnum": 3,
+            "xwidth": 8
+          },
+          {
+            "thing": "Koopa",
+            "x": 240,
+            "y": 76,
+            "smart": true
+          },
+          {
+            "macro": "Tree",
+            "x": 256,
+            "y": 8,
+            "width": 24
+          },
+          {
+            "thing": "Coin",
+            "x": 266,
+            "y": 15
+          },
+          {
+            "macro": "Tree",
+            "x": 280,
+            "y": 40,
+            "width": 40
+          },
+          {
+            "macro": "Fill",
+            "x": 297,
+            "y": 87,
+            "thing": "Coin",
+            "xnum": 2,
+            "xwidth": 8
+          },
+          {
+            "macro": "Tree",
+            "x": 320,
+            "y": 72,
+            "width": 56
+          },
+          {
+            "macro": "Fill",
+            "x": 352,
+            "y": 80,
+            "thing": "Goomba",
+            "xnum": 2,
+            "xwidth": 16
+          },
+          {
+            "macro": "Tree",
+            "x": 400,
+            "y": 0,
+            "width": 32
+          },
+          {
+            "macro": "Fill",
+            "x": 402,
+            "y": 55,
+            "thing": "Coin",
+            "xnum": 2,
+            "xwidth": 8
+          },
+          {
+            "thing": "Platform",
+            "x": 440,
+            "y": 56,
+            "width": 16,
+            "floating": true,
+            "begin": -4,
+            "end": 56
+          },
+          {
+            "macro": "Tree",
+            "x": 472,
+            "y": 0,
+            "width": 40
+          },
+          {
+            "thing": "Block",
+            "x": 472,
+            "y": 24,
+            "contents": "Mushroom"
+          },
+          {
+            "macro": "Tree",
+            "x": 480,
+            "y": 64,
+            "width": 32
+          },
+          {
+            "macro": "Fill",
+            "x": 482,
+            "y": 71,
+            "thing": "Coin",
+            "xnum": 4,
+            "xwidth": 8
+          },
+          {
+            "macro": "Tree",
+            "x": 520,
+            "y": 0,
+            "width": 40
+          },
+          {
+            "macro": "Tree",
+            "x": 560,
+            "y": 32,
+            "width": 24
+          },
+          {
+            "thing": "Koopa",
+            "x": 592,
+            "y": 76,
+            "smart": true,
+            "jumping": true,
+            "floating": true,
+            "begin": 16,
+            "end": 88
+          },
+          {
+            "macro": "Tree",
+            "x": 608,
+            "y": 56,
+            "width": 48
+          },
+          {
+            "thing": "Goomba",
+            "x": 640,
+            "y": 64
+          },
+          {
+            "macro": "Fill",
+            "x": 681,
+            "y": 63,
+            "thing": "Coin",
+            "xnum": 2,
+            "xwidth": 8
+          },
+          {
+            "thing": "Platform",
+            "x": 672,
+            "y": 40,
+            "width": 20,
+            "sliding": true,
+            "begin": 660,
+            "end": 720
+          },
+          {
+            "macro": "Fill",
+            "x": 745,
+            "y": 71,
+            "thing": "Coin",
+            "xnum": 2,
+            "xwidth": 8
+          },
+          {
+            "thing": "Platform",
+            "x": 756,
+            "y": 32,
+            "width": 20,
+            "sliding": true,
+            "begin": 708,
+            "end": 776
+          },
+          {
+            "macro": "Fill",
+            "x": 777,
+            "y": 71,
+            "thing": "Coin",
+            "xnum": 2,
+            "xwidth": 8
+          },
+          {
+            "macro": "Tree",
+            "x": 784,
+            "y": 16,
+            "width": 32
+          },
+          {
+            "macro": "Tree",
+            "x": 832,
+            "y": 48,
+            "width": 64,
+            "solidTrunk": true
+          },
+          {
+            "thing": "Koopa",
+            "x": 880,
+            "y": 60,
+            "smart": true
+          },
+          {
+            "macro": "Tree",
+            "x": 904,
+            "y": 0,
+            "width": 24
+          },
+          {
+            "macro": "Fill",
+            "x": 906,
+            "y": 7,
+            "thing": "Coin",
+            "xnum": 3,
+            "xwidth": 8
+          },
+          {
+            "thing": "Koopa",
+            "x": 912,
+            "y": 68,
+            "smart": true,
+            "jumping": true,
+            "floating": true,
+            "begin": 4,
+            "end": 76
+          },
+          {
+            "macro": "Tree",
+            "x": 928,
+            "y": 32,
+            "width": 32
+          },
+          {
+            "macro": "Fill",
+            "x": 963,
+            "y": 63,
+            "thing": "Coin",
+            "xnum": 2,
+            "xwidth": 8
+          },
+          {
+            "macro": "Tree",
+            "x": 976,
+            "y": 32,
+            "width": 32,
+            "solidTrunk": true
+          },
+          {
+            "macro": "Floor",
+            "x": 1032,
+            "y": 0,
+            "width": 368
+          },
+          {
+            "thing": "Platform",
+            "x": 1052,
+            "y": 56,
+            "width": 20,
+            "sliding": true,
+            "begin": 1008,
+            "end": 1076
+          },
+          {
+            "thing": "Koopa",
+            "x": 1064,
+            "y": 12,
+            "smart": true
+          },
+          {
+            "thing": "Stone",
+            "x": 1104,
+            "y": 32,
+            "width": 16,
+            "height": 32
+          },
+          {
+            "thing": "Stone",
+            "x": 1120,
+            "y": 48,
+            "width": 16,
+            "height": 48
+          },
+          {
+            "thing": "Stone",
+            "x": 1136,
+            "y": 64,
+            "width": 16,
+            "height": 64
+          },
+          {
+            "macro": "BulletBillsStop",
+            "x": 1152
+          },
+          {
+            "macro": "EndOutsideCastle",
+            "x": 1224,
+            "y": 0,
+            "large": true,
+            "walls": 12,
+            "transport": {
+              "map": "5-4"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

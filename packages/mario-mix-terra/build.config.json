@@ -1,0 +1,507 @@
+{
+  "schemaVersion": 1,
+  "version": "terra-m07",
+  "fragments": [
+    {
+      "id": "00-bootstrap",
+      "path": "src/compat/00-bootstrap.js.part",
+      "stage": "compatibility-fragment",
+      "bytes": 1346839
+    },
+    {
+      "id": "10-ninja",
+      "path": "src/compat/10-ninja.js.part",
+      "stage": "compatibility-fragment",
+      "bytes": 32797
+    },
+    {
+      "id": "11-level12",
+      "path": "src/compat/11-level12.js.part",
+      "stage": "compatibility-fragment",
+      "bytes": 5120
+    },
+    {
+      "id": "12-relay",
+      "path": "src/compat/12-relay.js.part",
+      "stage": "compatibility-fragment",
+      "bytes": 42856
+    },
+    {
+      "id": "13-relay-terrain",
+      "path": "src/compat/13-relay-terrain.js.part",
+      "stage": "compatibility-fragment",
+      "bytes": 27546
+    },
+    {
+      "id": "14-relay-input",
+      "path": "src/compat/14-relay-input.js.part",
+      "stage": "compatibility-fragment",
+      "bytes": 25848
+    },
+    {
+      "id": "15-relay-foundation",
+      "path": "src/compat/15-relay-foundation.js.part",
+      "stage": "compatibility-fragment",
+      "bytes": 20397
+    },
+    {
+      "id": "16-relay-presentation",
+      "path": "src/compat/16-relay-presentation.js.part",
+      "stage": "compatibility-fragment",
+      "bytes": 18347
+    },
+    {
+      "id": "17-relay-integration",
+      "path": "src/compat/17-relay-integration.js.part",
+      "stage": "compatibility-fragment",
+      "bytes": 13632
+    },
+    {
+      "id": "18-relay-collision",
+      "path": "src/compat/18-relay-collision.js.part",
+      "stage": "compatibility-fragment",
+      "bytes": 13288
+    },
+    {
+      "id": "19-relay-ending",
+      "path": "src/compat/19-relay-ending.js.part",
+      "stage": "compatibility-fragment",
+      "bytes": 5534
+    },
+    {
+      "id": "20-relay-repair",
+      "path": "src/compat/20-relay-repair.js.part",
+      "stage": "compatibility-fragment",
+      "bytes": 4166
+    },
+    {
+      "id": "21-inherited-renderer",
+      "path": "src/compat/21-inherited-renderer.js.part",
+      "stage": "compatibility-fragment",
+      "bytes": 17912
+    },
+    {
+      "id": "30-terra-foundation",
+      "path": "src/compat/30-terra-foundation.js.part",
+      "stage": "compatibility-fragment",
+      "bytes": 93964
+    },
+    {
+      "id": "31-terra-arena",
+      "path": "src/compat/31-terra-arena.js.part",
+      "stage": "compatibility-fragment",
+      "bytes": 36031
+    },
+    {
+      "id": "32-terra-combat",
+      "path": "src/compat/32-terra-combat.js.part",
+      "stage": "compatibility-fragment",
+      "bytes": 58744
+    },
+    {
+      "id": "33-terra-loot-mount",
+      "path": "src/compat/33-terra-loot-mount.js.part",
+      "stage": "compatibility-fragment",
+      "bytes": 30233
+    },
+    {
+      "id": "34-terra-cache",
+      "path": "src/compat/34-terra-cache.js.part",
+      "stage": "compatibility-fragment",
+      "bytes": 10249
+    },
+    {
+      "id": "35-terra-world-combat",
+      "path": "src/compat/35-terra-world-combat.js.part",
+      "stage": "compatibility-fragment",
+      "bytes": 34883
+    },
+    {
+      "id": "36-terra-actor-ui",
+      "path": "src/compat/36-terra-actor-ui.js.part",
+      "stage": "compatibility-fragment",
+      "bytes": 19068
+    },
+    {
+      "id": "37-terra-supplies",
+      "path": "src/compat/37-terra-supplies.js.part",
+      "stage": "compatibility-fragment",
+      "bytes": 26462
+    },
+    {
+      "id": "38-terra-underground",
+      "path": "src/compat/38-terra-underground.js.part",
+      "stage": "compatibility-fragment",
+      "bytes": 57355
+    },
+    {
+      "id": "39-terra-mining",
+      "path": "src/compat/39-terra-mining.js.part",
+      "stage": "compatibility-fragment",
+      "bytes": 17974
+    },
+    {
+      "id": "40-terra-hud",
+      "path": "src/compat/40-terra-hud.js.part",
+      "stage": "compatibility-fragment",
+      "bytes": 21749
+    },
+    {
+      "id": "41-terra-ecology",
+      "path": "src/compat/41-terra-ecology.js.part",
+      "stage": "compatibility-fragment",
+      "bytes": 24516
+    },
+    {
+      "id": "42-terra-input-owner",
+      "path": "src/compat/42-terra-input-owner.js.part",
+      "stage": "compatibility-fragment",
+      "bytes": 22321
+    },
+    {
+      "id": "43-terra-ecology-physics",
+      "path": "src/compat/43-terra-ecology-physics.js.part",
+      "stage": "compatibility-fragment",
+      "bytes": 19394
+    },
+    {
+      "id": "44-terra-device-adaptation",
+      "path": "src/compat/44-terra-device-adaptation.js.part",
+      "stage": "compatibility-fragment",
+      "bytes": 21410
+    },
+    {
+      "id": "45-terra-inventory",
+      "path": "src/compat/45-terra-inventory.js.part",
+      "stage": "compatibility-fragment",
+      "bytes": 15291
+    },
+    {
+      "id": "46-terra-bindings",
+      "path": "src/compat/46-terra-bindings.js.part",
+      "stage": "compatibility-fragment",
+      "bytes": 14360
+    },
+    {
+      "id": "47-terra-native-media",
+      "path": "src/compat/47-terra-native-media.js.part",
+      "stage": "compatibility-fragment",
+      "bytes": 47170
+    },
+    {
+      "id": "48-terra-rematch",
+      "path": "src/compat/48-terra-rematch.js.part",
+      "stage": "compatibility-fragment",
+      "bytes": 3896
+    },
+    {
+      "id": "90-loop-and-test",
+      "path": "src/compat/90-loop-and-test.js.part",
+      "stage": "compatibility-fragment",
+      "bytes": 1833
+    }
+  ],
+  "modules": [
+    {
+      "path": "src/simulation/eye-boss.mjs",
+      "exports": [
+        "createEyeSystem"
+      ]
+    },
+    {
+      "path": "src/simulation/platform-builder.mjs",
+      "exports": [
+        "createBuildingSystem"
+      ]
+    },
+    {
+      "path": "src/input/logical-input.mjs",
+      "exports": [
+        "createLogicalInput"
+      ]
+    },
+    {
+      "path": "src/content/level-13.mjs",
+      "exports": [
+        "createLevel13"
+      ]
+    },
+    {
+      "path": "src/input/stick.mjs",
+      "exports": [
+        "normalizeStick"
+      ]
+    },
+    {
+      "path": "src/content/actions.mjs",
+      "exports": [
+        "createActionDefinitions"
+      ]
+    },
+    {
+      "path": "src/ui/key-label.mjs",
+      "exports": [
+        "keyLabel"
+      ]
+    },
+    {
+      "path": "src/runtime/fixed-step.mjs",
+      "exports": [
+        "createFixedStep"
+      ]
+    },
+    {
+      "path": "src/input/mount-binding.mjs",
+      "exports": [
+        "assignMountBinding"
+      ]
+    },
+    {
+      "path": "src/input/bindings-model.mjs",
+      "exports": [
+        "createBindingsModel"
+      ]
+    },
+    {
+      "path": "src/input/keyboard-router.mjs",
+      "exports": [
+        "createKeyboardRouter"
+      ]
+    },
+    {
+      "path": "src/input/binding-capture.mjs",
+      "exports": [
+        "createBindingCapture"
+      ]
+    },
+    {
+      "path": "src/runtime/lifetime.mjs",
+      "exports": [
+        "createLifetime"
+      ]
+    },
+    {
+      "path": "src/ui/settings-session.mjs",
+      "exports": [
+        "createSettingsSession"
+      ]
+    },
+    {
+      "path": "src/ui/bindings-view.mjs",
+      "exports": [
+        "createBindingsView"
+      ]
+    },
+    {
+      "path": "src/content/stage-catalog.mjs",
+      "exports": [
+        "createStageCatalog"
+      ]
+    },
+    {
+      "path": "src/runtime/stage-session.mjs",
+      "exports": [
+        "createStageSession"
+      ]
+    },
+    {
+      "path": "src/simulation/platform-motor.mjs",
+      "exports": [
+        "createPlatformMotor"
+      ]
+    },
+    {
+      "path": "src/simulation/platform-stage.mjs",
+      "exports": [
+        "createPlatformStage"
+      ]
+    },
+    {
+      "path": "src/input/stage-actions.mjs",
+      "exports": [
+        "readStageActions"
+      ]
+    },
+    {
+      "path": "src/runtime/stage-audio.mjs",
+      "exports": [
+        "createStageAudioPolicy"
+      ]
+    },
+    {
+      "path": "src/ui/stage-view.mjs",
+      "exports": [
+        "drawStageView"
+      ]
+    },
+    {
+      "path": "src/content/items.mjs",
+      "exports": [
+        "createItemDefinitions"
+      ]
+    },
+    {
+      "path": "src/simulation/loot-rules.mjs",
+      "exports": [
+        "createLootRules"
+      ]
+    },
+    {
+      "path": "src/ui/adventure-render.mjs",
+      "exports": [
+        "paintAdventureHud",
+        "paintPickupNotice",
+        "paintMissingPickup"
+      ]
+    },
+    {
+      "path": "src/ui/display-preferences.mjs",
+      "exports": [
+        "createDisplayPreferences"
+      ]
+    },
+    {
+      "path": "src/ui/adventure-shell.mjs",
+      "exports": [
+        "createAdventureShell"
+      ]
+    },
+    {
+      "path": "src/ui/quick-guide.mjs",
+      "exports": [
+        "buildQuickGuide",
+        "formatPlayerReport"
+      ]
+    },
+    {
+      "path": "src/ui/adventure-help.mjs",
+      "exports": [
+        "createAdventureHelp"
+      ]
+    },
+    {
+      "path": "src/ui/player-copy.mjs",
+      "exports": [
+        "playerCopy",
+        "formatUiValue",
+        "wrapUiText"
+      ]
+    },
+    {
+      "path": "src/ui/player-interface.mjs",
+      "exports": [
+        "createPlayerInterface"
+      ]
+    },
+    {
+      "path": "src/ui/hud-surface.mjs",
+      "exports": [
+        "createHudSurface"
+      ]
+    }
+  ],
+  "hooks": [
+    {
+      "id": "eye-boss",
+      "golden": "tests/golden/eye-boss.txt",
+      "replacement": "const R05Eye=__terraModules.createEyeSystem();"
+    },
+    {
+      "id": "platform-builder",
+      "golden": "tests/golden/platform-builder.txt",
+      "replacement": "const R05Building=__terraModules.createBuildingSystem();"
+    },
+    {
+      "id": "logical-input",
+      "golden": "tests/golden/logical-input.txt",
+      "replacement": "window.SandboxTrioControls=__terraModules.createLogicalInput();"
+    },
+    {
+      "id": "level-13",
+      "golden": "tests/golden/level-13.txt",
+      "replacement": "window.SandboxTrioLevel13=__terraModules.createLevel13();"
+    },
+    {
+      "id": "stick",
+      "golden": "tests/golden/stick.txt",
+      "replacement": "function t17Stick(x,y,d=t17Input.deadzone){return __terraModules.normalizeStick(x,y,d);}"
+    },
+    {
+      "id": "clock",
+      "golden": "tests/golden/clock.txt",
+      "replacement": "var terraAfterDraw;const terraClock=__terraModules.createFixedStep({update:()=>fixedUpdate(),draw:()=>{draw();terraAfterDraw?.();},isManual:()=>manual,requestFrame:f=>requestAnimationFrame(f)});terraClock.start();"
+    },
+    {
+      "id": "bindings-controller",
+      "golden": "tests/golden/bindings-controller.txt",
+      "bridge": "src/bridges/bindings.bridge.js"
+    },
+    {
+      "id": "mount-binding",
+      "golden": "tests/golden/mount-binding.txt",
+      "replacement": "function t24AssignMount(binds,button){return __terraModules.assignMountBinding(binds,button);}"
+    },
+    {
+      "id": "stage-controller",
+      "golden": "tests/golden/stage-controller.txt",
+      "bridge": "src/bridges/stages.bridge.js"
+    },
+    {
+      "id": "item-definitions",
+      "golden": "tests/golden/item-definitions.txt",
+      "replacement": "const T21_ITEMS=__terraModules.createItemDefinitions();\nconst terraLoot=__terraModules.createLootRules({getItem:kind=>T21_ITEMS[kind]});"
+    },
+    {
+      "id": "weapon-exchange",
+      "golden": "tests/golden/weapon-exchange.txt",
+      "bridge": "src/bridges/weapon-exchange.bridge.js"
+    },
+    {
+      "id": "chest-spill",
+      "golden": "tests/golden/chest-spill.txt",
+      "bridge": "src/bridges/chest-spill.bridge.js"
+    },
+    {
+      "id": "pickup-notice",
+      "golden": "tests/golden/pickup-notice.txt",
+      "replacement": "function t21Toast(s,kind,count=1){const n=terraLoot.notice(kind,count);if(!n)return;t21Ensure(s);s.t21Notices.push(n);s.t21Notices=s.t21Notices.slice(-4);t21Event('pickup-description',{kind,name:T21_ITEMS[kind]?.name||'补给',effect:n.effect});}"
+    },
+    {
+      "id": "hud-paint",
+      "golden": "tests/golden/hud-paint.txt",
+      "bridge": "src/bridges/hud-paint.bridge.js"
+    },
+    {
+      "id": "notice-paint",
+      "golden": "tests/golden/notice-paint.txt",
+      "replacement": "function t21DrawNotices(s){if(typeof terraPlayerInterface!=='undefined')terraPlayerInterface?.pickup(s?.t21Notices?.[0]||null);}\n"
+    },
+    {
+      "id": "adventure-shell",
+      "golden": "tests/golden/adventure-shell.txt",
+      "bridge": "src/bridges/adventure-shell.bridge.js"
+    },
+    {
+      "id": "player-copy",
+      "golden": "tests/golden/player-copy.txt",
+      "replacement": "function t20CleanUI(){if(typeof terraPlayerInterface!=='undefined')terraPlayerInterface?.refresh();}\n"
+    },
+    {
+      "id": "player-toast",
+      "golden": "tests/golden/player-toast.txt",
+      "replacement": "function toast(msg){if(typeof terraPlayerInterface!=='undefined'&&terraPlayerInterface){terraPlayerInterface.notify(String(msg));return;} $('toast').textContent=msg;}\n"
+    },
+    {
+      "id": "player-win-copy",
+      "golden": "tests/golden/player-win-copy.txt",
+      "replacement": ""
+    },
+    {
+      "id": "missing-pickup-paint",
+      "golden": "tests/golden/missing-pickup-paint.txt",
+      "replacement": "__terraModules.paintMissingPickup(ctx,d.x-c+d.w/2,d.y+d.h/2);"
+    }
+  ],
+  "presentationStyles": "src/ui/adventure.css",
+  "candidateTemplate": "src/app/player.template.html"
+}

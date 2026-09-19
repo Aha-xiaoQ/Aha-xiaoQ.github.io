@@ -1,0 +1,24 @@
+/* Visitor journey additions use the established palette and native controls.
+   The homepage composition, game list, project icons and page transitions are unchanged. */
+#app .q-game-intro{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:36px;align-items:start}
+#app .q-game-media{background:var(--surface);border:2px solid var(--paper);box-shadow:5px 5px 0 var(--accent);aspect-ratio:16/9;display:grid;align-items:center;min-width:0;overflow:hidden}
+#app .q-game-media img{width:100%;height:100%;object-fit:contain;aspect-ratio:16/9}
+#app .q-game-media p{padding:24px;color:var(--muted)}
+#app .q-launch-panel{min-width:0}#app .q-launch-panel>.eyebrow{color:var(--muted);font-size:12px;letter-spacing:.12em;margin-bottom:10px}
+#app .q-launch-panel h2{margin-bottom:16px}#app .q-launch-panel>p{line-height:1.75}
+#app .q-launch-panel .actions{margin-top:22px;gap:14px}#app .q-launch-note{font-size:14px;color:var(--muted);margin-top:20px;max-width:42em}
+#app .q-launch-help{margin-top:24px;border-block:1px solid var(--line)}#app .q-launch-help summary{cursor:pointer;min-height:48px;padding:12px 0;font-size:16px;font-weight:700}
+#app .q-launch-help p{font-size:16px;line-height:1.75;color:var(--muted);margin:0 0 14px}#app .q-launch-help>a{display:inline-block;padding:8px 0 16px;text-decoration:underline;text-underline-offset:5px}
+#app .q-launch-links{display:flex;align-items:center;flex-wrap:wrap;gap:10px 24px;margin-top:14px;font-size:15px}
+#app .q-launch-links>a,#app .q-launch-links>button{display:inline-flex;align-items:center;min-height:44px;background:none;border:0;border-bottom:1px solid var(--line);color:var(--paper);padding:8px 0;font:inherit;cursor:pointer}
+#app [data-page-copy-status]{font-size:14px;color:var(--muted);line-height:1.6}#app [data-copy-fallback]{width:100%;border:1px solid var(--line);background:var(--surface);color:var(--paper);padding:12px;font:inherit}
+#app .q-launch-panel :is(a,button,summary,input):focus-visible,#app .q-recovery :is(a,button,input):focus-visible{outline:3px solid var(--paper);outline-offset:4px}
+#app .q-visitor-reading{max-width:940px;margin-inline:auto;padding-bottom:24px}#app .q-guide-intro{max-width:40em;font-size:20px;line-height:1.8;color:var(--muted)}
+#app .q-intent-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin:32px 0 40px}#app .q-intent-grid>section{padding:26px;border-top:3px solid var(--accent);background:var(--surface);display:flex;align-items:start;flex-direction:column;min-width:0}#app .q-intent-grid h2{font-size:26px;margin:14px 0}#app .q-intent-grid p{font-size:17px;color:var(--muted);line-height:1.85;margin-bottom:20px}#app .q-intent-grid .button{margin-top:auto}
+#app .q-visitor-reading>section{padding:24px 0;border-top:1px solid var(--line);max-width:46em}#app .q-visitor-reading>section h2{font-size:25px;margin-bottom:14px}#app .q-visitor-reading>section p{font-size:18px;line-height:1.85;color:var(--muted)}
+#app .q-guide-bottom{display:flex;gap:24px;flex-wrap:wrap;padding:20px 0}#app .q-guide-bottom a,#app .q-visitor-reading>section a{display:inline-block;min-height:44px;padding:8px 0;text-decoration:underline;text-underline-offset:5px}
+#app .q-recovery{max-width:800px;margin-inline:auto;padding-bottom:48px}#app .q-recovery h2{margin:14px 0 18px}#app .q-recovery>p{max-width:40em;line-height:1.8}#app .q-recovery form{margin:32px 0}#app .q-recovery label{display:block;margin-bottom:12px}#app .q-recovery input{background:var(--surface);border:1px solid var(--muted);padding:12px 16px;min-width:0;flex:1;color:var(--paper);font:inherit}
+#app .j-try-work{margin-block:16px 22px;font-size:16px;color:var(--muted)}#app .j-try-work a{display:inline-block;min-height:44px;padding:8px 0;text-decoration:underline;text-underline-offset:5px}
+@media(max-width:850px){#app .q-game-intro{grid-template-columns:1fr;gap:28px}#app .q-launch-panel{grid-row:1}#app .q-game-media{grid-row:2;max-width:680px;width:100%}}
+@media(max-width:600px){#app .q-intent-grid{grid-template-columns:1fr;gap:20px}#app .q-intent-grid>section{padding:22px}#app .q-launch-panel .button{font-size:16px;padding-inline:16px}#app .q-guide-intro{font-size:18px}#app .q-visitor-reading>section p{font-size:17px}}
+@media(forced-colors:active){#app .q-game-media,#app .q-intent-grid>section{box-shadow:none;border:1px solid CanvasText}#app .q-launch-links>button{color:ButtonText;border:1px solid ButtonText}}

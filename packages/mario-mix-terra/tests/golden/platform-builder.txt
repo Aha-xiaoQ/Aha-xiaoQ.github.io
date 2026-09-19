@@ -1,0 +1,91 @@
+const R05Building=(()=>{
+/** Collision-independent building model. Coordinates use the adapter's tile grid. */
+const overlap=(a,b)=>a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;
+const validRect=r=>r&&['x','y','w','h'].every(k=>Number.isFinite(r[k]))&&r.w>0&&r.h>0;
+const key=(x,y)=>`${x},${y}`;
+class PlatformBuilder {
+  constructor({terrain=[],wood=120,tile=16,height=6,reach=112,
+    bounds={x:0,y:0,w:1280,h:256},repeatTicks=7}={}) {
+    if (!terrain.every(validRect) || !validRect(bounds)) throw new TypeError('Invalid terrain or bounds');
+    if (!Number.isInteger(wood)||wood<0||![tile,height,reach].every(Number.isFinite)||tile<=0||height<=0||height>tile
+        ||!Number.isFinite(reach)||reach<=0||!Number.isInteger(repeatTicks)||repeatTicks<1)
+      throw new RangeError('Invalid building configuration');
+    this.terrain=structuredClone(terrain); this.wood=wood; this.tile=tile; this.height=height;
+    this.reach=reach; this.bounds={...bounds}; this.repeatTicks=repeatTicks;
+    this.platforms=new Map(); this.cursor=null; this.cooldown=0; this.fixedRow=null;
+  }
+  snap(n){if(!Number.isFinite(n))throw new TypeError('Non-finite cursor');return Math.floor(n/this.tile)*this.tile;}
+  aimAt(x,y){this.cursor={x:this.snap(x),y:this.snap(y)};return {...this.cursor};}
+  nudge(dx,dy){if(!this.cursor)throw new Error('Initialize cursor before nudging');return this.aimAt(this.cursor.x+Math.sign(dx)*this.tile,this.cursor.y+Math.sign(dy)*this.tile);}
+  releaseAim(){this.fixedRow=null;}
+  /** Locks a building row, not the character. Walking can extend a platform continuously. */
+  walkBuildTarget(player,facing){
+    if(!validRect(player))throw new TypeError('Invalid player');
+    const direction=facing<0?-1:1;
+    if(this.fixedRow===null)this.fixedRow=Math.ceil((player.y+player.h)/this.tile)*this.tile;
+    return this.aimAt(this.snap(player.x+player.w/2)+direction*this.tile,this.fixedRow);
+  }
+  reasonAt(x,y,player) {
+    const t=this.tile,b={x,y,w:t,h:this.height},bounds=this.bounds;
+    if(!validRect(player)||![x,y].every(Number.isFinite)||x%t||y%t)return 'grid';
+    if(x<bounds.x||x+t>bounds.x+bounds.w||y<bounds.y||y+this.height>bounds.y+bounds.h)return 'bounds';
+    if(Math.hypot(x+t/2-player.x-player.w/2,y-player.y-player.h/2)>this.reach)return 'reach';
+    if(this.platforms.has(key(x,y))||this.terrain.some(q=>overlap(b,q)))return 'occupied';
+    if(overlap(b,player))return 'player';
+    if(this.wood<1)return 'inventory';
+    const all=[...this.terrain,...this.platforms.values()];
+    // A new platform must touch a same-height edge. The former +/- one tile
+    // test accepted a plank 16px above solid ground with a visible 10px air gap.
+    // Elevated rows start from the existing arena platforms, never an invisible anchor.
+    const attached=all.some(q=>Math.abs(q.y-y)<1e-8&&(
+      Math.abs(q.x+q.w-x)<1e-8||Math.abs(x+t-q.x)<1e-8));
+    if(!attached)return 'support';
+    return null;
+  }
+  place(x,y,player) {
+    const reason=this.reasonAt(x,y,player);
+    if(reason)return {ok:false,reason};
+    const p={id:`built-${key(x,y)}`,type:'built',x,y,w:this.tile,h:this.height,oneWay:true};
+    this.platforms.set(key(x,y),p);this.wood--;
+    return {ok:true,platform:{...p},wood:this.wood};
+  }
+  /** Successful placement advances cursor. Failures never consume materials. */
+  tick({pressed=false,edge=false,player,dx=1,dy=0,advance=true}={}) {
+    if(this.cooldown>0)this.cooldown--;
+    if(!(pressed||edge)||this.cooldown>0||!this.cursor)return {ok:false,reason:'idle'};
+    const result=this.place(this.cursor.x,this.cursor.y,player);
+    this.cooldown=this.repeatTicks;
+    if(result.ok&&advance)this.nudge(dx,dy);
+    return result;
+  }
+  remove(x,y,player) {
+    if(!validRect(player)||![x,y].every(Number.isFinite))return {ok:false,reason:'invalid'};
+    const p=this.platforms.get(key(x,y));
+    if(!p)return {ok:false,reason:'original-terrain-protected'};
+    if(Math.hypot(x+this.tile/2-player.x-player.w/2,y-player.y-player.h/2)>this.reach)return {ok:false,reason:'reach'};
+    this.platforms.delete(key(x,y));this.wood++;
+    return {ok:true,removed:p.id,wood:this.wood};
+  }
+  save(){return {version:1,wood:this.wood,platforms:structuredClone([...this.platforms.values()])};}
+  restore(snapshot) {
+    if(snapshot?.version!==1||!Number.isInteger(snapshot.wood)||snapshot.wood<0||!Array.isArray(snapshot.platforms))
+      throw new Error('Invalid construction snapshot');
+    const entries=new Map();
+    for(const p of snapshot.platforms) {
+      if(!validRect(p)||p.x%this.tile||p.y%this.tile||p.w!==this.tile||p.h!==this.height||p.type!=='built'
+        ||p.oneWay!==true||p.id!==`built-${key(p.x,p.y)}`||entries.has(key(p.x,p.y)))
+        throw new Error('Invalid or duplicate construction tile');
+      if(p.x<this.bounds.x||p.x+p.w>this.bounds.x+this.bounds.w||p.y<this.bounds.y||p.y+p.h>this.bounds.y+this.bounds.h
+        ||this.terrain.some(t=>overlap(t,p)))throw new Error('Snapshot intersects protected terrain or boundary');
+      entries.set(key(p.x,p.y),structuredClone(p));
+    }
+    this.platforms=entries;this.wood=snapshot.wood;this.cooldown=0;this.cursor=null;this.fixedRow=null;
+  }
+}
+/** Shared by prebuilt and player-built wooden platforms. Never drop through solid ground. */
+function shouldDropThrough(surface,{down,jumpEdge}) {
+  return Boolean(down&&jumpEdge&&surface?.oneWay&&['built','wood-platform'].includes(surface.type));
+}
+
+return {PlatformBuilder,shouldDropThrough};
+})();

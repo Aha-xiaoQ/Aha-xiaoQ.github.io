@@ -1,0 +1,119 @@
+{
+  "id": "classic-8-4-area-0-section-0-after",
+  "title": "8-4 · 区域 1 / 段 1 / after",
+  "tileSize": 16,
+  "width": 848,
+  "height": 240,
+  "provenance": {
+    "kind": "transcribed",
+    "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+    "review": "pending",
+    "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+  },
+  "geometry": [
+    {
+      "id": "r000",
+      "x": 0,
+      "y": 176,
+      "w": 32,
+      "h": 64,
+      "collision": "solid"
+    },
+    {
+      "id": "r001",
+      "x": 0,
+      "y": 32,
+      "w": 848,
+      "h": 16,
+      "collision": "solid"
+    },
+    {
+      "id": "r002",
+      "x": 32,
+      "y": 208,
+      "w": 144,
+      "h": 32,
+      "collision": "solid"
+    },
+    {
+      "id": "r004",
+      "x": 176,
+      "y": 160,
+      "w": 64,
+      "h": 80,
+      "collision": "solid"
+    },
+    {
+      "id": "r006",
+      "x": 304,
+      "y": 208,
+      "w": 32,
+      "h": 8,
+      "collision": "oneway",
+      "motion": {
+        "axis": "x",
+        "min": 280,
+        "max": 464,
+        "speed": 0.75
+      }
+    },
+    {
+      "id": "r007",
+      "x": 512,
+      "y": 160,
+      "w": 96,
+      "h": 80,
+      "collision": "solid"
+    },
+    {
+      "id": "r008",
+      "x": 528,
+      "y": 96,
+      "w": 64,
+      "h": 16,
+      "collision": "solid"
+    },
+    {
+      "id": "r009",
+      "x": 608,
+      "y": 128,
+      "w": 32,
+      "h": 112,
+      "collision": "solid"
+    },
+    {
+      "id": "r010",
+      "x": 640,
+      "y": 160,
+      "w": 112,
+      "h": 80,
+      "collision": "solid"
+    },
+    {
+      "id": "r011",
+      "x": 752,
+      "y": 112,
+      "w": 32,
+      "h": 128,
+      "collision": "solid"
+    },
+    {
+      "id": "r012",
+      "x": 784,
+      "y": 160,
+      "w": 64,
+      "h": 80,
+      "collision": "solid"
+    }
+  ],
+  "objects": [
+    {
+      "id": "inspection-start",
+      "kind": "spawn",
+      "x": 24,
+      "y": 152,
+      "w": 12,
+      "h": 24
+    }
+  ]
+}

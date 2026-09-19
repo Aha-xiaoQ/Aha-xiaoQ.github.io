@@ -1,0 +1,40 @@
+name: 素材或上游代码许可核验
+description: 提供可验证的来源与授权依据，不能仅提供下载地址。
+title: '[Rights] '
+body:
+- type: input
+  id: path
+  attributes:
+    label: 相关文件或资源 ID
+  validations:
+    required: true
+- type: input
+  id: source
+  attributes:
+    label: 上游来源
+  validations:
+    required: true
+- type: input
+  id: author
+  attributes:
+    label: 作者 / 权利人
+  validations:
+    required: true
+- type: textarea
+  id: license
+  attributes:
+    label: 许可证据与适用范围
+  validations:
+    required: true
+- type: textarea
+  id: usage
+  attributes:
+    label: 本项目使用与分发方式
+  validations:
+    required: true
+- type: textarea
+  id: replacement
+  attributes:
+    label: 限制与替代方案
+  validations:
+    required: false

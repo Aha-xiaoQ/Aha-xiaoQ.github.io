@@ -1,0 +1,29 @@
+name: 关卡或角色内容贡献
+description: 先确认底图、能力、适配层与验证边界
+title: "[Stage] "
+body:
+  - type: input
+    id: ids
+    attributes:
+      label: 关卡与角色 ID
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: 底图来源、版本、许可依据与适配层差异
+      description: 公开可见不等于获得再分发权；无依据保留待核验。
+    validations:
+      required: true
+  - type: textarea
+    id: capabilities
+    attributes:
+      label: 需要哪些现有能力，哪些机制需要开发
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 测试命令、候选SHA、设备和仍未验证的内容
+    validations:
+      required: true

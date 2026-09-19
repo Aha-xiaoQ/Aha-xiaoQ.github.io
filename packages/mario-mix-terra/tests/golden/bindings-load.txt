@@ -1,0 +1,19 @@
+function t21LoadBinds(data){if(!data||data.version!==1||!data.actions)throw Error('不是有效的按键配置');const next=t21DefaultBinds();
+ for(const [k,v]of Object.entries(data.actions)){if(!Object.hasOwn(T21_ACTIONS,k))continue;if(!Array.isArray(v.keys)||!Array.isArray(v.pad)||v.keys.some(x=>!/^([A-Za-z][A-Za-z0-9]*|Space)$/.test(x))||v.pad.some(x=>!Number.isInteger(x)||x<0||x>31))throw Error('按键数据无效');next[k]={keys:[...new Set(v.keys)].slice(0,6),pad:[...new Set(v.pad)].slice(0,4)};}
+ if(data.controlLayout!==6){
+  // Migrate only the old layout marker and the return action. Preserve the
+  // player's other custom bindings while freeing LT if an old action used it.
+  for(const [k,v]of Object.entries(next))if(k!=='recall'&&v.pad.includes(6)){
+   v.pad=v.pad.filter(i=>i!==6);
+   if(!v.pad.length){
+    const used=i=>Object.entries(next).some(([owner,b])=>owner!==k&&b.pad.includes(i));
+    const fallback=[...T21_ACTIONS[k].pad,11,3,10,4,5,2,1,0,7,8,9,12,13,14,15].find(i=>i!==6&&!used(i));
+    if(fallback!==undefined)v.pad=[fallback];
+   }
+  }
+  next.recall.pad=[6];t25NeedsSave=true;
+ }
+ for(const source of ['keys','pad']){const owners=new Map();for(const [k,v]of Object.entries(next))for(const x of v[source]){const prior=owners.get(x);const shared=source==='pad'&&((k==='toolNext'&&prior==='recall')||(k==='recall'&&prior==='toolNext'));if(prior&&!shared)throw Error('同一按键绑定了多个动作');if(!prior)owners.set(x,k);}}
+ if(!next.jump.keys.length||!next.attack.keys.length||!next.jump.pad.length||!next.attack.pad.length)throw Error('跳跃和攻击不能留空');t21Binds=next;
+ if(Number.isFinite(data.deadzone))t17Input.deadzone=clamp(data.deadzone,.12,.4);return true;
+}

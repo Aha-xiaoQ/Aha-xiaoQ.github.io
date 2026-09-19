@@ -1,0 +1,24 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import path from 'node:path';import vm from 'node:vm';import {fileURLToPath}from'node:url';
+import{projectEmblem,renderProjectCards}from'../assets/journal/render.mjs';
+const root=fileURLToPath(new URL('../',import.meta.url)),read=p=>fs.readFileSync(path.join(root,p),'utf8');
+const c=vm.createContext({URL});for(const f of ['assets/ui/site-actions.js','assets/workshop-media.js','assets/workshop-cards.js'])vm.runInContext(read(f),c);
+const M=c.SITE_MEDIA,W=c.SITE_WORKSHOP;
+const item={id:'arbitrary',title:'工具示例',summary:'保留全部介绍',detailUrl:'https://example.com/repo',tags:['开源','工作流']};
+test('UI-01 game list uses one column, project grid remains independent',()=>{const s=read('assets/workshop-components.css');assert.ok(s.includes('#main .pw-game-grid{display:grid;grid-template-columns:minmax(0,1fr)'));assert.ok(s.includes('#main .pw-work-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))'));assert.ok(s.includes('@media(max-width:820px)'));});
+test('UI-02 only inside game row stacks; no featured first-child exception',()=>{const s=read('assets/workshop-components.css');assert.ok(!s.includes('first-child'));assert.ok(s.includes('#main .pw-game-card{grid-template-columns:minmax(0,1fr)}'));});
+test('UI-03 category label overrides metadata without deleting licensing tag',()=>{const h=W.projectCard(item,0,{manifest:{entries:{arbitrary:{kind:'diagram',preset:'blueprint',categoryLabel:'开发工具'}}}});assert.ok(h.includes('pw-kicker">开发工具</span>'));assert.ok(h.includes('<span>开源</span>'));});
+test('UI-04 presentation category is escaped and source is immutable',()=>{const before=JSON.stringify(item),h=W.projectCard(item,0,{manifest:{entries:{arbitrary:{kind:'diagram',preset:'blueprint',categoryLabel:'<img src=x>'}}}});assert.ok(h.includes('&lt;img src=x&gt;'));assert.equal(JSON.stringify(item),before);});
+test('UI-05 invalid category labels fail validation',()=>{for(const categoryLabel of ['', ' '.repeat(4),false,'a'.repeat(25)])assert.throws(()=>M.validateEntry({kind:'diagram',preset:'blueprint',categoryLabel}));});
+test('UI-06 workflow has semantic original illustration, not generic placeholder slogan',()=>{const p=JSON.parse(read('content/presentation.json')).entries['project-q-workflow'];assert.equal(p.categoryLabel,'开发工具');assert.equal(p.src,'assets/illustrations/workflow.svg');assert.equal(p.fit,'contain');assert.ok(!read(p.src).includes('MAKE IT WORK'));});
+test('UI-07 web emblem is an actual browser composition',()=>{const h=projectEmblem('web');assert.ok(h.includes('web-studio.svg'));const svg=read('assets/illustrations/web-studio.svg');assert.ok(svg.includes('viewBox="0 0 320 180"'));assert.ok(!svg.includes('<script'));});
+test('UI-08 controller remains but illegible slogan and CSS square icon are gone',()=>{const h=projectEmblem('game');assert.ok(h.includes('controller.svg'));assert.ok(!h.includes('PLAY'));assert.ok(h.includes('j-project-emblem--compact'));assert.ok(!h.includes('IDEAS INTO REALITY'));assert.ok(!read('assets/journal/render.mjs').includes('<i></i>'));});
+test('UI-09 each category has artwork and neutral fallback',()=>{for(const type of ['game','web','tool','experiment','other','future']){const h=projectEmblem(type);const src=h.match(/src="([^?]+)\?/)[1].slice(1);assert.ok(fs.existsSync(path.join(root,src)));assert.ok(h.includes('aria-hidden="true"'));assert.ok(h.includes('alt=""'));}});
+test('UI-10 illustration files are script-free and self-contained',()=>{for(const f of fs.readdirSync(path.join(root,'assets/illustrations'))){const s=read('assets/illustrations/'+f);assert.ok(!/<script|<foreignObject|\bon\w+=|href=|url\(|<text/i.test(s),f);}});
+test('UI-11 no task or special project names are hardcoded in generic emblems',()=>{const s=read('assets/journal/render.mjs');assert.ok(!/p\.id\s*===\s*['"]/.test(s));assert.ok(!s.includes('pixel-workshop'));});
+test('UI-12 R08 scope keeps original route motion code and six nav entries',()=>{const s=read('assets/site-router.js');assert.equal((s.match(/document\.startViewTransition\(commit\)/g)||[]).length,1);const html=read('notes/index.html');assert.equal((html.match(/data-nav-key=/g)||[]).length,6);assert.ok(html.includes('开发'));});
+test('UI-13 generated text permits only CRLF normalization, never arbitrary whitespace',async()=>{
+ const {normalizeText,equalText,matchesTextHash}=await import('../scripts/lib/text-records.mjs');
+ const {createHash}=await import('node:crypto');const text='first\nsecond\n',hash=createHash('sha256').update(text).digest('hex');
+ assert.equal(normalizeText('first\r\nsecond\r\n'),text);assert.equal(equalText(text,'first\r\nsecond\r\n'),true);assert.equal(matchesTextHash(Buffer.from('first\r\nsecond\r\n'),hash),true);
+ assert.equal(matchesTextHash(Buffer.from('first \nsecond\n'),hash),false);assert.equal(equalText(text,'first\nsecond'),false);
+});

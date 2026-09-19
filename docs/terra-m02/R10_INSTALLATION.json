@@ -1,0 +1,431 @@
+{
+  "schemaVersion": 1,
+  "version": "terra-m02-r10",
+  "source": "user-uploaded third episode",
+  "delivery": "local-review-not-deployed",
+  "createdAt": "2026-09-16",
+  "document": "/notes/mario-mix/docs/terra-source/",
+  "download": "/downloads/source/MarioMix_Terraria_M02_Source.zip",
+  "files": [
+    {
+      "path": ".github/ISSUE_TEMPLATE/terra-module-m02.yml",
+      "before": null,
+      "after": "fb7aa024f18b9149ab4d1bc0c873aba3b70fa6da6fc8423eeb57c58f91389970"
+    },
+    {
+      "path": ".github/workflows/terra-m01.yml",
+      "before": "b554d6ca74e97ab2c4218d6d26a2c2d486efa241d0f5676c6f5905890ac1194e",
+      "after": "ff63316bbfdb9656b2c872e32a0d4167e5e19b67b5f418e89238aa71702d58ab"
+    },
+    {
+      "path": "docs/terra-m02/ACCEPTANCE_R10.md",
+      "before": null,
+      "after": "54e3e76ef9c836b915eba221b98690e25ed0b0bcf27c17471e2e23a037a21efe"
+    },
+    {
+      "path": "docs/terra-m02/HANDOFF_R10.md",
+      "before": null,
+      "after": "0ed2b30e26c7479fa35f670918dab10e69083885d7ba77e9f874d7481a0d2d03"
+    },
+    {
+      "path": "docs/terra-m02/TEST_REPORT_R10.md",
+      "before": null,
+      "after": "2e9676f8244ff7be8629d6fbb3885c3d959e77f0aac95bf7c61289251b34ad46"
+    },
+    {
+      "path": "downloads/source/MarioMix_Terraria_M02_Source.json",
+      "before": null,
+      "after": "a0d3788605dc5c66e7711cac4ff8f90880b5c18f1a9655243bb790f357615862"
+    },
+    {
+      "path": "downloads/source/MarioMix_Terraria_M02_Source.zip",
+      "before": null,
+      "after": "e74ad5a9e2fca5d4001369a3f1930580f9190a35d587519c46b1094ad70e9a26"
+    },
+    {
+      "path": "packages/mario-mix-terra/.github/CODEOWNERS",
+      "before": "b9f7f03183f849ec216dd6953ab02af624d9cab59904b6bbe64d59ff092ee20c",
+      "after": "c665693ad30b5872fbc863ea2580ea3d909a156cb77961e803ae4791bc39ffa4"
+    },
+    {
+      "path": "packages/mario-mix-terra/.github/ISSUE_TEMPLATE/module-change.yml",
+      "before": null,
+      "after": "fb7aa024f18b9149ab4d1bc0c873aba3b70fa6da6fc8423eeb57c58f91389970"
+    },
+    {
+      "path": "packages/mario-mix-terra/.github/ISSUE_TEMPLATE/regression.yml",
+      "before": null,
+      "after": "579884764b20bd282fbefa49f5a937e0058b83b8531001641ffe1c0aa79d17e4"
+    },
+    {
+      "path": "packages/mario-mix-terra/.github/PULL_REQUEST_TEMPLATE.md",
+      "before": "d97ae5a8e4cf2505787118db7a21373958aa140ebff7b18558c1cdda6e04806a",
+      "after": "60236e3e0f1eb1dda7dbd3b41c3836d098c378c47236c8d5fdd14beb689f0ae2"
+    },
+    {
+      "path": "packages/mario-mix-terra/.github/workflows/source.yml",
+      "before": "13c7396397cd8ae416d9a8a2f6ed7ab2e868ba32e803309f4b7a15e47438360a",
+      "after": "12f45d7fef653d7392c893d6b98e731ff79a03e40ec1160b6f48dca082ef3eef"
+    },
+    {
+      "path": "packages/mario-mix-terra/AGENTS.md",
+      "before": "df554ba5134f366587792310eb23c053d7ebc9c495a40455634d5204f8482c0d",
+      "after": "c3fcd1bc970a2e90d4f49ae8322340b8e0e68c2703063560c0dcde1d84098c47"
+    },
+    {
+      "path": "packages/mario-mix-terra/CONTRIBUTING.md",
+      "before": "7b4eecae80952b7d8d1a7203558205a03937e8a927b5e9da1decd04a3f3e9b4f",
+      "after": "3c46da8ef979927e90f910ded965cfdaee5a4ac095cfd3b0f8cf3dbc3c7a6f93"
+    },
+    {
+      "path": "packages/mario-mix-terra/README.md",
+      "before": "2a6f137e267df97c3df5c35a9eb863270c4499e52002ff5b19642325fee5c35b",
+      "after": "21c344e4ced54efbc585af00e9dfc9980456e96a8b8267590e2c8bf701602109"
+    },
+    {
+      "path": "packages/mario-mix-terra/START_HERE.md",
+      "before": "712844b84f83970acd6b8cb55e9a8bacfff51861dee385b6417df6fc59d12fcd",
+      "after": "0d0f6341869c9e6a9962deaa2b0dd5cfced774b1b6de4b8630cc4a0cda541d83"
+    },
+    {
+      "path": "packages/mario-mix-terra/architecture/modules.json",
+      "before": null,
+      "after": "7c13fceadac8fce28f0dcd19ac194f8bf581f958d274bf5a293e19653a255281"
+    },
+    {
+      "path": "packages/mario-mix-terra/build.config.json",
+      "before": "6786f3640e177033be5e0a55a200f71392893b1e4446c1edf60bfc540782c434",
+      "after": "20905a932ce16b2c3637f3582c223a9338706c8675b44b6ecb251a9842b74111"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/ACCEPTANCE.md",
+      "before": "88fc832d851db6b580fbe517ee59618d4756bfcdb753e180684ca70fc1f2410e",
+      "after": "5b3815213a4752cdcee4b5fa4f25f95b075bb25a989b062723684a575e771f48"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/ARCHITECTURE.md",
+      "before": "17a971e3b3d1a7b905982599e6a19bf68c5f537db35cfb5d3d2060ef0ea4acac",
+      "after": "37a436cb4de2edda887c676643fd8f6163ee5cf045e01932c07df0a27917a79c"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/BEHAVIOR_CHANGES_M02.md",
+      "before": null,
+      "after": "fc2b7938cdc97270695103ea6bb245ce9adecfced9927998ea10bc68701d6503"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/CHANGELOG_M02.md",
+      "before": null,
+      "after": "43933cd175e98314e0ea105b4cde14d9a1b92ccb595e340b92edce6bd671a215"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/GOVERNANCE.md",
+      "before": null,
+      "after": "2fa46c4d4d0569d46cafb710cb8c8d6a61016e42bde6767a9adc5721966a6303"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/HANDOFF_M02.md",
+      "before": null,
+      "after": "9bcadd59951cb68ca16af40884f42fcc34d94dbeb5b64698d48ab3a690bd12a1"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/MODULE_MAP.md",
+      "before": "6a9d5172019b171d1cf4574735ca78e4b13f08f682965d56f66aa02a128eb7dc",
+      "after": "8945aa76b8eae52747a6fc8a08ffd5758e90a045b1732e02b18d831c26053d6b"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/REFERENCES_M02.md",
+      "before": null,
+      "after": "f980ad247da3f3f5569a108ca7044315dcefc996811f2ed337362a3284da6040"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/RELEASE_REVIEW.json",
+      "before": null,
+      "after": "d96b99feb05404c20124ec099e05df35199467502a163879cde69e2370a1a266"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/TASKS.json",
+      "before": "5c16e2ad8685dd2da8585f5593b965cd8c6b13339f5bff4ba2b0e06b8972b349",
+      "after": "71c55e51f1189534af05d568fd5e3a9014a0bb9e56946524c359e65bcd5b4a54"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/TEST_REPORT.md",
+      "before": "2fa7246fe6b3873fd0bf1bde1c287836534a48ab69ec5f0f9186ca5ecda65bdd",
+      "after": "f7fab408ba1ae2d67a667c4f857f2e6420980603cdb877eeba734e2b21254cb1"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/TEST_REPORT_M02.md",
+      "before": null,
+      "after": "a1a583c594e1542b73ed7a9b650548d1aaa1691c14a35d78148d87b7a67c53c2"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/evidence/README.md",
+      "before": null,
+      "after": "50c48a2c3da5f91c0877a00e6d0f443fe4545c58638be86f083ed0aba9469ae7"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/evidence/local-m02/game-comparison.json",
+      "before": null,
+      "after": "fe6d2c4c42bb43e7ea827c7b1846598f8e995ede3b78bfd72972ef93b95bd5fe"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/evidence/local-m02/http-probe.json",
+      "before": null,
+      "after": "8f22b7a747cdff7b7ac3cda63c0572e5c5a7fdd3e34d771da0ad56f711e0acdf"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/evidence/local-m02/settings-report.json",
+      "before": null,
+      "after": "2304105de09ce277300ad4caca55d1adaf3ee9a8924b9054034a854115624704"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/generated/MODULES.md",
+      "before": null,
+      "after": "3fd56af5321662123b940615d6ef342ebd39d2ef065b666537fedd14a2ad8d14"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/generated/manifest.json",
+      "before": null,
+      "after": "bf0ea02381c0e8761d888f4c2a46ecaa5c827219c7c704fc9dd196e10bf386f3"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/history/M01_AGENTS.md",
+      "before": null,
+      "after": "df554ba5134f366587792310eb23c053d7ebc9c495a40455634d5204f8482c0d"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/history/M01_ARCHITECTURE.md",
+      "before": null,
+      "after": "17a971e3b3d1a7b905982599e6a19bf68c5f537db35cfb5d3d2060ef0ea4acac"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/history/M01_CONTRIBUTING.md",
+      "before": null,
+      "after": "7b4eecae80952b7d8d1a7203558205a03937e8a927b5e9da1decd04a3f3e9b4f"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/history/M01_MODULE_MAP.md",
+      "before": null,
+      "after": "6a9d5172019b171d1cf4574735ca78e4b13f08f682965d56f66aa02a128eb7dc"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/history/M01_README.md",
+      "before": null,
+      "after": "2a6f137e267df97c3df5c35a9eb863270c4499e52002ff5b19642325fee5c35b"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/history/M01_START_HERE.md",
+      "before": null,
+      "after": "712844b84f83970acd6b8cb55e9a8bacfff51861dee385b6417df6fc59d12fcd"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/history/M01_TEST_REPORT.md",
+      "before": null,
+      "after": "2fa7246fe6b3873fd0bf1bde1c287836534a48ab69ec5f0f9186ca5ecda65bdd"
+    },
+    {
+      "path": "packages/mario-mix-terra/docs/history/TASKS_M01.json",
+      "before": null,
+      "after": "5c16e2ad8685dd2da8585f5593b965cd8c6b13339f5bff4ba2b0e06b8972b349"
+    },
+    {
+      "path": "packages/mario-mix-terra/package.json",
+      "before": "290382b4241bac2b25c18309183b9f74fc71d07fd8d69c58868598d7505465eb",
+      "after": "18c8f1a4b8897dace1ce47dae320f9abd64aca0779cc267c414b772adf6be75c"
+    },
+    {
+      "path": "packages/mario-mix-terra/scripts/architecture.mjs",
+      "before": null,
+      "after": "7b02da2bf19f1f6a96d11663cbcf660e7cf3a81614623df36c85a6147572cbfa"
+    },
+    {
+      "path": "packages/mario-mix-terra/scripts/browser-compare.py",
+      "before": "4228fcd40e51301a1ba8e2b61303c0f1a51977cdf1a5ecede3f56e26c6128cb2",
+      "after": "bc2977a0b11cda3ac748ec74dd0b4f2b1966d903cc4e9751085f1feb0e415f05"
+    },
+    {
+      "path": "packages/mario-mix-terra/scripts/browser-settings.py",
+      "before": null,
+      "after": "750bd2db21dbbee019797b034d08ece91251dc203b4bb19de42ec11a8d075fdf"
+    },
+    {
+      "path": "packages/mario-mix-terra/scripts/build.mjs",
+      "before": "0fefefb638d4c4cec9743129743ada76cbe06b41e24eafe5f2b8b785227641eb",
+      "after": "d551967079e387b7e65d37133e287d945a8f6ddfde79879bd64b9c3932d79b33"
+    },
+    {
+      "path": "packages/mario-mix-terra/scripts/check.mjs",
+      "before": "c06110729bd22899642c0836e65f31947c42524af936699aa515eca18b4e4cbd",
+      "after": "a2d2f9f059a8b2a90051c02651a33b7eafff9d9807fbc6f9a5059ca93ee1b0dd"
+    },
+    {
+      "path": "packages/mario-mix-terra/scripts/collaboration.mjs",
+      "before": null,
+      "after": "2f5d487cfe59fd338cee34f1d4310d583624de9a2ebc9d3e438c080bd80f1872"
+    },
+    {
+      "path": "packages/mario-mix-terra/scripts/pack.mjs",
+      "before": "db092de11191da250256c532f00c14ca65393534dc44c4225c88fe11f027d224",
+      "after": "7056fb2993973db270376d87e8795e23d86454e08e1f9b7c70b9beaca692614a"
+    },
+    {
+      "path": "packages/mario-mix-terra/scripts/release-check.mjs",
+      "before": null,
+      "after": "ee82388c5d5e7e2a5a7f6dbec69b0fb75e1b453f36f4058d53a76d10fe7cb948"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/bridges/bindings.bridge.js",
+      "before": null,
+      "after": "4405eb9ab84998d1d08172e591a0c32b3f4f06a8bee566f128a3a9d8164d2fc0"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/compat/46-terra-bindings.js.part",
+      "before": "a5599fc32e4f65c9b475c8a3047b8821c7c7aaf0db5a7e91353d4a0f4b8501e4",
+      "after": "b73c05a214300d1940afe431bcd9f6a3c945da6699bff9525814feaa976d4327"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/compat/47-terra-native-media.js.part",
+      "before": "7cc701d71a171316fc97674c2e33bc4ebe3fa2a3a424896f7727ec151c7cc305",
+      "after": "01f26d1dc7d1b768da4d583dbacdb8b8b51fcc254941a61a55e0721e8d10a939"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/input/binding-capture.mjs",
+      "before": null,
+      "after": "7a263cdaacd02e8ff61bdf5ab3dceaed038c8ca5b91ae22c7e1d9b62662acf4b"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/input/bindings-model.mjs",
+      "before": null,
+      "after": "ea898146b422fc34af4e8660ec835edf2768ac8ff34d0b59691d7d313b03ec2b"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/input/keyboard-router.mjs",
+      "before": null,
+      "after": "c260117bdd0be53b2c1ac674b87e4912beb005f071989234c884a807f6cddf82"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/input/mount-binding.mjs",
+      "before": null,
+      "after": "93e78c757d1720d7db5d814359b51f1028a4399d4acd9f897f5c8425a9f57bbc"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/runtime/lifetime.mjs",
+      "before": null,
+      "after": "ea790fdc788eebe09fca418e5115b7ab62ccb346376da940edc26f70485b10c5"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/ui/bindings-view.mjs",
+      "before": null,
+      "after": "dd10c5a353324a1ef96d0392f9da2ec6d2dfbd247f32a1e8cb9bb2121f1e120f"
+    },
+    {
+      "path": "packages/mario-mix-terra/src/ui/settings-session.mjs",
+      "before": null,
+      "after": "4b389f37524093f2878f8fad80f1369fb9796de934afd80bf05a69a8ef6c9858"
+    },
+    {
+      "path": "packages/mario-mix-terra/tests/architecture.test.mjs",
+      "before": null,
+      "after": "2c85e022fc2945552d76bdcbb3d07f73911aa854ecb938bdd2e1873eb54b3ff4"
+    },
+    {
+      "path": "packages/mario-mix-terra/tests/build.test.mjs",
+      "before": "e53557127e03e97f1dc4e8ffeeaf2c651c051ff05d306999305129048791bf9f",
+      "after": "ff00bf1c63867293ca7de933f9f4400d974aaf26d4579061e208d0cb27d88a36"
+    },
+    {
+      "path": "packages/mario-mix-terra/tests/golden/bindings-controller.txt",
+      "before": null,
+      "after": "914b0b551aa64c6c5a39e1a3646212d287f6d0c152bd22b99058acc515a361eb"
+    },
+    {
+      "path": "packages/mario-mix-terra/tests/golden/bindings-load.txt",
+      "before": null,
+      "after": "696061ec18d5e3829b61845aa06f4ebe4515dbd92b5bfe0d25568ebc0bda6bf0"
+    },
+    {
+      "path": "packages/mario-mix-terra/tests/golden/keyboard-router.txt",
+      "before": null,
+      "after": "e33166a9407e01cd0dee7dbf6b837e4c889e6d50dabd6da85c0d5888e4402458"
+    },
+    {
+      "path": "packages/mario-mix-terra/tests/golden/mount-binding.txt",
+      "before": null,
+      "after": "f9b8a22c74058c715b38f2903d3217e1dd0a0eaab069b96ea70861b3ddc5abf7"
+    },
+    {
+      "path": "packages/mario-mix-terra/tests/release.test.mjs",
+      "before": null,
+      "after": "086d298967ea811bf5d6eef3c54385d29c7241c266e8d31803e6a8046b562f04"
+    },
+    {
+      "path": "packages/mario-mix-terra/tests/settings.test.mjs",
+      "before": null,
+      "after": "f4e2f977709a6ea13183f7e47e665f9176fdf4d05e7cd860a981f56a3f1d2ac0"
+    },
+    {
+      "path": "content/development/projects/mario-mix.json",
+      "before": "d2544607b2b327c8b8afcacac7d71a5b9a57d53970b6b2678596672f9701b4af",
+      "after": "a7cfa1b7bef7bead76fc5dd361720569413586e6e0e7b9f2257bc32aeb47d507"
+    },
+    {
+      "path": "notes/index.html",
+      "before": "f169ec30438a6c8eac2e3226dd314b5a370bb507ffc0071ee7f7e5921c649aa3",
+      "after": "c51afe75732076e92da7b1ce5ba07cc73d8abf774471b0d48484d024af07ca0f"
+    },
+    {
+      "path": "notes/updates/index.html",
+      "before": "2037f45d0166dc786c691829ba0f812a3c31ab13654cb78e91f27210c67bdc40",
+      "after": "71d518d81a0326ad79745fddaf9bbce86f26fe47d560219a77a6efe69b7dceef"
+    },
+    {
+      "path": "notes/mario-mix/index.html",
+      "before": "33f7f29b51a613780dbeed4bd1aaa17c35488325abd258966eb230e4d7b48e8a",
+      "after": "baf444d73c4a3534cba095bcfe63a876dea55c9bfa672238573f86352162c146"
+    },
+    {
+      "path": "notes/mario-mix/docs/index.html",
+      "before": "7754889fa942af217b9b46067a76c5dea28737de1c93135f95a9738ea4fde3ca",
+      "after": "73db03d239e1b6d6a430ff80217d0cc682982cf47c327955b8367712923155ee"
+    },
+    {
+      "path": "notes/mario-mix/updates/index.html",
+      "before": "03c453aaa4824d8bfae7263a1d3441ebc1da4137e6de96212c969d6b8c3a69a4",
+      "after": "c00e6a0b8de5709870931fed8ce19e080332361fd24e8747920a44bd4c3abac7"
+    },
+    {
+      "path": "notes/mario-mix/docs/terra-source/index.html",
+      "before": "b2e49fd4acc916539cd904c8cba1d6209c921e84f49b5a2b13b665cbbc13fbaf",
+      "after": "1d6a97ca65fad54fe693361c66c986b6dcfa3112794e55dc51c479fe3990c06e"
+    },
+    {
+      "path": "notes/mario-mix/docs/terra-collaboration/index.html",
+      "before": null,
+      "after": "1cacb95a69bf3a5dae9379b0beab773ae70e87a8eb2d5374f6654e1c3e52c48e"
+    },
+    {
+      "path": "docs/development/generated-pages.json",
+      "before": "ce6ecab5f60649e9ff9b54d9d6e530b1795bba3e8f0e851aed958781353d67f5",
+      "after": "de49fa1cf0f58be6dfcb7b4f25157dec0e40edec09636577edc6792ed446a433"
+    },
+    {
+      "path": "package.json",
+      "before": "40dcc018713f8c443880d09dc4ff4535abf6e506c7aef9e606e14e16c20754de",
+      "after": "60985edc9b92c35e5d0e1e8c20cb0523243b96f8b48edbaa72f1c372d311d98c"
+    },
+    {
+      "path": "README.md",
+      "before": "2fd5f3f71a89b7a45ace7b483399e42f43b37b9d872d07080f70e15fbd7905e8",
+      "after": "64e69348dd93fd1612fea2a7806b218578f64801caa99c870f7c77a48d2b6b01"
+    },
+    {
+      "path": "AGENTS.md",
+      "before": "747f0f1891ed689dc58beb638d83c15a4dc79cddab0f18f62dbaa463cdcae71b",
+      "after": "57e0fbde2491e11715ecc9b7914c0fbc7d5272afea4431147afc4d12abac7094"
+    },
+    {
+      "path": ".github/CODEOWNERS",
+      "before": "977f652f705bae428da670524378210630c91a74de5607c841ddcbf3dd75ad63",
+      "after": "d88fe7998115d84e18e0a7ff8b92bb8404095a6e75aeb59d13f9912d3e2407ea"
+    }
+  ]
+}

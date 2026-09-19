@@ -1,0 +1,399 @@
+{
+  "schemaVersion": 1,
+  "version": "launch-r19",
+  "createdAt": "2026-09-18",
+  "delivery": "local-review-not-deployed",
+  "scope": "visitor game entry, help, missing-page recovery, copy fallback and release evidence; game M06 unchanged",
+  "files": [
+    {
+      "path": "assets/journal/render.mjs",
+      "before": "dceec46b00ba671a28a0ea1e33bc1af821ac720f71718338e2c551a62f2d5337",
+      "after": "67923b263d6089cec6c57bb2f3275e14ca9cbb0ac3b6fdd7b852a49834185a1e"
+    },
+    {
+      "path": "assets/journal/runtime.mjs",
+      "before": "59b0fa25151f73e56a0609bc9e732d741a9f0311e5ab06e6766ad538355f36fa",
+      "after": "8679a8c7075656c287afe99ea3b845f7b51c2a5d09dd517805be0f5f5b8e87be"
+    },
+    {
+      "path": "assets/launch/journey.css",
+      "before": null,
+      "after": "aba2e73f81ed0ccd29a4bb19809de0ebfa2242fda39b1713ff2cafcee5eb0caa"
+    },
+    {
+      "path": "assets/launch/journey.js",
+      "before": null,
+      "after": "681e7b93e046dbb81638da2d67eeba9a396b3d61e04af9e7ae651482fca9c724"
+    },
+    {
+      "path": "assets/launch/runtime.mjs",
+      "before": null,
+      "after": "ef136c74fa6bc338946d0e6df1aa6c3c78f4692ff107ed273dafd8c44bf5d420"
+    },
+    {
+      "path": "assets/site-router.js",
+      "before": "764ea9be151219f198746084f942a247dabe9f8c8c809891c817d80e0c11cc89",
+      "after": "1018e7de41eba5647b4af2d58b558611ee6b8f2d40c5943f4f7cb67bd35473fa"
+    },
+    {
+      "path": "assets/site-shell.js",
+      "before": "133fd27fb657fa3573f857af9649a6e9ac754f8d62fcd2fdba8f1f81c6eb5b73",
+      "after": "b38c80b16a3767c23c147508d5a4f04fd818137962d74be05856f5f0e384fc4b"
+    },
+    {
+      "path": "docs/launch-r19/ACCEPTANCE.md",
+      "before": null,
+      "after": "b0dc79f787fe7363da6896ddb721c9ac032ccd220b4224f4b55b93f3b768f177"
+    },
+    {
+      "path": "docs/launch-r19/ARCHITECTURE.md",
+      "before": null,
+      "after": "4bc2f85e0fb6ffe87ae3afb6776fd086d4842ae607ab36a419bea5cea4dae790"
+    },
+    {
+      "path": "docs/launch-r19/AUDIENCE_REVIEW.md",
+      "before": null,
+      "after": "f55f828d4ddd1bd42623e13c51f48b17c8a05cb9adf7ce86f6d5af90b6364b0d"
+    },
+    {
+      "path": "docs/launch-r19/CHANGELOG.md",
+      "before": null,
+      "after": "cec4595303cba745b88dcdebab200cdd598a27bb704e57478991ce23f3a5f829"
+    },
+    {
+      "path": "docs/launch-r19/HANDOFF_R19.md",
+      "before": null,
+      "after": "ffda973e593e59058ab40462f9020ae30ffebf97f6b3f730600bbcc545491350"
+    },
+    {
+      "path": "docs/launch-r19/RELEASE.md",
+      "before": null,
+      "after": "08cba3da86f151a9c1219fbbffe5eed8c6343801d91ebff77f09ccf081069c65"
+    },
+    {
+      "path": "docs/launch-r19/RESEARCH.md",
+      "before": null,
+      "after": "bd32cad1df1c37a911e54171a46d059f7f52537baeca71b6b8936604158ba965"
+    },
+    {
+      "path": "docs/launch-r19/REVIEW.template.json",
+      "before": null,
+      "after": "3c3719d2344db5039f49dff3a3ac594cc086851e6051aa8534f2e60d67c1e476"
+    },
+    {
+      "path": "docs/launch-r19/START_HERE.md",
+      "before": null,
+      "after": "ffcd9024c0ff2c063f1a07076fc44050fddc0231c687030065250a2a50ffb2a1"
+    },
+    {
+      "path": "docs/launch-r19/TEST_REPORT.md",
+      "before": null,
+      "after": "eeceee3edb65325618ff80fce6793fbf1aab258f4012ec98b3be9fe0a8a0bbc8"
+    },
+    {
+      "path": "scripts/experience/build.mjs",
+      "before": "23ab8639c395d415fa831e787c89e23dff5b5b429274d7b568df092a83151a6e",
+      "after": "5ef0097ac67ef20dd5f06704e617e6af08d0d45f00743216498dded90cfa5112"
+    },
+    {
+      "path": "scripts/experience/wire.mjs",
+      "before": "0c9dba4183f1e1f675cf85e25a4a1fed2997be4bece6ffcf68238e894c4f771e",
+      "after": "3551cc23768360e77118a64ed6d00423a78f352b695e4eabe208a37dedb937dd"
+    },
+    {
+      "path": "scripts/journal/build.mjs",
+      "before": "86eea96729c3d7aad430e5264c71a79feffc60240c73f4692ac4edce2fa07a77",
+      "after": "d256cc67266ee7e4b1c4b4207f381a80b7aa6043a4b9cea8d08c10ed970c2c7c"
+    },
+    {
+      "path": "scripts/launch/build.mjs",
+      "before": null,
+      "after": "6490a6a97d97c4bf6287f2005292a33ecad4fd3982f68481617f442f247e1939"
+    },
+    {
+      "path": "scripts/launch/check.mjs",
+      "before": null,
+      "after": "4ad246665add38fec89eec35e15977a7098a15b12290f37f14780672d0897bba"
+    },
+    {
+      "path": "tests/launch/journey.test.mjs",
+      "before": null,
+      "after": "a7aabe1d2effb5351f709195ddff4166ca3eda789cf1dd927666fd1002354c91"
+    },
+    {
+      "path": "tests/workshop-r06.test.mjs",
+      "before": "2d8db55dbe1bd96f20cc8235fff56a2dc08184752326d1ee0b42a4154cf4e86a",
+      "after": "43140043090b12ddf66e6a9922510018dc8ae984ac71329bb70d9fd4d1a7c803"
+    },
+    {
+      "path": "tests/workshop-r12.test.mjs",
+      "before": "90e8c8bb79c23b5975951ca319348de9e04f9b099812012a8d2794f11ff5d060",
+      "after": "f2dd1af62cf0a26a827841d414934c674e1c33379e4a909000b5b7f68c4e9964"
+    },
+    {
+      "path": "tests/workshop-r13.test.mjs",
+      "before": "c752261683dc38075b12dfe189beb9c86b1a22ebc57943faf309710da476740d",
+      "after": "3f98efaf61d2b2f503d7ee8f8b5513e0522d13bfe46e796d58efc6b7e6eb6f18"
+    },
+    {
+      "path": "notes/index.html",
+      "before": "e2629bd326536946431228a71243eed98c2f91779acc04cd39aa5a18d71450f8",
+      "after": "c20f8310cc117ee906aef7339074e1736e4e7c915962df2ae7586641fc7a9837"
+    },
+    {
+      "path": "notes/updates/index.html",
+      "before": "09ad076073e6ab85bdf77cd61c211eb8b411e2ee02d865c76fdb51560794d426",
+      "after": "167363e598d81feae78d3885e2880de8f7fc8e9212eb795f1396b97b48bc8b40"
+    },
+    {
+      "path": "notes/contribute/index.html",
+      "before": "783b27e101c99dc86349a466ec465aaf1c543884bdf17e0bc621c240dad9d7ca",
+      "after": "f481719df99f3361bc4d2ac3688efedd419deb2b3c4e7dbcddc996f09f4f145c"
+    },
+    {
+      "path": "notes/mario-mix/index.html",
+      "before": "b95d07ec95cc23f1349ba6ee90099726153e7e2d9378ae03e5ac9912f1c6d580",
+      "after": "de555820599e4734a9fd9bb8f032bf94bf3be385d4f4fbd853e7e693c480ce3f"
+    },
+    {
+      "path": "notes/mario-mix/tasks/index.html",
+      "before": "46f77ac712839b302e4fc6a9aed80dbc8ed68d7df027cd5ffbcf031c26a8d65a",
+      "after": "92e36f0f7917939bb67f0782013146ffd6a8ec545b8d9a806a94051ef2e58fe7"
+    },
+    {
+      "path": "notes/mario-mix/docs/index.html",
+      "before": "db68e6cb9dd44e8cc5f317125054f39a464b2d573484dfd5f722a8cd2336e62a",
+      "after": "bb65938b8a595d2b097103b37bfdec276ef7e704738d24a1fec2a2fed6e7bf24"
+    },
+    {
+      "path": "notes/mario-mix/updates/index.html",
+      "before": "b76984fbf2a11e20f3954d2cd75ae66da6f10672f144aace8fc8f044072729bb",
+      "after": "e5b864e4be918729a235b7d10705980bc583d72bc3268a24c49881ee8cdc418f"
+    },
+    {
+      "path": "notes/mario-mix/contribute/index.html",
+      "before": "cda087e3295f80272e089a2882210501c0ba3708a2e1f228ecd3d44c7cc36558",
+      "after": "3108a7de5c56d4a9bd9adc6ccc245601c481a934724e2853956ad873545da9a7"
+    },
+    {
+      "path": "notes/mario-mix/manage/index.html",
+      "before": "57ead88ab688fdfe6c2f0465d2c8c2858fb3fcc61bd989cd9b8d9e0ddcd15911",
+      "after": "72a8158ae3b20fedf8d8277e79d32771da14b1548baead017073ad666a2072aa"
+    },
+    {
+      "path": "notes/mario-mix/docs/terra-source/index.html",
+      "before": "a008888b1ddbe7ebb873458f75a9863fe55471426d82170e856e4e8e0da1e078",
+      "after": "428029b86dc3b66dbc4f2c5913559f2d6d6502ba8f4ca4601e4369c3d619e537"
+    },
+    {
+      "path": "notes/mario-mix/docs/terra-collaboration/index.html",
+      "before": "2e9257527773435ee7162a2c637ea88830d9f3ebe4ba590eae03a3c3aeea2795",
+      "after": "451395347ff26c1e38be1e01debccd1efa00e2461b233f0e3184a194d26e77c1"
+    },
+    {
+      "path": "notes/mario-mix/docs/terra-stages/index.html",
+      "before": "0fde6b470b897ffe4d2c3f591f3ade571dbdc7fb9439eec259f1831bf4cabfce",
+      "after": "818b65d542cfbc20eeb87a7c0274f52b1673931b1aa3b8ad190aa48854b91981"
+    },
+    {
+      "path": "notes/mario-mix/docs/terra-history/index.html",
+      "before": "9bf2db227f8b9366f2b2204ed26e161937945a4c63800de527913435a822fbe1",
+      "after": "e2953647d740ce4852188bfa0bc545693ef2473cfbd366d3ecd295ff8b3b49cb"
+    },
+    {
+      "path": "notes/mario-mix/docs/start/index.html",
+      "before": "9794eb2702817eff0d52be46bafc9a1b922485c89fe62caed1907f0cb3fdf289",
+      "after": "feee22f1391aa614289db563124563369d2c3c31f90741b13a043693a010820d"
+    },
+    {
+      "path": "notes/mario-mix/docs/architecture/index.html",
+      "before": "f0de0a1b6a0f905c66e895a08ba8776f8277434973b9ac76da1e73bef8a9e3aa",
+      "after": "a89e1f8e6126f8b7ffb1b5e4830b2e7b20cc75f664b151a88c3ac87ab31a0275"
+    },
+    {
+      "path": "notes/mario-mix/docs/reference/index.html",
+      "before": "1b5960606ebd08bceef3faca8fb80b2b7f280a048f0aee80ca6080802d8cac21",
+      "after": "b4605cf5aad6887be19794ad49ae693790e48e6bd5ab23dacfb99e0c90096307"
+    },
+    {
+      "path": "notes/mario-mix/docs/engineering/index.html",
+      "before": "1e6cf91a9d7829a50efaf67a9121853768cbdecb4fd7506299fcea55fe2becaa",
+      "after": "43187d201a350e2fd18bb0dac0022916686c8f6ef0220a69f19a1568a30764ff"
+    },
+    {
+      "path": "notes/mario-mix/docs/terra-chapters/index.html",
+      "before": "fa7c5c55f01f9f783cc8a07dcc46ad81148ba638121fcb69edca855353e6b5bc",
+      "after": "cae0a94be07ffe69be6930ee1082e6017e11ec58ac646cc4dea2b24cdf081f54"
+    },
+    {
+      "path": "notes/pixel-workshop/index.html",
+      "before": "172ddd539beab17b040578c7a16dab3332e8454c01b68c6fa28f194c2f72c6d8",
+      "after": "fefdeac4b1deac8fda04318934ea3320b83f4646eda6249013ed2b6918e06cc1"
+    },
+    {
+      "path": "notes/pixel-workshop/tasks/index.html",
+      "before": "f27b8f882618a7ff4df730cea253409a93c211232921a6893aa4613a32859341",
+      "after": "4c179b265c7f1bd5ad1f14718bbd9d72c9be696c98f49f718b8f243945552202"
+    },
+    {
+      "path": "notes/pixel-workshop/docs/index.html",
+      "before": "ece7f5c629131aef1f2b4cef7412f9da2137d46f6207ad490c60adf54e839668",
+      "after": "8b4d7689fc70f114b64a218bdbba5eb51724772dc09518d4cc9804124a030920"
+    },
+    {
+      "path": "notes/pixel-workshop/updates/index.html",
+      "before": "2acff3899c5fdbb3394d4186b3f720234ee94cb0769d317e3ddb18bc867c9a55",
+      "after": "45c0a701b2064f660a353ea2b6bd3634b6ff4ec0a43ccd33b5a4af0c2a8c5f76"
+    },
+    {
+      "path": "notes/pixel-workshop/contribute/index.html",
+      "before": "127710dfe5dd856ac91dbdf5f685f66a5f3761318e6cf54b9f196f2991301807",
+      "after": "501c96d98e93949b4b032d170b5fdf5f0da8e3a661b20440cce2edb1ad1ddeb1"
+    },
+    {
+      "path": "notes/pixel-workshop/manage/index.html",
+      "before": "bbcee707a97a4a90669e3987962ab2cc4458a3d7ae03e4bd855a768b3af5282b",
+      "after": "ac7735d1b50aae39fa469eb5e52fd3a60a9155fa25c641c0c37f4092e1dd4189"
+    },
+    {
+      "path": "notes/pixel-workshop/docs/start/index.html",
+      "before": "2405e179a80733e2978f57bc9944adf72eb5cdb57bab7675b46dc0f5ddc766eb",
+      "after": "316ef1f8efe5b48968dce7f1b7b937572f661d778417aeb2d4aed9c2ff117654"
+    },
+    {
+      "path": "notes/pixel-workshop/docs/architecture/index.html",
+      "before": "ea6eabe44519049c29808821b1d802d26f24d68f765f2f93f44bb0b4cdb50e42",
+      "after": "8b44c8f724547ef0f7f813b13ec7186d8b1b5cb2af70fb479752cbe113d29bd6"
+    },
+    {
+      "path": "notes/pixel-workshop/docs/add-project/index.html",
+      "before": "1367b973a4b469cdeb9779cc16f488dc826166abc98bd7ff62659ae64f5e42d5",
+      "after": "0c0ccbe66caa70089fbfd7ac580671d52f2073728d6f4217395d81c7772a2cc3"
+    },
+    {
+      "path": "docs/development/generated-pages.json",
+      "before": "7ef1d644f522cb944046f17e95836312292c8e8e65bed268cb38ccdb4ff01c6a",
+      "after": "40715d495865b373bd510327591fc5221e760743dcec9a0f9df0e65e14afe8fe"
+    },
+    {
+      "path": "projects/index.html",
+      "before": "397f0ed0ef136b3bf41bea6781b5f100df335113b3967a51e8ddd0a9625fd85b",
+      "after": "f1226a808aec33e636d77e2bae7508a6888e5e49dbc6c1cdfef3a017b624bc02"
+    },
+    {
+      "path": "games/index.html",
+      "before": "7f1764348088389093875156d0bc06f4c6ebd1b9b348b4d9e22a8f6fd10e2b45",
+      "after": "eb0ca3ad355e6959075fbd527ec97d522e24b21189dcf650bc8d7648c5593177"
+    },
+    {
+      "path": "tools/index.html",
+      "before": "c5af6a43c69d77bc71818f27707386008924f45504ddf7a21ce10f946a3395a6",
+      "after": "2679b5c10eca4efd0e92e049f4f61e6772252a3582b7838f2b2b663e98328b7e"
+    },
+    {
+      "path": "docs/design-r07/generated-pages.json",
+      "before": "3e7f3842e7d32de4fbe6b29d4f0234dfa75b0c8f3df0618a973a84e212de9f90",
+      "after": "75bad3cdfd3b5ff5b45aecb5c863661b00273ee1b0f3b67a70558ddeaadcf7d8"
+    },
+    {
+      "path": "content/search-index.json",
+      "before": "ed08394dda2f6eddfc15146e1f1a4055f6cdbbed9e4a7aae463db94d98209d6f",
+      "after": "ed831d96a2930939b0f6dbba85e615d545fed21aa71636cfebf513137484a1b8"
+    },
+    {
+      "path": "search/index.html",
+      "before": "19f11d9899b1704f3027d067b5144a43b82c1dcad520f822a59b82b80e826cfe",
+      "after": "e7860279cf9bf9afb2d11512ef2fa07cd7bfd988c165b9f9ea08915887142a24"
+    },
+    {
+      "path": "docs/experience-r18/generated-files.json",
+      "before": "40b222e02e218e0ac273f6b449a1e534c2d166846167dc6451e42c7da3a37ea0",
+      "after": "ba4340ea73aa4532bbc862fe5479a3eda5916b8771f4d793e7ba14fbf21fb0ce"
+    },
+    {
+      "path": "play-guide/index.html",
+      "before": null,
+      "after": "ab521e1ea5626a576e8dceeb0af35d667325009b8ca9195f88baef760a713543"
+    },
+    {
+      "path": "404.html",
+      "before": null,
+      "after": "5d997df1365f8e8eff9982fd84ee7f54d2284bb02708525d4208923de80a4670"
+    },
+    {
+      "path": "games/mario-mix-3/index.html",
+      "before": "958adcec9dc37e1a36c87d4561fe262ef8225759a34ce9840c0035ab4a80b198",
+      "after": "4dadd6f6b58542bd71e9ddd41139421c573e48d8df83d26f6af8fa0ac4ca3e69"
+    },
+    {
+      "path": "games/mario-mix-2/index.html",
+      "before": "b2b3afe06521ef3f4c4e35d5f45d201eedc02064c1d0e82c0aa257a28a17cf4e",
+      "after": "3668de1815abd6916104f6e1a0a40a4c79b6e005ca59ca35bde98f08b6aeb08b"
+    },
+    {
+      "path": "games/mario-mix/index.html",
+      "before": "ad996505425ccd730dcdfb492b60af18648e3eeeb70ff2c62e2dbdfe91b447ac",
+      "after": "bd7321c16e756f21920b9178d603e2e4bcbb789797ebe1ec3b1dc730931ee1a4"
+    },
+    {
+      "path": "games/pipebound/index.html",
+      "before": "a19f68924515fcd5d83378e7cf115a411465577196c06c8cf8550ed0c79d2b6f",
+      "after": "777f304f66067006bdb68cfb778ff41945d8bcbc4707cb91b1e91d19701b86c5"
+    },
+    {
+      "path": "games/mario-classic/index.html",
+      "before": "33b9cee48e7dc53d75c11886142e21d94a6ee4381b4b72e4e8926d7e43c37f74",
+      "after": "04d88a8ffc399bf37a79334fbf447189bc6abba2984fb48b5bdc19b6af1fa0b1"
+    },
+    {
+      "path": "content/game-support.js",
+      "before": null,
+      "after": "78f0d351da7902a21b9c0ffe81ed221c129cfdd14cddcd061829cb8c075e5567"
+    },
+    {
+      "path": "docs/launch-r19/generated-files.json",
+      "before": null,
+      "after": "959df63f7bc9de1e254fd8323fb1139c761cd2495cea7ce01583ab0b90a5b6b1"
+    },
+    {
+      "path": "index.html",
+      "before": "575b210d60db8e302972341bf02bcf49632aae20e8ca0122b4fae86f0dc095f0",
+      "after": "06c4de77a94d2b340e4d82f4ac1d17b5e1021af9b64afb7534fbbba30d36a35c"
+    },
+    {
+      "path": "games/pixel-pipe-adventure/index.html",
+      "before": "2dc1a568d334e842e81a8587c1ddc4caa40de039f8a858c9747c0fe7addf444f",
+      "after": "1c6368770dcdcc5ddd143e530dece3f492af7d24ee8dd0ae1dc53bd3e81f8a44"
+    },
+    {
+      "path": "games/voxel-frontier/index.html",
+      "before": "2eeefcc6a126b74db36d1891a447356838d5ad359392a0b6303537a0eb66a41d",
+      "after": "eff280b8e71feba06ad999fe5449ae0a1202263960fa6d0ca47f31b6866f69f7"
+    },
+    {
+      "path": "about/index.html",
+      "before": "5b572dd364335fd5a4732dcec3f61931103e5501919364649e055e94e8246df1",
+      "after": "976f5798ec8e94350256329f16ae1a0a7cb353a30f82d8c35aa6886520ae1989"
+    },
+    {
+      "path": "package.json",
+      "before": "3b75c4b32a4665db78255508edf96e9cf85aaaaddacb62070ee3b66eb2922079",
+      "after": "b0b4b3279482747adebf48e396cc094ec2613c40b6a0ca952dd202db96b72851"
+    },
+    {
+      "path": "README.md",
+      "before": "5442ce97aefc442ab474b3304db768cf5d2376ddb29c8356149714ed980cc98c",
+      "after": "cb7fac5e24f6e7d6ee1018e42dccfe8c409c638f0fb686d2d9cc3fd17df011e7"
+    },
+    {
+      "path": "AGENTS.md",
+      "before": "65630891384e324b7dc09d053d04bb6e952cefdd624c181fac55999f2bf200d3",
+      "after": "edefb9076bed0da55535fb87fd39015fc82cb776553780438bb13bac8f738ef4"
+    },
+    {
+      "path": "collab/delivery-files.txt",
+      "before": "676e2a784b3cc586259a3b4a7480d9704f367cb932ec9fa83b7d51268aeae734",
+      "after": "19529070cb68d0c233d3703d290d58519678d7c20962a2d6bab4da6451cabc61"
+    }
+  ]
+}

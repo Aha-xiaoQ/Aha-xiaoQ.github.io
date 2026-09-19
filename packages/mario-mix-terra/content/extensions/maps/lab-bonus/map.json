@@ -1,0 +1,59 @@
+{
+  "id": "lab-bonus",
+  "title": "可往返的奖励房",
+  "tileSize": 16,
+  "width": 320,
+  "height": 240,
+  "provenance": {
+    "kind": "original",
+    "source": "M03 contract sample authored for this project",
+    "review": "verified",
+    "note": "原创几何接入样例，不是原版 1-4 地图，不使用未完成奥日城堡分支。"
+  },
+  "geometry": [
+    {
+      "id": "floor",
+      "collision": "solid",
+      "x": 0,
+      "y": 208,
+      "w": 320,
+      "h": 32
+    }
+  ],
+  "objects": [
+    {
+      "id": "start",
+      "kind": "spawn",
+      "x": 32,
+      "y": 180,
+      "w": 12,
+      "h": 24
+    },
+    {
+      "id": "coin-a",
+      "kind": "coin",
+      "x": 120,
+      "y": 184,
+      "w": 8,
+      "h": 12
+    },
+    {
+      "id": "coin-b",
+      "kind": "coin",
+      "x": 144,
+      "y": 184,
+      "w": 8,
+      "h": 12
+    },
+    {
+      "id": "return-door",
+      "kind": "portal",
+      "x": 240,
+      "y": 172,
+      "w": 24,
+      "h": 36,
+      "targetRoom": "main",
+      "targetSpawn": "return"
+    }
+  ]
+}

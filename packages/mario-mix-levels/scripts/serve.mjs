@@ -1,0 +1,9 @@
+import http from'node:http';import path from'node:path';import{fileURLToPath}from'node:url';import{ROOT}from'./build.mjs';import{safe,readOptional}from'./lib/safe-path.mjs';
+export function createServer(root=ROOT){return http.createServer((req,res)=>{res.setHeader('X-Content-Type-Options','nosniff');res.setHeader('Cache-Control','no-store');const end=(code,s)=>{res.writeHead(code);res.end(s);};try{
+ if(!/^(127\.0\.0\.1|localhost)(:\d+)?$/.test(req.headers.host||''))return end(403,'Host rejected');
+ if(!['GET','HEAD'].includes(req.method))return end(405,'Read only');
+ if(req.headers.origin&&!/^http:\/\/(127\.0\.0\.1|localhost)(:\d+)?$/.test(req.headers.origin))return end(403,'Origin rejected');
+ const raw=req.url.split('?')[0];const rel=decodeURIComponent(raw).replace(/^\//,'')||'index.html';if(!/^(index\.html|ui\/|src\/|vendor\/m06\/|data\/|docs\/|previews\/|tiled\/|NOTICE\.md)/.test(rel))return end(404,'Not found');
+ safe(root,rel);const b=readOptional(root,rel);if(!b)return end(404,'Not found');res.setHeader('Content-Type',({'.html':'text/html; charset=utf-8','.mjs':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.tmj':'application/json; charset=utf-8','.svg':'image/svg+xml','.md':'text/plain; charset=utf-8'})[path.extname(rel)]||'application/octet-stream');res.setHeader('Content-Length',b.length);res.writeHead(200);res.end(req.method==='HEAD'?undefined:b);
+ }catch(e){end(400,'Invalid path');}});}
+if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){const args=process.argv.slice(2);const port=args.includes('--port')?Number(args[args.indexOf('--port')+1]):4195;if(!Number.isInteger(port)||port<1024||port>65535)throw Error('Invalid port');createServer().listen(port,'127.0.0.1',()=>console.log(`地图工作台：http://127.0.0.1:${port}/`));}

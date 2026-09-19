@@ -1,5 +1,6 @@
 /* Visitor-facing English copy. Chinese source content remains authoritative. */
 globalThis.SITE_EN = Object.freeze({
+  "开发": "Dev",
   "下载后解压，用电脑浏览器打开 index.html；版权及素材说明随包提供。": "Extract the ZIP and open index.html in a desktop browser. Copyright and asset notices are included.",
   "下载游戏 ↓": "Download game ↓",
   "混合马里奥第二期已上线，可以观看视频或直接试玩。": "Mario Mix Episode 2 is live. Watch the video or play in your browser.",

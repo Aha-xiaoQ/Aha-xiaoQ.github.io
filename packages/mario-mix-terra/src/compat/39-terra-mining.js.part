@@ -1,0 +1,255 @@
+/* R14 — close-range smart mining and usable torches. Installed once, in the
+ * existing Terraria closure, after the user's SIX-slot R13 (12000 HP / 128 rows).
+ * No level reset, new game implementation, network dependency or new artwork.
+ */
+const T14_VERSION='R14 · 近身挖矿 / 地下火把';
+const t14Log=[];
+function t14Event(type,data={}){t14Log.push({type,tick:state?.ticks||0,...data});if(t14Log.length>700)t14Log.splice(0,150);}
+function t14Center(s){return {x:s.p.x+s.p.w/2,y:s.p.y+s.p.h/2};}
+function t14WorldY(s){return s.r05Arena?T13.top:0;}
+function t14Grid(s,x,y){const base=t14WorldY(s),c=Math.floor(x/16),r=Math.floor((y-base)/16);return {x:c*16+8,y:base+r*16+8,c,r};}
+function t14Keyboard(v={}){
+ return !t13Pointer.down&&(!!v.action||Math.abs(v.x||0)>.2||Math.abs(v.y||0)>.2||
+ ['KeyJ','KeyX','ShiftLeft','ShiftRight','ArrowDown','ArrowUp','ArrowLeft','ArrowRight','KeyW','KeyS','KeyA','KeyD'].some(k=>held.has(k)));
+}
+// Resolve the actually displayed canvas content, including object-fit letterboxing.
+function t14CanvasRect(){
+ const r=canvas.getBoundingClientRect(),cs=getComputedStyle(canvas),n=v=>parseFloat(v)||0;
+ const bx=n(cs.borderLeftWidth)+n(cs.paddingLeft),by=n(cs.borderTopWidth)+n(cs.paddingTop);
+ const cw=r.width-bx-n(cs.borderRightWidth)-n(cs.paddingRight),ch=r.height-by-n(cs.borderBottomWidth)-n(cs.paddingBottom);
+ let width=cw,height=ch,left=r.left+bx,top=r.top+by;
+ if(cs.objectFit==='contain'||cs.objectFit==='scale-down'){
+  let scale=Math.min(cw/canvas.width,ch/canvas.height);if(cs.objectFit==='scale-down')scale=Math.min(1,scale);
+  width=canvas.width*scale;height=canvas.height*scale;left+=(cw-width)/2;top+=(ch-height)/2;
+ }
+ return {left,top,width,height};
+}
+const t14SamplePointerBase=t13SamplePointer;
+canvas.removeEventListener('pointermove',t14SamplePointerBase,true);
+t13SamplePointer=function(e){
+ const r=t14CanvasRect(),s=state;if(!s||r.width<=0||r.height<=0)return;
+ if(e.clientX<r.left||e.clientX>r.left+r.width||e.clientY<r.top||e.clientY>r.top+r.height){t13Pointer.active=false;return;}
+ const width=s.r05Arena?R06_VIEW.w:W,height=s.r05Arena?R06_VIEW.h:H;
+ t13Pointer.sx=(e.clientX-r.left)/r.width*width;t13Pointer.sy=(e.clientY-r.top)/r.height*height;
+ t13Pointer.x=t13Pointer.sx+(s.cam||0);t13Pointer.y=t13Pointer.sy+(s.r05Arena?(s.camY??-96):s.r07CamY||0);
+ t13Pointer.active=true;t13Pointer.lastMove=performance.now();
+};
+canvas.addEventListener('pointermove',t13SamplePointer,true);
+// Explicit keys take control immediately. A stationary old mouse location never
+// steals J+direction; pointer clicks still aim precisely at the displayed tile.
+function t14RawTarget(s,v={}){
+ const p=s.p,sc=t10Scale(s),keyboard=t14Keyboard(v);
+ if(!keyboard&&t13Pointer.active&&(t13Pointer.down||t13Pointer.lastMove>performance.now()-1500)){
+  r05SyncPointer();return {x:t13Pointer.x,y:t13Pointer.y,pointer:true};
+ }
+ const dy=Math.sign(Math.abs(v.y||0)>.3?v.y:0),dx=Math.sign(Math.abs(v.x||0)>.3?v.x:0);
+ return {x:p.x+p.w/2+(dy&&!dx?0:(dx||p.facing)*(p.w/2+8)),
+  y:dy>0?p.y+p.h+8:dy<0?p.y-8:p.y+p.h*.52,pointer:false,dx:dx||(!dy?p.facing:0),dy};
+}
+// Check multiple points INSIDE the actor's collision rectangle. Target-cell
+// entry terminates a ray; the target's own solid pixels cannot block its use.
+function t14Visible(s,t){
+ if(!s.t13World)return true;
+ const p=s.p,origin=t14Center(s),w=s.t13World,tx=Math.floor(t.x/16),ty=Math.floor((t.y-T13.top)/16);
+ const origins=[origin,{x:origin.x,y:p.y+2},{x:origin.x,y:p.y+p.h-2},
+  {x:p.x+2,y:origin.y},{x:p.x+p.w-2,y:origin.y}];
+ return origins.some(a=>{const n=Math.max(1,Math.ceil(Math.hypot(t.x-a.x,t.y-a.y)/2));
+  for(let i=0;i<=n;i++){const x=a.x+(t.x-a.x)*i/n,y=a.y+(t.y-a.y)*i/n,c=Math.floor(x/16),r=Math.floor((y-T13.top)/16);
+   if(c===tx&&r===ty)return true;if(t13At(w,c,r)>0)return false;}
+  return true;});
+}
+t13ClearRay=t14Visible;
+function t14MineReason(s,t){
+ if(!t13InReach(s,t))return '超出镐的距离';
+ if(s.r05Arena&&s.phase==='battle')return '战斗中暂停挖掘';
+ if(t.kind==='platform')return t14Visible(s,t)?'':'前方地块遮挡';
+ const w=s.t13World;if(!w)return '主线原平台受保护';
+ if(t.r<0||t.r>=w.rows||t.c<0||t.c>=w.cols)return '没有可挖地块';
+ if(!t13At(w,t.c,t.r))return '空格';
+ if(t13Protected(w,t.c,t.r))return '入口地基或边界受保护';
+ if(t.r===0&&(s.trees||[]).some(a=>!a.t13Gone&&a.x>=t.c*16&&a.x<(t.c+1)*16))return '先用斧头砍树';
+ if(w.chests.some(a=>!a.empty&&!a.removed&&Math.abs(a.y+a.h-(T13.top+t.r*16))<2&&t.c*16<a.x+a.w&&t.c*16+16>a.x))return '先取走宝箱物品';
+ if(!t14Visible(s,t))return '前方地块遮挡';return '';
+}
+function t14MineCandidate(s,c,r){const t={...t14Grid(s,c*16+8,t14WorldY(s)+r*16+8),kind:'tile'};t.reason=t14MineReason(s,t);t.valid=!t.reason;return t;}
+function t14PlatformCandidate(s,q){const t={x:q.x+q.w/2,y:q.y+Math.min(3,q.h/2),kind:'platform',platformId:q.id,c:Math.floor(q.x/16),r:Math.floor((q.y-t14WorldY(s))/16)};t.reason=t14MineReason(s,t);t.valid=!t.reason;return t;}
+function t14ChooseMine(s,raw){
+ const p=s.p,center=t14Center(s),w=s.t13World,grid=t14Grid(s,raw.x,raw.y),direct=t14MineCandidate(s,grid.c,grid.r);
+ // Point at a block: do not silently mine something behind it, or elsewhere
+ // when the clicked block is protected/out of reach.
+ if(raw.pointer){
+  if((w&&t13At(w,grid.c,grid.r)>0)||!t13InReach(s,grid))return {...direct,pointer:true,smart:false};
+  const platform=(s.built||[]).find(q=>raw.x>=q.x&&raw.x<q.x+q.w&&Math.abs(raw.y-q.y)<10);
+  if(platform)return {...t14PlatformCandidate(s,platform),pointer:true,smart:false};
+ }
+ const candidates=[],reach=88*t10Scale(s),base=t14WorldY(s);
+ if(w){
+  for(let r=Math.max(0,Math.floor((center.y-reach-base)/16));r<=Math.min(w.rows-1,Math.floor((center.y+reach-base)/16));r++)
+   for(let c=Math.max(0,Math.floor((center.x-reach)/16));c<=Math.min(w.cols-1,Math.floor((center.x+reach)/16));c++){
+    if(!t13At(w,c,r))continue;const t=t14MineCandidate(s,c,r);if(t.valid)candidates.push(t);
+   }
+ }
+ for(const q of s.built||[]){const t=t14PlatformCandidate(s,q);if(t.valid)candidates.push(t);}
+ let list=[];
+ if(raw.pointer){
+  // An empty cell at a block edge snaps locally, not all the way across a cave.
+  list=candidates.filter(t=>Math.hypot(t.x-raw.x,t.y-raw.y)<=26)
+   .map(t=>({...t,score:Math.hypot(t.x-raw.x,t.y-raw.y)}));
+ }else{
+  const dx=raw.dx||0,dy=raw.dy||0;
+  for(const t of candidates){
+   const x0=t.c*16,x1=x0+16,y0=t.kind==='platform'?t.y-3:base+t.r*16,y1=y0+(t.kind==='platform'?6:16);
+   const gapX=Math.max(0,p.x-x1,x0-p.x-p.w),gapY=Math.max(0,p.y-y1,y0-p.y-p.h);
+   const overlapX=x1>p.x+.2&&x0<p.x+p.w-.2,overlapY=y1>p.y+.2&&y0<p.y+p.h-.2;
+   const vertical=dy&&(dy>0?y0>=p.y+p.h-1:y1<=p.y+1);
+   const horizontal=dx&&(dx>0?x0>=p.x+p.w-1:x1<=p.x+1);
+   if(dy&&!dx){if(!vertical)continue;t.score=gapY*8+(overlapX?0:600+gapX*5)+Math.abs(t.x-center.x)*.12;}
+   else if(dx&&!dy){if(!horizontal)continue;t.score=gapX*8+(overlapY?0:600+gapY*5)+Math.abs(t.y-center.y)*.12;}
+   else{if(!vertical&&!horizontal)continue;const along=(t.x-center.x)*dx+(t.y-center.y)*dy;if(along<=0)continue;t.score=Math.hypot(gapX,gapY)*8+Math.abs((t.x-center.x)*dy-(t.y-center.y)*dx);}
+   list.push(t);
+  }
+ }
+ list.sort((a,b)=>a.score-b.score||a.r-b.r||a.c-b.c);
+ if(list.length)return {...list[0],pointer:raw.pointer,smart:true};
+ return {...direct,pointer:raw.pointer,smart:!raw.pointer,valid:false,reason:direct.reason||'这个方向没有可挖地块'};
+}
+function t14TorchSpot(s,t){
+ if(!t13InReach(s,t))return '超出放置距离';
+ if(s.r05Arena&&s.phase==='battle')return '战斗期间不能建设';
+ const box={x:t.c*16,y:t14WorldY(s)+t.r*16,w:16,h:16};
+ if(t13PhysicalSurfaces(s,box).some(q=>q.solid&&near(q,box)))return '此格有实体方块';
+ if(!t14Visible(s,t))return '墙体遮挡';
+ // Underground walls are scenery, so wall torches can share the actor's cell.
+ // Requiring an empty actor-sized box prevented use in narrow mineshafts.
+ if(!s.r05Arena){const nearSupport={x:box.x-2,y:box.y-2,w:20,h:21};
+  if(!solids().some(q=>near(q,nearSupport)))return '需要靠近地面或台面';}
+ if(s.t13World&&(t.c<2||t.c>=s.t13World.cols-2||t.r>=s.t13World.rows-2))return '世界边界';
+ return '';
+}
+function t14ChooseTorch(s,raw){
+ const direct=t14Grid(s,raw.x,raw.y);direct.kind='torch';direct.reason=t14TorchSpot(s,direct);
+ if(!direct.reason)return {...direct,pointer:raw.pointer,valid:true};
+ if(!t13InReach(s,direct))return {...direct,pointer:raw.pointer,valid:false};
+ const candidates=[];
+ for(let dr=-2;dr<=2;dr++)for(let dc=-2;dc<=2;dc++){
+  const t={...t14Grid(s,direct.x+dc*16,direct.y+dr*16),kind:'torch'};
+  if(!t14TorchSpot(s,t))candidates.push({...t,score:Math.hypot(t.x-raw.x,t.y-raw.y)});
+ }
+ candidates.sort((a,b)=>a.score-b.score||a.y-b.y||a.x-b.x);
+ return candidates.length?{...candidates[0],pointer:raw.pointer,smart:true,valid:true,reason:''}:{...direct,pointer:raw.pointer,valid:false};
+}
+const t14OriginalTarget=t13ToolTarget;
+t13ToolTarget=function(s,v={}){
+ const raw=t14RawTarget(s,v);
+ if(s.tool===3)return t14ChooseMine(s,raw);
+ if(s.tool===4)return t14ChooseTorch(s,raw);
+ return raw;
+};
+const t14OriginalMine=t13Mine;
+t13Mine=function(s,target){
+ if(!target)return false;
+ const t=target.kind?target:{...t14Grid(s,target.x,target.y),kind:'tile'};
+ const reason=t14MineReason(s,t);
+ if(reason){if(s.ticks%30===0)note(reason);t14Event('mine-rejected',{reason,c:t.c,r:t.r});return false;}
+ if(t.kind==='platform'){
+  const i=(s.built||[]).findIndex(q=>q.id===t.platformId);if(i<0)return false;
+  const q=s.built.splice(i,1)[0];t13Drop(s,'wood',1,q.x,q.y);s.totalMined++;if(s.t13World){s.t13World.revision++;s.t13World.platforms=s.built;}
+  if(s.p.support===q.id){s.p.grounded=false;s.p.support=null;}terraSound('break');t14Event('platform-recovered',{id:q.id});return true;
+ }
+ const mined=s.t13World?.mined||0,ok=t14OriginalMine(s,t);
+ if(ok){t14Event('mine-strike',{c:t.c,r:t.r,smart:!!target.smart,pointer:!!target.pointer});if(s.t13World.mined>mined)t13LightCache.key='';}
+ return ok;
+};
+const t14OriginalBeginTool=t13BeginTool;
+t13BeginTool=function(s,v){
+ if(s.tool===3||s.tool===4){const t=t13ToolTarget(s,v);s.t13Target=t;
+  if(!t.valid){s.t13Use=8;if(t.reason&&s.ticks%30===0)note(t.reason);return;}}
+ return t14OriginalBeginTool(s,v);
+};
+const t14OriginalPlace=t13Place;
+t13Place=function(s,target,type){
+ if(type!==4)return t14OriginalPlace(s,target,type);
+ const t=target.kind==='torch'?target:t14ChooseTorch(s,{...target,pointer:true});
+ const reason=t.valid===false?t.reason:t14TorchSpot(s,t);if(reason){note(reason);return false;}
+ if((s.t13Inventory?.torch||0)<1){note('火把用完了，地下补给箱中可以补充。');return false;}
+ const a=s.t13World?s.t13World.torches:(s.t14Torches||(s.t14Torches=[])),x=t.c*16+8,y=t14WorldY(s)+(t.r+1)*16;
+ if(a.some(q=>Math.hypot(q.x-x,q.y-y)<15)){s.t14TorchMessage='此处已有火把';return false;}
+ a.push({x,y,phase:s.ticks%8,wall:!!s.r05Arena,source:'player-r14'});s.t13Inventory.torch--;
+ if(s.t13World)s.t13World.revision++;t13LightCache.key='';s.t14TorchMessage='火把已放置';
+ terraSound('build',{volume:.6});t13Event('place',{type:4,x:x-8,y:y-16});t14Event('torch-placed',{x,y,stock:s.t13Inventory.torch,area:s.r05Arena?'mine':'main'});t13UI(true);return true;
+};
+// Pre-place actual fire/light objects on the floors of cave corridors. No white
+// overlay or brightened screenshot: they are drawn by the same torch renderer.
+function t14SeedLights(w){
+ if(!w||w.t14Lights)return;const start=w.torches.length;
+ function add(c,r){
+  if(c<3||c>=w.cols-3||r<0||r>=w.rows-3||t13At(w,c,r)||t13At(w,c,r-1)||!t13At(w,c,r+1))return;
+  const x=c*16+8,y=T13.top+(r+1)*16;
+  if(w.torches.some(q=>Math.hypot(q.x-x,q.y-y)<112)||w.chests.some(q=>Math.abs(q.x+16-x)<38&&Math.abs(q.y+q.h-y)<34))return;
+  w.torches.push({x,y,phase:(c+r)%8,wall:true,source:'r14-cave'});
+ }
+ for(let c=20;c<w.cols-4;c+=11)for(let r=6;r<w.rows-4;r++)add(c,r);
+ for(let r=8;r<114;r+=8){for(const cx of [61+Math.sin(r*.067)*12,138+Math.sin(r*.055)*14]){
+  const c=Math.round(cx);if(!t13At(w,c,r)&&!t13At(w,c,r-1)){
+   const x=c*16+8,y=T13.top+(r+1)*16;if(!w.torches.some(q=>Math.hypot(q.x-x,q.y-y)<128))w.torches.push({x,y,phase:r%8,wall:true,source:'r14-shaft'});
+  }
+ }}
+ // Mark both sides of the shallow pocket and the walk toward the mining region.
+ for(let x=824;x<w.cols*16-64;x+=192){if(w.trees?.some(t=>Math.abs(t.x-x)<30))continue;
+  if(!w.torches.some(q=>Math.hypot(q.x-x,q.y-T13.top)<112))w.torches.push({x,y:T13.top,phase:x%7,source:'r14-surface'});
+ }
+ w.t14Lights=true;w.t14AddedLights=w.torches.length-start;w.revision++;t14Event('cave-lit',{added:w.t14AddedLights,total:w.torches.length});
+}
+const t14GenerateBase=t13GenerateWorld;t13GenerateWorld=function(){const w=t14GenerateBase();t14SeedLights(w);return w;};
+const t14RoomBase=t11PrepareRoom;t11PrepareRoom=function(s){t14RoomBase(s);t14SeedLights(s.t13World);t13LightCache.key='';};
+const t14NewStateBase=newState;newState=function(){const s=t14NewStateBase();s.t14Torches=[];return s;};
+const t14TerrainBase=drawTerraTerrain;
+drawTerraTerrain=function(s){t14TerrainBase(s);for(const t of s.t14Torches||[]){if(t.x-s.cam< -25||t.x-s.cam>W+25)continue;
+ ctx.save();ctx.translate(Math.round(t.x-s.cam),t.y);ctx.scale(.75,.75);r07Furniture('torch',0,0,s.ticks,t.phase);ctx.restore();}};
+// The small held torch gets a visible animated flame, not just a brown stick.
+const t14BodyBase=r06DrawBody;
+r06DrawBody=function(g,x,foot,face,walk=0,air=false,attack=0,tool=0,opacity=1,armor='platinum',weapon='starfury',scale=.75){
+ t14BodyBase(g,x,foot,face,walk,air,attack,tool,opacity,armor,weapon,scale);
+ if(tool===4&&state&&(state.t13Inventory?.torch||0)>0){const pose=t10Pose(state,attack,tool);
+  g.save();g.translate(Math.round(x),Math.round(t10BodyFoot(state,foot,scale)));g.scale(face*scale,scale);g.globalAlpha*=opacity;
+  g.translate(pose.hand.x,pose.hand.y);g.rotate(pose.rotation);t13Flame(g,0,-8,state.ticks,false,1);g.restore();}
+};
+// Bright target reticle after underground lighting; hit test and reticle share
+// exactly the same selected cell (including fullscreen camera conversion).
+t13DrawCursor=function(s){
+ if(s.tool<1||s.t11Transition||(s.r05Arena&&!s.t14CursorPostLight))return;
+ const t=t13ToolTarget(s,s.t13LastInput||{}),base=t14WorldY(s),x=Math.floor(t.x/16)*16-s.cam,y=base+Math.floor((t.y-base)/16)*16;
+ const ok=(t.valid!==false)&&t13InReach(s,t);ctx.save();ctx.strokeStyle=ok?'#ffe48c':'#ff8179';ctx.fillStyle=ok?'#ffe48c20':'#ff817918';ctx.lineWidth=1;
+ ctx.fillRect(Math.round(x),y,16,16);ctx.strokeRect(Math.round(x)+.5,y+.5,15,15);
+ ctx.fillStyle=ok?'#fff9d6':'#ffb3a1';for(const [dx,dy]of [[0,0],[13,0],[0,13],[13,13]])ctx.fillRect(Math.round(x)+dx,y+dy,3,3);
+ if(s.tool===3&&s.t13World&&ok){const cracks=s.t13World.cracks[t.c+','+t.r]||0,material=t13At(s.t13World,t.c,t.r),req=material===1?90:material<=3?135:material===4?180:225;
+  if(cracks){ctx.fillStyle='#0c1529';ctx.fillRect(Math.round(x),y+18,16,3);ctx.fillStyle='#ffe28d';ctx.fillRect(Math.round(x),y+18,16*Math.min(1,cracks/req),3);}}
+ ctx.restore();s.t14Cursor={x:t.x,y:t.y,c:t.c,r:t.r,valid:ok,reason:t.reason||'',pointer:!!t.pointer,smart:!!t.smart};
+};
+const t14LightingBase=t13ApplyLighting;
+t13ApplyLighting=function(s){t14LightingBase(s);s.t14CursorPostLight=true;ctx.save();ctx.translate(0,-(s.camY||0));t13DrawCursor(s);ctx.restore();s.t14CursorPostLight=false;};
+// Cancel stale pointer use on pause and leaving the game, but not during a drag.
+const t14ClearBase=clearInput;
+clearInput=function(){t14ClearBase();t13Pointer.active=false;r05Pointer.active=false;};
+window.addEventListener('pointercancel',()=>{t13Pointer.down=t13Pointer.active=false;r05Pointer.down=r05Pointer.pressed=false;},true);
+canvas.addEventListener('pointerleave',()=>{if(!t13Pointer.down)t13Pointer.active=false;},true);
+const t14AfterBase=t13AfterStep;
+t13AfterStep=function(s,v,use){t14AfterBase(s,v,use);if(state===s)s.t13LastInput={x:v.x||0,y:v.y||0,jump:!!v.jump,action:!!v.action};};
+const t14UIBase=r06UpdateUI;
+r06UpdateUI=function(){t14UIBase();if(!isTrio())return;$('bestLabel').textContent='R14';t10Build.textContent=T14_VERSION;
+ const badge=document.querySelector('header .offline');if(badge)badge.textContent='TERRARIA · 1-3';
+ const torch=t13Dock.querySelector('[data-t13-tool="4"] small');if(torch)torch.textContent=(state?.t13Inventory?.torch??60)+' 支 · J 放置';
+ $('heroHelp').textContent='R14：1–6 / E 换工具。4 铜镐：J 挖近身方块，方向键控制挖掘方向，左键精确选格。5 火把：J / 左键放置，窄井内可贴背景墙；地下通道已有照明。B 仍为魔镜返程。';
+ if(state?.tool===3)$('actionLabel').textContent='铜镐 · 方向＋J 近身挖掘 / 左键选格';
+ if(state?.tool===4)$('actionLabel').textContent='火把 · J / 左键放置 · 可贴地下背景墙';
+};
+r04PauseHelp=function(){return 'R14：1–6 / E 选工具。4 铜镐：方向＋J 挖最近地块；左键指定格子。5 火把：J / 左键放置。Q 换武器，L / ↑ / 右键开箱，B 魔镜回地面，空格跳跃，H 治疗，F 坐骑。';};
+const t14Diagnostics={version:T14_VERSION,canvasRect:t14CanvasRect,events:()=>t14Log,target:(v={})=>t13ToolTarget(state,v),raw:(v={})=>t14RawTarget(state,v),cursor:()=>state.t14Cursor,
+ torchCount:()=>({stock:state?.t13Inventory?.torch||0,world:state?.t13World?.torches.length||0,added:state?.t13World?.t14AddedLights||0,main:state?.t14Torches?.length||0}),
+ torches:()=>state?.t13World?.torches||state?.t14Torches||[],light:t=>t14Visible(state,t),mineReason:t=>t14MineReason(state,t),
+ fixtures:{world:()=>state.t13World,set:(c,r,n)=>t13Set(state.t13World,c,r,n),mine:t=>t13Mine(state,t),place:t=>t13Place(state,t,4),
+ camera:(x,y)=>{state.cam=x;state.camY=y;},select:n=>r06DigitTool(n),torchPreview:t=>t14ChooseTorch(state,{...t,pointer:true})}
+};
+
+
+const T15_UI_IMAGES={"hudBoots": "__TERRA_ASSET_media-173__", "hudRegen": "__TERRA_ASSET_media-174__"};

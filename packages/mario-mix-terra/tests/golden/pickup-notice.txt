@@ -1,0 +1,1 @@
+function t21Toast(s,kind,count=1){const d=T21_ITEMS[kind]||{name:'补给',effect:'可拾取补给',icon:null};if(!kind)return;t21Ensure(s);s.t21Notices.push({name:d.name+(count>1?' ×'+count:''),effect:d.effect,icon:d.icon,age:0});s.t21Notices=s.t21Notices.slice(-4);t21Event('pickup-description',{kind,name:d.name,effect:d.effect});}

@@ -1,0 +1,591 @@
+{
+  "schemaVersion": 1,
+  "version": "terra-m02",
+  "modules": [
+    {
+      "id": "eye-boss",
+      "title": "克苏鲁之眼基础状态机",
+      "path": "src/simulation/eye-boss.mjs",
+      "layer": "simulation",
+      "exports": [
+        "createEyeSystem"
+      ],
+      "dependsOn": [],
+      "reviewerRole": "玩法与内容",
+      "tests": [
+        "tests/modules.test.mjs"
+      ],
+      "entryHook": "eye-boss",
+      "status": "connected"
+    },
+    {
+      "id": "platform-builder",
+      "title": "隐藏场景平台建造",
+      "path": "src/simulation/platform-builder.mjs",
+      "layer": "simulation",
+      "exports": [
+        "createBuildingSystem"
+      ],
+      "dependsOn": [],
+      "reviewerRole": "玩法与内容",
+      "tests": [
+        "tests/modules.test.mjs"
+      ],
+      "entryHook": "platform-builder",
+      "status": "connected"
+    },
+    {
+      "id": "logical-input",
+      "title": "早期逻辑输入",
+      "path": "src/input/logical-input.mjs",
+      "layer": "input",
+      "exports": [
+        "createLogicalInput"
+      ],
+      "dependsOn": [],
+      "reviewerRole": "引擎边界与输入",
+      "tests": [
+        "tests/modules.test.mjs"
+      ],
+      "entryHook": "logical-input",
+      "status": "connected"
+    },
+    {
+      "id": "level-13",
+      "title": "第三期地图解码",
+      "path": "src/content/level-13.mjs",
+      "layer": "content",
+      "exports": [
+        "createLevel13"
+      ],
+      "dependsOn": [],
+      "reviewerRole": "玩法与内容",
+      "tests": [
+        "tests/modules.test.mjs"
+      ],
+      "entryHook": "level-13",
+      "status": "connected"
+    },
+    {
+      "id": "stick",
+      "title": "摇杆死区",
+      "path": "src/input/stick.mjs",
+      "layer": "input",
+      "exports": [
+        "normalizeStick"
+      ],
+      "dependsOn": [],
+      "reviewerRole": "引擎边界与输入",
+      "tests": [
+        "tests/modules.test.mjs"
+      ],
+      "entryHook": "stick",
+      "status": "connected"
+    },
+    {
+      "id": "actions",
+      "title": "默认动作定义",
+      "path": "src/content/actions.mjs",
+      "layer": "content",
+      "exports": [
+        "createActionDefinitions"
+      ],
+      "dependsOn": [],
+      "reviewerRole": "玩法与内容",
+      "tests": [
+        "tests/modules.test.mjs"
+      ],
+      "entryHook": "bindings-controller",
+      "status": "connected"
+    },
+    {
+      "id": "key-label",
+      "title": "按键名称",
+      "path": "src/ui/key-label.mjs",
+      "layer": "ui",
+      "exports": [
+        "keyLabel"
+      ],
+      "dependsOn": [],
+      "reviewerRole": "UI 与可访问性",
+      "tests": [
+        "tests/modules.test.mjs"
+      ],
+      "entryHook": "bindings-controller",
+      "status": "connected"
+    },
+    {
+      "id": "fixed-step",
+      "title": "固定步长时钟",
+      "path": "src/runtime/fixed-step.mjs",
+      "layer": "runtime",
+      "exports": [
+        "createFixedStep"
+      ],
+      "dependsOn": [],
+      "reviewerRole": "引擎边界与输入",
+      "tests": [
+        "tests/modules.test.mjs"
+      ],
+      "entryHook": "clock",
+      "status": "connected"
+    },
+    {
+      "id": "mount-binding",
+      "title": "坐骑按键事务",
+      "path": "src/input/mount-binding.mjs",
+      "layer": "input",
+      "exports": [
+        "assignMountBinding"
+      ],
+      "dependsOn": [],
+      "reviewerRole": "引擎边界与输入",
+      "tests": [
+        "tests/settings.test.mjs"
+      ],
+      "entryHook": "mount-binding",
+      "status": "connected"
+    },
+    {
+      "id": "bindings-model",
+      "title": "配置验证、迁移与绑定",
+      "path": "src/input/bindings-model.mjs",
+      "layer": "input",
+      "exports": [
+        "createBindingsModel"
+      ],
+      "dependsOn": [
+        "actions",
+        "mount-binding"
+      ],
+      "reviewerRole": "引擎边界与输入",
+      "tests": [
+        "tests/settings.test.mjs"
+      ],
+      "entryHook": "bindings-controller",
+      "status": "connected"
+    },
+    {
+      "id": "keyboard-router",
+      "title": "键盘逻辑映射",
+      "path": "src/input/keyboard-router.mjs",
+      "layer": "input",
+      "exports": [
+        "createKeyboardRouter"
+      ],
+      "dependsOn": [
+        "actions"
+      ],
+      "reviewerRole": "引擎边界与输入",
+      "tests": [
+        "tests/settings.test.mjs"
+      ],
+      "entryHook": "bindings-controller",
+      "status": "connected"
+    },
+    {
+      "id": "binding-capture",
+      "title": "按键捕获与释放屏障",
+      "path": "src/input/binding-capture.mjs",
+      "layer": "input",
+      "exports": [
+        "createBindingCapture"
+      ],
+      "dependsOn": [],
+      "reviewerRole": "引擎边界与输入",
+      "tests": [
+        "tests/settings.test.mjs"
+      ],
+      "entryHook": "bindings-controller",
+      "status": "connected"
+    },
+    {
+      "id": "lifetime",
+      "title": "计时器与监听器清理",
+      "path": "src/runtime/lifetime.mjs",
+      "layer": "runtime",
+      "exports": [
+        "createLifetime"
+      ],
+      "dependsOn": [],
+      "reviewerRole": "引擎边界与输入",
+      "tests": [
+        "tests/settings.test.mjs"
+      ],
+      "entryHook": "bindings-controller",
+      "status": "connected"
+    },
+    {
+      "id": "settings-session",
+      "title": "设置窗口会话",
+      "path": "src/ui/settings-session.mjs",
+      "layer": "ui",
+      "exports": [
+        "createSettingsSession"
+      ],
+      "dependsOn": [
+        "lifetime"
+      ],
+      "reviewerRole": "UI 与可访问性",
+      "tests": [
+        "tests/settings.test.mjs"
+      ],
+      "entryHook": "bindings-controller",
+      "status": "connected"
+    },
+    {
+      "id": "bindings-view",
+      "title": "改键表格视图",
+      "path": "src/ui/bindings-view.mjs",
+      "layer": "ui",
+      "exports": [
+        "createBindingsView"
+      ],
+      "dependsOn": [
+        "key-label",
+        "lifetime"
+      ],
+      "reviewerRole": "UI 与可访问性",
+      "tests": [
+        "tests/settings.test.mjs"
+      ],
+      "entryHook": "bindings-controller",
+      "status": "connected"
+    },
+    {
+      "id": "stage-catalog",
+      "title": "关卡、底图、角色与适配层契约",
+      "path": "src/content/stage-catalog.mjs",
+      "layer": "content",
+      "exports": [
+        "createStageCatalog"
+      ],
+      "dependsOn": [],
+      "reviewerRole": "关卡接入接口维护",
+      "tests": [
+        "tests/stages.test.mjs",
+        "tests/final-contract.test.mjs"
+      ],
+      "entryHook": "stage-controller",
+      "status": "connected"
+    },
+    {
+      "id": "stage-session",
+      "title": "关卡实例生命周期",
+      "path": "src/runtime/stage-session.mjs",
+      "layer": "runtime",
+      "exports": [
+        "createStageSession"
+      ],
+      "dependsOn": [
+        "stage-catalog",
+        "lifetime"
+      ],
+      "reviewerRole": "关卡接入接口维护",
+      "tests": [
+        "tests/stages.test.mjs",
+        "tests/final-contract.test.mjs"
+      ],
+      "entryHook": "stage-controller",
+      "status": "connected"
+    },
+    {
+      "id": "platform-motor",
+      "title": "原型横版角色运动器（非旧物理迁移）",
+      "path": "src/simulation/platform-motor.mjs",
+      "layer": "simulation",
+      "exports": [
+        "createPlatformMotor"
+      ],
+      "dependsOn": [],
+      "reviewerRole": "关卡接入接口维护",
+      "tests": [
+        "tests/stages.test.mjs"
+      ],
+      "entryHook": "stage-controller",
+      "status": "connected"
+    },
+    {
+      "id": "platform-stage",
+      "title": "数据关卡驱动：房间、检查点与出口",
+      "path": "src/simulation/platform-stage.mjs",
+      "layer": "simulation",
+      "exports": [
+        "createPlatformStage"
+      ],
+      "dependsOn": [
+        "platform-motor"
+      ],
+      "reviewerRole": "关卡接入接口维护",
+      "tests": [
+        "tests/stages.test.mjs"
+      ],
+      "entryHook": "stage-controller",
+      "status": "connected"
+    },
+    {
+      "id": "stage-actions",
+      "title": "读取共享动作配置",
+      "path": "src/input/stage-actions.mjs",
+      "layer": "input",
+      "exports": [
+        "readStageActions"
+      ],
+      "dependsOn": [
+        "stick",
+        "bindings-model"
+      ],
+      "reviewerRole": "关卡接入接口维护",
+      "tests": [
+        "tests/stages.test.mjs"
+      ],
+      "entryHook": "stage-controller",
+      "status": "connected"
+    },
+    {
+      "id": "stage-audio",
+      "title": "关卡音频事件策略",
+      "path": "src/runtime/stage-audio.mjs",
+      "layer": "runtime",
+      "exports": [
+        "createStageAudioPolicy"
+      ],
+      "dependsOn": [],
+      "reviewerRole": "关卡接入接口维护",
+      "tests": [
+        "tests/stages.test.mjs"
+      ],
+      "entryHook": "stage-controller",
+      "status": "connected"
+    },
+    {
+      "id": "stage-view",
+      "title": "几何开发预览绘制",
+      "path": "src/ui/stage-view.mjs",
+      "layer": "ui",
+      "exports": [
+        "drawStageView"
+      ],
+      "dependsOn": [],
+      "reviewerRole": "关卡接入接口维护",
+      "tests": [
+        "tests/stages.test.mjs"
+      ],
+      "entryHook": "stage-controller",
+      "status": "connected"
+    },
+    {
+      "id": "item-definitions",
+      "title": "物品说明与分类",
+      "path": "src/content/items.mjs",
+      "layer": "content",
+      "exports": [
+        "createItemDefinitions"
+      ],
+      "dependsOn": [],
+      "reviewerRole": "第三期协作接口审核",
+      "tests": [
+        "tests/loot.test.mjs"
+      ],
+      "entryHook": "item-definitions",
+      "status": "connected"
+    },
+    {
+      "id": "loot-rules",
+      "title": "武器交换、箱子散落与拾取说明计划",
+      "path": "src/simulation/loot-rules.mjs",
+      "layer": "simulation",
+      "exports": [
+        "createLootRules"
+      ],
+      "dependsOn": [
+        "item-definitions"
+      ],
+      "reviewerRole": "第三期协作接口审核",
+      "tests": [
+        "tests/loot.test.mjs"
+      ],
+      "entryHook": "item-definitions",
+      "status": "connected"
+    },
+    {
+      "id": "adventure-render",
+      "title": "HUD与拾取提示绘制",
+      "path": "src/ui/adventure-render.mjs",
+      "layer": "ui",
+      "exports": [
+        "paintAdventureHud",
+        "paintPickupNotice",
+        "paintMissingPickup"
+      ],
+      "dependsOn": [],
+      "tests": [
+        "tests/presentation.test.mjs"
+      ],
+      "entryHook": "hud-paint",
+      "reviewerRole": "ui-maintainer",
+      "status": "connected"
+    },
+    {
+      "id": "display-preferences",
+      "title": "独立显示偏好",
+      "path": "src/ui/display-preferences.mjs",
+      "layer": "ui",
+      "exports": [
+        "createDisplayPreferences"
+      ],
+      "dependsOn": [],
+      "tests": [
+        "tests/presentation.test.mjs"
+      ],
+      "entryHook": "adventure-shell",
+      "reviewerRole": "ui-maintainer",
+      "status": "connected"
+    },
+    {
+      "id": "adventure-shell",
+      "title": "冒险界面与显示控制",
+      "path": "src/ui/adventure-shell.mjs",
+      "layer": "ui",
+      "exports": [
+        "createAdventureShell"
+      ],
+      "dependsOn": [
+        "display-preferences",
+        "lifetime"
+      ],
+      "tests": [
+        "tests/presentation.test.mjs"
+      ],
+      "entryHook": "adventure-shell",
+      "reviewerRole": "ui-maintainer",
+      "status": "connected"
+    },
+    {
+      "id": "quick-guide",
+      "title": "只读操作提示与反馈摘要",
+      "path": "src/ui/quick-guide.mjs",
+      "layer": "ui",
+      "exports": [
+        "buildQuickGuide",
+        "formatPlayerReport"
+      ],
+      "dependsOn": [
+        "key-label"
+      ],
+      "tests": [
+        "tests/release-polish.test.mjs"
+      ],
+      "reviewerRole": "UI / 输入维护者",
+      "entryHook": "adventure-shell",
+      "status": "connected"
+    },
+    {
+      "id": "adventure-help",
+      "title": "可选冒险手册",
+      "path": "src/ui/adventure-help.mjs",
+      "layer": "ui",
+      "exports": [
+        "createAdventureHelp"
+      ],
+      "dependsOn": [
+        "lifetime",
+        "quick-guide"
+      ],
+      "tests": [
+        "tests/release-polish.test.mjs"
+      ],
+      "reviewerRole": "UI / 输入维护者",
+      "entryHook": "adventure-shell",
+      "status": "connected"
+    },
+    {
+      "id": "player-copy",
+      "title": "玩家文案与阅读排版",
+      "path": "src/ui/player-copy.mjs",
+      "layer": "ui",
+      "exports": [
+        "playerCopy",
+        "formatUiValue",
+        "wrapUiText"
+      ],
+      "dependsOn": [],
+      "reviewerRole": "界面与输入",
+      "tests": [
+        "tests/player-ui.test.mjs"
+      ],
+      "entryHook": "adventure-shell",
+      "status": "connected"
+    },
+    {
+      "id": "player-interface",
+      "title": "玩家界面、确认与提示",
+      "path": "src/ui/player-interface.mjs",
+      "layer": "ui",
+      "exports": [
+        "createPlayerInterface"
+      ],
+      "dependsOn": [],
+      "reviewerRole": "界面与输入",
+      "tests": [
+        "tests/player-ui.test.mjs"
+      ],
+      "entryHook": "adventure-shell",
+      "status": "connected"
+    },
+    {
+      "id": "hud-surface",
+      "title": "高分辨率HUD画布",
+      "path": "src/ui/hud-surface.mjs",
+      "layer": "ui",
+      "exports": [
+        "createHudSurface"
+      ],
+      "dependsOn": [],
+      "reviewerRole": "界面与输入",
+      "tests": [
+        "tests/player-ui.test.mjs"
+      ],
+      "entryHook": "adventure-shell",
+      "status": "connected"
+    }
+  ],
+  "compatibility": {
+    "fragments": 33,
+    "bridgePaths": [
+      "src/bridges/bindings.bridge.js",
+      "src/bridges/stages.bridge.js",
+      "src/bridges/weapon-exchange.bridge.js",
+      "src/bridges/chest-spill.bridge.js",
+      "src/bridges/hud-paint.bridge.js",
+      "src/bridges/adventure-shell.bridge.js"
+    ],
+    "maxWrapperAssignments": 41
+  },
+  "goldenHashes": {
+    "tests/golden/action-definitions.txt": "e5c1eae7fb99ce554593af0898d19f8bf846abdb0a47769ecbe8f53881cc6e0d",
+    "tests/golden/bindings-controller.txt": "914b0b551aa64c6c5a39e1a3646212d287f6d0c152bd22b99058acc515a361eb",
+    "tests/golden/bindings-load.txt": "696061ec18d5e3829b61845aa06f4ebe4515dbd92b5bfe0d25568ebc0bda6bf0",
+    "tests/golden/clock.txt": "949c11079dd73d1e5b6503bf4c22b02d4140da829fb3c9601dbe60e46c1fb089",
+    "tests/golden/eye-boss.txt": "2284d453f958b004e0b5ee1c9beadf6a41a9cc9da93fe06c9f6ee12bc88837aa",
+    "tests/golden/key-label.txt": "6a6ad5ccaa247e5879562931d0b8ceee75e72a5e121bb0898dbac570e148695d",
+    "tests/golden/keyboard-router.txt": "e33166a9407e01cd0dee7dbf6b837e4c889e6d50dabd6da85c0d5888e4402458",
+    "tests/golden/level-13.txt": "fc188de71b4e24edc69e7ea9d629d4a73a748562a7971978e11b7885bdd68067",
+    "tests/golden/logical-input.txt": "523d8e1897b80290811b1e9893fdd8f35e063ad1610d9ff204a9aba23a04fea6",
+    "tests/golden/mount-binding.txt": "f9b8a22c74058c715b38f2903d3217e1dd0a0eaab069b96ea70861b3ddc5abf7",
+    "tests/golden/platform-builder.txt": "1c13c504299c08018137315b46c103029c0f9abe6079a9575db8ca10333c8fc3",
+    "tests/golden/stick.txt": "449744d71c7c354a23d1be75ae099882faf06e9c5be11acca83cb579580ddcc0",
+    "tests/golden/stage-controller.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/golden/item-definitions.txt": "4ecbaea856b9d0d7c688d639982b750a729f6ab952d05b63739d03aee1d2f9f3",
+    "tests/golden/weapon-exchange.txt": "e36e9934a7f8c70d417cc228e0e1b80162e6994d77cfaf0138c9798a0ad63684",
+    "tests/golden/chest-spill.txt": "87632b49fbc27af259cbb87f02ccfd57f24496ddd9c20f6935d8386ecafbdddf",
+    "tests/golden/pickup-notice.txt": "ff84d2f834757cbb510cf8a4849819f7c22efc93af1b7f11bd3e8bfcd4822493",
+    "tests/golden/hud-paint.txt": "656f299118b739797185c34b3e31e639aa087926943b6751f1528fe6113e2e5c",
+    "tests/golden/notice-paint.txt": "20a8b7a3fdc6d00ef4d136c69d860f18e266fa5448686987a7bde4f715ce6bd9",
+    "tests/golden/adventure-shell.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/golden/player-copy.txt": "be37d9d6f04f2a15dc487b7cf1b55761d7f4a173701ca7ea572eab758735500a",
+    "tests/golden/player-toast.txt": "3d8e65d25e8e49ebd534e3d37d877a84e9bd8823671671367e1c4f83d0e6dc01",
+    "tests/golden/player-win-copy.txt": "599de120afd7c67b6b1ca050d2c54710c3955dc5c5675d945114f13afb957aca",
+    "tests/golden/missing-pickup-paint.txt": "aa9562e90be1369dac0e7cf7b141e9572094cee4072b5d921b59454c799f97fb"
+  }
+}

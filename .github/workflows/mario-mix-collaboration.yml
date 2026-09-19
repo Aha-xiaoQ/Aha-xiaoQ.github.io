@@ -1,0 +1,36 @@
+name: Mario Mix collaboration
+on:
+  # Always report a PR check; path-filtered required checks can stay pending.
+  pull_request:
+  push:
+    branches: [main]
+    paths:
+      - 'packages/mario-mix/**'
+      - 'games/mario-mix/**'
+      - '.github/workflows/mario-mix-collaboration.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: mario-mix-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    name: Mario Mix / collaboration checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout (pinned v7.0.1)
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Node (pinned setup-node v7.0.0)
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: '22'
+          package-manager-cache: false
+      - name: Check source and run regression tests
+        run: npm --prefix packages/mario-mix run check && npm --prefix packages/mario-mix test
+      - name: Build candidate against pinned game baseline
+        run: npm --prefix packages/mario-mix run build
+      # No deploy, write token, shared runner, untrusted artifact promotion or secrets.
