@@ -46,7 +46,7 @@
   let journalModule;
   const prepareJournal = async info => {
     if(info.page!=="journal")return;
-    journalModule ||= import(new URL("journal/runtime.mjs?v=docs-r26",routerURL).href).catch(error=>{journalModule=null;throw error;});
+    journalModule ||= import(new URL("journal/runtime.mjs?v=align-r27",routerURL).href).catch(error=>{journalModule=null;throw error;});
     await journalModule;
     await Promise.all([globalThis.SITE_JOURNAL.prepare(info),journalStyle()]);
     if(info.journalError)throw Error("Project data unavailable");

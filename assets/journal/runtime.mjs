@@ -1,7 +1,7 @@
 import {withDocuments} from './documents.mjs?v=docs-r26';
 /** Content lifecycle only. Browser history and transition ownership stay in site-router.js. */
 import {validateCatalog,validateProject,normalizeState,route,MAX_BYTES,visibleTasks,projectURL,legacyProject} from './model.mjs?v=workshop-r21';
-import {render,metadata,renderProjectCards,selectProjects,taskResults} from './render.mjs?v=docs-r26';
+import {render,metadata,renderProjectCards,selectProjects,taskResults} from './render.mjs?v=align-r27';
 const siteRoot=new URL('../../',import.meta.url), configURL=new URL('content/development/catalog.json',siteRoot);
 let catalogPromise, snapshot, current, activeLegacy;
 const states=new Map(), errors=new Map(), nodes=new Map(), filters=new Map(), loads=new Map();
