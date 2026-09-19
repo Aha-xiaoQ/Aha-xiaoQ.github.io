@@ -7,7 +7,7 @@ export function mainSection(pathname) {
   const path = String(pathname || '/').replace(/\/index\.html$/, '/');
   if (path === '/') return 'home';
   const first = path.split('/').filter(Boolean)[0];
-  return ({projects:'projects',games:'games',tools:'tools',notes:'notes',dev:'notes',about:'about'})[first] || null;
+  return ({projects:'projects',games:'games',tools:'tools',method:'tools',notes:'notes',dev:'notes',about:'about',guestbook:'about','play-guide':'games'})[first] || null;
 }
 function createNavigation(header, nav, doc) {
   const win = doc.defaultView;
@@ -60,7 +60,7 @@ export function mountNavigation(scope=globalThis.document) {
     const nav=Array.from(header.children).find(n=>n.tagName==='NAV' && n.querySelector('a[data-nav-key]'));
     if(!nav || !header.querySelector('.q-header-tools'))return;
     const section=mainSection(doc.defaultView.location.pathname);
-    if(section)nav.querySelectorAll('a[data-nav-key]').forEach(a=>{if(a.dataset.navKey===section)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
+    nav.querySelectorAll('a[data-nav-key]').forEach(a=>{if(a.dataset.navKey===section)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
     const current=controllers.get(header);
     if(current && (current.nav!==nav || !current.button.isConnected)){current.dispose();controllers.delete(header);}
     if(!controllers.has(header)) {const c=createNavigation(header,nav,doc);if(c)controllers.set(header,c);}
@@ -72,6 +72,6 @@ export function disposeNavigation() { for(const c of controllers.values())c.disp
 export function headerMutation(records) {
   return records.some(record=>{
     if(record.target?.closest?.('.site-header,.topbar'))return true;
-    return [...record.addedNodes].some(n=>n.nodeType===1 && (n.matches?.('.site-header,.topbar,.site-language') || n.querySelector?.('.site-header,.topbar')));
+    return [...(record.addedNodes||[]),...(record.removedNodes||[])].some(n=>n.nodeType===1 && (n.matches?.('.site-header,.topbar,.site-language') || n.querySelector?.('.site-header,.topbar')));
   });
 }

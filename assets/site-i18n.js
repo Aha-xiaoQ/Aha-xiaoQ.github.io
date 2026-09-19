@@ -32,7 +32,9 @@
     if (lang !== 'en' || typeof value !== 'string') return value;
     const trimmed = value.trim();
     if (!trimmed) return value;
-    return value.slice(0, value.indexOf(trimmed)) + english(trimmed) + value.slice(value.indexOf(trimmed) + trimmed.length);
+    const count = trimmed.match(/^找到 (\d+) 项 · 第 (\d+) \/ (\d+) 页$/);
+    const translated = count ? `${count[1]} ${count[1] === '1' ? 'result' : 'results'} · Page ${count[2]} / ${count[3]}` : english(trimmed);
+    return value.slice(0, value.indexOf(trimmed)) + translated + value.slice(value.indexOf(trimmed) + trimmed.length);
   }
   function localize(node, key, current, write) {
     let state = originals.get(node);
@@ -117,22 +119,30 @@
       projects: '从想法到作品，记录每一次动手实践。',
       games: '从经典关卡到跨界角色，选择一款开始冒险。',
       tools: '实用小工具与可亲手操作的实验。',
-      notes: '学习、折腾和动手过程中的随手记录。',
-      dev: '混合马里奥 · 项目记录与社区协作。',
+      notes: '项目进展、开发源码、地图模板与参与方式。',
+      dev: '项目进展与开发资料，了解当前计划和参与方式。',
       about: '在下_小Q。做项目，也做工具，偶尔做点游戏。',
+      journal: '项目进展、开发源码、地图模板与参与方式。',
+      visitorHelp: '试玩作品、查看操作说明与反馈问题。',
+      search: '查找游戏、工具、项目与开发资料。',
+      notFound: '此地址没有对应的公开页面，可返回首页、查找作品或查看开发资料。',
     };
-    const description = descriptions[info.page] || globalThis.SITE_DATA?.items?.find(item => item.slug === info.itemSlug)?.summary || '请到游戏页查看当前作品。';
+    const journalIntro = info.page === 'journal' ? globalThis.SITE_JOURNAL?.describe(info.journalPath || location.pathname)?.intro : '';
+    const description = journalIntro || descriptions[info.page] || globalThis.SITE_DATA?.items?.find(item => item.slug === info.itemSlug)?.summary || '项目、游戏、工具与制作记录。';
+    // Search queries and shared-link preferences are not canonical page identity.
+    const pageURL = new URL(location.href); pageURL.search = ''; pageURL.hash = '';
     for (const [kind, key, value] of [
       ['name', 'description', description], ['property', 'og:title', info.title],
       ['property', 'og:description', description], ['name', 'twitter:title', info.title],
-      ['name', 'twitter:description', description], ['property', 'og:url', location.href],
+      ['name', 'twitter:description', description], ['property', 'og:url', pageURL.href],
     ]) {
       let meta = document.querySelector(`meta[${kind}="${key}"]`);
       if (!meta) { meta = document.createElement('meta'); meta.setAttribute(kind, key); document.head.append(meta); }
       originals.delete(meta); meta.content = value;
     }
-    const canonical = document.querySelector('link[rel="canonical"]');
-    if (canonical) canonical.href = location.href.split('?')[0].split('#')[0];
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) { canonical = document.createElement('link'); canonical.rel = 'canonical'; document.head.append(canonical); }
+    canonical.href = pageURL.href;
     apply();
   }
   globalThis.SITE_I18N = Object.freeze({ get language() { return language; }, translate, setLanguage, apply, route });

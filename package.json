@@ -10,7 +10,7 @@
     "dev": "node tools/dev-server.mjs",
     "start": "node tools/dev-server.mjs",
     "check": "node tools/check.mjs && npm run journal:check && npm run game:check && npm run site:check && npm run terra:check && npm run content:check && npm run ui:check && npm run experience:check && npm run launch:check && npm run levels:check && npm run worlds:check && npm run site:ui:check && npm run showcase:check",
-    "test": "node --test tests/local-link.test.mjs tests/model.test.mjs tests/server.test.mjs tests/updater.test.mjs && npm run test:journal && npm run game:test && npm run test:r06 && npm run test:r07 && npm run test:r08 && npm run test:r12 && npm run test:r13 && npm run terra:test && npm run test:content && npm run test:release && npm run test:ui && npm run test:experience && npm run test:launch && npm run test:levels && npm run test:worlds && npm run test:site-ui && npm run test:showcase",
+    "test": "node --test tests/local-link.test.mjs tests/model.test.mjs tests/server.test.mjs tests/updater.test.mjs && npm run test:journal && npm run game:test && npm run test:r06 && npm run test:r07 && npm run test:r08 && npm run test:r12 && npm run test:r13 && npm run terra:test && npm run test:content && npm run test:release && npm run test:ui && npm run test:experience && npm run test:launch && npm run test:levels && npm run test:worlds && npm run test:site-ui && npm run test:showcase && npm run test:remote-audit",
     "collab:build": "node tools/build-collab.mjs",
     "handoff": "node tools/handoff.mjs",
     "doctor": "node tools/doctor.mjs",
@@ -104,7 +104,8 @@
     "release:serve": "node scripts/publication/serve.mjs",
     "showcase:build": "node scripts/showcase/build.mjs",
     "showcase:check": "node scripts/showcase/build.mjs --check",
-    "test:showcase": "node --test tests/showcase/*.test.mjs"
+    "test:showcase": "node --test tests/showcase/*.test.mjs",
+    "test:remote-audit": "node --test tests/remote-audit/*.test.mjs"
   },
   "license": "SEE LICENSE IN LICENSE.collab"
 }

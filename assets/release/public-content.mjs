@@ -5,6 +5,9 @@ export const isPublicMode=()=>Boolean(globalThis.SITE_RELEASE?.publicMode);
 const clone=x=>JSON.parse(JSON.stringify(x));
 export function publicProject(input){
  const p=clone(input);p.publicSite=true;delete p.archivedState;
+ // W02 is the current atlas. K01 remains available in source/history, not a
+ // second public registry with stale counts and private engineering paths.
+ if(p.chapterPlan)delete p.levelPlan;
  p.state={adapter:'project-v1',path:`content/development/states/${p.id}-public.json`};
  // Only current guides and an explicitly labelled version archive are published.
  p.docs=p.docs.filter(d=>!d.archived||d.id==='terra-history');

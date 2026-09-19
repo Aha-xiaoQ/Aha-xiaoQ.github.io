@@ -1,32 +1,32 @@
 {
   "schemaVersion": 1,
   "repository": "Aha-xiaoQ/Aha-xiaoQ.github.io",
-  "commit": "ed76f0b668a9e7c1a8d8f71bed2489cb2b063c9e",
-  "checkedOn": "2026-09-15",
-  "scope": "Remote metadata and selected source read; not a complete clone, full-game playtest or latest private build certification.",
+  "commit": "ce0326fde926baae513b76e547962ff40a9afe52",
+  "checkedOn": "2026-09-19",
+  "scope": "Current remote snapshot; all three entry changes are verified font-URL-only edits. Gameplay runtime and golden controls remain unchanged. Not a natural-playthrough certification.",
   "runtime": "games/mario-mix/classic-mix.js",
   "runtimeBlob": "33648e34156fb2d4d3b0ef85f80a6a331f8f64d1",
   "entries": [
     {
       "id": "I",
       "path": "games/mario-mix/play.html",
-      "blob": "133f19c04a94c0a38796f25c383785701c34e62f",
-      "size": 37114,
-      "readScope": "entry tail and gameplay source excerpts"
+      "blob": "ebdaa05b706942d529b5ae1f7fedac3a926c8563",
+      "size": 37157,
+      "readScope": "Complete current entry compared with prior Git blob: only the explicit font URLs changed."
     },
     {
       "id": "II",
       "path": "games/mario-mix-2/play.html",
-      "blob": "4db128c0395b84f8f395cfe22c2c5b1f7d63ec69",
-      "size": 11059534,
-      "readScope": "metadata only; full source not downloaded"
+      "blob": "6e33146ade9aca812bfc2c0ed4ee531d0d9a1b3e",
+      "size": 11059552,
+      "readScope": "Complete current entry compared with prior Git blob: only the explicit font URLs changed."
     },
     {
       "id": "III",
       "path": "games/mario-mix-3/play.html",
-      "blob": "06de383f89098912e69c0302b695fcd5433f64f1",
-      "size": 12022740,
-      "readScope": "metadata only; full source not downloaded"
+      "blob": "b375b47e8099b914ee78f4ec39c89171d7c0a984",
+      "size": 12022758,
+      "readScope": "Complete current entry compared with prior Git blob: only the explicit font URLs changed."
     }
   ],
   "controls": {
@@ -43,5 +43,34 @@
     "src/input/bill-descent.mjs",
     "src/legacy/bill-controls.bridge.js"
   ],
-  "promotion": "manual review only; no command in this package overwrites games/"
+  "promotion": "manual review only; no command in this package overwrites games/",
+  "previousEntryBaseline": {
+    "commit": "ed76f0b668a9e7c1a8d8f71bed2489cb2b063c9e",
+    "entries": [
+      {
+        "id": "I",
+        "path": "games/mario-mix/play.html",
+        "previousBlob": "133f19c04a94c0a38796f25c383785701c34e62f",
+        "currentBlob": "ebdaa05b706942d529b5ae1f7fedac3a926c8563",
+        "fontURLsChanged": 3,
+        "otherBytesUnchanged": true
+      },
+      {
+        "id": "II",
+        "path": "games/mario-mix-2/play.html",
+        "previousBlob": "4db128c0395b84f8f395cfe22c2c5b1f7d63ec69",
+        "currentBlob": "6e33146ade9aca812bfc2c0ed4ee531d0d9a1b3e",
+        "fontURLsChanged": 2,
+        "otherBytesUnchanged": true
+      },
+      {
+        "id": "III",
+        "path": "games/mario-mix-3/play.html",
+        "previousBlob": "06de383f89098912e69c0302b695fcd5433f64f1",
+        "currentBlob": "b375b47e8099b914ee78f4ec39c89171d7c0a984",
+        "fontURLsChanged": 2,
+        "otherBytesUnchanged": true
+      }
+    ]
+  }
 }
