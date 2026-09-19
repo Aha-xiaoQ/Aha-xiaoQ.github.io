@@ -12,6 +12,7 @@
     "enemy-bowser",
     "enemy-podoboo",
     "lava-volume",
+    "marker-CastleChain",
     "rotating-firebar",
     "source-transport-not-simulated"
   ],
@@ -125,6 +126,16 @@
       "roomId": "area-0",
       "sourceRecord": "r049-boss",
       "kind": "enemy-bowser"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r049-lava",
+      "kind": "lava-volume"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r049-chain",
+      "kind": "marker-CastleChain"
     },
     {
       "roomId": "area-0",

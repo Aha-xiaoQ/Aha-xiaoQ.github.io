@@ -1,0 +1,2 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import {background} from '../atlas/editor-art.mjs';
+test('8-4 underwater castle uses water background; dry castle stays black',()=>{const d=JSON.parse(fs.readFileSync(new URL('../generated/levels/8-4/template.json',import.meta.url)));for(const r of d.rooms.filter(r=>['area-3','area-4'].includes(r.roomId))){const c={fillRect(x,y,w,h){assert.equal(w,512);assert.equal(h,480);}};background(c,r,512,480);assert.equal(c.fillStyle,r.roomId==='area-3'?'#5c94fc':'#000000');}});

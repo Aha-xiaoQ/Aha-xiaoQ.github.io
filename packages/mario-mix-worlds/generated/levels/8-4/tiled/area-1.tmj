@@ -3,13 +3,13 @@
   "version": "1.10",
   "orientation": "orthogonal",
   "renderorder": "right-down",
-  "width": 16,
+  "width": 61,
   "height": 15,
   "tilewidth": 16,
   "tileheight": 16,
   "infinite": false,
   "nextlayerid": 4,
-  "nextobjectid": 7,
+  "nextobjectid": 36,
   "tilesets": [],
   "layers": [
     {
@@ -57,6 +57,258 @@
               "value": "{\"id\":\"r001\",\"x\":0,\"y\":32,\"w\":32,\"h\":16,\"collision\":\"solid\"}"
             }
           ]
+        },
+        {
+          "id": 3,
+          "name": "r003",
+          "type": "solid",
+          "x": 32,
+          "y": 32,
+          "width": 656,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003\",\"x\":32,\"y\":32,\"w\":656,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "name": "r004",
+          "type": "solid",
+          "x": 32,
+          "y": 208,
+          "width": 80,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r004\",\"x\":32,\"y\":208,\"w\":80,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "name": "r005",
+          "type": "solid",
+          "x": 112,
+          "y": 160,
+          "width": 32,
+          "height": 80,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005\",\"x\":112,\"y\":160,\"w\":32,\"h\":80,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "name": "r006",
+          "type": "solid",
+          "x": 144,
+          "y": 208,
+          "width": 128,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r006\",\"x\":144,\"y\":208,\"w\":128,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "name": "r008",
+          "type": "solid",
+          "x": 272,
+          "y": 176,
+          "width": 32,
+          "height": 64,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r008\",\"x\":272,\"y\":176,\"w\":32,\"h\":64,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "name": "r009",
+          "type": "solid",
+          "x": 304,
+          "y": 208,
+          "width": 128,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r009\",\"x\":304,\"y\":208,\"w\":128,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "name": "r012",
+          "type": "solid",
+          "x": 432,
+          "y": 160,
+          "width": 32,
+          "height": 80,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r012\",\"x\":432,\"y\":160,\"w\":32,\"h\":80,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "name": "r014",
+          "type": "solid",
+          "x": 512,
+          "y": 208,
+          "width": 176,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r014\",\"x\":512,\"y\":208,\"w\":176,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "name": "r016",
+          "type": "solid",
+          "x": 592,
+          "y": 144,
+          "width": 32,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r016\",\"x\":592,\"y\":144,\"w\":32,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "name": "r017",
+          "type": "solid",
+          "x": 592,
+          "y": 96,
+          "width": 32,
+          "height": 48,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r017\",\"x\":592,\"y\":96,\"w\":32,\"h\":48,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "name": "r020",
+          "type": "solid",
+          "x": 688,
+          "y": 208,
+          "width": 256,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r020\",\"x\":688,\"y\":208,\"w\":256,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 14,
+          "name": "r021",
+          "type": "solid",
+          "x": 688,
+          "y": 32,
+          "width": 256,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r021\",\"x\":688,\"y\":32,\"w\":256,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 15,
+          "name": "r022",
+          "type": "solid",
+          "x": 944,
+          "y": 176,
+          "width": 32,
+          "height": 64,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r022\",\"x\":944,\"y\":176,\"w\":32,\"h\":64,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 16,
+          "name": "r023",
+          "type": "solid",
+          "x": 944,
+          "y": 32,
+          "width": 32,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r023\",\"x\":944,\"y\":32,\"w\":32,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
         }
       ]
     },
@@ -71,7 +323,7 @@
       "draworder": "index",
       "objects": [
         {
-          "id": 3,
+          "id": 17,
           "name": "inspection-start",
           "type": "spawn",
           "x": 24,
@@ -101,7 +353,7 @@
       "draworder": "index",
       "objects": [
         {
-          "id": 4,
+          "id": 18,
           "name": "r000-plant",
           "type": "enemy-piranha",
           "x": 0,
@@ -120,7 +372,7 @@
           ]
         },
         {
-          "id": 5,
+          "id": 19,
           "name": "r002",
           "type": "conditional-section",
           "x": 32,
@@ -139,7 +391,292 @@
           ]
         },
         {
-          "id": 6,
+          "id": 20,
+          "name": "r005-plant",
+          "type": "enemy-piranha",
+          "x": 112,
+          "y": 160,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005-plant\",\"kind\":\"enemy-piranha\",\"source\":{\"macro\":\"Pipe\",\"height\":\"Infinity\",\"piranha\":true,\"x\":56,\"y\":24},\"sourcePath\":{\"area\":1,\"part\":\"base\",\"record\":\"r005\"},\"x\":112,\"y\":160}"
+            }
+          ]
+        },
+        {
+          "id": 21,
+          "name": "r007-0-0",
+          "type": "enemy-beetle",
+          "x": 208,
+          "y": 191,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r007-0-0\",\"kind\":\"enemy-beetle\",\"source\":{\"thing\":\"Beetle\",\"x\":104,\"y\":8.5},\"sourcePath\":{\"area\":1,\"part\":\"base\",\"record\":\"r007\"},\"x\":208,\"y\":191}"
+            }
+          ]
+        },
+        {
+          "id": 22,
+          "name": "r007-1-0",
+          "type": "enemy-beetle",
+          "x": 240,
+          "y": 191,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r007-1-0\",\"kind\":\"enemy-beetle\",\"source\":{\"thing\":\"Beetle\",\"x\":120,\"y\":8.5},\"sourcePath\":{\"area\":1,\"part\":\"base\",\"record\":\"r007\"},\"x\":240,\"y\":191}"
+            }
+          ]
+        },
+        {
+          "id": 23,
+          "name": "r008-transport",
+          "type": "source-transport-not-simulated",
+          "x": 272,
+          "y": 176,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r008-transport\",\"kind\":\"source-transport-not-simulated\",\"source\":{\"height\":\"Infinity\",\"piranha\":true,\"transport\":1,\"x\":136,\"y\":16,\"thing\":\"PipeVertical\",\"width\":16},\"sourcePath\":{\"area\":1,\"part\":\"base\",\"record\":\"r008\"},\"x\":272,\"y\":176}"
+            }
+          ]
+        },
+        {
+          "id": 24,
+          "name": "r008-plant",
+          "type": "enemy-piranha",
+          "x": 272,
+          "y": 176,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r008-plant\",\"kind\":\"enemy-piranha\",\"source\":{\"macro\":\"Pipe\",\"height\":\"Infinity\",\"piranha\":true,\"transport\":1,\"x\":136,\"y\":16},\"sourcePath\":{\"area\":1,\"part\":\"base\",\"record\":\"r008\"},\"x\":272,\"y\":176}"
+            }
+          ]
+        },
+        {
+          "id": 25,
+          "name": "r010",
+          "type": "enemy-koopa",
+          "x": 384,
+          "y": 144,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r010\",\"kind\":\"enemy-koopa\",\"source\":{\"thing\":\"Koopa\",\"jumping\":true,\"x\":192,\"y\":32},\"sourcePath\":{\"area\":1,\"part\":\"base\",\"record\":\"r010\"},\"x\":384,\"y\":144}"
+            }
+          ]
+        },
+        {
+          "id": 26,
+          "name": "r011",
+          "type": "enemy-koopa",
+          "x": 416,
+          "y": 160,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r011\",\"kind\":\"enemy-koopa\",\"source\":{\"thing\":\"Koopa\",\"jumping\":true,\"x\":208,\"y\":24},\"sourcePath\":{\"area\":1,\"part\":\"base\",\"record\":\"r011\"},\"x\":416,\"y\":160}"
+            }
+          ]
+        },
+        {
+          "id": 27,
+          "name": "r012-plant",
+          "type": "enemy-piranha",
+          "x": 432,
+          "y": 160,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r012-plant\",\"kind\":\"enemy-piranha\",\"source\":{\"macro\":\"Pipe\",\"height\":\"Infinity\",\"piranha\":true,\"x\":216,\"y\":24},\"sourcePath\":{\"area\":1,\"part\":\"base\",\"record\":\"r012\"},\"x\":432,\"y\":160}"
+            }
+          ]
+        },
+        {
+          "id": 28,
+          "name": "r013",
+          "type": "lava-volume",
+          "x": 464,
+          "y": 208,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r013\",\"kind\":\"lava-volume\",\"source\":{\"macro\":\"Water\",\"width\":24,\"x\":232,\"y\":0},\"sourcePath\":{\"area\":1,\"part\":\"base\",\"record\":\"r013\"},\"x\":464,\"y\":208}"
+            }
+          ]
+        },
+        {
+          "id": 29,
+          "name": "r015",
+          "type": "hidden-block",
+          "x": 560,
+          "y": 144,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r015\",\"kind\":\"hidden-block\",\"source\":{\"thing\":\"Block\",\"hidden\":true,\"x\":280,\"y\":32},\"sourcePath\":{\"area\":1,\"part\":\"base\",\"record\":\"r015\"},\"x\":560,\"y\":144}"
+            }
+          ]
+        },
+        {
+          "id": 30,
+          "name": "r017-transport",
+          "type": "source-transport-not-simulated",
+          "x": 592,
+          "y": 96,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r017-transport\",\"kind\":\"source-transport-not-simulated\",\"source\":{\"height\":24,\"transport\":3,\"x\":296,\"y\":56,\"thing\":\"PipeVertical\",\"width\":16},\"sourcePath\":{\"area\":1,\"part\":\"base\",\"record\":\"r017\"},\"x\":592,\"y\":96}"
+            }
+          ]
+        },
+        {
+          "id": 31,
+          "name": "r018",
+          "type": "enemy-koopa",
+          "x": 640,
+          "y": 152,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r018\",\"kind\":\"enemy-koopa\",\"source\":{\"thing\":\"Koopa\",\"jumping\":true,\"x\":320,\"y\":28},\"sourcePath\":{\"area\":1,\"part\":\"base\",\"record\":\"r018\"},\"x\":640,\"y\":152}"
+            }
+          ]
+        },
+        {
+          "id": 32,
+          "name": "r019",
+          "type": "enemy-koopa",
+          "x": 672,
+          "y": 136,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r019\",\"kind\":\"enemy-koopa\",\"source\":{\"thing\":\"Koopa\",\"jumping\":true,\"x\":336,\"y\":36},\"sourcePath\":{\"area\":1,\"part\":\"base\",\"record\":\"r019\"},\"x\":672,\"y\":136}"
+            }
+          ]
+        },
+        {
+          "id": 33,
+          "name": "r022-plant",
+          "type": "enemy-piranha",
+          "x": 944,
+          "y": 176,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r022-plant\",\"kind\":\"enemy-piranha\",\"source\":{\"macro\":\"Pipe\",\"height\":\"Infinity\",\"piranha\":true,\"x\":472,\"y\":16},\"sourcePath\":{\"area\":1,\"part\":\"base\",\"record\":\"r022\"},\"x\":944,\"y\":176}"
+            }
+          ]
+        },
+        {
+          "id": 34,
+          "name": "r024",
+          "type": "conditional-section",
+          "x": 976,
+          "y": 208,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r024\",\"kind\":\"conditional-section\",\"source\":{\"macro\":\"Section\",\"x\":488,\"y\":0},\"sourcePath\":{\"area\":1,\"part\":\"base\",\"record\":\"r024\"},\"x\":976,\"y\":208}"
+            }
+          ]
+        },
+        {
+          "id": 35,
           "name": "section-mode",
           "type": "conditional-section-runtime",
           "x": 0,

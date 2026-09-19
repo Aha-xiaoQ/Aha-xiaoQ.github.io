@@ -3,7 +3,7 @@
   "level": "4-4",
   "stage": {
     "id": "template-4-4",
-    "title": "4-4 · 区域 1（地形检查）",
+    "title": "4-4 · 区域 1 · 完整展开（通过路线）（地形检查）",
     "driver": "platform-v1",
     "status": "draft",
     "entryRoom": "area-0",
@@ -25,7 +25,7 @@
   "inspectionStages": [
     {
       "id": "template-4-4",
-      "title": "4-4 · 区域 1（地形检查）",
+      "title": "4-4 · 区域 1 · 完整展开（通过路线）（地形检查）",
       "driver": "platform-v1",
       "status": "draft",
       "entryRoom": "area-0",
@@ -195,9 +195,9 @@
   "maps": [
     {
       "id": "classic-4-4-area-0",
-      "title": "4-4 · 区域 1",
+      "title": "4-4 · 区域 1 · 完整展开（通过路线）",
       "tileSize": 16,
-      "width": 256,
+      "width": 3072,
       "height": 240,
       "provenance": {
         "kind": "transcribed",
@@ -276,6 +276,422 @@
           "y": 160,
           "w": 48,
           "h": 80,
+          "collision": "solid"
+        },
+        {
+          "id": "r009",
+          "x": 256,
+          "y": 208,
+          "w": 800,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r010",
+          "x": 256,
+          "y": 32,
+          "w": 800,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r011",
+          "x": 288,
+          "y": 96,
+          "w": 96,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r012-0-0",
+          "x": 400,
+          "y": 96,
+          "w": 16,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r012-1-0",
+          "x": 432,
+          "y": 96,
+          "w": 16,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r012-2-0",
+          "x": 464,
+          "y": 96,
+          "w": 16,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r012-3-0",
+          "x": 496,
+          "y": 96,
+          "w": 16,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r012-4-0",
+          "x": 528,
+          "y": 96,
+          "w": 16,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r013",
+          "x": 560,
+          "y": 96,
+          "w": 48,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r014",
+          "x": 608,
+          "y": 96,
+          "w": 96,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r015",
+          "x": 640,
+          "y": 160,
+          "w": 32,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r016",
+          "x": 704,
+          "y": 96,
+          "w": 352,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r021",
+          "x": 1056,
+          "y": 208,
+          "w": 256,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r022",
+          "x": 1056,
+          "y": 96,
+          "w": 256,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r023",
+          "x": 1056,
+          "y": 32,
+          "w": 256,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r024",
+          "x": 1312,
+          "y": 208,
+          "w": 80,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r025",
+          "x": 1312,
+          "y": 32,
+          "w": 80,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r026",
+          "x": 1344,
+          "y": 48,
+          "w": 48,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r027",
+          "x": 1344,
+          "y": 160,
+          "w": 48,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r029",
+          "x": 1392,
+          "y": 208,
+          "w": 128,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r030",
+          "x": 1392,
+          "y": 32,
+          "w": 672,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r031",
+          "x": 1488,
+          "y": 160,
+          "w": 32,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r033",
+          "x": 1536,
+          "y": 128,
+          "w": 32,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r034",
+          "x": 1552,
+          "y": 176,
+          "w": 16,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r035",
+          "x": 1552,
+          "y": 160,
+          "w": 80,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r037",
+          "x": 1600,
+          "y": 112,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r038",
+          "x": 1616,
+          "y": 128,
+          "w": 16,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r039",
+          "x": 1632,
+          "y": 208,
+          "w": 432,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r040",
+          "x": 1632,
+          "y": 96,
+          "w": 16,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r041",
+          "x": 1648,
+          "y": 160,
+          "w": 416,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r042",
+          "x": 1648,
+          "y": 96,
+          "w": 32,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r043",
+          "x": 1712,
+          "y": 96,
+          "w": 64,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r044",
+          "x": 1792,
+          "y": 112,
+          "w": 16,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r045",
+          "x": 1792,
+          "y": 96,
+          "w": 48,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r046",
+          "x": 1872,
+          "y": 96,
+          "w": 192,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r052",
+          "x": 2032,
+          "y": 208,
+          "w": 256,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r053",
+          "x": 2032,
+          "y": 160,
+          "w": 256,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r054",
+          "x": 2032,
+          "y": 96,
+          "w": 256,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r055",
+          "x": 2032,
+          "y": 32,
+          "w": 256,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r056",
+          "x": 2288,
+          "y": 208,
+          "w": 160,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r057",
+          "x": 2288,
+          "y": 80,
+          "w": 16,
+          "h": 80,
+          "collision": "solid"
+        },
+        {
+          "id": "r058",
+          "x": 2288,
+          "y": 32,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r059",
+          "x": 2304,
+          "y": 32,
+          "w": 32,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r060",
+          "x": 2432,
+          "y": 160,
+          "w": 64,
+          "h": 80,
+          "collision": "solid"
+        },
+        {
+          "id": "r061",
+          "x": 2432,
+          "y": 32,
+          "w": 128,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r062",
+          "x": 2480,
+          "y": 208,
+          "w": 64,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r063",
+          "x": 2528,
+          "y": 160,
+          "w": 32,
+          "h": 80,
+          "collision": "solid"
+        },
+        {
+          "id": "r065-roof",
+          "x": 2560,
+          "y": 32,
+          "w": 512,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r065-bridge",
+          "x": 2560,
+          "y": 160,
+          "w": 208,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r065-floor",
+          "x": 2768,
+          "y": 208,
+          "w": 304,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r065-step",
+          "x": 2768,
+          "y": 144,
+          "w": 48,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r065-ceiling",
+          "x": 2784,
+          "y": 48,
+          "w": 32,
+          "h": 48,
           "collision": "solid"
         }
       ],
@@ -395,7 +811,7 @@
           "id": "r007",
           "x": 448,
           "y": 96,
-          "w": 272,
+          "w": 352,
           "h": 64,
           "collision": "solid"
         }
@@ -842,7 +1258,7 @@
           "x": 0,
           "y": 160,
           "w": 208,
-          "h": 32,
+          "h": 16,
           "collision": "solid"
         },
         {
@@ -885,7 +1301,24 @@
   "rooms": [
     {
       "roomId": "area-0",
-      "label": "区域 1",
+      "label": "区域 1 · 完整展开（通过路线）",
+      "assembly": [
+        {
+          "section": 0,
+          "x": 128,
+          "route": "pass"
+        },
+        {
+          "section": 1,
+          "x": 696,
+          "route": "pass"
+        },
+        {
+          "section": 2,
+          "x": 1280,
+          "route": "pass"
+        }
+      ],
       "setting": "Castle",
       "origin": {
         "area": 0,
@@ -897,9 +1330,9 @@
       "previewSupported": true,
       "map": {
         "id": "classic-4-4-area-0",
-        "title": "4-4 · 区域 1",
+        "title": "4-4 · 区域 1 · 完整展开（通过路线）",
         "tileSize": 16,
-        "width": 256,
+        "width": 3072,
         "height": 240,
         "provenance": {
           "kind": "transcribed",
@@ -979,6 +1412,422 @@
             "w": 48,
             "h": 80,
             "collision": "solid"
+          },
+          {
+            "id": "r009",
+            "x": 256,
+            "y": 208,
+            "w": 800,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r010",
+            "x": 256,
+            "y": 32,
+            "w": 800,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r011",
+            "x": 288,
+            "y": 96,
+            "w": 96,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r012-0-0",
+            "x": 400,
+            "y": 96,
+            "w": 16,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r012-1-0",
+            "x": 432,
+            "y": 96,
+            "w": 16,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r012-2-0",
+            "x": 464,
+            "y": 96,
+            "w": 16,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r012-3-0",
+            "x": 496,
+            "y": 96,
+            "w": 16,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r012-4-0",
+            "x": 528,
+            "y": 96,
+            "w": 16,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r013",
+            "x": 560,
+            "y": 96,
+            "w": 48,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r014",
+            "x": 608,
+            "y": 96,
+            "w": 96,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r015",
+            "x": 640,
+            "y": 160,
+            "w": 32,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r016",
+            "x": 704,
+            "y": 96,
+            "w": 352,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r021",
+            "x": 1056,
+            "y": 208,
+            "w": 256,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r022",
+            "x": 1056,
+            "y": 96,
+            "w": 256,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r023",
+            "x": 1056,
+            "y": 32,
+            "w": 256,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r024",
+            "x": 1312,
+            "y": 208,
+            "w": 80,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r025",
+            "x": 1312,
+            "y": 32,
+            "w": 80,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r026",
+            "x": 1344,
+            "y": 48,
+            "w": 48,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r027",
+            "x": 1344,
+            "y": 160,
+            "w": 48,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r029",
+            "x": 1392,
+            "y": 208,
+            "w": 128,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r030",
+            "x": 1392,
+            "y": 32,
+            "w": 672,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r031",
+            "x": 1488,
+            "y": 160,
+            "w": 32,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r033",
+            "x": 1536,
+            "y": 128,
+            "w": 32,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r034",
+            "x": 1552,
+            "y": 176,
+            "w": 16,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r035",
+            "x": 1552,
+            "y": 160,
+            "w": 80,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r037",
+            "x": 1600,
+            "y": 112,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r038",
+            "x": 1616,
+            "y": 128,
+            "w": 16,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r039",
+            "x": 1632,
+            "y": 208,
+            "w": 432,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r040",
+            "x": 1632,
+            "y": 96,
+            "w": 16,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r041",
+            "x": 1648,
+            "y": 160,
+            "w": 416,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r042",
+            "x": 1648,
+            "y": 96,
+            "w": 32,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r043",
+            "x": 1712,
+            "y": 96,
+            "w": 64,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r044",
+            "x": 1792,
+            "y": 112,
+            "w": 16,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r045",
+            "x": 1792,
+            "y": 96,
+            "w": 48,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r046",
+            "x": 1872,
+            "y": 96,
+            "w": 192,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r052",
+            "x": 2032,
+            "y": 208,
+            "w": 256,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r053",
+            "x": 2032,
+            "y": 160,
+            "w": 256,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r054",
+            "x": 2032,
+            "y": 96,
+            "w": 256,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r055",
+            "x": 2032,
+            "y": 32,
+            "w": 256,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r056",
+            "x": 2288,
+            "y": 208,
+            "w": 160,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r057",
+            "x": 2288,
+            "y": 80,
+            "w": 16,
+            "h": 80,
+            "collision": "solid"
+          },
+          {
+            "id": "r058",
+            "x": 2288,
+            "y": 32,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r059",
+            "x": 2304,
+            "y": 32,
+            "w": 32,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r060",
+            "x": 2432,
+            "y": 160,
+            "w": 64,
+            "h": 80,
+            "collision": "solid"
+          },
+          {
+            "id": "r061",
+            "x": 2432,
+            "y": 32,
+            "w": 128,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r062",
+            "x": 2480,
+            "y": 208,
+            "w": 64,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r063",
+            "x": 2528,
+            "y": 160,
+            "w": 32,
+            "h": 80,
+            "collision": "solid"
+          },
+          {
+            "id": "r065-roof",
+            "x": 2560,
+            "y": 32,
+            "w": 512,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r065-bridge",
+            "x": 2560,
+            "y": 160,
+            "w": 208,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r065-floor",
+            "x": 2768,
+            "y": 208,
+            "w": 304,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r065-step",
+            "x": 2768,
+            "y": 144,
+            "w": 48,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r065-ceiling",
+            "x": 2784,
+            "y": 48,
+            "w": 32,
+            "h": 48,
+            "collision": "solid"
           }
         ],
         "objects": [
@@ -1042,6 +1891,360 @@
             "record": "r008"
           },
           "x": 256,
+          "y": 208
+        },
+        {
+          "id": "r015-plant",
+          "kind": "enemy-piranha",
+          "source": {
+            "macro": "Pipe",
+            "height": 24,
+            "piranha": true,
+            "x": 320,
+            "y": 24
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r015"
+          },
+          "x": 640,
+          "y": 160
+        },
+        {
+          "id": "r017",
+          "kind": "hidden-block",
+          "source": {
+            "thing": "CastleBlock",
+            "fireballs": 6,
+            "hidden": true,
+            "x": 424,
+            "y": 56
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r017"
+          },
+          "x": 848,
+          "y": 96
+        },
+        {
+          "id": "r018",
+          "kind": "hidden-block",
+          "source": {
+            "thing": "CastleBlock",
+            "fireballs": 6,
+            "hidden": true,
+            "x": 480,
+            "y": 32
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r018"
+          },
+          "x": 960,
+          "y": 144
+        },
+        {
+          "id": "r019",
+          "kind": "conditional-sectionfail",
+          "source": {
+            "macro": "SectionFail",
+            "width": 40,
+            "height": 24,
+            "x": 512,
+            "y": 24
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r019"
+          },
+          "x": 1024,
+          "y": 160
+        },
+        {
+          "id": "r020",
+          "kind": "conditional-sectionpass",
+          "source": {
+            "macro": "SectionPass",
+            "width": 40,
+            "height": 24,
+            "x": 522,
+            "y": 80
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r020"
+          },
+          "x": 1044,
+          "y": 48
+        },
+        {
+          "id": "r028",
+          "kind": "conditional-sectiondecider",
+          "source": {
+            "macro": "SectionDecider",
+            "pass": 1,
+            "fail": 0,
+            "x": 696,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r028"
+          },
+          "x": 1392,
+          "y": 208
+        },
+        {
+          "id": "r032",
+          "kind": "lava-volume",
+          "source": {
+            "macro": "Water",
+            "width": 16,
+            "x": 760,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r032"
+          },
+          "x": 1520,
+          "y": 208
+        },
+        {
+          "id": "r036",
+          "kind": "lava-volume",
+          "source": {
+            "macro": "Water",
+            "width": 32,
+            "x": 784,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r036"
+          },
+          "x": 1568,
+          "y": 208
+        },
+        {
+          "id": "r047",
+          "kind": "hidden-block",
+          "source": {
+            "thing": "CastleBlock",
+            "fireballs": 6,
+            "hidden": true,
+            "x": 976,
+            "y": 56
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r047"
+          },
+          "x": 1952,
+          "y": 96
+        },
+        {
+          "id": "r048",
+          "kind": "hidden-block",
+          "source": {
+            "thing": "CastleBlock",
+            "fireballs": 6,
+            "hidden": true,
+            "x": 1024,
+            "y": 24
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r048"
+          },
+          "x": 2048,
+          "y": 160
+        },
+        {
+          "id": "r049",
+          "kind": "conditional-sectionpass",
+          "source": {
+            "macro": "SectionPass",
+            "width": 40,
+            "height": 16,
+            "x": 1056,
+            "y": 16
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r049"
+          },
+          "x": 2112,
+          "y": 176
+        },
+        {
+          "id": "r050",
+          "kind": "conditional-sectionfail",
+          "source": {
+            "macro": "SectionFail",
+            "width": 40,
+            "height": 24,
+            "x": 1056,
+            "y": 48
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r050"
+          },
+          "x": 2112,
+          "y": 112
+        },
+        {
+          "id": "r051",
+          "kind": "conditional-sectionfail",
+          "source": {
+            "macro": "SectionFail",
+            "width": 40,
+            "height": 24,
+            "x": 1056,
+            "y": 80
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r051"
+          },
+          "x": 2112,
+          "y": 48
+        },
+        {
+          "id": "r064",
+          "kind": "conditional-sectiondecider",
+          "source": {
+            "macro": "SectionDecider",
+            "pass": 2,
+            "x": 1280,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r064"
+          },
+          "x": 2560,
+          "y": 208
+        },
+        {
+          "id": "r065-boss",
+          "kind": "enemy-bowser",
+          "source": {
+            "thing": "Bowser",
+            "x": 1349,
+            "y": 42
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r065"
+          },
+          "x": 2698,
+          "y": 124
+        },
+        {
+          "id": "r065-lava",
+          "kind": "lava-volume",
+          "source": {
+            "macro": "Water",
+            "x": 1280,
+            "y": 0,
+            "width": 104
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r065"
+          },
+          "x": 2560,
+          "y": 208
+        },
+        {
+          "id": "r065-chain",
+          "kind": "marker-CastleChain",
+          "source": {
+            "thing": "CastleChain",
+            "x": 1376,
+            "y": 32
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r065"
+          },
+          "x": 2752,
+          "y": 144
+        },
+        {
+          "id": "r065-axe",
+          "kind": "bridge-axe-finish",
+          "source": {
+            "thing": "CastleAxe",
+            "x": 1384,
+            "y": 40
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r065"
+          },
+          "x": 2768,
+          "y": 128
+        },
+        {
+          "id": "r065",
+          "kind": "castle-finish",
+          "source": {
+            "macro": "EndInsideCastle",
+            "spawnType": "SpinyEgg",
+            "transport": {
+              "map": "5-1"
+            },
+            "x": 1280,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r065"
+          },
+          "x": 2560,
+          "y": 208
+        },
+        {
+          "id": "r065-transport",
+          "kind": "source-transport-not-simulated",
+          "source": {
+            "macro": "EndInsideCastle",
+            "spawnType": "SpinyEgg",
+            "transport": {
+              "map": "5-1"
+            },
+            "x": 1280,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r065"
+          },
+          "x": 2560,
           "y": 208
         },
         {
@@ -1192,9 +2395,834 @@
             "w": 48,
             "h": 80
           }
+        },
+        {
+          "id": "r009",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 400,
+            "x": 128,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 256,
+            "y": 208,
+            "w": 800,
+            "h": 32
+          }
+        },
+        {
+          "id": "r010",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 400,
+            "x": 128,
+            "y": 88
+          },
+          "referenceRect": {
+            "x": 256,
+            "y": 32,
+            "w": 800,
+            "h": 16
+          }
+        },
+        {
+          "id": "r011",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 48,
+            "height": 32,
+            "x": 144,
+            "y": 56
+          },
+          "referenceRect": {
+            "x": 288,
+            "y": 96,
+            "w": 96,
+            "h": 64
+          }
+        },
+        {
+          "id": "r012-0-0",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 32,
+            "x": 200,
+            "y": 56
+          },
+          "referenceRect": {
+            "x": 400,
+            "y": 96,
+            "w": 16,
+            "h": 64
+          }
+        },
+        {
+          "id": "r012-1-0",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 32,
+            "x": 216,
+            "y": 56
+          },
+          "referenceRect": {
+            "x": 432,
+            "y": 96,
+            "w": 16,
+            "h": 64
+          }
+        },
+        {
+          "id": "r012-2-0",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 32,
+            "x": 232,
+            "y": 56
+          },
+          "referenceRect": {
+            "x": 464,
+            "y": 96,
+            "w": 16,
+            "h": 64
+          }
+        },
+        {
+          "id": "r012-3-0",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 32,
+            "x": 248,
+            "y": 56
+          },
+          "referenceRect": {
+            "x": 496,
+            "y": 96,
+            "w": 16,
+            "h": 64
+          }
+        },
+        {
+          "id": "r012-4-0",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 32,
+            "x": 264,
+            "y": 56
+          },
+          "referenceRect": {
+            "x": 528,
+            "y": 96,
+            "w": 16,
+            "h": 64
+          }
+        },
+        {
+          "id": "r013",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 24,
+            "height": 32,
+            "x": 280,
+            "y": 56
+          },
+          "referenceRect": {
+            "x": 560,
+            "y": 96,
+            "w": 48,
+            "h": 64
+          }
+        },
+        {
+          "id": "r014",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 48,
+            "x": 304,
+            "y": 56
+          },
+          "referenceRect": {
+            "x": 608,
+            "y": 96,
+            "w": 96,
+            "h": 16
+          }
+        },
+        {
+          "id": "r015",
+          "kind": "PipeVertical",
+          "source": {
+            "height": 24,
+            "piranha": true,
+            "x": 320,
+            "y": 24,
+            "thing": "PipeVertical",
+            "width": 16
+          },
+          "referenceRect": {
+            "x": 640,
+            "y": 160,
+            "w": 32,
+            "h": 48
+          }
+        },
+        {
+          "id": "r016",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 136,
+            "height": 32,
+            "x": 352,
+            "y": 56
+          },
+          "referenceRect": {
+            "x": 704,
+            "y": 96,
+            "w": 352,
+            "h": 64
+          }
+        },
+        {
+          "id": "r021",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "x": 528,
+            "y": 0,
+            "width": 128
+          },
+          "referenceRect": {
+            "x": 1056,
+            "y": 208,
+            "w": 256,
+            "h": 32
+          }
+        },
+        {
+          "id": "r022",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 32,
+            "x": 528,
+            "y": 56,
+            "width": 128
+          },
+          "referenceRect": {
+            "x": 1056,
+            "y": 96,
+            "w": 256,
+            "h": 64
+          }
+        },
+        {
+          "id": "r023",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 528,
+            "y": 88,
+            "width": 128
+          },
+          "referenceRect": {
+            "x": 1056,
+            "y": 32,
+            "w": 256,
+            "h": 16
+          }
+        },
+        {
+          "id": "r024",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 40,
+            "x": 656,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 1312,
+            "y": 208,
+            "w": 80,
+            "h": 32
+          }
+        },
+        {
+          "id": "r025",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 40,
+            "x": 656,
+            "y": 88
+          },
+          "referenceRect": {
+            "x": 1312,
+            "y": 32,
+            "w": 80,
+            "h": 16
+          }
+        },
+        {
+          "id": "r026",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 24,
+            "height": 24,
+            "x": 672,
+            "y": 80
+          },
+          "referenceRect": {
+            "x": 1344,
+            "y": 48,
+            "w": 48,
+            "h": 48
+          }
+        },
+        {
+          "id": "r027",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 24,
+            "height": 24,
+            "x": 672,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 1344,
+            "y": 160,
+            "w": 48,
+            "h": 48
+          }
+        },
+        {
+          "id": "r029",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 64,
+            "x": 696,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 1392,
+            "y": 208,
+            "w": 128,
+            "h": 32
+          }
+        },
+        {
+          "id": "r030",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 336,
+            "x": 696,
+            "y": 88
+          },
+          "referenceRect": {
+            "x": 1392,
+            "y": 32,
+            "w": 672,
+            "h": 16
+          }
+        },
+        {
+          "id": "r031",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 16,
+            "x": 744,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 1488,
+            "y": 160,
+            "w": 32,
+            "h": 16
+          }
+        },
+        {
+          "id": "r033",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 16,
+            "x": 768,
+            "y": 40
+          },
+          "referenceRect": {
+            "x": 1536,
+            "y": 128,
+            "w": 32,
+            "h": 16
+          }
+        },
+        {
+          "id": "r034",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "x": 776,
+            "y": 16
+          },
+          "referenceRect": {
+            "x": 1552,
+            "y": 176,
+            "w": 16,
+            "h": 64
+          }
+        },
+        {
+          "id": "r035",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 40,
+            "x": 776,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 1552,
+            "y": 160,
+            "w": 80,
+            "h": 16
+          }
+        },
+        {
+          "id": "r037",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 800,
+            "y": 48
+          },
+          "referenceRect": {
+            "x": 1600,
+            "y": 112,
+            "w": 16,
+            "h": 16
+          }
+        },
+        {
+          "id": "r038",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 16,
+            "x": 808,
+            "y": 40
+          },
+          "referenceRect": {
+            "x": 1616,
+            "y": 128,
+            "w": 16,
+            "h": 32
+          }
+        },
+        {
+          "id": "r039",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 216,
+            "x": 816,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 1632,
+            "y": 208,
+            "w": 432,
+            "h": 32
+          }
+        },
+        {
+          "id": "r040",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 16,
+            "x": 816,
+            "y": 56
+          },
+          "referenceRect": {
+            "x": 1632,
+            "y": 96,
+            "w": 16,
+            "h": 32
+          }
+        },
+        {
+          "id": "r041",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 208,
+            "x": 824,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 1648,
+            "y": 160,
+            "w": 416,
+            "h": 16
+          }
+        },
+        {
+          "id": "r042",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 16,
+            "x": 824,
+            "y": 56
+          },
+          "referenceRect": {
+            "x": 1648,
+            "y": 96,
+            "w": 32,
+            "h": 16
+          }
+        },
+        {
+          "id": "r043",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 32,
+            "x": 856,
+            "y": 56
+          },
+          "referenceRect": {
+            "x": 1712,
+            "y": 96,
+            "w": 64,
+            "h": 16
+          }
+        },
+        {
+          "id": "r044",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 24,
+            "x": 896,
+            "y": 48
+          },
+          "referenceRect": {
+            "x": 1792,
+            "y": 112,
+            "w": 16,
+            "h": 48
+          }
+        },
+        {
+          "id": "r045",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 24,
+            "x": 896,
+            "y": 56
+          },
+          "referenceRect": {
+            "x": 1792,
+            "y": 96,
+            "w": 48,
+            "h": 16
+          }
+        },
+        {
+          "id": "r046",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 96,
+            "x": 936,
+            "y": 56
+          },
+          "referenceRect": {
+            "x": 1872,
+            "y": 96,
+            "w": 192,
+            "h": 16
+          }
+        },
+        {
+          "id": "r052",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "x": 1016,
+            "y": 0,
+            "width": 128
+          },
+          "referenceRect": {
+            "x": 2032,
+            "y": 208,
+            "w": 256,
+            "h": 32
+          }
+        },
+        {
+          "id": "r053",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 1016,
+            "y": 24,
+            "width": 128
+          },
+          "referenceRect": {
+            "x": 2032,
+            "y": 160,
+            "w": 256,
+            "h": 16
+          }
+        },
+        {
+          "id": "r054",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 1016,
+            "y": 56,
+            "width": 128
+          },
+          "referenceRect": {
+            "x": 2032,
+            "y": 96,
+            "w": 256,
+            "h": 16
+          }
+        },
+        {
+          "id": "r055",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 1016,
+            "y": 88,
+            "width": 128
+          },
+          "referenceRect": {
+            "x": 2032,
+            "y": 32,
+            "w": 256,
+            "h": 16
+          }
+        },
+        {
+          "id": "r056",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 80,
+            "x": 1144,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 2288,
+            "y": 208,
+            "w": 160,
+            "h": 32
+          }
+        },
+        {
+          "id": "r057",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 40,
+            "x": 1144,
+            "y": 64
+          },
+          "referenceRect": {
+            "x": 2288,
+            "y": 80,
+            "w": 16,
+            "h": 80
+          }
+        },
+        {
+          "id": "r058",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 1144,
+            "y": 88
+          },
+          "referenceRect": {
+            "x": 2288,
+            "y": 32,
+            "w": 16,
+            "h": 16
+          }
+        },
+        {
+          "id": "r059",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 16,
+            "height": 24,
+            "x": 1152,
+            "y": 88
+          },
+          "referenceRect": {
+            "x": 2304,
+            "y": 32,
+            "w": 32,
+            "h": 48
+          }
+        },
+        {
+          "id": "r060",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 32,
+            "x": 1216,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 2432,
+            "y": 160,
+            "w": 64,
+            "h": 80
+          }
+        },
+        {
+          "id": "r061",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 64,
+            "x": 1216,
+            "y": 88
+          },
+          "referenceRect": {
+            "x": 2432,
+            "y": 32,
+            "w": 128,
+            "h": 16
+          }
+        },
+        {
+          "id": "r062",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 32,
+            "x": 1240,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 2480,
+            "y": 208,
+            "w": 64,
+            "h": 32
+          }
+        },
+        {
+          "id": "r063",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 16,
+            "x": 1264,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 2528,
+            "y": 160,
+            "w": 32,
+            "h": 80
+          }
+        },
+        {
+          "id": "r065-roof",
+          "kind": "Stone",
+          "source": {
+            "x": 1280,
+            "y": 88
+          },
+          "referenceRect": {
+            "x": 2560,
+            "y": 32,
+            "w": 512,
+            "h": 16
+          }
+        },
+        {
+          "id": "r065-bridge",
+          "kind": "CastleBridge",
+          "source": {
+            "x": 1280,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 2560,
+            "y": 160,
+            "w": 208,
+            "h": 16
+          }
+        },
+        {
+          "id": "r065-floor",
+          "kind": "Floor",
+          "source": {
+            "x": 1384
+          },
+          "referenceRect": {
+            "x": 2768,
+            "y": 208,
+            "w": 304,
+            "h": 32
+          }
+        },
+        {
+          "id": "r065-step",
+          "kind": "Stone",
+          "source": {
+            "x": 1384
+          },
+          "referenceRect": {
+            "x": 2768,
+            "y": 144,
+            "w": 48,
+            "h": 64
+          }
+        },
+        {
+          "id": "r065-ceiling",
+          "kind": "Stone",
+          "source": {
+            "x": 1392
+          },
+          "referenceRect": {
+            "x": 2784,
+            "y": 48,
+            "w": 32,
+            "h": 48
+          }
         }
       ],
-      "sourceRecordCount": 9
+      "sourceRecordCount": 66
     },
     {
       "roomId": "area-0-section-0-before",
@@ -1314,7 +3342,7 @@
             "id": "r007",
             "x": 448,
             "y": 96,
-            "w": 272,
+            "w": 352,
             "h": 64,
             "collision": "solid"
           }
@@ -1637,7 +3665,7 @@
           "referenceRect": {
             "x": 448,
             "y": 96,
-            "w": 272,
+            "w": 352,
             "h": 64
           }
         }
@@ -2985,7 +5013,7 @@
             "x": 0,
             "y": 160,
             "w": 208,
-            "h": 32,
+            "h": 16,
             "collision": "solid"
           },
           {
@@ -3041,6 +5069,41 @@
           },
           "x": 138,
           "y": 124
+        },
+        {
+          "id": "r000-lava",
+          "kind": "lava-volume",
+          "source": {
+            "macro": "Water",
+            "x": 0,
+            "y": 0,
+            "width": 104
+          },
+          "sourcePath": {
+            "area": 0,
+            "section": 2,
+            "part": "before",
+            "record": "r000"
+          },
+          "x": 0,
+          "y": 208
+        },
+        {
+          "id": "r000-chain",
+          "kind": "marker-CastleChain",
+          "source": {
+            "thing": "CastleChain",
+            "x": 96,
+            "y": 32
+          },
+          "sourcePath": {
+            "area": 0,
+            "section": 2,
+            "part": "before",
+            "record": "r000"
+          },
+          "x": 192,
+          "y": 144
         },
         {
           "id": "r000-axe",
@@ -3144,7 +5207,7 @@
             "x": 0,
             "y": 160,
             "w": 208,
-            "h": 32
+            "h": 16
           }
         },
         {
@@ -3622,6 +5685,121 @@
       {
         "from": {
           "area": 0,
+          "part": "base",
+          "record": "r019"
+        },
+        "kind": "SectionFail",
+        "target": {
+          "macro": "SectionFail",
+          "width": 40,
+          "height": 24,
+          "x": 512,
+          "y": 24
+        }
+      },
+      {
+        "from": {
+          "area": 0,
+          "part": "base",
+          "record": "r020"
+        },
+        "kind": "SectionPass",
+        "target": {
+          "macro": "SectionPass",
+          "width": 40,
+          "height": 24,
+          "x": 522,
+          "y": 80
+        }
+      },
+      {
+        "from": {
+          "area": 0,
+          "part": "base",
+          "record": "r028"
+        },
+        "kind": "SectionDecider",
+        "target": {
+          "macro": "SectionDecider",
+          "pass": 1,
+          "fail": 0,
+          "x": 696,
+          "y": 0
+        }
+      },
+      {
+        "from": {
+          "area": 0,
+          "part": "base",
+          "record": "r049"
+        },
+        "kind": "SectionPass",
+        "target": {
+          "macro": "SectionPass",
+          "width": 40,
+          "height": 16,
+          "x": 1056,
+          "y": 16
+        }
+      },
+      {
+        "from": {
+          "area": 0,
+          "part": "base",
+          "record": "r050"
+        },
+        "kind": "SectionFail",
+        "target": {
+          "macro": "SectionFail",
+          "width": 40,
+          "height": 24,
+          "x": 1056,
+          "y": 48
+        }
+      },
+      {
+        "from": {
+          "area": 0,
+          "part": "base",
+          "record": "r051"
+        },
+        "kind": "SectionFail",
+        "target": {
+          "macro": "SectionFail",
+          "width": 40,
+          "height": 24,
+          "x": 1056,
+          "y": 80
+        }
+      },
+      {
+        "from": {
+          "area": 0,
+          "part": "base",
+          "record": "r064"
+        },
+        "kind": "SectionDecider",
+        "target": {
+          "macro": "SectionDecider",
+          "pass": 2,
+          "x": 1280,
+          "y": 0
+        }
+      },
+      {
+        "from": {
+          "area": 0,
+          "part": "base",
+          "record": "r065"
+        },
+        "kind": "world",
+        "target": {
+          "map": "5-1"
+        }
+      },
+      {
+        "from": {
+          "area": 0,
           "section": 0,
           "part": "before",
           "record": "r010"
@@ -3750,7 +5928,7 @@
     "areas": 1,
     "sectionViews": 7,
     "views": 8,
-    "geometry": 61,
+    "geometry": 113,
     "objects": 8,
     "pending": [
       "bridge-axe-finish",
@@ -3764,6 +5942,7 @@
       "enemy-piranha",
       "hidden-block",
       "lava-volume",
+      "marker-CastleChain",
       "source-transport-not-simulated"
     ],
     "details": [
@@ -3781,6 +5960,106 @@
         "roomId": "area-0",
         "sourceRecord": "r008",
         "kind": "conditional-section"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r015-plant",
+        "kind": "enemy-piranha"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r017",
+        "kind": "hidden-block"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r018",
+        "kind": "hidden-block"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r019",
+        "kind": "conditional-sectionfail"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r020",
+        "kind": "conditional-sectionpass"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r028",
+        "kind": "conditional-sectiondecider"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r032",
+        "kind": "lava-volume"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r036",
+        "kind": "lava-volume"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r047",
+        "kind": "hidden-block"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r048",
+        "kind": "hidden-block"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r049",
+        "kind": "conditional-sectionpass"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r050",
+        "kind": "conditional-sectionfail"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r051",
+        "kind": "conditional-sectionfail"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r064",
+        "kind": "conditional-sectiondecider"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r065-boss",
+        "kind": "enemy-bowser"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r065-lava",
+        "kind": "lava-volume"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r065-chain",
+        "kind": "marker-CastleChain"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r065-axe",
+        "kind": "bridge-axe-finish"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r065",
+        "kind": "castle-finish"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r065-transport",
+        "kind": "source-transport-not-simulated"
       },
       {
         "roomId": "area-0",
@@ -3891,6 +6170,16 @@
         "roomId": "area-0-section-2-before",
         "sourceRecord": "r000-boss",
         "kind": "enemy-bowser"
+      },
+      {
+        "roomId": "area-0-section-2-before",
+        "sourceRecord": "r000-lava",
+        "kind": "lava-volume"
+      },
+      {
+        "roomId": "area-0-section-2-before",
+        "sourceRecord": "r000-chain",
+        "kind": "marker-CastleChain"
       },
       {
         "roomId": "area-0-section-2-before",

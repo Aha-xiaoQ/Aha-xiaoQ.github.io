@@ -3,7 +3,7 @@
   "areas": 1,
   "sectionViews": 18,
   "views": 19,
-  "geometry": 92,
+  "geometry": 174,
   "objects": 19,
   "pending": [
     "bridge-axe-finish",
@@ -17,6 +17,7 @@
     "enemy-podoboo",
     "falling-platform",
     "lava-volume",
+    "marker-CastleChain",
     "rotating-firebar",
     "source-transport-not-simulated"
   ],
@@ -45,6 +46,136 @@
       "roomId": "area-0",
       "sourceRecord": "r010",
       "kind": "conditional-section"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r017",
+      "kind": "conditional-sectionpass"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r019",
+      "kind": "conditional-sectionfail"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r023",
+      "kind": "conditional-section"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r028",
+      "kind": "conditional-sectionfail"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r030",
+      "kind": "conditional-sectionpass"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r032",
+      "kind": "conditional-sectionfail"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r037",
+      "kind": "conditional-section"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r039",
+      "kind": "conditional-sectionfail"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r041",
+      "kind": "conditional-sectionpass"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r049",
+      "kind": "conditional-sectiondecider"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r054",
+      "kind": "lava-volume"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r057-fire",
+      "kind": "rotating-firebar"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r058",
+      "kind": "lava-volume"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r061",
+      "kind": "conditional-sectionfail"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r062",
+      "kind": "conditional-sectionpass"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r066",
+      "kind": "conditional-section"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r081",
+      "kind": "conditional-section"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r089",
+      "kind": "conditional-sectionpass"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r091",
+      "kind": "conditional-sectionfail"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r095",
+      "kind": "conditional-sectiondecider"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r107-boss",
+      "kind": "enemy-bowser"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r107-lava",
+      "kind": "lava-volume"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r107-chain",
+      "kind": "marker-CastleChain"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r107-axe",
+      "kind": "bridge-axe-finish"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r107",
+      "kind": "castle-finish"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r107-transport",
+      "kind": "source-transport-not-simulated"
     },
     {
       "roomId": "area-0",
@@ -240,6 +371,16 @@
       "roomId": "area-0-section-6-before",
       "sourceRecord": "r011-boss",
       "kind": "enemy-bowser"
+    },
+    {
+      "roomId": "area-0-section-6-before",
+      "sourceRecord": "r011-lava",
+      "kind": "lava-volume"
+    },
+    {
+      "roomId": "area-0-section-6-before",
+      "sourceRecord": "r011-chain",
+      "kind": "marker-CastleChain"
     },
     {
       "roomId": "area-0-section-6-before",

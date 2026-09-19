@@ -13,6 +13,7 @@
     "enemy-podoboo",
     "hidden-block",
     "lava-volume",
+    "marker-CastleChain",
     "rotating-firebar",
     "source-transport-not-simulated"
   ],
@@ -136,6 +137,16 @@
       "roomId": "area-0",
       "sourceRecord": "r036-boss",
       "kind": "enemy-bowser"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r036-lava",
+      "kind": "lava-volume"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r036-chain",
+      "kind": "marker-CastleChain"
     },
     {
       "roomId": "area-0",

@@ -3,7 +3,7 @@
   "areas": 5,
   "sectionViews": 8,
   "views": 13,
-  "geometry": 79,
+  "geometry": 120,
   "objects": 13,
   "pending": [
     "bridge-axe-finish",
@@ -20,6 +20,7 @@
     "enemy-podoboo",
     "hidden-block",
     "lava-volume",
+    "marker-CastleChain",
     "platform-timing",
     "source-transport-not-simulated",
     "spawn-zone-CheepsStart",
@@ -40,6 +41,61 @@
     {
       "roomId": "area-0",
       "sourceRecord": "r006",
+      "kind": "conditional-section"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r009-transport",
+      "kind": "source-transport-not-simulated"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r009-plant",
+      "kind": "enemy-piranha"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r012-0-0",
+      "kind": "enemy-goomba"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r012-1-0",
+      "kind": "enemy-goomba"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r012-2-0",
+      "kind": "enemy-goomba"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r014",
+      "kind": "lava-volume"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r015-timing",
+      "kind": "platform-timing"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r018-transport",
+      "kind": "source-transport-not-simulated"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r018-plant",
+      "kind": "enemy-piranha"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r020-plant",
+      "kind": "enemy-piranha"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r022",
       "kind": "conditional-section"
     },
     {
@@ -120,6 +176,81 @@
     {
       "roomId": "area-1",
       "sourceRecord": "r002",
+      "kind": "conditional-section"
+    },
+    {
+      "roomId": "area-1",
+      "sourceRecord": "r005-plant",
+      "kind": "enemy-piranha"
+    },
+    {
+      "roomId": "area-1",
+      "sourceRecord": "r007-0-0",
+      "kind": "enemy-beetle"
+    },
+    {
+      "roomId": "area-1",
+      "sourceRecord": "r007-1-0",
+      "kind": "enemy-beetle"
+    },
+    {
+      "roomId": "area-1",
+      "sourceRecord": "r008-transport",
+      "kind": "source-transport-not-simulated"
+    },
+    {
+      "roomId": "area-1",
+      "sourceRecord": "r008-plant",
+      "kind": "enemy-piranha"
+    },
+    {
+      "roomId": "area-1",
+      "sourceRecord": "r010",
+      "kind": "enemy-koopa"
+    },
+    {
+      "roomId": "area-1",
+      "sourceRecord": "r011",
+      "kind": "enemy-koopa"
+    },
+    {
+      "roomId": "area-1",
+      "sourceRecord": "r012-plant",
+      "kind": "enemy-piranha"
+    },
+    {
+      "roomId": "area-1",
+      "sourceRecord": "r013",
+      "kind": "lava-volume"
+    },
+    {
+      "roomId": "area-1",
+      "sourceRecord": "r015",
+      "kind": "hidden-block"
+    },
+    {
+      "roomId": "area-1",
+      "sourceRecord": "r017-transport",
+      "kind": "source-transport-not-simulated"
+    },
+    {
+      "roomId": "area-1",
+      "sourceRecord": "r018",
+      "kind": "enemy-koopa"
+    },
+    {
+      "roomId": "area-1",
+      "sourceRecord": "r019",
+      "kind": "enemy-koopa"
+    },
+    {
+      "roomId": "area-1",
+      "sourceRecord": "r022-plant",
+      "kind": "enemy-piranha"
+    },
+    {
+      "roomId": "area-1",
+      "sourceRecord": "r024",
       "kind": "conditional-section"
     },
     {
@@ -225,6 +356,56 @@
     {
       "roomId": "area-2",
       "sourceRecord": "r002",
+      "kind": "conditional-section"
+    },
+    {
+      "roomId": "area-2",
+      "sourceRecord": "r006-plant",
+      "kind": "enemy-piranha"
+    },
+    {
+      "roomId": "area-2",
+      "sourceRecord": "r007",
+      "kind": "spawn-zone-CheepsStart"
+    },
+    {
+      "roomId": "area-2",
+      "sourceRecord": "r009-transport",
+      "kind": "source-transport-not-simulated"
+    },
+    {
+      "roomId": "area-2",
+      "sourceRecord": "r009-plant",
+      "kind": "enemy-piranha"
+    },
+    {
+      "roomId": "area-2",
+      "sourceRecord": "r011",
+      "kind": "lava-volume"
+    },
+    {
+      "roomId": "area-2",
+      "sourceRecord": "r013-transport",
+      "kind": "source-transport-not-simulated"
+    },
+    {
+      "roomId": "area-2",
+      "sourceRecord": "r013-plant",
+      "kind": "enemy-piranha"
+    },
+    {
+      "roomId": "area-2",
+      "sourceRecord": "r014",
+      "kind": "spawn-zone-CheepsStop"
+    },
+    {
+      "roomId": "area-2",
+      "sourceRecord": "r019-plant",
+      "kind": "enemy-piranha"
+    },
+    {
+      "roomId": "area-2",
+      "sourceRecord": "r020",
       "kind": "conditional-section"
     },
     {
@@ -381,6 +562,16 @@
       "roomId": "area-4",
       "sourceRecord": "r010-boss",
       "kind": "enemy-bowser"
+    },
+    {
+      "roomId": "area-4",
+      "sourceRecord": "r010-lava",
+      "kind": "lava-volume"
+    },
+    {
+      "roomId": "area-4",
+      "sourceRecord": "r010-chain",
+      "kind": "marker-CastleChain"
     },
     {
       "roomId": "area-4",

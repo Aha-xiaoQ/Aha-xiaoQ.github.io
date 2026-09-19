@@ -430,6 +430,121 @@
     {
       "from": {
         "area": 0,
+        "part": "base",
+        "record": "r019"
+      },
+      "kind": "SectionFail",
+      "target": {
+        "macro": "SectionFail",
+        "width": 40,
+        "height": 24,
+        "x": 512,
+        "y": 24
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r020"
+      },
+      "kind": "SectionPass",
+      "target": {
+        "macro": "SectionPass",
+        "width": 40,
+        "height": 24,
+        "x": 522,
+        "y": 80
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r028"
+      },
+      "kind": "SectionDecider",
+      "target": {
+        "macro": "SectionDecider",
+        "pass": 1,
+        "fail": 0,
+        "x": 696,
+        "y": 0
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r049"
+      },
+      "kind": "SectionPass",
+      "target": {
+        "macro": "SectionPass",
+        "width": 40,
+        "height": 16,
+        "x": 1056,
+        "y": 16
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r050"
+      },
+      "kind": "SectionFail",
+      "target": {
+        "macro": "SectionFail",
+        "width": 40,
+        "height": 24,
+        "x": 1056,
+        "y": 48
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r051"
+      },
+      "kind": "SectionFail",
+      "target": {
+        "macro": "SectionFail",
+        "width": 40,
+        "height": 24,
+        "x": 1056,
+        "y": 80
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r064"
+      },
+      "kind": "SectionDecider",
+      "target": {
+        "macro": "SectionDecider",
+        "pass": 2,
+        "x": 1280,
+        "y": 0
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r065"
+      },
+      "kind": "world",
+      "target": {
+        "map": "5-1"
+      }
+    },
+    {
+      "from": {
+        "area": 0,
         "section": 0,
         "part": "before",
         "record": "r010"

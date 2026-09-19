@@ -5,9 +5,9 @@
 ## 使用
 下载完整 Worlds W02 Starter，运行 npm run atlas 查看地图册；npm run dev 打开 M06 试验场。小地图 ZIP 不包含运行时。
 
-世界 2–8 导出为独立分区地形检查。水下区域只提供地图与环境声明，不使用平台物理冒充游泳。循环城堡保留 before/stretch/after 和原条件图，不拼接成伪造的直线通关图。
+世界 2–8 导出为独立分区地形检查。水下区域只提供地图与环境声明，不使用平台物理冒充游泳。循环城堡默认展示一次通过路线的完整展开图（伸展段按 256 像素视口），另保留 before/stretch/after 和原条件图；展开图不等于循环判定与水下机制已完整可玩。
 
 Tiled 为对象层导出，仅供编辑参考；编辑结果不会自动回写游戏。
 
 ## 待实现 / 核验
-bridge-axe-finish、castle-finish、conditional-section、conditional-section-runtime、enemy-beetle、enemy-blooper、enemy-bowser、enemy-goomba、enemy-hammerbro、enemy-koopa、enemy-piranha、enemy-podoboo、hidden-block、lava-volume、platform-timing、source-transport-not-simulated、spawn-zone-CheepsStart、spawn-zone-CheepsStop、underwater-physics。
+bridge-axe-finish、castle-finish、conditional-section、conditional-section-runtime、enemy-beetle、enemy-blooper、enemy-bowser、enemy-goomba、enemy-hammerbro、enemy-koopa、enemy-piranha、enemy-podoboo、hidden-block、lava-volume、marker-CastleChain、platform-timing、source-transport-not-simulated、spawn-zone-CheepsStart、spawn-zone-CheepsStop、underwater-physics。

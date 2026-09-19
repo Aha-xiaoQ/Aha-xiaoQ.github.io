@@ -3,13 +3,13 @@
   "version": "1.10",
   "orientation": "orthogonal",
   "renderorder": "right-down",
-  "width": 16,
+  "width": 56,
   "height": 15,
   "tilewidth": 16,
   "tileheight": 16,
   "infinite": false,
   "nextlayerid": 4,
-  "nextobjectid": 7,
+  "nextobjectid": 31,
   "tilesets": [],
   "layers": [
     {
@@ -57,6 +57,258 @@
               "value": "{\"id\":\"r001\",\"x\":0,\"y\":32,\"w\":32,\"h\":16,\"collision\":\"solid\"}"
             }
           ]
+        },
+        {
+          "id": 3,
+          "name": "r003",
+          "type": "solid",
+          "x": 32,
+          "y": 32,
+          "width": 528,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003\",\"x\":32,\"y\":32,\"w\":528,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "name": "r004",
+          "type": "solid",
+          "x": 32,
+          "y": 208,
+          "width": 16,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r004\",\"x\":32,\"y\":208,\"w\":16,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "name": "r005",
+          "type": "solid",
+          "x": 48,
+          "y": 160,
+          "width": 96,
+          "height": 80,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005\",\"x\":48,\"y\":160,\"w\":96,\"h\":80,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "name": "r006",
+          "type": "solid",
+          "x": 144,
+          "y": 128,
+          "width": 32,
+          "height": 112,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r006\",\"x\":144,\"y\":128,\"w\":32,\"h\":112,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "name": "r008",
+          "type": "solid",
+          "x": 176,
+          "y": 160,
+          "width": 96,
+          "height": 80,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r008\",\"x\":176,\"y\":160,\"w\":96,\"h\":80,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "name": "r009",
+          "type": "solid",
+          "x": 272,
+          "y": 112,
+          "width": 32,
+          "height": 128,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r009\",\"x\":272,\"y\":112,\"w\":32,\"h\":128,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "name": "r010",
+          "type": "solid",
+          "x": 304,
+          "y": 160,
+          "width": 96,
+          "height": 80,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r010\",\"x\":304,\"y\":160,\"w\":96,\"h\":80,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "name": "r012",
+          "type": "solid",
+          "x": 464,
+          "y": 160,
+          "width": 64,
+          "height": 80,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r012\",\"x\":464,\"y\":160,\"w\":64,\"h\":80,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "name": "r013",
+          "type": "solid",
+          "x": 528,
+          "y": 128,
+          "width": 32,
+          "height": 112,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r013\",\"x\":528,\"y\":128,\"w\":32,\"h\":112,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "name": "r015",
+          "type": "solid",
+          "x": 560,
+          "y": 160,
+          "width": 256,
+          "height": 80,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r015\",\"x\":560,\"y\":160,\"w\":256,\"h\":80,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "name": "r016",
+          "type": "solid",
+          "x": 560,
+          "y": 32,
+          "width": 256,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r016\",\"x\":560,\"y\":32,\"w\":256,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 14,
+          "name": "r017",
+          "type": "solid",
+          "x": 816,
+          "y": 208,
+          "width": 48,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r017\",\"x\":816,\"y\":208,\"w\":48,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 15,
+          "name": "r018",
+          "type": "solid",
+          "x": 816,
+          "y": 32,
+          "width": 80,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r018\",\"x\":816,\"y\":32,\"w\":80,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 16,
+          "name": "r019",
+          "type": "solid",
+          "x": 864,
+          "y": 176,
+          "width": 32,
+          "height": 64,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r019\",\"x\":864,\"y\":176,\"w\":32,\"h\":64,\"collision\":\"solid\"}"
+            }
+          ]
         }
       ]
     },
@@ -71,7 +323,7 @@
       "draworder": "index",
       "objects": [
         {
-          "id": 3,
+          "id": 17,
           "name": "inspection-start",
           "type": "spawn",
           "x": 24,
@@ -101,7 +353,7 @@
       "draworder": "index",
       "objects": [
         {
-          "id": 4,
+          "id": 18,
           "name": "r000-plant",
           "type": "enemy-piranha",
           "x": 0,
@@ -120,7 +372,7 @@
           ]
         },
         {
-          "id": 5,
+          "id": 19,
           "name": "r002",
           "type": "conditional-section",
           "x": 32,
@@ -139,7 +391,197 @@
           ]
         },
         {
-          "id": 6,
+          "id": 20,
+          "name": "r006-plant",
+          "type": "enemy-piranha",
+          "x": 144,
+          "y": 128,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r006-plant\",\"kind\":\"enemy-piranha\",\"source\":{\"macro\":\"Pipe\",\"height\":\"Infinity\",\"piranha\":true,\"x\":72,\"y\":40},\"sourcePath\":{\"area\":2,\"part\":\"base\",\"record\":\"r006\"},\"x\":144,\"y\":128}"
+            }
+          ]
+        },
+        {
+          "id": 21,
+          "name": "r007",
+          "type": "spawn-zone-CheepsStart",
+          "x": 176,
+          "y": 208,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r007\",\"kind\":\"spawn-zone-CheepsStart\",\"source\":{\"macro\":\"CheepsStart\",\"x\":88,\"y\":0},\"sourcePath\":{\"area\":2,\"part\":\"base\",\"record\":\"r007\"},\"x\":176,\"y\":208}"
+            }
+          ]
+        },
+        {
+          "id": 22,
+          "name": "r009-transport",
+          "type": "source-transport-not-simulated",
+          "x": 272,
+          "y": 112,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r009-transport\",\"kind\":\"source-transport-not-simulated\",\"source\":{\"height\":\"Infinity\",\"piranha\":true,\"transport\":1,\"x\":136,\"y\":48,\"thing\":\"PipeVertical\",\"width\":16},\"sourcePath\":{\"area\":2,\"part\":\"base\",\"record\":\"r009\"},\"x\":272,\"y\":112}"
+            }
+          ]
+        },
+        {
+          "id": 23,
+          "name": "r009-plant",
+          "type": "enemy-piranha",
+          "x": 272,
+          "y": 112,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r009-plant\",\"kind\":\"enemy-piranha\",\"source\":{\"macro\":\"Pipe\",\"height\":\"Infinity\",\"piranha\":true,\"transport\":1,\"x\":136,\"y\":48},\"sourcePath\":{\"area\":2,\"part\":\"base\",\"record\":\"r009\"},\"x\":272,\"y\":112}"
+            }
+          ]
+        },
+        {
+          "id": 24,
+          "name": "r011",
+          "type": "lava-volume",
+          "x": 400,
+          "y": 208,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r011\",\"kind\":\"lava-volume\",\"source\":{\"macro\":\"Water\",\"width\":32,\"x\":200,\"y\":0},\"sourcePath\":{\"area\":2,\"part\":\"base\",\"record\":\"r011\"},\"x\":400,\"y\":208}"
+            }
+          ]
+        },
+        {
+          "id": 25,
+          "name": "r013-transport",
+          "type": "source-transport-not-simulated",
+          "x": 528,
+          "y": 128,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r013-transport\",\"kind\":\"source-transport-not-simulated\",\"source\":{\"height\":\"Infinity\",\"piranha\":true,\"transport\":4,\"x\":264,\"y\":40,\"thing\":\"PipeVertical\",\"width\":16},\"sourcePath\":{\"area\":2,\"part\":\"base\",\"record\":\"r013\"},\"x\":528,\"y\":128}"
+            }
+          ]
+        },
+        {
+          "id": 26,
+          "name": "r013-plant",
+          "type": "enemy-piranha",
+          "x": 528,
+          "y": 128,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r013-plant\",\"kind\":\"enemy-piranha\",\"source\":{\"macro\":\"Pipe\",\"height\":\"Infinity\",\"piranha\":true,\"transport\":4,\"x\":264,\"y\":40},\"sourcePath\":{\"area\":2,\"part\":\"base\",\"record\":\"r013\"},\"x\":528,\"y\":128}"
+            }
+          ]
+        },
+        {
+          "id": 27,
+          "name": "r014",
+          "type": "spawn-zone-CheepsStop",
+          "x": 560,
+          "y": 208,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r014\",\"kind\":\"spawn-zone-CheepsStop\",\"source\":{\"macro\":\"CheepsStop\",\"x\":280,\"y\":0},\"sourcePath\":{\"area\":2,\"part\":\"base\",\"record\":\"r014\"},\"x\":560,\"y\":208}"
+            }
+          ]
+        },
+        {
+          "id": 28,
+          "name": "r019-plant",
+          "type": "enemy-piranha",
+          "x": 864,
+          "y": 176,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r019-plant\",\"kind\":\"enemy-piranha\",\"source\":{\"macro\":\"Pipe\",\"height\":\"Infinity\",\"piranha\":true,\"x\":432,\"y\":16},\"sourcePath\":{\"area\":2,\"part\":\"base\",\"record\":\"r019\"},\"x\":864,\"y\":176}"
+            }
+          ]
+        },
+        {
+          "id": 29,
+          "name": "r020",
+          "type": "conditional-section",
+          "x": 896,
+          "y": 208,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r020\",\"kind\":\"conditional-section\",\"source\":{\"macro\":\"Section\",\"x\":448,\"y\":0},\"sourcePath\":{\"area\":2,\"part\":\"base\",\"record\":\"r020\"},\"x\":896,\"y\":208}"
+            }
+          ]
+        },
+        {
+          "id": 30,
           "name": "section-mode",
           "type": "conditional-section-runtime",
           "x": 0,

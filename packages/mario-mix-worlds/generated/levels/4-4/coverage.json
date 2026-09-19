@@ -3,7 +3,7 @@
   "areas": 1,
   "sectionViews": 7,
   "views": 8,
-  "geometry": 61,
+  "geometry": 113,
   "objects": 8,
   "pending": [
     "bridge-axe-finish",
@@ -17,6 +17,7 @@
     "enemy-piranha",
     "hidden-block",
     "lava-volume",
+    "marker-CastleChain",
     "source-transport-not-simulated"
   ],
   "details": [
@@ -34,6 +35,106 @@
       "roomId": "area-0",
       "sourceRecord": "r008",
       "kind": "conditional-section"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r015-plant",
+      "kind": "enemy-piranha"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r017",
+      "kind": "hidden-block"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r018",
+      "kind": "hidden-block"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r019",
+      "kind": "conditional-sectionfail"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r020",
+      "kind": "conditional-sectionpass"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r028",
+      "kind": "conditional-sectiondecider"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r032",
+      "kind": "lava-volume"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r036",
+      "kind": "lava-volume"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r047",
+      "kind": "hidden-block"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r048",
+      "kind": "hidden-block"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r049",
+      "kind": "conditional-sectionpass"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r050",
+      "kind": "conditional-sectionfail"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r051",
+      "kind": "conditional-sectionfail"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r064",
+      "kind": "conditional-sectiondecider"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r065-boss",
+      "kind": "enemy-bowser"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r065-lava",
+      "kind": "lava-volume"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r065-chain",
+      "kind": "marker-CastleChain"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r065-axe",
+      "kind": "bridge-axe-finish"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r065",
+      "kind": "castle-finish"
+    },
+    {
+      "roomId": "area-0",
+      "sourceRecord": "r065-transport",
+      "kind": "source-transport-not-simulated"
     },
     {
       "roomId": "area-0",
@@ -144,6 +245,16 @@
       "roomId": "area-0-section-2-before",
       "sourceRecord": "r000-boss",
       "kind": "enemy-bowser"
+    },
+    {
+      "roomId": "area-0-section-2-before",
+      "sourceRecord": "r000-lava",
+      "kind": "lava-volume"
+    },
+    {
+      "roomId": "area-0-section-2-before",
+      "sourceRecord": "r000-chain",
+      "kind": "marker-CastleChain"
     },
     {
       "roomId": "area-0-section-2-before",

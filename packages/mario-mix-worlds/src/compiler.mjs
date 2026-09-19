@@ -54,7 +54,7 @@ export function compileWorld(reference,level){
    else if(k==='Goomba'||k==='Koopa'){
     // Preserve exact spawn and attributes; no generic walker masquerading as a turtle.
     marker(q,key,'enemy-'+k.toLowerCase());
-   }else if(k==='CastleBridge')rect(q,key,k,q.width??104,16,q.y||0,'solid');
+   }else if(k==='CastleBridge')rect(q,key,k,q.width??104,8,q.y||0,'solid');
    else marker(q,key,k==='CastleAxe'?'bridge-axe-finish':'marker-'+k);
   }
   function expand(q,key){
@@ -90,6 +90,7 @@ export function compileWorld(reference,level){
      thing({thing:'Stone',x,y:y+88,width:256},key+'-roof');expand({macro:'Water',x,y,width:104},key+'-lava');
      thing({thing:'CastleBridge',x,y:y+24,width:104},key+'-bridge');
      thing({thing:'Bowser',x:x+69,y:y+42},key+'-boss');
+     thing({thing:'CastleChain',x:x+96,y:y+32},key+'-chain');
      thing({thing:'CastleAxe',x:x+104,y:y+40},key+'-axe');
      expand({macro:'Floor',x:x+104,y,width:152},key+'-floor');
      thing({thing:'Stone',x:x+104,y:y+32,width:24,height:32},key+'-step');
@@ -104,7 +105,7 @@ export function compileWorld(reference,level){
    }
   }
   area.creation.forEach((q,i)=>expand(q,`r${String(i).padStart(3,'0')}`));
-  rooms.push({roomId,setting:area.setting,map,markers});
+  rooms.push({roomId,setting:area.setting,map,markers,semantics:emissions.filter(e=>e.room===roomId).map(({room,...e})=>e)});
  });
  // Input location IDs keep original room relations; host spawn size is explicit.
  for(let n=0;n<input.locations.length;n++){

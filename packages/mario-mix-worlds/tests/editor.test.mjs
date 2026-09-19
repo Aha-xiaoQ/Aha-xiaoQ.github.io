@@ -65,3 +65,12 @@ test('bundled runtime files are byte-identical to host source',()=>{
   assert.deepEqual(fs.readFileSync(path.join(root,'atlas/runtime',file)),fs.readFileSync(path.join(fs.existsSync(path.join(root,'runtime/mario-mix-terra'))?path.join(root,'runtime/mario-mix-terra'):path.join(root,'../mario-mix-terra'),source)));
  }
 });
+
+test('platform brush joins caps into one object; fixed pipe width and support height validate',async()=>{
+ const {resizeComponent}=await import('../atlas/editor-model.mjs'),{terrainParts,markerParts}=await import('../atlas/map-appearance.mjs');const r=blank('components',512,240).rooms[0];r.map.geometry=[{id:'floor',x:0,y:208,w:512,h:32,collision:'solid',material:'ground'}];
+ for(let x=64;x<144;x+=16)paint(r,{x,y:96,w:16,h:16},'tree');const q=r.map.geometry.find(g=>g.material==='tree');assert.equal(r.map.geometry.filter(g=>g.material==='tree').length,1);assert.equal(q.w,80);assert.deepEqual(terrainParts(r,q).map(p=>p.name.split('|').at(-1)),['left','middle','middle','middle','right']);
+ let trunk=markerParts(r,{id:q.id+'-trunk',kind:'decorative-trunk',source:{macro:'Tree'}})[0];assert.equal(trunk.y+trunk.h,208);resizeComponent(r,q,96,64);trunk=markerParts(r,{id:q.id+'-trunk',kind:'decorative-trunk',source:{macro:'Tree'}})[0];assert.equal(q.h,16);assert.equal(trunk.h,48);const {runtimeMap}=await import('../atlas/editor-model.mjs');assert.ok(!('stemHeight' in runtimeMap(r).geometry.find(g=>g.id===q.id)));assert.throws(()=>paint(r,{x:80,y:96,w:16,h:16},'brick'),/完整组件/);
+ paint(r,{x:240,y:144,w:32,h:64},'pipe');const pipe=r.map.geometry.find(g=>g.material==='pipe');assert.throws(()=>resizeComponent(r,pipe,48,64),/固定/);resizeComponent(r,pipe,32,48);assert.equal(pipe.h,48);
+ const old={...r,map:{...r.map,geometry:[r.map.geometry[0],...[0,1,2].map(i=>({id:'old-'+i,x:64+i*16,y:96,w:16,h:16,material:'shroom',collision:'solid'}))]}};
+ assert.deepEqual(old.map.geometry.slice(1).flatMap(q=>terrainParts(old,q)).map(p=>p.name.split('|').at(-1)),['left','middle','right']);const stems=old.map.geometry.slice(1).flatMap(q=>markerParts(old,{id:q.id+'-trunk',kind:'decorative-trunk',source:{macro:'Shroom'}}));assert.equal(stems.length,1);assert.equal(stems[0].x,80);
+});

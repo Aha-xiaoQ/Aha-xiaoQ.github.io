@@ -1,3 +1,4 @@
+import {assembleArea} from './section-assembly.mjs';
 /** Worlds 2–8: data-only geometry/section transcription adapter.
  * Never evaluates reference JavaScript. Section parts retain local coordinates;
  * underwater / coupled mechanics remain explicit contracts, not fake platform gameplay.
@@ -18,7 +19,8 @@ export function compileRemaining(reference,level){
  const views=[],rooms=[],details=[],topology={locations:copy(input.locations),areas:[],links:[],issues:[]};
  input.areas.forEach((a,ai)=>{
   if(!Array.isArray(a.creation)||a.creation.length>4000)fail('Invalid creation');
-  views.push({area:a,areaIndex:ai,records:a.creation,roomId:`area-${ai}`,label:`区域 ${ai+1}`,origin:{area:ai,part:'base'},width:a.widthUnits});
+  const assembled=a.sections?.length?assembleArea(a):null;
+  views.push({area:a,areaIndex:ai,records:assembled?.records||a.creation,roomId:`area-${ai}`,label:`区域 ${ai+1}`+(assembled?' · 完整展开（通过路线）':''),origin:{area:ai,part:'base'},assembly:assembled?.segments,width:a.widthUnits});
   topology.areas.push({area:ai,setting:a.setting,underwater:!!a.underwater,exit:a.exit??null,sections:copy(a.sections||[])});
   for(const [si,s]of (a.sections||[]).entries())for(const p of ['before','stretch','after'])if(s[p]){
    if(!Array.isArray(s[p].creation)||s[p].creation.length>4000)fail('Invalid section part');
@@ -31,6 +33,8 @@ export function compileRemaining(reference,level){
   function rectangle(q,key,kind,w=8,h=8,top=q.y||0,collision='solid'){
    let x=2*(q.x||0),y=FLOOR-2*top,ww=2*w,hh=h===Infinity?HEIGHT-y:2*h;
    if(![x,y,ww,hh].every(Number.isFinite)||x<0||ww<=0||hh<=0||x+ww>32768)fail(`Invalid geometry ${level}/${v.roomId}/${key}`);
+   // NES 4-4 upper corridor has no gap at the before/stretch seam.
+   if(level==='4-4'&&kind==='Stone'&&y===96&&ww===272&&hh===64&&((v.origin.part==='base'&&x===704)||(v.origin.section===0&&v.origin.part==='before'&&x===448)))ww+=80;
    extent=Math.max(extent,x+ww);
    const unclipped={x,y,w:ww,h:hh};
    if(y<0||y+hh>HEIGHT){mark(q,key+'-clip','viewport-clipping');hh=Math.min(HEIGHT,y+hh)-Math.max(0,y);y=Math.max(0,y);}
@@ -122,11 +126,13 @@ export function compileRemaining(reference,level){
     case 'Water':mark(q,key,/(?:Castle)/.test(v.area.setting)?'lava-volume':'water-volume');extent=Math.max(extent,2*(x+(q.width??8)));break;
     case 'EndInsideCastle':{
      rectangle({x,y:y+88},key+'-roof','Stone',256,8);
-     rectangle({x,y:y+24},key+'-bridge','CastleBridge',104,16);
+     rectangle({x,y:y+24},key+'-bridge','CastleBridge',104,8);
      rectangle({x:x+104},key+'-floor','Floor',152,Infinity,y);
      rectangle({x:x+104},key+'-step','Stone',24,32,y+32);
      rectangle({x:x+112},key+'-ceiling','Stone',16,24,y+80);
      mark({thing:'Bowser',x:x+69,y:y+42,...(q.throwing?{throwing:true}:{})},key+'-boss','enemy-bowser');
+     mark({macro:'Water',x,y,width:104},key+'-lava','lava-volume');
+     mark({thing:'CastleChain',x:x+96,y:y+32},key+'-chain','marker-CastleChain');
      mark({thing:'CastleAxe',x:x+104,y:y+40},key+'-axe','bridge-axe-finish');
      mark(q,key,'castle-finish');connection(q,key);break;
     }
@@ -155,7 +161,7 @@ export function compileRemaining(reference,level){
   if(!spawn)spawn={id:'inspection-start',kind:'spawn',x:24,y:24,w:12,h:24};
   objects.push(spawn);
   const map={id:`classic-${level}-${v.roomId}`,title:`${level} · ${v.label}`,tileSize:16,width,height:HEIGHT,provenance:{kind:'transcribed',source:reference.source.url,review:'pending',note:'固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。'},geometry,objects};
-  rooms.push({roomId:v.roomId,label:v.label,setting:v.area.setting,origin:v.origin,declaredWidth:v.width??null,underwater,inspectionOnly:true,previewSupported:!underwater,map,markers,semantics,sourceRecordCount:v.records.length});
+  rooms.push({roomId:v.roomId,label:v.label,...(v.assembly?{assembly:v.assembly}:{}),setting:v.area.setting,origin:v.origin,declaredWidth:v.width??null,underwater,inspectionOnly:true,previewSupported:!underwater,map,markers,semantics,sourceRecordCount:v.records.length});
  }
  const previewRooms=rooms.filter(r=>r.previewSupported),inspectionStages=previewRooms.map((r,i)=>stage(level,r,i));
  return {schemaVersion:2,level,stage:inspectionStages[0]||null,inspectionStages,maps:rooms.map(r=>r.map),rooms,topology,coverage:{placementRecords:countRecords(input),areas:input.areas.length,sectionViews:rooms.length-input.areas.length,views:rooms.length,geometry:rooms.reduce((n,r)=>n+r.map.geometry.length,0),objects:rooms.reduce((n,r)=>n+r.map.objects.length,0),pending:[...new Set(details.map(d=>d.kind))].sort(),details,geometryReview:'reference-transcribed-pending-original-review',playability:'partition-inspection-not-level-completion',underwaterAreas:input.areas.filter(a=>a.underwater||/Underwater/.test(a.setting)).length,sourceIssues:topology.issues.length},source:copy(reference.source)};

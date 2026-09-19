@@ -1366,6 +1366,310 @@
           "x": 2448,
           "y": 208
         }
+      ],
+      "semantics": [
+        {
+          "id": "r000",
+          "type": "Floor",
+          "source": {
+            "macro": "Floor",
+            "x": 0,
+            "y": 0,
+            "width": 128
+          }
+        },
+        {
+          "id": "r002",
+          "type": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "x": 144,
+            "y": 8,
+            "width": 32
+          }
+        },
+        {
+          "id": "r003",
+          "type": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "x": 192,
+            "y": 32,
+            "width": 64,
+            "solidTrunk": true
+          }
+        },
+        {
+          "id": "r004",
+          "type": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "x": 208,
+            "y": 64,
+            "width": 40
+          }
+        },
+        {
+          "id": "r007",
+          "type": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "x": 256,
+            "y": 8,
+            "width": 24
+          }
+        },
+        {
+          "id": "r009",
+          "type": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "x": 280,
+            "y": 40,
+            "width": 40
+          }
+        },
+        {
+          "id": "r011",
+          "type": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "x": 320,
+            "y": 72,
+            "width": 56
+          }
+        },
+        {
+          "id": "r013",
+          "type": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "x": 400,
+            "y": 0,
+            "width": 32
+          }
+        },
+        {
+          "id": "r015",
+          "type": "Platform",
+          "source": {
+            "thing": "Platform",
+            "x": 440,
+            "y": 56,
+            "width": 24,
+            "floating": true,
+            "begin": -4,
+            "end": 56
+          }
+        },
+        {
+          "id": "r016",
+          "type": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "x": 472,
+            "y": 0,
+            "width": 40
+          }
+        },
+        {
+          "id": "r017",
+          "type": "Block",
+          "source": {
+            "thing": "Block",
+            "x": 472,
+            "y": 24,
+            "contents": "Mushroom"
+          }
+        },
+        {
+          "id": "r018",
+          "type": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "x": 480,
+            "y": 64,
+            "width": 32
+          }
+        },
+        {
+          "id": "r020",
+          "type": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "x": 520,
+            "y": 0,
+            "width": 40
+          }
+        },
+        {
+          "id": "r021",
+          "type": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "x": 560,
+            "y": 32,
+            "width": 24
+          }
+        },
+        {
+          "id": "r023",
+          "type": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "x": 608,
+            "y": 56,
+            "width": 48
+          }
+        },
+        {
+          "id": "r026",
+          "type": "Platform",
+          "source": {
+            "thing": "Platform",
+            "x": 688,
+            "y": 40,
+            "width": 24,
+            "sliding": true,
+            "begin": 660,
+            "end": 720
+          }
+        },
+        {
+          "id": "r028",
+          "type": "Platform",
+          "source": {
+            "thing": "Platform",
+            "x": 752,
+            "y": 32,
+            "width": 24,
+            "sliding": true,
+            "begin": 708,
+            "end": 776
+          }
+        },
+        {
+          "id": "r030",
+          "type": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "x": 784,
+            "y": 16,
+            "width": 32
+          }
+        },
+        {
+          "id": "r031",
+          "type": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "x": 832,
+            "y": 48,
+            "width": 64,
+            "solidTrunk": true
+          }
+        },
+        {
+          "id": "r033",
+          "type": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "x": 904,
+            "y": 0,
+            "width": 24
+          }
+        },
+        {
+          "id": "r036",
+          "type": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "x": 928,
+            "y": 32,
+            "width": 32
+          }
+        },
+        {
+          "id": "r038",
+          "type": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "x": 976,
+            "y": 32,
+            "width": 32,
+            "solidTrunk": true
+          }
+        },
+        {
+          "id": "r039",
+          "type": "Floor",
+          "source": {
+            "macro": "Floor",
+            "x": 1032,
+            "y": 0,
+            "width": 368
+          }
+        },
+        {
+          "id": "r040",
+          "type": "Platform",
+          "source": {
+            "thing": "Platform",
+            "x": 1048,
+            "y": 56,
+            "width": 24,
+            "sliding": true,
+            "begin": 1024,
+            "end": 1068
+          }
+        },
+        {
+          "id": "r042",
+          "type": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 1104,
+            "y": 32,
+            "width": 16,
+            "height": 32
+          }
+        },
+        {
+          "id": "r043",
+          "type": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 1120,
+            "y": 48,
+            "width": 16,
+            "height": 48
+          }
+        },
+        {
+          "id": "r044",
+          "type": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 1136,
+            "y": 64,
+            "width": 16,
+            "height": 64
+          }
+        },
+        {
+          "id": "r045-base",
+          "type": "Stone",
+          "source": {
+            "macro": "EndOutsideCastle",
+            "x": 1224,
+            "y": 0,
+            "large": true,
+            "walls": 12,
+            "transport": {
+              "map": "1-4"
+            }
+          }
+        }
       ]
     }
   ],

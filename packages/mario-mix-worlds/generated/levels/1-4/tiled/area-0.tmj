@@ -9,7 +9,7 @@
   "tileheight": 16,
   "infinite": false,
   "nextlayerid": 4,
-  "nextobjectid": 67,
+  "nextobjectid": 68,
   "tilesets": [],
   "layers": [
     {
@@ -641,14 +641,14 @@
           "x": 2048,
           "y": 160,
           "width": 208,
-          "height": 32,
+          "height": 16,
           "rotation": 0,
           "visible": true,
           "properties": [
             {
               "name": "sourceJson",
               "type": "string",
-              "value": "{\"id\":\"r035-bridge\",\"x\":2048,\"y\":160,\"w\":208,\"h\":32,\"collision\":\"solid\"}"
+              "value": "{\"id\":\"r035-bridge\",\"x\":2048,\"y\":160,\"w\":208,\"h\":16,\"collision\":\"solid\"}"
             }
           ]
         },
@@ -1201,6 +1201,25 @@
         },
         {
           "id": 64,
+          "name": "r035-chain",
+          "type": "marker-CastleChain",
+          "x": 2240,
+          "y": 144,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r035-chain\",\"kind\":\"marker-CastleChain\",\"source\":{\"thing\":\"CastleChain\",\"x\":1120,\"y\":32},\"x\":2240,\"y\":144}"
+            }
+          ]
+        },
+        {
+          "id": 65,
           "name": "r035-axe",
           "type": "bridge-axe-finish",
           "x": 2256,
@@ -1219,7 +1238,7 @@
           ]
         },
         {
-          "id": 65,
+          "id": 66,
           "name": "r035-finish",
           "type": "castle-finish",
           "x": 2048,
@@ -1238,7 +1257,7 @@
           ]
         },
         {
-          "id": 66,
+          "id": 67,
           "name": "r036",
           "type": "noncolliding-platform",
           "x": 2216,

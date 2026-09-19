@@ -700,6 +700,269 @@
     {
       "from": {
         "area": 0,
+        "part": "base",
+        "record": "r017"
+      },
+      "kind": "SectionPass",
+      "target": {
+        "macro": "SectionPass",
+        "height": 24,
+        "x": 304,
+        "y": 24,
+        "width": 128
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r019"
+      },
+      "kind": "SectionFail",
+      "target": {
+        "macro": "SectionFail",
+        "height": 24,
+        "x": 304,
+        "y": 80,
+        "width": 128
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r023"
+      },
+      "kind": "Section",
+      "target": {
+        "macro": "Section",
+        "section": 1,
+        "x": 456,
+        "y": 0
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r028"
+      },
+      "kind": "SectionFail",
+      "target": {
+        "macro": "SectionFail",
+        "height": 16,
+        "x": 464,
+        "y": 16,
+        "width": 128
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r030"
+      },
+      "kind": "SectionPass",
+      "target": {
+        "macro": "SectionPass",
+        "height": 24,
+        "x": 464,
+        "y": 48,
+        "width": 128
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r032"
+      },
+      "kind": "SectionFail",
+      "target": {
+        "macro": "SectionFail",
+        "height": 24,
+        "x": 464,
+        "y": 80,
+        "width": 128
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r037"
+      },
+      "kind": "Section",
+      "target": {
+        "macro": "Section",
+        "section": 2,
+        "x": 624,
+        "y": 0
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r039"
+      },
+      "kind": "SectionFail",
+      "target": {
+        "macro": "SectionFail",
+        "height": 24,
+        "x": 624,
+        "y": 24,
+        "width": 128
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r041"
+      },
+      "kind": "SectionPass",
+      "target": {
+        "macro": "SectionPass",
+        "height": 24,
+        "x": 624,
+        "y": 80,
+        "width": 128
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r049"
+      },
+      "kind": "SectionDecider",
+      "target": {
+        "macro": "SectionDecider",
+        "pass": 3,
+        "fail": 0,
+        "x": 832,
+        "y": 0
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r061"
+      },
+      "kind": "SectionFail",
+      "target": {
+        "macro": "SectionFail",
+        "height": 24,
+        "x": 968,
+        "y": 24,
+        "width": 128
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r062"
+      },
+      "kind": "SectionPass",
+      "target": {
+        "macro": "SectionPass",
+        "height": 24,
+        "x": 968,
+        "y": 80,
+        "width": 128
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r066"
+      },
+      "kind": "Section",
+      "target": {
+        "macro": "Section",
+        "section": 4,
+        "x": 1096,
+        "y": 0
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r081"
+      },
+      "kind": "Section",
+      "target": {
+        "macro": "Section",
+        "section": 5,
+        "x": 1352,
+        "y": 0
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r089"
+      },
+      "kind": "SectionPass",
+      "target": {
+        "macro": "SectionPass",
+        "height": 24,
+        "x": 1384,
+        "y": 80,
+        "width": 128
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r091"
+      },
+      "kind": "SectionFail",
+      "target": {
+        "macro": "SectionFail",
+        "height": 24,
+        "x": 1384,
+        "y": 48,
+        "width": 128
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r095"
+      },
+      "kind": "SectionDecider",
+      "target": {
+        "macro": "SectionDecider",
+        "height": 56,
+        "pass": 6,
+        "fail": 3,
+        "x": 1568,
+        "y": 80
+      }
+    },
+    {
+      "from": {
+        "area": 0,
+        "part": "base",
+        "record": "r107"
+      },
+      "kind": "world",
+      "target": {
+        "map": "8-1"
+      }
+    },
+    {
+      "from": {
+        "area": 0,
         "section": 0,
         "part": "stretch",
         "record": "r001"

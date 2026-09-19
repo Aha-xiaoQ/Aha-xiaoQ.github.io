@@ -1,0 +1,11 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import {readFile,readdir} from 'node:fs/promises';
+import {sourceGroups,sourceKey,sourcePixels} from '../atlas/source-art.mjs';
+import {terrainParts,markerParts,enemySprite} from '../atlas/map-appearance.mjs';
+import {fromTemplate,runtimeMap,deleteSelection} from '../atlas/editor-model.mjs';
+const level=async id=>JSON.parse(await readFile(new URL('../generated/levels/'+id+'/template.json',import.meta.url)));
+test('every collected terrain and actor family decodes without stretch or external assets',()=>{for(const g of ['Character','Solid','Scenery'])for(const type of sourceGroups[g]){const d=sourcePixels(sourceKey(g,type));assert.ok(d.w>0&&d.h>0);assert.equal(d.pixels.length,d.w*d.h);}});
+test('all 32 template geometries and enemy kinds have real source sprite mappings',async()=>{
+ for(const id of await readdir(new URL('../generated/levels/',import.meta.url))){const d=await level(id);for(const r of d.rooms){for(const q of r.map.geometry){const parts=terrainParts(r,q);assert.ok(parts.length,id+'/'+q.id);for(const p of parts)assert.ok(sourcePixels(p.name).h>0);}for(const m of r.markers){if(m.kind.startsWith('enemy-'))assert.ok(enemySprite(m.kind));for(const p of markerParts(r,m))assert.ok(sourcePixels(p.name).h>0);}}}
+});
+test('reference enemies enter play once, remain editable and deletion is respected',async()=>{const d=fromTemplate(await level('1-1')),r=d.rooms[0],enemy=r.map.objects.find(o=>o.kind==='walker');assert.ok(enemy);assert.equal(new Set(runtimeMap(r).objects.map(o=>o.id)).size,runtimeMap(r).objects.length);deleteSelection(r,'objects',new Set([enemy.id]));assert.ok(!runtimeMap(r).objects.some(o=>o.id===enemy.id));});
+test('tree and mushroom tops preserve end caps and trunks without changing collision geometry',async()=>{for(const [id,type] of [['1-3','TreeTop'],['4-3','ShroomTop']]){const r=(await level(id)).rooms[0],before=JSON.stringify(r.map),q=r.map.geometry.find(q=>terrainParts(r,q).some(p=>p.name.includes('|'+type+'|')));assert.ok(q);assert.equal(terrainParts(r,q).reduce((n,p)=>n+p.w,0),q.w);const trunk=r.markers.find(m=>m.id===q.id+'-trunk');assert.ok(markerParts(r,trunk).length);assert.equal(JSON.stringify(r.map),before);}});

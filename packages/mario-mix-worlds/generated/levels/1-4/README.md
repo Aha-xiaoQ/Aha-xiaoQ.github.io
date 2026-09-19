@@ -10,4 +10,4 @@
 Tiled 为对象层导出，仅供编辑参考；编辑结果不会自动回写游戏。
 
 ## 待实现 / 核验
-block-contents、bridge-axe-finish、castle-finish、hidden-block、lava-art、marker-Bowser、noncolliding-platform、rotating-firebar。
+block-contents、bridge-axe-finish、castle-finish、hidden-block、lava-art、marker-Bowser、marker-CastleChain、noncolliding-platform、rotating-firebar。

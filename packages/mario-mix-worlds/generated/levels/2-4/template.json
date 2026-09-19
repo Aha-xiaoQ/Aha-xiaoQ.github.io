@@ -488,7 +488,7 @@
           "x": 2048,
           "y": 160,
           "w": 208,
-          "h": 32,
+          "h": 16,
           "collision": "solid"
         },
         {
@@ -1031,7 +1031,7 @@
             "x": 2048,
             "y": 160,
             "w": 208,
-            "h": 32,
+            "h": 16,
             "collision": "solid"
           },
           {
@@ -1372,6 +1372,39 @@
           },
           "x": 2186,
           "y": 124
+        },
+        {
+          "id": "r051-lava",
+          "kind": "lava-volume",
+          "source": {
+            "macro": "Water",
+            "x": 1024,
+            "y": 0,
+            "width": 104
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r051"
+          },
+          "x": 2048,
+          "y": 208
+        },
+        {
+          "id": "r051-chain",
+          "kind": "marker-CastleChain",
+          "source": {
+            "thing": "CastleChain",
+            "x": 1120,
+            "y": 32
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r051"
+          },
+          "x": 2240,
+          "y": 144
         },
         {
           "id": "r051-axe",
@@ -2293,7 +2326,7 @@
             "x": 2048,
             "y": 160,
             "w": 208,
-            "h": 32
+            "h": 16
           }
         },
         {
@@ -2384,6 +2417,7 @@
       "enemy-bowser",
       "enemy-podoboo",
       "lava-volume",
+      "marker-CastleChain",
       "noncolliding-platform",
       "platform-generator",
       "rotating-firebar",
@@ -2464,6 +2498,16 @@
         "roomId": "area-0",
         "sourceRecord": "r051-boss",
         "kind": "enemy-bowser"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r051-lava",
+        "kind": "lava-volume"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r051-chain",
+        "kind": "marker-CastleChain"
       },
       {
         "roomId": "area-0",

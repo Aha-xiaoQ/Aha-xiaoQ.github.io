@@ -4,7 +4,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 test('UI transactions: canceled autosave, pointer ownership, locking and undo',async()=>{
  const nodes=new Map(),listeners={};
- const context=new Proxy({},{get:()=>()=>{}});
+ const context=new Proxy({},{get:(_,key)=>key==='createImageData'?(w,h)=>({data:new Uint8ClampedArray(w*h*4)}):()=>{}});
  class Element{
   constructor(id=''){this.id=id;this.value='';this.children=[];this.checked=false;this.clientWidth=800;this.clientHeight=480;this.style={};}
   replaceChildren(...a){this.children=a;}append(...a){this.children.push(...a);}setAttribute(){}

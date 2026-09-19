@@ -9,7 +9,7 @@
   "tileheight": 16,
   "infinite": false,
   "nextlayerid": 4,
-  "nextobjectid": 90,
+  "nextobjectid": 92,
   "tilesets": [],
   "layers": [
     {
@@ -911,14 +911,14 @@
           "x": 2048,
           "y": 160,
           "width": 208,
-          "height": 32,
+          "height": 16,
           "rotation": 0,
           "visible": true,
           "properties": [
             {
               "name": "sourceJson",
               "type": "string",
-              "value": "{\"id\":\"r049-bridge\",\"x\":2048,\"y\":160,\"w\":208,\"h\":32,\"collision\":\"solid\"}"
+              "value": "{\"id\":\"r049-bridge\",\"x\":2048,\"y\":160,\"w\":208,\"h\":16,\"collision\":\"solid\"}"
             }
           ]
         },
@@ -1618,6 +1618,44 @@
         },
         {
           "id": 87,
+          "name": "r049-lava",
+          "type": "lava-volume",
+          "x": 2048,
+          "y": 208,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r049-lava\",\"kind\":\"lava-volume\",\"source\":{\"macro\":\"Water\",\"x\":1024,\"y\":0,\"width\":104},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r049\"},\"x\":2048,\"y\":208}"
+            }
+          ]
+        },
+        {
+          "id": 88,
+          "name": "r049-chain",
+          "type": "marker-CastleChain",
+          "x": 2240,
+          "y": 144,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r049-chain\",\"kind\":\"marker-CastleChain\",\"source\":{\"thing\":\"CastleChain\",\"x\":1120,\"y\":32},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r049\"},\"x\":2240,\"y\":144}"
+            }
+          ]
+        },
+        {
+          "id": 89,
           "name": "r049-axe",
           "type": "bridge-axe-finish",
           "x": 2256,
@@ -1636,7 +1674,7 @@
           ]
         },
         {
-          "id": 88,
+          "id": 90,
           "name": "r049",
           "type": "castle-finish",
           "x": 2048,
@@ -1655,7 +1693,7 @@
           ]
         },
         {
-          "id": 89,
+          "id": 91,
           "name": "r049-transport",
           "type": "source-transport-not-simulated",
           "x": 2048,

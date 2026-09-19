@@ -3,13 +3,13 @@
   "version": "1.10",
   "orientation": "orthogonal",
   "renderorder": "right-down",
-  "width": 32,
+  "width": 90,
   "height": 15,
   "tilewidth": 16,
   "tileheight": 16,
   "infinite": false,
   "nextlayerid": 4,
-  "nextobjectid": 13,
+  "nextobjectid": 37,
   "tilesets": [],
   "layers": [
     {
@@ -147,6 +147,240 @@
               "value": "{\"id\":\"r005\",\"x\":304,\"y\":176,\"w\":32,\"h\":64,\"collision\":\"solid\"}"
             }
           ]
+        },
+        {
+          "id": 8,
+          "name": "r007",
+          "type": "solid",
+          "x": 336,
+          "y": 208,
+          "width": 256,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r007\",\"x\":336,\"y\":208,\"w\":256,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "name": "r008",
+          "type": "solid",
+          "x": 336,
+          "y": 32,
+          "width": 256,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r008\",\"x\":336,\"y\":32,\"w\":256,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "name": "r009",
+          "type": "solid",
+          "x": 592,
+          "y": 176,
+          "width": 32,
+          "height": 64,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r009\",\"x\":592,\"y\":176,\"w\":32,\"h\":64,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "name": "r010",
+          "type": "solid",
+          "x": 592,
+          "y": 32,
+          "width": 848,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r010\",\"x\":592,\"y\":32,\"w\":848,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "name": "r011",
+          "type": "solid",
+          "x": 624,
+          "y": 208,
+          "width": 144,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r011\",\"x\":624,\"y\":208,\"w\":144,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "name": "r013",
+          "type": "solid",
+          "x": 768,
+          "y": 160,
+          "width": 64,
+          "height": 80,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r013\",\"x\":768,\"y\":160,\"w\":64,\"h\":80,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 14,
+          "name": "r015",
+          "type": "oneway",
+          "x": 896,
+          "y": 208,
+          "width": 32,
+          "height": 8,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r015\",\"x\":896,\"y\":208,\"w\":32,\"h\":8,\"collision\":\"oneway\",\"motion\":{\"axis\":\"x\",\"min\":872,\"max\":1056,\"speed\":0.75}}"
+            }
+          ]
+        },
+        {
+          "id": 15,
+          "name": "r016",
+          "type": "solid",
+          "x": 1104,
+          "y": 160,
+          "width": 96,
+          "height": 80,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r016\",\"x\":1104,\"y\":160,\"w\":96,\"h\":80,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 16,
+          "name": "r017",
+          "type": "solid",
+          "x": 1120,
+          "y": 96,
+          "width": 64,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r017\",\"x\":1120,\"y\":96,\"w\":64,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 17,
+          "name": "r018",
+          "type": "solid",
+          "x": 1200,
+          "y": 128,
+          "width": 32,
+          "height": 112,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r018\",\"x\":1200,\"y\":128,\"w\":32,\"h\":112,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 18,
+          "name": "r019",
+          "type": "solid",
+          "x": 1232,
+          "y": 160,
+          "width": 112,
+          "height": 80,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r019\",\"x\":1232,\"y\":160,\"w\":112,\"h\":80,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 19,
+          "name": "r020",
+          "type": "solid",
+          "x": 1344,
+          "y": 112,
+          "width": 32,
+          "height": 128,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r020\",\"x\":1344,\"y\":112,\"w\":32,\"h\":128,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 20,
+          "name": "r021",
+          "type": "solid",
+          "x": 1376,
+          "y": 160,
+          "width": 64,
+          "height": 80,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r021\",\"x\":1376,\"y\":160,\"w\":64,\"h\":80,\"collision\":\"solid\"}"
+            }
+          ]
         }
       ]
     },
@@ -161,7 +395,7 @@
       "draworder": "index",
       "objects": [
         {
-          "id": 8,
+          "id": 21,
           "name": "inspection-start",
           "type": "spawn",
           "x": 24,
@@ -191,7 +425,7 @@
       "draworder": "index",
       "objects": [
         {
-          "id": 9,
+          "id": 22,
           "name": "r003",
           "type": "lava-volume",
           "x": 96,
@@ -210,7 +444,7 @@
           ]
         },
         {
-          "id": 10,
+          "id": 23,
           "name": "r005-plant",
           "type": "enemy-piranha",
           "x": 304,
@@ -229,7 +463,7 @@
           ]
         },
         {
-          "id": 11,
+          "id": 24,
           "name": "r006",
           "type": "conditional-section",
           "x": 336,
@@ -248,7 +482,216 @@
           ]
         },
         {
-          "id": 12,
+          "id": 25,
+          "name": "r009-transport",
+          "type": "source-transport-not-simulated",
+          "x": 592,
+          "y": 176,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r009-transport\",\"kind\":\"source-transport-not-simulated\",\"source\":{\"height\":\"Infinity\",\"piranha\":true,\"transport\":1,\"x\":296,\"y\":16,\"thing\":\"PipeVertical\",\"width\":16},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r009\"},\"x\":592,\"y\":176}"
+            }
+          ]
+        },
+        {
+          "id": 26,
+          "name": "r009-plant",
+          "type": "enemy-piranha",
+          "x": 592,
+          "y": 176,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r009-plant\",\"kind\":\"enemy-piranha\",\"source\":{\"macro\":\"Pipe\",\"height\":\"Infinity\",\"piranha\":true,\"transport\":1,\"x\":296,\"y\":16},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r009\"},\"x\":592,\"y\":176}"
+            }
+          ]
+        },
+        {
+          "id": 27,
+          "name": "r012-0-0",
+          "type": "enemy-goomba",
+          "x": 664,
+          "y": 192,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r012-0-0\",\"kind\":\"enemy-goomba\",\"source\":{\"thing\":\"Goomba\",\"x\":332,\"y\":8},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r012\"},\"x\":664,\"y\":192}"
+            }
+          ]
+        },
+        {
+          "id": 28,
+          "name": "r012-1-0",
+          "type": "enemy-goomba",
+          "x": 688,
+          "y": 192,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r012-1-0\",\"kind\":\"enemy-goomba\",\"source\":{\"thing\":\"Goomba\",\"x\":344,\"y\":8},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r012\"},\"x\":688,\"y\":192}"
+            }
+          ]
+        },
+        {
+          "id": 29,
+          "name": "r012-2-0",
+          "type": "enemy-goomba",
+          "x": 712,
+          "y": 192,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r012-2-0\",\"kind\":\"enemy-goomba\",\"source\":{\"thing\":\"Goomba\",\"x\":356,\"y\":8},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r012\"},\"x\":712,\"y\":192}"
+            }
+          ]
+        },
+        {
+          "id": 30,
+          "name": "r014",
+          "type": "lava-volume",
+          "x": 832,
+          "y": 208,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r014\",\"kind\":\"lava-volume\",\"source\":{\"macro\":\"Water\",\"width\":136,\"x\":416,\"y\":0},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r014\"},\"x\":832,\"y\":208}"
+            }
+          ]
+        },
+        {
+          "id": 31,
+          "name": "r015-timing",
+          "type": "platform-timing",
+          "x": 896,
+          "y": 208,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r015-timing\",\"kind\":\"platform-timing\",\"source\":{\"thing\":\"Platform\",\"width\":16,\"sliding\":true,\"begin\":436,\"end\":528,\"speed\":2,\"x\":448,\"y\":0},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r015\"},\"x\":896,\"y\":208}"
+            }
+          ]
+        },
+        {
+          "id": 32,
+          "name": "r018-transport",
+          "type": "source-transport-not-simulated",
+          "x": 1200,
+          "y": 128,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r018-transport\",\"kind\":\"source-transport-not-simulated\",\"source\":{\"height\":\"Infinity\",\"piranha\":true,\"transport\":2,\"x\":600,\"y\":40,\"thing\":\"PipeVertical\",\"width\":16},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r018\"},\"x\":1200,\"y\":128}"
+            }
+          ]
+        },
+        {
+          "id": 33,
+          "name": "r018-plant",
+          "type": "enemy-piranha",
+          "x": 1200,
+          "y": 128,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r018-plant\",\"kind\":\"enemy-piranha\",\"source\":{\"macro\":\"Pipe\",\"height\":\"Infinity\",\"piranha\":true,\"transport\":2,\"x\":600,\"y\":40},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r018\"},\"x\":1200,\"y\":128}"
+            }
+          ]
+        },
+        {
+          "id": 34,
+          "name": "r020-plant",
+          "type": "enemy-piranha",
+          "x": 1344,
+          "y": 112,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r020-plant\",\"kind\":\"enemy-piranha\",\"source\":{\"macro\":\"Pipe\",\"height\":\"Infinity\",\"piranha\":true,\"x\":672,\"y\":48},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r020\"},\"x\":1344,\"y\":112}"
+            }
+          ]
+        },
+        {
+          "id": 35,
+          "name": "r022",
+          "type": "conditional-section",
+          "x": 1440,
+          "y": 208,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r022\",\"kind\":\"conditional-section\",\"source\":{\"macro\":\"Section\",\"x\":720,\"y\":0},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r022\"},\"x\":1440,\"y\":208}"
+            }
+          ]
+        },
+        {
+          "id": 36,
           "name": "section-mode",
           "type": "conditional-section-runtime",
           "x": 0,
