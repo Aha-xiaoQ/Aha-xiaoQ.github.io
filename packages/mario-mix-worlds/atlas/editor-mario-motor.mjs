@@ -4,12 +4,15 @@ export function createPlatformMotor(){
  const overlap=host().overlap,approach=(v,t,a)=>v+Math.max(-a,Math.min(a,t-v));
  function create(c,s){return {...host().create(c,s),airCap:1.5,jumpG:.125,fallG:.4375,jumpBuffer:0,power:0,anim:0,crouch:false};}
  function step(p,i,c,w){
-  const out=[],ground=p.grounded,axis=Math.sign(i.x||0);p.headHit=null;p.swimming=!!w.swimming;p.swimStroke=Math.max(0,(p.swimStroke||0)-1);
+  const out=[];let ground=p.grounded;const axis=Math.sign(i.x||0);p.headHit=null;p.swimming=!!w.swimming;p.swimStroke=Math.max(0,(p.swimStroke||0)-1);
+  if(p.hero==='bill'&&i.down&&i.jumpPressed&&ground){const support=w.solids.find(q=>q.id===p.support);if(support?.collision==='oneway'){p.dropY=support.y;p.dropTicks=24;p.grounded=ground=false;p.support=null;p.vy=.7;p.jumpBuffer=0;i={...i,jumpPressed:false,jump:false};}}
+  if(p.dropTicks>0){p.dropTicks--;w={...w,solids:w.solids.filter(q=>!(q.collision==='oneway'&&Math.abs(q.y-p.dropY)<1))};}
   const carriedBy=ground?p.support:null;
   if(ground&&p.support){const q=w.solids.find(q=>q.id===p.support);if(q){p.x+=q.dx||0;p.y+=q.dy||0;}}
-  if(p.power){const crouch=!!i.down&&ground,target=crouch?16:28;if(target!==p.h){const body={...p,y:p.y+p.h-target,h:target};if(target<p.h||!w.solids.some(q=>!q.hidden&&q.collision==='solid'&&overlap(body,q))){p.y=body.y;p.h=target;p.crouch=crouch;}}}else p.crouch=false;
+  if(p.power||p.hero==='bill'){const crouch=!!i.down&&ground,target=crouch?16:p.hero==='bill'?30:28;if(target!==p.h){const body={...p,y:p.y+p.h-target,h:target};if(target<p.h||!w.solids.some(q=>!q.hidden&&q.collision==='solid'&&overlap(body,q))){p.y=body.y;p.h=target;p.crouch=crouch;}}}else p.crouch=false;
   if(i.jumpPressed)p.jumpBuffer=3;else if(p.jumpBuffer)p.jumpBuffer--;
   const cap=ground?(i.run?2.5:1.5):p.airCap,acc=i.run||(!ground&&p.airCap>1.5)?.0556640625:.037109375;
+  if(p.hero==='bill'&&axis)p.facing=axis;
   if(axis&&!p.crouch){p.vx=approach(p.vx,axis*cap,p.vx&&Math.sign(p.vx)!==axis?.1015625:acc);p.facing=axis;}else if(ground)p.vx=approach(p.vx,0,.05078125);
   if(w.swimming&&i.jumpPressed){p.swimStroke=24;p.vy=-2.5;p.jumpBuffer=0;p.grounded=false;out.push('jump');}
   if(!w.swimming&&p.jumpBuffer&&ground){const s=Math.abs(p.vx);p.vy=s>2.25?-5.1666667:-4.1333333;p.jumpG=s>2.25?.15625:s>1?.1171875:.125;p.fallG=s>2.25?.5625:s>1?.375:.4375;p.airCap=s>1.5?2.5:1.5;p.jumpBuffer=0;p.grounded=false;out.push('jump');}

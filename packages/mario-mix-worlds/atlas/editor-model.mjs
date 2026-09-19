@@ -78,8 +78,10 @@ export function validate(d){
  if(!d||d.format!=='xiaoq-map-project'||d.version!==1)throw Error('请选择地图工坊导出的工程文件（版本 1）');
  if(typeof d.id!=='string'||d.id.length>100||typeof d.title!=='string'||!d.title.trim()||d.title.length>100)throw Error('工程名称或标识无效');
  if(!Array.isArray(d.rooms)||!d.rooms.length||d.rooms.length>128)throw Error('区域数量无效');
+ if(d.playHero!==undefined&&!['mario','bill'].includes(d.playHero))throw Error('未知主角');
  const roomIds=new Set();
  for(const r of d.rooms){
+  if(r.playHero!==undefined&&!['mario','bill'].includes(r.playHero))throw Error('未知主角');if(d.playHero)r.playHero=d.playHero;
   if(typeof r.roomId!=='string'||roomIds.has(r.roomId))throw Error('区域标识重复或缺失');roomIds.add(r.roomId);
   const m=r.map;if(!m||!integer(m.width,256,32768)||!integer(m.height,120,4096)||Math.ceil(m.width/16)*Math.ceil(m.height/16)>MAX_CELLS)throw Error('地图尺寸超出范围');
   if(m.tileSize!==16)throw Error('目前仅支持 16 像素地块');
@@ -155,7 +157,7 @@ export function resize(room,width,height){
 }
 export function runtimeMap(room){
  const m=clone(room.map);m.provenance={kind:'original',source:'Map workshop; reference information is retained in the editor project',review:'pending',note:'用户地图草稿，需在实验运行时验收；不能替代原版核验。'};
- m.geometry=m.geometry.map(({material,stemHeight,...q})=>q);
+ m.geometry=m.geometry.map(({material,stemHeight,reward,...q})=>q);
  const ids=new Set(m.objects.map(o=>o.id));m.objects.push(...(room.enemiesEditable?[]:referenceEnemies(room)).filter(o=>!ids.has(o.id)&&o.x>=0&&o.y>=0&&o.x+o.w<=m.width&&o.y+o.h<=m.height));
  // Older editor saves contain the visible finish marker but no exit object.
  // Derive the trigger here so preview and every offline export agree.

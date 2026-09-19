@@ -1,5 +1,6 @@
+import {heroFor,selectHero} from './editor-heroes.mjs';
 import {buildCampaign} from './campaign-build.mjs';
-import {orderedTerrain} from './map-appearance.mjs';
+import {orderedTerrain,sourceType} from './map-appearance.mjs';
 import {enemySprite,enemyLabels,promoteEnemies} from './map-appearance.mjs';
 import {classicSprite} from './classic-art.mjs';
 import {placeObject,batchObjects,connectPortal,connectionProblems,cleanupStarts} from './editor-objects.mjs';
@@ -35,6 +36,8 @@ function save(){
 function changed(){dirty=true;$('save-state').textContent='正在保存…';clearTimeout(saveTimer);saveTimer=setTimeout(save,450);refresh();}
 function transaction(fn){cancelGesture();if(locked())throw Error('当前图层已锁定');if(history.change(fn))changed();}
 function refresh(){
+ const rewardBlock=selected.size===1?room().map.geometry.find(g=>selected.has(g.id)&&['Brick','Block'].includes(sourceType(room(),g))):null;$('reward-settings').hidden=!rewardBlock;if(rewardBlock)$('reward-content').value=rewardBlock.reward||'';
+ const hero=heroFor(history.doc),selector=document.getElementById('play-hero');if(selector)selector.value=hero;const description=document.getElementById('hero-description');if(description)description.textContent=hero==='bill'?'魂斗罗 · 比尔：八向连射、趴射，M / S / F / L 武器补给，接触敌人会死亡。':'马里奥 · 单跳与踩敌';$('skin-upload').disabled=$('skin-reset').disabled=hero==='bill';
  $('title').value=history.doc.title;
  const r=room();options($('room'),history.doc.rooms.map((r,i)=>[String(i),roomLabel(history.doc.reference?.level,r)]));$('room').value=String(ri);
  $('width').value=Math.ceil(r.map.width/16);$('height').value=Math.ceil(r.map.height/16);
@@ -124,7 +127,7 @@ function download(name,data){const u=URL.createObjectURL(new Blob([JSON.stringif
 function safeSwitch(){cancelGesture();save();return !dirty||confirm('本机保存失败，切换会丢失当前改动。仍要继续吗？建议取消并先导出工程。');}
 function selectedRoom(d){return d.rooms.findIndex(r=>r.roomId===displayRoom(d.reference?.level,d.rooms,d.activeRoomId));}
 function replace(d){history=new History(d);const loaded=history.doc;restoreAppearance().then(()=>{if(history.doc===loaded){for(const r of loaded.rooms)promoteEnemies(r);render();}});ri=selectedRoom(d);selected.clear();locks.clear();camera={x:0,y:0};preloadArt(d.rooms).then(render).catch(e=>say(e.message));changed();}
-$('new').onclick=()=>{if(confirm('新建会替换当前本机草稿。需要保留多个工程时，请先导出。')&&safeSwitch())replace(blank());};
+$('new').onclick=()=>{if(confirm('新建会替换当前本机草稿。需要保留多个工程时，请先导出。')&&safeSwitch())replace(selectHero(blank(),heroFor(history.doc)));};
 $('open').onclick=()=>$('file').click();
 $('file').onchange=async()=>{const f=$('file').files[0];$('file').value='';if(!f)return;try{if(f.size>12*1024*1024)throw Error('文件超过 12 MB');const d=parseProject(await f.text());if(confirm('打开工程会替换当前本机草稿，是否继续？')&&safeSwitch())replace(d);}catch(e){say(e.message);}};
 $('export').onclick=()=>{cancelGesture();save();download('my-map.qmap.json',history.doc);say('工程已导出，可在其他电脑打开继续编辑。');};
@@ -155,7 +158,7 @@ function updateTemplateInfo(){const l=templateLevels.find(q=>q.id===$('base').va
 function updateTemplateLevels(preferred){const levels=templateLevels.filter(l=>l.id.split('-')[0]===$('base-world').value);options($('base'),levels.map(l=>[l.id,l.id==='1-1'?'1-1 · 现有实机底图':l.id]));if(levels.some(l=>l.id===preferred))$('base').value=preferred;updateTemplateInfo();}
 $('base-world').onchange=()=>updateTemplateLevels();$('base').onchange=updateTemplateInfo;
 $('template').onclick=async()=>{const button=$('template');button.disabled=true;try{const res=await fetch('../generated/atlas-index.json');if(!res.ok)throw Error('地图目录加载失败');const d=await res.json();templateLevels=d.levels;options($('base-world'),[...new Set(d.levels.map(l=>l.id.split('-')[0]))].map(w=>[w,'世界 '+w]));const preferred=history.doc.reference?.level||'1-1';$('base-world').value=preferred.split('-')[0];updateTemplateLevels(preferred);$('template-dialog').showModal();}catch(e){say(e.message);}finally{button.disabled=false;}};
-$('load-template').onclick=async()=>{const id=$('base').value;if(!/^[1-8]-[1-4]$/.test(id))return;const n=++loadEpoch;$('load-template').disabled=true;try{const res=await fetch(id==='1-1'?'./classic-1-1.json':'../generated/levels/'+id+'/template.json');if(!res.ok)throw Error('底图读取失败');const d=fromTemplate(await res.json());if(n!==loadEpoch)return;if(confirm('将创建底图副本并替换本机草稿，请确认已导出需要保留的工程。')&&safeSwitch()){replace(d);$('template-dialog').close();say('底图副本已创建。参考层保留原记录；可编辑地形与对象。');}}catch(e){say(e.message);}finally{$('load-template').disabled=false;}};
+$('load-template').onclick=async()=>{const id=$('base').value;if(!/^[1-8]-[1-4]$/.test(id))return;const n=++loadEpoch;$('load-template').disabled=true;try{const res=await fetch(id==='1-1'?'./classic-1-1.json':'../generated/levels/'+id+'/template.json');if(!res.ok)throw Error('底图读取失败');const d=selectHero(fromTemplate(await res.json()),heroFor(history.doc));if(n!==loadEpoch)return;if(confirm('将创建底图副本并替换本机草稿，请确认已导出需要保留的工程。')&&safeSwitch()){replace(d);$('template-dialog').close();say('底图副本已创建。参考层保留原记录；可编辑地形与对象。');}}catch(e){say(e.message);}finally{$('load-template').disabled=false;}};
 document.addEventListener('keydown',e=>{
  if(e.target.closest('input,select,textarea,dialog'))return;
  if(e.code==='Space'){space=true;e.preventDefault();return;}
@@ -173,7 +176,7 @@ try{const saved=localStorage.getItem(KEY);if(saved){history=new History(parsePro
 refresh();
 
 async function getPack(){cancelGesture();const copy=clone(room()),namespace='map-'+history.doc.id.slice(-12)+'-'+ri;copy.map.title=history.doc.title+' / '+room().roomId;const res=await fetch('./runtime/character.json');if(!res.ok)throw Error('实验角色加载失败');return developerPack(copy,await res.json(),namespace);}
-$('play').onclick=async()=>{try{const p=await getProjectPack();const onWarp=async(target,carry,session)=>{try{const d=fromTemplate(await(await fetch('../generated/levels/'+target+'/template.json')).json()),character=await(await fetch('./runtime/character.json')).json();await session.load(projectPack(d,d.rooms[0].roomId,character),d.rooms,{initialState:carry,onWarp});}catch(e){say('跳关加载失败：'+e.message);}};await play(p,clone(history.doc.rooms),{},{onWarp});}catch(e){say(e.message);}};
+$('play').onclick=async()=>{try{const p=await getProjectPack();const onWarp=async(target,carry,session)=>{try{const d=selectHero(fromTemplate(await(await fetch('../generated/levels/'+target+'/template.json')).json()),carry.hero||heroFor(history.doc)),character=await(await fetch('./runtime/character.json')).json();await session.load(projectPack(d,displayRoom(target,d.rooms),character),d.rooms,{initialState:carry,onWarp});}catch(e){say('跳关加载失败：'+e.message);}};await play(p,clone(history.doc.rooms),{},{onWarp});}catch(e){say(e.message);}};
 $('pack-export').onclick=async()=>{try{const pack=await getProjectPack(),bytes=zipFiles(filesForPack(pack)),url=URL.createObjectURL(new Blob([bytes],{type:'application/zip'})),a=document.createElement('a');a.href=url;a.download='map-development.zip';a.click();setTimeout(()=>URL.revokeObjectURL(url),30000);say('开发数据包已导出，内含接入说明。请另存工程文件作为完整备份。');}catch(e){say(e.message);}};
 
 async function getProjectPack(){cancelGesture();await restoreAppearance();const res=await fetch('./runtime/character.json');if(!res.ok)throw Error('角色加载失败');return projectPack(history.doc,room().roomId,await res.json(),'map-'+history.doc.id.slice(-12));}
@@ -191,7 +194,7 @@ $('play-download').onclick=async()=>{const button=$('play-download'),dialog=$('d
 $('download-ready').onclick=()=>{$('download-status').textContent='已请求浏览器保存。若没有出现下载，请再点一次，并检查浏览器下载列表。';};
 window.addEventListener('pagehide',()=>{if(offlineUrl)URL.revokeObjectURL(offlineUrl);});
 
-$('add-room').onclick=()=>run(()=>{cancelGesture();history.change(d=>{const r=blank('新区域',1280,480).rooms[0];r.roomId='room-'+uid().slice(-8);d.rooms.push(r);});ri=history.doc.rooms.length-1;camera={x:0,y:0};selected.clear();changed();});
+$('add-room').onclick=()=>run(()=>{cancelGesture();history.change(d=>{const r=blank('新区域',1280,480).rooms[0];r.playHero=heroFor(d);r.roomId='room-'+uid().slice(-8);d.rooms.push(r);});ri=history.doc.rooms.length-1;camera={x:0,y:0};selected.clear();changed();});
 
 preloadArt(history.doc.rooms).then(render).catch(e=>say(e.message));
 $('art-upload').onclick=()=>$('art-file').click();
@@ -203,6 +206,7 @@ $('focus-mode').onclick=()=>{document.body.classList.toggle('focus-mode');$('foc
 $('home-view').onclick=()=>{const p=room().map.objects.find(o=>o.kind==='spawn');camera={x:Math.max(0,(p?.x||0)-32),y:0};render();};
 
 $('skin-upload').onclick=()=>$('skin-file').click();
+$('reward-content').onchange=()=>run(()=>transaction(()=>{const q=room().map.geometry.find(g=>selected.has(g.id));if(q)q.reward=$('reward-content').value;}));
 $('skin-reset').onclick=()=>run(()=>transaction(()=>{delete room().playerSkin;}));
 $('skin-file').onchange=async()=>{const f=$('skin-file').files[0];$('skin-file').value='';if(!f)return;const original=room(),project=history.doc.id;try{if(f.type!=='image/png'||f.size>50000)throw Error('请选择 16×16 PNG，50 KB 内');const data=await new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=reject;r.readAsDataURL(f);});const im=new Image();im.src=data;await im.decode();if(im.width!==16||im.height!==16)throw Error('人物外观需为 16×16 像素，不会拉伸图片');await preloadArt([{playerSkin:data}]);if(history.doc.id!==project||room()!==original)throw Error('区域已切换，请重试');transaction(()=>{room().playerSkin=data;});say('已替换人物外观，操作能力保持马里奥基础试玩。');}catch(e){say(e.message);}};
 
@@ -221,6 +225,10 @@ for(const r of history.doc.rooms)promoteEnemies(r);render();
 $('pan-left').onclick=()=>{camera.x=Math.max(0,camera.x-vp.clientWidth/z()*.7);render();};
 $('pan-right').onclick=()=>{camera.x=Math.max(0,Math.min(room().map.width-vp.clientWidth/z(),camera.x+vp.clientWidth/z()*.7));render();};
 
-$('campaign-download').onclick=async()=>{const button=$('campaign-download'),dialog=$('download-dialog'),status=$('download-status'),progress=$('download-progress'),link=$('download-ready');button.disabled=true;link.hidden=true;progress.value=0;dialog.showModal();try{const levels=await buildCampaign(undefined,(n,total)=>{status.textContent='准备关卡 '+n+' / '+total;progress.value=n/total*30;});const html=await offlineFile(levels[0].pack,levels[0].rooms,undefined,undefined,(n,total)=>{status.textContent='打包地图与音频…';progress.value=30+n/total*70;},{campaign:levels});if(offlineUrl)URL.revokeObjectURL(offlineUrl);offlineUrl=URL.createObjectURL(new Blob([html],{type:'text/html;charset=utf-8'}));link.href=offlineUrl;link.download='xiaoq-mario-32-levels.html';link.hidden=false;progress.value=100;status.textContent='32 关连续闯关测试版已准备好，点击保存。';}catch(e){status.textContent='生成失败：'+e.message;}finally{button.disabled=false;}};
+$('campaign-download').onclick=async()=>{const button=$('campaign-download'),dialog=$('download-dialog'),status=$('download-status'),progress=$('download-progress'),link=$('download-ready');button.disabled=true;link.hidden=true;progress.value=0;dialog.showModal();try{const levels=await buildCampaign(undefined,(n,total)=>{status.textContent='准备关卡 '+n+' / '+total;progress.value=n/total*30;},{hero:heroFor(history.doc)});const html=await offlineFile(levels[0].pack,levels[0].rooms,undefined,undefined,(n,total)=>{status.textContent='打包地图与音频…';progress.value=30+n/total*70;},{campaign:levels});if(offlineUrl)URL.revokeObjectURL(offlineUrl);offlineUrl=URL.createObjectURL(new Blob([html],{type:'text/html;charset=utf-8'}));link.href=offlineUrl;link.download='xiaoq-'+heroFor(history.doc)+'-32-levels.html';link.hidden=false;progress.value=100;status.textContent='32 关连续闯关测试版已准备好，点击保存。';}catch(e){status.textContent='生成失败：'+e.message;}finally{button.disabled=false;}};
 
 // Character behavior is stored with the project rooms and travels with offline exports.
+const heroSelect=$('play-hero');
+heroSelect.onchange=async()=>{await preloadArt([{playHero:heroSelect.value}]);run(()=>transaction(()=>{selectHero(history.doc,heroSelect.value);}));};
+
+heroSelect.value=heroFor(history.doc);

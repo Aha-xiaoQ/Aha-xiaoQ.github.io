@@ -27,3 +27,5 @@ SOFTWARE.
 2026-09-19: source-sprite-data.mjs additionally retains the complete sprite library, palette and filter data from the same fixed upstream commit. Provenance and source hashes: ../reference/SPRITE_SOURCE.json. source-art.mjs decodes data only; no upstream game scripts are executed.
 
 2026-09-19: Castle, Underwater, hurry variants, World Clear and Bowser recordings use the same fixed upstream source. Hashes: ../reference/AUDIO_ADDITIONS.json. Original game audio remains third-party material, not relicensed by this project.
+
+2026-09-20 local Bill integration: reuses existing games/mario-mix/assets/bill.png, projectiles/contra-*.png and character-audio recordings (Contra jungle, Bill death/pickup and N/M/S/F/L shots). Character/art/audio rights remain with their respective owners; the Mario source code license above does not cover these Contra assets. No new third-party assets were downloaded.

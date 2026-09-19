@@ -1,7 +1,7 @@
 # 交接记录 · collab-r01
 
 ## 当前状态 · 2026-09-20
-地图工坊已合入并推送 main：9bc864ad6242d3c556010347551e6be260bf2911。1098 项测试及完整检查通过；线上部署另行核验。魂斗罗 1-2 仍仅本地保留。下方“本地候选 / 未推送”均为当时的历史记录，不代表当前发布状态。
+地图工坊已合入并推送 main：9bc864ad6242d3c556010347551e6be260bf2911。1098 项测试及完整检查通过；线上部署另行核验。魂斗罗主角已扩展为可选角色集成，本批次已获主分支推送授权；功能与验证见下方 2026-09-20 发布记录。下方“本地候选 / 未推送”均为当时的历史记录，不代表当前发布状态。
 
 本次补齐工具页入口、使用说明与开发页状态；不改变游戏规则。
 
@@ -455,3 +455,19 @@ User requests today’s work pushed, then explicitly excludes the buggy Contra 1
 4-4 template, SVG, extension and ZIP derivatives have now been regenerated from the corrected compiler; earlier derivative-staleness note is superseded. Seamless castle looping and full manual traversals remain unverified. User subsequently authorizes updating main. Merge current origin/main before pushing HEAD:main; preserve remote website changes.
 
 Merged origin/main 30db4b6, preserving document routes/resource labels and website changes. Full checks/tests/doctor passed on Mario-only merged candidate. Next action: push HEAD:main, verify remote SHA, restore local-only prototype from backup.
+
+## 2026-09-20 Bill selectable protagonist — local only
+
+User authorized reuse of existing Bill character/audio/weapons/rewards on any workshop map; no exclusive enemies or hidden maps. Previous published main remains efe5111. Source: D:/Code/xiaoq-homepage-push-r25; active preview mirror: D:/Code/xiaoq-homepage-github-main-r08-review (4184). Do not auto-publish this feature under the earlier Mario-only push authorization.
+
+Implemented persisted project-wide hero choice, new/template/room preservation, single/campaign offline exports, weapon carry on room/level/warp, five weapon families, configurable reward bricks, existing Bill art/audio, crouch and one-way drop, safe revival height. Existing enemies and map topology retained. No Contra-specific rooms/enemies introduced.
+
+Validation: 381 world tests initially 380 passed, one minimal DOM fixture failed on dynamic Option construction; moved hero selector to HTML and reran that test successfully. Bill suite then expanded to 17 passing tests, including every reference horizontal exit with equipped S weapon. Real browser 2-1 selection/save/reload/preview/offline download passed with no page errors, bill_theme playing and Bill shots observed. Native interaction replay 5/5 (shoot/reward/crouch/touch-jump/restart), validator integrity pass. Evidence: C:/Users/Bright/AppData/Local/Temp/map-workshop-play-review/bill-replay.json and bill-captures. Download: C:/Users/Bright/Downloads/xiaoq-bill-2-1.html. Not a claim of 32-level natural playthrough or all-device validation.
+
+Next: user playtest local selectable Bill, address concrete route/control issues before considering publication.
+
+## 2026-09-20 主角集成发布批次
+
+用户已授权将比尔主角集成及后续反馈修复推送到主分支。当前功能：主角选择和底图创建入口强调、比尔五种武器/奖励/音效、连射音量 0.12、比尔模式库巴耐久 20、结算清除瞄准和射击状态、寒蝉点阵体署名与武器字母说明。历史 local-only 标记仅描述当时状态，本批次授权取代旧的不推送限制。保留现有敌人/地图；未宣称 32 关自然通关验收。
+
+发布验证：npm run check、npm test、npm run release:test（106 项）通过。源码包保留既有 M06 runtime，并更新工坊文件；发布准备与一致性检查按最终归档核验。网页与离线 2-1、8-4 结算截图及 5 场景交互回放已验证；不替代全部路线和设备人工验收。

@@ -7,7 +7,7 @@ export function mountStartingLives(host){
 }
 export function mountCampaign(levels,media){
  const host=document.querySelector('.launch-copy'),status=document.getElementById('status');host.replaceChildren();
- const title=document.createElement('h1');title.textContent='小Q · 连续闯关';host.append(title);
+ const title=document.createElement('h1');title.textContent='小Q · '+(levels[0]?.rooms.some(r=>r.playHero==='bill')?'魂斗罗':'马里奥')+'连续闯关';host.append(title);
  const note=document.createElement('p');note.textContent='32 关连续闯关测试版 · 自由选关 · 离线游玩。部分机关与原版仍有差异。';host.append(note);
  const world=document.createElement('select'),level=document.createElement('select');world.setAttribute('aria-label','选择世界');level.setAttribute('aria-label','选择关卡');
  for(let w=1;w<=8;w++)world.add(new Option('世界 '+w,String(w)));
@@ -20,7 +20,7 @@ export function mountCampaign(levels,media){
  let busy=false;
 
  async function run(index,carry=null,session=null){if(busy)return;busy=true;start.disabled=selected.disabled=true;status.hidden=true;let curtain;
- try{carry??={lives:startingLives()};const entry=levels[index];if(!entry){showCredits(session);return;}curtain=document.createElement('section');curtain.className='campaign-card level-intro';const heading=document.createElement('h2');heading.textContent='WORLD '+entry.id;const lives=document.createElement('p');lives.textContent='MARIO × '+(carry?.lives??3);curtain.append(heading,lives);(session?.screen||document.body).append(curtain);await new Promise(r=>setTimeout(r,1200));curtain.remove();
+ try{carry??={lives:startingLives()};const entry=levels[index];if(!entry){showCredits(session);return;}curtain=document.createElement('section');curtain.className='campaign-card level-intro';const heading=document.createElement('h2');heading.textContent='WORLD '+entry.id;const lives=document.createElement('p');lives.textContent=(entry.rooms.some(r=>r.playHero==='bill')?'BILL × ':'MARIO × ')+(carry?.lives??3);curtain.append(heading,lives);(session?.screen||document.body).append(curtain);await new Promise(r=>setTimeout(r,1200));curtain.remove();
  const playOptions={developerMode:developerMode.checked,initialState:carry,onWarp:(target,next,current)=>run(levels.findIndex(l=>l.id===target),next,current),onComplete:(next,current)=>run(index+1,next,current)};if(session)await session.load(entry.pack,entry.rooms,playOptions);else await play(entry.pack,entry.rooms,media,playOptions);
  const dialog=document.querySelector('dialog[open]');if(dialog){const back=[...dialog.querySelectorAll('button')].find(b=>b.textContent==='返回编辑');if(back)back.textContent='返回选关';}
  }catch(error){status.hidden=false;status.textContent='无法启动：'+error.message;}finally{curtain?.remove();busy=false;start.disabled=selected.disabled=false;}}
@@ -61,7 +61,7 @@ function installCreditsStyle(){
 export function showCredits(session,{backLabel='返回选关',replay=null,title=''}={}){
  installCreditsStyle();
  const pane=document.createElement('section');pane.className='campaign-card credits-card';pane.setAttribute('aria-label','通关制作信息');
- pane.innerHTML='<div class="credits-window"><div class="credits-roll"><h2>恭喜通关！</h2><p>感谢你完成这段冒险</p><section class="credit-group"><img class="credits-avatar" alt="在下_小Q像素头像"><h3>在下_小Q</h3><p>一张地图，一段自己的冒险。</p></section><section class="credit-group"><p class="credit-label">项目策划 · 制作与测试</p><h3>在下_小Q</h3><p class="credit-label">AI 编程协作</p><h3>GPT-6 Astra</h3><p>Pixel Workshop · 地图工坊</p></section><section class="credit-group"><p class="credit-label">第三方复刻参考与素材来源</p><h3>umaim/Mario</h3><p class="credit-label">原作角色、美术与音乐</p><h3>Nintendo</h3><p>非官方复刻项目</p></section><section class="credit-group credits-follow"><h2>下一段冒险，再见！</h2><p>欢迎关注在下_小Q<br>发现更多游戏，也来制作自己的地图。</p><p>aha-xiaoq.github.io</p></section></div></div>';
+ pane.innerHTML='<div class="credits-window"><div class="credits-roll"><h2>恭喜通关！</h2><p>感谢你完成这段冒险</p><section class="credit-group"><img class="credits-avatar" alt="在下_小Q像素头像"><h3>在下_小Q</h3><p>一张地图，一段自己的冒险。</p></section><section class="credit-group"><p class="credit-label">项目策划 · 制作与测试</p><h3>在下_小Q</h3><p class="credit-label">AI 编程协作</p><h3>GPT-6 Astra</h3><p>Pixel Workshop · 地图工坊</p></section><section class="credit-group"><p class="credit-label">第三方复刻参考与素材来源</p><h3>umaim/Mario</h3><p class="credit-label">原作角色、美术与音乐</p><h3>Nintendo</h3><p class="credit-label">中文像素字体</p><h3>寒蝉点阵体 · ChillBitmap</h3><p>Warren2060 / 寒蝉字型</p><p>非官方复刻项目</p></section><section class="credit-group credits-follow"><h2>下一段冒险，再见！</h2><p>欢迎关注在下_小Q<br>发现更多游戏，也来制作自己的地图。</p><p>aha-xiaoq.github.io</p></section></div></div>';
  pane.querySelector('img').src=session?.media?.brandAvatar||'/assets/identity/xiaoq-avatar-p63a.svg';
  if(title){const label=document.createElement('p');label.textContent=title;pane.querySelector('.credits-roll').prepend(label);}
  const actions=document.createElement('div');actions.className='credits-actions';

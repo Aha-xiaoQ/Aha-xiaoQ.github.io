@@ -1,3 +1,5 @@
+import {weaponNames} from './editor-heroes.mjs';
+import {billShots,advanceBillShot} from './editor-bill.mjs';
 import {sourceType,markerParts,elevatorPlatforms,flagRestY} from './map-appearance.mjs';
 // Editor-only Mario contact adaptation; host platform driver stays unchanged.
 /** Small playable contract driver, NOT a migration of Terraria combat or inventory.
@@ -8,8 +10,9 @@ export function createPlatformStage({plan,motor,emit,visualRooms=[],initialState
   const copy=x=>JSON.parse(JSON.stringify(x));
   let roomId=plan.stage.entryRoom,p=null,tick=0,health=plan.character.motion.maxHealth,lives=3,coins=0,score=0,timeLeft=400,timerTicks=0,invulnerable=0,cooldown=0,attackAge=0,portalLock=0,disposed=false,prev={},completed=false,finish=null,transition=null,shrink=0,growth=0,fireGrowth=0,dying=0,cam=0,roomSerial=0,deathSpot=null,warpTarget=null;
   let checkpoint={roomId,spawnId:plan.stage.entrySpawn};const roomStates=new Map();
-  const character=plan.character;
-  let stompChain=0;
+  const character=plan.character,bill=visualRooms.some(r=>r.playHero==='bill');
+  let stompChain=0,dropBag=[];
+  function nextWeapon(){if(!dropBag.length)dropBag=['M','S','F','L'].filter(w=>w!==p.weapon);return dropBag.shift();}
   function chainReward(r,e,index,values){const points=values[index];if(points===undefined){lives++;emit('sound',{event:'life'});}else score+=points;r.effects.push({kind:'score-pop',text:points===undefined?'1UP':String(points),x:e.x,y:e.y-8,w:24,h:8,vx:0,vy:-.4,flat:true,life:48,age:0});}
 
   function geometryFor(id){const room=visualRooms.find(r=>r.roomId===id);let result=[];
@@ -20,16 +23,16 @@ export function createPlatformStage({plan,motor,emit,visualRooms=[],initialState
    for(const m of room?.markers||[])if(m.kind==='platform-generator')result.push(...elevatorPlatforms(m,plan.rooms[id].height));
    return result.map(q=>({...q,dir:1,dx:0,dy:0}));
   }
-  function stateFor(id){if(!roomStates.has(id))roomStates.set(id,{geometry:geometryFor(id),effects:[],shots:[],vines:[],items:[],taken:new Set(),hiddenMarkers:(visualRooms.find(r=>r.roomId===id)?.markers||[]).filter(m=>m.kind==='platform-generator').map(m=>m.id),enemies:plan.rooms[id].objects.filter(q=>q.kind==='walker').map(q=>{const room=visualRooms.find(r=>r.roomId===id),marker=room?.markers?.find(m=>m.id===q.id),type=room?.enemySkins?.[q.id]||marker?.kind||'walker';const pipe=/piranha/i.test(type)?geometryFor(id).filter(g=>{const original=room?.map.geometry.find(a=>a.id===(g.sourceId||g.id))||g;return (g.material==='pipe'||sourceType(room||{},original)==='Pipe')&&q.x+q.w>g.x&&q.x<g.x+g.w&&Math.abs(q.y-g.y)<80;}).sort((a,b)=>Math.abs(a.y-q.y)-Math.abs(b.y-q.y))[0]:null;return {...q,...(pipe?{x:pipe.x+(pipe.w-q.w)/2,y:pipe.y,clipTop:pipe.y}:{}),type,source:marker?.source,vx:-.5,vy:0,hp:/bowser/i.test(type)?5:2,homeX:pipe?pipe.x+(pipe.w-q.w)/2:q.x,homeY:pipe?pipe.y-q.h:q.y,dead:false};})});return roomStates.get(id);}
+  function stateFor(id){if(!roomStates.has(id))roomStates.set(id,{geometry:geometryFor(id),effects:[],shots:[],vines:[],items:[],taken:new Set(),hiddenMarkers:(visualRooms.find(r=>r.roomId===id)?.markers||[]).filter(m=>m.kind==='platform-generator').map(m=>m.id),enemies:plan.rooms[id].objects.filter(q=>q.kind==='walker').map(q=>{const room=visualRooms.find(r=>r.roomId===id),marker=room?.markers?.find(m=>m.id===q.id),type=room?.enemySkins?.[q.id]||marker?.kind||'walker';const pipe=/piranha/i.test(type)?geometryFor(id).filter(g=>{const original=room?.map.geometry.find(a=>a.id===(g.sourceId||g.id))||g;return (g.material==='pipe'||sourceType(room||{},original)==='Pipe')&&q.x+q.w>g.x&&q.x<g.x+g.w&&Math.abs(q.y-g.y)<80;}).sort((a,b)=>Math.abs(a.y-q.y)-Math.abs(b.y-q.y))[0]:null;return {...q,...(pipe?{x:pipe.x+(pipe.w-q.w)/2,y:pipe.y,clipTop:pipe.y}:{}),type,source:marker?.source,vx:-.5,vy:0,hp:/bowser/i.test(type)?(bill?20:5):2,homeX:pipe?pipe.x+(pipe.w-q.w)/2:q.x,homeY:pipe?pipe.y-q.h:q.y,dead:false};})});return roomStates.get(id);}
   const contactBox=e=>e.clipTop==null?e:{...e,h:Math.max(0,Math.min(e.h,e.clipTop-e.y))};
   const touches=(a,e)=>{const b=contactBox(e);return b.h>0&&motor.overlap(a,b);};
-  function enter(id,spawn){const o=plan.rooms[id].objects.find(q=>q.kind==='spawn'&&q.id===spawn);if(!o)throw Error('Spawn missing');roomId=id;roomSerial++;stompChain=0;stateFor(id);const form=p?{power:p.power,star:p.star}:null;p=motor.create(character,o);if(form){Object.assign(p,form);if(p.power){p.y-=14;p.h=28;}}portalLock=24;prev={};cam=Math.max(0,Math.min(Math.max(0,plan.rooms[id].width-256),p.x-100));emit('room',{roomId});}
+  function enter(id,spawn){const o=plan.rooms[id].objects.find(q=>q.kind==='spawn'&&q.id===spawn);if(!o)throw Error('Spawn missing');roomId=id;roomSerial++;stompChain=0;stateFor(id);const form=p?{power:bill?0:p.power,star:p.star,weapon:p.weapon}:null;p=motor.create(character,o);if(bill){p.hero='bill';p.y-=16;p.h=30;p.weapon=form?.weapon||'N';}if(form){Object.assign(p,form);if(!bill&&p.power){p.y-=14;p.h=28;}}portalLock=24;prev={};cam=Math.max(0,Math.min(Math.max(0,plan.rooms[id].width-256),p.x-100));emit('room',{roomId});}
   function collectCoin(){coins++;score+=200;emit('sound',{event:'pickup'});if(coins>=100){coins-=100;lives++;emit('sound',{event:'life'});}}
-  function respawn(terrain=false){if(dying||completed)return;deathSpot={roomId,x:p.x,y:p.y,power:p.power||0,terrain};lives--;dying=1;p.dying=true;p.vx=0;p.vy=-5.1;emit('sound',{event:'death'});}
+  function respawn(terrain=false){if(dying||completed)return;deathSpot={roomId,x:p.x,y:p.y,power:p.power||0,terrain};lives--;if(bill)p.weapon='N';dying=1;p.dying=true;p.vx=0;p.vy=-5.1;emit('sound',{event:'death'});}
   function killEnemy(r,e,flat=false){if(e.dead)return;if(/^(enemy-|marker-)?lakitu$/i.test(e.type)&&!r.lakituStopped)r.lakituRespawn={ticks:960,enemy:copy(e)};e.dead=true;r.effects.push({...e,kind:'enemy-death',clipTop:undefined,flat:flat&&/goomba|walker/i.test(e.type),vx:flat?0:(e.vx||.8),vy:flat?0:-3,life:flat?24:80,age:0});}
-  function hurt(){if(invulnerable||p.star||completed||dying)return;if(p.power){p.power=0;p.y+=p.h-14;p.h=14;invulnerable=120;shrink=24;emit('sound',{event:'hurt'});return;}health--;invulnerable=60;if(health<=0)respawn();else emit('sound',{event:'hurt'});}
+  function hurt(){if(invulnerable||p.star||completed||dying)return;if(bill){respawn();return;}if(p.power){p.power=0;p.y+=p.h-14;p.h=14;invulnerable=120;shrink=24;emit('sound',{event:'hurt'});return;}health--;invulnerable=60;if(health<=0)respawn();else emit('sound',{event:'hurt'});}
   enter(roomId,plan.stage.entrySpawn);
-  if(initialState){lives=Math.max(1,initialState.lives||3);coins=initialState.coins||0;score=initialState.score||0;p.power=Math.max(0,Math.min(2,initialState.power||0));if(p.power){p.y-=14;p.h=28;}}
+  if(initialState){lives=Math.max(1,initialState.lives||3);coins=initialState.coins||0;score=initialState.score||0;p.power=bill?0:Math.max(0,Math.min(2,initialState.power||0));if(bill&&initialState.hero==='bill'&&Object.hasOwn(weaponNames,initialState.weapon))p.weapon=initialState.weapon;if(!bill&&p.power){p.y-=14;p.h=28;}}
   function bump(r,id){
     const q=r.geometry.find(g=>g.id===id),room=visualRooms.find(r=>r.roomId===roomId);if(!q||!room)return;
     const type=sourceType(room,room.map.geometry.find(g=>g.id===(q.sourceId||id))||q);if(!['Brick','Block'].includes(type))return;
@@ -37,7 +40,8 @@ export function createPlatformStage({plan,motor,emit,visualRooms=[],initialState
     if(q.used){emit('sound',{event:'bump'});return;}
     const marker=room.markers?.find(m=>m.x===q.x&&m.y===q.y&&/contents|hidden/.test(m.kind));
     const semantic=room.semantics?.find(m=>m.id===(q.sourceId||id))?.source;
-    let content=marker?.source?.contents??semantic?.contents??(type==='Block'?'coin':null);
+    const override=room.map.geometry.find(g=>g.id===(q.sourceId||id))?.reward;
+    let content=override||marker?.source?.contents||semantic?.contents||(type==='Block'?'coin':null);
     if(Array.isArray(content))content=content[0];content=String(content||'').toLowerCase();
     q.hidden=false;q.bump=12;
     for(const e of r.enemies)if(!e.dead&&e.x+e.w>q.x&&e.x<q.x+q.w&&Math.abs(e.y+e.h-q.y)<5)killEnemy(r,e);
@@ -49,7 +53,7 @@ export function createPlatformStage({plan,motor,emit,visualRooms=[],initialState
     if(content){
       if(content==='multi'||(type==='Brick'&&content==='coin')){q.remaining??=10;q.remaining--;q.used=q.remaining===0;}else q.used=true;
       if(/coin|multi/.test(content)){collectCoin();r.effects.push({kind:'coin-pop',x:q.x+3,y:q.y-14,w:10,h:14,vx:0,vy:-2.8,life:34,age:0});}
-      else {const kind=/life|1up/.test(content)?'life':/star/.test(content)?'star':p.power?'flower':'mushroom';r.items.push({kind,x:q.x+1,y:q.y+1,w:14,h:14,vy:0,vx:kind==='flower'?0:.75,emerge:32,targetY:q.y-14,blockTop:q.y,age:0});emit('sound',{event:'appear'});}
+      else {const kind=/life|1up/.test(content)?'life':/star/.test(content)?'star':bill?'bill-supply':p.power?'flower':'mushroom';r.items.push({kind,...(kind==='bill-supply'?{weapon:/^bill-[msfl]$/.test(content)?content.slice(-1).toUpperCase():nextWeapon()}:{}),x:q.x+1,y:q.y+1,w:14,h:14,vy:0,vx:['flower','bill-supply'].includes(kind)?0:.75,emerge:32,targetY:q.y-14,blockTop:q.y,age:0});emit('sound',{event:'appear'});}
     }else if(p.power){r.geometry=r.geometry.filter(g=>g.id!==id);for(let i=0;i<4;i++)r.effects.push({kind:'brick-debris',x:q.x+(i%2)*8,y:q.y+Math.floor(i/2)*8,w:8,h:8,sx:(i%2)*8,sy:Math.floor(i/2)*8,vx:i%2?1.4:-1.4,vy:i<2?-3.8:-2.5,life:40,age:0});score+=50;emit('sound',{event:'break'});}else emit('sound',{event:'bump'});
   }
   function step(raw={}){
@@ -62,6 +66,7 @@ export function createPlatformStage({plan,motor,emit,visualRooms=[],initialState
       }else{if(q.age<=12)return;p.y=Math.max(q.targetY,p.y-.5);if(p.y===q.targetY){transition=null;p.grounded=true;portalLock=30;}}return;
     }
     if(dying){tick++;dying++;if(dying>24){p.y+=p.vy;p.vy+=.22;}if(dying>=105){if(autoContinue){continueFromCurrent();return;}if(manualDeath&&lives>0)return;dying=0;if(lives<=0){completed=true;emit('sound',{event:'gameover'});emit('complete',{result:'failed',coins,score});}else{roomStates.clear();timeLeft=400;timerTicks=0;p=null;enter(checkpoint.roomId,checkpoint.spawnId);health=character.motion.maxHealth;invulnerable=90;}}return;}
+    if(finish&&bill){p.aimX=1;p.aimY=0;p.firing=false;p.fireFrames=0;p.crouch=false;p.onVine=false;stateFor(roomId).shots.length=0;}
     if(finish?.castle){tick++;finish.age++;const r=stateFor(roomId);if(finish.phase==='bridge'){
       {const bridge=r.geometry.find(g=>g.id===finish.bridgeId);if(bridge){bridge.w=Math.max(0,bridge.w-4);if(!bridge.w)r.geometry=r.geometry.filter(g=>g!==bridge);}}
       if(!r.geometry.some(g=>g.id===finish.bridgeId)){finish.phase='boss-fall';finish.age=0;emit('sound',{event:'bowser_fall'});}
@@ -186,13 +191,22 @@ export function createPlatformStage({plan,motor,emit,visualRooms=[],initialState
       item.vy=Math.min(4.25,item.vy+.22);item.y+=item.vy;
       for(const q of [...r.geometry].sort((a,b)=>a.y-b.y))if(!q.hidden&&item.x+item.w>q.x&&item.x<q.x+q.w&&bottom<=q.y+1&&item.y+item.h>=q.y&&item.vy>=0){item.y=q.y-item.h;item.vy=item.kind==='star'?-3.9:0;break;}
       if(item.vy<0)for(const q of r.geometry)if(!q.hidden&&q.collision==='solid'&&item.x+item.w>q.x&&item.x<q.x+q.w&&top>=q.y+q.h&&item.y<q.y+q.h){item.y=q.y+q.h;item.vy=.5;break;}
-      if(motor.overlap(p,item)){item.dead=true;if(item.kind==='life')lives++;else if(item.kind==='star')p.star=600;else {if(!p.power){p.y-=14;p.h=28;growth=24;}else if(item.kind==='flower'&&p.power===1){fireGrowth=24;}p.power=item.kind==='flower'&&p.power>0?2:Math.max(1,p.power);}emit('sound',{event:item.kind==='life'?'life':'powerup'});}
+      if(motor.overlap(p,item)){item.dead=true;if(item.kind==='life')lives++;else if(item.kind==='star')p.star=600;else if(bill){p.weapon=item.weapon||'M';score+=1000;invulnerable=Math.max(invulnerable,45);r.effects.push({kind:'score-pop',text:weaponNames[p.weapon],x:p.x-10,y:p.y-8,w:70,h:8,vx:0,vy:-.2,flat:true,life:90,age:0});}else {if(!p.power){p.y-=14;p.h=28;growth=24;}else if(item.kind==='flower'&&p.power===1){fireGrowth=24;}p.power=item.kind==='flower'&&p.power>0?2:Math.max(1,p.power);}emit('sound',{event:item.kind==='life'?'life':'powerup'});}
       if(item.y>map.height+32||item.age>1800)item.dead=true;
     }
     if(growth||fireGrowth)return;
     if(p.y>map.height+40){const back=map.objects.find(o=>o.id==='sky-return');if(back){enter(back.targetRoom,back.targetSpawn);p.vy=1;emit('sound',{event:'portal'});}else respawn(true);return;}
-    if(v.attackPressed&&p.power===2&&!cooldown&&r.shots.length<2){r.shots.push({kind:'fireball',x:p.x+(p.facing>0?p.w:-4),y:p.y+10,w:5,h:5,vx:p.facing*3.4,vy:1.2,age:0});cooldown=12;emit('sound',{event:'fire'});}
-    for(const shot of r.shots){shot.age++;const oldY=shot.y;shot.x+=shot.vx;shot.vy=Math.min(4,shot.vy+.2);shot.y+=shot.vy;for(const q of r.geometry)if(!q.hidden&&motor.overlap(shot,q)){if(oldY+shot.h<=q.y+1){shot.y=q.y-shot.h;shot.vy=-3;}else {shot.dead=true;break;}}if(shot.dead){r.effects.push({kind:'fire-impact',x:shot.x-3,y:shot.y-3,w:12,h:12,vx:0,vy:0,life:6,age:0});continue;}for(const e of r.enemies)if(!e.dead&&touches(shot,e)){shot.dead=true;if(!/beetle|bowser/i.test(e.type)){killEnemy(r,e);score+=100;}else if(/bowser/i.test(e.type)){e.hp=(e.hp??5)-1;if(e.hp<=0)killEnemy(r,e);}break;}if(shot.age>160||shot.y>map.height)shot.dead=true;}r.shots=r.shots.filter(s=>!s.dead);
+    if(bill){p.aimY=raw.up?-1:v.down&&(!p.grounded||v.x)?1:0;p.aimX=p.aimY?v.x:p.facing;p.fireFrames=Math.max(0,(p.fireFrames||0)-1);p.firing=p.fireFrames>0;
+     if((v.run||raw.attack)&&!cooldown&&r.shots.length<32){r.shots.push(...billShots(p));cooldown={N:12,M:7,S:17,F:24,L:28}[p.weapon||'N'];p.firing=true;p.fireFrames=3;emit('sound',{event:'bill_'+(p.weapon||'N')});}}
+    if(!bill&&v.attackPressed&&p.power===2&&!cooldown&&r.shots.length<2){r.shots.push({kind:'fireball',x:p.x+(p.facing>0?p.w:-4),y:p.y+10,w:5,h:5,vx:p.facing*3.4,vy:1.2,age:0});cooldown=12;emit('sound',{event:'fire'});}
+    for(const shot of r.shots){if(shot.kind==='bill-shot'){if(!advanceBillShot(shot))continue;
+      for(const q of r.geometry)if(!q.hidden&&motor.overlap(shot,q)){shot.dead=true;
+       const room=visualRooms.find(v=>v.roomId===roomId),source=room?.semantics?.find(v=>v.id===(q.sourceId||q.id))?.source;
+       if(source?.contents||q.hidden||room.map.geometry.find(g=>g.id===(q.sourceId||q.id))?.reward)bump(r,q.id);
+       else if(q.material==='brick'){q.shotHp=(q.shotHp??2)-shot.damage;if(q.shotHp<=0){const power=p.power;p.power=1;bump(r,q.id);p.power=power;}}
+       break;}
+      if(!shot.dead)for(const e of r.enemies)if(!e.dead&&touches(shot,e)){e.hp-=shot.damage;shot.dead=true;if(e.hp<=0){killEnemy(r,e);score+=100;}break;}
+      if(shot.age>90||shot.y>map.height||shot.y<0)shot.dead=true;continue;}shot.age++;const oldY=shot.y;shot.x+=shot.vx;shot.vy=Math.min(4,shot.vy+.2);shot.y+=shot.vy;for(const q of r.geometry)if(!q.hidden&&motor.overlap(shot,q)){if(oldY+shot.h<=q.y+1){shot.y=q.y-shot.h;shot.vy=-3;}else {shot.dead=true;break;}}if(shot.dead){r.effects.push({kind:'fire-impact',x:shot.x-3,y:shot.y-3,w:12,h:12,vx:0,vy:0,life:6,age:0});continue;}for(const e of r.enemies)if(!e.dead&&touches(shot,e)){shot.dead=true;if(!/beetle|bowser/i.test(e.type)){killEnemy(r,e);score+=100;}else if(/bowser/i.test(e.type)){e.hp=(e.hp??5)-1;if(e.hp<=0)killEnemy(r,e);}break;}if(shot.age>160||shot.y>map.height)shot.dead=true;}r.shots=r.shots.filter(s=>!s.dead);
     if(v.attackPressed&&!cooldown&&character.capabilities.includes('attack')){attackAge=9;cooldown=18;emit('sound',{event:'attack'});const box={x:p.facing>0?p.x+p.w:p.x-28,y:p.y-2,w:28,h:p.h+4};for(const e of r.enemies)if(!e.dead&&motor.overlap(box,e)){e.hp--;if(e.hp<=0){killEnemy(r,e);score+=100;}}}
     if((visual?.markers||[]).some(m=>m.kind==='spawn-zone-LakituStop'&&p.x+p.w>=m.x)){r.lakituStopped=true;r.lakituRespawn=null;}
     if(r.lakituRespawn&&!r.lakituStopped){
@@ -287,7 +301,7 @@ export function createPlatformStage({plan,motor,emit,visualRooms=[],initialState
       if(!e.dead&&touches(contactPlayer,e)){
         if(p.star){killEnemy(r,e);score+=100;continue;}
         if(e.safe){e.safe--;continue;}
-        if(descending&&oldBottom<=oldY+7&&!/piranha|podoboo|spiny|bowser|hammer$/.test(type)){
+        if(!bill&&descending&&oldBottom<=oldY+7&&!/piranha|podoboo|spiny|bowser|hammer$/.test(type)){
           let contactSound='stomp';
           if(type==='koopa'||type==='beetle'){if(!e.shell){e.walkHeight=e.h;e.shellAge=0;e.shell=true;e.y+=e.h-16;e.h=16;e.vx=0;e.source={...e.source,jumping:false};}else if(Math.abs(e.vx)>1){e.vx=0;e.shellAge=0;e.frame='';}else{e.vx=(p.x<e.x?1:-1)*3.2;e.safe=12;contactSound='kick';}}else killEnemy(r,e,true);
           p.y=Math.min(p.y,e.y-p.h);p.vy=-4.1333333;p.jumpG=.125;p.fallG=.4375;p.grounded=false;chainReward(r,e,stompChain++,[100,200,400,500,800,1000,2000,4000,5000,8000]);emit('sound',{event:contactSound});continue;
@@ -329,7 +343,7 @@ export function createPlatformStage({plan,motor,emit,visualRooms=[],initialState
     if((!completed&&!dying)||!p)return false;
     let spot=deathSpot||{roomId,x:p.x,y:p.y,power:0};
     if(spot.terrain){
-      const map=plan.rooms[spot.roomId],r=stateFor(spot.roomId),h=spot.power?28:14,w=p.w;
+      const map=plan.rooms[spot.roomId],r=stateFor(spot.roomId),h=bill?30:spot.power?28:14,w=p.w;
       const hazards=[...map.objects.filter(o=>o.kind==='hazard'),...(visualRooms.find(q=>q.roomId===spot.roomId)?.markers||[]).filter(m=>/lava/.test(m.kind)).map(m=>({x:m.x,y:m.y,w:2*(m.source?.width||8),h:Math.max(1,map.height-m.y)}))];
       const candidates=[];
       // Land must connect down to the bottom of the room. The top face of a
@@ -353,7 +367,7 @@ export function createPlatformStage({plan,motor,emit,visualRooms=[],initialState
       spot=candidates[0];
     }
     roomId=spot.roomId||roomId;completed=false;dying=0;finish=null;transition=null;shrink=0;growth=0;fireGrowth=0;health=character.motion.maxHealth;lives=Math.max(1,lives);timeLeft=400;timerTicks=0;invulnerable=90;portalLock=30;prev={};deathSpot=null;
-    p.dying=false;p.x=spot.x;p.y=spot.y;p.vx=0;p.vy=0;p.power=Math.max(0,Math.min(2,spot.power||0));p.h=p.power?28:14;p.grounded=false;p.crouch=false;p.star=0;cam=Math.max(0,Math.min(Math.max(0,plan.rooms[roomId].width-256),p.x-100));
+    p.dying=false;p.x=spot.x;p.y=spot.y;p.vx=0;p.vy=0;p.power=Math.max(0,Math.min(2,spot.power||0));p.h=p.power?28:14;if(bill){p.power=0;p.h=30;p.weapon='N';}p.dropTicks=0;p.grounded=false;p.crouch=false;p.star=0;cam=Math.max(0,Math.min(Math.max(0,plan.rooms[roomId].width-256),p.x-100));
     emit('sound',{event:'continue'});return true;
   }
   function view(){const map=plan.rooms[roomId],r=stateFor(roomId);return{warpTarget,roomId,title:plan.stage.title,character:copy(character),p:{...p,shrink,growth,fireGrowth,invulnerable,climbing:!!p.onVine||finish?.phase==='slide',piping:!!transition},transition:transition?{...transition}:null,width:map.width,height:map.height,geometry:copy(r.geometry),objects:map.objects.filter(o=>!r.taken.has(o.id)&&o.kind!=='walker').map(copy),vines:copy(r.vines),items:[...r.items.filter(i=>!i.dead),...r.shots,...r.effects].map(copy),enemies:r.enemies.filter(e=>!e.dead).map(copy),hiddenMarkers:[...r.hiddenMarkers],tick,health,lives,coins,score,timeLeft,cam,invulnerable,attackAge,completed,checkpoint:{...checkpoint},disposed,finish:finish?{...finish}:null};}

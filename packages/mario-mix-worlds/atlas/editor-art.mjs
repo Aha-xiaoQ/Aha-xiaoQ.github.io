@@ -1,12 +1,13 @@
+import {loadBill,drawBill,drawBillItem} from './editor-bill.mjs';
 import {materialFor,enemySprite,terrainParts,markerParts,sourceType,castleParts} from './map-appearance.mjs';
 import {classicSprite,classicDraw} from './classic-art.mjs';
 /** Shared native-pixel renderer; provenance is recorded in CLASSIC_ART_NOTICE.txt. */
 const images=new Map();
-export function preloadArt(rooms){return Promise.all(rooms.flatMap(r=>[...Object.values(r.art||{}),...(r.playerSkin?[r.playerSkin]:[])]).map(src=>{
+export function preloadArt(rooms){return Promise.all([...(rooms.some(r=>r.playHero==='bill')?[loadBill()]:[]),...rooms.flatMap(r=>[...Object.values(r.art||{}),...(r.playerSkin?[r.playerSkin]:[])]).map(src=>{
  if(!/^data:image\/png;base64,[A-Za-z0-9+/=]+$/.test(src)||src.length>700000)return Promise.reject(Error('素材须为小于 500 KB 的 PNG'));
  if(images.has(src))return images.get(src).ready;
  const image=new Image(),entry={image,ready:null};entry.ready=new Promise((resolve,reject)=>{image.onload=()=>{if(image.width!==image.height||image.width>256||image.width<16||image.width%16)reject(Error('地块图需为 16–256 像素正方形，边长为 16 的倍数'));else resolve();};image.onerror=()=>reject(Error('素材图片无法读取'));});images.set(src,entry);image.src=src;return entry.ready;
-}));}
+} )]);}
 export function background(c,room,w,h){c.fillStyle=/Underwater/.test(room.setting||'')?'#5c94fc':/Underworld|Castle|Night/.test(room.setting||'')?'#000000':'#5c94fc';c.fillRect(0,0,w,h);}
 export function drawParts(c,parts,room={}){for(const p of parts){const im=classicSprite(p.name),v=room.renderBounds||p;if(p.w<=0||p.h<=0)continue;c.save();c.beginPath();c.rect(p.x,p.y,p.w,p.h);c.clip();const left=p.x+Math.max(0,Math.floor((v.x-p.x)/im.width))*im.width,top=p.y+Math.max(0,Math.floor(((v.y??p.y)-p.y)/im.height))*im.height;for(let y=top;y<Math.min(p.y+p.h,(v.y??p.y)+(v.h??p.h));y+=im.height)for(let x=left;x<Math.min(p.x+p.w,v.x+v.w);x+=im.width)c.drawImage(im,x,y);c.restore();}}
 export function drawReference(c,o,room){if(o.kind==='active-vine'){drawParts(c,[{name:'src|Character|Vine||middle',x:o.x,y:o.y,w:o.w,h:o.h}],room);return true;}if(['world-transport','source-transport-not-simulated'].includes(o.kind)){const world=String(o.source?.transport?.map||'').split('-')[0];if(/^[1-8]$/.test(world)){drawPixelText(c,world,o.x+12,o.y-24);return true;}}const parts=markerParts(room,o);drawParts(c,parts,room);return parts.length>0;}
@@ -30,10 +31,12 @@ export function drawScenery(c,room){
  }
  drawParts(c,castleParts(room),room);
 }
-export function drawObject(c,o,tick=0,room={}){
+export function drawObject(c,o,tick=0,room={}){if(o.kind==='bill-shot'){drawBillItem(c,o);return;}
  const {x,y,w,h}=o;c.save();
  const clipTop=o.emerge?o.blockTop:o.clipTop;if(Number.isFinite(clipTop)){c.beginPath();c.rect(x-16,y-32,w+32,Math.max(0,clipTop-y+32));c.clip();}
- if(o.kind==='enemy-death'){const name=o.flat?'goomba_flat':enemySprite(o.skin||o.type,room.setting,o.source)||'goomba',im=classicSprite(name);c.translate(Math.round(x+(w-im.width)/2),Math.round(y+h-im.height));if(!o.flat){c.translate(0,im.height);c.scale(1,-1);}c.drawImage(im,0,0);}
+ if(o.kind==='bill-supply'){drawBillItem(c,o);}
+ else if(o.kind==='spawn'&&room.playHero==='bill'){drawBill(c,{...o,y:o.y+o.h-30,h:30,facing:1,grounded:true},tick);}
+ else if(o.kind==='enemy-death'){const name=o.flat?'goomba_flat':enemySprite(o.skin||o.type,room.setting,o.source)||'goomba',im=classicSprite(name);c.translate(Math.round(x+(w-im.width)/2),Math.round(y+h-im.height));if(!o.flat){c.translate(0,im.height);c.scale(1,-1);}c.drawImage(im,0,0);}
  else if(o.kind==='score-pop'){c.fillStyle='#fff';c.font='8px ChillBitmap, monospace';c.fillText(o.text,Math.round(x),Math.round(y));}
  else if(o.kind==='bubble'){classicDraw(c,'src|Character|Bubble||',x,y);}
  else if(o.kind==='coin-pop'){classicDraw(c,'coin'+(Math.floor((o.age||0)/4)%3),x,y);}
@@ -51,7 +54,7 @@ export function drawObject(c,o,tick=0,room={}){
  else {if(!o.id?.startsWith('arrival-')){const skin=images.get(room.playerSkin)?.image;if(skin)c.drawImage(skin,x+(w-16)/2,y+h-16,16,16);else classicDraw(c,'small_idle',x+(w-16)/2,y+h-16);}c.strokeStyle='#80ffd8';c.strokeRect(x,y,w,h);c.fillStyle='#80ffd8';c.font='9px sans-serif';c.fillText(o.id?.startsWith('arrival-')?'落点':'起点',x,y-5);}
  c.restore();
 }
-export function drawPlayer(c,p,tick=0,skin){
+export function drawPlayer(c,p,tick=0,skin){if(p.hero==='bill'){drawBill(c,p,tick);return;}
  if(!p.dying&&!p.shrink&&!p.growth&&!p.fireGrowth&&p.invulnerable&&Math.floor(tick/4)%2)return;
  const prefix=(p.shrink||p.growth?Math.floor((p.shrink||p.growth)/4)%2:p.power)?'big':'small',name=p.dying?'dead':p.climbing?prefix+'_climb'+Math.floor(tick/8)%2:p.piping||p.springId?prefix+'_idle':p.power&&p.crouch?'big_crouch':p.swimming&&!p.grounded?'src|Character|Player|normal '+(prefix==='big'?(p.power===2?'fiery':'large'):'')+' paddling '+(p.swimStroke?'paddle'+(1+Math.floor((24-p.swimStroke)/8)%3):'swim2')+'|':!p.grounded?prefix+'_jump':p.vx*p.facing<-.08?prefix+'_skid':Math.abs(p.vx||0)>.08?prefix+'_run'+Math.floor((p.anim||0)/6)%3:prefix+'_idle';
  const im=images.get(skin)?.image||classicSprite(name,p.fireGrowth?(Math.floor(p.fireGrowth/4)%2?'normal':'fire'):p.star?'star'+(1+Math.floor(tick/4)%3):p.power===2?'fire':'normal');c.save();c.translate(Math.round(p.x+(p.w-im.width)/2)+(p.facing<0?im.width:0),Math.round(p.y+p.h-im.height));c.scale(p.facing<0?-1:1,1);c.drawImage(im,0,0);c.restore();
@@ -82,7 +85,7 @@ const HUD_GLYPHS={
 
 export function drawHud(c,v,level='1-1'){
  const text=(str,x,y)=>drawPixelText(c,str,x,y);
- text('MARIO',24,16);text(String(v.score).padStart(6,'0'),24,24);c.save();c.translate(91,24);c.scale(.5,.5);classicDraw(c,'coin0',0,0);c.restore();text('×'+String(v.coins).padStart(2,'0'),104,24);text('WORLD',144,16);text(level,152,24);text('TIME',208,16);text(String(v.timeLeft).padStart(3,'0'),216,24);
+ text(v.p?.hero==='bill'?'BILL':'MARIO',24,16);if(v.p?.hero==='bill')text(v.p.weapon||'N',24,34);text(String(v.score).padStart(6,'0'),24,24);c.save();c.translate(91,24);c.scale(.5,.5);classicDraw(c,'coin0',0,0);c.restore();text('×'+String(v.coins).padStart(2,'0'),104,24);text('WORLD',144,16);text(level,152,24);text('TIME',208,16);text(String(v.timeLeft).padStart(3,'0'),216,24);
 }
 
 export function drawPixelText(c,str,x,y){c.fillStyle='#fff';for(const ch of String(str).toUpperCase()){const glyph=HUD_GLYPHS[ch]||HUD_GLYPHS[' '];for(let r=0;r<7;r++)for(let col=0;col<8;col++)if(glyph[r]&(128>>col))c.fillRect(x+col,y+r,1,1);x+=8;}}

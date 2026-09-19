@@ -39,6 +39,6 @@ test('actual runtime collects a coin and restart restores it',()=>{
 test('offline HTML embeds all runtime imports and escapes user content',async()=>{
  const d=fixture();d.title='</script><script>alert(1)</script>';const p=projectPack(d,'main',character);
  const html=await offlineFile(p,d.rooms,path=>readFile(new URL('../atlas/'+path,import.meta.url),'utf8'),async()=>new Uint8Array());
- assert.ok(!html.includes(d.title));const map=JSON.parse(html.match(/type="importmap">(.*?)<\/script>/s)[1]);assert.equal(Object.keys(map.imports).length,14);assert.ok(Object.keys(map.imports).some(key=>key.endsWith("campaign-ui.mjs")));
+ assert.ok(!html.includes(d.title));const map=JSON.parse(html.match(/type="importmap">(.*?)<\/script>/s)[1]);assert.equal(Object.keys(map.imports).length,16);assert.ok(Object.keys(map.imports).some(key=>key.endsWith("campaign-ui.mjs")));
  for(const url of Object.values(map.imports)){const source=decodeURIComponent(url.split(',').slice(1).join(','));for(const m of source.matchAll(/from\s+['"]([^'"]+)['"]/g))assert.ok(map.imports[m[1]],m[1]);}
 });
