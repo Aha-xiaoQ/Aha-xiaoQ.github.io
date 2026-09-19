@@ -1,4 +1,5 @@
 /** Read-only index with bounded cache and race protection. No backend or analytics. */
+import {displayRoom,roomLabel} from './room-selection.mjs';
 const $=id=>document.getElementById(id),form=$('filters');
 let index=null,epoch=0,current=null,cache=new Map();
 const validId=x=>/^[1-8]-[1-4]$/.test(x),safeFile=x=>typeof x==='string'&&/^generated\/[a-zA-Z0-9_./-]+$/.test(x)&&!x.split('/').includes('..');
@@ -9,7 +10,7 @@ function opts(node,rows,value){node.replaceChildren(...rows.map(([v,t])=>{const 
 function remember(){try{const u=new URL(location.href);u.searchParams.set('level',$('level').value);u.searchParams.set('room',$('room').value);history.replaceState(null,'',u);}catch{}}
 function worlds(value){opts($('world'),Array.from({length:8},(_,i)=>[String(i+1),'世界 '+(i+1)]),value);levels();}
 function levels(value){const a=index.levels.filter(l=>l.id.startsWith($('world').value+'-'));opts($('level'),a.map(l=>[l.id,l.id]),value);rooms();}
-function rooms(value){const l=index.levels.find(l=>l.id===$('level').value);opts($('room'),l.rooms.map(r=>[r.id,r.title]),value);show();}
+function rooms(value){const l=index.levels.find(l=>l.id===$('level').value);opts($('room'),l.rooms.map(r=>[r.id,roomLabel(l.id,r)]),displayRoom(l.id,l.rooms,value));show();}
 async function loadTemplate(l){if(cache.has(l.id))return cache.get(l.id);if(!safeFile(l.source))throw Error('目录路径无效');const res=await fetch(source(l.source));if(!res.ok)throw Error('地图数据读取失败');const data=await res.json();if(data.level!==l.id||!Array.isArray(data.rooms))throw Error('地图格式无效');cache.set(l.id,data);if(cache.size>5)cache.delete(cache.keys().next().value);return data;}
 async function show(){
  const n=++epoch,l=index.levels.find(l=>l.id===$('level').value),r=l.rooms.find(r=>r.id===$('room').value);

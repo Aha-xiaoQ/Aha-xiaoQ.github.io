@@ -1,6 +1,7 @@
 import {developerPack,filesForPack} from './editor-runtime.mjs';
 import {zipFiles} from './editor-zip.mjs';
 import {play} from './editor-play.mjs';
+import {displayRoom,roomLabel} from './room-selection.mjs';
 import {blank,fromTemplate,parseProject,clone,uid,materials,paint,bucket,lineCells,History,resize,runtimeMap,problems,intersects,moveSelection,deleteSelection,linked} from './editor-model.mjs';
 const $=id=>document.getElementById(id),canvas=$('canvas'),ctx=canvas.getContext('2d'),vp=$('viewport');
 const KEY='xiaoq-map-workshop-v1',locks=new Set();
@@ -25,7 +26,7 @@ function changed(){dirty=true;$('save-state').textContent='正在保存…';clea
 function transaction(fn){cancelGesture();if(locked())throw Error('当前图层已锁定');if(history.change(fn))changed();}
 function refresh(){
  $('title').value=history.doc.title;
- const r=room();options($('room'),history.doc.rooms.map((r,i)=>[String(i),r.map.title||r.roomId]));$('room').value=String(ri);
+ const r=room();options($('room'),history.doc.rooms.map((r,i)=>[String(i),roomLabel(history.doc.reference?.level,r)]));$('room').value=String(ri);
  $('width').value=Math.ceil(r.map.width/16);$('height').value=Math.ceil(r.map.height/16);
  $('undo').disabled=!history.undoStack.length;$('redo').disabled=!history.redoStack.length;
  selected=new Set([...selected].filter(id=>items().some(q=>q.id===id)));
@@ -106,7 +107,8 @@ vp.onwheel=e=>{e.preventDefault();camera.x=Math.max(0,Math.min(room().map.width-
 function move(dx,dy){transaction(()=>moveSelection(room(),layer(),selected,dx,dy));}
 function download(name,data){const u=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),30000);}
 function safeSwitch(){cancelGesture();save();return !dirty||confirm('本机保存失败，切换会丢失当前改动。仍要继续吗？建议取消并先导出工程。');}
-function replace(d){history=new History(d);ri=0;selected.clear();locks.clear();camera={x:0,y:0};changed();}
+function selectedRoom(d){return d.rooms.findIndex(r=>r.roomId===displayRoom(d.reference?.level,d.rooms,d.activeRoomId));}
+function replace(d){history=new History(d);ri=selectedRoom(d);selected.clear();locks.clear();camera={x:0,y:0};changed();}
 $('new').onclick=()=>{if(confirm('新建会替换当前本机草稿。需要保留多个工程时，请先导出。')&&safeSwitch())replace(blank());};
 $('open').onclick=()=>$('file').click();
 $('file').onchange=async()=>{const f=$('file').files[0];$('file').value='';if(!f)return;try{if(f.size>12*1024*1024)throw Error('文件超过 12 MB');const d=parseProject(await f.text());if(confirm('打开工程会替换当前本机草稿，是否继续？')&&safeSwitch())replace(d);}catch(e){say(e.message);}};
@@ -117,7 +119,7 @@ $('redo').onclick=()=>{cancelGesture();if(history.redo())changed();};
 $('title').onchange=()=>run(()=>{const title=$('title').value.trim();cancelGesture();history.change(d=>{d.title=title;});changed();});
 $('layer').onchange=()=>{cancelGesture();selected.clear();refresh();};
 $('locked').onchange=()=>{cancelGesture();if($('locked').checked)locks.add(lockKey());else locks.delete(lockKey());};
-$('room').onchange=()=>{cancelGesture();ri=Number($('room').value);camera={x:0,y:0};selected.clear();refresh();};
+$('room').onchange=()=>{const next=Number($('room').value);cancelGesture();ri=next;history.doc.activeRoomId=room().roomId;save();camera={x:0,y:0};selected.clear();refresh();};
 for(const id of ['zoom','view','grid','reference'])$(id).onchange=render;
 $('size').onsubmit=e=>{e.preventDefault();run(()=>{transaction(()=>resize(room(),Number($('width').value)*16,Number($('height').value)*16));});};
 $('position').onsubmit=e=>{e.preventDefault();run(()=>{const a=items().filter(q=>selected.has(q.id));if(!a.length)throw Error('请先框选元素');move(Number($('x').value)-Math.min(...a.map(q=>q.x)),Number($('y').value)-Math.min(...a.map(q=>q.y)));});};
@@ -146,7 +148,7 @@ document.addEventListener('keydown',e=>{
 document.addEventListener('keyup',e=>{if(e.code==='Space')space=false;});window.addEventListener('blur',()=>{space=false;cancelGesture();});
 window.addEventListener('beforeunload',e=>{if(dirty){save();if(dirty){e.preventDefault();e.returnValue='';}}});
 new ResizeObserver(render).observe(vp);
-try{const saved=localStorage.getItem(KEY);if(saved)history=new History(parseProject(saved));}catch(e){say('未恢复本机草稿：'+e.message+'。原存储尚未覆盖，请先导出可用备份。');}
+try{const saved=localStorage.getItem(KEY);if(saved){history=new History(parseProject(saved));ri=selectedRoom(history.doc);}}catch(e){say('未恢复本机草稿：'+e.message+'。原存储尚未覆盖，请先导出可用备份。');}
 refresh();
 
 async function getPack(){cancelGesture();const copy=clone(room()),namespace='map-'+history.doc.id.slice(-12)+'-'+ri;copy.map.title=history.doc.title+' / '+room().roomId;const res=await fetch('./runtime/character.json');if(!res.ok)throw Error('实验角色加载失败');return developerPack(copy,await res.json(),namespace);}
