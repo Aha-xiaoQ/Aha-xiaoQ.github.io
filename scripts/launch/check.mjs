@@ -20,7 +20,8 @@ export function audit(root=ROOT){
  for(const page of pages){
   const b=readOptional(root,page);if(!b){errors.push({page,problem:'missing-page'});continue;}
   const html=b.toString();inventory[page]=hash(b);
-  for(const [name,re] of [['main',/<main\b/g],['h1',/<h1\b/g]])if((html.match(re)||[]).length!==1)errors.push({page,problem:'non-unique-'+name});
+  const activeHTML=html.replace(/<noscript\b[^>]*>[\s\S]*?<\/noscript>/gi,'');
+  for(const [name,re] of [['main',/<main\b/g],['h1',/<h1\b/g]])if((activeHTML.match(re)||[]).length!==1)errors.push({page,problem:'non-unique-'+name});
   const ids=[...html.matchAll(/\bid=["']([^"']+)["']/g)].map(x=>x[1]);if(new Set(ids).size!==ids.length)errors.push({page,problem:'duplicate-id'});
   for(const m of html.matchAll(/<(?:a|img|script|link)\b[^>]*\b(?:href|src)=["']([^"']+)["'][^>]*>/g)){
    const ref=localReference(page,m[1]);if(!ref)continue;if(ref.error){errors.push({page,...ref});continue;}
