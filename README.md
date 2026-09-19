@@ -1,150 +1,80 @@
-<!-- RELEASE-POLISH-R16 -->
-当前第三期开发源码：**0.4.2 · 待验收**。
+# 在下_小Q · Pixel Workshop
 
-[下载与运行](notes/mario-mix/docs/terra-source/index.html) · [当前任务](notes/mario-mix/tasks/index.html) · [发布前检查](docs/release-r16/START_HERE.md)。历史记录在下方。
+**简体中文** | [English](README.en.md)
 
-<!-- PUBLIC-CONTENT-R15 -->
-当前第三期开发源码：**0.4.1 · 待验收**。
+个人网站与项目工作台，收录浏览器游戏、桌面宠物、开发工具，以及项目开发记录和源码资料。
 
-[下载与运行](notes/mario-mix/docs/terra-source/index.html) · [当前任务](notes/mario-mix/tasks/index.html) · [维护说明](docs/content-r15/START_HERE.md)。R15 为资料修订，历史交付说明保留在下方。
+[访问网站](https://aha-xiaoq.github.io/) · [项目](https://aha-xiaoq.github.io/projects/) · [游戏](https://aha-xiaoq.github.io/games/) · [工具](https://aha-xiaoq.github.io/tools/) · [开发记录](https://aha-xiaoq.github.io/notes/)
 
-<!-- TERRA-M05-R14 -->
-## 当前第三期协作源码：M05 / 0.4.1
+## 仓库内容
 
-[当前源码与快速开始](notes/mario-mix/docs/terra-source/index.html) · [参与开发](notes/mario-mix/docs/terra-collaboration/index.html)。游戏工程位于 packages/mario-mix-terra。验证命令 npm run terra:verify；这是发布候选，未自动上线。下面保留历史记录。
+- **个人网站**：作品展示、游戏入口、工具、开发记录、关于页与留言墙，支持中英文切换。
+- **混合马里奥**：三期独立试玩，以及第三期开发源码、贡献指南与任务记录。
+- **关卡地图册**：八个世界、32 关的参考模板，可用于查看地形与制作独立方案。
+- **Q咪与其他作品**：桌面宠物素材、作品介绍和相关下载入口。
 
-<!-- TERRA-M04-R13 -->
-## 当前第三期协作源码：M04 / 0.4.0
+## 混合马里奥当前状态
 
-[当前源码与快速开始](notes/mario-mix/docs/terra-source/index.html) · [参与开发](notes/mario-mix/docs/terra-collaboration/index.html)。游戏工程位于 packages/mario-mix-terra。验证命令 npm run terra:verify；这是发布候选，未自动上线。下面保留历史记录。
+| 内容 | 版本与范围 |
+| --- | --- |
+| 在线试玩 | [第一期](https://aha-xiaoq.github.io/games/mario-mix/) · [第二期](https://aha-xiaoq.github.io/games/mario-mix-2/) · [第三期](https://aha-xiaoq.github.io/games/mario-mix-3/)；各自保留独立实现 |
+| 第三期开发源码 | **M07 / 0.4.3**，待验收候选，与在线试玩分别维护 |
+| 地图模板 | **W02 / 0.2.0**，32 关参考模板，使用固定 M06 运行时；尚非完整可玩的八世界游戏 |
 
-# 在下_小Q · Aha_xiaoQ · Pixel Workshop
+[源码与运行指南](https://aha-xiaoq.github.io/notes/mario-mix/docs/terra-source/) · [地图册与接入指南](https://aha-xiaoq.github.io/notes/mario-mix/docs/terra-stages/) · [当前任务](https://aha-xiaoq.github.io/notes/mario-mix/tasks/)
 
-做项目，也做工具，偶尔做点游戏。
+## 本地运行
 
-[访问网站](https://aha-xiaoq.github.io/) · [游戏](https://aha-xiaoq.github.io/games/) · [工具与实验](https://aha-xiaoq.github.io/tools/)
-
-网站默认中文，可切换 English 并记住选择。
-
-## 混合马里奥 · 社区协作准备版 collab-r01
-
-**先运行现有三期，再逐步整理结构。当前没有合并为一个新游戏，也没有给整个游戏重新授权。**
-
-[开发中心](dev/index.html) · [贡献指南](CONTRIBUTING.md) · [启动与路径](docs/collab/GETTING_STARTED.md) · [当前结构](docs/collab/ARCHITECTURE.md) · [任务状态源](collab/project.json) · [断点续接](docs/collab/HANDOFF.md)
-
-本地需要 Node.js 22 或更新版本。本轮工具无第三方 npm 依赖；从仓库根目录运行：
+需要 **Node.js 22 或更新版本**。网站工具没有第三方 npm 依赖，无需先运行 `npm install`。
 
 ```sh
+git clone https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io.git
+cd Aha-xiaoQ.github.io
 npm run dev
 ```
 
-浏览器访问终端显示的 `http://127.0.0.1:4173/dev/`。**不要只启动 games 子目录**，网站与游戏使用仓库根目录下的共享资源。
+打开 <http://127.0.0.1:4173/> 查看首页，或 <http://127.0.0.1:4173/notes/> 查看开发记录。请从仓库根目录启动，共享资源依赖完整目录结构。
 
-```sh
-npm run check          # 数据、路径约束、脚本语法与生成文件检查
-npm test              # Node 内置测试，不代表游戏手感已验收
-npm run collab:build   # 修改 collab/project.json 后重新生成网页状态与任务摘要
-npm run handoff       # 输出可复制到新对话的当前续接信息
-npm run doctor        # 检查三个游戏入口和本地仓库状态；缺失时明确报告
-```
+端口被占用时运行 `npm run dev -- --port 4174`。Windows 也可双击 `start-dev.cmd`。
 
-三期入口分别是 `games/mario-mix/play.html`、`games/mario-mix-2/play.html`、`games/mario-mix-3/play.html`。它们保留各自实现，尚未合并为统一引擎。
+## 开发与检查
 
-开发中心是 Git 管理的状态快照，**不是实时连接 GitHub 的项目后台**。网页编辑只产生本地草稿；导出、校验并由维护者提交后才成为共享状态。
+| 命令 | 用途 |
+| --- | --- |
+| `npm run check` | 检查数据、路径、脚本语法与生成文件一致性 |
+| `npm test` | 运行自动测试 |
+| `npm run site:build` | 重新生成网站展示页 |
+| `npm run journal:build` | 重新生成开发记录与资料页 |
+| `npm run terra:dev` | 启动第三期开发候选，入口以终端输出为准 |
+| `npm run doctor` | 检查网站与三期游戏入口文件 |
 
-更新包只覆盖列出的文件，不包含旧游戏本体、下载档案或字体。不要用增量包替换整个仓库。详见 [手动交付与发布](docs/collab/RELEASE_WORKFLOW.md)。
+自动测试不能替代游戏通关、真实手柄、音频和浏览器交互验收。
 
-## 许可与使用
+## 目录导航
 
-指定范围的网站原创代码采用 [MIT](LICENSE)，可在保留声明的条件下修改、分发及商用。头像、Logo、文章、美术、游戏素材和下载包不包含在此授权中；完整范围见 [中英文版权与使用说明](RIGHTS.md)。
+| 目录 | 内容 |
+| --- | --- |
+| [content/](content/) | 网站内容、展示配置与项目状态源 |
+| [assets/](assets/) | 共享样式、页面脚本和素材 |
+| [games/](games/) | 已发布游戏的介绍与试玩页面 |
+| [packages/](packages/) | 游戏开发工程与地图模板工具 |
+| [notes/](notes/) | 生成的开发记录和项目资料页面 |
+| [scripts/](scripts/) · [tests/](tests/) | 构建、校验与自动测试 |
+| [downloads/](downloads/) | 面向访客的下载文件 |
+| [docs/](docs/) | 维护文档、设计记录与验收说明 |
 
-字体：霞鹜文楷，见 [字体许可](assets/FONT_LICENSES.md)。游戏为非官方同人作品，相关素材权利归各权利人所有；作品说明与权利反馈方式见各游戏页面。
+## 参与与维护
 
-## English
+从[贡献指南](CONTRIBUTING.md)开始。游戏开发者可阅读[第三期工程入口](packages/mario-mix-terra/START_HERE.md)和[地图工程入口](packages/mario-mix-worlds/START_HERE.md)。
 
-Projects, tools, and occasional games. [Visit the website](https://aha-xiaoq.github.io/?lang=en).
+开发页面展示仓库中的状态快照；网页编辑只生成本地草稿，需导出、校验并提交后才会成为共享记录。
 
-Chinese is the default language; your explicit language choice is remembered.
+[网站发布流程](docs/release-r24/START_HERE.md) · [R25 维护说明](docs/showcase-r25/HANDOFF_R25.md) · [变更记录](CHANGELOG.md) · [旧 README 历史快照](docs/history/README-before-reorganization.md)
 
-The specified original website code is [MIT-licensed](LICENSE). Avatars, logos, articles, artwork, game assets and downloads are excluded from that grant. See [Rights and reuse](RIGHTS.md) for the exact scope and third-party terms.
+增量更新包只覆盖其清单中的文件，不能代替完整仓库。历史版本与安装记录保留在 docs 中。
 
-Font: LXGW WenKai; see the [font licenses](assets/FONT_LICENSES.md). The games are unofficial fan works; their assets belong to their respective rights holders. Each game page provides details and a contact for rights concerns.
+## 许可与素材
 
-## 开发日志与持续交接 · R04
+指定范围的网站原创代码采用 [MIT 许可](LICENSE)。头像、Logo、文章、美术、游戏素材和下载包不包含在该授权中；具体范围与第三方条款见[版权与使用说明](RIGHTS.md)。新增协作工具的许可见 [LICENSE.collab](LICENSE.collab)。
 
-栏目入口：`notes/index.html`。各项目独立登记，混合马里奥只是其中一个项目。阅读 [交接索引](docs/development/START_HERE.md)，新增项目使用 `npm run journal:add`，生成页面使用 `npm run journal:build`。本地交付与远端发布分开，原游戏和素材许可不变。
-
-<!-- MARIO-MIX-R05 -->
-## 参与混合马里奥开发
-
-从 [游戏工程入口](packages/mario-mix/README.md) 开始。先运行 `npm run game:test`，再使用 `npm run game:dev` 启动本地候选。原站启动方式和发布版游戏保持不变。
-
-<!-- WORKSHOP-R06 -->
-## 界面与内容组件 · R06
-
-阅读 [本轮入口](docs/design-r06/START_HERE.md)。栏目对外名为「开发」，内部路径保持 `/notes/`。项目、游戏、工具和多项目开发记录使用同一套作品组件；本地应用后仍由维护者验收、提交。
-
-<!-- WORKSHOP-R07 -->
-## 作品集合与素材契约 · R07
-
-阅读 [本轮入口](docs/design-r07/START_HERE.md)。栏目对外名为「开发」，内部路径保持 `/notes/`。列表静态 HTML 与动态渲染共用组件；表现配置在 content/presentation.json，编辑后执行 npm run site:build。六种背景预设按用途选择，游戏列表不再首项跨列。本地验收后手动提交。
-
-<!-- WORKSHOP-R08 -->
-## R08 · 安全修复与作品展示
-
-阅读 [本轮入口](docs/design-r08/START_HERE.md)。修复构建与更新路径的悬空符号链接漏检，游戏统一单条展示，工作流分类与项目插画按用途区分。npm run test:security 是发布前必跑项；Windows/完整站点尚需实测。不修改历史许可与游戏逻辑。
-
-<!-- TERRA-M01-R09 -->
-## 第三期源码开发
-
-[源码与开发指南](notes/mario-mix/docs/terra-source/index.html) · [工程说明](packages/mario-mix-terra/START_HERE.md)。独立源码位于 packages/mario-mix-terra，运行 npm run terra:dev。现有游戏版本不覆盖。
-
-<!-- TERRA-M02-R10 -->
-## 第三期 M02：架构与协作
-
-[源码与开发指南](notes/mario-mix/docs/terra-source/index.html) · [架构与协作](notes/mario-mix/docs/terra-collaboration/index.html)。运行 npm run terra:verify、terra:tasks；源码位于 packages/mario-mix-terra。稳定游戏不覆盖。
-
-<!-- TERRA-M03-R11 -->
-## 第三期 M03：关卡接入
-
-[源码与开发指南](notes/mario-mix/docs/terra-source/index.html) · [新关卡接入](notes/mario-mix/docs/terra-chapters/index.html)。运行 npm run terra:verify、terra:tasks；源码位于 packages/mario-mix-terra。稳定游戏不覆盖。
-
-
-<!-- INTERACTION-R17 -->
-网站交互细节：R17。游戏开发版仍为 0.4.2 / M06。
-[交互规范与验收](docs/interaction-r17/START_HERE.md)。
-
-
-<!-- EXPERIENCE-R18 -->
-网站体验：R18。当前游戏仍为 0.4.2 / M06。
-[搜索、返回与资料导航](docs/experience-r18/START_HERE.md)。
-
-
-<!-- LAUNCH-R19 -->
-网站体验收尾：R19。游戏仍为0.4.2/M06。
-[试玩引导、审阅报告与验收](docs/launch-r19/START_HERE.md)。
-
-
-<!-- LEVELS-R20 -->
-关卡进度与模板：第一世界4份底图，8个房间，32关管理登记。原版复验与正式角色接入仍待完成。
-[开发与验收](docs/levels-r20/START_HERE.md)。
-
-<!-- CHAPTERS-R20 -->
-关卡进度与第一世界模板：R20 / W01。游戏仍为0.4.2/M06。
-[地图开发与协作](packages/mario-mix-worlds/START_HERE.md)。
-
-
-<!-- WORLDS-R21 -->
-关卡地图册：R21 / W02，八世界32关参考模板。游戏仍为0.4.2/M06。
-[地图开发与协作](packages/mario-mix-worlds/START_HERE.md)。
-
-<!-- PLAYER-UI-R22 -->
-当前第三期候选：0.4.3 / M07；界面交接见 docs/player-ui-r22/HANDOFF_R22.md。WorldKit W02继续使用固定M06运行时，地图模板与稳定试玩不改。
-
-
-<!-- SITE-UI-R23 -->
-网站交互与排版：见 docs/site-ui-r23/HANDOFF_R23.md。运行 npm run site:ui:check、npm run test:site-ui。游戏仍为 M07 / 0.4.3，WorldKit W02 不变。
-
-
-<!-- SHOWCASE-R25 -->
-游戏入口与关于页：docs/showcase-r25/HANDOFF_R25.md。当前关于页源为 content/about-view.json，个人资料仍在 content/site-data.js；修改后运行 site:build。M07、W02、稳定试玩不改；公开发布继续使用 R24 release:prepare。
+网站字体使用霞鹜文楷，见[字体许可](assets/FONT_LICENSES.md)。混合马里奥为非官方同人作品，相关素材权利归各权利人所有；作品说明与权利反馈方式见各游戏页面。
