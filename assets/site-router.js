@@ -46,7 +46,7 @@
   let journalModule;
   const prepareJournal = async info => {
     if(info.page!=="journal")return;
-    journalModule ||= import(assetHref("journal/runtime.mjs")).catch(error=>{journalModule=null;throw error;});
+    journalModule ||= import(new URL("journal/runtime.mjs?v=docs-r26",routerURL).href).catch(error=>{journalModule=null;throw error;});
     await journalModule;
     await Promise.all([globalThis.SITE_JOURNAL.prepare(info),journalStyle()]);
     if(info.journalError)throw Error("Project data unavailable");
@@ -54,7 +54,7 @@
   const journalStyle = () => {
     let link=document.querySelector('[data-journal-css]');
     if(link?.sheet)return Promise.resolve();
-    if(!link){link=document.createElement('link');link.rel='stylesheet';link.href=assetHref('journal/journal.css');link.dataset.journalCss='';document.head.append(link);}
+    if(!link){link=document.createElement('link');link.rel='stylesheet';link.href=new URL('journal/journal.css?v=docs-r26',routerURL).href;link.dataset.journalCss='';document.head.append(link);}
     return waitForLink(link);
   };
   const syncJournalNavigation = () => {

@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import {planShowcase} from '../showcase/build.mjs';
+import {documentData,OUTPUT as DOCUMENT_DATA} from '../journal/documents.mjs';
 /** Creates a separate website artifact. Never copies the repository wholesale. */
 import fs from 'node:fs';import path from 'node:path';import{randomUUID}from'node:crypto';import{fileURLToPath}from'node:url';
 import{safe,exactRead,walk,sha,json,parseDataJS,scriptData,privatePath}from'./paths.mjs';
@@ -40,6 +41,7 @@ export async function planPublication(root=ROOT){
  const observed=new Map(),errors=[],warnings=[],files=new Map(),overlay=new Map(),directories=new Map();
  const get=p=>{if(observed.has(p))return observed.get(p);const b=exactRead(root,p);observed.set(p,b);return b;};
  const read=p=>overlay.has(p)?overlay.get(p):get(p);
+ if(!documentData(root,{reader:get}).equals(get(DOCUMENT_DATA)))throw Error('Document pages are stale: run npm run journal:build');
  for(const dir of ['scripts/publication','scripts/journal','scripts/workshop','scripts/experience','scripts/launch','scripts/lib','scripts/public-content','scripts/showcase'])for(const p of walk(root,dir))get(p);
  const cfg=getJSON(get,'config/publication.json');if(cfg.schemaVersion!==1||cfg.output!==OUTPUT||cfg.edition!=='R24'||!Array.isArray(cfg.entrypoints)||!Array.isArray(cfg.extraPublicFiles))throw Error('发布配置不匹配。');
  const origin=new URL(cfg.origin).origin;if(!origin.startsWith('https://')||cfg.origin!==origin)throw Error('origin 需要不带路径的 HTTPS 地址。');
@@ -82,7 +84,7 @@ export async function planPublication(root=ROOT){
  for(const chapter of projects.find(p=>p.id==='mario-mix').chapterPlan.levels){const current=mapCatalog.levels.find(l=>l.id===chapter.id);if(!current)throw Error('关卡目录缺少 '+chapter.id);for(const field of ['title','characters','status','summary','owner','issueUrl','playHref','introHref'])if(JSON.stringify(chapter[field])!==JSON.stringify(current[field]))errors.push({file:'content/development/projects/mario-mix.json',problem:'chapter-state-not-synchronized',chapter:chapter.id,field});}
  const atlasIndex=getJSON(get,cfg.mapPath+'/generated/atlas-index.json');
  files.set(cfg.mapPath+'/generated/atlas-index.json',json(atlasIndex));
- for(const p of fileTree(cfg.mapPath+'/atlas')){let b=get(p);if(p.endsWith('atlas.mjs')){const old="const source=p=>new URL('../'+p,import.meta.url).href;";const next="const source=p=>p.startsWith('generated/downloads/')?new URL('/downloads/maps/'+p.split('/').pop(),import.meta.url).href:new URL('../'+p,import.meta.url).href;";if(!b.toString().includes(old))throw Error('地图册下载适配需要核对，未修改未知代码。');b=Buffer.from(b.toString().replace(old,next));}if(p.endsWith('/index.html'))b=Buffer.from(b.toString().replaceAll('../START_HERE.md','/notes/mario-mix/').replaceAll('../docs/MAP_CONTRACT.md','/notes/mario-mix/docs/terra-stages/').replace('<img id="map"','<img width="512" height="240" id="map"'));files.set(p,b);}
+ for(const p of fileTree(cfg.mapPath+'/atlas')){let b=get(p);if(p.endsWith('atlas.mjs')){const old="const source=p=>new URL('../'+p,import.meta.url).href;";const next="const source=p=>p.startsWith('generated/downloads/')?new URL('/downloads/maps/'+p.split('/').pop(),import.meta.url).href:new URL('../'+p,import.meta.url).href;";if(!b.toString().includes(old))throw Error('地图册下载适配需要核对，未修改未知代码。');b=Buffer.from(b.toString().replace(old,next));}if(p.endsWith('/index.html'))b=Buffer.from(b.toString().replaceAll('../START_HERE.md','/notes/mario-mix/docs/worlds-start/').replaceAll('../docs/MAP_CONTRACT.md','/notes/mario-mix/docs/worlds-map-contract/').replace('<img id="map"','<img width="512" height="240" id="map"'));files.set(p,b);}
  for(const l of atlasIndex.levels){for(const rel of [l.source,...l.rooms.flatMap(r=>[r.svg,r.tiled])]){const p=cfg.mapPath+'/'+rel,b=get(p);if(b)files.set(p,b);else errors.push({file:p,problem:'missing-atlas-resource'});}const name=path.posix.basename(l.download),p='downloads/maps/'+name,b=get(p);if(b)files.set(p,b);else errors.push({file:p,problem:'missing-map-download'});}
  // Never copy loose game-source trees or tests. Stable game folders are runtime
  // distributions: include referenced files plus their adjacent runtime media.

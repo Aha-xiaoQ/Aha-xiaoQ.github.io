@@ -1,10 +1,11 @@
+import {withDocuments} from '../journal/documents.mjs?v=docs-r26';
 /** Public-site projection. Source tasks and engineering records remain unchanged. */
 export const PUBLIC_EDITION='R24';
 export const CLUTTER=/布局测试|测试夹具|外围文本夹具|假数据|占位页面|lorem ipsum|我已为你|按你的要求|用户要求|用户曾反馈|不虚构|没有伪造|本轮|下一轮|更新包不会|#\s*[AB]：/i;
 export const isPublicMode=()=>Boolean(globalThis.SITE_RELEASE?.publicMode);
 const clone=x=>JSON.parse(JSON.stringify(x));
 export function publicProject(input){
- const p=clone(input);p.publicSite=true;delete p.archivedState;
+ const p=withDocuments(input);p.publicSite=true;delete p.archivedState;
  // W02 is the current atlas. K01 remains available in source/history, not a
  // second public registry with stale counts and private engineering paths.
  if(p.chapterPlan)delete p.levelPlan;
@@ -32,7 +33,7 @@ export function publicProject(input){
  // Historical work logs are retained in the repository, not presented as releases.
  p.updates=p.updates.filter(u=>u.status==='released'||u.id===p.currentRelease?.updateId||u.id==='all-worlds-r21').map(u=>({...u,public:true}));
  for(const u of p.updates)if(u.public&&u.id===p.currentRelease?.updateId){u.title=`开发源码 ${p.currentRelease.version}`;u.summary='角色选择、操作说明、设置与 HUD 已整理。此源码为开发候选，和已发布试玩分别维护。';}
- if(p.chapterPlan){p.stage='三关可试玩 · 一关开发中';p.chapterPlan.instructionsHref=p.chapterPlan.guideHref;delete p.chapterPlan.source;}
+ if(p.chapterPlan){p.stage='三关可试玩 · 一关开发中';delete p.chapterPlan.source;}
  else if(p.id==='pixel-workshop'){p.stage='持续更新';p.summary='浏览作品、寻找源码，了解项目进展与参与方式。';p.intro='把游戏、工具和制作记录放在一起。作品可以直接体验，开发资料提供源码、地图模板与贡献说明。';p.highlights=['作品与开发资料分开呈现。','手机、键盘和搜索入口保持一致。','发布目录与开发工程分开管理。'];}
  return p;
 }

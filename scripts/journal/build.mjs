@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import {withDocuments} from '../../assets/journal/documents.mjs';
 /** Generate native direct-load pages from registered projects. No frontend router generation. */
 import vm from 'node:vm';
 import {wireHTML} from '../workshop/build.mjs';
@@ -23,7 +24,7 @@ export function nativePage(template,body,meta,file){
  head=head.replace(/<meta\b[^>]*(?:name=["'](?:description|robots)["']|property=["']og:[^"']*["']|name=["']twitter:[^"']*["'])[^>]*>/gi,'').replace(/<link\b[^>]*rel=["']canonical["'][^>]*>/gi,'');
  head=head.replace(/<link\b[^>]*(?:data-journal-css|data-workshop-css)[^>]*>/g,'');
  head=head.replace(/\s*<\/head>/i,'</head>');
- head=head.replace('</head>',`<meta name="description" content="${e(meta.intro)}">\n${file.includes('/manage/')?'<meta name="robots" content="noindex">':''}<link rel="stylesheet" data-workshop-css href="/assets/workshop-components.css?v=workshop-r08"><link rel="stylesheet" data-journal-css href="/assets/journal/journal.css?v=workshop-r12">\n</head>`);
+ head=head.replace('</head>',`<meta name="description" content="${e(meta.intro)}">\n${file.includes('/manage/')?'<meta name="robots" content="noindex">':''}<link rel="stylesheet" data-workshop-css href="/assets/workshop-components.css?v=workshop-r08"><link rel="stylesheet" data-journal-css href="/assets/journal/journal.css?v=docs-r26">\n</head>`);
  let header=absolute(get(/<header\b[^>]*>[\s\S]*?<\/header>/i,'header'));
  header=header.replace(/<a\b[^>]*data-nav-key=["']dev["'][^>]*>[\s\S]*?<\/a>/g,'').replace(/\saria-current=["']page["']/g,'').replace(/(<a\b[^>]*data-nav-key=["']notes["'][^>]*>)[\s\S]*?(<\/a>)/g,'$1开发$2').replace(/(data-nav-key=["']notes["'])/,'$1 aria-current="page"');
  header=header.replace(/<nav\b([^>]*)>/g,(tag,attrs)=>{if(/\bstyle=/.test(attrs))return tag;return '<nav'+attrs+' style="flex-wrap:wrap">';});
@@ -37,7 +38,7 @@ export async function planPages(root,{reader=rel=>read(root,rel),template=null,n
  const get=async p=>{const b=await reader(p);if(b===null)throw Error('缺少文件：'+p);return utf(b);};
  if(notes===null){const source=await reader('content/site-data.js');notes=[];if(source){const context={};vm.runInNewContext(utf(source),context,{timeout:1000});notes=context.SITE_DATA?.notes||[];if(!Array.isArray(notes))throw Error('原站笔记格式不是数组，停止而不丢弃记录。');}}
  const catalog=validateCatalog(JSON.parse(await get('content/development/catalog.json'))),projects=[];
- for(const item of catalog.projects){const p=validateProject(JSON.parse(await get(item.file)));if(item.id!==p.id)throw Error('索引项目 ID 不一致。');projects.push(p);}
+ for(const item of catalog.projects){const p=withDocuments(validateProject(JSON.parse(await get(item.file))));if(item.id!==p.id)throw Error('索引项目 ID 不一致。');projects.push(p);}
  if(new Set(projects.map(p=>p.state.path)).size!==projects.length)throw Error('两个项目不能共用同一状态源。');
  const publicProjects=projects.filter(p=>p.visibility!=='draft'),states={},errors={};
  for(const p of publicProjects){states[p.id]=normalizeState(JSON.parse(await get(p.state.path)),p);}

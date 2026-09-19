@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "documents": [
+    {
+      "source": "packages/mario-mix-worlds/START_HERE.md",
+      "projectId": "mario-mix",
+      "id": "worlds-start",
+      "title": "地图开发工具 W02 · 0.2.0",
+      "parent": "terra-stages",
+      "historical": false
+    },
+    {
+      "source": "packages/mario-mix-worlds/docs/MAP_CONTRACT.md",
+      "projectId": "mario-mix",
+      "id": "worlds-map-contract",
+      "title": "地图坐标、分段与核验约定",
+      "parent": "terra-stages",
+      "historical": false
+    },
+    {
+      "source": "packages/mario-mix-worlds/docs/ROADMAP.md",
+      "projectId": "mario-mix",
+      "id": "worlds-roadmap",
+      "title": "后续路线",
+      "parent": "terra-stages",
+      "historical": false
+    },
+    {
+      "source": "packages/mario-mix-terra/docs/UI_CONTRACT.md",
+      "projectId": "mario-mix",
+      "id": "terra-ui-contract",
+      "title": "玩家界面契约 · M07",
+      "parent": "terra-source",
+      "historical": false
+    },
+    {
+      "source": "packages/mario-mix-terra/docs/TEST_REPORT_M07.md",
+      "projectId": "mario-mix",
+      "id": "terra-test-m07",
+      "title": "M07 历史测试记录",
+      "parent": "terra-source",
+      "historical": true,
+      "contentOverride": "# M07 历史测试记录\n\n2026-09-19；M07 / 0.4.3 开发候选。以下为该候选的测试记录，不代表已部署或通过完整发布验收。\n\n## 已记录的覆盖\n\n- 源码 verify：196 项通过，包括原有 171 项与 25 项玩家界面检查。\n- 原版与候选完整脚本离线对照 13 阶段，无状态差异及未捕获错误。\n- UI 浏览器 63 项断言通过，覆盖六角色、确认、改键、提示、窄屏与退出清理。\n- 普通无测试开关模式验证六角色启动与切换、默认菜单、设置、帮助与窄屏，无未捕获错误。\n- 原始底稿 SHA 重建一致，prepublish 自动检查通过；人工批准尚未完成。\n\n## 验证边界\n\n浏览器记录来自离线候选与内嵌资源，远程请求被阻止。按键事件实际派发，部分游戏状态使用测试接口与手动步进；手柄为合成输入。上述结果不代表真实 HTTP/ESM/CSP 网络、实体控制器或自然通关。\n\n待验收：Windows、物理手柄与触屏、屏幕阅读器、全屏、刷新持久性、真实 BFCache、音频听感及自然通关。测试未提供 FPS 提升比例或可达性认证。\n\n[实机验收](ACCEPTANCE_M07.md) · [能力限制](KNOWN_LIMITS.md)\n"
+    },
+    {
+      "source": "packages/mario-mix-terra/docs/ACCEPTANCE_M07.md",
+      "projectId": "mario-mix",
+      "id": "terra-acceptance-m07",
+      "title": "M07 实机验收",
+      "parent": "terra-source",
+      "historical": false
+    },
+    {
+      "source": "packages/mario-mix-terra/docs/generated/MODULES.md",
+      "projectId": "mario-mix",
+      "id": "terra-modules",
+      "title": "模块登记（自动生成）",
+      "parent": "terra-collaboration",
+      "historical": false
+    },
+    {
+      "source": "packages/mario-mix-terra/CONTRIBUTING.md",
+      "projectId": "mario-mix",
+      "id": "terra-contributing",
+      "title": "参与第三期开发",
+      "parent": "terra-collaboration",
+      "historical": false,
+      "contentOverride": "# 参与第三期开发\n\n先从一个边界明确的改动开始，不必理解所有历史版本。\n\n## 1. 找到合适范围\n\n| 你想做什么 | 入口 | 验证 |\n|---|---|---|\n| 改物品说明 | src/content/items.mjs | tests/loot.test.mjs |\n| 改武器交换或箱子散落规则 | src/simulation/loot-rules.mjs | tests/loot.test.mjs |\n| 改按键配置、显示 | src/input/ 与 src/ui/ | tests/settings.test.mjs |\n| 验证新地图与角色组合 | content/extensions/ | tests/stages.test.mjs；?dev=1 |\n| 调整场景进入、暂停、清理 | src/runtime/stage-session.mjs | tests/final-contract.test.mjs |\n\n`npm run tasks` 只展示任务，不自动认领。先在 Issue 留言说明范围，维护者确认后创建功能分支。游戏的新能力、素材或大幅平衡调整先讨论。\n\n## 2. 修改源码，不改产物\n\n规则模块不读取 DOM、存档或音频设备；通过明确参数和端口衔接。`src/bridges/` 负责旧状态映射，不能把它变成新的补丁集中区。增加模块需登记 architecture/modules.json，并运行 `npm run docs:build`。\n\n物品事务模块先产生计划，再由桥接提交并调用原音效、界面和持久化顺序。不是跨进程数据库事务，也不承诺磁盘崩溃恢复。\n\n## 3. 检查并提交一个小 PR\n\n```sh\nnpm run verify\nnpm run test:loot\nnpm run pack\n```\n\nPR 写清：关联任务、行为差异、已跑测试、候选校验值、没有验证的设备；不要提交 `.local/`、`dist/`、密钥或整个更新包。完整游戏对照 `npm run test:browser` 需要已有 Python Playwright 与 Chromium，未执行的检查请列在 PR 的“未验证项”中。\n\n## 合并与发布\n\n审核通过后再合并。源码测试不是发布批准，发布须完成对应版本的验收和批准；[M06 / 0.4.2 历史发布指南](docs/PUBLISH.md) 可供参考。任务认领、审核和合并结果以对应的 GitHub 记录为准。新提交者拿不到主仓库发布权限。\n"
+    },
+    {
+      "source": "packages/mario-mix-terra/docs/PUBLISH.md",
+      "projectId": "mario-mix",
+      "id": "terra-publish",
+      "title": "M06 / 0.4.2 历史发布指南",
+      "parent": "terra-collaboration",
+      "historical": true,
+      "contentOverride": "# M06 / 0.4.2 历史发布指南\n\n本指南对应 M06 / 0.4.2，命令与下载文件名保留该版本范围。源码下载与线上试玩分别维护。0.4.2 为体验修正候选，不自动替换已发布游戏。\n\n## 检查和证据\n\n运行 `npm run verify` 与 `npm run prepublish:check`，记录候选校验值。在 Windows 和真实浏览器检查启动、设置恢复、手柄与触屏、音频、自然通关及隐藏房间。核验内嵌和远程素材来源，许可不明的条目继续待确认。\n\n证据保存在 `docs/evidence/`。填写 `docs/RELEASE_REVIEW.json` 中的候选 SHA、审核人与证据路径，再运行 `npm run release:check`。该命令检查记录结构和版本匹配；真实性由维护者审核。\n\n## 源码与网站同步\n\n执行 `npm run pack`，输出 `.local/MarioMix_Terraria_M06_Source.zip`。解压后再次验证，确认与本地源码一致。将快照、版本和校验元数据同步到网站 currentRelease 指向的位置。\n\n网站根目录运行 content:sync、journal:build、content:check、check 和 test，审阅 Git diff 后提交。上线后核对当前下载、解压目录、教程和任务页。只有真实部署及对应验收完成后，才把相关状态改为 released。\n\n源码 ZIP 的 SHA 随文档变化而变化；游戏候选 SHA 仅在运行内容变化时变化。两种校验不要混用。代码或证据变化后重新核对审批范围。\n\n## 历史与回退\n\n保留原 M05 和更早下载。历史指南不作为当前操作步骤。应用器遇到本地编辑会停止，先合并再继续；使用安装时的备份回退，不覆盖后续工作。\n\n[M06 验收](ACCEPTANCE_M06.md) · [已知限制](KNOWN_LIMITS.md) · [M06 测试记录](TEST_REPORT_M06.md)\n"
+    },
+    {
+      "source": "packages/mario-mix-terra/docs/CHANGELOG_M05.md",
+      "projectId": "mario-mix",
+      "id": "terra-changelog-m05",
+      "title": "M05 / 0.4.1 · UI 精修",
+      "parent": "terra-history",
+      "historical": true,
+      "contentOverride": "# M05 / 0.4.1 · UI 精修\n\n基于M04/0.4.0，日期2026-09-17。发布候选，不等于线上已更新。\n\n## 可见改动\n统一菜单、角色选择、按键设置、侧栏和触屏按钮视觉；原角色选择从窄六列改为三列两行，保留顺序与原处理函数。快捷栏/生命魔力加底板，活动项突出；拾取提示整理为名称+效果，内容和队列不改。新增专注模式、大号菜单文字、高对比及减少界面动效。\n\n## 有意交互差异\n点击专注或聚焦显示控件时清空保持的按键，避免继续移动；显示控件中的Space/Enter/Escape不再漏给游戏。快捷提示随实际键盘绑定更新。显示偏好存储在新键，不清理或迁移旧存档；不跨刷新恢复专注状态。\n\n## 没有修改\n地图、碰撞和固定时钟、生命/伤害/武器数值、掉落与库存事务、音频时序、默认键位、关卡实验能力均未扩大。\n\n## 工程\n增加3个实际调用的UI模块、2个桥接，总计27模块/6桥接/33兼容片段。CSS候选附加而不污染原版重建。浏览器测试等待条件改为函数形式，适配现有CSP，未放宽unsafe-eval。\n\n## 已知限制\n偏好尚无实体手柄菜单导航验收；此版本不支持竖屏 HUD 缩放。真实HTTP/ESM、持久存储刷新、Windows、音频听感和自然通关仍需实机；大号文字不覆盖固定像素HUD，减少界面动效不禁用世界震动。\n"
+    },
+    {
+      "source": "packages/mario-mix-terra/docs/CHANGELOG_M04.md",
+      "projectId": "mario-mix",
+      "id": "terra-changelog-m04",
+      "title": "M04 / R13 · 发布前收尾",
+      "parent": "terra-history",
+      "historical": true,
+      "contentOverride": "# M04 / R13 · 发布前收尾\n\n2026-09-17 的 M04 发布候选记录，不表示当前部署状态。\n\n- 从真实第三期迁出物品定义，以及武器交换/开箱散落/拾取说明的纯计划模块。保留旧武器、旧掉落物理和音效/存档顺序。\n- 收紧关卡会话：清理失败、事件代次、只读快照、重入与驱动事件白名单。\n- 修复 legacy 驱动允许自定义地图但实际忽略数据的误导接口；不兼容组合在构建前拒绝。无效音频键也不静默忽略。\n- 几何关卡试验入口默认隐藏，使用 ?dev=1 明确开启；测试上下文可继续运行原回归。\n- 版本统一为M04/0.4.0，新增产物/文档一致性命令；人工发布批准独立。\n- 网页资料只展示当前源码、参与开发、关卡接口三项。历史资料折叠且链接保留；旧下载不删除，R12小图标不改。\n\n行为变化：向未登记武器ID换装现在会明确报错；非法生命周期/无效音频/假legacy组合失败。正常既有武器与箱子行为按原片段对照。没有新的关卡或大改UI。\n"
+    },
+    {
+      "source": "packages/mario-mix/README.md",
+      "projectId": "mario-mix",
+      "id": "episode-one-start",
+      "title": "混合马里奥 · 协作工程 R05",
+      "parent": "engineering",
+      "historical": true,
+      "contentOverride": "# 混合马里奥 · 协作工程 R05\n\n当前范围是 **第一期比尔的瞄准与平台下穿输入意图**。它尚不是全游戏模块化，也不是三期整合版。原来的游戏、网站视觉、地图、声音、角色参数不直接覆盖。\n\n## 新贡献者从这里开始\n\n使用 Node.js 22+。不需要 npm install，不下载第三方依赖或素材。在安装 R05 的完整仓库根目录执行：\n\n```sh\nnpm run game:check\nnpm run game:test\nnpm run game:audit\nnpm run game:build\nnpm run game:dev\n```\n\n候选版：`http://127.0.0.1:4180/games/mario-mix/play.html`。\n另开终端运行 `npm run game:reference`，原始对照版：`http://127.0.0.1:4181/games/mario-mix/play.html`。\n这两个端口与主站 4173 分开，浏览器存储不共享。不要把源文件直接拖进浏览器。修改源码后停止并重新运行 game:dev，再刷新；修改后需重启开发服务。\n\n也可以 `cd packages/mario-mix` 后使用 npm test / npm run build / npm run dev。\n单独拿到更新包、不含完整 games/ 时可以运行单元测试；构建和游戏试玩需要原仓库中的真实游戏及素材，缺失不会伪造成功。\n\n## 改哪个文件才会生效？\n\n| 文件 | 职责 |\n|---|---|\n| src/input/bill-aim.mjs | 方向与朝向 → 瞄准方向，纯函数 |\n| src/input/bill-descent.mjs | 下+跳组合按键边沿、地面/房间门槛、可穿平台判定 |\n| src/legacy/bill-controls.bridge.js | 连接原闭包状态；保持旧碰撞例外和副作用 |\n| scripts/core.mjs | 核对原运行文件并生成候选，不写回 games/ |\n| tests/fixtures/bill-controls.original.txt | 已核对 Git blob 的旧代码，测试对照，禁止为通过测试而改写 |\n| docs/ACCEPTANCE.md | 人工试玩与可选浏览器对照方法 |\n\n`games/mario-mix/play.html` 实际加载 `classic-mix.js`；旧的 `bill-controls.js` 只是片段，不会单独被浏览器加载。**该输入逻辑的开发入口是 src/input/，不要只改旧片段或直接改生成物。**\n\n## 基线与失败提示\n\nR05 历史记录核对的公开 main：`ed76f0b668a9e7c1a8d8f71bed2489cb2b063c9e`。这是 2026-09-15 的读取记录，不是永远的最新版。\n`game:audit` 在 `.local/baseline-report.json` 逐项记录 I / II / III 与运行脚本：matched / different / missing；任何不一致退出码 2，不把“different”判断成更老或更新。它还生成第一期资产的待核验清单，**不会赋予授权**。\n`game:build` 必须核对第一期运行 JS 和入口 HTML 的 Git blob；不同则停止。保留你的新版，不要用旧游戏覆盖去通过检查。二、三期的差异不会被偷偷“同步”成第一期。\n\n## 构建与交付\n\n候选生成于 `packages/mario-mix/.local/build/`，不应提交。build.json 记录原提交、输入哈希、候选 SHA-256、唯一替换区间及区间外摘要。\n默认构建不含时间戳，相同输入产生相同输出。请提交 **源码、测试和文档**，不要提交候选成品当作开发源。\n发布审核用 `npm run game:release-check`，默认会因人工验收/许可/批准缺失而阻止发布。没有自动覆盖稳定版的发布命令。\n\n## 阅读顺序\n\n[贡献方法](CONTRIBUTING.md) → [架构与源码边界](docs/ARCHITECTURE.md) → [验收](docs/ACCEPTANCE.md) → [首批任务](docs/WORK_ITEMS.md)。\n维护者另读 [治理与合并](docs/GOVERNANCE.md)、[许可](docs/LICENSING.md)、[R05 历史工程说明](docs/HANDOFF_R05.md)。\n"
+    },
+    {
+      "source": "packages/mario-mix/CONTRIBUTING.md",
+      "projectId": "mario-mix",
+      "id": "episode-one-contributing",
+      "title": "贡献混合马里奥",
+      "parent": "engineering",
+      "historical": true
+    },
+    {
+      "source": "packages/mario-mix/docs/ARCHITECTURE.md",
+      "projectId": "mario-mix",
+      "id": "episode-one-architecture",
+      "title": "第一条可协作源码通道",
+      "parent": "engineering",
+      "historical": true
+    },
+    {
+      "source": "packages/mario-mix-terra/docs/stages/ADD_LEVEL.md",
+      "projectId": "mario-mix",
+      "id": "stage-add-level",
+      "title": "新增关卡草稿",
+      "parent": "terra-chapters",
+      "historical": true
+    },
+    {
+      "source": "packages/mario-mix-terra/docs/stages/CONTRACT.md",
+      "projectId": "mario-mix",
+      "id": "stage-contract",
+      "title": "地图、角色、关卡与适配层契约 v0.1",
+      "parent": "terra-chapters",
+      "historical": true
+    },
+    {
+      "source": "packages/mario-mix-terra/docs/stages/ACCEPTANCE.md",
+      "projectId": "mario-mix",
+      "id": "stage-acceptance",
+      "title": "新关卡提交门槛",
+      "parent": "terra-chapters",
+      "historical": true
+    },
+    {
+      "source": "packages/mario-mix-terra/docs/ACCEPTANCE_M06.md",
+      "projectId": "mario-mix",
+      "id": "terra-acceptance-m06",
+      "title": "0.4.2 发布前验收",
+      "parent": "terra-history",
+      "historical": true
+    },
+    {
+      "source": "packages/mario-mix-terra/docs/KNOWN_LIMITS.md",
+      "projectId": "mario-mix",
+      "id": "terra-known-limits",
+      "title": "当前已知限制 · 0.4.3",
+      "parent": "terra-history",
+      "historical": true,
+      "contentOverride": "# 当前已知限制 · 0.4.3\n\n当前UI将主要HUD与菜单文字分层，但未将所有兼容区的世界内文字迁出。移动设备全屏、实体输入、读屏、网络与自然通关需实机验收。WorldKit W02依然固定M06；其模板数据并未自动获得本版界面或完整角色跨图能力。\n\n## 已支持\n\n运行第三期开发候选；修改已迁出的输入、设置、Boss 基础、建造和物品规则；重建原始底稿；创建限定能力内的地图与几何角色组合；构建并打包源码。\n\n## 尚不支持\n\n- 完整泰拉角色、背包、武器与坐骑直接用于任意新地图。\n- 全部原版地图与通用机关；本版不包含完整 1-4。\n- 将 platform-v1 视为旧角色的物理实现；它是单独的关卡原型驱动。\n- 完全离线的所有可选资源；部分素材仍有远程依赖。\n\n## 待验收\n\nWindows 原生运行、真实 HTTP/ESM/CSP 加载、实体手柄与触屏、持久配置、音频听感、自然通关及 GitHub CI。请在对应记录中填写设备、候选校验值和复现结果。\n\n自动测试覆盖的条件见 [M05 历史测试报告](TEST_REPORT_M05.md)；发布需要 [人工审批记录](RELEASE_REVIEW.json)。未填写的项目保持待验收。\n\n## 发布与许可\n\n开发候选与线上试玩分别维护。项目为非官方作品；代码公开不代表全部第三方素材取得再分发授权。请保留 [NOTICE](../upstream/NOTICE.txt) 并逐项核验素材来源。\n"
+    },
+    {
+      "source": "packages/mario-mix-terra/docs/TEST_REPORT_M06.md",
+      "projectId": "mario-mix",
+      "id": "terra-test-m06",
+      "title": "M06 / 0.4.2 历史测试记录",
+      "parent": "terra-history",
+      "historical": true,
+      "contentOverride": "# M06 / 0.4.2 历史测试记录\n\n本记录针对 M06 开发候选，不表示当前网站、源码或线上试玩已通过发布验收。\n\n## 已记录的覆盖\n\n- 源码 Node：171 项通过，包括原有 153 项、15 项引导与生命周期检查、3 项过期构建保护。\n- 完整原脚本与候选：13 阶段离线状态一致。\n- 操作速查：44 项离线 DOM、键盘与页面缓存事件分支检查通过，无未捕获脚本错误。\n- 显示 UI 35 项、设置 25 项、实验关卡 21 项、普通入口 6 项 DOM 回归通过。\n- 原底稿重建要求 SHA：`e134fdee21a6dce43585cda93c582ca2c0bf45f325f14cde81e33b80b758f19c`。\n\n## 验证边界\n\n记录基于 Linux、Node 22.16.0、Chromium 与 Python Playwright 的离线候选测试，使用内嵌媒体并阻止远程请求。部分场景由测试接口预设，pagehide 为合成事件；未执行自然完整通关。独立 Node HTTP 检查不代表浏览器 HTTP/ESM/CSP 网络验收。\n\n待验收：Windows 与 junction、实体手柄和触屏及热插拔、刷新存储、原生全屏、音频听感、自然关卡与隐藏挑战、真实网站下载与部署。测试数量不代表设备覆盖率或通关率。\n\n## 复现\n\n运行 `npm run verify`、`npm run prepublish:check`、`npm run test:polish-browser`、`npm run test:browser`。浏览器检查需要已有 Playwright 与 Chromium。\n\n[M06 验收](ACCEPTANCE_M06.md)\n"
+    },
+    {
+      "source": "packages/mario-mix-terra/docs/TEST_REPORT_M05.md",
+      "projectId": "mario-mix",
+      "id": "terra-test-m05",
+      "title": "M05 / 0.4.1 历史测试记录",
+      "parent": "terra-history",
+      "historical": true,
+      "contentOverride": "# M05 / 0.4.1 历史测试记录\n\n2026-09-17；Linux、Node 22.16.0、Python Playwright 与 Chromium。记录针对 M05 开发候选，不代表当前线上版本的验收结果。\n\n## 已记录的覆盖\n\n- 153 项 Node 测试通过，零失败或跳过，包括原有 138 项与 15 项 UI 模型、绘制、输入边界及样式检查。\n- 原版重建 SHA 与参考 HTML 一致；候选支持单 HTML 与模块网页两种构建形式。\n- 完整原版与候选脚本离线对照 13 阶段，无状态差异。\n- 新 UI 离线 DOM 35 项检查覆盖开始、专注、改键、显示偏好、Space/Escape、动态键位提示、原工具点击、五档视口与大号对话框，无未捕获脚本错误。\n- 设置窗口 25 项、关卡原型 21 项、普通玩家入口 6 项回归通过。\n\n## 验证边界\n\n浏览器测试离线执行完整候选与内嵌素材，保留 CSP 并阻止远程请求。随机、时间与隐藏场景条件由测试接口控制，未执行自然通关，也未验证浏览器真实 HTTP/ESM 加载。\n\n大号偏好检查 CSS 菜单正文 20px；固定像素 HUD 不随此设置放大。320、390、768、1440 及 844×390 视口未横向溢出，真机可读性仍需检查。偏好模型覆盖独立存储键与存储失败，浏览器刷新和权限待验收。\n\n未验收：Windows 原生 CLI 与 junction、实体手柄和触屏、刷新持久设置、音频听感、自然通关、真实网络与部署、外部 PR 和第三方许可审批。减少界面动效不关闭游戏世界的震动或闪光。\n"
+    },
+    {
+      "source": "packages/mario-mix-terra/upstream/NOTICE.txt",
+      "projectId": "mario-mix",
+      "id": "terra-upstream-notice",
+      "title": "NOTICE.txt",
+      "parent": "terra-history",
+      "historical": true
+    },
+    {
+      "source": "packages/mario-mix/docs/WORK_ITEMS.md",
+      "projectId": "mario-mix",
+      "id": "episode-one-work-items",
+      "title": "首批可认领任务",
+      "parent": "engineering",
+      "historical": true
+    },
+    {
+      "source": "packages/mario-mix/docs/ACCEPTANCE.md",
+      "projectId": "mario-mix",
+      "id": "episode-one-acceptance",
+      "title": "验收分层：哪些测试说明了什么",
+      "parent": "engineering",
+      "historical": true,
+      "contentOverride": "# 验收分层：哪些测试说明了什么\n\n## 自动单元与构建检查\n\n`npm run game:test` 检查读取到的原始 Bill 控制片段与新模块/桥接。包含 324 组瞄准输入、1,000 步固定随机序列、平台边界、组合键边沿、碰撞范围和异常清理。\n构建与 HTTP 测试用明确标为 synthetic 的宿主环境包住真实控制片段；不是完整游戏。假锁仅在测试临时目录里使用，生产 baseline.json 不变，不存在生产 --force。\n\n## 可选的真实浏览器状态对照\n\n需你的完整游戏及素材、已安装 Python Playwright 与 Chromium。脚本不会自动下载依赖。\n分别启动两个终端：game:dev（4180）和 game:reference（4181）。然后：\n\n```sh\ncd packages/mario-mix\npython scripts/browser-compare.py\n```\n\n这会使用已在第一期实际源码中看到的 `?test=1`、`window.__test`、`window.__mixTest`、`window.__mixReady`，对三角色执行 7 组步进序列。\n它检查真实引擎返回状态；使用固定随机数和虚拟输入，不代表真实手柄、键盘事件、音频听感或完整关卡已通过。\n缺资源、页面错误或状态不同会记录 failed-or-blocked 并非零退出。R05 历史记录未执行此项完整游戏验证。\n\n## 维护者手工检查\n\n原版与候选分别新开页面。首选比尔；至少试马里奥与洛克人的基本起步/跳跃，防止桥接影响其他角色。\n\n| 场景 | 预期 |\n|---|---|\n| 左右移动、正上、斜上、地面单下、空中单下 | 和原始对照相同；八向瞄准优先级不改变 |\n| 上下同按、左右同按 | 和旧版一致，不私自“修正”优先级 |\n| 空中先按住下+跳，落地继续保持 | 不自动穿平台；释放后重按才产生新边沿 |\n| 地表普通砖/问号平台下+跳 | 允许既有下穿；hidden 或地面 row13 不可穿 |\n| 敌人/弹丸穿过同一位置 | 不得到玩家专有碰撞例外 |\n| 死亡、换角色、进入与离开基地 | 输入残留清理不退步 |\n| 三角色死亡/暂停/胜利音频 | 没有因重构出现额外变化；R05 未修改音频系统 |\n\n记录浏览器、设备、角色、场景、候选 SHA-256、步骤、结果、录屏证据；有一项未测就写未测。\n\n## 发布门槛\n\n`docs/RELEASE_REVIEW.json` 默认为 pending。完整回归、键盘、实体手柄、音频、许可核验和维护者批准，分别需要 reviewer 与 evidence。candidateSha256 必须等于待审核候选。\n`game:release-check` 仅验证记录与哈希匹配，不替人判断证据真实性。它不会发布。未通过时仍可以开展文档/测试贡献，不应谎称游戏已能正式发布。\n"
+    },
+    {
+      "source": "packages/mario-mix/docs/GOVERNANCE.md",
+      "projectId": "mario-mix",
+      "id": "episode-one-governance",
+      "title": "协作角色、审核和发布",
+      "parent": "engineering",
+      "historical": true,
+      "contentOverride": "# 协作角色、审核和发布\n\n维护者 Aha-xiaoQ 负责玩法方向与最终发布。普通贡献者 Fork/PR；稳定贡献者通过实际合作后再考虑权限。当前没有自动添加成员、创建远端 Issue、PR 或更改分支保护。\n\n## 工作划分\n\n输入纯逻辑可由一个贡献者独立修改；测试/验证脚本、资料与许可清单可由其他贡献者并行做。原大运行文件、桥接、基线锁和 CI 属于敏感接缝，变更需维护者仔细复核。\n一个 PR 只做一个主题；大角色、新关卡、玩法改动先讨论。任务认领在 GitHub Issue 明确记录，本地 WORK_ITEMS.json 不是在线锁定系统。\n\n## GitHub 页面需要维护者手动完成\n\n推送本包后检查 `Mario Mix collaboration` 工作流真实运行。再将 `Mario Mix / collaboration checks` 按需设置为主分支必需检查，禁用 force push，并选择适合单维护者的审核规则，避免要求自己给自己批准。\n新检查对所有 PR 都运行，避免路径过滤导致必需检查一直处于等待状态；push 仅对游戏相关路径触发。网页 PR 也会执行这组轻量工程检查。首次运行成功后，以 GitHub 实际显示的检查名称设置规则。\nCODEOWNERS 只是审核责任，不是目录级写权限。不要向普通网友开放主仓库写权限。分支保护不能通过 ZIP 文件自动生效。\n\n## CI 信任边界\n\n新工作流使用 pull_request / push / workflow_dispatch、contents:read、固定 Action 提交、无持久凭证、无缓存、无部署。外部 PR 只运行临时 GitHub 托管 runner；不得改为持有密钥的自建 runner，也不得用高权限 pull_request_target 拉取运行陌生分支。\n维护者还应检查默认 Actions 权限、fork 首次执行审批和发布流程。\n\n## 合并与发布分开\n\n功能可以先合并为候选源码，不代表立即上线。发布由维护者根据 ACCEPTANCE 与 RELEASE_REVIEW 核验；不要直接复制候选覆盖 games/，第一条发布升级还需单独核对基线迁移和可回退版本。\n覆盖 games/ 会改变下一次构建的输入基线，因此发布升级需要独立审核基线迁移与回退方案。\n"
+    },
+    {
+      "source": "packages/mario-mix/docs/LICENSING.md",
+      "projectId": "mario-mix",
+      "id": "episode-one-licensing",
+      "title": "许可与素材：未决项仍然是未决项",
+      "parent": "engineering",
+      "historical": true
+    },
+    {
+      "source": "packages/mario-mix/docs/HANDOFF_R05.md",
+      "projectId": "mario-mix",
+      "id": "episode-one-handoff-r05",
+      "title": "R05 历史工程说明",
+      "parent": "engineering",
+      "historical": true,
+      "contentOverride": "# R05 历史工程说明\n\nR05 建立了第一期输入逻辑的协作开发入口。以下介绍该阶段的工程结构，不作为当前发布状态或操作授权。\n\n## 源码与构建\n\n`packages/mario-mix` 提供无 npm 依赖的开发命令、Bill 控制片段的纯函数与桥接拆分、基线匹配的候选构建、独立端口的原始版与候选试玩、Node HTTP 安全检查及可选浏览器对照脚本。\n\n第一期 HTML 实际加载 `classic-mix.js`；旧 `bill-controls.js` 是片段。该输入逻辑应修改 `packages/mario-mix/src/input/`，经构建才生效。第一期其余代码仍在原运行文件中；R05 未重构第二、三期。\n\n构建基线由 `baseline.json` 记录。基线不一致时应核对来源与差异，保留较新游戏；候选构建不覆盖稳定试玩。测试、设备验收、素材许可及发布批准分别核验。\n\n## 继续阅读\n\n[源码入口](../README.md) · [架构](ARCHITECTURE.md) · [贡献方法](../CONTRIBUTING.md) · [验收方法](ACCEPTANCE.md) · [许可说明](LICENSING.md)\n"
+    },
+    {
+      "source": "packages/mario-mix-terra/docs/stages/ADD_CHARACTER.md",
+      "projectId": "mario-mix",
+      "id": "stage-add-character",
+      "title": "增加原型角色方案",
+      "parent": "terra-chapters",
+      "historical": true
+    },
+    {
+      "source": "packages/mario-mix-terra/docs/stages/READINESS.md",
+      "projectId": "mario-mix",
+      "id": "stage-readiness",
+      "title": "关卡接口的能力与限制 · 0.4.1",
+      "parent": "terra-chapters",
+      "historical": true,
+      "contentOverride": "# 关卡接口的能力与限制 · 0.4.1 历史记录\n\n此记录描述 0.4.1 实验驱动，不代表后续 WorldKit W02 地图工具的当前范围。\n\n| 目标 | 0.4.1 状态 | 下一步 |\n|---|---|---|\n| 原第三期可运行、原底稿可重建 | 保留原闭包入口与回归测试 | 实机通关/手柄/音频仍需验收 |\n| 单独增加关卡JSON，不改主循环 | 原型驱动已接入，脚手架和匿名ID测试通过 | 外部贡献者盲测流程 |\n| 同底图切换两种角色能力 | 原型单跳/二段跳，适配层独立 | 正式角色动作和素材API |\n| 检查点、奖励房往返、单次拾取、结束/重试 | 原型已有 | 跨关状态与正式玩法规格 |\n| 任意旧角色可套任意新地图 | **未完成**，驱动不兼容会报错 | 迁出一个完整真实actor及依赖 |\n| 完整原版1-4地图与机关 | **未制作**；脚手架只是样例 | 底图转录、火焰棒、Boss、桥斧终点 |\n| 所有马里奥原版地图已复刻 | **没有** | 按关卡逐项转录与验证，不靠公开截图推断已完成 |\n| Tiled/LDtk导入 | **没有** | 确定限定版本与对象类型后实现适配 |\n| 旧泰拉HUD、背包、武器、坐骑可跨关复用 | **未完成** | UI状态读模型、库存/奖励/存档事务 |\n| 每关自定义BGM/事件音效 | key映射已接入 | 确认资源来源、音量、自然流程听感 |\n| 任意不可信网友脚本热加载 | **不提供** | 贡献通过源码审查，不等于插件沙箱 |\n\n## 什么算“接入基本无障碍”\n\n陌生贡献者在全新副本里，只读文档、使用已有能力，能新增一个内容包并在统一选择器出现；不修改引擎/主循环；进入、暂停、死亡、返回、奖励、重新进入和原第三期回归通过；公开下载与源码一致。当前仅由本地测试模拟部分步骤，**尚无真实外部开发者验收记录**。\n\n## 基础框架应该怎么铺\n\n先做一套通用关卡协议，再逐关登记底图，避免复制32套代码。几何保真、机关保真、角色适配、资源许可分别记账。旧第三期参考快照只表示和上传底稿一致，并不自动证明和任天堂原版1-3逐格一致。1-4必须等其必要通用机制具备后再宣布完成。\n\n\n## 开发入口\n\n使用 `http://127.0.0.1:4193/play.html?dev=1` 打开关卡试验场。legacy-terra-v1只允许第三期固定组合，不能自定义地图；音效键必须存在于资源清单。\n"
+    },
+    {
+      "source": "assets/FONT_LICENSES.md",
+      "projectId": "pixel-workshop",
+      "id": "font-licenses",
+      "title": "网站字体与许可",
+      "parent": "architecture",
+      "historical": false,
+      "contentOverride": "# Site Font Record\n\n## Current website typeface — LXGW WenKai / 霞鹜文楷 (2026-09-06)\n\n- All website text, including headings and the clock, uses self-hosted LXGW WenKai.\n- Regular and Medium WOFF2 web fonts are subsetted for website text; original glyph outlines and spacing are preserved.\n- Upstream: https://github.com/lxgw/LxgwWenKai\n- SIL Open Font License 1.1: [LXGW WenKai OFL license](fonts/LXGWWenKai-OFL.txt) accompanies the fonts.\n- The older LXGW Bright record below is retained for provenance; it is no longer the website face.\n\n## LXGW Bright\n\n- Files: `fonts/LXGWBright-Regular.woff2`, `fonts/LXGWBright-Medium.woff2`\n- Source repository: https://github.com/lxgw/LxgwBright\n- Pinned source: `v5.528` / commit `c87e019`\n- Download source: `https://raw.githubusercontent.com/lxgw/LxgwBright/v5.528/LXGWBright/`\n- License: SIL Open Font License 1.1 (`OFL.txt` in the source repository)\n- Composition stated by the upstream project: LXGW WenKai Lite plus Ysabeau Office.\n- Regular SHA-256: `135B078A1F209A9C0B06612DE4432BD16D4264DB2A0D0977D21D48B529C76521`\n- Medium SHA-256: `9E5266FF382A38960E33A60039F1C9C96B22558640F987DDA77FED8BEF77C0A2`\n\nThe LXGW Bright entries above are historical provenance. The current website face is LXGW WenKai.\n"
+    },
+    {
+      "source": "assets/fonts/LXGWWenKai-OFL.txt",
+      "projectId": "pixel-workshop",
+      "id": "font-ofl",
+      "title": "LXGW WenKai · SIL Open Font License 1.1",
+      "parent": "font-licenses",
+      "historical": false
+    }
+  ]
+}

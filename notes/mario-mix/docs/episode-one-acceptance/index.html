@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+<title>验收分层：哪些测试说明了什么 · 在下_小Q</title>
+  <link rel="stylesheet" href="/assets/site-brand-tokens.css?v=font-20260919-docs">
+  <link rel="preload" href="/assets/fonts/LXGWWenKai-Regular-site.woff2?v=font-20260919-docs" as="font" type="font/woff2" crossorigin fetchpriority="high">
+  <link rel="preload" href="/assets/fonts/LXGWWenKai-Medium-site.woff2?v=font-20260919-docs" as="font" type="font/woff2" crossorigin fetchpriority="high">
+  <link rel="stylesheet" href="/assets/site-shell.css?v=font-20260919-r22">
+  <link rel="stylesheet" href="/assets/site-i18n.css?v=dd5b8227f5b3e07a8da6">
+  <script src="/assets/site-i18n-data.js?v=workshop-r06"></script>
+  <script src="/assets/site-i18n.js?v=site-unified-r02" defer></script>
+<meta name="site-build" content="dd5b8227f5b3e07a8da6">
+  <script defer src="/assets/site-freshness.js?v=dd5b8227f5b3e07a8da6"></script>
+<meta name="description" content="历史版本的开发资料。">
+<link rel="stylesheet" data-journal-css href="/assets/journal/journal.css?v=docs-r26">
+<link rel="stylesheet" data-workshop-css href="/assets/workshop-components.css?v=workshop-r08">
+<link rel="stylesheet" data-media-css href="/assets/workshop-media.css?v=workshop-r08">
+<link rel="stylesheet" data-site-actions-css href="/assets/ui/site-actions.css?v=workshop-r17">
+<link rel="stylesheet" data-experience-css href="/assets/experience/site-experience.css?v=site-r23">
+<script type="module" data-experience-module src="/assets/experience/runtime.mjs?v=site-r23"></script>
+<link rel="stylesheet" data-journey-css href="/assets/launch/journey.css?v=launch-r19">
+<script data-journey-support src="/content/game-support.js?v=launch-r19"></script>
+<script data-journey-core src="/assets/launch/journey.js?v=showcase-r25"></script>
+<script type="module" data-journey-module src="/assets/launch/runtime.mjs?v=launch-r19"></script>
+<link rel="stylesheet" data-chapters-css href="/assets/chapters/chapters.css?v=worlds-r21">
+<link rel="stylesheet" data-showcase-css href="/assets/ui/site-showcase.css?v=showcase-r25">
+<script data-showcase-support src="/content/about-support.js?v=showcase-r25"></script>
+<script data-showcase-core src="/assets/ui/site-showcase.js?v=showcase-r25"></script>
+</head>
+<body data-page="notes" data-base="../../../../" data-journal-page="r06">
+<div id="app" data-prerendered="true"><a class="skip" href="#main">跳到主要内容</a><header class="site-header"><div class="shell bar"><a class="brand" href="/index.html" aria-label="返回首页"><img src="/assets/q-logo-pixel-framed.svg?v=dd5b8227f5b3e07a8da6" alt="在下_小Q的 Q 标记" width="42" height="42" decoding="async">在下_小Q</a><nav data-site-development-nav class="site-nav" aria-label="主导航" style="flex-wrap:wrap"><a href="/index.html" data-nav-key="home">首页</a><a href="/projects/index.html" data-nav-key="projects">项目</a><a href="/games/index.html" data-nav-key="games">游戏</a><a href="/tools/index.html" data-nav-key="tools">工具</a><a href="/notes/index.html" data-nav-key="notes" aria-current="page">开发</a><a href="/about/index.html" data-nav-key="about">关于</a></nav><a class="q-search-launch" data-site-search href="/search/" aria-label="搜索全站">搜索</a></div></header><section class="page-head"><div class="shell page-head__body"><p class="eyebrow">IN THE MAKING / 游戏</p><h1>验收分层：哪些测试说明了什么</h1><p class="lede">历史版本的开发资料。</p></div></section><main id="main" tabindex="-1"><div class="shell" data-journal-slot><div class="journal" data-journal-view="docs"><div class="j-path"><div class="j-breadcrumb" role="navigation" aria-label="当前位置"><a class="j-link" href="/notes/" data-action-kind="internal" data-action-variant="quiet"><span class="q-action-label">开发</span></a><span>/</span><a class="j-link" href="/notes/mario-mix/" data-action-kind="internal" data-action-variant="quiet"><span class="q-action-label">混合马里奥</span></a><span aria-hidden="true">/</span><a class="j-link" href="/notes/mario-mix/docs/" data-action-kind="internal" data-action-variant="quiet"><span class="q-action-label">资料</span></a><span aria-hidden="true">/</span><span aria-current="page">验收分层：哪些测试说明了什么</span></div><div class="j-subnav" role="navigation" aria-label="项目内导航"><a href="/notes/mario-mix/">概览</a><a href="/notes/mario-mix/tasks/">任务</a><a href="/notes/mario-mix/docs/" aria-current="page">资料</a><a href="/notes/mario-mix/updates/">更新</a><a href="/notes/mario-mix/contribute/">参与</a></div></div><article class="section j-reading j-document"><p><a class="j-link" href="/notes/mario-mix/docs/" data-action-kind="internal" data-action-variant="quiet"><span class="q-action-label">返回项目资料</span></a> · <a class="j-link" href="/notes/mario-mix/docs/engineering/" data-action-kind="internal" data-action-variant="quiet"><span class="q-action-label">开始参与代码开发</span></a></p><div class="entry j-notice"><strong>历史版本资料</strong><p>本文对应标题中标注的版本；当前源码和验收状态请查看项目资料。</p></div><div class="j-markdown"><span id="验收分层哪些测试说明了什么"></span><h2 id="自动单元与构建检查" tabindex="-1">自动单元与构建检查</h2><p><code>npm run game:test</code> 检查读取到的原始 Bill 控制片段与新模块/桥接。包含 324 组瞄准输入、1,000 步固定随机序列、平台边界、组合键边沿、碰撞范围和异常清理。
+构建与 HTTP 测试用明确标为 synthetic 的宿主环境包住真实控制片段；不是完整游戏。假锁仅在测试临时目录里使用，生产 baseline.json 不变，不存在生产 --force。</p><h2 id="可选的真实浏览器状态对照" tabindex="-1">可选的真实浏览器状态对照</h2><p>需你的完整游戏及素材、已安装 Python Playwright 与 Chromium。脚本不会自动下载依赖。
+分别启动两个终端：game:dev（4180）和 game:reference（4181）。然后：</p><div data-code-example><pre tabindex="0" aria-label="可复制的命令"><code>cd packages/mario-mix
+python scripts/browser-compare.py</code></pre><button class="button button--quiet" type="button" data-copy-code>复制命令</button><p class="j-small" role="status" data-copy-status></p></div><p>这会使用已在第一期实际源码中看到的 <code>?test=1</code>、<code>window.__test</code>、<code>window.__mixTest</code>、<code>window.__mixReady</code>，对三角色执行 7 组步进序列。
+它检查真实引擎返回状态；使用固定随机数和虚拟输入，不代表真实手柄、键盘事件、音频听感或完整关卡已通过。
+缺资源、页面错误或状态不同会记录 failed-or-blocked 并非零退出。R05 历史记录未执行此项完整游戏验证。</p><h2 id="维护者手工检查" tabindex="-1">维护者手工检查</h2><p>原版与候选分别新开页面。首选比尔；至少试马里奥与洛克人的基本起步/跳跃，防止桥接影响其他角色。</p><div class="j-table-scroll"><table><thead><tr><th>场景</th><th>预期</th></tr></thead><tbody><tr><td>左右移动、正上、斜上、地面单下、空中单下</td><td>和原始对照相同；八向瞄准优先级不改变</td></tr><tr><td>上下同按、左右同按</td><td>和旧版一致，不私自“修正”优先级</td></tr><tr><td>空中先按住下+跳，落地继续保持</td><td>不自动穿平台；释放后重按才产生新边沿</td></tr><tr><td>地表普通砖/问号平台下+跳</td><td>允许既有下穿；hidden 或地面 row13 不可穿</td></tr><tr><td>敌人/弹丸穿过同一位置</td><td>不得到玩家专有碰撞例外</td></tr><tr><td>死亡、换角色、进入与离开基地</td><td>输入残留清理不退步</td></tr><tr><td>三角色死亡/暂停/胜利音频</td><td>没有因重构出现额外变化；R05 未修改音频系统</td></tr></tbody></table></div><p>记录浏览器、设备、角色、场景、候选 SHA-256、步骤、结果、录屏证据；有一项未测就写未测。</p><h2 id="发布门槛" tabindex="-1">发布门槛</h2><p><code>docs/RELEASE_REVIEW.json</code> 默认为 pending。完整回归、键盘、实体手柄、音频、许可核验和维护者批准，分别需要 reviewer 与 evidence。candidateSha256 必须等于待审核候选。
+<code>game:release-check</code> 仅验证记录与哈希匹配，不替人判断证据真实性。它不会发布。未通过时仍可以开展文档/测试贡献，不应谎称游戏已能正式发布。</p></div><p><a class="j-link" href="/notes/mario-mix/docs/" data-action-kind="internal" data-action-variant="quiet"><span class="q-action-label">返回项目资料</span></a></p></article><div class="j-maintainer"><a class="j-link" href="/notes/mario-mix/manage/" data-action-kind="internal" data-action-variant="quiet"><span class="q-action-label">交接与管理</span></a></div><p class="j-language-note" data-english-note hidden>Project records are currently written in Chinese.</p></div></div></main><footer class="site-footer"><div class="shell footer-inner"><span>在下_小Q</span><span class="footer-links"><a href="https://github.com/Aha-xiaoQ" data-action-kind="external"><svg class="q-footer-icon" width="18" height="18" viewBox="0 0 16 16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12.8c-3 1-3-1.5-4.2-1.8M10.2 14v-2.5c.1-.8-.2-1.5-.7-2 2.4-.3 4.9-1.2 4.9-5.3A4.1 4.1 0 0 0 13.3 1.4 3.8 3.8 0 0 0 13.2-1 4 4 0 0 0 10.4.1a9.7 9.7 0 0 0-4.8 0A4 4 0 0 0 2.8-1a3.8 3.8 0 0 0-.1 2.4 4.1 4.1 0 0 0-1.1 2.8c0 4.1 2.5 5 4.9 5.3-.5.5-.8 1.2-.7 2V14" /></svg><span class="q-action-label">GitHub</span></a><a href="https://space.bilibili.com/22673233?spm_id_from=333.1007.0.0" data-action-kind="external"><svg class="q-footer-icon" width="18" height="18" viewBox="0 0 16 16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.7h10v7.2H3zM5.3 2.4l1.4 1.4m2.6-1.4L8 3.8M6 7.6h.1m3.8 0h.1M5.7 10c1.4.8 3.2.8 4.6 0" /></svg><span class="q-action-label">Bilibili</span></a><a href="mailto:hfutqdm@163.com" data-action-kind="email"><svg class="q-footer-icon" width="18" height="18" viewBox="0 0 16 16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M2.2 4.1h11.6v7.8H2.2zM2.7 4.7 8 8.6l5.3-3.9" /></svg><span class="q-action-label">邮箱</span></a></span></div></footer></div>
+<script src="/content/taxonomy.js?v=dd5b8227f5b3e07a8da6"></script>
+<script src="/content/site-data.js?v=dd5b8227f5b3e07a8da6"></script>
+<script src="/content/asset-manifest.js?v=dd5b8227f5b3e07a8da6"></script>
+<script src="/assets/ui/site-actions.js?v=workshop-r17"></script>
+<script src="/assets/promo.js?v=workshop-r18"></script>
+<script src="/assets/workshop-media.js?v=workshop-r08"></script>
+<script src="/content/presentation.js?v=workshop-r08"></script>
+<script src="/assets/workshop-cards.js?v=showcase-r25"></script>
+<script src="/assets/workshop-media-runtime.js?v=workshop-r08"></script>
+<script src="/assets/site-shell.js?v=showcase-r25"></script>
+<script src="/assets/site-transition-r65.js?v=dd5b8227f5b3e07a8da6"></script>
+<script src="/assets/site-router.js?v=docs-r26"></script>
+<script defer src="/assets/site-analytics.js?v=dd5b8227f5b3e07a8da6"></script>
+</body></html>

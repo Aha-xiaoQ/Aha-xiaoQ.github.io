@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+<title>协作角色、审核和发布 · 在下_小Q</title>
+  <link rel="stylesheet" href="/assets/site-brand-tokens.css?v=font-20260919-docs">
+  <link rel="preload" href="/assets/fonts/LXGWWenKai-Regular-site.woff2?v=font-20260919-docs" as="font" type="font/woff2" crossorigin fetchpriority="high">
+  <link rel="preload" href="/assets/fonts/LXGWWenKai-Medium-site.woff2?v=font-20260919-docs" as="font" type="font/woff2" crossorigin fetchpriority="high">
+  <link rel="stylesheet" href="/assets/site-shell.css?v=font-20260919-r22">
+  <link rel="stylesheet" href="/assets/site-i18n.css?v=dd5b8227f5b3e07a8da6">
+  <script src="/assets/site-i18n-data.js?v=workshop-r06"></script>
+  <script src="/assets/site-i18n.js?v=site-unified-r02" defer></script>
+<meta name="site-build" content="dd5b8227f5b3e07a8da6">
+  <script defer src="/assets/site-freshness.js?v=dd5b8227f5b3e07a8da6"></script>
+<meta name="description" content="历史版本的开发资料。">
+<link rel="stylesheet" data-journal-css href="/assets/journal/journal.css?v=docs-r26">
+<link rel="stylesheet" data-workshop-css href="/assets/workshop-components.css?v=workshop-r08">
+<link rel="stylesheet" data-media-css href="/assets/workshop-media.css?v=workshop-r08">
+<link rel="stylesheet" data-site-actions-css href="/assets/ui/site-actions.css?v=workshop-r17">
+<link rel="stylesheet" data-experience-css href="/assets/experience/site-experience.css?v=site-r23">
+<script type="module" data-experience-module src="/assets/experience/runtime.mjs?v=site-r23"></script>
+<link rel="stylesheet" data-journey-css href="/assets/launch/journey.css?v=launch-r19">
+<script data-journey-support src="/content/game-support.js?v=launch-r19"></script>
+<script data-journey-core src="/assets/launch/journey.js?v=showcase-r25"></script>
+<script type="module" data-journey-module src="/assets/launch/runtime.mjs?v=launch-r19"></script>
+<link rel="stylesheet" data-chapters-css href="/assets/chapters/chapters.css?v=worlds-r21">
+<link rel="stylesheet" data-showcase-css href="/assets/ui/site-showcase.css?v=showcase-r25">
+<script data-showcase-support src="/content/about-support.js?v=showcase-r25"></script>
+<script data-showcase-core src="/assets/ui/site-showcase.js?v=showcase-r25"></script>
+</head>
+<body data-page="notes" data-base="../../../../" data-journal-page="r06">
+<div id="app" data-prerendered="true"><a class="skip" href="#main">跳到主要内容</a><header class="site-header"><div class="shell bar"><a class="brand" href="/index.html" aria-label="返回首页"><img src="/assets/q-logo-pixel-framed.svg?v=dd5b8227f5b3e07a8da6" alt="在下_小Q的 Q 标记" width="42" height="42" decoding="async">在下_小Q</a><nav data-site-development-nav class="site-nav" aria-label="主导航" style="flex-wrap:wrap"><a href="/index.html" data-nav-key="home">首页</a><a href="/projects/index.html" data-nav-key="projects">项目</a><a href="/games/index.html" data-nav-key="games">游戏</a><a href="/tools/index.html" data-nav-key="tools">工具</a><a href="/notes/index.html" data-nav-key="notes" aria-current="page">开发</a><a href="/about/index.html" data-nav-key="about">关于</a></nav><a class="q-search-launch" data-site-search href="/search/" aria-label="搜索全站">搜索</a></div></header><section class="page-head"><div class="shell page-head__body"><p class="eyebrow">IN THE MAKING / 游戏</p><h1>协作角色、审核和发布</h1><p class="lede">历史版本的开发资料。</p></div></section><main id="main" tabindex="-1"><div class="shell" data-journal-slot><div class="journal" data-journal-view="docs"><div class="j-path"><div class="j-breadcrumb" role="navigation" aria-label="当前位置"><a class="j-link" href="/notes/" data-action-kind="internal" data-action-variant="quiet"><span class="q-action-label">开发</span></a><span>/</span><a class="j-link" href="/notes/mario-mix/" data-action-kind="internal" data-action-variant="quiet"><span class="q-action-label">混合马里奥</span></a><span aria-hidden="true">/</span><a class="j-link" href="/notes/mario-mix/docs/" data-action-kind="internal" data-action-variant="quiet"><span class="q-action-label">资料</span></a><span aria-hidden="true">/</span><span aria-current="page">协作角色、审核和发布</span></div><div class="j-subnav" role="navigation" aria-label="项目内导航"><a href="/notes/mario-mix/">概览</a><a href="/notes/mario-mix/tasks/">任务</a><a href="/notes/mario-mix/docs/" aria-current="page">资料</a><a href="/notes/mario-mix/updates/">更新</a><a href="/notes/mario-mix/contribute/">参与</a></div></div><article class="section j-reading j-document"><p><a class="j-link" href="/notes/mario-mix/docs/" data-action-kind="internal" data-action-variant="quiet"><span class="q-action-label">返回项目资料</span></a> · <a class="j-link" href="/notes/mario-mix/docs/engineering/" data-action-kind="internal" data-action-variant="quiet"><span class="q-action-label">开始参与代码开发</span></a></p><div class="entry j-notice"><strong>历史版本资料</strong><p>本文对应标题中标注的版本；当前源码和验收状态请查看项目资料。</p></div><div class="j-markdown"><span id="协作角色审核和发布"></span><p>维护者 Aha-xiaoQ 负责玩法方向与最终发布。普通贡献者 Fork/PR；稳定贡献者通过实际合作后再考虑权限。当前没有自动添加成员、创建远端 Issue、PR 或更改分支保护。</p><h2 id="工作划分" tabindex="-1">工作划分</h2><p>输入纯逻辑可由一个贡献者独立修改；测试/验证脚本、资料与许可清单可由其他贡献者并行做。原大运行文件、桥接、基线锁和 CI 属于敏感接缝，变更需维护者仔细复核。
+一个 PR 只做一个主题；大角色、新关卡、玩法改动先讨论。任务认领在 GitHub Issue 明确记录，本地 WORK_ITEMS.json 不是在线锁定系统。</p><h2 id="github-页面需要维护者手动完成" tabindex="-1">GitHub 页面需要维护者手动完成</h2><p>推送本包后检查 <code>Mario Mix collaboration</code> 工作流真实运行。再将 <code>Mario Mix / collaboration checks</code> 按需设置为主分支必需检查，禁用 force push，并选择适合单维护者的审核规则，避免要求自己给自己批准。
+新检查对所有 PR 都运行，避免路径过滤导致必需检查一直处于等待状态；push 仅对游戏相关路径触发。网页 PR 也会执行这组轻量工程检查。首次运行成功后，以 GitHub 实际显示的检查名称设置规则。
+CODEOWNERS 只是审核责任，不是目录级写权限。不要向普通网友开放主仓库写权限。分支保护不能通过 ZIP 文件自动生效。</p><h2 id="ci-信任边界" tabindex="-1">CI 信任边界</h2><p>新工作流使用 pull_request / push / workflow_dispatch、contents:read、固定 Action 提交、无持久凭证、无缓存、无部署。外部 PR 只运行临时 GitHub 托管 runner；不得改为持有密钥的自建 runner，也不得用高权限 pull_request_target 拉取运行陌生分支。
+维护者还应检查默认 Actions 权限、fork 首次执行审批和发布流程。</p><h2 id="合并与发布分开" tabindex="-1">合并与发布分开</h2><p>功能可以先合并为候选源码，不代表立即上线。发布由维护者根据 ACCEPTANCE 与 RELEASE_REVIEW 核验；不要直接复制候选覆盖 games/，第一条发布升级还需单独核对基线迁移和可回退版本。
+覆盖 games/ 会改变下一次构建的输入基线，因此发布升级需要独立审核基线迁移与回退方案。</p></div><p><a class="j-link" href="/notes/mario-mix/docs/" data-action-kind="internal" data-action-variant="quiet"><span class="q-action-label">返回项目资料</span></a></p></article><div class="j-maintainer"><a class="j-link" href="/notes/mario-mix/manage/" data-action-kind="internal" data-action-variant="quiet"><span class="q-action-label">交接与管理</span></a></div><p class="j-language-note" data-english-note hidden>Project records are currently written in Chinese.</p></div></div></main><footer class="site-footer"><div class="shell footer-inner"><span>在下_小Q</span><span class="footer-links"><a href="https://github.com/Aha-xiaoQ" data-action-kind="external"><svg class="q-footer-icon" width="18" height="18" viewBox="0 0 16 16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12.8c-3 1-3-1.5-4.2-1.8M10.2 14v-2.5c.1-.8-.2-1.5-.7-2 2.4-.3 4.9-1.2 4.9-5.3A4.1 4.1 0 0 0 13.3 1.4 3.8 3.8 0 0 0 13.2-1 4 4 0 0 0 10.4.1a9.7 9.7 0 0 0-4.8 0A4 4 0 0 0 2.8-1a3.8 3.8 0 0 0-.1 2.4 4.1 4.1 0 0 0-1.1 2.8c0 4.1 2.5 5 4.9 5.3-.5.5-.8 1.2-.7 2V14" /></svg><span class="q-action-label">GitHub</span></a><a href="https://space.bilibili.com/22673233?spm_id_from=333.1007.0.0" data-action-kind="external"><svg class="q-footer-icon" width="18" height="18" viewBox="0 0 16 16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.7h10v7.2H3zM5.3 2.4l1.4 1.4m2.6-1.4L8 3.8M6 7.6h.1m3.8 0h.1M5.7 10c1.4.8 3.2.8 4.6 0" /></svg><span class="q-action-label">Bilibili</span></a><a href="mailto:hfutqdm@163.com" data-action-kind="email"><svg class="q-footer-icon" width="18" height="18" viewBox="0 0 16 16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M2.2 4.1h11.6v7.8H2.2zM2.7 4.7 8 8.6l5.3-3.9" /></svg><span class="q-action-label">邮箱</span></a></span></div></footer></div>
+<script src="/content/taxonomy.js?v=dd5b8227f5b3e07a8da6"></script>
+<script src="/content/site-data.js?v=dd5b8227f5b3e07a8da6"></script>
+<script src="/content/asset-manifest.js?v=dd5b8227f5b3e07a8da6"></script>
+<script src="/assets/ui/site-actions.js?v=workshop-r17"></script>
+<script src="/assets/promo.js?v=workshop-r18"></script>
+<script src="/assets/workshop-media.js?v=workshop-r08"></script>
+<script src="/content/presentation.js?v=workshop-r08"></script>
+<script src="/assets/workshop-cards.js?v=showcase-r25"></script>
+<script src="/assets/workshop-media-runtime.js?v=workshop-r08"></script>
+<script src="/assets/site-shell.js?v=showcase-r25"></script>
+<script src="/assets/site-transition-r65.js?v=dd5b8227f5b3e07a8da6"></script>
+<script src="/assets/site-router.js?v=docs-r26"></script>
+<script defer src="/assets/site-analytics.js?v=dd5b8227f5b3e07a8da6"></script>
+</body></html>
