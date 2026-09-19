@@ -1,5 +1,9 @@
 # 地图开发工具 W02 · 0.2.0
 
+## 可视化编辑地图
+
+双击 Open-Map-Editor.cmd，或运行 node scripts/editor-launch.mjs。需要 Node.js 22 或以上，无需 npm install。浏览器中可以绘制地块、保存工程和试跑基础地形。详见 [地图工坊使用说明](docs/MAP_EDITOR_GUIDE.md)。当前为本地验收候选，实际浏览器操作待复验。
+
 ## 选择地图
 
 需要 Node.js 22 或以上，无需 npm install。完整 Starter 附 M06；网站源码包使用同级 `../mario-mix-terra`。
