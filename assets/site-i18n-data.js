@@ -1,5 +1,12 @@
 /* Visitor-facing English copy. Chinese source content remains authoritative. */
 globalThis.SITE_EN = Object.freeze({
+  "点击「安装到 Codex」，允许浏览器打开客户端，再依次选择「安装」和「使用此宠物」。": "Click Install in Codex, allow your browser to open the app, then choose Install and Use this pet.",
+  "也可以下载安装包，解压后双击 START.html；英文用户打开 START.en.html。无需找目录或复制文件。": "You can also download and extract the ZIP, then double-click START.en.html (START.html for Chinese). No folder setup or file copying required.",
+  "需要联网，并已安装支持宠物导入的 Codex 桌面端。没有打开时先更新客户端；宠物未显示时，在 Codex 输入 /pet。": "Requires an internet connection and Codex desktop with pet import support. If nothing opens, update the app. If the pet is hidden, enter /pet in Codex.",
+  "备用安装方法与常见问题 ↗": "Alternative installation and troubleshooting \u2197",
+  "安装到 Codex": "Install in Codex",
+  "下载安装包": "Download ZIP",
+
   "开发": "Dev",
   "下载后解压，用电脑浏览器打开 index.html；版权及素材说明随包提供。": "Extract the ZIP and open index.html in a desktop browser. Copyright and asset notices are included.",
   "下载游戏 ↓": "Download game ↓",
