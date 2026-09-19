@@ -30,8 +30,9 @@
       cards=`<div class="entry-grid pw-work-grid" role="list" aria-label="项目作品">${items.map((x,i)=>projectCard(x,i,o)).join('')||'<p class="pw-empty">新作品正在准备中。</p>'}</div>`;
     }else if(page==='games'){
       const items=sort(all.filter(x=>x.primaryType==='game'&&x.visibility==='public'&&x.lifecycleStatus!=='archived'));title='选择一款，开始冒险。';kicker='GAME SHELF / 游戏架';
-      const cats=(taxonomy.gameCategories||[]).filter(c=>items.some(x=>(x.categories||[]).includes(c.id)));
-      filter=`<div class="filter-bar" data-workshop-filter aria-label="按玩法筛选"><button type="button" data-filter="all" aria-pressed="true">全部游戏 <span class="filter-count">${items.length}</span></button>${cats.map(c=>`<button type="button" data-filter="${e(c.id)}" aria-pressed="false">${e(c.label)} <span class="filter-count">${items.filter(x=>(x.categories||[]).includes(c.id)).length}</span></button>`).join('')}</div><p class="filter-summary" data-filter-summary aria-live="polite">显示全部 ${items.length} 款游戏</p>`;
+      // Offer filters only when they actually narrow the visible collection.
+      const cats=(taxonomy.gameCategories||[]).filter(c=>{const count=items.filter(x=>(x.categories||[]).includes(c.id)).length;return count>0&&count<items.length;});
+      filter=(cats.length?`<div class="filter-bar" data-workshop-filter aria-label="按玩法筛选"><button type="button" data-filter="all" aria-pressed="true">全部游戏 <span class="filter-count">${items.length}</span></button>${cats.map(c=>`<button type="button" data-filter="${e(c.id)}" aria-pressed="false">${e(c.label)} <span class="filter-count">${items.filter(x=>(x.categories||[]).includes(c.id)).length}</span></button>`).join('')}</div>`:'')+`<p class="filter-summary" data-filter-summary aria-live="polite">显示全部 ${items.length} 款游戏</p>`;
       cards=`<div class="media-list pw-game-grid" id="game-list" role="list" aria-label="游戏作品">${items.map((x,i)=>gameCard(x,i,o)).join('')||'<p class="pw-empty">新游戏正在准备中。</p>'}</div>`;
     }else if(page==='tools'){
       title='动手试试，看看原理。';kicker='TOOLS / 工具与实验';cards=`<div class="pw-tools-list" role="list" aria-label="工具与实验">${(data.tools||[]).filter(x=>x.visibility!=='draft'&&x.visibility!=='private').map((x,i)=>toolCard(x,i,o)).join('')||'<p class="pw-empty">新工具正在准备中。</p>'}</div>`;

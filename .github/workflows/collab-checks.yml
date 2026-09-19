@@ -30,5 +30,11 @@ jobs:
         run: npm test
       - name: Check existing entry paths
         run: npm run doctor
+      - name: Test publication boundaries
+        run: npm run release:test
+      - name: Build and inspect public-only artifact
+        run: |
+          npm run release:prepare
+          npm run release:check
 # No secrets, deployment, artifact execution, pull_request_target or self-hosted runner.
-# This checks the collaboration foundation, not full game behavior.
+# This validates source and public artifacts; it does not certify natural gameplay or deploy Pages.

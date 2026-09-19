@@ -29,7 +29,7 @@ export function wireHTML(input){
  html=addFooterIcons(html);
  html=html.replace(/<link\b[^>]*(?:data-media-css|data-workshop-css|data-site-actions-css)[^>]*>\s*/g,'');
  if(!/<\/head>/i.test(html))throw Error('页面缺少 head');
- html=html.replace(/\s*<\/head>/i,'\n<link rel="stylesheet" data-workshop-css href="/assets/workshop-components.css?v=workshop-r08">\n<link rel="stylesheet" data-media-css href="/assets/workshop-media.css?v=workshop-r08">\n<link rel="stylesheet" data-site-actions-css href="/assets/ui/site-actions.css?v=workshop-r17">\n</head>');
+ html=html.replace(/\s*<\/head>/i,'\n<link rel="stylesheet" data-workshop-css href="/assets/workshop-components.css?v=workshop-r08">\n<link rel="stylesheet" data-media-css href="/assets/workshop-media.css?v=workshop-r08">\n<link rel="stylesheet" data-site-actions-css href="/assets/ui/site-actions.css?v=align-r27">\n</head>');
  html=html.replace(/<script\b[^>]*\bsrc=["'][^"']*(?:assets\/workshop-(?:cards|media|media-runtime)\.js|content\/presentation\.js)(?:\?[^"']*)?["'][^>]*>\s*<\/script>\s*/g,'');
  html=html.replace(/<script\b[^>]*\bsrc=["'][^"']*assets\/ui\/site-actions\.js(?:\?[^"']*)?["'][^>]*>\s*<\/script>\s*/g,'');
  const first=html.match(/<script\b[^>]*\bsrc=["'][^"']*assets\/(?:promo|site-shell)\.js(?:\?[^"']*)?["'][^>]*>\s*<\/script>/);

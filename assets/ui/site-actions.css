@@ -28,7 +28,11 @@
 #app .j-destination-link p{line-height:1.8;color:var(--muted);margin:0}
 #app .j-destination-label{align-self:flex-start;margin-top:auto;padding-top:12px;font-size:15px;line-height:1.6;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px}
 #app .journal .j-section-footer{margin-top:20px}
-#app .journal .j-resources{gap:12px 24px}
+/* Align text with the first text baseline inside padded links. Keep touch targets. */
+#app .journal .j-resources{align-items:baseline;gap:4px 24px;font-size:16px;line-height:1.5}
+#app .journal .j-resources>span{flex-shrink:0}
+#app .journal .j-resource-links{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 24px;min-width:0}
+#app .journal .j-resource-links [data-action-variant=quiet]{font-size:inherit;line-height:inherit}
 #app .journal .j-reading a:not([data-action-variant=primary]):not([data-action-variant=secondary]){overflow-wrap:anywhere}
 #app .j-shortcuts{align-items:stretch}
 #app .footer-links a,#app .contact-link{min-height:44px;display:inline-flex;align-items:center;text-decoration:underline;text-decoration-thickness:1px;text-decoration-color:transparent;text-underline-offset:6px}
@@ -51,6 +55,8 @@
  #app .footer-links a:hover,#app .contact-link:hover{text-decoration-color:currentColor}
 }
 @media(max-width:680px){
+ #app .journal .j-resources{flex-direction:column;align-items:flex-start;gap:0}
+
  #app [data-action-variant]{min-height:44px;white-space:normal}
  #app .j-destination-link{padding:22px;min-height:188px}
  #app .pw-game-card .actions{display:flex;flex-wrap:wrap;gap:14px 18px}

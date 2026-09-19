@@ -12,5 +12,7 @@ export function wireExperience(input){
  s=s.replace(/\s*<\/head>/i,'\n<link rel="stylesheet" data-chapters-css href="/assets/chapters/chapters.css?v=worlds-r21">\n</head>');
  s=s.replace(/(assets\/(?:site-router|site-shell)\.js)(?:\?[^"']*)?/g,'$1?v=workshop-r21');
  s=s.replace(/(assets\/(?:site-router|site-shell)\.js)(?:\?[^"']*)?/g,'$1?v=site-r23');
+ s=s.replace(/(assets\/site-router\.js)(?:\?[^"']*)?/g,'$1?v=align-r27');
+ s=s.replace(/(assets\/(?:site-brand-tokens\.css|fonts\/LXGWWenKai-(?:Regular|Medium)-site\.woff2))(?:\?[^"']*)?/g,'$1?v=font-20260919-docs');
  return wireShowcase(s);
 }

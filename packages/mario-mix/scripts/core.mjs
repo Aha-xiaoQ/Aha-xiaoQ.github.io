@@ -15,8 +15,14 @@ export function inside(root, relative) {
     throw new Error(`Unsafe relative path: ${relative}`);
   const full=path.resolve(root,relative);
   let current=path.resolve(root);
-  if(fs.existsSync(current)&&fs.lstatSync(current).isSymbolicLink())throw new Error(`Symlink root: ${current}`);
-  for(const part of relative.split('/')){current=path.join(current,part);if(fs.existsSync(current)&&fs.lstatSync(current).isSymbolicLink())throw new Error(`Symlink blocked: ${relative}`);}
+  // existsSync follows links and misses dangling links. lstat must be the guard.
+  const checkLink = p => {
+    let st;
+    try { st=fs.lstatSync(p); } catch (e) { if(e.code==='ENOENT')return;throw e; }
+    if(st.isSymbolicLink())throw new Error(`Symlink blocked: ${p}`);
+  };
+  checkLink(current);
+  for(const part of relative.split('/')){current=path.join(current,part);checkLink(current);}
   return full;
 }
 export function read(root,rel){return fs.readFileSync(inside(root,rel),'utf8');}

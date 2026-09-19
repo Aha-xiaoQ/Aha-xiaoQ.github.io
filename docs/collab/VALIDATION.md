@@ -393,3 +393,5 @@ Final pass: worlds:build, collab:build, full check, full test and doctor complet
 - 排除魂斗罗试验模块、入口、攻击及声音路由；本地备份保留。
 - collab:build、check、doctor 通过。完整测试发现缺少 visualRooms 时炮台扫描读取空地图；已改为使用运行地图，原失败用例 3/3 通过。合并远端 main 后再跑完整检查。
 - 4-4 编译产物已同步，不再仅修改 template。字体许可原文中的尾随空格保留。
+
+合并 origin/main 后：collab:build、完整 check、npm test（1098 项通过）、doctor 通过。魂斗罗 module / playHero / bill_theme 的暂存区扫描为空。仅保留第三方字体许可原文尾随空格；未声称整关人工验收或线上激活完成。

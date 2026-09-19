@@ -1,6 +1,7 @@
+import {withDocuments} from './documents.mjs?v=docs-r26';
 /** Content lifecycle only. Browser history and transition ownership stay in site-router.js. */
 import {validateCatalog,validateProject,normalizeState,route,MAX_BYTES,visibleTasks,projectURL,legacyProject} from './model.mjs?v=workshop-r21';
-import {render,metadata,renderProjectCards,selectProjects,taskResults} from './render.mjs?v=site-r23';
+import {render,metadata,renderProjectCards,selectProjects,taskResults} from './render.mjs?v=align-r27';
 const siteRoot=new URL('../../',import.meta.url), configURL=new URL('content/development/catalog.json',siteRoot);
 let catalogPromise, snapshot, current, activeLegacy;
 const states=new Map(), errors=new Map(), nodes=new Map(), filters=new Map(), loads=new Map();
@@ -10,7 +11,7 @@ async function getJSON(url){
  try{const r=await fetch(url,{cache:'no-cache',credentials:'omit',signal:controller.signal});if(!r.ok)throw Error('HTTP '+r.status+'：'+url.pathname);const text=await r.text();if(new TextEncoder().encode(text).length>MAX_BYTES)throw Error('项目数据过大，未读取。');return JSON.parse(text);}finally{clearTimeout(timer);}
 }
 async function loadCatalog(){
- if(!catalogPromise)catalogPromise=(async()=>{const catalog=validateCatalog(await getJSON(configURL));const projects=await Promise.all(catalog.projects.map(async row=>{const p=validateProject(await getJSON(row.file));if(row.id!==p.id)throw Error('项目索引与文件 ID 不匹配。');return p;}));if(new Set(projects.map(p=>p.state.path)).size!==projects.length)throw Error('项目状态源重复，停止以防串用。');snapshot={catalog,projects};return snapshot;})().catch(e=>{catalogPromise=null;throw e;});return catalogPromise;
+ if(!catalogPromise)catalogPromise=(async()=>{const catalog=validateCatalog(await getJSON(configURL));const projects=await Promise.all(catalog.projects.map(async row=>{const p=withDocuments(validateProject(await getJSON(row.file)));if(row.id!==p.id)throw Error('项目索引与文件 ID 不匹配。');return p;}));if(new Set(projects.map(p=>p.state.path)).size!==projects.length)throw Error('项目状态源重复，停止以防串用。');snapshot={catalog,projects};return snapshot;})().catch(e=>{catalogPromise=null;throw e;});return catalogPromise;
 }
 function loadScript(path){
  const u=new URL(path,siteRoot);if(u.origin!==siteRoot.origin)throw Error('脚本来源必须是本站。');if(loads.has(u.href))return loads.get(u.href);

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+<title>玩家界面契约 · M07 · 在下_小Q</title>
+  <link rel="stylesheet" href="/assets/site-brand-tokens.css?v=font-20260919-docs">
+  <link rel="preload" href="/assets/fonts/LXGWWenKai-Regular-site.woff2?v=font-20260919-docs" as="font" type="font/woff2" crossorigin fetchpriority="high">
+  <link rel="preload" href="/assets/fonts/LXGWWenKai-Medium-site.woff2?v=font-20260919-docs" as="font" type="font/woff2" crossorigin fetchpriority="high">
+  <link rel="stylesheet" href="/assets/site-shell.css?v=font-20260919-r22">
+  <link rel="stylesheet" href="/assets/site-i18n.css?v=dd5b8227f5b3e07a8da6">
+  <script src="/assets/site-i18n-data.js?v=workshop-r06"></script>
+  <script src="/assets/site-i18n.js?v=site-unified-r02" defer></script>
+<meta name="site-build" content="dd5b8227f5b3e07a8da6">
+  <script defer src="/assets/site-freshness.js?v=dd5b8227f5b3e07a8da6"></script>
+<meta name="description" content="完整说明与使用步骤。">
+<link rel="stylesheet" data-journal-css href="/assets/journal/journal.css?v=docs-r26">
+<link rel="stylesheet" data-workshop-css href="/assets/workshop-components.css?v=workshop-r08">
+<link rel="stylesheet" data-media-css href="/assets/workshop-media.css?v=workshop-r08">
+<link rel="stylesheet" data-site-actions-css href="/assets/ui/site-actions.css?v=align-r27">
+<link rel="stylesheet" data-experience-css href="/assets/experience/site-experience.css?v=site-r23">
+<script type="module" data-experience-module src="/assets/experience/runtime.mjs?v=site-r23"></script>
+<link rel="stylesheet" data-journey-css href="/assets/launch/journey.css?v=launch-r19">
+<script data-journey-support src="/content/game-support.js?v=launch-r19"></script>
+<script data-journey-core src="/assets/launch/journey.js?v=showcase-r25"></script>
+<script type="module" data-journey-module src="/assets/launch/runtime.mjs?v=launch-r19"></script>
+<link rel="stylesheet" data-chapters-css href="/assets/chapters/chapters.css?v=worlds-r21">
+<link rel="stylesheet" data-showcase-css href="/assets/ui/site-showcase.css?v=showcase-r25">
+<script data-showcase-support src="/content/about-support.js?v=showcase-r25"></script>
+<script data-showcase-core src="/assets/ui/site-showcase.js?v=showcase-r25"></script>
+</head>
+<body data-page="notes" data-base="../../../../" data-journal-page="r06">
+<div id="app" data-prerendered="true"><a class="skip" href="#main">跳到主要内容</a><header class="site-header"><div class="shell bar"><a class="brand" href="/index.html" aria-label="返回首页"><img src="/assets/q-logo-pixel-framed.svg?v=dd5b8227f5b3e07a8da6" alt="在下_小Q的 Q 标记" width="42" height="42" decoding="async">在下_小Q</a><nav data-site-development-nav class="site-nav" aria-label="主导航" style="flex-wrap:wrap"><a href="/index.html" data-nav-key="home">首页</a><a href="/projects/index.html" data-nav-key="projects">项目</a><a href="/games/index.html" data-nav-key="games">游戏</a><a href="/tools/index.html" data-nav-key="tools">工具</a><a href="/notes/index.html" data-nav-key="notes" aria-current="page">开发</a><a href="/about/index.html" data-nav-key="about">关于</a></nav><a class="q-search-launch" data-site-search href="/search/" aria-label="搜索全站">搜索</a></div></header><section class="page-head"><div class="shell page-head__body"><p class="eyebrow">IN THE MAKING / 游戏</p><h1>玩家界面契约 · M07</h1><p class="lede">完整说明与使用步骤。</p></div></section><main id="main" tabindex="-1"><div class="shell" data-journal-slot><div class="journal" data-journal-view="docs"><div class="j-path"><div class="j-breadcrumb" role="navigation" aria-label="当前位置"><a class="j-link" href="/notes/" data-action-kind="internal" data-action-variant="quiet"><span class="q-action-label">开发</span></a><span>/</span><a class="j-link" href="/notes/mario-mix/" data-action-kind="internal" data-action-variant="quiet"><span class="q-action-label">混合马里奥</span></a><span aria-hidden="true">/</span><a class="j-link" href="/notes/mario-mix/docs/" data-action-kind="internal" data-action-variant="quiet"><span class="q-action-label">资料</span></a><span aria-hidden="true">/</span><span aria-current="page">玩家界面契约 · M07</span></div><div class="j-subnav" role="navigation" aria-label="项目内导航"><a href="/notes/mario-mix/">概览</a><a href="/notes/mario-mix/tasks/">任务</a><a href="/notes/mario-mix/docs/" aria-current="page">资料</a><a href="/notes/mario-mix/updates/">更新</a><a href="/notes/mario-mix/contribute/">参与</a></div></div><article class="section j-reading j-document"><p><a class="j-link" href="/notes/mario-mix/docs/" data-action-kind="internal" data-action-variant="quiet"><span class="q-action-label">返回项目资料</span></a> · <a class="j-link" href="/notes/mario-mix/docs/terra-source/" data-action-kind="internal" data-action-variant="quiet"><span class="q-action-label">第三期开发源码</span></a></p><div class="j-markdown"><span id="玩家界面契约--m07"></span><h2 id="三层职责" tabindex="-1">三层职责</h2><p>游戏世界仍按原分辨率绘制，碰撞、移动、掉落和音频规则不归 UI 管理。桌面 HUD 使用独立 Canvas，按显示尺寸及设备像素比绘制文字；原世界 Canvas 的尺寸、镜头、像素图像和交互坐标不变。尺寸较小的画面使用 HTML 快捷栏和生命/魔力行，点击调用原工具槽或治疗按钮，而不是复制一套库存规则。</p><p>HTML 负责开始、暂停、失败、设置、帮助、确认与拾取提示。正文按正常字形换行，不用 fillText 的 maxWidth 把长中文压扁。地图内的实体与部分历史标签仍属于兼容区；未宣称所有游戏文字已迁出。</p><h2 id="数据与文件" tabindex="-1">数据与文件</h2><p><code>player-copy.mjs</code> 根据角色、关卡与模式返回展示文案；<code>player-interface.mjs</code> 只读取快照并调用明确动作；<code>hud-surface.mjs</code> 管理独立的显示表面与窄屏控件。<code>adventure-render.mjs</code> 绘制 HUD 模型，缺少拾取纹理时使用中性图形，完整名称与效果由 HTML 提示呈现。</p><p><code>src/app/player.template.html</code> 是当前候选入口。<code>src/app/index.template.html</code>、console.css 和 golden 片段用于底稿校验，不能当成当前 UI 编辑。迁移区仍有33个片段，不能仅因32个模块登记就认为全部解耦。</p><h2 id="输入和暂停" tabindex="-1">输入和暂停</h2><p>界面使用原输入入口分流，不再加第二个游戏循环。显示控件获得焦点时清除保持中的输入。设置/帮助只恢复自己触发的暂停。重新开始、切换角色和恢复默认键位有原生确认对话框，默认焦点在取消。自定义 R/C 为游戏动作时不抢占。按键捕获期间不接受另一层确认输入。</p><p>原设置会话仍负责绑定与保存；完整表格包含交互动作。提示根据当前绑定生成。角色不同，帮助也不同；坦克不显示跳跃教程，洛克人提示按住蓄力、松开发射。菜单方向键依据实际列数移动，Enter开始所选角色，Space仅选择。手柄菜单使用边沿触发与释放后再确认，实体设备仍需验收。</p><h2 id="字号与布局" tabindex="-1">字号与布局</h2><p>正文16px，紧凑说明14px；角色角标与数量等辅助信息12px。大号模式主要放大HTML正文，不宣称所有像素内容已等比放大。窄屏HUD生命/魔力14px，快捷槽数字12px，改为独立区域而非压缩进小画面。全屏保持原画布区域，HUD走覆盖层；手机全屏仍需实机检查。</p><p>高对比、系统减少动态效果与现有显示偏好保留。页面菜单可以单轴滚动，键盘焦点可见。不以自动检查作为可达性认证。</p><h2 id="生命周期与资源" tabindex="-1">生命周期与资源</h2><p>界面依附现有更新时机，无额外requestAnimationFrame或MutationObserver。退出时先把仍被兼容音频回调引用的节点放回存活宿主，再释放UI，避免迟到的blur/audio事件引用空节点。前进后退缓存只挂起，不当作永久销毁。提示历史最多8条，不写入存档、不上传。存储键与现有改键/存档分离，无新增字体、外部脚本、追踪或音频。</p></div><p><a class="j-link" href="/notes/mario-mix/docs/" data-action-kind="internal" data-action-variant="quiet"><span class="q-action-label">返回项目资料</span></a></p></article><div class="j-maintainer"><a class="j-link" href="/notes/mario-mix/manage/" data-action-kind="internal" data-action-variant="quiet"><span class="q-action-label">交接与管理</span></a></div><p class="j-language-note" data-english-note hidden>Project records are currently written in Chinese.</p></div></div></main><footer class="site-footer"><div class="shell footer-inner"><span>在下_小Q</span><span class="footer-links"><a href="https://github.com/Aha-xiaoQ" data-action-kind="external"><svg class="q-footer-icon" width="18" height="18" viewBox="0 0 16 16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12.8c-3 1-3-1.5-4.2-1.8M10.2 14v-2.5c.1-.8-.2-1.5-.7-2 2.4-.3 4.9-1.2 4.9-5.3A4.1 4.1 0 0 0 13.3 1.4 3.8 3.8 0 0 0 13.2-1 4 4 0 0 0 10.4.1a9.7 9.7 0 0 0-4.8 0A4 4 0 0 0 2.8-1a3.8 3.8 0 0 0-.1 2.4 4.1 4.1 0 0 0-1.1 2.8c0 4.1 2.5 5 4.9 5.3-.5.5-.8 1.2-.7 2V14" /></svg><span class="q-action-label">GitHub</span></a><a href="https://space.bilibili.com/22673233?spm_id_from=333.1007.0.0" data-action-kind="external"><svg class="q-footer-icon" width="18" height="18" viewBox="0 0 16 16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.7h10v7.2H3zM5.3 2.4l1.4 1.4m2.6-1.4L8 3.8M6 7.6h.1m3.8 0h.1M5.7 10c1.4.8 3.2.8 4.6 0" /></svg><span class="q-action-label">Bilibili</span></a><a href="mailto:hfutqdm@163.com" data-action-kind="email"><svg class="q-footer-icon" width="18" height="18" viewBox="0 0 16 16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M2.2 4.1h11.6v7.8H2.2zM2.7 4.7 8 8.6l5.3-3.9" /></svg><span class="q-action-label">邮箱</span></a></span></div></footer></div>
+<script src="/content/taxonomy.js?v=dd5b8227f5b3e07a8da6"></script>
+<script src="/content/site-data.js?v=dd5b8227f5b3e07a8da6"></script>
+<script src="/content/asset-manifest.js?v=dd5b8227f5b3e07a8da6"></script>
+<script src="/assets/ui/site-actions.js?v=workshop-r17"></script>
+<script src="/assets/promo.js?v=workshop-r18"></script>
+<script src="/assets/workshop-media.js?v=workshop-r08"></script>
+<script src="/content/presentation.js?v=workshop-r08"></script>
+<script src="/assets/workshop-cards.js?v=showcase-r25"></script>
+<script src="/assets/workshop-media-runtime.js?v=workshop-r08"></script>
+<script src="/assets/site-shell.js?v=showcase-r25"></script>
+<script src="/assets/site-transition-r65.js?v=dd5b8227f5b3e07a8da6"></script>
+<script src="/assets/site-router.js?v=align-r27"></script>
+<script defer src="/assets/site-analytics.js?v=dd5b8227f5b3e07a8da6"></script>
+</body></html>

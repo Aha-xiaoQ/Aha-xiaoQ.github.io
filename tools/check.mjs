@@ -1,11 +1,11 @@
 /** Validate collaboration scope only; never claim a full-game regression pass. */
 import {readFile} from 'node:fs/promises';
+import {localLink} from './local-link.mjs';
 import path from 'node:path';
 import {spawnSync} from 'node:child_process';
 import {isUtf8} from 'node:buffer';
 import {ROOT,build} from './build-collab.mjs';
 import {readAllowlist} from './package-update.mjs';
-import {localLink} from './local-link.mjs';
 const files=await readAllowlist(ROOT);const errors=[];
 for(const f of files){
   try{
@@ -21,10 +21,10 @@ for(const f of files.filter(f=>f.endsWith('.md')||f.startsWith('dev/')&&f.endsWi
   const text=await readFile(path.join(ROOT,f),'utf8');
   const links=f.endsWith('.html')?[...text.matchAll(/(?:href|src)="([^"\s]+)"/g)].map(m=>m[1]):[...text.matchAll(/\]\(([^\s)]+)(?:\s+[^)]*)?\)/g)].map(m=>m[1]);
   for(const raw of links){
-    if(/^(?:[a-z][a-z\d+.-]*:|#)/i.test(raw))continue;
-    let relative;try{relative=decodeURIComponent(raw.split(/[?#]/)[0]);}catch{errors.push(f+': malformed link '+raw);continue;}
-    let resolved;try{resolved=await localLink(ROOT,f,relative);}catch(e){errors.push(f+': '+e.message+' '+raw);continue;}
-    const {exists,path:p}=resolved;
+    let result;
+    try{result=await localLink(ROOT,f,raw);}catch(e){errors.push(f+': '+e.message+' '+raw);continue;}
+    if(!result)continue;
+    const p=result.path,exists=result.exists;
     if(!exists&&expectedLinks.has(p)){preservedLinks++;continue;}
     if(!exists)errors.push(f+': missing local link '+raw+' -> '+p);else checkedLinks++;
   }

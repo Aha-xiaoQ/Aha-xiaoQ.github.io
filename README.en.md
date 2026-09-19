@@ -71,7 +71,7 @@ Start with the [contribution guide](CONTRIBUTING.md). For game development, see 
 
 Development pages display repository snapshots. Browser edits create local drafts; export, validate, and commit them to update shared records.
 
-[Website publication workflow](docs/release-r24/START_HERE.md) · [R25 maintenance notes](docs/showcase-r25/HANDOFF_R25.md) · [Changelog](CHANGELOG.md) · [Archived README](docs/history/README-before-reorganization.md)
+[Website publication workflow](docs/remote-audit/PUBLISH.md) · [R25 historical notes](docs/showcase-r25/HANDOFF_R25.md) · [Changelog](CHANGELOG.md) · [Archived README](docs/history/README-before-reorganization.md)
 
 Incremental update packages only replace listed files and are not full repository backups. Historical versions and installation records remain in docs.
 

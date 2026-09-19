@@ -69,7 +69,7 @@ npm run dev
 
 开发页面展示仓库中的状态快照；网页编辑只生成本地草稿，需导出、校验并提交后才会成为共享记录。
 
-[网站发布流程](docs/release-r24/START_HERE.md) · [R25 维护说明](docs/showcase-r25/HANDOFF_R25.md) · [变更记录](CHANGELOG.md) · [旧 README 历史快照](docs/history/README-before-reorganization.md)
+[网站发布流程](docs/remote-audit/PUBLISH.md) · [R25 历史说明](docs/showcase-r25/HANDOFF_R25.md) · [变更记录](CHANGELOG.md) · [旧 README 历史快照](docs/history/README-before-reorganization.md)
 
 增量更新包只覆盖其清单中的文件，不能代替完整仓库。历史版本与安装记录保留在 docs 中。
 

@@ -28,3 +28,5 @@ jobs:
         run: node scripts/workshop/build.mjs --check
       - name: Development output is up to date
         run: node scripts/journal/build.mjs --check
+      - name: Generated map files survive checkout unchanged
+        run: node scripts/worlds/sync.mjs --check
