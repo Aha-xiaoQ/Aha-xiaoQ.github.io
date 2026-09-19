@@ -7,13 +7,13 @@ globalThis.SITE_DATA = {
     "interests": [],
     "now": {
       "label": "正在做",
-      "title": "更新网站、发布视频",
-      "summary": "混合马里奥第二期已上线，可以观看视频或直接试玩。",
-      "updatedAt": "2026-09-09",
+      "title": "完善马里奥地图工坊",
+      "summary": "编辑地图、试玩关卡，导出可离线游玩的版本。继续核验隐藏路线、城堡机关与设备体验。",
+      "updatedAt": "2026-09-20",
       "items": [
         {
-          "label": "演示视频",
-          "text": "混合马里奥与《拆开一束光》。"
+          "label": "地图工坊",
+          "text": "32 关参考底图、地图编辑和离线试玩。"
         }
       ]
     },
@@ -248,6 +248,16 @@ globalThis.SITE_DATA = {
   "notes": [],
   "tools": [
     {
+      "id": "mario-map-workshop",
+      "preview": "assets/illustrations/mario-map-workshop.png",
+      "previewAlt": "马里奥地图工坊：地块画板、地图画布与试玩设置",
+      "title": "马里奥地图工坊",
+      "status": "在线工具 · 测试版",
+      "summary": "从 32 关参考底图开始，或绘制自己的地图。放置地形、敌人与奖励，边编辑边试玩；保存工程，也能下载单关或连续版离线试玩。",
+      "url": "packages/mario-mix-worlds/atlas/editor.html",
+      "linkLabel": "打开地图工坊 →"
+    },
+    {
       "id": "quina-optics",
       "preview": "tools/quina-optics/assets/preview.png?v=dd5b8227f5b3e07a8da6",
       "previewAlt": "光学与机械实验平台：扫描光谱仪、光谱曲线与转轴拆装入口",
@@ -303,5 +313,5 @@ globalThis.SITE_DATA = {
       ],
       "failureNote": "若浏览器未加载音频，可刷新页面后重试。"
     }
-]
+  ]
 };

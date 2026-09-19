@@ -395,3 +395,8 @@ Final pass: worlds:build, collab:build, full check, full test and doctor complet
 - 4-4 编译产物已同步，不再仅修改 template。字体许可原文中的尾随空格保留。
 
 合并 origin/main 后：collab:build、完整 check、npm test（1098 项通过）、doctor 通过。魂斗罗 module / playHero / bill_theme 的暂存区扫描为空。仅保留第三方字体许可原文尾随空格；未声称整关人工验收或线上激活完成。
+
+## 2026-09-20 文档与工具入口补齐
+工具页直接打开、首页客户端导航至工具页均通过 Edge 验证，无 pageerror。截图为当前编辑器真实 1-1 副本。独立发布包工具入口 -> 创建 1-1 -> 试玩通过，无本地 404 或脚本异常。地图源码 ZIP 与当前源码重新校验，保留原 M06 运行器。release:test 106/106 通过；发布包审计零错误。历史交接状态已加当前状态索引，不抹去当时记录。
+
+最终完整 npm test：1098 项通过；npm run check 通过。工具页 390px 无横向溢出，桌面英文切换可见 Mario Map Workshop。最终 release:prepare / release:check 零错误。源码发布与网站线上部署状态分开记录。

@@ -2,7 +2,7 @@
 
 ## 可视化编辑地图
 
-双击 Open-Map-Editor.cmd，或运行 node scripts/editor-launch.mjs。需要 Node.js 22 或以上，无需 npm install。浏览器中可以绘制地块、保存工程和试跑基础地形。详见 [地图工坊使用说明](docs/MAP_EDITOR_GUIDE.md)。当前为本地验收候选，实际浏览器操作待复验。
+双击 Open-Map-Editor.cmd，或运行 node scripts/editor-launch.mjs。需要 Node.js 22 或以上，无需 npm install。浏览器中可以编辑地图、保存工程、使用马里奥试玩并导出离线 HTML。详见 [地图工坊使用说明](docs/MAP_EDITOR_GUIDE.md)。地图工坊实现已于 2026-09-20 合入主分支，当前为测试版；复杂路线与设备兼容性继续核验。网站可从工具页直接进入。
 
 ## 选择地图
 
@@ -13,9 +13,9 @@ npm run verify
 npm run atlas
 ```
 
-打开 http://127.0.0.1:4196/atlas/index.html，选择世界、关卡、区域或循环分段。支持缩放、横向浏览、逐关 ZIP 和 Tiled 对象层下载。地图册本身不播放游戏，不加载原版美术或音频。
+打开 http://127.0.0.1:4196/atlas/index.html，选择世界、关卡、区域或循环分段。支持缩放、横向浏览、逐关 ZIP 和 Tiled 对象层下载。地图册用于查看区域和进入地图工坊；试玩和离线导出在工坊中进行。
 
-## 实验预览
+## 通用开发运行器（与工坊试玩分开）
 
 ```sh
 npm run dev

@@ -1,5 +1,15 @@
 /* Visitor-facing English copy. Chinese source content remains authoritative. */
 globalThis.SITE_EN = Object.freeze({
+  "完善马里奥地图工坊": "Improving the Mario Map Workshop",
+  "马里奥地图工坊": "Mario Map Workshop",
+  "在线工具 · 测试版": "Online tool \u00b7 Beta",
+  "打开地图工坊 →": "Open Map Workshop \u2192",
+  "打开 马里奥地图工坊": "Open Mario Map Workshop",
+  "马里奥地图工坊：地块画板、地图画布与试玩设置": "Mario Map Workshop: tile palette, map canvas and playtest settings",
+  "从 32 关参考底图开始，或绘制自己的地图。放置地形、敌人与奖励，边编辑边试玩；保存工程，也能下载单关或连续版离线试玩。": "Start with 32 reference maps or draw your own. Place terrain, enemies and rewards, then playtest as you edit. Save your project or download an offline single-level or campaign version.",
+  "编辑地图、试玩关卡，导出可离线游玩的版本。继续核验隐藏路线、城堡机关与设备体验。": "Edit maps, playtest levels and export offline games. Hidden routes, castle mechanics and device compatibility remain under review.",
+  "32 关参考底图、地图编辑和离线试玩。": "32 reference maps, map editing and offline play.",
+
   "搜索": "Search",
   "搜索全站": "Search the site",
   "查找游戏、工具、项目与开发资料。": "Find games, tools, projects, and development resources.",
