@@ -38,7 +38,9 @@ export async function planLaunch(root,{reader=p=>readOptional(root,p)}={}){
     const main=html.match(/<main\b[\s\S]*?<\/main>/i)[0];
     let support;
     if(main.includes('data-game-journey')){
-      const m=main.match(/<section class="section" data-game-support><div class="shell article">([\s\S]*?)<\/div><\/section><\/main>$/);support=m?m[1]:'';
+      const m=main.match(/<section class="section" data-game-support>\s*<div class="shell article">([\s\S]*?)<\/div>\s*<\/section>\s*<\/main>$/);
+      if(/\bdata-game-support\b/.test(main)&&(!m||(main.match(/\bdata-game-support\b/g)||[]).length!==1))throw Error('作品说明边界不明确，请人工合并：'+file);
+      support=m?m[1]:'';
     }else{
       // Migrate only the recognised original introduction. Preserve all following
       // rights/support content byte-for-byte rather than replacing a custom article.

@@ -1,5 +1,9 @@
 /* Visitor-facing English copy. Chinese source content remains authoritative. */
 globalThis.SITE_EN = Object.freeze({
+  "混合马里奥Ⅳ · 索尼克 × 奥日": "Mario Mix IV · Sonic × Ori",
+  "第四期 · 索尼克与奥日加入马里奥 1-4，切换角色、穿过城堡关卡，完成营救公主的冒险。": "Episode 4 · Sonic and Ori enter Mario 1-4. Switch characters, cross the castle and rescue the princess.",
+  "建议使用桌面浏览器；操作方式以游戏内说明为准。": "A desktop browser is recommended. Refer to the in-game controls.",
+  "本期将索尼克与奥日带入马里奥 1-4，支持角色切换，目标是穿过城堡关卡并完成营救公主。": "This episode brings Sonic and Ori into Mario 1-4. Switch characters, cross the castle and rescue the princess.",
   "完善马里奥地图工坊": "Improving the Mario Map Workshop",
   "马里奥地图工坊": "Mario Map Workshop",
   "在线工具 · 测试版": "Online tool \u00b7 Beta",

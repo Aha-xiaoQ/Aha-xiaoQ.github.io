@@ -44,14 +44,31 @@ export function wireHTML(input){
  html=html.replace(/(assets\/promo\.js)(?:\?[^"']*)?/g,'$1?v=workshop-r17');
  return wireExperience(html);
 }
+/** Reject misplaced content before a generated page or search index can omit it. */
+export function validateRegistry(data){
+ if(!data||!Array.isArray(data.items)||!Array.isArray(data.tools))throw Error('site-data.js 缺少 items/tools 数组');
+ const ids=new Set();
+ for(const item of [...data.items,...data.tools]){
+  if(typeof item.id!=='string'||ids.has(item.id))throw Error('内容 ID 缺少或重复');
+  ids.add(item.id);
+ }
+ if((data.profile?.now?.items||[]).some(item=>item?.primaryType||item?.evidenceIds))throw Error('作品必须登记在顶层 items，不能放入 profile.now.items');
+ const evidenceIds=new Set();
+ for(const evidence of data.evidence||[]){
+  if(typeof evidence.id!=='string'||evidenceIds.has(evidence.id))throw Error('证据 ID 缺少或重复');
+  evidenceIds.add(evidence.id);
+  if(evidence.sourceItemId&&!ids.has(evidence.sourceItemId))throw Error('证据指向未登记的作品：'+evidence.sourceItemId);
+ }
+ for(const item of [...data.items,...data.tools])for(const id of item.evidenceIds||[])if(!evidenceIds.has(id))throw Error('作品引用未登记的证据：'+id);
+ return data;
+}
 export async function load(root,{reader=p=>read(root,p)}={}){
  const get=async p=>{const b=await reader(p);if(b===null||b===undefined)throw Error('缺少必要文件：'+p);return utf(b);};
  const context=vm.createContext({URL});
  for(const p of ['assets/ui/site-actions.js','assets/workshop-media.js','content/site-data.js','assets/workshop-cards.js'])new vm.Script(await get(p),{filename:p}).runInContext(context,{timeout:1000});
  const taxonomy=await reader('content/taxonomy.js');if(taxonomy)new vm.Script(utf(taxonomy)).runInContext(context,{timeout:1000});
  const manifest=JSON.parse(await get('content/presentation.json'));context.SITE_MEDIA.validateManifest(manifest);
- if(!context.SITE_DATA||!Array.isArray(context.SITE_DATA.items)||!Array.isArray(context.SITE_DATA.tools))throw Error('site-data.js 缺少 items/tools 数组');
- const ids=new Set();for(const item of [...context.SITE_DATA.items,...context.SITE_DATA.tools]){if(typeof item.id!=='string'||ids.has(item.id))throw Error('内容 ID 缺少或重复');ids.add(item.id);}
+ validateRegistry(context.SITE_DATA);
  return {context,manifest,get};
 }
 export async function planCollections(root,{reader=p=>read(root,p)}={}){
