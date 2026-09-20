@@ -10,7 +10,7 @@ globalThis.SITE_DATA = {
       "title": "完善马里奥地图工坊",
       "summary": "编辑地图、试玩关卡，导出可离线游玩的版本。继续核验隐藏路线、城堡机关与设备体验。",
       "updatedAt": "2026-09-20",
-      "items": [
+      "items": [{"id":"game-mario-mix-4","slug":"mario-mix-4","primaryType":"game","relatedIds":[],"title":"混合马里奥Ⅳ · 索尼克 × 奥日","summary":"第四期 · 索尼克与奥日加入马里奥 1-4，切换角色、穿过城堡关卡，完成营救公主的冒险。","lifecycleStatus":"active","visibility":"public","accessMode":"online","createdAt":"2026-09-20","updatedAt":"2026-09-20","categories":["side-scrolling"],"tags":["横版闯关","像素平台","浏览器游戏"],"cover":"games/mario-mix-4/cover.png?v=episode04-r43","evidenceIds":["evidence-mario-mix-4"],"detailUrl":"games/mario-mix-4/","localUrl":"games/mario-mix-4/play.html","downloadUrl":"downloads/games/mario-mix-4.zip"},
         {
           "label": "地图工坊",
           "text": "32 关参考底图、地图编辑和离线试玩。"
@@ -270,7 +270,7 @@ globalThis.SITE_DATA = {
     }
   ],
   "methods": [],
-  "evidence": [
+  "evidence": [{"id":"evidence-mario-mix-4","type":"playable","label":"混合马里奥Ⅳ · 索尼克 × 奥日 浏览器版本","url":"games/mario-mix-4/play.html","sourceItemId":"game-mario-mix-4","verifiedAt":"2026-09-20","visibility":"public","accessNote":"建议使用桌面浏览器；可用键鼠或手柄游玩。","startSteps":["点击试玩游戏，按页面提示选择角色并开始。"],"failureNote":"若浏览器未加载音频，可刷新页面后重试。"},
     {
       "id": "evidence-pipebound",
       "type": "playable",
