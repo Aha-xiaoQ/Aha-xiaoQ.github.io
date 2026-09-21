@@ -7,7 +7,7 @@
 |1-1|马里奥 / 魂斗罗 · 比尔 / 洛克人|playable|transcribed|pending|核对底图与原版差异；验证角色动作与管道返回。|
 |1-2|忍者龙剑传 / 坦克大战|playable|transcribed|pending|补齐循环升降台与跳关流程，再核验坦克路线。|
 |1-3|泰拉瑞亚|playable|transcribed|pending|核验移动平台时序；将完整泰拉角色迁入数据地图。|
-|1-4|奥日|developing|transcribed|pending|实现并核验火焰棒、Boss、桥与斧头流程。|
+|1-4|索尼克 / 奥日|playable|transcribed|pending|复核第四期多设备体验；通用模板角色迁移与原版保真单独验收。|
 |2-1|待定|planned|pending|pending|先整理底图、机关和房间连接，再选择合适的角色。|
 |2-2|待定|planned|pending|pending|先整理底图、机关和房间连接，再选择合适的角色。|
 |2-3|待定|planned|pending|pending|先整理底图、机关和房间连接，再选择合适的角色。|

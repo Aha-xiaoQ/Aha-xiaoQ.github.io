@@ -9,8 +9,8 @@
   "scripts": {
     "dev": "node tools/dev-server.mjs",
     "start": "node tools/dev-server.mjs",
-    "check": "node tools/check.mjs && npm run journal:check && npm run game:check && npm run site:check && npm run terra:check && npm run content:check && npm run ui:check && npm run experience:check && npm run launch:check && npm run levels:check && npm run worlds:check && npm run site:ui:check && npm run showcase:check",
-    "test": "node --test tests/local-link.test.mjs tests/model.test.mjs tests/server.test.mjs tests/updater.test.mjs && npm run test:journal && npm run game:test && npm run test:r06 && npm run test:r07 && npm run test:r08 && npm run test:r12 && npm run test:r13 && npm run terra:test && npm run test:content && npm run test:release && npm run test:ui && npm run test:experience && npm run test:launch && npm run test:levels && npm run test:worlds && npm run test:site-ui && npm run test:showcase && npm run test:remote-audit",
+    "check": "node tools/check.mjs && npm run journal:check && npm run game:check && npm run site:check && npm run terra:check && npm run content:check && npm run ui:check && npm run experience:check && npm run launch:check && npm run levels:check && npm run worlds:check && npm run site:ui:check && npm run showcase:check && npm run video:check && npm run video:cache:check",
+    "test": "node --test tests/local-link.test.mjs tests/model.test.mjs tests/server.test.mjs tests/updater.test.mjs && npm run test:journal && npm run game:test && npm run test:r06 && npm run test:r07 && npm run test:r08 && npm run test:r12 && npm run test:r13 && npm run terra:test && npm run test:content && npm run test:release && npm run test:ui && npm run test:experience && npm run test:launch && npm run test:levels && npm run test:worlds && npm run test:site-ui && npm run test:showcase && npm run test:remote-audit && npm run test:video",
     "collab:build": "node tools/build-collab.mjs",
     "handoff": "node tools/handoff.mjs",
     "doctor": "node tools/doctor.mjs",
@@ -18,7 +18,7 @@
     "test:site": "node --test tests/site-unified.test.mjs tests/site-clarity.test.mjs",
     "journal:handoff": "node scripts/journal/handoff.mjs",
     "journal:check": "node scripts/journal/documents.mjs --check && node scripts/public-content/sync.mjs --check && node scripts/journal/build.mjs --check",
-    "journal:build": "npm run worlds:sync && npm run levels:sync && node scripts/public-content/sync.mjs && node scripts/journal/documents.mjs && node scripts/journal/build.mjs && npm run experience:build && npm run launch:build",
+    "journal:build": "npm run video:sync && npm run worlds:sync && npm run levels:sync && node scripts/public-content/sync.mjs && node scripts/journal/documents.mjs && node scripts/journal/build.mjs && npm run experience:build && npm run launch:build",
     "journal:add": "node scripts/journal/add-project.mjs",
     "test:journal": "node --test tests/journal/*.test.mjs",
     "game:check": "npm --prefix packages/mario-mix run check",
@@ -30,7 +30,7 @@
     "game:verify": "npm --prefix packages/mario-mix run verify",
     "game:release-check": "npm --prefix packages/mario-mix run release:check",
     "test:r06": "node --test tests/workshop-r06.test.mjs",
-    "site:build": "node scripts/workshop/build.mjs && npm run experience:build && npm run launch:build && npm run showcase:build",
+    "site:build": "node scripts/workshop/build.mjs && npm run experience:build && npm run launch:build && npm run showcase:build && npm run video:cache",
     "site:check": "node scripts/workshop/build.mjs --check",
     "site:audit": "node scripts/workshop/build.mjs --audit",
     "test:r07": "node --test tests/workshop-r07.test.mjs",
@@ -105,7 +105,12 @@
     "showcase:build": "node scripts/showcase/build.mjs",
     "showcase:check": "node scripts/showcase/build.mjs --check",
     "test:showcase": "node --test tests/showcase/*.test.mjs",
-    "test:remote-audit": "node --test tests/remote-audit/*.test.mjs"
+    "test:remote-audit": "node --test tests/remote-audit/*.test.mjs",
+    "video:sync": "node scripts/videos/sync.mjs",
+    "video:check": "node scripts/videos/sync.mjs --check",
+    "test:video": "node --test tests/videos/*.test.mjs",
+    "video:cache": "node scripts/videos/cache.mjs",
+    "video:cache:check": "node scripts/videos/cache.mjs --check"
   },
   "license": "SEE LICENSE IN LICENSE.collab"
 }

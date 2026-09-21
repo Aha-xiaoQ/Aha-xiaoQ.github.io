@@ -51,6 +51,10 @@ export async function planLaunch(root,{reader=p=>readOptional(root,p)}={}){
     supports[item.slug]=support;
     const next='<main id="main" tabindex="-1">'+journey.gameStart(item,proof)+(support?'<section class="section" data-game-support><div class="shell article">'+support+'</div></section>':'')+'</main>';
     html=html.replace(/<main\b[\s\S]*?<\/main>/i,next);
+    const e=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    html=html.replace(/<title>[\s\S]*?<\/title>/i,'<title>'+e(item.title)+' · 在下_小Q</title>');
+    html=html.replace(/(<section class="page-head">[\s\S]*?<h1>)[\s\S]*?(<\/h1>)/,(_,a,b)=>a+e(item.title)+b);
+    html=html.replace(/(<meta\b[^>]*(?:property="og:title"|name="twitter:title")[^>]*content=")[^"]*(")/g,(_,a,b)=>a+e(item.title)+b);
     html=html.replace(/data-prerendered="[^"]*"/,'data-prerendered="true"');
     files.set(file,Buffer.from(wireHTML(html)));
   }

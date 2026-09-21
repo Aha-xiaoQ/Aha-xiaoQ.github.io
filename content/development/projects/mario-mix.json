@@ -4,16 +4,24 @@
   "title": "混合马里奥",
   "category": "game",
   "visibility": "public",
-  "stage": "地图工坊测试版 · 第三期开发版待验收",
-  "updatedAt": "2026-09-20",
+  "stage": "四期试玩上线 · M07 开发版待验收",
+  "updatedAt": "2026-09-21",
   "summary": "不同作品的角色接力闯过经典关卡。查看每关有哪些角色、哪些可以试玩，以及下一步的开发计划。",
-  "intro": "前三期已开放试玩，奥日城堡关正在开发。地图工坊可从 32 关参考底图创建自己的地图，使用马里奥试玩，并导出离线版本。正式角色关卡与地图工坊分别记录进度。",
+  "intro": "第一至第四期已开放独立试玩：魂斗罗与洛克人、忍者与坦克、泰拉瑞亚，以及索尼克与奥日城堡关。地图工坊支持从 32 关参考底图创建地图、试玩和离线导出。M07 开发候选与已上线试玩分开维护。",
   "highlights": [
-    "1-1 至 1-3 可试玩，1-4 奥日开发中。",
-    "八世界 32 关均有参考底图，按世界下载并独立管理。",
-    "地图工坊支持编辑、马里奥试玩、手柄与离线导出；复杂路线继续逐关核验。"
+    "1-1 至 1-4 四期独立试玩已上线；第四期为索尼克与奥日。",
+    "地图工坊提供 32 关参考底图与地图编辑、试玩、离线导出；不等同于八世界成品。",
+    "视频：第四期 · 索尼克 × 奥日 视频入口已更新；马里奥地图工坊 视频入口已更新。"
   ],
   "links": [
+    {
+      "label": "试玩第四期 · 索尼克 × 奥日",
+      "href": "/games/mario-mix-4/play.html"
+    },
+    {
+      "label": "第四期介绍",
+      "href": "/games/mario-mix-4/"
+    },
     {
       "label": "打开地图工坊",
       "href": "/packages/mario-mix-worlds/atlas/editor.html"
@@ -33,6 +41,14 @@
     {
       "label": "关卡与地图模板",
       "href": "/notes/mario-mix/docs/terra-stages/"
+    },
+    {
+      "label": "第四期 · 索尼克 × 奥日 · 视频",
+      "href": "https://www.bilibili.com/video/BV1JBhh6iEXS/"
+    },
+    {
+      "label": "马里奥地图工坊 · 视频",
+      "href": "https://www.bilibili.com/video/BV1kLha63EyV/"
     }
   ],
   "participation": {
@@ -47,6 +63,14 @@
     "generatedFrom": "packages/mario-mix-terra/docs/TASKS.json"
   },
   "updates": [
+    {
+      "id": "episode-4-online-20260921",
+      "date": "2026-09-21",
+      "title": "第四期索尼克与奥日独立试玩已上线",
+      "status": "released",
+      "kind": "content",
+      "summary": "补齐第四期介绍、试玩和关卡进度入口。四期独立游戏与 M07 待验收开发候选分别维护，视频状态见当前视频入口。"
+    },
     {
       "id": "map-workshop-20260920",
       "date": "2026-09-20",
@@ -191,7 +215,7 @@
           "title": "已知限制",
           "paragraphs": [
             "0.4.3 尚待 Windows、实体设备、音频、自然通关与真实浏览器网络验收。",
-            "WorldKit W02 继续使用其固定 M06 运行时；32 关模板与本 UI 候选分别维护。完整泰拉角色、武器和坐骑仍不能直接用于任意地图，1-4 奥日仍开发中。",
+            "WorldKit W02 继续使用其固定 M06 运行时；32 关模板与本 UI 候选分别维护。完整泰拉角色、武器和坐骑仍不能直接用于任意地图，独立第四期（1-4）已上线，通用运行时角色迁移仍待验收。",
             "旧源码和过程记录保留在历史资料。"
           ]
         }
@@ -282,7 +306,7 @@
           "title": "开发模板与已知边界",
           "paragraphs": [
             "32 关共 63 个参考区域，另保留循环城堡的分段视图。马里奥试玩已接入奖励、弹簧、平台、游泳、管道、藤蔓和城堡结算等机制；这些功能仍需逐关核验，不代表原版逐帧一致。",
-            "M06 开发模板使用独立通用运行器，不等同于地图工坊试玩；真实混合角色迁移与奥日 1-4 仍在开发。魂斗罗 1-2 试验版暂不发布。"
+            "M06 开发模板使用独立通用运行器，不等同于地图工坊试玩；独立第四期已上线；真实混合角色向通用模板迁移仍在开发。魂斗罗 1-2 试验版暂不发布。"
           ],
           "code": "npm run check\nnpm test\nnpm run atlas"
         }
@@ -310,6 +334,49 @@
         }
       ],
       "kind": "level-atlas"
+    },
+    {
+      "id": "episode-4",
+      "title": "第四期 · 索尼克与奥日",
+      "summary": "第四期独立试玩与视频入口。已上线游戏和开发候选分别维护。",
+      "action": {
+        "label": "试玩第四期",
+        "href": "/games/mario-mix-4/play.html"
+      },
+      "sections": [
+        {
+          "title": "试玩范围",
+          "paragraphs": [
+            "索尼克与奥日加入马里奥 1-4。第四期保留独立游戏实现，已上线不表示 M07 开发框架完成全部角色迁移。",
+            "本次仅维护网站介绍、视频入口和文档状态，不改变地图、角色动作、BGM 或音效。"
+          ]
+        },
+        {
+          "title": "视频入口",
+          "paragraphs": [
+            "第四期 · 索尼克 × 奥日：视频入口已更新，请从下方链接观看。",
+            "马里奥地图工坊：视频入口已更新，请从下方链接观看。"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "第四期游戏介绍",
+          "href": "/games/mario-mix-4/"
+        },
+        {
+          "label": "地图工坊",
+          "href": "/packages/mario-mix-worlds/atlas/editor.html"
+        },
+        {
+          "label": "第四期 · 索尼克 × 奥日 · 视频",
+          "href": "https://www.bilibili.com/video/BV1JBhh6iEXS/"
+        },
+        {
+          "label": "马里奥地图工坊 · 视频",
+          "href": "https://www.bilibili.com/video/BV1kLha63EyV/"
+        }
+      ]
     },
     {
       "id": "terra-history",
@@ -583,8 +650,8 @@
   },
   "chapterPlan": {
     "schemaVersion": 1,
-    "revision": 21,
-    "updatedAt": "2026-09-19",
+    "revision": 22,
+    "updatedAt": "2026-09-21",
     "guideHref": "/notes/mario-mix/docs/terra-stages/",
     "starterHref": "/downloads/source/MarioMix_Worlds_W02_Starter.zip",
     "instructionsHref": "/notes/mario-mix/docs/worlds-start/",
@@ -703,18 +770,20 @@
         "id": "1-4",
         "title": "城堡回廊",
         "characters": [
+          "索尼克",
           "奥日"
         ],
-        "status": "active",
-        "summary": "奥日城堡关正在开发，暂未提供正式试玩。",
-        "playHref": null,
-        "introHref": null,
+        "status": "released",
+        "summary": "第四期独立试玩已上线：索尼克与奥日挑战 1-4。通用角色迁移、原版保真和多设备体验仍需分别验收。",
+        "playHref": "/games/mario-mix-4/play.html",
+        "introHref": "/games/mario-mix-4/",
         "templateStatus": "reference-draft",
         "templateHref": "/downloads/maps/MarioMix_Map_1-4_W02.zip",
         "missing": [
-          "旋转火焰棒",
-          "城堡 Boss 与断桥结算",
-          "奥日完整动作适配"
+          "通用模板的旋转火焰棒与城堡 Boss、断桥结算",
+          "通用框架角色迁移与完整动作适配",
+          "参考底图与原版保真复核",
+          "自然通关、音频与多设备复验"
         ],
         "owner": "",
         "issueUrl": null,
@@ -1788,8 +1857,8 @@
   },
   "levelPlan": {
     "schemaVersion": 1,
-    "revision": 1,
-    "updatedAt": "2026-09-18",
+    "revision": 2,
+    "updatedAt": "2026-09-21",
     "kitVersion": "K01",
     "documentId": "terra-stages",
     "sourceHref": "/downloads/source/MarioMix_Levels_K01_Source.zip",
@@ -1894,11 +1963,12 @@
         "world": 1,
         "order": 4,
         "title": "城堡",
-        "production": "developing",
+        "production": "playable",
         "characters": [
+          "索尼克",
           "奥日"
         ],
-        "playHref": null,
+        "playHref": "/games/mario-mix-4/play.html",
         "template": {
           "status": "transcribed",
           "id": "atlas-1-4",
@@ -1907,8 +1977,8 @@
           "mechanics": "partial",
           "actorPortability": "pending"
         },
-        "summary": "奥日城堡关开发中，尚未提供正式试玩。",
-        "next": "实现并核验火焰棒、Boss、桥与斧头流程。",
+        "summary": "第四期独立试玩已上线：索尼克与奥日挑战 1-4。通用角色迁移、原版保真和多设备体验仍需分别验收。",
+        "next": "复核第四期多设备体验；通用模板角色迁移与原版保真单独验收。",
         "owner": "",
         "issue": null,
         "evidence": [],
@@ -2619,5 +2689,6 @@
         "roomNames": []
       }
     ]
-  }
+  },
+  "publicStage": "四期试玩已上线 · 地图工坊测试版"
 }

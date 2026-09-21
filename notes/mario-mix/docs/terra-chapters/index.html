@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>新关卡接入指南 · 在下_小Q</title>
-  <link rel="stylesheet" href="/assets/site-brand-tokens.css?v=font-20260919-docs">
+  <link rel="stylesheet" href="/assets/site-brand-tokens.css?v=297d101156361d84">
   <link rel="preload" href="/assets/fonts/LXGWWenKai-Regular-site.woff2?v=font-20260919-docs" as="font" type="font/woff2" crossorigin fetchpriority="high">
   <link rel="preload" href="/assets/fonts/LXGWWenKai-Medium-site.woff2?v=font-20260919-docs" as="font" type="font/woff2" crossorigin fetchpriority="high">
   <link rel="stylesheet" href="/assets/site-shell.css?v=font-20260919-r22">
@@ -17,12 +17,12 @@
 <link rel="stylesheet" data-journal-css href="/assets/journal/journal.css?v=docs-r26">
 <link rel="stylesheet" data-workshop-css href="/assets/workshop-components.css?v=workshop-r08">
 <link rel="stylesheet" data-media-css href="/assets/workshop-media.css?v=workshop-r08">
-<link rel="stylesheet" data-site-actions-css href="/assets/ui/site-actions.css?v=align-r27">
+<link rel="stylesheet" data-site-actions-css href="/assets/ui/site-actions.css?v=d845e7ac40bb7807">
 <link rel="stylesheet" data-experience-css href="/assets/experience/site-experience.css?v=site-r23">
 <script type="module" data-experience-module src="/assets/experience/runtime.mjs?v=site-r23"></script>
 <link rel="stylesheet" data-journey-css href="/assets/launch/journey.css?v=launch-r19">
 <script data-journey-support src="/content/game-support.js?v=launch-r19"></script>
-<script data-journey-core src="/assets/launch/journey.js?v=showcase-r25"></script>
+<script data-journey-core src="/assets/launch/journey.js?v=3c875a1ae07630d3"></script>
 <script type="module" data-journey-module src="/assets/launch/runtime.mjs?v=launch-r19"></script>
 <link rel="stylesheet" data-chapters-css href="/assets/chapters/chapters.css?v=worlds-r21">
 <link rel="stylesheet" data-showcase-css href="/assets/ui/site-showcase.css?v=showcase-r25">
@@ -35,13 +35,13 @@ npm run level:check
 npm run dev
 # ?chapter=my-14 直接进入；?chapters=1 显示接入工作台</code></pre><button class="button button--quiet" type="button" data-copy-code>复制命令</button><p class="j-small" role="status" data-copy-status></p></div></section><section><h2 id="guide-section-2" tabindex="-1">本次已经接通的部分</h2><p>地图、六类现有敌人、金币、检查点、危险区、房间往返与结束目标；共用第三期的角色、武器、操作设置、HUD和结算。</p><p>白名单携带生命、装备和奖励，不传坐标、弹幕、DOM或声音节点。返回原地形与位置；切关下坐骑但保留已获得资格。</p><p>补充房间与主章可以互相进入。目标奖励在本次会话中去重；暂停不运行触发，门需要交互边沿。</p></section><section><h2 id="guide-section-3" tabindex="-1">这不是万能关卡插件</h2><p>terra-surface-v1目前固定240逻辑像素高，不支持任意新重力、俯视玩法或通用地下世界。全新Boss/角色、分章资源包和持久存档仍需下一轮服务接口。</p><p>需要这些能力时先提交接口提案，而不是让每个作者去修改旧全局函数。SDK示例不包含未完成的城堡素材或关卡。</p></section><section><h2 id="guide-section-4" tabindex="-1">第一个 PR 的完成标准</h2><p>只新增自己的关卡目录，运行level:check与verify；记录真实浏览器进入、死亡重试、门往返、结算、主线返回和手柄/音频未验收项。</p><p>保持draft=true提交，提供候选SHA与资源来源。真实维护者审阅之后才合并/发布。自动测试和模拟新人实验不等于已经有网友贡献成功。</p></section><section><h2 id="guide-section-5" tabindex="-1">后续需要解决的阻碍</h2><p>先让一位独立作者完成接入试做；再推进自定义Boss/行为接口、资产生命周期以及版本化跨章存档。旧库存与原隐藏关任务继续保留，不因添加adapter就标完成。</p></section><section><h2>继续阅读</h2><a class="j-link" href="/notes/mario-mix/docs/terra-source/" data-action-kind="internal" data-action-variant="quiet"><span class="q-action-label">获取当前源码</span></a><br><a class="j-link" href="/notes/mario-mix/docs/stage-add-level/" data-action-kind="internal" data-action-variant="quiet"><span class="q-action-label">一步步新增关卡</span></a><br><a class="j-link" href="/notes/mario-mix/docs/stage-contract/" data-action-kind="internal" data-action-variant="quiet"><span class="q-action-label">接口与字段</span></a><br><a class="j-link" href="/notes/mario-mix/docs/stage-contract/" data-action-kind="internal" data-action-variant="quiet"><span class="q-action-label">生命周期与状态传递</span></a><br><a class="j-link" href="/notes/mario-mix/docs/stage-acceptance/" data-action-kind="internal" data-action-variant="quiet"><span class="q-action-label">验收清单</span></a><br><a class="j-link" href="/packages/mario-mix-terra/docs/TASKS.json" data-action-kind="internal" data-action-variant="quiet"><span class="q-action-label">当前任务</span></a></section></article><div class="j-maintainer"><a class="j-link" href="/notes/mario-mix/manage/" data-action-kind="internal" data-action-variant="quiet"><span class="q-action-label">交接与管理</span></a></div><p class="j-language-note" data-english-note hidden>Project records are currently written in Chinese.</p></div></div></main><footer class="site-footer"><div class="shell footer-inner"><span>在下_小Q</span><span class="footer-links"><a href="https://github.com/Aha-xiaoQ" data-action-kind="external"><svg class="q-footer-icon" width="18" height="18" viewBox="0 0 16 16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12.8c-3 1-3-1.5-4.2-1.8M10.2 14v-2.5c.1-.8-.2-1.5-.7-2 2.4-.3 4.9-1.2 4.9-5.3A4.1 4.1 0 0 0 13.3 1.4 3.8 3.8 0 0 0 13.2-1 4 4 0 0 0 10.4.1a9.7 9.7 0 0 0-4.8 0A4 4 0 0 0 2.8-1a3.8 3.8 0 0 0-.1 2.4 4.1 4.1 0 0 0-1.1 2.8c0 4.1 2.5 5 4.9 5.3-.5.5-.8 1.2-.7 2V14" /></svg><span class="q-action-label">GitHub</span></a><a href="https://space.bilibili.com/22673233?spm_id_from=333.1007.0.0" data-action-kind="external"><svg class="q-footer-icon" width="18" height="18" viewBox="0 0 16 16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.7h10v7.2H3zM5.3 2.4l1.4 1.4m2.6-1.4L8 3.8M6 7.6h.1m3.8 0h.1M5.7 10c1.4.8 3.2.8 4.6 0" /></svg><span class="q-action-label">Bilibili</span></a><a href="mailto:hfutqdm@163.com" data-action-kind="email"><svg class="q-footer-icon" width="18" height="18" viewBox="0 0 16 16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M2.2 4.1h11.6v7.8H2.2zM2.7 4.7 8 8.6l5.3-3.9" /></svg><span class="q-action-label">邮箱</span></a></span></div></footer></div>
 <script src="/content/taxonomy.js?v=dd5b8227f5b3e07a8da6"></script>
-<script src="/content/site-data.js?v=dd5b8227f5b3e07a8da6"></script>
+<script src="/content/site-data.js?v=53ecb7c9953b6b6e"></script>
 <script src="/content/asset-manifest.js?v=dd5b8227f5b3e07a8da6"></script>
-<script src="/assets/ui/site-actions.js?v=workshop-r17"></script>
+<script src="/assets/ui/site-actions.js?v=0e3760e96c021719"></script>
 <script src="/assets/promo.js?v=workshop-r18"></script>
 <script src="/assets/workshop-media.js?v=workshop-r08"></script>
 <script src="/content/presentation.js?v=workshop-r08"></script>
-<script src="/assets/workshop-cards.js?v=showcase-r25"></script>
+<script src="/assets/workshop-cards.js?v=3070426c03bf25f7"></script>
 <script src="/assets/workshop-media-runtime.js?v=workshop-r08"></script>
 <script src="/assets/site-shell.js?v=showcase-r25"></script>
 <script src="/assets/site-transition-r65.js?v=dd5b8227f5b3e07a8da6"></script>

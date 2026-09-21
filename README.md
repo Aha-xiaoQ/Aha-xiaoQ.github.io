@@ -9,7 +9,7 @@
 ## 仓库内容
 
 - **个人网站**：作品展示、游戏入口、工具、开发记录、关于页与留言墙，支持中英文切换。
-- **混合马里奥**：三期独立试玩，以及第三期开发源码、贡献指南与任务记录。
+- **混合马里奥**：四期独立试玩，以及第三期开发源码、贡献指南与任务记录。
 - **关卡地图册**：八个世界、32 关的参考模板，可用于查看地形与制作独立方案。
 - **Q咪与其他作品**：桌面宠物素材、作品介绍和相关下载入口。
 
@@ -17,7 +17,7 @@
 
 | 内容 | 版本与范围 |
 | --- | --- |
-| 在线试玩 | [第一期](https://aha-xiaoq.github.io/games/mario-mix/) · [第二期](https://aha-xiaoq.github.io/games/mario-mix-2/) · [第三期](https://aha-xiaoq.github.io/games/mario-mix-3/)；各自保留独立实现 |
+| 在线试玩 | [第一期](https://aha-xiaoq.github.io/games/mario-mix/) · [第二期](https://aha-xiaoq.github.io/games/mario-mix-2/) · [第三期](https://aha-xiaoq.github.io/games/mario-mix-3/) · [第四期 · 索尼克 × 奥日](https://aha-xiaoq.github.io/games/mario-mix-4/)；各自保留独立实现 |
 | 第三期开发源码 | **M07 / 0.4.3**，待验收候选，与在线试玩分别维护 |
 | 地图与工坊 | **W02 / 0.2.0**，32 关参考模板、63 个区域；地图工坊支持编辑、马里奥或魂斗罗·比尔试玩，以及单关/连续版离线导出；其他已有角色先在本地验证 |
 
@@ -28,6 +28,17 @@
 [打开在线地图工坊](https://aha-xiaoq.github.io/packages/mario-mix-worlds/atlas/editor.html) 可以从 32 关参考底图创建副本，也可以新建空白地图。工程支持保存、导出和继续编辑；试玩时可选择马里奥或魂斗罗·比尔。比尔会复用已有的动作、武器、奖励、音乐和音效，现有敌人、管道与隐藏区域保持在原地图中，不加入魂斗罗专属敌人或隐藏地图。
 
 工坊还能导出独立离线 HTML 和按顺序推进、支持自由选关的连续版。W02 仍是参考底图与通用试玩运行器，复杂路线、设备兼容性和完整自然通关仍在逐关核验，不能当作原版八世界的完整复刻。地图工坊右上角的 GitHub Star 入口会打开仓库主页，方便查看更新与反馈。
+
+<!-- XIAOQ:VIDEOS:START -->
+## 当前视频入口
+
+| 内容 | 网站入口 | 视频状态 |
+| --- | --- | --- |
+| 第四期 · 索尼克 × 奥日 | [打开](https://aha-xiaoq.github.io/games/mario-mix-4/) | [观看视频](https://www.bilibili.com/video/BV1JBhh6iEXS/) |
+| 马里奥地图工坊 | [打开](https://aha-xiaoq.github.io/packages/mario-mix-worlds/atlas/editor.html) | [观看视频](https://www.bilibili.com/video/BV1kLha63EyV/) |
+
+视频链接统一维护在 `content/site-data.js`。填写后运行 `npm run video:sync` 和原有构建命令；有链接不等于已完成远端播放验收。
+<!-- XIAOQ:VIDEOS:END -->
 
 ## 本地运行
 
@@ -52,7 +63,7 @@ npm run dev
 | `npm run site:build` | 重新生成网站展示页 |
 | `npm run journal:build` | 重新生成开发记录与资料页 |
 | `npm run terra:dev` | 启动第三期开发候选，入口以终端输出为准 |
-| `npm run doctor` | 检查网站与三期游戏入口文件 |
+| `npm run doctor` | 检查网站与四期游戏入口文件 |
 
 自动测试不能替代游戏通关、真实手柄、音频和浏览器交互验收。
 

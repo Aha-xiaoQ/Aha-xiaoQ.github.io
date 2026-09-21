@@ -38,10 +38,14 @@ test('episode IV is in search and the dynamic rights/support registry',()=>{
  const c={};vm.runInNewContext(read('content/game-support.js'),c);
  assert.match(c.SITE_GAME_SUPPORT['mario-mix-4'],/相关权利归各自权利人所有/);
 });
-test('episode IV keeps the shared native wiring with no fake video button',async()=>{
+test('episode IV keeps shared wiring and derives video state from its own registry',async()=>{
  const p=await planLaunch(root),h=p.files.get(detail).toString();assert.equal(h,read(detail));
  for(const marker of ['data-journey-support','data-journey-core','data-journey-module','data-experience-module'])assert.equal((h.match(new RegExp(marker,'g'))||[]).length,1);
- assert.doesNotMatch(h,/视频待发布|BV1cCYi6xEPz/);
+ const item=data().items.find(x=>x.id==='game-mario-mix-4');
+ assert.ok(h.includes('data-video-slot="game-mario-mix-4"'));
+ assert.ok(h.includes('data-video-state="'+(item.videoUrl?'available':'pending')+'"'));
+ if(item.videoUrl)assert.ok(h.includes('href="'+item.videoUrl+'"'));else assert.match(h,/视频待发布/);
+ assert.doesNotMatch(h,/<iframe[^>]*src=["'](?:about:blank)?["']/);
  assert.match(h,/mario-mix-4\/play.html/);assert.match(h,/downloads\/games\/mario-mix-4.zip/);
 });
 test('formatted support wrappers do not silently discard copyright',async()=>{

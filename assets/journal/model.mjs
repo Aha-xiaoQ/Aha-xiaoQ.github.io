@@ -27,7 +27,7 @@ export function validateCatalog(c){
 }
 export function validateProject(p){
  validateChapterPlan(p?.chapterPlan);
- if(p?.schemaVersion!==1||!validId(p.id))throw Error('项目版本或 ID 无效。');text(p.title,'title',48);text(p.summary,'summary',160);text(p.intro,'intro',360);text(p.stage,'stage',32);
+ if(p?.schemaVersion!==1||!validId(p.id))throw Error('项目版本或 ID 无效。');text(p.title,'title',48);text(p.summary,'summary',160);text(p.intro,'intro',360);text(p.stage,'stage',32);if(p.publicStage!==undefined)text(p.publicStage,'publicStage',48);
  if(!own(CATEGORY_LABELS,p.category)||!['public','draft','archived'].includes(p.visibility))throw Error('项目类型或可见性无效。');date(p.updatedAt,'updatedAt');
  array(p.links,'links');for(const l of p.links){text(l.label,'链接标题',32);if(!safeLink(l.href))throw Error('不安全链接：'+l.href);}
  array(p.highlights,'highlights');if(p.highlights.length>3)throw Error('概览最多三个重点。');p.highlights.forEach(x=>text(x,'highlight',160));
@@ -82,7 +82,7 @@ export function mergeDraft(base,incoming,projectId){
 }
 
 /** R15: explicit release identity. Unknown/legacy projects keep their original stage. */
-export function projectStage(p){if(p.publicSite===true)return p.stage;return p.currentRelease?`开发版 ${p.currentRelease.version} · ${{'local-review':'待验收',released:'已发布',planned:'计划中'}[p.currentRelease.status]}`:p.stage;}
+export function projectStage(p){if(typeof p.publicStage==='string'&&p.publicStage.trim())return p.publicStage;if(p.publicSite===true)return p.stage;return p.currentRelease?`开发版 ${p.currentRelease.version} · ${{'local-review':'待验收',released:'已发布',planned:'计划中'}[p.currentRelease.status]}`:p.stage;}
 export function updateOrder(a,b){
  const cmp=(x,y)=>x<y?-1:x>y?1:0;
  return cmp(b.date,a.date)||(Number.isSafeInteger(b.revision)?b.revision:0)-(Number.isSafeInteger(a.revision)?a.revision:0)||cmp(a.project.id,b.project.id)||cmp(a.id,b.id);

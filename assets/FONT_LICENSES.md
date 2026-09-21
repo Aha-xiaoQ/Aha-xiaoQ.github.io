@@ -20,3 +20,15 @@
 - Medium SHA-256: `9E5266FF382A38960E33A60039F1C9C96B22558640F987DDA77FED8BEF77C0A2`
 
 The public site self-hosts these pinned WOFF2 files. The primary LXGW Bright faces use `font-display: block` so a cold entry cannot permanently lock the page to a different fallback glyph set; the declared fallback sequence (`LXGW WenKai`, `KaiTi`, `STKaiti`, `serif`) remains available if a local font file cannot load. `Ysabeau Office` is named as an upstream-recommended installed-font fallback only; this site does not claim to self-host it. No Segoe UI or Consolas declaration is used in visible UI text.
+
+## 缺字补充（2026-09-21）
+
+现有本地子集保留不变。`site-brand-tokens.css` 仅为 `尼`（U+5C3C）引用
+`lxgw-wenkai-webfont@1.7.0` 的 Regular / Bold 第 114 号公开子集；按实际字重加载，
+主 CDN 为 jsDelivr，失败时尝试 cdnjs。上游字体遵循 SIL OFL 1.1，webfont 包代码为 MIT；
+不将 webfont 包代码许可当作字体或游戏素材许可。
+来源：https://github.com/chawyehsu/lxgw-wenkai-webfont
+字体许可：https://github.com/chawyehsu/lxgw-wenkai-webfont/blob/main/packages/lxgw-wenkai-webfont/OFL.txt
+
+第四期标题以普通拉丁字母 `IV` 表示第四期，避免缺失的 Unicode 罗马数字字形混入系统字体。
+本轮不附带字体文件；补充字形首次显示需要联网。两个 CDN 都无法访问时保留可读的系统回退。

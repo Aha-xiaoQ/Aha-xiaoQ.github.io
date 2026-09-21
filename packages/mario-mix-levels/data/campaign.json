@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "revision": 1,
-  "updatedAt": "2026-09-18",
+  "revision": 2,
+  "updatedAt": "2026-09-21",
   "title": "混合马里奥 · 关卡进度",
   "gameVersion": "0.4.2",
   "templateVersion": "K01",
@@ -88,11 +88,12 @@
       "world": 1,
       "order": 4,
       "title": "城堡",
-      "production": "developing",
+      "production": "playable",
       "characters": [
+        "索尼克",
         "奥日"
       ],
-      "playHref": null,
+      "playHref": "/games/mario-mix-4/play.html",
       "template": {
         "status": "transcribed",
         "id": "atlas-1-4",
@@ -101,8 +102,8 @@
         "mechanics": "partial",
         "actorPortability": "pending"
       },
-      "summary": "奥日城堡关开发中，尚未提供正式试玩。",
-      "next": "实现并核验火焰棒、Boss、桥与斧头流程。",
+      "summary": "第四期独立试玩已上线：索尼克与奥日挑战 1-4。通用角色迁移、原版保真和多设备体验仍需分别验收。",
+      "next": "复核第四期多设备体验；通用模板角色迁移与原版保真单独验收。",
       "owner": "",
       "issue": null,
       "evidence": []

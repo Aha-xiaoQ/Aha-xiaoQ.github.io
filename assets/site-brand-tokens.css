@@ -30,7 +30,7 @@
 }
 /* One source of truth for brand geometry across homepage and content pages. */
 :root {
-  font-family: "LXGW WenKai", KaiTi, serif;
+  font-family: "LXGW WenKai Supplement", "LXGW WenKai", KaiTi, serif;
   font-synthesis: none;
   --q-brand-logo-size: 42px;
   --q-brand-wordmark-size: 17px;
@@ -56,3 +56,29 @@
     --q-shell-gutter: 32px;
   }
 }
+
+/* VIDEO-R1: the existing local subset lacks U+5C3C (尼).
+   Request only this missing character from the upstream WenKai web subset.
+   Existing glyphs remain on the fast, same-origin site fonts. */
+@font-face {
+  font-family: "LXGW WenKai Supplement";
+  src: url("https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/files/lxgwwenkai-regular-subset-114.woff2") format("woff2"),
+       url("https://cdnjs.cloudflare.com/ajax/libs/lxgw-wenkai-webfont/1.7.0/files/lxgwwenkai-regular-subset-114.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+5C3C;
+}
+@font-face {
+  font-family: "LXGW WenKai Supplement";
+  src: url("https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/files/lxgwwenkai-bold-subset-114.woff2") format("woff2"),
+       url("https://cdnjs.cloudflare.com/ajax/libs/lxgw-wenkai-webfont/1.7.0/files/lxgwwenkai-bold-subset-114.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 500 700;
+  font-display: swap;
+  unicode-range: U+5C3C;
+}
+
+:root{--font-body:"LXGW WenKai Supplement", "LXGW WenKai", KaiTi, serif;}
+/* Keep the glyph-only complement active even when site-theme.css loads later. */
+html body{font-family:var(--font-body);}

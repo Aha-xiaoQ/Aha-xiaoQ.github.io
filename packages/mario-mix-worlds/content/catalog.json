@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "projectId": "mario-mix",
-  "revision": 21,
-  "updatedAt": "2026-09-19",
+  "revision": 22,
+  "updatedAt": "2026-09-21",
   "scope": "第一世界地图模板与关卡进度；后续七个世界纳入规划。",
   "sourceNotes": "1-1 至 1-3 发布状态与 1-4 奥日开发方向依据项目维护者确认；模板状态独立核验。",
   "levels": [
@@ -98,12 +98,13 @@
       "stage": 4,
       "title": "城堡回廊",
       "characters": [
+        "索尼克",
         "奥日"
       ],
-      "status": "active",
-      "summary": "奥日城堡关正在开发，暂未提供正式试玩。",
-      "playHref": null,
-      "introHref": null,
+      "status": "released",
+      "summary": "第四期独立试玩已上线：索尼克与奥日挑战 1-4。通用角色迁移、原版保真和多设备体验仍需分别验收。",
+      "playHref": "/games/mario-mix-4/play.html",
+      "introHref": "/games/mario-mix-4/",
       "template": {
         "status": "reference-draft",
         "geometry": "reference-transcribed",
@@ -115,9 +116,10 @@
       "owner": "",
       "issueUrl": null,
       "missing": [
-        "旋转火焰棒",
-        "城堡 Boss 与断桥结算",
-        "奥日完整动作适配"
+        "通用模板的旋转火焰棒与城堡 Boss、断桥结算",
+        "通用框架角色迁移与完整动作适配",
+        "参考底图与原版保真复核",
+        "自然通关、音频与多设备复验"
       ]
     },
     {

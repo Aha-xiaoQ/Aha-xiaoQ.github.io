@@ -9,7 +9,7 @@ A personal website and project workspace featuring browser games, a desktop pet,
 ## What's included
 
 - **Personal website**: project showcases, game and tool entries, development notes, an about page, and a guestbook. The site supports Chinese and English.
-- **Mario Mix**: three independently playable episodes, plus development source, contribution guides, and task records for episode 3.
+- **Mario Mix**: four independently playable episodes, plus development source, contribution guides, and task records for episode 3.
 - **Level atlas**: reference templates for 32 levels across eight worlds, for inspecting geometry and creating adaptations.
 - **Q Mimi and other projects**: desktop pet assets, project introductions, and downloads.
 
@@ -17,13 +17,24 @@ A personal website and project workspace featuring browser games, a desktop pet,
 
 | Component | Version and scope |
 | --- | --- |
-| Online games | [Episode 1](https://aha-xiaoq.github.io/games/mario-mix/) · [Episode 2](https://aha-xiaoq.github.io/games/mario-mix-2/) · [Episode 3](https://aha-xiaoq.github.io/games/mario-mix-3/); each retains its own implementation |
+| Online games | [Episode 1](https://aha-xiaoq.github.io/games/mario-mix/) · [Episode 2](https://aha-xiaoq.github.io/games/mario-mix-2/) · [Episode 3](https://aha-xiaoq.github.io/games/mario-mix-3/) · [Episode 4: Sonic × Ori](https://aha-xiaoq.github.io/games/mario-mix-4/); each retains its own implementation |
 | Episode 3 development source | **M07 / 0.4.3**, a candidate awaiting acceptance, maintained separately from the online game |
 | Level templates | **W02 / 0.2.0**, 32 reference templates using a fixed M06 runtime; not yet a complete eight-world game |
 
 [Source and setup](https://aha-xiaoq.github.io/notes/mario-mix/docs/terra-source/) · [Level atlas and integration](https://aha-xiaoq.github.io/notes/mario-mix/docs/terra-stages/) · [Current tasks](https://aha-xiaoq.github.io/notes/mario-mix/tasks/)
 
 Detailed project records and most development guides are currently in Chinese.
+
+<!-- XIAOQ:VIDEOS:START -->
+## Current videos
+
+| Content | Website | Video |
+| --- | --- | --- |
+| Episode 4: Sonic × Ori | [Open](https://aha-xiaoq.github.io/games/mario-mix-4/) | [Watch video](https://www.bilibili.com/video/BV1JBhh6iEXS/) |
+| Mario Map Workshop | [Open](https://aha-xiaoq.github.io/packages/mario-mix-worlds/atlas/editor.html) | [Watch video](https://www.bilibili.com/video/BV1kLha63EyV/) |
+
+Video links are maintained in `content/site-data.js`; run `npm run video:sync` and the standard builds after updating a URL. A link is not a playback verification.
+<!-- XIAOQ:VIDEOS:END -->
 
 ## Run locally
 

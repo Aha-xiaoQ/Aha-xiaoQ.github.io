@@ -68,7 +68,7 @@ globalThis.SITE_DATA = {
       "slug": "mario-mix-4",
       "primaryType": "game",
       "relatedIds": [],
-      "title": "混合马里奥Ⅳ · 索尼克 × 奥日",
+      "title": "混合马里奥 IV · 索尼克 × 奥日",
       "summary": "第四期 · 索尼克与奥日加入马里奥 1-4，切换角色、穿过城堡关卡，完成营救公主的冒险。",
       "lifecycleStatus": "active",
       "visibility": "public",
@@ -89,7 +89,9 @@ globalThis.SITE_DATA = {
       ],
       "detailUrl": "games/mario-mix-4/",
       "localUrl": "games/mario-mix-4/play.html",
-      "downloadUrl": "downloads/games/mario-mix-4.zip"
+      "downloadUrl": "downloads/games/mario-mix-4.zip",
+      "videoSlot": true,
+      "videoUrl": "https://www.bilibili.com/video/BV1JBhh6iEXS/"
     },
     {
       "id": "game-mario-mix-3",
@@ -283,7 +285,9 @@ globalThis.SITE_DATA = {
       "status": "在线工具 · 测试版",
       "summary": "从 32 关参考底图开始，或绘制自己的地图。放置地形、敌人与奖励，边编辑边试玩；保存工程，也能下载单关或连续版离线试玩。",
       "url": "packages/mario-mix-worlds/atlas/editor.html",
-      "linkLabel": "打开地图工坊 →"
+      "linkLabel": "打开地图工坊 →",
+      "videoSlot": true,
+      "videoUrl": "https://www.bilibili.com/video/BV1kLha63EyV/"
     },
     {
       "id": "quina-optics",
@@ -302,7 +306,7 @@ globalThis.SITE_DATA = {
     {
       "id": "evidence-mario-mix-4",
       "type": "playable",
-      "label": "混合马里奥Ⅳ · 索尼克 × 奥日 浏览器版本",
+      "label": "混合马里奥 IV · 索尼克 × 奥日 浏览器版本",
       "url": "games/mario-mix-4/play.html",
       "sourceItemId": "game-mario-mix-4",
       "verifiedAt": "2026-09-20",

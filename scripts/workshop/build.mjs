@@ -13,6 +13,17 @@ import {safe, readOptional, writeAtomic} from '../lib/safe-path.mjs';
 import {normalizeText,equalText,matchesTextHash} from '../lib/text-records.mjs';
 export function read(root,rel){return readOptional(root,rel);}
 const utf=normalizeText;
+export function versionAssets(html){
+ return html.replace(/(\b(?:src|href)=["'])([^"']+)(["'])/g,(all,lead,url,quote)=>{
+  if(/^(?:[a-z][a-z0-9+.-]*:|\/\/)/i.test(url))return all;
+  const normalized=url.replace(/^(?:\.\.\/)+/,'').replace(/^\//,'');
+  const rel=normalized.split(/[?#]/)[0];
+  if(!['content/site-data.js','assets/site-brand-tokens.css','assets/workshop-cards.js','assets/ui/site-actions.js','assets/ui/site-actions.css','assets/launch/journey.js','assets/journal/model.mjs'].includes(rel))return all;
+  const bytes=read(ROOT,rel);if(!bytes)return all;
+  const base=url.split(/[?#]/)[0];
+  return lead+base+'?v='+hash(bytes).slice(0,16)+quote;
+ });
+}
 export function wireHTML(input){
  let html=polishStaticLinks(input).replace(/<noscript\b[^>]*data-workshop-noscript[^>]*>[\s\S]*?<\/noscript>\s*/g,'');
  const footerPaths={GitHub:'<path d="M6 12.8c-3 1-3-1.5-4.2-1.8M10.2 14v-2.5c.1-.8-.2-1.5-.7-2 2.4-.3 4.9-1.2 4.9-5.3A4.1 4.1 0 0 0 13.3 1.4 3.8 3.8 0 0 0 13.2-1 4 4 0 0 0 10.4.1a9.7 9.7 0 0 0-4.8 0A4 4 0 0 0 2.8-1a3.8 3.8 0 0 0-.1 2.4 4.1 4.1 0 0 0-1.1 2.8c0 4.1 2.5 5 4.9 5.3-.5.5-.8 1.2-.7 2V14" />',Bilibili:'<path d="M3 4.7h10v7.2H3zM5.3 2.4l1.4 1.4m2.6-1.4L8 3.8M6 7.6h.1m3.8 0h.1M5.7 10c1.4.8 3.2.8 4.6 0" />',邮箱:'<path d="M2.2 4.1h11.6v7.8H2.2zM2.7 4.7 8 8.6l5.3-3.9" />'};
@@ -42,7 +53,7 @@ export function wireHTML(input){
  if(/data-page=["'](?:projects|games|tools)["']/.test(html))html=html.replace('</head>','<noscript data-workshop-noscript><style>[data-workshop-filter]{display:none}</style></noscript>\n</head>');
  html=html.replace(/(assets\/site-router\.js)(?:\?[^"']*)?/g,'$1?v=workshop-r17');
  html=html.replace(/(assets\/promo\.js)(?:\?[^"']*)?/g,'$1?v=workshop-r17');
- return wireExperience(html);
+ return versionAssets(wireExperience(html));
 }
 /** Reject misplaced content before a generated page or search index can omit it. */
 export function validateRegistry(data){

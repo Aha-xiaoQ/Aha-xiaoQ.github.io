@@ -6,7 +6,8 @@ export const ROOT=fileURLToPath(new URL('../../',import.meta.url));
 export function checkRelease(root=ROOT,{reader=p=>readOptional(root,p)}={}){
  const content=contentCheck(root),read=p=>{const b=reader(p);if(!b)throw Error('Missing release artifact: '+p);return b;};
  const project=JSON.parse(read('content/development/projects/mario-mix.json')),release=project.currentRelease;
- const current=project.docs.filter(d=>!d.archived);if(current.length!==3)throw Error('Expected three current guide entries');
+ const current=project.docs.filter(d=>!d.archived),ids=current.map(d=>d.id);
+ if(new Set(ids).size!==ids.length||![release.documentId,'terra-collaboration','terra-stages'].every(id=>ids.includes(id)))throw Error('Missing or duplicate current guide entries');
  const pages=['notes/index.html','notes/mario-mix/index.html','notes/mario-mix/tasks/index.html',...current.map(d=>`notes/mario-mix/docs/${d.id}/index.html`)];
  for(const p of pages){const html=read(p).toString();for(const tag of ['h1','main'])if((html.match(new RegExp('<'+tag+'(?:\\s|>)','g'))||[]).length!==1)throw Error('Expected one '+tag+': '+p);
   const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);if(new Set(ids).size!==ids.length)throw Error('Duplicate DOM id: '+p);
