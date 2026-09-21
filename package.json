@@ -9,8 +9,8 @@
   "scripts": {
     "dev": "node tools/dev-server.mjs",
     "start": "node tools/dev-server.mjs",
-    "check": "node tools/check.mjs && npm run journal:check && npm run game:check && npm run site:check && npm run terra:check && npm run content:check && npm run ui:check && npm run experience:check && npm run launch:check && npm run levels:check && npm run worlds:check && npm run site:ui:check && npm run showcase:check && npm run video:check && npm run video:cache:check",
-    "test": "node --test tests/local-link.test.mjs tests/model.test.mjs tests/server.test.mjs tests/updater.test.mjs && npm run test:journal && npm run game:test && npm run test:r06 && npm run test:r07 && npm run test:r08 && npm run test:r12 && npm run test:r13 && npm run terra:test && npm run test:content && npm run test:release && npm run test:ui && npm run test:experience && npm run test:launch && npm run test:levels && npm run test:worlds && npm run test:site-ui && npm run test:showcase && npm run test:remote-audit && npm run test:video",
+    "check": "node tools/check.mjs && npm run journal:check && npm run game:check && npm run site:check && npm run terra:check && npm run content:check && npm run ui:check && npm run experience:check && npm run launch:check && npm run levels:check && npm run worlds:check && npm run site:ui:check && npm run showcase:check && npm run video:check && npm run video:cache:check && npm run episode4:check",
+    "test": "node --test tests/local-link.test.mjs tests/model.test.mjs tests/server.test.mjs tests/updater.test.mjs && npm run test:journal && npm run game:test && npm run test:r06 && npm run test:r07 && npm run test:r08 && npm run test:r12 && npm run test:r13 && npm run terra:test && npm run test:content && npm run test:release && npm run test:ui && npm run test:experience && npm run test:launch && npm run test:levels && npm run test:worlds && npm run test:site-ui && npm run test:showcase && npm run test:remote-audit && npm run test:video && npm run episode4:test && npm run episode4:integration:test",
     "collab:build": "node tools/build-collab.mjs",
     "handoff": "node tools/handoff.mjs",
     "doctor": "node tools/doctor.mjs",
@@ -110,7 +110,14 @@
     "video:check": "node scripts/videos/sync.mjs --check",
     "test:video": "node --test tests/videos/*.test.mjs",
     "video:cache": "node scripts/videos/cache.mjs",
-    "video:cache:check": "node scripts/videos/cache.mjs --check"
+    "video:cache:check": "node scripts/videos/cache.mjs --check",
+    "episode4:build": "npm --prefix packages/mario-mix-episode4 run build",
+    "episode4:check": "npm --prefix packages/mario-mix-episode4 run check",
+    "episode4:test": "npm --prefix packages/mario-mix-episode4 test",
+    "episode4:verify": "npm --prefix packages/mario-mix-episode4 run verify",
+    "episode4:dev": "npm --prefix packages/mario-mix-episode4 run dev",
+    "episode4:pack": "npm --prefix packages/mario-mix-episode4 run pack -- --repository",
+    "episode4:integration:test": "node --test tests/episode4/*.test.mjs"
   },
   "license": "SEE LICENSE IN LICENSE.collab"
 }

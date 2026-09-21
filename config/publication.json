@@ -3,12 +3,30 @@
   "edition": "R24",
   "origin": "https://aha-xiaoq.github.io",
   "output": ".local/publish",
-  "entrypoints": ["index.html", "projects/index.html", "games/index.html", "tools/index.html", "about/index.html", "notes/index.html", "search/index.html", "play-guide/index.html", "404.html"],
+  "entrypoints": [
+    "index.html",
+    "projects/index.html",
+    "games/index.html",
+    "tools/index.html",
+    "about/index.html",
+    "notes/index.html",
+    "search/index.html",
+    "play-guide/index.html",
+    "404.html"
+  ],
   "gameVersion": "0.4.3",
   "mapVersion": "0.2.0",
   "candidatePath": "packages/mario-mix-terra",
   "mapPath": "packages/mario-mix-worlds",
   "extraPublicFiles": [],
   "preserveReleasedGames": true,
-  "note": "Only .local/publish is a website artifact. The repository is the source workspace."
+  "note": "Only .local/publish is a website artifact. The repository is the source workspace.",
+  "sourceArchives": [
+    {
+      "source": "packages/mario-mix-episode4",
+      "archive": "downloads/source/MarioMix_Episode4_R43_Source.zip",
+      "metadata": "downloads/source/MarioMix_Episode4_R43_Source.json",
+      "prefix": "MarioMix_Episode4_R43_Source/"
+    }
+  ]
 }

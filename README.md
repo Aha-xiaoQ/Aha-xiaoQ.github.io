@@ -40,6 +40,14 @@
 视频链接统一维护在 `content/site-data.js`。填写后运行 `npm run video:sync` 和原有构建命令；有链接不等于已完成远端播放验收。
 <!-- XIAOQ:VIDEOS:END -->
 
+## 第四期最终源码
+
+[第四期最终源码与运行说明](https://aha-xiaoq.github.io/notes/mario-mix/docs/episode-4-source/) · [下载 R43 源码](downloads/source/MarioMix_Episode4_R43_Source.zip) · [查看工程目录](packages/mario-mix-episode4/)
+
+已发布的索尼克 × 奥日 **R43 银之树高潮循环版**，独立整理为 **E04-S01 / 0.1.0**。26 个有序运行时代码片段、6 组样式、配置和 260 个去重素材可重新构建成与原版逐字节一致的 HTML。这是源码整理，不是新玩法版本或 M07/WorldKit 角色迁移；现有在线试玩和第三期源码保持不变。
+
+在完整仓库根目录运行 `npm run episode4:verify`、`npm run episode4:dev`，访问 `http://127.0.0.1:4194/play.html`。无需 npm install。独立源码 ZIP 中包含启动说明、构建、预览、测试、打包脚本及原有素材声明。
+
 ## 本地运行
 
 需要 **Node.js 22 或更新版本**。网站工具没有第三方 npm 依赖，无需先运行 `npm install`。

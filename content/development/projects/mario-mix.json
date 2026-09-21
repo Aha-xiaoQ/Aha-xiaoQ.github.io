@@ -23,6 +23,10 @@
       "href": "/games/mario-mix-4/"
     },
     {
+      "label": "第四期最终源码",
+      "href": "/notes/mario-mix/docs/episode-4-source/"
+    },
+    {
       "label": "打开地图工坊",
       "href": "/packages/mario-mix-worlds/atlas/editor.html"
     },
@@ -63,6 +67,14 @@
     "generatedFrom": "packages/mario-mix-terra/docs/TASKS.json"
   },
   "updates": [
+    {
+      "id": "episode4-source-s01",
+      "date": "2026-09-21",
+      "title": "第四期 R43 最终源码独立整理",
+      "status": "released",
+      "summary": "为已发布的索尼克与奥日第四期增加独立源码目录、源码下载与启动说明。样式、运行时代码和内嵌素材分离维护，可无损还原 R43 发布 HTML；原有四期试玩、第三期 M07 与视频链接保持独立。",
+      "kind": "content"
+    },
     {
       "id": "episode-4-online-20260921",
       "date": "2026-09-21",
@@ -240,6 +252,69 @@
       ]
     },
     {
+      "id": "episode-4-source",
+      "title": "第四期最终源码",
+      "summary": "索尼克 × 奥日 · R43 高潮循环版。独立源码工程、构建方法与原版对照校验。",
+      "action": {
+        "label": "下载第四期源码（R43）",
+        "href": "/downloads/source/MarioMix_Episode4_R43_Source.zip"
+      },
+      "sections": [
+        {
+          "title": "对应哪个版本",
+          "paragraphs": [
+            "本工程整理自已发布的第四期 R43（索尼克 × 奥日，1-4）。保留原有游戏内容、地图、声音与素材声明；它不是第三期 M07 源码的替代品，也不代表通用运行时角色迁移完成。",
+            "未改动源码时，可以重新构建出与 R43 发布 HTML 逐字节一致的单文件游戏。第四期在线试玩继续保留，不会被源码构建自动覆盖。"
+          ]
+        },
+        {
+          "title": "下载与启动",
+          "paragraphs": [
+            "解压源码，在工程根目录使用 Node.js 22 或以上版本运行。无需 npm install。",
+            "启动后访问 http://127.0.0.1:4194/play.html。Windows 也可双击源码包内的 start-dev.cmd；端口被占用可改为 npm run dev -- --port 4195。"
+          ],
+          "code": "npm run verify\nnpm run dev"
+        },
+        {
+          "title": "源码如何组织",
+          "paragraphs": [
+            "src/app 为页面壳，src/styles 为 6 组样式，src/runtime 为 26 个按顺序编译的逻辑片段；src/data 保留音频及拾取配置。assets/audio 与 assets/images 收录从现有发布 HTML 提取的 260 个去重素材。",
+            "源码片段仍共享原版作用域，不是可任意逐个 import 的独立模块。编辑后运行 npm run build，产物为 dist/play.html；完整导航见源码包 START_HERE.md 和 docs/MODULE_MAP.md。"
+          ],
+          "code": "npm run check\nnpm run build\nnpm run pack"
+        },
+        {
+          "title": "音乐、来源与验收边界",
+          "paragraphs": [
+            "上升段保留原 R43 的 Restoring the Light, Facing the Dark 48 秒高潮循环音轨，使用原生音乐通道。不替换原有地图、角色动作、BGM 或音效。",
+            "源码构建校验不代替真实设备、手柄、音频或自然通关验收。第三方角色、图像与录音的权利归各权利人；本次整理不扩大原有授权。部分历史资源仍保留外部回退地址。"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "第四期源码目录",
+          "href": "https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/tree/main/packages/mario-mix-episode4"
+        },
+        {
+          "label": "第四期游戏介绍",
+          "href": "/games/mario-mix-4/"
+        },
+        {
+          "label": "试玩第四期",
+          "href": "/games/mario-mix-4/play.html"
+        },
+        {
+          "label": "第三期开发源码（独立维护）",
+          "href": "/notes/mario-mix/docs/terra-source/"
+        },
+        {
+          "label": "源码校验元数据",
+          "href": "/downloads/source/MarioMix_Episode4_R43_Source.json"
+        }
+      ]
+    },
+    {
       "id": "terra-collaboration",
       "title": "代码贡献指南",
       "summary": "选择任务、修改源码、提交测试与 PR。",
@@ -367,6 +442,10 @@
         {
           "label": "地图工坊",
           "href": "/packages/mario-mix-worlds/atlas/editor.html"
+        },
+        {
+          "label": "第四期最终源码",
+          "href": "/notes/mario-mix/docs/episode-4-source/"
         },
         {
           "label": "第四期 · 索尼克 × 奥日 · 视频",

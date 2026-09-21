@@ -1,0 +1,112 @@
+/* Native campaign shell. No extra canvas, document or embedded game iframe. */
+body.c23-campaign .app{max-width:1220px;margin:0 auto;padding:22px 24px 32px}
+body.c23-campaign .layout{grid-template-columns:minmax(0,1fr) 290px;gap:22px;align-items:start}
+body.c23-campaign header .offline{font-size:11px;letter-spacing:.1em}
+#c23Chapters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:0 0 12px}
+#c23Chapters button{font:inherit;cursor:pointer;border:1px solid #4a616a;border-radius:6px;background:#172934;color:#bfcbd0;min-height:55px;padding:8px;text-align:left}
+#c23Chapters b{font-size:12px;display:block;color:#eee4ce;margin-bottom:3px;letter-spacing:.08em}
+#c23Chapters span{font-size:10px;display:block;white-space:nowrap}
+#c23Chapters button[aria-selected=true]{border-color:#ddc184;background:#34454a;box-shadow:inset 0 2px #e9ca85}
+#c23Chapters button:focus-visible{outline:2px solid #f3d49c;outline-offset:2px}
+body.c23-campaign #heroPicker [data-hero]{display:flex!important;flex-direction:column;align-items:center;justify-content:center;min-height:112px!important;padding:12px!important;gap:3px}
+body.c23-campaign #heroPicker [data-hero].c23-filtered{display:none!important}
+body.c23-campaign #heroPicker{display:flex!important;justify-content:center;gap:9px;margin:15px auto!important;grid-template-columns:none!important;max-width:96%}
+body.c23-campaign #heroPicker[hidden]{display:none!important}
+body.c23-campaign #heroPicker [data-hero] canvas{width:44px!important;height:55px!important;margin:0!important}
+body.c23-campaign #heroPicker [data-hero] strong{font-size:12px}body.c23-campaign #heroPicker [data-hero] small{font-size:10px}
+body.c23-campaign .overlay.choosing .overlay-box{width:94%;max-width:550px;background:#0d1b27ed;padding:22px 16px!important;border:1px solid #536e7b;border-radius:8px}
+body.c23-campaign .overlay.choosing h2{font-size:clamp(23px,3vw,34px);line-height:1.3;margin:8px 0}
+body.c23-campaign .overlay.choosing #overlayText{font-size:12px;line-height:1.85;margin:12px auto;color:#c3cdd0;max-width:37em}
+body.c23-campaign .overlay.choosing #overlayHint{font-size:10px}
+body.c23-campaign .screen-shell{padding:0;border:1px solid #566a74;border-radius:8px;overflow:hidden;background:#080b0e}
+body.c23-campaign .screen-top{padding:10px 12px;background:#142530;color:#b4c6cb;font-size:10px;letter-spacing:.1em}
+body.c23-campaign #stage{border:0;border-radius:0;aspect-ratio:256/240;width:100%;margin:auto;overflow:hidden}
+body.c23-campaign #game{display:block;width:100%;height:100%;object-fit:contain;image-rendering:pixelated;outline:none}
+body.c23-campaign .panel{padding:23px 20px;border:1px solid #4c6571;border-radius:8px;background:#142734}
+body.c23-campaign .panel>.kicker{font-size:9px;letter-spacing:.18em;color:#cfb989}
+body.c23-campaign .panel>h2{font-size:23px;line-height:1.45;margin:12px 0}
+body.c23-campaign .panel>.intro{font-size:12px;line-height:1.9;color:#bccbd0}
+body.c23-campaign .panel .buttons{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+body.c23-campaign .panel .buttons button{font-size:12px;min-height:37px;padding:8px 5px}
+body.c23-campaign #charactersButton{grid-column:1/-1}
+body.c23-campaign .status-card{padding:13px;margin:16px 0;border:1px solid #496170;border-radius:6px;background:#0d1a24}
+body.c23-campaign #relayMessage{font-size:11px;line-height:1.85;color:#cfdbc9;min-height:20px;padding:9px 0 0;margin:9px 0 0;background:none;border:0;border-top:1px solid #354c58}
+body.c23-campaign #heroStatus,body.c23-campaign #gamepadStatus{font-size:10px;line-height:1.7;margin:8px 0 0;color:#a1b8bc}
+body.c23-campaign #bestLabel{display:none!important}
+body.c23-campaign .stage-tools{top:42px;right:8px;opacity:.75}
+body.c23-campaign .stage-tools button{font-size:9px;padding:5px 8px}
+body.c23-campaign #stage:fullscreen{aspect-ratio:auto;background:#000}
+body.c23-campaign #stage:fullscreen #game{width:100%;height:100%;object-fit:contain}
+body.c23-campaign #c23Help,body.c23-campaign #c23Options,body.c23-campaign #t20Audio{margin-top:13px;border-top:1px solid #465e6966;padding-top:12px;font-size:11px;color:#b0c4c9}
+#c23Help summary,#c23Options summary,#t20Audio summary{cursor:pointer;color:#e1dcc8}
+#c23Help p,#c23Options p{line-height:1.85;font-size:11px}
+#c23Options label{display:flex;align-items:center;gap:8px;padding:10px 0 3px;font-size:12px}
+#c23Options input{accent-color:#d6b675}
+body.c23-campaign.c23-not-terra #t15Help,body.c23-campaign.c23-not-terra #t21AssetStatus,body.c23-campaign.c23-not-terra #t15Dock,body.c23-campaign.c23-not-terra #r06Hud,body.c23-campaign.c23-not-terra #r05AudioOptions{display:none!important}
+body.c23-campaign:not(.c23-castle) #c23Options{display:none}
+body.c23-campaign #t10Previous,body.c23-campaign #r04StageChooser,body.c23-campaign #r05EntryChooser,body.c23-campaign #relayStart,body.c23-campaign #r06Options{display:none!important}
+body.c23-campaign .tagline{font-size:10px;color:#97aeb7;line-height:1.8;margin:12px 2px}
+body.c23-castle .controls-title,body.c23-castle .control-row,body.c23-castle .panel>.tip,body.c23-castle .panel>hr{display:none}
+#c23Next{margin-top:8px;padding:9px 16px;border-radius:5px;border:1px solid #c8b077;background:#d8bb80;color:#14232c;font:inherit;font-size:12px;cursor:pointer}
+#c23Next[hidden]{display:none}
+@media(max-width:950px){body.c23-campaign .app{padding:15px}body.c23-campaign .layout{grid-template-columns:minmax(0,1fr) 245px;gap:15px}body.c23-campaign .panel{padding:18px 14px}}
+@media(max-width:760px){body.c23-campaign .layout{grid-template-columns:1fr}body.c23-campaign .app{padding:12px}#c23Chapters{gap:5px}#c23Chapters button{padding:7px 5px}#c23Chapters span{font-size:9px}body.c23-campaign .panel{padding:19px}body.c23-campaign .overlay.choosing .overlay-box{padding:13px 8px!important}body.c23-campaign #heroPicker [data-hero]{min-height:85px!important;padding:7px!important}body.c23-campaign #heroPicker [data-hero] canvas{width:32px!important;height:40px!important}body.c23-campaign #heroPicker [data-hero] small{font-size:8px}body.c23-campaign .stage-tools{top:39px}body.c23-campaign .overlay.choosing #overlayText{font-size:11px;margin:8px 0}body.c23-campaign #heroPicker{margin:10px auto!important}}
+body.c23-not-terra #t15HudHits,body.c23-not-terra #r06SceneActions,body.c23-not-terra #t10AudioEnable,body.c23-not-terra #t10SoundStatus,body.c23-not-terra #r06Media{display:none!important}
+body.c23-campaign #r06Options{display:none!important}
+body.c23-campaign #t10Build{display:none!important}
+body.c23-not-terra #t16CartButton{display:none!important}
+body.c23-campaign:not(.t15-terra) .app{max-width:1120px}
+body.c23-castle .screen-shell{max-width:none!important;width:100%}
+body.c23-castle .panel>h2{font-size:22px;line-height:1.5}
+
+/* Override legacy fixed-height viewport; the castle uses the native 16:15 image. */
+body.c23-campaign.c23-castle #stage{height:auto!important;width:100%!important;max-height:none!important;aspect-ratio:16/15!important;background:#000!important;--scene-background:#000!important}
+body.c23-campaign.c23-castle #stage #game{width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;aspect-ratio:16/15;object-fit:contain;background:#000}
+body.c23-campaign.c23-castle #stage:fullscreen{width:100vw!important;height:100dvh!important;aspect-ratio:auto!important;display:flex;align-items:center;justify-content:center}
+body.c23-campaign.c23-castle #stage:fullscreen #game{width:min(100vw,106.666667dvh)!important;height:min(100dvh,93.75vw)!important;flex:none}
+
+/* Ori chapter only. Existing chapters retain their original palette and layout. */
+body.o24-ori{background:radial-gradient(ellipse at 23% 12%,#19383d 0%,#0b1d28 47%,#080e18 100%);color:#cde3e5}
+body.o24-ori .screen-shell{box-shadow:0 18px 60px #020b14aa,0 0 34px #57bfa313;border-color:#487273}
+body.o24-ori #game{image-rendering:auto!important}
+body.o24-ori .screen-top{background:#102830;color:#aacccd}
+body.o24-ori .panel{background:linear-gradient(160deg,#142f35,#0f202d);border-color:#395c67}
+body.o24-ori #c23Chapters button[aria-selected=true]{border-color:#9ac8b7;background:#264747;box-shadow:inset 0 2px #b4e4ce}
+body.o24-ori .panel>.kicker{color:#92d3c6}body.o24-ori .panel>h2{color:#e1f1e7}
+body.o24-ori .overlay.choosing .overlay-box{background:linear-gradient(155deg,#122d36e8,#071522f2);border:1px solid #68989b;border-radius:18px;box-shadow:0 8px 35px #0007,inset 0 0 35px #84dcca09;padding:24px 18px!important}
+body.o24-ori .overlay.choosing h2{font-weight:500;letter-spacing:.12em;color:#d6f5ed}
+body.o24-ori #heroPicker [data-hero="ori"]{border:1px solid #4b777a;background:radial-gradient(ellipse at center,#39647338,#162b3600);border-radius:12px;min-width:150px;min-height:140px!important}
+body.o24-ori #heroPicker [data-hero="ori"] .o24-portrait{width:74px!important;height:93px!important;image-rendering:auto!important}
+body.o24-ori #heroPicker [data-hero="ori"] strong{font-size:14px;letter-spacing:.2em;color:#e4fffc}body.o24-ori #heroPicker [data-hero="ori"] small{color:#97bebb}
+body.o24-ori #mainAction{background:linear-gradient(120deg,#b0ddce,#79bab4);border:1px solid #c6efe2;color:#132e36;border-radius:7px;box-shadow:0 0 20px #7bccbb1a}
+#o24BindingsButton[hidden],#o24Touch[hidden]{display:none!important}
+#o24Bindings{max-width:700px;width:calc(100vw - 36px);max-height:88vh;color:#c5e5e6;background:#102730;border:1px solid #6c9c9e;border-radius:14px;padding:22px;box-sizing:border-box;font:13px/1.8 system-ui,sans-serif}
+#o24Bindings::backdrop{background:#010a13bb}#o24Bindings header{display:flex;justify-content:space-between;align-items:center}#o24Bindings h2{margin:0;font-size:22px;color:#d3eee1}#o24Bindings p{color:#9ebec1;font-size:12px;line-height:1.8}#o24Bindings button{background:#264750;border:1px solid #517982;color:#daf4f1;border-radius:6px;padding:6px 12px;font:inherit;cursor:pointer}#o24Bindings button:focus-visible{outline:2px solid #d2f3dd;outline-offset:2px}#o24Bindings table{width:100%;border-collapse:collapse;font-size:12px}#o24Bindings th,#o24Bindings td{text-align:left;border-bottom:1px solid #41646c66;padding:7px 4px}#o24Bindings th{color:#9ccac7}#o24Bindings .o24-bind-scroll{max-height:54vh;overflow:auto}#o24Bindings footer{border-top:1px solid #44616e;padding-top:13px}
+#o24Touch{display:flex;justify-content:center;gap:8px;padding:10px;background:#122c35}#o24Touch button{min-width:44px;min-height:38px;position:static;touch-action:none;background:#204650;border:1px solid #5c898e;border-radius:7px;color:#c5e8e5;font:11px system-ui}
+body:not(.o24-ori) #o24Touch{display:none}#o24Touch button.pressed{background:#507e79}
+@media(pointer:fine){#o24Touch{display:none}}
+@media(max-width:760px){body.o24-ori .overlay.choosing .overlay-box{padding:14px 12px!important;border-radius:12px}body.o24-ori #heroPicker [data-hero="ori"]{min-height:103px!important;min-width:118px}body.o24-ori #heroPicker [data-hero="ori"] .o24-portrait{width:44px!important;height:55px!important}#o24Touch{gap:6px}#o24Bindings{padding:15px}#o24Bindings button{padding:6px}#o24Bindings td{font-size:10px}}
+
+body.o24-ori #o24BindingsButton{padding:10px 14px;background:#24434e;border:1px solid #517681;border-radius:7px;color:#d2eceb;font:inherit;cursor:pointer}body.o24-ori #o24BindingsButton:hover{background:#345963}body.o24-ori .overlay:not(.choosing) .overlay-box{border:1px solid #79afa9;border-radius:12px;background:linear-gradient(150deg,#102932f5,#091621fa);box-shadow:0 0 40px #051820aa}
+
+/* Resource controls outside the viewport; no extra bars obscuring the level. */
+#o25Resources{margin:12px 0;background:#102630;border:1px solid #345965;border-radius:9px;color:#bedadb;font:12px/1.75 system-ui,sans-serif}
+#o25Resources[hidden]{display:none!important}#o25Resources>summary{padding:11px 13px;cursor:pointer;list-style-position:inside;color:#d7e9df}
+#o25Summary{display:block;font-size:10px;letter-spacing:.02em;color:#90b9b7;margin-left:14px;line-height:1.6}
+.o25-resource-inner{padding:0 13px 13px}.o25-resource-inner p{font-size:11px;line-height:1.8;color:#9db6bd;margin:8px 0}
+.o25-look{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+.o25-look select{font:inherit;border:1px solid #4b6e77;background:#183843;color:#d5ebe4;border-radius:5px;padding:5px;max-width:65%}
+.o25-resource-row{display:flex;justify-content:space-between;gap:8px;border-bottom:1px solid #29485455;padding:5px 0;font-size:10px}
+.o25-resource-row>span:last-child{color:#9cbbb2;text-align:right}#o25RetryAssets{margin-top:12px;padding:7px 11px;color:#d5ede5;background:#214550;border:1px solid #4a7882;border-radius:5px;font:inherit}
+#o25RetryAssets:disabled{opacity:.55;cursor:default}.o25-resource-inner .o25-note{font-size:10px;color:#91a6ae}
+body.o25-public #heroPicker [data-hero=ori]{background:radial-gradient(ellipse at 50% 45%,#32717b3b,#102935);box-shadow:inset 0 0 22px #64b2bd10}
+body.o25-public #heroPicker [data-hero=ori] .o24-portrait{image-rendering:pixelated!important;width:82px!important;height:102px!important}
+body.o25-public .screen-shell{border-color:#628086;box-shadow:0 20px 70px #0009,0 0 30px #7aab9f10}
+@media(max-width:760px){#o25Summary{font-size:10px}body.o25-public #heroPicker [data-hero=ori] .o24-portrait{width:52px!important;height:65px!important}.o25-resource-row{flex-wrap:wrap;gap:0}}
+
+.o27-audio{border-top:1px solid #42606970;margin-top:14px;padding-top:12px}
+#o27MusicStatus{white-space:pre-line;color:#d6dcc0;font-size:11px;min-height:34px}
+.o27-audio select{max-width:65%;width:fit-content;font-size:10px}
+.o27-audio a{color:#bfdacd;text-underline-offset:3px}
+#o27MusicRetry{font:inherit;padding:6px 10px;background:#253d41;border:1px solid #637c70;border-radius:5px;color:#d7e7d6}
+@media(max-width:420px){.o27-audio .o25-look{display:block}.o27-audio select{max-width:100%;margin-top:4px}}

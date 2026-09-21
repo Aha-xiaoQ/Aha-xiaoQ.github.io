@@ -1,0 +1,8 @@
+/* Keep responsive R33 controls; only Sonic's classic route gets this frame. */
+.s34-classic .screen-shell{background:#0a0a0d;border-color:#55515c}
+.s34-classic .stage{background:#000}
+.s34-classic #c23Options label:has(#c23Practice),.s34-classic #c23Options>p{display:none}
+.s34-classic .screen-top{color:#b7bdcf}
+.s34-classic .overlay-box{border-color:#9bb6ee}
+.s34-classic #heroPicker [data-hero=sonic][aria-pressed=true]{border-color:#9bb6ee}
+body.c23-campaign.c23-castle.o30-final.s34-classic #overlay #heroPicker[hidden]{display:none!important}

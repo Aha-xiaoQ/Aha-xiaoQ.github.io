@@ -37,3 +37,9 @@
 运行 `npm run video:sync` 同步 README 视频表及开发页说明，再运行原有生成链。
 玩法进度改 `packages/mario-mix-worlds/content/catalog.json` 与历史 K01 进度登记；
 不要手工改生成的 chapterPlan/levelPlan、HTML 或测试记录。视频链接已填写不等于远端视频已通过播放验收。
+
+## 第四期源码工程
+
+第四期已发布 R43 的独立整理工程位于 `packages/mario-mix-episode4/`，入口 `START_HERE.md`，公开说明 `/notes/mario-mix/docs/episode-4-source/`。E04-S01 是源码整理编号，不是新游戏版本；保留第三期 M07 的 currentRelease 身份。运行 `npm run episode4:verify` 核对原版字节，`npm run episode4:pack` 更新源码下载。
+
+`src/runtime/*.part.js` 按 manifest 指定顺序编译到原共享作用域，不得当成独立 ES 模块打乱顺序；构建只写入本工程 dist，不覆盖 `games/mario-mix-4/play.html`。源包与在线玩法分别验收。

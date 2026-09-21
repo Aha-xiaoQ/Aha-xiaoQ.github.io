@@ -36,6 +36,14 @@ Detailed project records and most development guides are currently in Chinese.
 Video links are maintained in `content/site-data.js`; run `npm run video:sync` and the standard builds after updating a URL. A link is not a playback verification.
 <!-- XIAOQ:VIDEOS:END -->
 
+## Episode 4 final source
+
+[Episode 4 source guide](https://aha-xiaoq.github.io/notes/mario-mix/docs/episode-4-source/) · [R43 source ZIP](downloads/source/MarioMix_Episode4_R43_Source.zip) · [Source directory](packages/mario-mix-episode4/)
+
+The released Sonic × Ori **R43 climax-loop** game is organized independently as **E04-S01 / 0.1.0**. Its 26 ordered runtime fragments, 6 stylesheets, configuration and 260 deduplicated media assets reconstruct the original release byte for byte. This is source organization, not a new gameplay version or a migration into M07/WorldKit. The existing online game and the third-episode source stay unchanged.
+
+Run `npm run episode4:verify` and `npm run episode4:dev` from this repository; open `http://127.0.0.1:4194/play.html`. No npm dependencies need installing. The standalone ZIP has its own START_HERE, build, preview, tests, pack command and rights notices.
+
 ## Run locally
 
 Requires **Node.js 22 or later**. The website tooling has no third-party npm dependencies; `npm install` is not required.

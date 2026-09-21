@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import {includeSourceArchives} from './source-archives.mjs';
 import {planShowcase} from '../showcase/build.mjs';
 import {documentData,OUTPUT as DOCUMENT_DATA} from '../journal/documents.mjs';
 /** Creates a separate website artifact. Never copies the repository wholesale. */
@@ -63,6 +64,7 @@ export async function planPublication(root=ROOT){
  if(!mapZip||sha(mapZip)!==mapMeta.sha256||(mapMeta.bytes!==undefined&&mapZip.length!==mapMeta.bytes))errors.push({file:'downloads/source/MarioMix_Worlds_W02_Starter.zip',problem:'map-source-identity-mismatch'});
  if(mapZip){files.set('downloads/source/MarioMix_Worlds_W02_Starter.zip',mapZip);const identity=checkSourceArchive({root,get,archive:mapZip,prefix:'MarioMix_Worlds_W02/',source:cfg.mapPath,skip:['runtime/','STARTER_METADATA.json','SOURCE_SHA256SUMS.txt'],runtimeHash:mapMeta.gameSourceHash});errors.push(...identity.errors);sourceFilesVerified+=identity.verified;}
  files.set('downloads/source/MarioMix_Worlds_W02_Starter.json',json(mapMeta));
+ sourceFilesVerified+=includeSourceArchives({root,get,files,errors,registrations:cfg.sourceArchives||[]});
  // These pure planners use the projected reader and never overwrite source pages.
  const jp=await planPages(root,{reader:read,publicMode:true});for(const [p,b]of jp.pages){files.set(p,b);overlay.set(p,b);}
  const wp=await planCollections(root,{reader:read});for(const [p,b]of wp.pages){files.set(p,b);overlay.set(p,b);}

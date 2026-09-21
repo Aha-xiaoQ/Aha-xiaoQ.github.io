@@ -1,0 +1,97 @@
+
+/* Final 1-4 presentation. Scoped so chapters 1-1 / 1-2 / 1-3 retain their UI. */
+[hidden]{display:none!important}
+body.o30-final{--bg:#07141d;--panel:#10252e;--line:#2a4148;--text:#e6eee8;--muted:#95acaa;--accent:#e3d5a5;--green:#a4dfc8;background:radial-gradient(ellipse at 12% 5%,#203d41 0,transparent 45%),radial-gradient(ellipse at 85% 48%,#0e2938 0,transparent 55%),#07141d}
+.o30-final .app{max-width:1216px;padding:26px 32px 22px}
+.o30-final header{margin-bottom:25px}.o30-final .brand h1{font-size:20px;letter-spacing:4px;font-weight:650}.o30-final .brand small{color:#82a8ab;font-size:9px;letter-spacing:1.3px;margin-top:8px}
+.o30-final .mark{background:linear-gradient(145deg,#afd5c4,#578c89);color:#0c272c;border:1px solid #b3d6c366;border-radius:5px;box-shadow:inset 0 0 0 3px #20494755;font:700 22px Georgia,serif}
+.o30-final .offline{color:#b7d3c1;border-color:#49615380;background:#122d2f88;letter-spacing:1px}
+.o30-final .layout{grid-template-columns:minmax(0,800px) minmax(245px,288px);gap:24px}
+.o30-final #c23Chapters{gap:8px;margin-bottom:13px}.o30-final #c23Chapters button{background:#11252e;border:1px solid #344c53;box-shadow:none;border-radius:6px;padding:10px 12px;color:#c2d1cd;text-align:left}.o30-final #c23Chapters button[aria-selected=true],.o30-final #c23Chapters button.active{background:#23423f;border-color:#a0c9b3;box-shadow:inset 0 2px #cde7c9}.o30-final #c23Chapters span{font-size:11px;line-height:1.6;margin-top:3px}
+.o30-final .screen-shell{border-radius:8px;border:1px solid #668087;background:#0a1c25;padding:0;box-shadow:0 20px 60px #0008;overflow:hidden}
+.o30-final .screen-top{background:#112a33;padding:10px 12px;font-size:9px;letter-spacing:1.6px;border-bottom:1px solid #37555a66}
+.o30-final #stage{background:#0a1c28}.o30-final .stage canvas{image-rendering:auto}
+.o30-final .panel{padding:24px 22px 20px;border:1px solid #354d55;border-radius:8px;background:linear-gradient(145deg,#19343dce,#0d202bbf);box-shadow:0 15px 50px #0003}
+.o30-final .panel>.kicker{font:9px/1.6 ui-monospace,monospace;letter-spacing:2.1px;color:#a2c7bd;margin-bottom:16px}
+.o30-final .panel>h2{font-size:34px;line-height:1.25;font-weight:500;letter-spacing:5px;margin:0 0 17px;color:#e3eee4;font-family:KaiTi,"STKaiti","Microsoft YaHei",serif}
+.o30-final .panel>.intro{font-size:12px;line-height:1.95;margin-bottom:15px;color:#bdcec5}.o30-final #heroHelp{font-size:11px;line-height:1.9;color:#92afad;margin:12px 0 16px}
+.o30-final #o30Route{display:flex;gap:7px;align-items:center;font-size:10px;color:#829d9f;margin:17px 0 14px}.o30-final #o30Route i{width:10px;height:1px;background:#4e6b70;flex:1}.o30-final #o30Route .current{color:#e9dba7}
+.o30-final .status-card{padding:14px;margin-bottom:17px;background:#071b246e;border:1px solid #3c555a;border-radius:6px}.o30-final .state{font-size:11px;line-height:1.6;color:#c2dfc3}.o30-final .lives{font-size:14px;color:#e6cf93}
+.o30-final .progress{height:3px;margin:11px 0 10px}.o30-final .progress i{background:linear-gradient(90deg,#7dafa5,#d6dfb3)}
+.o30-final #o30SaveLine{font-size:10px;color:#81b3a4;padding-top:11px;border-top:1px solid #35515a80;margin:10px 0 0;line-height:1.7}
+.o30-final #relayMessage{font-size:11px;line-height:1.8}.o30-final #heroStatus,.o30-final #gamepadStatus{font-size:10px;line-height:1.6}
+.o30-final .buttons{gap:8px}.o30-final .secondary{border:1px solid #36545e;background:#17343f;font-size:11px;border-radius:4px;padding:10px 7px;transition:background .15s,border-color .15s}.o30-final .secondary:hover{background:#294c53;border-color:#89b2aa}
+.o30-final #o24BindingsButton{width:100%;font-size:11px;padding:10px 12px;border-radius:4px;border:1px solid #45646a;background:#17323c;color:#bdd9d2;margin-top:8px}
+.o30-final details{font-size:11px;line-height:1.8}.o30-final .panel details{margin-top:12px}.o30-final details summary{padding:9px 0;cursor:pointer;color:#c7d9ce}.o30-final details p{color:#a4bdb7;line-height:1.9}
+.o30-final #o25Resources{padding:0 10px;border-radius:5px;border-color:#37555c;margin-top:10px;background:#102c3666}.o30-final #o25Summary{font-size:9px;color:#7fa7a7;letter-spacing:0}
+.o30-final #o25Progress{display:none}.o30-final #o25RetryAssets{font-size:11px}.o30-final .o30-online{display:flex;align-items:center;gap:8px;font-size:11px;margin:8px 0 12px;color:#bed7c9}
+.o30-final select{max-width:100%;background:#102732;color:#c5ddcf;border:1px solid #45636b;border-radius:3px;padding:6px;font-size:10px}
+.o30-final #o30SavePanel{border-top:1px solid #36505a}.o30-final #o30SaveBadge{float:right;color:#8cb6a5;font-size:10px;font-weight:400}
+.o30-final .o30-save-actions{display:flex;gap:8px}.o30-final .o30-save-actions button{flex:1;border:1px solid #587570;background:#17383f;color:#d5e4d4;font-size:11px;border-radius:4px;padding:8px 4px}.o30-final button:disabled{opacity:.45;cursor:default}
+.o30-final .o30-fine{font-size:10px!important;color:#87a2a3!important}.o30-final button:focus-visible,.o30-final summary:focus-visible{outline:2px solid #e7dfa7;outline-offset:3px}
+.o30-final #o30Hint{display:flex;gap:10px;align-items:center;padding:13px 4px 3px;color:#bdd9d0;font-size:11px;line-height:1.8;min-height:44px}.o30-final .o30-hint-icon{font-size:18px;color:#e5dba9;flex:none}
+.o30-final .tagline{border-top:1px solid #2b454b88;margin-top:9px;padding-top:10px;font-size:10px;color:#769a9c}.o30-final .tagline span:last-child{font-family:inherit;color:#89a6a5;font-size:10px}
+.o30-final .footer{margin-top:26px;color:#78989b;font-size:10px}.o30-final a{color:#b6cfc2;text-underline-offset:4px}.o30-final .source-note{font-size:10px;line-height:1.8;color:#78989b}
+.o30-final .overlay{background:linear-gradient(180deg,#06142030,#06142199);padding:24px}
+.o30-final .overlay-box{position:relative;max-width:94%;width:430px;padding:28px 28px 24px;border:1px solid #97bab088;border-radius:8px;background:linear-gradient(135deg,#102934f5,#081b27f5);box-shadow:0 25px 80px #0008,inset 0 0 70px #6ba79e0c;text-align:center;color:#dcebe1}
+.o30-final .overlay-box:before{content:'✦';display:block;color:#d9d7a7;font-size:26px;line-height:1;margin:0 0 16px;text-shadow:0 0 25px #b9e4cf66}
+.o30-final .overlay .eyebrow{font:9px/1.7 ui-monospace,monospace;letter-spacing:2.2px;color:#9cbbb1}
+.o30-final .overlay h2{font:500 clamp(24px,3vw,42px)/1.35 KaiTi,"STKaiti","Microsoft YaHei",serif;letter-spacing:4px;color:#eaf3e1;text-shadow:none;margin:14px 0 12px}
+.o30-final .overlay p{white-space:pre-line;font-size:12px;line-height:1.95;color:#a6c3bb;margin:10px auto 17px;max-width:340px}
+.o30-final #heroPicker{margin:12px auto 18px;max-width:250px}.o30-final #heroPicker [data-hero=ori]{max-width:180px;min-height:64px;border:1px solid #4f7979;border-radius:6px;background:#193740aa;padding:8px 16px}.o30-final #heroPicker .o24-portrait{width:40px;height:50px}.o30-final #heroPicker strong{font-size:15px;color:#e3ead7}.o30-final #heroPicker small{font-size:10px;color:#a8c6bc}
+.o30-final .primary{border:1px solid #dae4c1;border-radius:4px;background:#d7dfbc;color:#183138;font-size:13px;font-weight:600;box-shadow:0 3px #688779;padding:11px 20px;letter-spacing:1px;transition:filter .15s}.o30-final .primary:hover{filter:brightness(1.1)}
+.o30-final #o30Continue{display:block;margin:0 auto 14px;min-width:190px}.o30-final #o30Continue:not([hidden])~#mainAction{background:transparent;color:#c3d7cc;box-shadow:none;border-color:#5a7a78;font-size:11px;padding:8px 14px}
+.o30-final .overlay-hint{font:10px/1.8 system-ui,sans-serif!important;letter-spacing:0!important;color:#7d9fa4!important;margin:17px auto 0!important}
+.o30-final #stageCharacters{font-size:9px;opacity:.7;top:10px;right:7px}
+.o30-final #o24Touch{background:#102a35;padding:9px;gap:8px}.o30-final #o24Touch button{border:1px solid #577b7e;color:#d4e5cf;background:#21434c;font-size:11px;border-radius:6px}
+@media(min-width:1300px){.o30-final .app{max-width:1260px}.o30-final .layout{grid-template-columns:minmax(0,828px) 290px;gap:28px}}
+@media(max-width:1000px){.o30-final .app{padding:20px}.o30-final .layout{grid-template-columns:minmax(0,1fr) 246px;gap:18px}.o30-final .panel{padding:18px 16px}.o30-final .panel>h2{font-size:29px}.o30-final .screen-top{font-size:8px;letter-spacing:1px}.o30-final .overlay-box{padding:20px 18px;max-width:94%}}
+@media(max-width:760px){.o30-final .app{max-width:600px;padding:16px 12px}.o30-final .layout{display:block}.o30-final header{margin-bottom:18px}.o30-final .brand h1{font-size:16px;letter-spacing:2px}.o30-final .brand small{font-size:8px}.o30-final .offline{font-size:8px;padding:7px 9px}.o30-final #c23Chapters button{padding:8px}.o30-final #c23Chapters span{font-size:9px}.o30-final .panel{margin-top:18px;padding:16px}.o30-final .panel>.kicker,.o30-final .panel>h2,.o30-final .panel>.intro,.o30-final #heroHelp{display:none}.o30-final #o30Route{margin:0 0 13px;max-width:320px}.o30-final .buttons{grid-template-columns:repeat(2,1fr)}.o30-final #o24BindingsButton{max-width:240px}.o30-final .screen-top{padding:8px;font-size:7px}.o30-final .overlay{padding:12px}.o30-final .overlay-box{padding:16px 18px;max-width:94%}.o30-final .overlay-box:before{font-size:20px;margin-bottom:9px}.o30-final .overlay h2{font-size:31px;margin:8px 0;letter-spacing:3px}.o30-final .overlay p{font-size:11px;margin:8px auto 12px}.o30-final #heroPicker{margin:9px auto 14px}.o30-final #heroPicker [data-hero=ori]{padding:5px 12px;min-height:54px}.o30-final #heroPicker .o24-portrait{width:33px;height:40px}.o30-final .overlay-hint{font-size:9px!important;margin-top:13px!important}.o30-final .primary{padding:10px 15px;font-size:12px}.o30-final #o30Hint{font-size:10px;padding-top:10px}.o30-final .footer{flex-wrap:wrap;gap:8px 16px}}
+@media(max-width:380px){.o30-final .overlay-box{padding:10px 12px}.o30-final .overlay-box:before{display:none}.o30-final .overlay h2{font-size:26px}.o30-final #heroPicker{margin:6px auto 10px}.o30-final .overlay-hint{margin-top:9px!important}.o30-final .brand small{letter-spacing:0}}
+@media(max-height:540px) and (orientation:landscape){.o30-final .app{max-width:none;padding:7px 12px}.o30-final header,.o30-final .panel,.o30-final .tagline,.o30-final .footer,.o30-final .screen-top,.o30-final #o30Hint,.o30-final #c23Chapters{display:none}.o30-final .layout{display:flex;justify-content:center}.o30-final .screen-shell{width:min(480px,calc((100dvh - 18px)*16/15))}.o30-final .overlay-box{width:90%;padding:12px 15px}.o30-final .overlay-box:before{display:none}.o30-final .overlay h2{font-size:26px}.o30-final .overlay p{font-size:10px;line-height:1.6;margin:8px auto}.o30-final #heroPicker{margin:7px auto}.o30-final #heroPicker [data-hero=ori]{padding:3px 10px;min-height:40px}.o30-final #heroPicker .o24-portrait{width:26px;height:33px}.o30-final .primary{padding:8px 13px}.o30-final .overlay-hint{margin-top:10px!important}.o30-final #o24Touch{position:fixed;right:10px;top:12px;max-width:115px;background:none;z-index:5;padding:0;flex-wrap:wrap}.o30-final #o24Touch button{width:48px;height:36px}}
+@media(prefers-reduced-motion:reduce){.o30-final *, .o30-final *:before{transition:none!important;scroll-behavior:auto!important}}
+/* Resolve legacy !important rules, rather than leaving the release skin half-applied. */
+body.o30-final .panel>h2{font-size:34px;line-height:1.3;margin:0 0 16px}
+body.o30-final .overlay.choosing .overlay-box{width:430px;max-width:94%;padding:26px 28px 23px!important;border-radius:8px}
+body.o30-final #heroPicker{margin:12px auto 16px!important}
+body.o30-final #heroPicker [data-hero=ori]{display:grid!important;grid-template-columns:50px auto;grid-template-rows:24px 23px;gap:0 13px;min-height:65px!important;min-width:175px;max-width:210px;padding:9px 16px!important;border-radius:5px;text-align:left}
+body.o30-final #heroPicker [data-hero=ori] .o24-portrait{grid-row:1/3;width:42px!important;height:52px!important;align-self:center}
+body.o30-final #heroPicker [data-hero=ori] strong{font-size:14px;align-self:end;justify-self:start}
+body.o30-final #heroPicker [data-hero=ori] small{font-size:9px;justify-self:start;align-self:start}
+body.o30-final #o24BindingsButton{font:11px/1.6 system-ui,sans-serif;padding:10px 12px;border-radius:4px}
+body.o30-final #o30Continue:not([hidden])~#mainAction{background:transparent;color:#c3d7cc;box-shadow:none;border-color:#5a7a78;font-size:11px;padding:8px 14px}
+body.o30-final .touchkey.up{display:none}
+@media(max-width:760px),(pointer:coarse){
+ body.o30-final #o24Touch{display:flex;gap:5px;padding:8px 6px}body.o30-final #o24Touch button{flex:1;max-width:70px;height:39px;min-width:40px;font-size:10px}
+ body.o30-final .pad{display:grid;grid-template-columns:repeat(3,42px);grid-template-rows:30px 43px;gap:5px}
+ body.o30-final .pad .touchkey{width:42px;height:43px;border-radius:7px;background:#204049;border:1px solid #598181;color:#cfe7d4;box-shadow:0 3px #0b2229;font-size:16px}
+ body.o30-final .pad [data-action=left]{grid-column:1;grid-row:2}body.o30-final .pad [data-action=down]{grid-column:2;grid-row:2}body.o30-final .pad [data-action=right]{grid-column:3;grid-row:2}
+ body.o30-final .pad .touchkey.up{display:block;grid-column:2;grid-row:1;height:30px;font-size:13px}
+ body.o30-final .touchkey.run{background:#25434b;border-color:#6d8473;color:#e6d7aa;font-size:10px;line-height:1.4;width:49px;height:49px}
+ body.o30-final .touchkey.jump{background:#afd4be;border-color:#dfedcf;color:#193b3e;width:57px;height:57px}
+}
+@media(max-width:760px){
+ body.o30-final .panel>h2,body.o30-final #heroHelp{display:none}
+ body.o30-final .overlay.choosing .overlay-box{padding:14px 16px!important}
+ body.o30-final #heroPicker{margin:8px auto 11px!important}
+ body.o30-final #heroPicker [data-hero=ori]{min-height:52px!important;grid-template-columns:36px auto;grid-template-rows:20px 18px;padding:6px 13px!important;min-width:156px}
+ body.o30-final #heroPicker [data-hero=ori] .o24-portrait{width:31px!important;height:39px!important}
+ body.o30-final .overlay.choosing #overlayHint{display:block!important;font-size:9px!important;line-height:1.6!important;max-width:240px;margin:10px auto 0!important}
+ body.o30-final .overlay-box:before{display:none}
+}
+@media(max-width:360px){body.o30-final .overlay.choosing .overlay-box{padding:10px 12px!important}body.o30-final #o30Continue{margin-bottom:8px}body.o30-final .overlay.choosing #overlayHint{font-size:8px!important;margin-top:7px!important}}
+@media(max-height:540px) and (orientation:landscape){
+ body.o30-final.c23-campaign .play-column{display:flex;width:100%;justify-content:center;align-items:center;gap:0}
+ body.o30-final.c23-campaign.c23-castle .screen-shell{width:calc((100dvh - 18px)*16/15)!important;max-width:calc(100vw - 300px)!important;flex:none;margin:0;padding:0}
+ body.o30-final.c23-campaign .app{padding:8px 10px;max-width:none}
+ body.o30-final.c23-campaign #c23Chapters,body.o30-final .screen-top{display:none}
+ body.o30-final .overlay.choosing .overlay-box{width:94%;padding:12px 14px!important}
+ body.o30-final #heroPicker{margin:7px auto 10px!important}
+ body.o30-final #heroPicker [data-hero=ori]{min-height:48px!important;padding:4px 12px!important;grid-template-columns:34px auto;grid-template-rows:20px 17px}
+ body.o30-final #heroPicker [data-hero=ori] .o24-portrait{width:29px!important;height:37px!important}
+ body.o30-final .overlay.choosing #overlayText{display:none!important}body.o30-final .overlay.choosing #overlayHint{display:block!important;max-width:220px;line-height:1.5!important;font-size:8px!important;margin-top:8px!important}
+ body.o30-final #o24Touch{position:fixed;top:12px;right:10px;display:flex;flex-wrap:wrap;width:112px;padding:0;background:transparent;gap:6px}
+ body.o30-final #o24Touch button{flex:0 0 50px;height:35px;min-height:35px;min-width:40px}
+ body.o30-final .touchbar .pad{position:fixed;left:12px;bottom:24px;width:136px;display:grid;grid-template-columns:repeat(3,42px);grid-template-rows:30px 43px}
+ body.o30-final .touchbar .actionpad{position:fixed;right:14px;bottom:20px;display:flex;flex-direction:column-reverse;gap:10px}
+}

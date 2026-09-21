@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<!-- R35: centered classic ending text; Amy rescue sprite; visible ring-block feedback; floor-anchored Junior cart. R34 gameplay maps and modal layout preserved. -->
+<!-- R34: Sonic classic SMB 1-4 map and renderer; independent horizontal camera/ending/save namespace. Ori R33 route retained. All upstream asset and license notices retained. -->
+<!-- R33: Ori + Sonic native adapter; exact R32 map retained. ModGen sprites via coderman64/motobug-engine; characters/IP belong to their owners. Embedded Sonic music is project-original fallback, not SEGA audio. New Sonic module is custom castle adaptation, not an original-engine emulator. -->
+<!-- R32: Bash timing/input fixes; no opening rear-lava chase. R31 map and assets retained. -->
+<!-- R31: canonical-climb revision. Fewer auxiliary ledges, stronger reliance on the rotated original castle route, and a project-original parody elder guide in place of the prior keeper. -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#111c24">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' data: blob: https://raw.githubusercontent.com/sullerandras/terraria-hd-textures/93960b7c8226c57a10dc2474d73d4b604b401c40/ https://cdn.jsdelivr.net/gh/sullerandras/terraria-hd-textures@93960b7c8226c57a10dc2474d73d4b604b401c40/; connect-src 'self' https://raw.githubusercontent.com/jordanbuchman/steamoji/1d23444ab22f0a83dcdd4a8b3dc1dca24da41803/ https://cdn.jsdelivr.net/gh/jordanbuchman/steamoji@1d23444ab22f0a83dcdd4a8b3dc1dca24da41803/ https://api.github.com/repos/jordanbuchman/steamoji/git/blobs/ https://raw.githubusercontent.com/Purevdorj-Batgerel/Canvas-Ori-and-the-blind-forest/d2f642c16449cf2631e04ddc916c7f9899bb5af0/ https://cdn.jsdelivr.net/gh/Purevdorj-Batgerel/Canvas-Ori-and-the-blind-forest@d2f642c16449cf2631e04ddc916c7f9899bb5af0/ https://api.github.com/repos/Purevdorj-Batgerel/Canvas-Ori-and-the-blind-forest/git/blobs/ https://raw.githubusercontent.com/Ilemni/OriMod/2043b81139cca3515c4458686ad39dc3cda09d7f/ https://cdn.jsdelivr.net/gh/Ilemni/OriMod@2043b81139cca3515c4458686ad39dc3cda09d7f/ https://api.github.com/repos/Ilemni/OriMod/git/blobs/ https://raw.githubusercontent.com/umaim/Mario/980c275358704a49f868567aeec5bdfb347c4781/ https://api.github.com/repos/umaim/Mario/git/blobs/ https://raw.githubusercontent.com/ObscuriaLithium/maestro-terraria/f8c17b366a4e0f978e52208f28a2fef4205acad1/ https://cdn.jsdelivr.net/gh/ObscuriaLithium/maestro-terraria@f8c17b366a4e0f978e52208f28a2fef4205acad1/ https://raw.githubusercontent.com/FergusGriggs/Fegaria-Remastered/6adefebfe2e6a71aed05f289683474d88ce5d9f3/ https://cdn.jsdelivr.net/gh/FergusGriggs/Fegaria-Remastered@6adefebfe2e6a71aed05f289683474d88ce5d9f3/; font-src 'self'; media-src 'self' blob: data: https://music.163.com/ https://*.music.126.net/ https://raw.githubusercontent.com/ObscuriaLithium/maestro-terraria/f8c17b366a4e0f978e52208f28a2fef4205acad1/ https://cdn.jsdelivr.net/gh/ObscuriaLithium/maestro-terraria@f8c17b366a4e0f978e52208f28a2fef4205acad1/ https://raw.githubusercontent.com/FergusGriggs/Fegaria-Remastered/6adefebfe2e6a71aed05f289683474d88ce5d9f3/ https://cdn.jsdelivr.net/gh/FergusGriggs/Fegaria-Remastered@6adefebfe2e6a71aed05f289683474d88ce5d9f3/; object-src 'none'; base-uri 'none'">
+<title>混合马里奥 1-4 · R43 银之树高潮循环版</title>
+<style>@@E04:file:src/styles/00-base.css@@
+</style>
+<!-- Upstream code license from umaim/Mario/LICENSE.
+MIT License
+
+Copyright (c) 2018 Cloud
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+-->
+<style>@@E04:file:src/styles/01-campaign.css@@</style><style id="ori30-style">@@E04:file:src/styles/02-ori.css@@
+</style>
+<style id="sonic33-style">@@E04:file:src/styles/03-sonic.css@@</style>
+<style id="sonic34-style">@@E04:file:src/styles/04-sonic-classic.css@@</style>
+<style id="ginso41-style">@@E04:file:src/styles/05-ginso.css@@</style>
+</head>
+<body data-mix-build="R43-climax-loop">
+<main class="app">
+<header><div class="brand"><div class="mark">M</div><div><h1>混合马里奥</h1><small>RESCUE RELAY / WORLD 1-2</small></div></div><span class="offline">地下援军 · 定稿 1.0</span></header>
+<div class="layout">
+<section class="play-column">
+<div class="screen-shell"><div class="screen-top"><span>02 / UNDERGROUND REINFORCEMENTS</span><span>256 × 240 · 60 HZ</span></div><div class="stage" id="stage">
+<canvas id="game" width="256" height="240" tabindex="0" aria-label="1-1 平台跳跃游戏：方向键移动，空格跳跃，Shift 加速"></canvas>
+<div class="stage-tools"><button id="stageCharacters" aria-label="重新选择角色">重选角色 C / Select</button></div><div id="upgradeNotice" class="upgrade-notice" hidden></div><div id="overlay" class="overlay"><div class="overlay-box"><div class="eyebrow" id="overlayLabel">WORLD 1 — STAGE 1</div><h2 id="overlayTitle">WORLD<br>1 — 1</h2><p id="overlayText">选择角色，重返经典关卡。<br>原版 1-1，三种角色玩法。</p><div id="heroPicker" class="hero-picker"><button class="secondary" data-hero="mario" aria-pressed="true"><canvas width="64" height="80" data-portrait="mario"></canvas><strong>马里奥</strong><small>蘑菇 → 火焰花</small></button><button class="secondary" data-hero="bill" aria-pressed="false"><canvas width="64" height="80" data-portrait="bill"></canvas><strong>比尔</strong><small>随机 M / S / F / L</small></button><button class="secondary" data-hero="megaman" aria-pressed="false"><canvas width="64" height="80" data-portrait="megaman"></canvas><strong>洛克人</strong><small>强化炮 → 破防炮</small></button></div><button class="primary" id="mainAction">开始冒险 →</button><button id="overlayCharacters" class="overlay-return" hidden>重新选择角色</button><p class="overlay-hint" id="overlayHint">ENTER / SPACE TO START</p></div></div>
+</div></div>
+<div class="touchbar" aria-label="触摸操作"><div id="ninjaTouch"><button class="touchkey" data-action="up" aria-label="向上">▲</button><button class="touchkey" data-action="special" aria-label="忍术">忍术</button></div><div class="pad"><button class="touchkey" data-action="left" aria-label="左移">◀</button><button class="touchkey" data-action="right" aria-label="右移">▶</button><button class="touchkey down" data-action="down" aria-label="下蹲进入管道">▼</button></div><div class="actionpad"><button class="touchkey run" data-action="run" aria-label="加速或发射">加速<br>发射</button><button class="touchkey jump" data-action="jump" aria-label="跳跃">跳跃</button></div></div>
+<div id="relayMessage">准备出发 · 先选角色，或启动双角色接力。</div><p class="tagline"><span>忍龙横版 · 坦克大战俯视 · 双角色接力</span><span>CLASSIC CROSSOVER</span></p>
+</section>
+<aside class="panel">
+<div class="kicker">SAME WORLD. DIFFERENT RULES.</div><h2>同一张地图。<br>两种解法。</h2><p class="intro">忍龙攀墙潜入，坦克破砖接力。<br>以 1-2 原始砖群与管道为底，<br>让不同角色带来各自的玩法。</p>
+<p id="heroHelp" class="intro"></p><p id="heroStatus" class="state"></p><p id="gamepadStatus" class="intro"></p><button class="secondary" id="charactersButton">选择角色 / 手柄 Select</button><div class="status-card"><div class="status-top"><span id="stateLabel" class="state">准备出发</span><span class="lives" id="livesLabel">● ● ●</span></div><div class="progress"><i id="progressFill"></i></div><div class="status-bottom"><span id="distanceLabel">WORLD 1-1</span><span id="bestLabel">BEST 000000</span></div></div>
+<div class="controls-title"><span>操作指南</span><span>KEYBOARD</span></div>
+<div class="control-row"><span id="moveLabel">左右移动</span><span><kbd>←</kbd> <kbd>→</kbd> / <kbd>A</kbd> <kbd>D</kbd></span></div>
+<div class="control-row"><span id="jumpLabel">跳跃 / 按住高跳</span><span><kbd>SPACE</kbd> / <kbd>K</kbd></span></div>
+<div class="control-row"><span id="actionLabel">加速 / 火球</span><span><kbd>SHIFT</kbd> / <kbd>J</kbd></span></div>
+<div class="control-row"><span id="downLabel">下蹲 / 进入管道</span><span><kbd>↓</kbd> / <kbd>S</kbd></span></div>
+<div class="control-row"><span>暂停 / 重新开始</span><span><kbd>P</kbd> / <kbd>R</kbd></span></div>
+<hr><div class="buttons"><button class="secondary" id="pauseButton">暂停 P</button><button class="secondary" id="restartButton">重新开始 R</button><button class="secondary" id="soundButton">声音：开</button><button class="secondary" id="fullButton">全屏 F</button></div>
+<section class="audio-panel" aria-label="音频准备与音量"><div class="audio-head"><strong>角色音乐与音效</strong><small id="audioBadge">AUDIO 0/26</small></div><p id="audioStatus" role="status">音乐与音效随项目提供，开始游戏后启用。</p><label class="audio-level">音乐<input id="musicVolume" type="range" min="0" max="100" value="48" aria-label="音乐音量"><output id="musicVolumeValue">48%</output></label><label class="audio-level">音效<input id="effectsVolume" type="range" min="0" max="100" value="72" aria-label="音效音量"><output id="effectsVolumeValue">72%</output></label><div class="audio-actions"><button id="prepareAudio" class="secondary">加载 / 重试音频</button></div></section>
+<p class="tip"><strong>一个小提示</strong><br>忍龙：贴墙后按 ↑，空格蹬墙。<br>坦克：星星升级后火力更强。</p>
+</aside></div>
+<footer class="footer"><span>非官方同人作品 · 免费试玩 · 仅供娱乐</span><a href="https://aha-xiaoq.github.io/games/mario-mix/index.html">游戏介绍与素材说明</a><a href="https://aha-xiaoq.github.io/games/">返回游戏架</a></footer>
+<details class="source-note"><summary>素材来源与权利说明</summary><p>R43 上升段配乐：Gareth Coker — Restoring the Light, Facing the Dark。使用用户上传录音的 00:30–01:18 片段，48 秒循环，末尾 100 毫秒接缝混合，160 kbps 立体声 MP3。录音权利归原权利人，代码许可不涵盖音乐素材。</p><p>马里奥、魂斗罗、洛克人的角色、图像、音乐与音效归各自权利人所有。本作非官方同人作品，未获原作官方认可；代码许可不代表原作素材获授权。</p><p>素材与代码参考：<a href="https://github.com/umaim/Mario">FullScreenMario / umaim/Mario</a>、<a href="https://github.com/reruns/mario">reruns/mario</a>、<a href="https://github.com/JayPavlina/super-mario-bros-crossover">Super Mario Bros. Crossover</a>、<a href="https://github.com/vermiceli/nes-contra-us">nes-contra-us</a>、<a href="https://github.com/amrzewail/contra-multiplayer">contra-multiplayer</a>、<a href="https://github.com/JohnLavender474/Megaman-Maverick">Megaman-Maverick</a>。比尔与洛克人音乐、音效的整理来源包括 Zophar 的 <a href="https://www.zophar.net/music/nintendo-nes-nsf/contra">Contra</a> 与 <a href="https://www.zophar.net/music/nintendo-nes-nsf/mega-man-2">Mega Man 2</a> 音序档案。</p><p>本预览使用系统字体，不附字体文件。如有权利异议，请联系 <a href="mailto:hfutqdm@163.com">hfutqdm@163.com</a>；我们将及时核查并移除相关内容或下架试玩。</p></details>
+<details class="source-note"><summary>1-2 适配与素材说明</summary><p>以 FullScreenMario 1-2 数据为底。忍者为横版，坦克为俯视适配：砖群位置共用，内部砖群位置不变，上下边界以河流呈现；草丛与冰面只覆盖原有空地。俯视版不宣称像素级原版玩法。</p><p>隼龙精灵来源：baovit72/Ninja-Gaiden-NES；坦克精灵来源：newagebegins/BattleCity；Boss 精灵来自 MMSound 的重制项目，并非原 NES 逐像素导出。仓库代码许可不等于原作资产另行授权。已接入对应项目敌人、道具与地形图像。本版坦克图像、18 项声音来自用户上传的《90坦克大战素材.zip》；素材包并非 ROM，未确认它全部是 NES 原始提取。坦克保留上传包开场、战斗与最终奖励声音；地下计分完成短音按公开音序重新合成，不是原版录音。不加额外循环配乐；忍龙配乐及部分音效仍为合成。非官方同人原型。</p></details></main><div id="toast" role="status"></div>
+<noscript><div class="fatal">此游戏需要启用浏览器 JavaScript。请使用支持 Canvas 的浏览器打开此 HTML 文件。</div></noscript>
+<script id="audio-manifest" type="application/json">@@E04:file:src/data/audio-manifest.json@@</script>
+<script id="audio-inline" type="application/json">@@E04:file:src/data/audio-inline.template.json@@</script>
+<script>@@E04:file:src/data/pickups.js@@</script><script id="ginso41-audio" type="application/json">@@E04:file:src/data/ginso-r43.template.json@@</script>
+<script>@@E04:file:src/runtime/main.template.js@@</script>
+</body></html>
