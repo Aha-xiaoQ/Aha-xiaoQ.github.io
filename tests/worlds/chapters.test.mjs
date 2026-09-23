@@ -1,3 +1,4 @@
+import {assertNativeCaches,assertRuntimeRevision,cacheTag} from '../helpers/cache-revision.mjs';
 import test from'node:test';import assert from'node:assert/strict';import fs from'node:fs';import path from'node:path';import{fileURLToPath}from'node:url';
 import{chapterSummary,chapterAtlas,validateChapterPlan}from'../../assets/chapters/view.mjs';
 import{projectSnapshot,initializeProject,planWorldSite,sync}from'../../scripts/worlds/sync.mjs';
@@ -23,4 +24,4 @@ test('initializing project preserves game release and task source',()=>{const p=
 test('project update may be newer than current game release',()=>{const p=project(),release=structuredClone(p.currentRelease);p.updates.push({id:'synthetic-content-check',kind:'content',date:'2099-01-01',revision:999,title:'Content update example',summary:'Synthetic fixture only',status:'local-review'});validateProject(p);assert.match(updateRows([p],{limit:1}),/Content update example/);assert.deepEqual(p.currentRelease,release);});
 test('public atlas content is sourced from canonical catalog',async()=>{const plan=await planWorldSite(root);const p=JSON.parse(plan.files.get('content/development/projects/mario-mix.json'));assert.deepEqual(p.chapterPlan,get());assert.equal(plan.files.size,137);});
 test('sync check is idempotent and does not write',async()=>{assert.equal((await sync(root,{check:true})).changed,0);});
-test('current pages use document code but retain compact icons',()=>{const read=n=>fs.readFileSync(path.join(root,n),'utf8');assert.match(read('assets/journal/runtime.mjs'),/render\.mjs\?v=align-r27/);assert.match(read('notes/index.html'),/data-chapters-css/);assert.match(read('notes/index.html'),/controller\.svg\?v=workshop-r12/);});
+test('current pages use document code but retain compact icons',()=>{const read=n=>fs.readFileSync(path.join(root,n),'utf8');assertRuntimeRevision();assert.match(read('notes/index.html'),/data-chapters-css/);assert.match(read('notes/index.html'),/controller\.svg\?v=workshop-r12/);});

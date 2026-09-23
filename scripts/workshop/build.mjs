@@ -18,7 +18,7 @@ export function versionAssets(html){
   if(/^(?:[a-z][a-z0-9+.-]*:|\/\/)/i.test(url))return all;
   const normalized=url.replace(/^(?:\.\.\/)+/,'').replace(/^\//,'');
   const rel=normalized.split(/[?#]/)[0];
-  if(!['content/site-data.js','assets/site-brand-tokens.css','assets/workshop-cards.js','assets/ui/site-actions.js','assets/ui/site-actions.css','assets/launch/journey.js','assets/journal/model.mjs'].includes(rel))return all;
+  if(!['content/site-data.js','assets/site-brand-tokens.css','assets/workshop-cards.js','assets/ui/site-actions.js','assets/ui/site-actions.css','assets/launch/journey.js','assets/journal/model.mjs','assets/site-router.js','assets/journal/journal.css'].includes(rel))return all;
   const bytes=read(ROOT,rel);if(!bytes)return all;
   const base=url.split(/[?#]/)[0];
   return lead+base+'?v='+hash(bytes).slice(0,16)+quote;

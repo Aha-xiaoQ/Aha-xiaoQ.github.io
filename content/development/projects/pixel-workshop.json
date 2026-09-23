@@ -4,14 +4,14 @@
   "title": "作品网站",
   "category": "web",
   "visibility": "public",
-  "stage": "体验优化 · 待验收",
-  "updatedAt": "2026-09-15",
-  "summary": "把游戏、工具和制作过程放在一起。持续改善阅读、导航与协作，让新作品也能自然加入。",
-  "intro": "这里收录小Q的游戏、工具和制作记录。可以直接体验作品，也可以查看源码、了解进展或反馈问题。",
+  "stage": "持续维护",
+  "updatedAt": "2026-09-24",
+  "summary": "小Q的作品展示网站。这里集中说明网站结构、内容编辑、项目接入与发布方式。",
+  "intro": "游戏和工具在各自栏目体验；网站实现与维护资料在这里阅读。从本地启动开始，再按需要查找内容编辑或发布说明。",
   "highlights": [
-    "游戏与工具可直接体验，源码与指南各有入口。",
-    "项目分别记录任务、资料与更新，支持继续添加新作品。",
-    "欢迎反馈阅读、导航或移动端体验中的问题。"
+    "访客入口与开发资料分开组织，先找到内容，再深入实现。",
+    "各项目共用导航与视觉规范，保留独立的内容、源码与更新记录。",
+    "实验室记录提示词、模型信息与可直接运行的作品。"
   ],
   "links": [
     {
@@ -19,17 +19,21 @@
       "href": "/"
     },
     {
-      "label": "查看项目",
-      "href": "/projects/"
+      "label": "本地启动",
+      "href": "/notes/pixel-workshop/docs/start/"
     },
     {
-      "label": "源代码仓库",
+      "label": "源代码",
       "href": "https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io"
+    },
+    {
+      "label": "实验室",
+      "href": "/notes/lab/"
     }
   ],
   "participation": {
     "mode": "open",
-    "summary": "可以从阅读体验、移动端检查、链接修复或文档完善开始。界面修改先对照主站规范，涉及结构时先说明理由。",
+    "summary": "欢迎反馈链接、阅读和移动端体验问题。较大的结构或视觉调整，请先在 Issue 中说明目标与方案。",
     "issueUrl": "https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/issues/new",
     "repository": "https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io"
   },
@@ -39,106 +43,222 @@
   },
   "updates": [
     {
+      "id": "dev-center-lab",
+      "date": "2026-09-24",
+      "title": "开发资料重新分类，加入实验室",
+      "status": "released",
+      "summary": "按入门、内容维护、发布与参考组织网站资料；减少开发页首次切换的加载依赖。实验室收录鹈鹕骑行动画、原始提示词与模型信息。"
+    },
+    {
       "id": "r04-multi-project",
       "date": "2026-09-15",
-      "title": "开发日志支持多个项目",
-      "status": "local-review",
-      "summary": "栏目首页改为项目与日志入口；各项目拥有概览、任务、资料与更新页。保留旧记录，新增登记与校验工具；等待完整仓库与线上验收。"
+      "title": "开发栏目支持多个项目",
+      "status": "released",
+      "summary": "各项目分别提供概览、任务、资料与更新入口。"
     }
   ],
   "docs": [
     {
       "id": "start",
-      "title": "本地预览与验收",
-      "summary": "继续使用原启动方式，新增栏目检查命令。",
+      "title": "本地启动",
+      "summary": "从完整仓库启动网站，了解开发入口与常用命令。",
       "sections": [
         {
-          "title": "运行",
+          "title": "获取并启动",
           "paragraphs": [
-            "在网站源码根目录运行检查，然后启动本地服务。"
+            "需要 Node.js 22 或更新版本。从仓库根目录启动；网站脚本无需安装第三方 npm 依赖。"
           ],
-          "code": "npm run check\nnpm test\nnpm run test:journal\n# A：npm run dev\n# B：npm start"
+          "code": "git clone https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io.git\ncd Aha-xiaoQ.github.io\nnpm run dev"
         },
         {
-          "title": "主要验收路径",
+          "title": "访问页面",
           "paragraphs": [
-            "首页 → 开发 → 任意项目 → 任务 / 资料 / 更新 → 其他栏目。再测试直接刷新、前进后退、手机布局和原有语言切换。"
+            "在浏览器打开 http://127.0.0.1:4173/。开发栏目为 /notes/，实验室为 /notes/lab/。请使用本地 HTTP 服务，不要直接双击网站的 index.html。",
+            "端口占用时运行 npm run dev -- --port 4174。Windows 也可使用根目录的 start-dev.cmd。"
           ]
         },
         {
-          "title": "检查与发布不同",
+          "title": "选择下一步",
           "paragraphs": [
-            "自动测试通过后，仍需维护者在完整仓库检查资源与交互，并手动提交和推送。更新包不会修改远端设置。"
+            "修改文案与栏目内容，阅读“内容编辑”；添加作品，阅读“接入新项目”；准备上线，阅读“构建与发布”。"
           ]
         }
       ],
-      "sources": []
+      "sources": [
+        {
+          "label": "内容编辑",
+          "href": "/notes/pixel-workshop/docs/content/"
+        },
+        {
+          "label": "构建与发布",
+          "href": "/notes/pixel-workshop/docs/publishing/"
+        }
+      ]
+    },
+    {
+      "id": "content",
+      "title": "内容编辑",
+      "summary": "找到正确的数据源，避免在多个页面重复维护同一段说明。",
+      "sections": [
+        {
+          "title": "作品与视频",
+          "paragraphs": [
+            "作品名称、简介和视频地址维护在 content/site-data.js。保留视频状态区的生成标记，由 npm run video:sync 同步关联入口。不要在各个 HTML 中逐一修改同一个 BV 号。"
+          ]
+        },
+        {
+          "title": "项目与资料",
+          "paragraphs": [
+            "开发项目登记在 content/development/catalog.json；各项目说明维护在 content/development/projects/。先编辑来源，再生成 notes 页面。Markdown 阅读资料由 config/documents.json 登记。"
+          ]
+        },
+        {
+          "title": "实验记录",
+          "paragraphs": [
+            "实验数据位于 content/experiments/，原始作品位于 experiments/。记录完整提示词、模型名称、已知设置和原始产物；没有记录的设置标注为“未记录”，作品展示与评测结论分开说明。"
+          ]
+        },
+        {
+          "title": "生成页面",
+          "paragraphs": [
+            "生成命令同步开发页、目录和可按需读取的正文。随后生成网站其他页面。"
+          ],
+          "code": "npm run journal:build\nnpm run site:build"
+        }
+      ],
+      "sources": [
+        {
+          "label": "公开文案规范",
+          "href": "/notes/pixel-workshop/docs/writing/"
+        }
+      ]
     },
     {
       "id": "architecture",
-      "title": "栏目框架与数据边界",
-      "summary": "共享页面骨架，项目内容独立保存。",
+      "title": "网站结构",
+      "summary": "了解页面、内容与脚本的职责，按模块查找源码。",
       "sections": [
         {
-          "title": "三层结构",
+          "title": "页面与共享界面",
           "paragraphs": [
-            "全站外壳负责 Logo、六项导航、标题区、页脚和转场；开发负责项目列表与近期记录；项目详情负责自己的任务、资料和参与方式。"
+            "index.html、projects/、games/、tools/、about/ 和 notes/ 提供可直接访问的页面。assets/ 维护共享样式、交互与站内导航。原有页面地址保留。"
           ]
         },
         {
-          "title": "一个项目，一份登记",
+          "title": "内容来源",
           "paragraphs": [
-            "catalog.json 只记录项目 ID 与配置路径。项目配置提供介绍、类型、可见性、资料和状态来源。新项目使用独立状态文件；旧项目通过只读适配器展示，不迁移或覆盖原数据。"
+            "content/ 保存作品、项目与状态数据；config/ 保存资料登记和发布配置。notes/ 与搜索索引主要由脚本生成，不作为文案的首选编辑位置。"
           ]
         },
         {
-          "title": "显示不同性质的状态",
+          "title": "开发页加载",
           "paragraphs": [
-            "项目阶段描述整体进度，任务状态描述一个工作项，更新状态区分“本地待验收”和“已发布”。不把任务数做成游戏完成率。"
+            "目录与摘要在构建时合并；文章正文在打开文章时读取。导航意图预加载尊重节省流量设置，动画不会随目录页面自动启动。"
           ]
         },
         {
-          "title": "维护不是权限系统",
+          "title": "项目工程",
           "paragraphs": [
-            "维护页从项目页尾进入，浏览器草稿不等于共享数据。该网站与仓库是公开的，隐藏入口、draft 或 noindex 都不构成访问权限。"
+            "packages/ 保存游戏和工具的独立工程；games/ 保存对应介绍与试玩入口。各工程的素材、依赖和运行方式以自身说明为准。"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "字体与许可",
+          "href": "/notes/pixel-workshop/docs/font-licenses/"
+        }
+      ]
+    },
+    {
+      "id": "add-project",
+      "title": "接入新项目",
+      "summary": "登记一个作品，复用现有项目页面与导航。",
+      "sections": [
+        {
+          "title": "创建记录",
+          "paragraphs": [
+            "项目 ID 使用简短的英文小写和连字符。命令创建草稿，不会立即出现在公开目录中。"
+          ],
+          "code": "npm run journal:add -- --id my-project --title \"我的项目\" --category tool"
+        },
+        {
+          "title": "填写项目内容",
+          "paragraphs": [
+            "填写简介、可用链接、当前阶段、资料和参与方式。一个项目使用独立状态文件；不要复用其他项目的任务来源。"
+          ]
+        },
+        {
+          "title": "公开与归档",
+          "paragraphs": [
+            "资料齐全后将 visibility 设为 public，运行生成与检查命令。停止更新的项目可设为 archived，保留原链接和历史记录。"
+          ],
+          "code": "npm run journal:build\nnpm run site:build\nnpm run check"
+        }
+      ],
+      "sources": []
+    },
+    {
+      "id": "publishing",
+      "title": "构建与发布",
+      "summary": "生成页面、核对改动，再通过 GitHub 发布。",
+      "sections": [
+        {
+          "title": "生成与检查",
+          "paragraphs": [
+            "先生成页面，再执行仓库已有检查。任何失败都应在提交前解决。"
+          ],
+          "code": "npm run journal:build\nnpm run site:build\nnpm run check\nnpm test"
+        },
+        {
+          "title": "网站发布目录",
+          "paragraphs": [
+            "npm run release:prepare 生成 .local/publish，npm run release:check 核对发布产物。源码仓库与网站产物是不同目录；是否使用产物部署取决于仓库的 Pages 配置。"
+          ],
+          "code": "npm run release:prepare\nnpm run release:check"
+        },
+        {
+          "title": "提交改动",
+          "paragraphs": [
+            "查看 Git 差异，确认只包含本次修改。使用普通提交和推送；如远端有新提交，应先重新对齐，不要强制覆盖。",
+            "部署工作流成功后，在浏览器确认主要入口、前进后退和移动端布局。自动检查不等于真实设备体验。"
           ]
         }
       ],
       "sources": []
     },
     {
-      "id": "add-project",
-      "title": "接入一个新项目",
-      "summary": "登记、编辑、校验、生成；不需要修改路由。",
+      "id": "writing",
+      "title": "公开文案规范",
+      "summary": "统一标题、状态与资料分工，让访客知道可以做什么。",
       "sections": [
         {
-          "title": "创建草稿",
+          "title": "先写用途",
           "paragraphs": [
-            "使用不与已有栏目冲突的英文 ID；工具创建草稿，不会自动出现在公开列表。"
-          ],
-          "code": "npm run journal:add -- --id my-new-project --title \"我的新项目\" --category tool"
-        },
-        {
-          "title": "填写事实",
-          "paragraphs": [
-            "补齐介绍、可用入口、当前阶段、资料与参与方式。计划中的内容明确标为计划，验收后再更新完成状态。"
+            "标题说明页面内容；简介说明可做的事。按钮使用“打开作品”“阅读指南”“下载源码”等明确动作，避免交付口吻和空泛评价。"
           ]
         },
         {
-          "title": "审核后公开",
+          "title": "区分事实与计划",
           "paragraphs": [
-            "将该项目 visibility 改为 public 后，生成直达页面并检查。实际发布仍由维护者推送。"
-          ],
-          "code": "npm run journal:build\nnpm run test:journal"
+            "已可访问的内容与计划中的功能分开写。开发候选不能写成正式版本；没有数据支持时不标注完成率、性能提升或模型评分。"
+          ]
         },
         {
-          "title": "归档而不是删除历史",
+          "title": "一处维护，多处链接",
           "paragraphs": [
-            "将 visibility 改为 archived，项目仍可通过原路径查看，并在列表归档筛选中找到。不会删除原任务或已有历史。"
+            "README 提供总览与启动入口；项目概览解释用途；资料页提供操作步骤；更新页记录变化。维护日志和历史报告留在 docs/，不重复铺到访客页面。"
+          ]
+        },
+        {
+          "title": "保留来源",
+          "paragraphs": [
+            "保留署名、许可、素材来源和历史链接。实验展示说明提示词、模型与已知设置，不将推测写成记录。"
           ]
         }
       ],
       "sources": []
     }
-  ]
+  ],
+  "layout": "website"
 }

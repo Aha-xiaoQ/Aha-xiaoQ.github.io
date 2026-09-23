@@ -1,0 +1,35 @@
+{
+  "projectId": "mario-mix",
+  "guide": {
+    "id": "reference",
+    "title": "前辈参考与素材边界",
+    "summary": "参考 SMBC 的职责划分，不直接照搬旧引擎。",
+    "sections": [
+      {
+        "title": "参考对象",
+        "paragraphs": [
+          "JayPavlina/super-mario-bros-crossover 的 README 说明，这份代码对应 Flash 游戏 3.1.21，图形与声音素材不包含在内。历史研究固定在提交 83974eb7b3d554b9c8c5da07f64bfd608f3f65fc。"
+        ]
+      },
+      {
+        "title": "取其组织思路",
+        "paragraphs": [
+          "Character、Bill、SoundManager 与 LevelData 提供了角色差异、音频管理、关卡数据等职责划分的参考。本项目继续使用自己的浏览器实现，不搬运 Flash 的大型继承结构。"
+        ]
+      },
+      {
+        "title": "代码与素材分别核验",
+        "paragraphs": [
+          "上游仓库的代码许可并不自动说明第三方角色、图像和音频可以再分发。未核验素材保持待确认，不把“网上能找到”当作许可。"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "label": "参考仓库 README",
+        "href": "https://github.com/JayPavlina/super-mario-bros-crossover/blob/83974eb7b3d554b9c8c5da07f64bfd608f3f65fc/README.md"
+      }
+    ],
+    "archived": true
+  }
+}

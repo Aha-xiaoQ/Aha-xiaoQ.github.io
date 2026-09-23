@@ -1,0 +1,73 @@
+{
+  "projectId": "mario-mix",
+  "guide": {
+    "id": "terra-chapters",
+    "title": "新关卡接入指南",
+    "summary": "从新建目录到主线接入，先看能力范围，再做一次完整往返。",
+    "sections": [
+      {
+        "title": "一个目录，一张可玩的关卡",
+        "paragraphs": [
+          "M03自动发现 levels 下的 chapter.json，校验ID、出生点、敌人引用、出口和能力版本。无需复制1-3代码，也不需要另写一套游戏循环。",
+          "先预览自建地图，再通过after=legacy-13接到原第三期结算后。草稿只能在显式开发预览中出现；发布前仍须人工审阅。"
+        ],
+        "code": "npm run level:new -- --id my-14 --title \"我的 1-4\"\nnpm run level:check\nnpm run dev\n# ?chapter=my-14 直接进入；?chapters=1 显示接入工作台"
+      },
+      {
+        "title": "本次已经接通的部分",
+        "paragraphs": [
+          "地图、六类现有敌人、金币、检查点、危险区、房间往返与结束目标；共用第三期的角色、武器、操作设置、HUD和结算。",
+          "白名单携带生命、装备和奖励，不传坐标、弹幕、DOM或声音节点。返回原地形与位置；切关下坐骑但保留已获得资格。",
+          "补充房间与主章可以互相进入。目标奖励在本次会话中去重；暂停不运行触发，门需要交互边沿。"
+        ]
+      },
+      {
+        "title": "这不是万能关卡插件",
+        "paragraphs": [
+          "terra-surface-v1目前固定240逻辑像素高，不支持任意新重力、俯视玩法或通用地下世界。全新Boss/角色、分章资源包和持久存档仍需下一轮服务接口。",
+          "需要这些能力时先提交接口提案，而不是让每个作者去修改旧全局函数。SDK示例不包含未完成的城堡素材或关卡。"
+        ]
+      },
+      {
+        "title": "第一个 PR 的完成标准",
+        "paragraphs": [
+          "只新增自己的关卡目录，运行level:check与verify；记录真实浏览器进入、死亡重试、门往返、结算、主线返回和手柄/音频未验收项。",
+          "保持draft=true提交，提供候选SHA与资源来源。真实维护者审阅之后才合并/发布。自动测试和模拟新人实验不等于已经有网友贡献成功。"
+        ]
+      },
+      {
+        "title": "后续需要解决的阻碍",
+        "paragraphs": [
+          "先让一位独立作者完成接入试做；再推进自定义Boss/行为接口、资产生命周期以及版本化跨章存档。旧库存与原隐藏关任务继续保留，不因添加adapter就标完成。"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "label": "获取当前源码",
+        "href": "/notes/mario-mix/docs/terra-source/"
+      },
+      {
+        "label": "一步步新增关卡",
+        "href": "/packages/mario-mix-terra/docs/stages/ADD_LEVEL.md"
+      },
+      {
+        "label": "接口与字段",
+        "href": "/packages/mario-mix-terra/docs/stages/CONTRACT.md"
+      },
+      {
+        "label": "生命周期与状态传递",
+        "href": "/packages/mario-mix-terra/docs/stages/CONTRACT.md"
+      },
+      {
+        "label": "验收清单",
+        "href": "/packages/mario-mix-terra/docs/stages/ACCEPTANCE.md"
+      },
+      {
+        "label": "当前任务",
+        "href": "/packages/mario-mix-terra/docs/TASKS.json"
+      }
+    ],
+    "archived": true
+  }
+}

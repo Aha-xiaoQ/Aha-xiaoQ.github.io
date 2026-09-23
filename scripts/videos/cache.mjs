@@ -6,7 +6,7 @@ import {createHash} from 'node:crypto';
 import {readOptional,writeAtomic} from '../lib/safe-path.mjs';
 export const ROOT=fileURLToPath(new URL('../../',import.meta.url));
 export const ENTRIES=Object.freeze(['index.html','games/pixel-pipe-adventure/index.html','games/voxel-frontier/index.html']);
-export const ASSETS=Object.freeze(['content/site-data.js','assets/site-brand-tokens.css','assets/workshop-cards.js','assets/ui/site-actions.js','assets/ui/site-actions.css','assets/launch/journey.js','assets/journal/model.mjs']);
+export const ASSETS=Object.freeze(['content/site-data.js','assets/site-brand-tokens.css','assets/workshop-cards.js','assets/ui/site-actions.js','assets/ui/site-actions.css','assets/launch/journey.js','assets/journal/model.mjs','assets/site-router.js','assets/journal/journal.css']);
 export function versionEntry(text,root=ROOT){
  return text.replace(/(\b(?:src|href)=["'])([^"']+)(["'])/g,(all,a,url,z)=>{
   if(/^(?:[a-z][a-z0-9+.-]*:|\/\/)/i.test(url))return all;

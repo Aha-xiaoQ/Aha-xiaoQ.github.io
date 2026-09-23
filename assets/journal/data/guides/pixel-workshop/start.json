@@ -1,0 +1,40 @@
+{
+  "projectId": "pixel-workshop",
+  "guide": {
+    "id": "start",
+    "title": "本地启动",
+    "summary": "从完整仓库启动网站，了解开发入口与常用命令。",
+    "sections": [
+      {
+        "title": "获取并启动",
+        "paragraphs": [
+          "需要 Node.js 22 或更新版本。从仓库根目录启动；网站脚本无需安装第三方 npm 依赖。"
+        ],
+        "code": "git clone https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io.git\ncd Aha-xiaoQ.github.io\nnpm run dev"
+      },
+      {
+        "title": "访问页面",
+        "paragraphs": [
+          "在浏览器打开 http://127.0.0.1:4173/。开发栏目为 /notes/，实验室为 /notes/lab/。请使用本地 HTTP 服务，不要直接双击网站的 index.html。",
+          "端口占用时运行 npm run dev -- --port 4174。Windows 也可使用根目录的 start-dev.cmd。"
+        ]
+      },
+      {
+        "title": "选择下一步",
+        "paragraphs": [
+          "修改文案与栏目内容，阅读“内容编辑”；添加作品，阅读“接入新项目”；准备上线，阅读“构建与发布”。"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "label": "内容编辑",
+        "href": "/notes/pixel-workshop/docs/content/"
+      },
+      {
+        "label": "构建与发布",
+        "href": "/notes/pixel-workshop/docs/publishing/"
+      }
+    ]
+  }
+}

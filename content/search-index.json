@@ -2,6 +2,19 @@
   "schemaVersion": 1,
   "entries": [
     {
+      "id": "guide:lab:pelican-bicycle",
+      "type": "guide",
+      "title": "鹈鹕，去兜风。",
+      "summary": "原始提示词、模型信息与可交互的 SVG 骑行动画。",
+      "href": "/notes/lab/docs/pelican-bicycle/",
+      "tags": [
+        "实验室",
+        "原始提示词",
+        "模型信息",
+        "实际效果"
+      ]
+    },
+    {
       "id": "guide:mario-mix:episode-4",
       "type": "guide",
       "title": "第四期 · 索尼克与奥日",
@@ -70,42 +83,82 @@
     {
       "id": "guide:pixel-workshop:add-project",
       "type": "guide",
-      "title": "接入一个新项目",
-      "summary": "登记、编辑、校验、生成；不需要修改路由。",
+      "title": "接入新项目",
+      "summary": "登记一个作品，复用现有项目页面与导航。",
       "href": "/notes/pixel-workshop/docs/add-project/",
       "tags": [
         "作品网站",
-        "创建草稿",
-        "填写事实",
-        "审核后公开",
-        "归档而不是删除历史"
+        "创建记录",
+        "填写项目内容",
+        "公开与归档"
       ]
     },
     {
       "id": "guide:pixel-workshop:architecture",
       "type": "guide",
-      "title": "栏目框架与数据边界",
-      "summary": "共享页面骨架，项目内容独立保存。",
+      "title": "网站结构",
+      "summary": "了解页面、内容与脚本的职责，按模块查找源码。",
       "href": "/notes/pixel-workshop/docs/architecture/",
       "tags": [
         "作品网站",
-        "三层结构",
-        "一个项目，一份登记",
-        "显示不同性质的状态",
-        "维护不是权限系统"
+        "页面与共享界面",
+        "内容来源",
+        "开发页加载",
+        "项目工程"
+      ]
+    },
+    {
+      "id": "guide:pixel-workshop:content",
+      "type": "guide",
+      "title": "内容编辑",
+      "summary": "找到正确的数据源，避免在多个页面重复维护同一段说明。",
+      "href": "/notes/pixel-workshop/docs/content/",
+      "tags": [
+        "作品网站",
+        "作品与视频",
+        "项目与资料",
+        "实验记录",
+        "生成页面"
+      ]
+    },
+    {
+      "id": "guide:pixel-workshop:publishing",
+      "type": "guide",
+      "title": "构建与发布",
+      "summary": "生成页面、核对改动，再通过 GitHub 发布。",
+      "href": "/notes/pixel-workshop/docs/publishing/",
+      "tags": [
+        "作品网站",
+        "生成与检查",
+        "网站发布目录",
+        "提交改动"
       ]
     },
     {
       "id": "guide:pixel-workshop:start",
       "type": "guide",
-      "title": "本地预览与验收",
-      "summary": "继续使用原启动方式，新增栏目检查命令。",
+      "title": "本地启动",
+      "summary": "从完整仓库启动网站，了解开发入口与常用命令。",
       "href": "/notes/pixel-workshop/docs/start/",
       "tags": [
         "作品网站",
-        "运行",
-        "主要验收路径",
-        "检查与发布不同"
+        "获取并启动",
+        "访问页面",
+        "选择下一步"
+      ]
+    },
+    {
+      "id": "guide:pixel-workshop:writing",
+      "type": "guide",
+      "title": "公开文案规范",
+      "summary": "统一标题、状态与资料分工，让访客知道可以做什么。",
+      "href": "/notes/pixel-workshop/docs/writing/",
+      "tags": [
+        "作品网站",
+        "先写用途",
+        "区分事实与计划",
+        "一处维护，多处链接",
+        "保留来源"
       ]
     },
     {
@@ -120,6 +173,18 @@
         "手机",
         "手柄",
         "帮助"
+      ]
+    },
+    {
+      "id": "project:lab",
+      "type": "project",
+      "title": "实验室 · 开发",
+      "summary": "从提示词到可运行作品。保留原始输入、模型信息和实际效果，让结果自己说话。",
+      "href": "/notes/lab/",
+      "tags": [
+        "experiment",
+        "源码",
+        "开发"
       ]
     },
     {
@@ -138,7 +203,7 @@
       "id": "project:pixel-workshop",
       "type": "project",
       "title": "作品网站 · 开发",
-      "summary": "把游戏、工具和制作过程放在一起。持续改善阅读、导航与协作，让新作品也能自然加入。",
+      "summary": "小Q的作品展示网站。这里集中说明网站结构、内容编辑、项目接入与发布方式。",
       "href": "/notes/pixel-workshop/",
       "tags": [
         "web",

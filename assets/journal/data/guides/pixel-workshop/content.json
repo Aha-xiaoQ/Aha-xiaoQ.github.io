@@ -1,0 +1,41 @@
+{
+  "projectId": "pixel-workshop",
+  "guide": {
+    "id": "content",
+    "title": "内容编辑",
+    "summary": "找到正确的数据源，避免在多个页面重复维护同一段说明。",
+    "sections": [
+      {
+        "title": "作品与视频",
+        "paragraphs": [
+          "作品名称、简介和视频地址维护在 content/site-data.js。保留视频状态区的生成标记，由 npm run video:sync 同步关联入口。不要在各个 HTML 中逐一修改同一个 BV 号。"
+        ]
+      },
+      {
+        "title": "项目与资料",
+        "paragraphs": [
+          "开发项目登记在 content/development/catalog.json；各项目说明维护在 content/development/projects/。先编辑来源，再生成 notes 页面。Markdown 阅读资料由 config/documents.json 登记。"
+        ]
+      },
+      {
+        "title": "实验记录",
+        "paragraphs": [
+          "实验数据位于 content/experiments/，原始作品位于 experiments/。记录完整提示词、模型名称、已知设置和原始产物；没有记录的设置标注为“未记录”，作品展示与评测结论分开说明。"
+        ]
+      },
+      {
+        "title": "生成页面",
+        "paragraphs": [
+          "生成命令同步开发页、目录和可按需读取的正文。随后生成网站其他页面。"
+        ],
+        "code": "npm run journal:build\nnpm run site:build"
+      }
+    ],
+    "sources": [
+      {
+        "label": "公开文案规范",
+        "href": "/notes/pixel-workshop/docs/writing/"
+      }
+    ]
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "id": "lab",
+  "title": "实验室",
+  "category": "experiment",
+  "visibility": "public",
+  "stage": "作品与能力观察",
+  "updatedAt": "2026-09-24",
+  "summary": "从提示词到可运行作品。保留原始输入、模型信息和实际效果，让结果自己说话。",
+  "intro": "这里收录小型交互与代码创作实验。每个实验提供提示词、已知设置和原始产物；观察具体表现，不给单次结果编造综合评分。",
+  "highlights": [
+    "原始提示词可复制。",
+    "作品可在线体验，也可下载独立文件。",
+    "模型设置按实际记录展示，未知项不推断。"
+  ],
+  "links": [
+    {
+      "label": "鹈鹕骑行",
+      "href": "/notes/lab/docs/pelican-bicycle/"
+    },
+    {
+      "label": "开发项目",
+      "href": "/notes/"
+    }
+  ],
+  "participation": {
+    "mode": "open",
+    "summary": "欢迎提出新的实验题目，或反馈作品在不同设备上的实际表现。",
+    "issueUrl": "https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/issues/new",
+    "repository": "https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io"
+  },
+  "state": {
+    "adapter": "project-v1",
+    "path": "content/development/states/lab.json"
+  },
+  "updates": [
+    {
+      "id": "pelican-bicycle",
+      "date": "2026-09-24",
+      "title": "鹈鹕骑自行车：SVG 动画",
+      "status": "released",
+      "summary": "收录一条提示词生成的海岸骑行小景，保留原始 HTML、模型信息和可操作的展示入口。"
+    }
+  ],
+  "docs": [
+    {
+      "id": "pelican-bicycle",
+      "title": "鹈鹕，去兜风。",
+      "summary": "原始提示词、模型信息与可交互的 SVG 骑行动画。",
+      "sections": [
+        {
+          "title": "原始提示词",
+          "paragraphs": [
+            "生成一个鹈鹕骑自行车的SVG动画，用html实现，不用做任何测试"
+          ]
+        },
+        {
+          "title": "模型信息",
+          "paragraphs": [
+            "GPT-6 Astra Pro。推理强度设置未记录。"
+          ]
+        },
+        {
+          "title": "实际效果",
+          "paragraphs": [
+            "打开动画体验三档骑行速度和暂停控制，或下载原始 HTML。"
+          ]
+        }
+      ],
+      "sources": [],
+      "action": {
+        "label": "下载原始 HTML",
+        "href": "/experiments/pelican-bicycle.html"
+      }
+    }
+  ],
+  "layout": "experiments"
+}

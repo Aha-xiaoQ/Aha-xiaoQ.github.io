@@ -1,0 +1,63 @@
+/* Public development directory. Existing site colors and fonts remain authoritative. */
+.journal .q-dev-nav{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 2rem;border-bottom:1px solid var(--line,rgba(255,255,255,.2));padding:.25rem 0 .8rem}
+.journal .q-dev-nav a{display:block;padding:.6rem 1.1rem;text-decoration:none;font-weight:700;color:inherit;border:1px solid transparent}
+.journal .q-dev-nav a[aria-current=page]{background:var(--accent,#e93646);color:#fff;transform:skew(-5deg)}
+.journal .q-dev-nav a:hover,.journal .q-dev-nav a:focus-visible{border-color:currentColor}
+.journal .q-doc-directory .j-shortcuts{grid-template-columns:repeat(2,minmax(0,1fr))}
+.journal .q-doc-group{margin-block:2.4rem}
+.journal .q-doc-label{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;opacity:.65;margin:0 0 .5rem}
+.journal .q-doc-related{padding:0 1.4rem 1rem;margin-top:.2rem;border-top:1px solid rgba(127,127,127,.25)}
+.journal .q-doc-related summary{cursor:pointer;padding-top:.9rem}
+.journal .q-doc-related ul{padding-left:1.3rem;margin-bottom:0}
+.journal .q-doc-index{line-height:2.1;padding-left:1.3rem}
+.journal .q-lab-strip{display:grid;grid-template-columns:110px minmax(0,1fr) auto;align-items:center;gap:1.5rem;padding:1.5rem;text-decoration:none;color:inherit}
+.journal .q-lab-strip h3{font-size:1.6rem;margin:.45rem 0}
+.journal .q-lab-strip p{margin:0;line-height:1.8}
+.journal .q-lab-mark{font-size:1.8rem;font-weight:900;display:grid;gap:.2rem;border:2px solid currentColor;aspect-ratio:1;align-content:center;text-align:center;transform:rotate(-5deg)}
+.journal .q-lab-mark span{font-size:.8rem;letter-spacing:.25em}
+.journal .q-lab-go{font-size:.9rem;white-space:nowrap}
+.journal .q-lab-card{display:grid;grid-template-columns:minmax(200px,.72fr) minmax(0,1.28fr);overflow:hidden;padding:0;margin-bottom:1.5rem}
+.journal .q-lab-visual{min-height:300px;background:var(--accent,#e93646);color:#fff;padding:2.2rem;display:flex;flex-direction:column;justify-content:space-between}
+.journal .q-lab-visual>span,.journal .q-lab-visual small{font:700 .75rem/1.8 system-ui,sans-serif;letter-spacing:.2em}
+.journal .q-lab-visual strong{font:900 clamp(3rem,7vw,6rem)/1 system-ui,sans-serif;letter-spacing:-.07em;transform:rotate(-7deg)}
+.journal .q-lab-visual strong span{font-size:.5em;vertical-align:top;margin-left:.15em}
+.journal .q-lab-copy{padding:2.1rem}
+.journal .q-lab-copy h2{font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.3;margin:.6rem 0}
+.journal .q-lab-copy blockquote{margin:1.3rem 0;padding:.6rem 0 .6rem 1rem;border-left:3px solid var(--accent,#e93646);font-size:.95rem;line-height:1.8}
+.journal .q-lab-footnote{margin-block:1.5rem;line-height:1.8}
+.journal .q-experiment-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.7rem;margin-bottom:1rem}
+.journal .q-experiment-stage{min-height:480px;aspect-ratio:1.52;position:relative;border:1px solid rgba(127,127,127,.35);background:#f4efdf;color:#284b42;overflow:hidden;border-radius:4px}
+.journal .q-experiment-stage iframe{display:block;width:100%;height:100%;position:absolute;inset:0;border:0;background:#f4efdf}
+.journal .q-lab-placeholder{min-height:480px;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;gap:1.1rem}
+.journal .q-lab-placeholder[hidden]{display:none}
+.journal .q-lab-placeholder h2{font-size:clamp(2rem,5vw,4rem);line-height:1.2;margin:.5rem 0;color:inherit}
+.journal .q-lab-placeholder p{color:inherit;max-width:34rem;line-height:1.8;margin:0}
+.journal .q-lab-kicker{font:.7rem/1.8 system-ui,sans-serif;letter-spacing:.3em}
+.journal .q-lab-placeholder .button{background:#284b42;color:#fff;border-color:#284b42;margin:.5rem 0}
+.journal .q-lab-actions{margin:1rem 0 1.8rem;display:flex;flex-wrap:wrap;gap:.9rem;justify-content:space-between;align-items:center}
+.journal .q-lab-actions .actions{margin:0}
+.journal .q-lab-actions p{margin:0}
+.journal .q-experiment-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;margin:2rem 0;padding-block:1.5rem;border-block:1px solid rgba(127,127,127,.3)}
+.journal .q-experiment-facts dt{font-size:.82rem;opacity:.65;margin-bottom:.5rem}
+.journal .q-experiment-facts dd{margin:0;font-weight:700;line-height:1.7;overflow-wrap:anywhere}
+.journal .q-prompt-section{margin-block:2.5rem}
+.journal .q-prompt-section pre{white-space:pre-wrap;word-break:break-word;padding:1.5rem;line-height:1.9;font:inherit;border:1px solid rgba(127,127,127,.35)}
+.journal .q-observation-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.journal .q-observation-grid .entry{padding:1.5rem}
+.journal .q-observation-grid h3{margin:.8rem 0}
+.journal .q-observation-grid p{line-height:1.9;margin:0}
+.journal .q-observation-no{font-size:.8rem;letter-spacing:.2em;opacity:.6}
+.journal .q-provenance{padding:1rem 0;border-top:1px solid rgba(127,127,127,.3);line-height:1.9}
+.journal .q-provenance summary{cursor:pointer}
+.journal .q-file-hash{overflow-wrap:anywhere;font-size:.8rem;opacity:.75}
+.journal [data-lab-stop][hidden]{display:none}
+@media(max-width:760px){
+ .journal .q-doc-directory .j-shortcuts,.journal .q-observation-grid{grid-template-columns:1fr}
+ .journal .q-lab-strip{grid-template-columns:65px minmax(0,1fr);gap:1rem;padding:1.2rem}
+ .journal .q-lab-mark{font-size:1.2rem}.journal .q-lab-go{grid-column:2}
+ .journal .q-lab-card{grid-template-columns:1fr}.journal .q-lab-visual{min-height:180px;gap:2rem;padding:1.5rem}.journal .q-lab-visual strong{font-size:4rem}
+ .journal .q-lab-copy{padding:1.5rem}.journal .q-experiment-facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .journal .q-experiment-stage{height:690px;aspect-ratio:auto;min-height:480px}.journal .q-lab-placeholder{min-height:690px;padding:1.4rem}
+ .journal .q-dev-nav{gap:.25rem}.journal .q-dev-nav a{padding:.65rem .8rem}
+}
+@media(prefers-reduced-motion:reduce){.journal .q-dev-nav a,.journal .q-lab-mark,.journal .q-lab-visual strong{transform:none}}

@@ -1,0 +1,18 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {fileURLToPath} from 'node:url';
+import {createHash} from 'node:crypto';
+import {planJournalData,build} from '../../scripts/dev-center/build.mjs';
+import {assertNativeCaches,assertRuntimeRevision} from '../helpers/cache-revision.mjs';
+const root=fileURLToPath(new URL('../../',import.meta.url));
+const read=p=>fs.readFileSync(new URL(p,new URL('../../',import.meta.url)));
+test('compiled navigation and article output is deterministic',()=>{const a=planJournalData(root),b=planJournalData(root);assert.equal(a.revision,b.revision);assert.deepEqual([...a.files],[...b.files]);});
+test('all compiled article pointers resolve to files from the same generation',()=>{const p=planJournalData(root);const catalog=p.files.get('assets/journal/data/catalog.mjs').toString();const docs=p.files.get('assets/journal/data/documents-index.mjs').toString();for(const m of (catalog+docs).matchAll(/"(?:deferredGuide|contentHref)":"\/([^"?]+)\?v=[^"]+"/g))assert.ok(p.files.has(m[1]),m[1]);});
+test('metadata-only document index contains no Markdown bodies',()=>{const p=planJournalData(root);assert.doesNotMatch(p.files.get('assets/journal/data/documents-index.mjs').toString(),/"markdown":/);});
+test('original artifact identity is checked by bytes and digest, not by rerunning the animation',()=>{const meta=JSON.parse(read('content/experiments/pelican-bicycle.json')),b=read('experiments/pelican-bicycle.html');assert.equal(b.length,meta.artifact.bytes);assert.equal(createHash('sha256').update(b).digest('hex'),meta.artifact.sha256);});
+test('tampered original artifact is rejected before generation',()=>assert.throws(()=>planJournalData(root,{reader:p=>p==='experiments/pelican-bicycle.html'?Buffer.from('changed'):read(p)}),/original pelican artifact/));
+test('generated data and embedded CSS are up to date after the normal build',()=>assert.equal(build(root,{check:true}).changed,0));
+test('both native and dynamically loaded code point to current cache revisions',()=>{assertRuntimeRevision();assertNativeCaches(read('notes/index.html').toString());});
+test('article bodies remain lazy and catalog load no longer performs sequential project fetches',()=>{const s=read('assets/journal/runtime.mjs').toString();const body=s.slice(s.indexOf('async function loadCatalog(){'),s.indexOf('const guideLoads='));assert.match(body,/CATALOG\.projects/);assert.doesNotMatch(body,/getJSON\(|fetch\(/);assert.match(s,/prepareGuide\(p,r.doc\)/);});
+test('late module loading overlaps stylesheet loading and preserves the native initial shell',()=>{const s=read('assets/site-router.js').toString();assert.match(s,/Promise\.all\(\[journalStyle\(\),importJournal\(\)/);assert.match(s,/SITE_JOURNAL\?\.mount\(app,initial\)/);assert.match(s,/connection\?\.saveData/);assert.equal((s.match(/document\.startViewTransition\(commit\)/g)||[]).length,1);});

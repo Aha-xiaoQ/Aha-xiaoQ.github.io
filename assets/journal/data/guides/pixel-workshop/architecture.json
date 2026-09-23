@@ -1,0 +1,40 @@
+{
+  "projectId": "pixel-workshop",
+  "guide": {
+    "id": "architecture",
+    "title": "网站结构",
+    "summary": "了解页面、内容与脚本的职责，按模块查找源码。",
+    "sections": [
+      {
+        "title": "页面与共享界面",
+        "paragraphs": [
+          "index.html、projects/、games/、tools/、about/ 和 notes/ 提供可直接访问的页面。assets/ 维护共享样式、交互与站内导航。原有页面地址保留。"
+        ]
+      },
+      {
+        "title": "内容来源",
+        "paragraphs": [
+          "content/ 保存作品、项目与状态数据；config/ 保存资料登记和发布配置。notes/ 与搜索索引主要由脚本生成，不作为文案的首选编辑位置。"
+        ]
+      },
+      {
+        "title": "开发页加载",
+        "paragraphs": [
+          "目录与摘要在构建时合并；文章正文在打开文章时读取。导航意图预加载尊重节省流量设置，动画不会随目录页面自动启动。"
+        ]
+      },
+      {
+        "title": "项目工程",
+        "paragraphs": [
+          "packages/ 保存游戏和工具的独立工程；games/ 保存对应介绍与试玩入口。各工程的素材、依赖和运行方式以自身说明为准。"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "label": "字体与许可",
+        "href": "/notes/pixel-workshop/docs/font-licenses/"
+      }
+    ]
+  }
+}

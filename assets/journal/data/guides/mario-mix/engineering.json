@@ -1,0 +1,44 @@
+{
+  "projectId": "mario-mix",
+  "guide": {
+    "id": "engineering",
+    "title": "开始参与代码开发",
+    "summary": "源码入口、对照测试、候选试玩和小 PR 的提交方法。",
+    "sections": [
+      {
+        "title": "从一处小改动开始",
+        "paragraphs": [
+          "当前第一处可独立修改的模块是第一期比尔的瞄准与下穿输入意图，源码位于 packages/mario-mix/src/input/。原游戏其余部分保留；第二、三期没有在这一轮完成模块化。"
+        ]
+      },
+      {
+        "title": "先测试，再对照试玩",
+        "paragraphs": [
+          "使用 Node.js 22 或更高版本；本工程没有第三方 npm 依赖。候选试玩使用独立的本地端口，不覆盖线上游戏。先在 Issue 中确认任务范围，提交 PR 时附测试结果和候选构建校验值。"
+        ],
+        "code": "npm run game:check\nnpm run game:test\nnpm run game:audit\nnpm run game:build\nnpm run game:dev"
+      },
+      {
+        "title": "尚需确认的部分",
+        "paragraphs": [
+          "本地测试通过不代表完整游戏通关、实体手柄或音频验收通过。素材和游戏代码授权仍需逐项核对，不能因为有协作工具就认定整个游戏已采用开源许可。"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "label": "贡献流程与首批任务",
+        "href": "/packages/mario-mix/CONTRIBUTING.md"
+      },
+      {
+        "label": "工程阅读入口",
+        "href": "/packages/mario-mix/README.md"
+      },
+      {
+        "label": "源码与构建说明",
+        "href": "/packages/mario-mix/docs/ARCHITECTURE.md"
+      }
+    ],
+    "archived": true
+  }
+}

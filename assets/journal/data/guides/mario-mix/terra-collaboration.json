@@ -1,0 +1,47 @@
+{
+  "projectId": "mario-mix",
+  "guide": {
+    "id": "terra-collaboration",
+    "title": "代码贡献指南",
+    "summary": "选择任务、修改源码、提交测试与 PR。",
+    "sections": [
+      {
+        "title": "从一个小任务开始",
+        "paragraphs": [
+          "在源码根目录运行 npm run tasks，或从项目任务页选择一项改进。在 Issue 中说明方案并确认范围后创建功能分支。设备复验、按键标签、文档说明都可以单独提交。"
+        ]
+      },
+      {
+        "title": "交付可以验证的改动",
+        "paragraphs": [
+          "修改 src/ 或 content/，不要编辑 dist/。提交源码和对应测试，写清实际行为差异、候选校验值和未验证设备，不把全仓格式化或其他玩法一起提交。"
+        ],
+        "code": "npm run verify\nnpm run pack"
+      },
+      {
+        "title": "审核与发布",
+        "paragraphs": [
+          "通过测试才进入人工审阅。设备、自然通关、音频和素材许可需单独核验；代码合并不是发布批准。保留原 NOTICE，不添加未经核验的新素材。"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "label": "下载当前源码",
+        "href": "/notes/mario-mix/docs/terra-source/"
+      },
+      {
+        "label": "模块地图与职责",
+        "href": "/packages/mario-mix-terra/docs/generated/MODULES.md"
+      },
+      {
+        "label": "完整贡献指南",
+        "href": "/packages/mario-mix-terra/CONTRIBUTING.md"
+      },
+      {
+        "label": "发布前检查清单",
+        "href": "/packages/mario-mix-terra/docs/PUBLISH.md"
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "projectId": "pixel-workshop",
+  "guide": {
+    "id": "add-project",
+    "title": "接入新项目",
+    "summary": "登记一个作品，复用现有项目页面与导航。",
+    "sections": [
+      {
+        "title": "创建记录",
+        "paragraphs": [
+          "项目 ID 使用简短的英文小写和连字符。命令创建草稿，不会立即出现在公开目录中。"
+        ],
+        "code": "npm run journal:add -- --id my-project --title \"我的项目\" --category tool"
+      },
+      {
+        "title": "填写项目内容",
+        "paragraphs": [
+          "填写简介、可用链接、当前阶段、资料和参与方式。一个项目使用独立状态文件；不要复用其他项目的任务来源。"
+        ]
+      },
+      {
+        "title": "公开与归档",
+        "paragraphs": [
+          "资料齐全后将 visibility 设为 public，运行生成与检查命令。停止更新的项目可设为 archived，保留原链接和历史记录。"
+        ],
+        "code": "npm run journal:build\nnpm run site:build\nnpm run check"
+      }
+    ],
+    "sources": []
+  }
+}

@@ -1,3 +1,4 @@
+import {assertGuideDirectory} from '../helpers/guide-directory.mjs';
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import path from 'node:path';import vm from 'node:vm';import {fileURLToPath} from 'node:url';
 import '../../assets/ui/site-actions.js';
 import {polishStaticLinks,polishPromoSource} from '../../scripts/ui-polish/native-html.mjs';
@@ -26,7 +27,12 @@ test('all game actions preserved with one primary and no duplicate title link',(
 test('source game metadata untouched',()=>{const before=JSON.stringify(game);card.gameCard(game);assert.equal(JSON.stringify(game),before);});
 test('project CTA retains accessible subject, never an arrow-only tile',()=>{const h=card.projectCard({...game,detailUrl:'projects/a/',primaryType:'project'});assert.equal((h.match(/<a /g)||[]).length,1);assert.ok(h.includes('查看 测试游戏'));assert.ok(!h.includes('↗'));});
 test('development cards preserve small approved category icons',()=>{const h=renderProjectCards(projects);assert.ok(h.includes('width="96" height="72"'));assert.ok(!h.includes('>PLAY<'));assert.ok(!h.includes('>BUILD<'));assert.equal((h.match(/class="j-card-action"/g)||[]).length,projects.length);assert.ok(!/[→↗↓]/u.test(h));});
-test('guide cards have one anchor for one destination',()=>{const p=projects.find(p=>p.id==='mario-mix');const h=render({projectId:p.id,view:'docs'},{projects,catalog});const current=h.match(/data-current-docs>([\s\S]*?)<\/div>/)[1];const count=p.docs.filter(d=>!d.archived).length;assert.equal((current.match(/class="j-destination-link"/g)||[]).length,count);assert.equal((current.match(/<a /g)||[]).length,count);assert.ok(!current.includes('→'));});
+test('guide cards have one anchor for one destination',()=>{
+ for(const p of projects.filter(p=>p.visibility!=='draft')){
+  const h=render({projectId:p.id,view:'docs'},{projects,catalog});
+  assertGuideDirectory(h,p);
+ }
+});
 test('current source download version and limits are unchanged',()=>{const p=projects.find(p=>p.currentRelease),h=render({projectId:p.id,view:'docs',doc:p.currentRelease.documentId},{projects,catalog});assert.ok(h.includes(p.currentRelease.sourceHref));assert.ok(h.includes(' download'));assert.ok((JSON.stringify(metadata({projectId:p.id,view:'docs',doc:p.currentRelease.documentId},projects,catalog))+h).includes('待验收'));assert.ok(h.includes('1-4'));});
 test('build-time decoration pass preserves scripts, code, style and process arrows',()=>{const protectedBits=['<script>const s="go →";</script>','<style>x::after{content:"→"}</style>','<code>A → B</code>','<pre><a href="/x">code →</a></pre>'];const s=protectedBits.join('')+'<p>A → B</p><a href="/a">查看 →</a>';const o=polishStaticLinks(s);for(const t of protectedBits)assert.ok(o.includes(t));assert.ok(o.includes('<p>A → B</p>'));assert.ok(!o.includes('查看 →'));});
 test('homepage keeps its art and text; only old arrow decorations removed',()=>{const s='<img src="home.webp"><strong>项目 <b aria-hidden="true">↗</b></strong><i aria-hidden="true">→</i> const data="A → B";';const o=polishPromoSource(s);assert.ok(o.includes('<img src="home.webp">'));assert.ok(o.includes('<strong>项目</strong>'));assert.ok(o.includes('const data="A → B"'));assert.ok(!/<i(?:\s|>)/.test(o));});

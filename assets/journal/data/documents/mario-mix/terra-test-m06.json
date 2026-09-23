@@ -1,0 +1,6 @@
+{
+  "projectId": "mario-mix",
+  "id": "terra-test-m06",
+  "source": "packages/mario-mix-terra/docs/TEST_REPORT_M06.md",
+  "markdown": "# M06 / 0.4.2 历史测试记录\n\n本记录针对 M06 开发候选，不表示当前网站、源码或线上试玩已通过发布验收。\n\n## 已记录的覆盖\n\n- 源码 Node：171 项通过，包括原有 153 项、15 项引导与生命周期检查、3 项过期构建保护。\n- 完整原脚本与候选：13 阶段离线状态一致。\n- 操作速查：44 项离线 DOM、键盘与页面缓存事件分支检查通过，无未捕获脚本错误。\n- 显示 UI 35 项、设置 25 项、实验关卡 21 项、普通入口 6 项 DOM 回归通过。\n- 原底稿重建要求 SHA：`e134fdee21a6dce43585cda93c582ca2c0bf45f325f14cde81e33b80b758f19c`。\n\n## 验证边界\n\n记录基于 Linux、Node 22.16.0、Chromium 与 Python Playwright 的离线候选测试，使用内嵌媒体并阻止远程请求。部分场景由测试接口预设，pagehide 为合成事件；未执行自然完整通关。独立 Node HTTP 检查不代表浏览器 HTTP/ESM/CSP 网络验收。\n\n待验收：Windows 与 junction、实体手柄和触屏及热插拔、刷新存储、原生全屏、音频听感、自然关卡与隐藏挑战、真实网站下载与部署。测试数量不代表设备覆盖率或通关率。\n\n## 复现\n\n运行 `npm run verify`、`npm run prepublish:check`、`npm run test:polish-browser`、`npm run test:browser`。浏览器检查需要已有 Playwright 与 Chromium。\n\n[M06 验收](ACCEPTANCE_M06.md)\n"
+}

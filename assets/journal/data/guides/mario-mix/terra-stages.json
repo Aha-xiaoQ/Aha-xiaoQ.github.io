@@ -1,0 +1,55 @@
+{
+  "projectId": "mario-mix",
+  "guide": {
+    "id": "terra-stages",
+    "title": "地图工坊与关卡模板（实验）",
+    "summary": "编辑地图、试玩马里奥，保存工程并下载离线版本；也可获取开发模板。",
+    "sections": [
+      {
+        "title": "打开地图工坊",
+        "paragraphs": [
+          "从工具页进入地图工坊，选择“从底图创建”，按世界与关卡加载副本；也可以新建空白地图。原始参考地图保持不变。",
+          "支持地形、平台、管道、敌人和奖励编辑；保存 .qmap.json 工程可继续制作。试玩使用马里奥运行器，支持键盘、触屏与外接手柄。"
+        ]
+      },
+      {
+        "title": "试玩与离线下载",
+        "paragraphs": [
+          "可下载当前地图的独立 HTML，也可下载按关卡顺序推进的连续版并自由选关。离线初始生命默认 3 条，可设为 1–30 条；开发者试玩可开启附近安全位置复活。",
+          "全屏、音乐与音效、制作信息和像素字体包含在试玩中。离线 HTML 用于游玩，继续编辑请另存工程文件。"
+        ]
+      },
+      {
+        "title": "开发模板与已知边界",
+        "paragraphs": [
+          "32 关共 63 个参考区域，另保留循环城堡的分段视图。马里奥试玩已接入奖励、弹簧、平台、游泳、管道、藤蔓和城堡结算等机制；这些功能仍需逐关核验，不代表原版逐帧一致。",
+          "M06 开发模板使用独立通用运行器，不等同于地图工坊试玩；独立第四期已上线；真实混合角色向通用模板迁移仍在开发。魂斗罗 1-2 试验版暂不发布。"
+        ],
+        "code": "npm run check\nnpm test\nnpm run atlas"
+      }
+    ],
+    "sources": [
+      {
+        "label": "完整开发与贡献说明",
+        "href": "/notes/mario-mix/docs/worlds-start/"
+      },
+      {
+        "label": "地图坐标与来源核验",
+        "href": "/notes/mario-mix/docs/worlds-map-contract/"
+      },
+      {
+        "label": "后续工作清单",
+        "href": "/notes/mario-mix/docs/worlds-roadmap/"
+      },
+      {
+        "label": "第三期当前源码",
+        "href": "/notes/mario-mix/docs/terra-source/"
+      },
+      {
+        "label": "打开地图工坊",
+        "href": "/packages/mario-mix-worlds/atlas/editor.html"
+      }
+    ],
+    "kind": "level-atlas"
+  }
+}

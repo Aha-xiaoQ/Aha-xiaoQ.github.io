@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "pelican-bicycle",
+  "title": "鹈鹕，去兜风。",
+  "subtitle": "一句提示词，一段海岸骑行。",
+  "prompt": "生成一个鹈鹕骑自行车的SVG动画，用html实现，不用做任何测试",
+  "model": "GPT-6 Astra Pro",
+  "reasoningEffort": null,
+  "createdAt": "2026-09-24",
+  "artifact": {
+    "href": "/experiments/pelican-bicycle.html",
+    "bytes": 40441,
+    "sha256": "ff9bd59b4ab3dbd7ac0af37bc2661c707a73b6111d941325e5db4d64cd40907c"
+  },
+  "features": [
+    {
+      "title": "动作协调",
+      "description": "腿部根据脚踏位置计算膝关节，踩踏、车轮与前进节奏共同变化。"
+    },
+    {
+      "title": "场景与细节",
+      "description": "海岸风景分层移动，眨眼、围巾与花篮为骑行增加细小动作。"
+    },
+    {
+      "title": "可交互的成品",
+      "description": "三档速度、暂停与继续、空格键控制，支持减少动态效果的系统偏好。"
+    }
+  ],
+  "provenance": "这里提供最初生成的 HTML，展示页不重新绘制或替换动画。单个示例不等于通用性能评测。",
+  "verification": "提示词约束：不做测试。推理强度设置未记录，也没有统一评测数据。"
+}

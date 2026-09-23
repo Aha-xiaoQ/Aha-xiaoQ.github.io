@@ -1,0 +1,61 @@
+{
+  "projectId": "mario-mix",
+  "guide": {
+    "id": "terra-source",
+    "title": "第三期开发源码",
+    "summary": "开发版 0.4.3 · 待验收。下载源码，查看启动步骤与已知限制。",
+    "action": {
+      "label": "下载源码（0.4.3）",
+      "href": "/downloads/source/MarioMix_Terraria_M07_Source.zip"
+    },
+    "sections": [
+      {
+        "title": "运行项目",
+        "paragraphs": [
+          "需要 Node.js 22 或以上，无需 npm install。解压源码，在工程根目录执行："
+        ],
+        "code": "npm run build\nnpm run verify\nnpm run prepublish:check\nnpm run dev"
+      },
+      {
+        "title": "试玩与操作",
+        "paragraphs": [
+          "启动后访问 http://127.0.0.1:4193/play.html。角色选择中标明关卡；操作、按键和游戏设置从顶部进入。",
+          "界面升级包含清晰 HUD、窄屏快捷栏、角色操作说明及最近提示。重新开始和切换角色会先确认。"
+        ]
+      },
+      {
+        "title": "修改界面与参与开发",
+        "paragraphs": [
+          "当前 HTML 入口为 src/app/player.template.html。文案、界面交互和 HUD 各有独立模块，见 UI_CONTRACT.md。修改 src 后重启服务并刷新，不编辑 dist。",
+          "从项目任务页选择改进，按 CONTRIBUTING.md 运行检查。地图、战斗与素材沿用第三期底稿，本版没有新增正式关卡。"
+        ]
+      },
+      {
+        "title": "已知限制",
+        "paragraphs": [
+          "0.4.3 尚待 Windows、实体设备、音频、自然通关与真实浏览器网络验收。",
+          "WorldKit W02 继续使用其固定 M06 运行时；32 关模板与本 UI 候选分别维护。完整泰拉角色、武器和坐骑仍不能直接用于任意地图，独立第四期（1-4）已上线，通用运行时角色迁移仍待验收。",
+          "旧源码和过程记录保留在历史资料。"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "label": "代码贡献指南",
+        "href": "/notes/mario-mix/docs/terra-collaboration/"
+      },
+      {
+        "label": "当前界面与模块约定",
+        "href": "/packages/mario-mix-terra/docs/UI_CONTRACT.md"
+      },
+      {
+        "label": "当前测试记录",
+        "href": "/packages/mario-mix-terra/docs/TEST_REPORT_M07.md"
+      },
+      {
+        "label": "发布前验收清单",
+        "href": "/packages/mario-mix-terra/docs/ACCEPTANCE_M07.md"
+      }
+    ]
+  }
+}

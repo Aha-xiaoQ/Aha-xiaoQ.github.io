@@ -1,3 +1,4 @@
+import {htmlTitleCount} from './html-titles.mjs';
 /** Checks the exact files selected for a public artifact; no network or writes. */
 import path from 'node:path';
 import {sha,privatePath} from './paths.mjs';
@@ -69,7 +70,8 @@ export function auditFiles(files,{origin,errors:initial=[],registryRefs=[]}={}){
    ids.set(p,new Set([...clean.matchAll(/\bid\s*=\s*(?:"([^"]*)"|'([^']*)')/g)].map(m=>decode(m[1]??m[2]))));
    if(new Set(all).size!==all.length)errors.push({file:p,problem:'duplicate-id'});
    if(!/(?:^|\/)play\.html$/.test(p)){
-    for(const tag of ['main','h1','title'])if((active.match(new RegExp('<'+tag+'(?:\\s|>)','gi'))||[]).length!==1)errors.push({file:p,problem:'non-unique-'+tag});
+    for(const tag of ['main','h1'])if((active.match(new RegExp('<'+tag+'(?:\\s|>)','gi'))||[]).length!==1)errors.push({file:p,problem:'non-unique-'+tag});
+    if(htmlTitleCount(s)!==1)errors.push({file:p,problem:'non-unique-title'});
     if(!/<html\b[^>]*\blang\s*=/.test(clean))errors.push({file:p,problem:'missing-language'});
     const body=clean.match(/<body\b[^>]*>([\s\S]*)<\/body>/i)?.[1]||clean;const m=strip(body).match(CLUTTER);if(m)errors.push({file:p,problem:'internal-public-copy',match:m[0]});
     for(const m of clean.matchAll(/<img\b([^>]*)>/gi)){const a=attrs(m[1]);if(!Object.hasOwn(a,'alt'))errors.push({file:p,problem:'image-missing-alt',target:a.src});if(!a.width||!a.height)warnings.push({file:p,problem:'image-dimensions-review',target:a.src});}

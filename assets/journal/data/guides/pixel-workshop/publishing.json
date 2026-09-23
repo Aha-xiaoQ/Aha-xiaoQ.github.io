@@ -1,0 +1,32 @@
+{
+  "projectId": "pixel-workshop",
+  "guide": {
+    "id": "publishing",
+    "title": "构建与发布",
+    "summary": "生成页面、核对改动，再通过 GitHub 发布。",
+    "sections": [
+      {
+        "title": "生成与检查",
+        "paragraphs": [
+          "先生成页面，再执行仓库已有检查。任何失败都应在提交前解决。"
+        ],
+        "code": "npm run journal:build\nnpm run site:build\nnpm run check\nnpm test"
+      },
+      {
+        "title": "网站发布目录",
+        "paragraphs": [
+          "npm run release:prepare 生成 .local/publish，npm run release:check 核对发布产物。源码仓库与网站产物是不同目录；是否使用产物部署取决于仓库的 Pages 配置。"
+        ],
+        "code": "npm run release:prepare\nnpm run release:check"
+      },
+      {
+        "title": "提交改动",
+        "paragraphs": [
+          "查看 Git 差异，确认只包含本次修改。使用普通提交和推送；如远端有新提交，应先重新对齐，不要强制覆盖。",
+          "部署工作流成功后，在浏览器确认主要入口、前进后退和移动端布局。自动检查不等于真实设备体验。"
+        ]
+      }
+    ],
+    "sources": []
+  }
+}

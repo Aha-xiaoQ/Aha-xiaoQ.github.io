@@ -1,0 +1,45 @@
+/** Shared public layouts; no DOM or network work during import. */
+import {EXPERIMENTS} from './data/experiments.mjs?v=dev-r44-0f507510655a1cb1';
+const esc=(s='')=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const url=(p,d='')=>'/notes/'+p.id+'/'+(d?'docs/'+d+'/':'');
+const a=(label,href,cls='j-link',more='')=>`<a class="${cls}" href="${esc(href)}" ${more}>${esc(label)}</a>`;
+const head=(over,title,intro='')=>`<div class="section-head"><div><p class="eyebrow">${esc(over)}</p><h2>${esc(title)}</h2></div>${intro?`<p>${esc(intro)}</p>`:''}</div>`;
+export function developmentNav(active='projects'){
+ return `<nav class="q-dev-nav" aria-label="开发栏目"><a href="/notes/"${active==='projects'?' aria-current="page"':''}>项目</a><a href="/notes/lab/"${active==='lab'?' aria-current="page"':''}>实验室</a><a href="/notes/updates/"${active==='updates'?' aria-current="page"':''}>更新</a><a href="/notes/contribute/"${active==='contribute'?' aria-current="page"':''}>参与</a></nav>`;
+}
+export function labSpotlight(){
+ return `<section class="section q-lab-spotlight">${head('LAB / 001','一句提示词，可以做出什么？','打开作品，看看实际效果。')}<a class="entry q-lab-strip" href="/notes/lab/docs/pelican-bicycle/"><div class="q-lab-mark" aria-hidden="true">SVG<span>01</span></div><div><span class="j-meta">实验室 · 交互动画</span><h3>鹈鹕，去兜风。</h3><p>沿海骑行的小小场景，附原始提示词、模型信息和独立 HTML。</p></div><span class="q-lab-go">查看实验 <span aria-hidden="true">↗</span></span></a></section>`;
+}
+export function websiteOverview(p){
+ return `<section class="section q-site-overview">${head('WEBSITE','先找到你需要的资料')}<p class="j-lead">${esc(p.intro)}</p><div class="actions">${a('浏览网站','/','button')}${a('查看源代码','https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io','button button--quiet','target="_blank" rel="noopener noreferrer"')}</div></section><section class="section">${head('GUIDES','按目标开始')}<div class="j-shortcuts">${p.docs.filter(d=>['start','content','publishing'].includes(d.id)).map(d=>docCard(p,d)).join('')}</div><div class="j-section-footer">${a('浏览全部网站资料',url(p)+'docs/')}</div></section><section class="section">${head('FEEDBACK','一起改进网站')}<p>${esc(p.participation.summary)}</p>${a('反馈问题',p.participation.issueUrl,'button button--quiet','target="_blank" rel="noopener noreferrer"')}</section>`;
+}
+function docCard(p,d){
+ const children=p.docs.filter(x=>x.readingDocument&&x.parentDoc===d.id&&!x.versioned);
+ return `<article class="entry j-destination"><a class="j-destination-link" href="${url(p,d.id)}"><p class="q-doc-label">${d.action?'下载与运行':'阅读指南'}</p><h3>${esc(d.title)}</h3><p>${esc(d.summary)}</p><span class="j-destination-label">${d.action?'打开运行说明':'阅读指南'}</span></a>${children.length?`<details class="q-doc-related"><summary>相关参考 · ${children.length}</summary><ul>${children.map(c=>`<li>${a(c.title,url(p,c.id))}</li>`).join('')}</ul></details>`:''}</article>`;
+}
+export function documentDirectory(p){
+ const docs=p.docs.filter(d=>!d.archived&&!d.readingDocument);
+ const history=p.docs.filter(d=>d.archived||d.readingDocument&&d.versioned);
+ const groups=p.id==='pixel-workshop'?
+  [['01 / START','入门与结构',['start','architecture']],['02 / EDIT','内容与扩展',['content','add-project','writing']],['03 / PUBLISH','构建与发布',['publishing']]]:
+  p.id==='lab'?[['EXPERIMENTS','实验记录',docs.map(d=>d.id)]]:
+  [['01 / SOURCE','源码与运行',docs.filter(d=>d.action||/(?:source|start)/.test(d.id)).map(d=>d.id)],['02 / BUILD','关卡、工具与接入',docs.filter(d=>/(?:stages|map|world|architecture|reference|contribut)/.test(d.id)).map(d=>d.id)]];
+ const used=new Set();const blocks=[];
+ for(const[k,t,ids]of groups){const rows=docs.filter(d=>ids.includes(d.id)&&!used.has(d.id));rows.forEach(d=>used.add(d.id));if(rows.length)blocks.push(`<section class="section q-doc-group">${head(k,t)}<div class="j-shortcuts">${rows.map(d=>docCard(p,d)).join('')}</div></section>`);}
+ const rest=docs.filter(d=>!used.has(d.id));if(rest.length)blocks.push(`<section class="section q-doc-group">${head('REFERENCE','项目说明与参考')}<div class="j-shortcuts">${rest.map(d=>docCard(p,d)).join('')}</div></section>`);
+ const standalone=p.docs.filter(d=>d.readingDocument&&!d.versioned&&!docs.some(parent=>parent.id===d.parentDoc));
+ if(standalone.length)blocks.push(`<section class="section">${head('READING','参考资料')}<ul class="q-doc-index">${standalone.map(d=>`<li>${a(d.title,url(p,d.id))}</li>`).join('')}</ul></section>`);
+ if(history.length)blocks.push(`<section class="section"><details class="j-legacy-details" data-history-docs><summary>历史版本与过程资料 · ${history.length}</summary><p>保留旧版本和原链接。当前开发请从上方指南开始。</p><ul>${history.map(d=>`<li>${a(d.title,url(p,d.id))}</li>`).join('')}</ul></details></section>`);
+ return `<div class="q-doc-directory" data-current-docs>${blocks.join('')}</div>`;
+}
+export function experimentGallery(){
+ return `<section class="section q-lab-intro">${head('PROMPT → RESULT','保留输入，直接看结果。')}<p class="j-lead">小型动画、交互与代码创作。从一条提示词出发，保留原始作品与生成记录。</p></section>${EXPERIMENTS.map((e,i)=>`<article class="entry q-lab-card"><div class="q-lab-visual" aria-hidden="true"><span>ONE PROMPT</span><strong>SVG<span>↗</span></strong><small>INTERACTIVE / ${String(i+1).padStart(3,'0')}</small></div><div class="q-lab-copy"><p class="eyebrow">${esc(e.model)} · HTML + SVG</p><h2>${esc(e.title)}</h2><p>${esc(e.subtitle)}</p><blockquote>${esc(e.prompt)}</blockquote><div class="actions">${a('查看实验','/notes/lab/docs/'+e.id+'/','button')}${a('直接打开动画',e.artifact.href,'button button--quiet','target="_blank" rel="noopener noreferrer" data-router-ignore')}</div></div></article>`).join('')}<p class="j-small q-lab-footnote">作品记录用于观察具体效果，不代表跨模型基准测试结果。</p>`;
+}
+export function experimentDetail(id){
+ const e=EXPERIMENTS.find(x=>x.id===id);if(!e)return null;
+ return `<article class="section q-experiment" data-experiment="${esc(id)}"><div class="q-experiment-top"><p class="eyebrow">LAB / HTML + SVG</p>${a('返回实验室','/notes/lab/')}</div><div class="q-experiment-stage" data-lab-stage><div class="q-lab-placeholder"><span class="q-lab-kicker">ONE PROMPT · ONE RIDE</span><h2>${esc(e.title)}</h2><p>海岸线、微风，还有一只认真踩踏的鹈鹕。</p><button class="button" type="button" data-lab-play>播放原始动画</button><span class="j-small">点击后载入，离开本页停止。</span></div></div><div class="q-lab-actions"><div class="actions">${a('新窗口打开',e.artifact.href,'button button--quiet','target="_blank" rel="noopener noreferrer" data-router-ignore')}${a('下载原始 HTML',e.artifact.href,'button button--quiet','download="pelican_bicycle.html" data-router-ignore')}<button type="button" class="button button--quiet" data-lab-stop hidden>结束预览</button></div><p class="j-small" data-lab-status role="status">${(e.artifact.bytes/1024).toFixed(1)} KiB · 无外部依赖</p></div><dl class="q-experiment-facts"><div><dt>生成模型</dt><dd>${esc(e.model)}</dd></div><div><dt>推理强度</dt><dd>${e.reasoningEffort?esc(e.reasoningEffort):'未记录'}</dd></div><div><dt>输入</dt><dd>一条提示词</dd></div><div><dt>原始产物</dt><dd>独立 HTML</dd></div></dl><section class="q-prompt-section"><div class="section-head"><h2>原始提示词</h2><button type="button" class="button button--quiet" data-copy-prompt>复制提示词</button></div><pre tabindex="0" data-prompt-text>${esc(e.prompt)}</pre><p class="j-small" role="status" data-copy-prompt-status></p></section><section class="section">${head('OBSERVE','模型表现，看这些细节')}<div class="q-observation-grid">${e.features.map((f,i)=>`<section class="entry"><span class="q-observation-no">0${i+1}</span><h3>${esc(f.title)}</h3><p>${esc(f.description)}</p></section>`).join('')}</div></section><details class="q-provenance"><summary>作品记录与说明</summary><p>${esc(e.provenance)}</p><p>${esc(e.verification)}</p><p>收录日期：${esc(e.createdAt)} · 原始文件：${esc(e.artifact.bytes)} 字节</p><p class="q-file-hash">SHA-256：<code>${esc(e.artifact.sha256)}</code></p></details></article>`;
+}
+
+export function projectNavigation(p){return p.layout==='experiments'?developmentNav('lab'):null;}
+export function projectOverview(p){return p.layout==='website'?websiteOverview(p):p.layout==='experiments'?experimentGallery():null;}
+export function projectDocument(p,r){return p.layout==='experiments'&&r.doc?experimentDetail(r.doc):null;}

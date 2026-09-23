@@ -1,0 +1,31 @@
+{
+  "projectId": "mario-mix",
+  "guide": {
+    "id": "start",
+    "title": "运行与反馈",
+    "summary": "找到三期入口，说明问题发生在哪个版本。",
+    "sections": [
+      {
+        "title": "先体验公开作品",
+        "paragraphs": [
+          "从项目概览进入对应期数。提交问题时请说明期数、角色、关卡、浏览器及操作设备，避免把不同版本的表现混为一谈。"
+        ]
+      },
+      {
+        "title": "本地启动",
+        "paragraphs": [
+          "在完整仓库根目录使用原来的启动命令。A 布局使用 npm run dev，B 布局使用 npm start；不需要为了这一轮页面升级重装游戏。"
+        ],
+        "code": "npm run check\nnpm test\nnpm run test:journal\n# 然后使用原启动命令"
+      },
+      {
+        "title": "反馈应包含什么",
+        "paragraphs": [
+          "写清“做了什么、预期怎样、实际怎样”，并提供尽可能短的复现路径。截图或录屏可以补充表现，但不能替代版本说明。"
+        ]
+      }
+    ],
+    "sources": [],
+    "archived": true
+  }
+}

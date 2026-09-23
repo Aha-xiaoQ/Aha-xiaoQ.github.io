@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import {planJournalData} from '../dev-center/build.mjs';
 import {includeSourceArchives} from './source-archives.mjs';
 import {planShowcase} from '../showcase/build.mjs';
 import {documentData,OUTPUT as DOCUMENT_DATA} from '../journal/documents.mjs';
@@ -18,7 +19,7 @@ export const OUTPUT='.local/publish', RECORD='.local/release-r24/artifact.json';
 const getJSON=(get,p)=>{const b=get(p);if(!b)throw Error('缺少发布输入：'+p);return JSON.parse(b);};
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function publicHTML(s,p,origin,data,cacheToken){
- if(/(?:^|\/)play\.html$/.test(p))return s;
+ if(/(?:^|\/)play\.html$/.test(p)||p==='experiments/pelican-bicycle.html')return s;
  const canonical=origin+'/'+p.replace(/index\.html$/,'');
  s=s.replace(/<script\b[^>]*data-public-release[^>]*>[\s\S]*?<\/script>\s*/gi,'');
  s=s.replace(/<head\b[^>]*>/i,m=>m+'\n<script data-public-release src="/assets/release/public-mode.js?v=release-r24"></script>');
@@ -43,7 +44,7 @@ export async function planPublication(root=ROOT){
  const get=p=>{if(observed.has(p))return observed.get(p);const b=exactRead(root,p);observed.set(p,b);return b;};
  const read=p=>overlay.has(p)?overlay.get(p):get(p);
  if(!documentData(root,{reader:get}).equals(get(DOCUMENT_DATA)))throw Error('Document pages are stale: run npm run journal:build');
- for(const dir of ['scripts/publication','scripts/journal','scripts/workshop','scripts/experience','scripts/launch','scripts/lib','scripts/public-content','scripts/showcase'])for(const p of walk(root,dir))get(p);
+ for(const dir of ['scripts/publication','scripts/journal','scripts/workshop','scripts/experience','scripts/launch','scripts/lib','scripts/public-content','scripts/showcase','scripts/dev-center'])for(const p of walk(root,dir))get(p);
  const cfg=getJSON(get,'config/publication.json');if(cfg.schemaVersion!==1||cfg.output!==OUTPUT||cfg.edition!=='R24'||!Array.isArray(cfg.entrypoints)||!Array.isArray(cfg.extraPublicFiles))throw Error('发布配置不匹配。');
  const origin=new URL(cfg.origin).origin;if(!origin.startsWith('https://')||cfg.origin!==origin)throw Error('origin 需要不带路径的 HTTPS 地址。');
  const release=getJSON(get,cfg.candidatePath+'/release.json');if(release.version!==cfg.gameVersion)throw Error('当前游戏源码版本不符；请核对发布配置。');
@@ -78,7 +79,9 @@ export async function planPublication(root=ROOT){
  const fileTree=rel=>{const paths=walk(root,rel);directories.set(rel,paths);return paths;};
  // Assets contain dynamically selected backgrounds and character media. Keep
  // runtime assets, never build logs/test fixtures, rather than guess they are dead.
- for(const p of fileTree('assets'))if(!privatePath(p)){const b=get(p);if(b)files.set(p,cacheSource(p,publicRuntime(p,b)));}
+ for(const p of fileTree('assets'))if(!privatePath(p)&&!p.startsWith('assets/journal/data/')){const b=get(p);if(b)files.set(p,cacheSource(p,publicRuntime(p,b)));}
+ // Compile with the projected reader, not the repository's private state paths.
+ for(const [p,b]of planJournalData(root,{reader:read,documentReader:get}).files){files.set(p,b);overlay.set(p,b);}
  for(const p of fileTree('content'))if(/\.js$/.test(p)&&!files.has(p)&&!privatePath(p)){const b=get(p);files.set(p,b);}
  for(const p of ['LICENSE','RIGHTS.md','CNAME']){const b=get(p);if(b)files.set(p,b);}if(!files.has('RIGHTS.md'))errors.push({file:'RIGHTS.md',problem:'missing-rights-statement'});
  // The atlas is a public tool; ship only its actual reading dependencies.

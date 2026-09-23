@@ -1,17 +1,38 @@
-import {withDocuments} from './documents.mjs?v=docs-r26';
+import {withDocuments,loadReadingDocument} from './documents.mjs?v=dev-r44-0f507510655a1cb1';
+import {CATALOG} from './data/catalog.mjs?v=dev-r44-0f507510655a1cb1';
+import {bindExperiments,disposeExperiments} from './experiment.mjs?v=dev-r44-0f507510655a1cb1';
 /** Content lifecycle only. Browser history and transition ownership stay in site-router.js. */
 import {validateCatalog,validateProject,normalizeState,route,MAX_BYTES,visibleTasks,projectURL,legacyProject} from './model.mjs?v=workshop-r21';
-import {render,metadata,renderProjectCards,selectProjects,taskResults} from './render.mjs?v=align-r27';
+import {render,metadata,renderProjectCards,selectProjects,taskResults} from './render.mjs?v=dev-r44-0f507510655a1cb1';
 const siteRoot=new URL('../../',import.meta.url), configURL=new URL('content/development/catalog.json',siteRoot);
 let catalogPromise, snapshot, current, activeLegacy;
 const states=new Map(), errors=new Map(), nodes=new Map(), filters=new Map(), loads=new Map();
-async function getJSON(url){
+async function getJSON(url,{cache='no-cache'}={}){
  url=new URL(url,siteRoot);if(url.origin!==siteRoot.origin)throw Error('项目数据只能从本站读取。');
  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),12000);
- try{const r=await fetch(url,{cache:'no-cache',credentials:'omit',signal:controller.signal});if(!r.ok)throw Error('HTTP '+r.status+'：'+url.pathname);const text=await r.text();if(new TextEncoder().encode(text).length>MAX_BYTES)throw Error('项目数据过大，未读取。');return JSON.parse(text);}finally{clearTimeout(timer);}
+ try{const r=await fetch(url,{cache,credentials:'omit',signal:controller.signal});if(!r.ok)throw Error('HTTP '+r.status+'：'+url.pathname);const text=await r.text();if(new TextEncoder().encode(text).length>MAX_BYTES)throw Error('项目数据过大，未读取。');return JSON.parse(text);}finally{clearTimeout(timer);}
 }
 async function loadCatalog(){
- if(!catalogPromise)catalogPromise=(async()=>{const catalog=validateCatalog(await getJSON(configURL));const projects=await Promise.all(catalog.projects.map(async row=>{const p=withDocuments(validateProject(await getJSON(row.file)));if(row.id!==p.id)throw Error('项目索引与文件 ID 不匹配。');return p;}));if(new Set(projects.map(p=>p.state.path)).size!==projects.length)throw Error('项目状态源重复，停止以防串用。');snapshot={catalog,projects};return snapshot;})().catch(e=>{catalogPromise=null;throw e;});return catalogPromise;
+ if(!catalogPromise)catalogPromise=Promise.resolve().then(()=>{
+  const catalog=validateCatalog(CATALOG.catalog),projects=CATALOG.projects.map(raw=>withDocuments(validateProject(raw)));
+  if(projects.length!==catalog.projects.length||projects.some(p=>!catalog.projects.some(row=>row.id===p.id)))throw Error('Project index mismatch');
+  if(new Set(projects.map(p=>p.state.path)).size!==projects.length)throw Error('Duplicate project state');
+  snapshot={catalog,projects};return snapshot;
+ }).catch(error=>{catalogPromise=null;throw error;});
+ return catalogPromise;
+}
+const guideLoads=new Map();
+async function prepareGuide(project,id){
+ const guide=project.docs.find(d=>d.id===id);if(!guide)return;
+ if(guide.readingDocument){await loadReadingDocument(project.id,id);return;}
+ if(!guide.deferredGuide)return;
+ const key=project.id+'/'+id;if(guideLoads.has(key))return guideLoads.get(key);
+ const pending=(async()=>{
+  const body=await getJSON(guide.deferredGuide,{cache:'force-cache'});
+  if(body.projectId!==project.id||body.guide?.id!==id)throw Error('Guide identity mismatch');
+  const candidate=withDocuments(validateProject({...project,docs:project.docs.map(d=>d.id===id?body.guide:d)}));
+  Object.assign(guide,candidate.docs.find(d=>d.id===id));delete guide.deferredGuide;
+ })();guideLoads.set(key,pending);try{await pending;}finally{guideLoads.delete(key);}
 }
 function loadScript(path){
  const u=new URL(path,siteRoot);if(u.origin!==siteRoot.origin)throw Error('脚本来源必须是本站。');if(loads.has(u.href))return loads.get(u.href);
@@ -36,6 +57,7 @@ export async function prepare(info){
  let data;
  try{data=await loadCatalog();delete info.journalError;}catch(error){info.journalError=error.message;info.title='记录暂时无法读取 · 在下_小Q';return;}
  const r=route(info.journalPath||location.pathname,data.catalog),p=data.projects.find(p=>p.id===r.projectId&&p.visibility!=='draft');
+ if(p&&r.view==='docs'&&r.doc){try{await prepareGuide(p,r.doc);}catch(error){info.journalError=error.message;return;}}
  info.journalRoute=r;const meta=metadata(r,data.projects,data.catalog);info.title=meta.title+' · 在下_小Q';if(r.canonical)info.canonical=r.canonical;
  if(p&&['tasks','manage'].includes(r.view)){
   if(!states.has(p.id))try{states.set(p.id,normalizeState(await getJSON(p.state.path),p));errors.delete(p.id);}catch(e){errors.set(p.id,e.message);}
@@ -129,7 +151,7 @@ export function mount(app,info={}){
  const r=info.journalRoute||route(location.pathname,snapshot.catalog),p=snapshot.projects.find(p=>p.id===r.projectId&&p.visibility!=='draft'),key=[r.projectId||'all',r.view,r.doc||''].join('/');
  let node=nodes.get(key);if(node?.querySelector('.j-error')&&p&&!errors.has(p.id)){nodes.delete(key);node=null;}
  if(!node){const box=document.createElement('div');box.innerHTML=render(r,{...snapshot,states:Object.fromEntries(states),errors:Object.fromEntries(errors),notes:globalThis.SITE_DATA?.notes||[]});node=box.firstElementChild;bind(node,r,p);nodes.set(key,node);}
- host.replaceChildren(node);current=node;
+ host.replaceChildren(node);current=node;bindExperiments(node);
  if(r.view==='index'&&!r.projectId){const q=new URL(location.href).searchParams,f=node._catalogFilter;Object.assign(f,{q:(q.get('q')||'').slice(0,100),category:q.get('category')||'all',page:Math.max(1,Math.floor(Number(q.get('page')))||1)});if(!['all','archived',...snapshot.projects.map(x=>x.category)].includes(f.category))f.category='all';node.querySelector('[data-project-search]').value=f.q;node.querySelectorAll('[data-category]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.category===f.category)));node._refreshProjects();}
  if(p&&r.view==='tasks'&&states.has(p.id)){
   const f=filterState(p.id),q=new URL(location.href).searchParams;
@@ -161,7 +183,7 @@ export async function retry(app,info={}){
  if(globalThis.SITE_ROUTER){await globalThis.SITE_ROUTER.navigate(new URL(location.href),{historyMode:'none',force:true,preserveView:true});}else mount(app,next);
 }
 
-export function unmount(){activeLegacy?.api.unmount();activeLegacy=null;if(current){current.remove();current=null;}}
+export function unmount(){disposeExperiments(current);activeLegacy?.api.unmount();activeLegacy=null;if(current){current.remove();current=null;}}
 export function afterLanguage(){syncNavigation();syncLanguage();}
 if(globalThis.document){document.addEventListener('site-language-change',afterLanguage);}
 globalThis.SITE_JOURNAL={prepare,mount,unmount,describe,syncNavigation,retry};
