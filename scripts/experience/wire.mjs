@@ -1,3 +1,4 @@
+import {wirePlatform} from '../platform/wire.mjs';
 import {wireShowcase} from '../showcase/wire.mjs';
 /** Idempotent progressive enhancement wiring; preserve every existing page's body and native URLs. */
 export function wireExperience(input){
@@ -14,5 +15,5 @@ export function wireExperience(input){
  s=s.replace(/(assets\/(?:site-router|site-shell)\.js)(?:\?[^"']*)?/g,'$1?v=site-r23');
  s=s.replace(/(assets\/site-router\.js)(?:\?[^"']*)?/g,'$1?v=align-r27');
  s=s.replace(/(assets\/(?:site-brand-tokens\.css|fonts\/LXGWWenKai-(?:Regular|Medium)-site\.woff2))(?:\?[^"']*)?/g,'$1?v=font-20260919-docs');
- return wireShowcase(s);
+ return wirePlatform(wireShowcase(s));
 }

@@ -1,3 +1,5 @@
+import {importMapData} from '../platform/import-map-audit.mjs';
+export {importMapData};
 import {htmlTitleCount} from './html-titles.mjs';
 /** Checks the exact files selected for a public artifact; no network or writes. */
 import path from 'node:path';
@@ -32,6 +34,7 @@ export function htmlReferences(text){const refs=[];const cleaned=text.replace(/<
   if(petImage)refs.push({raw:petImage,tag:'img',key:'pet-install-image'});
   if(a.srcset&&!a.srcset.trim().startsWith('data:'))for(const v of a.srcset.split(','))refs.push({raw:v.trim().split(/\s+/)[0],tag,key:'srcset',attrs:a});
  }
+ refs.push(...importMapData(text).refs);
  for(const m of text.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/gi))refs.push(...cssReferences(m[1]));
  for(const m of text.matchAll(/\bstyle=(?:"([^"]*)"|'([^']*)')/gi))refs.push(...cssReferences(m[1]||m[2]));
  return refs;
@@ -64,6 +67,7 @@ export function auditFiles(files,{origin,errors:initial=[],registryRefs=[]}={}){
  const errors=[...initial],warnings=[],external=new Set(),ids=new Map(),stats={pages:0,files:files.size,localReferences:0,externalURLs:0,bytes:0,archives:0,archiveEntries:0};
  for(const [p,b] of files){stats.bytes+=b.length;const fail=integrityProblem(p,b);if(fail)errors.push({file:p,problem:fail});if(/\.zip$/i.test(p)&&!fail){try{const info=inspectZip(b);stats.archives++;stats.archiveEntries+=info.entries;}catch(e){errors.push({file:p,problem:'invalid-zip-contents',detail:e.message});}}if(privatePath(p))errors.push({file:p,problem:'internal-file-in-artifact'});
   if(/\.html$/i.test(p)){
+   for(const problem of importMapData(b.toString()).errors)errors.push({file:p,problem});
    stats.pages++;const s=b.toString(),clean=s.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'').replace(/<!--([\s\S]*?)-->/g,'');
    const active=clean.replace(/<noscript\b[^>]*>[\s\S]*?<\/noscript>/gi,'');
    const all=[...active.matchAll(/\bid\s*=\s*(?:"([^"]*)"|'([^']*)')/g)].map(m=>decode(m[1]??m[2]));

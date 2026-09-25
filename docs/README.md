@@ -23,3 +23,7 @@
 `config/documents.json` 登记可阅读的 Markdown。`scripts/dev-center/build.mjs` 生成开发目录快照与按需正文；`assets/journal/data/` 是生成物，不手工编辑。新增实验先登记元数据，再保留原始产物。
 
 发布产物在 `.local/publish`。隐藏维护入口、robots 或 noindex 不构成访问控制；不要把密钥或私密数据放入公开仓库。
+
+## 当前网站平台
+
+日常维护从 [platform/README.md](platform/README.md) 开始。历史交接保留原地址，不作为当前发布流程入口。

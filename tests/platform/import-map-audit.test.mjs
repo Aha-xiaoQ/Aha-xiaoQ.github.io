@@ -1,0 +1,8 @@
+import test from'node:test';import assert from'node:assert/strict';import{importMapData,safeMapTarget}from'../../scripts/platform/import-map-audit.mjs';
+const map='<script type="importmap">{"imports":{"/assets/a.mjs?v=old":"/assets/a.mjs?v=new"}}</script>';
+test('public import map yields auditable module targets',()=>assert.deepEqual(importMapData(map),{refs:[{raw:'/assets/a.mjs?v=new',tag:'js',key:'import-map'}],errors:[]}));
+test('commented-out import maps are not active maps',()=>assert.equal(importMapData('<!-- arbitrary text\n'+map+'\n -->'+map).refs.length,1));
+test('duplicate maps and invalid shapes are blockers',()=>{assert.ok(importMapData(map+map).errors.includes('duplicate-import-map'));for(const text of['null','[]','{"imports":[]}','{"imports":{},"scopes":{}}','invalid'])assert.ok(importMapData('<script type=importmap>'+text+'</script>').errors.includes('invalid-import-map'));});
+test('numeric character references cannot conceal an active map type',()=>assert.equal(importMapData(map.replace('importmap','import&#109;ap')).refs.length,1));
+for(const value of['javascript:alert(1)','https://remote.invalid/a.js','/assets/../a.js','/assets/%2e%2e/a.js','/assets/a\\b.js','/assets/a\u0000.js','/assets/a.css','/assets/a.js\n','/assets/a.js"'])test('unsafe map target '+JSON.stringify(value),()=>{assert.equal(safeMapTarget(value),false);assert.ok(importMapData('<script type=importmap>'+JSON.stringify({imports:{'/assets/a.js':value}})+'</script>').errors.includes('invalid-import-map'));});
+test('empty imports map remains valid data and never authorizes a file',()=>assert.deepEqual(importMapData('<script type=importmap>{"imports":{}}</script>'),{refs:[],errors:[]}));

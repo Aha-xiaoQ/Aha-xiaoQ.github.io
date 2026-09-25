@@ -73,3 +73,7 @@ npm test
 授权范围见 [LICENSE](LICENSE)、[LICENSE.collab](LICENSE.collab) 与 [RIGHTS.md](RIGHTS.md)。游戏、美术、字体和下载包的第三方条款以各自说明为准；请勿将代码许可套用于全部素材。
 
 [字体许可](assets/FONT_LICENSES.md) · [变更记录](CHANGELOG.md)
+
+## 网站维护
+
+日常修改运行 `npm run platform:verify`，统一生成页面并检查源码与发布产物。模块分工、内容登记、英文与字体维护及增量更新包说明见 [网站架构与维护](docs/platform/README.md)。原有命令仍然可用。

@@ -1,3 +1,4 @@
+import {validateDocumentation} from '../platform/contracts.mjs';
 import {validateChapterPlan} from '../chapters/view.mjs?v=worlds-r21';
 /** R04 data boundary. No DOM, network, browser storage or project-name branches. */
 export const REVISION='journal-r04';
@@ -40,7 +41,7 @@ export function validateProject(p){
  if(!p.state||!['legacy-a','legacy-b','project-v1'].includes(p.state.adapter)||!localPath(p.state.path))throw Error('任务数据源无效。');
  if(p.participation.issueUrl&&!safeLink(p.participation.issueUrl))throw Error('参与链接无效。');
  if(p.state.adapter!=='project-v1'&&!['native','clarity'].includes(p.state.runtime))throw Error('旧记录必须指定已检测的运行布局。');
- return p;
+ validateDocumentation(p);return p;
 }
 export function validateState(s,projectId){
  if(s?.schemaVersion!==1||s.projectId!==projectId||!Number.isInteger(s.revision)||s.revision<1)throw Error('状态版本、项目归属或修订号不匹配。');date(s.updatedAt,'状态日期');array(s.tasks,'tasks');
@@ -58,8 +59,9 @@ export function normalizeState(raw,p){
  return {schemaVersion:1,projectId:p.id,revision:isA?1:raw.revision,sourceRevision:String(raw.release||'')+' / '+String(raw.updatedAt||''),updatedAt:raw.updatedAt,tasks,legacy:true};
 }
 export function visibleTasks(s){return s.tasks.filter(t=>t.audience!=='maintenance');}
-export function filterTasks(tasks,{q='',status='',page=1,size=6}={}){
- const needle=String(q).trim().toLowerCase();const items=tasks.filter(t=>(!status||t.status===status)&&(!needle||[t.id,t.title,t.summary,t.area].join(' ').toLowerCase().includes(needle)));
+export function filterTasks(tasks,{q='',status='',page=1,size=6,translate=value=>value}={}){
+ if(typeof translate!=='function')throw Error('Invalid search translator');
+ const needle=String(q).trim().toLowerCase();const items=tasks.filter(t=>(!status||t.status===status)&&(!needle||[t.id,t.title,t.summary,t.area,...[t.title,t.summary,t.area].map(translate)].join(' ').toLowerCase().includes(needle)));
  size=Number.isFinite(Number(size))?Math.max(1,Math.min(50,Math.floor(Number(size)))):6;
  const pages=Math.max(1,Math.ceil(items.length/size)),current=Math.min(pages,Math.max(1,Number.isFinite(Number(page))?Math.floor(Number(page)):1));return {items:items.slice((current-1)*size,current*size),count:items.length,page:current,pages};
 }

@@ -1,9 +1,9 @@
-import {withDocuments,loadReadingDocument} from './documents.mjs?v=dev-r44-0f507510655a1cb1';
-import {CATALOG} from './data/catalog.mjs?v=dev-r44-0f507510655a1cb1';
-import {bindExperiments,disposeExperiments} from './experiment.mjs?v=dev-r44-0f507510655a1cb1';
+import {withDocuments,loadReadingDocument} from './documents.mjs?v=dev-r44-b4827cfe7c9fa959';
+import {CATALOG} from './data/catalog.mjs?v=dev-r44-b4827cfe7c9fa959';
+import {bindExperiments,disposeExperiments} from './experiment.mjs?v=dev-r44-b4827cfe7c9fa959';
 /** Content lifecycle only. Browser history and transition ownership stay in site-router.js. */
 import {validateCatalog,validateProject,normalizeState,route,MAX_BYTES,visibleTasks,projectURL,legacyProject} from './model.mjs?v=workshop-r21';
-import {render,metadata,renderProjectCards,selectProjects,taskResults} from './render.mjs?v=dev-r44-0f507510655a1cb1';
+import {render,metadata,renderProjectCards,selectProjects,taskResults} from './render.mjs?v=dev-r44-b4827cfe7c9fa959';
 const siteRoot=new URL('../../',import.meta.url), configURL=new URL('content/development/catalog.json',siteRoot);
 let catalogPromise, snapshot, current, activeLegacy;
 const states=new Map(), errors=new Map(), nodes=new Map(), filters=new Map(), loads=new Map();
@@ -68,23 +68,16 @@ export function describe(pathname=location.pathname){
  if(!snapshot)return {title:'开发',intro:'项目记录暂时无法加载，请检查连接后重试。',eyebrow:'DEV LOG'};
  return metadata(route(pathname,snapshot.catalog),snapshot.projects,snapshot.catalog);
 }
-const translations={'查看项目':'View project','全部更新':'All updates','参与方式':'How to contribute','返回项目资料':'Back to project guides','选择项目':'Choose a project','交接与管理':'Handoff and management','下载与运行':'Download and run','阅读指南':'Read guide','浏览资料':'Browse guides','查看任务':'View tasks','新标签页':'New tab','复制命令':'Copy commands','已复制。':'Copied.','剪贴板不可用，请选择并复制上方命令。':'Clipboard unavailable. Select and copy the commands above.','开发':'Dev','正在打磨的作品':'In the making','最近有什么变化':'Recent changes','探索这个项目':'Explore this project','一起参与 ↗':'Contribute ↗','关于这个作品':'About this project','从这里继续':'Explore further','从项目开始':'Explore projects','近期记录':'Recent entries','近期更新':'Recent updates','全部':'All','归档':'Archived','游戏':'Games','网站':'Website','实验':'Experiments','查看项目进展 →':'View project progress →','查看全部更新 →':'All updates →','了解参与方式 →':'How to contribute →','概览':'Overview','任务':'Tasks','资料':'Guides','更新':'Updates','参与':'Contribute','交接与管理 →':'Handoff and management →','搜索项目':'Search projects','搜索任务':'Search tasks','全部状态':'All statuses','上一页':'Previous','下一页':'Next','返回开发':'Back to Dev'};
-const labelOriginals=new WeakMap();
+// Shared owner translates all visitor copy; original code and prompts remain protected.
 function syncLanguage(){
- const english=document.documentElement.lang.startsWith('en');
  if(current){
-  // The site's dictionary is frozen; use the existing language choice, never mutate it.
-  current.dataset.i18nSkip='';
-  const walker=document.createTreeWalker(current,NodeFilter.SHOW_TEXT);
-  for(let n=walker.nextNode();n;n=walker.nextNode()){
-   if(n.parentElement.closest('script,style,input,textarea,code,pre,[data-legacy-host]'))continue;
-   let source=labelOriginals.get(n);if(!source&&Object.hasOwn(translations,n.nodeValue.trim())){source=n.nodeValue.trim();labelOriginals.set(n,source);}
-   if(source){const next=english?translations[source]:source;if(n.nodeValue!==next)n.nodeValue=next;}
-  }
-  const n=current.querySelector('[data-english-note]');if(n)n.hidden=!english;
- }
- globalThis.SITE_I18N?.apply();
+  current.removeAttribute('data-i18n-skip');
+  globalThis.SITE_I18N?.apply(current);
+  const note=current.querySelector('[data-source-language-note]');
+  if(note)note.hidden=!(document.documentElement.lang.startsWith('en')&&current.querySelector('[data-original-language]'));
+ }else globalThis.SITE_I18N?.apply();
 }
+const localizedFilters=f=>({...f,translate:value=>globalThis.SITE_I18N?.translate(value,'en')||value});
 export function syncNavigation(app=document){
  const en=document.documentElement.lang.startsWith('en');const inNotes=/^\/(notes|dev)(\/|$)/.test(location.pathname);
  app.querySelectorAll('.site-header nav,.topbar>nav').forEach(nav=>{
@@ -96,19 +89,20 @@ export function syncNavigation(app=document){
 function filterState(id){if(!filters.has(id))filters.set(id,{q:'',status:'',page:1,size:6});return filters.get(id);}
 function updateTasks(node,p,{reset=false,focus=false}={}){
  const f=filterState(p.id),state=states.get(p.id);if(!state)return;if(reset)f.page=1;
- node.querySelector('[data-task-results]').innerHTML=taskResults(p,state,f);
+ node.querySelector('[data-task-results]').innerHTML=taskResults(p,state,localizedFilters(f));
  const url=new URL(location.href);for(const k of ['q','status','page']){const value=f[k];if(value&&!(k==='page'&&value===1))url.searchParams.set(k,String(value));else url.searchParams.delete(k);}history.replaceState(history.state,'',url);
  if(focus){const summary=node.querySelector('.j-result-summary');summary.tabIndex=-1;summary.focus({preventScroll:true});summary.scrollIntoView({block:'nearest'});}syncLanguage();
 }
 function exportState(p){const state=states.get(p.id);if(!state)return;const url=URL.createObjectURL(new Blob([JSON.stringify(Object.fromEntries(Object.entries(state).filter(([key])=>key!=='sourceRevision')),null,2)+'\n'],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=p.id+'-state.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 // Each snippet owns one async copy request. Detached pages never receive late UI writes.
+let mountGeneration=0;
 const copyRequests=new WeakMap();
 export async function copyCode(button,{clipboard=globalThis.navigator?.clipboard,selectionDocument=document}={}){
  const block=button.closest('[data-code-example]'),code=block?.querySelector('code'),status=block?.querySelector('[data-copy-status]');
  if(!code||!status)return false;
- const ticket={};copyRequests.set(block,ticket);let copied=false;
+ const ticket={generation:mountGeneration};copyRequests.set(block,ticket);let copied=false;
  try{if(!clipboard?.writeText)throw Error('Clipboard unavailable');await clipboard.writeText(code.textContent);copied=true;}catch{}
- if(copyRequests.get(block)!==ticket||!block.isConnected)return false;
+ if(copyRequests.get(block)!==ticket||ticket.generation!==mountGeneration||!block.isConnected)return false;
  status.textContent=copied?'已复制。':'剪贴板不可用，请选择并复制上方命令。';
  if(!copied){const selection=selectionDocument.getSelection();const range=selectionDocument.createRange();range.selectNodeContents(code);selection?.removeAllRanges();selection?.addRange(range);block.querySelector('pre')?.focus({preventScroll:true});}
  return copied;
@@ -117,12 +111,12 @@ function bind(node,r,p){
  const catalogFilter={q:'',category:'all',page:1};node._catalogFilter=catalogFilter;
  const catalogURL=()=>{const u=new URL(location.href);for(const k of ['q','category','page']){const v=catalogFilter[k];if(v&&v!=='all'&&!(k==='page'&&v===1))u.searchParams.set(k,String(v));else u.searchParams.delete(k);}history.replaceState(history.state,'',u);};
  const refreshProjects=()=>{
-  const selected=selectProjects(snapshot.projects,catalogFilter);catalogFilter.page=selected.current;
-  node.querySelector('[data-project-results]').innerHTML=renderProjectCards(snapshot.projects,catalogFilter);
+  const selected=selectProjects(snapshot.projects,localizedFilters(catalogFilter));catalogFilter.page=selected.current;
+  node.querySelector('[data-project-results]').innerHTML=renderProjectCards(snapshot.projects,localizedFilters(catalogFilter));
   const status=node.querySelector('[data-project-result-status]');
   if(status)status.textContent=`显示 ${selected.count} 个项目`+(selected.pages>1?` · 第 ${selected.current} / ${selected.pages} 页`:'');
   const clear=node.querySelector('[data-clear-project-filters]');if(clear)clear.hidden=!catalogFilter.q.trim()&&catalogFilter.category==='all';
-  catalogURL();
+  catalogURL();syncLanguage();
  };
  node._refreshProjects=refreshProjects;
  const onSearch=e=>{
@@ -156,7 +150,7 @@ export function mount(app,info={}){
  if(p&&r.view==='tasks'&&states.has(p.id)){
   const f=filterState(p.id),q=new URL(location.href).searchParams;
   Object.assign(f,{q:q.get('q')||'',status:q.get('status')||'',page:Number(q.get('page'))||1});
-  node.querySelector('[data-task-search]').value=f.q;node.querySelector('[data-task-status]').value=f.status;node.querySelector('[data-task-results]').innerHTML=taskResults(p,states.get(p.id),f);
+  node.querySelector('[data-task-search]').value=f.q;node.querySelector('[data-task-status]').value=f.status;node.querySelector('[data-task-results]').innerHTML=taskResults(p,states.get(p.id),localizedFilters(f));
  }
  if(p&&r.view==='manage'&&legacyProject(p)){
   const slot=node.querySelector('[data-legacy-host]'),l=legacyByProject.get(p.id);
@@ -174,7 +168,7 @@ function showRetry(host,app,info){
  box.querySelector('button').onclick=()=>retry(app,info);
 }
 export async function retry(app,info={}){
- if(!app)return;const ticket={},url=location.href;retryTickets.set(app,ticket);catalogPromise=null;
+ if(!app)return;const ticket={},url=location.href;retryTickets.set(app,ticket);catalogPromise=null;nodes.clear();
  const r=snapshot?route(info.journalPath||location.pathname,snapshot.catalog):null;
  if(r?.projectId){states.delete(r.projectId);errors.delete(r.projectId);}
  const next={journalPath:location.pathname};await prepare(next);
@@ -183,7 +177,7 @@ export async function retry(app,info={}){
  if(globalThis.SITE_ROUTER){await globalThis.SITE_ROUTER.navigate(new URL(location.href),{historyMode:'none',force:true,preserveView:true});}else mount(app,next);
 }
 
-export function unmount(){disposeExperiments(current);activeLegacy?.api.unmount();activeLegacy=null;if(current){current.remove();current=null;}}
+export function unmount(){mountGeneration++;disposeExperiments(current);activeLegacy?.api.unmount();activeLegacy=null;if(current){current.remove();current=null;}}
 export function afterLanguage(){syncNavigation();syncLanguage();}
 if(globalThis.document){document.addEventListener('site-language-change',afterLanguage);}
 globalThis.SITE_JOURNAL={prepare,mount,unmount,describe,syncNavigation,retry};

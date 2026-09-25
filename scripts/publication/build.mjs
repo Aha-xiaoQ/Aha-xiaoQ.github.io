@@ -1,4 +1,7 @@
 #!/usr/bin/env node
+import {wirePlatform} from '../platform/wire.mjs';
+import {importMap} from '../platform/assets.mjs';
+import {planContent} from '../platform/content.mjs';
 import {planJournalData} from '../dev-center/build.mjs';
 import {includeSourceArchives} from './source-archives.mjs';
 import {planShowcase} from '../showcase/build.mjs';
@@ -19,7 +22,7 @@ export const OUTPUT='.local/publish', RECORD='.local/release-r24/artifact.json';
 const getJSON=(get,p)=>{const b=get(p);if(!b)throw Error('缺少发布输入：'+p);return JSON.parse(b);};
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function publicHTML(s,p,origin,data,cacheToken){
- if(/(?:^|\/)play\.html$/.test(p)||p==='experiments/pelican-bicycle.html')return s;
+ if(/(?:^|\/)play\.html$/.test(p)||/^experiments\/.+\.html$/.test(p))return s;
  const canonical=origin+'/'+p.replace(/index\.html$/,'');
  s=s.replace(/<script\b[^>]*data-public-release[^>]*>[\s\S]*?<\/script>\s*/gi,'');
  s=s.replace(/<head\b[^>]*>/i,m=>m+'\n<script data-public-release src="/assets/release/public-mode.js?v=release-r24"></script>');
@@ -43,8 +46,9 @@ export async function planPublication(root=ROOT){
  const observed=new Map(),errors=[],warnings=[],files=new Map(),overlay=new Map(),directories=new Map();
  const get=p=>{if(observed.has(p))return observed.get(p);const b=exactRead(root,p);observed.set(p,b);return b;};
  const read=p=>overlay.has(p)?overlay.get(p):get(p);
+ for(const [p,b]of planContent(root,{reader:get}).files)if(!get(p)?.equals(b))throw Error('Platform content is stale: npm run platform:content');
  if(!documentData(root,{reader:get}).equals(get(DOCUMENT_DATA)))throw Error('Document pages are stale: run npm run journal:build');
- for(const dir of ['scripts/publication','scripts/journal','scripts/workshop','scripts/experience','scripts/launch','scripts/lib','scripts/public-content','scripts/showcase','scripts/dev-center'])for(const p of walk(root,dir))get(p);
+ for(const dir of ['scripts/publication','scripts/journal','scripts/workshop','scripts/experience','scripts/launch','scripts/lib','scripts/public-content','scripts/showcase','scripts/dev-center','scripts/platform'])for(const p of walk(root,dir))get(p);
  const cfg=getJSON(get,'config/publication.json');if(cfg.schemaVersion!==1||cfg.output!==OUTPUT||cfg.edition!=='R24'||!Array.isArray(cfg.entrypoints)||!Array.isArray(cfg.extraPublicFiles))throw Error('发布配置不匹配。');
  const origin=new URL(cfg.origin).origin;if(!origin.startsWith('https://')||cfg.origin!==origin)throw Error('origin 需要不带路径的 HTTPS 地址。');
  const release=getJSON(get,cfg.candidatePath+'/release.json');if(release.version!==cfg.gameVersion)throw Error('当前游戏源码版本不符；请核对发布配置。');
@@ -105,11 +109,13 @@ export async function planPublication(root=ROOT){
  while(rounds++<100){let added=0;
   for(const [p,b]of [...files]){if(seen.has(p))continue;seen.add(p);let refs=[];if(/\.html$/.test(p))refs=htmlReferences(b.toString());else if(/\.css$/.test(p))refs=cssReferences(b.toString());else if(/\.(?:mjs|js)$/.test(p))refs=[...jsReferences(b.toString()),...scriptRegistry(b.toString())];else if(/^content\/.+\.json$/.test(p))refs=jsonRefs(JSON.parse(b));
    if(p==='index.html')refs.push(...registryRefs);
-   for(const r of refs){const ref=resolveRef(p,r.raw,origin);if(!ref?.path||files.has(ref.path))continue;if(!allowed(ref.path)){errors.push({file:p,problem:'internal-public-link',target:ref.path});continue;}const bytes=read(ref.path);if(bytes){files.set(ref.path,bytes);added++;}}
+   for(const r of refs){if(r.key==='import-map')continue;const ref=resolveRef(p,r.raw,origin);if(!ref?.path||files.has(ref.path))continue;if(!allowed(ref.path)){errors.push({file:p,problem:'internal-public-link',target:ref.path});continue;}const bytes=read(ref.path);if(bytes){files.set(ref.path,bytes);added++;}}
   }if(!added)break;
  }
  const cacheToken='release-r24-'+sha(Buffer.concat([...files].sort(([a],[b])=>a<b?-1:a>b?1:0).map(([p,b])=>Buffer.from(p+sha(b))))).slice(0,12);
- for(const [p,b]of files){if(/\.html$/.test(p))files.set(p,Buffer.from(publicHTML(b.toString(),p,origin,site,cacheToken)));else files.set(p,cacheSource(p,publicRuntime(p,b),cacheToken));}
+ for(const [p,b]of files)if(!/\.html$/.test(p))files.set(p,cacheSource(p,publicRuntime(p,b),cacheToken));
+ const moduleMap=importMap(files);files.set('assets/platform/import-map.json',json(moduleMap));
+ for(const [p,b]of files)if(/\.html$/.test(p)){const html=publicHTML(b.toString(),p,origin,site,cacheToken);files.set(p,Buffer.from(wirePlatform(html,{reader:p=>files.get(p)||null,map:moduleMap})));}
  const pages=[...files.keys()].filter(p=>p.endsWith('.html')&&p!=='404.html'&&!/play\.html$/.test(p)&&!/http-equiv="refresh"/.test(files.get(p).toString())).sort();
  files.set('sitemap.xml',Buffer.from('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+pages.map(p=>'<url><loc>'+esc(origin+'/'+p.replace(/index\.html$/,''))+'</loc></url>').join('')+'</urlset>\n'));
  files.set('robots.txt',Buffer.from('User-agent: *\nAllow: /\nDisallow: /dev/manage/\nDisallow: /.local/\nDisallow: /tests/\nSitemap: '+origin+'/sitemap.xml\n'));

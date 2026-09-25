@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import {wirePlatform} from '../platform/wire.mjs';
 /** Version shared assets on native entry templates that no page generator owns. */
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -8,13 +9,13 @@ export const ROOT=fileURLToPath(new URL('../../',import.meta.url));
 export const ENTRIES=Object.freeze(['index.html','games/pixel-pipe-adventure/index.html','games/voxel-frontier/index.html']);
 export const ASSETS=Object.freeze(['content/site-data.js','assets/site-brand-tokens.css','assets/workshop-cards.js','assets/ui/site-actions.js','assets/ui/site-actions.css','assets/launch/journey.js','assets/journal/model.mjs','assets/site-router.js','assets/journal/journal.css']);
 export function versionEntry(text,root=ROOT){
- return text.replace(/(\b(?:src|href)=["'])([^"']+)(["'])/g,(all,a,url,z)=>{
+ return wirePlatform(text.replace(/(\b(?:src|href)=["'])([^"']+)(["'])/g,(all,a,url,z)=>{
   if(/^(?:[a-z][a-z0-9+.-]*:|\/\/)/i.test(url))return all;
   const p=url.replace(/^(?:\.\.\/)+/,'').replace(/^\//,'').split(/[?#]/)[0];
   if(!ASSETS.includes(p))return all;
   const bytes=readOptional(root,p);if(!bytes)throw Error('缺少版本资源：'+p);
   return a+url.split(/[?#]/)[0]+'?v='+createHash('sha256').update(bytes).digest('hex').slice(0,16)+z;
- });
+ }),{root});
 }
 export function sync(root=ROOT,{check=false}={}){
  const changes=[];

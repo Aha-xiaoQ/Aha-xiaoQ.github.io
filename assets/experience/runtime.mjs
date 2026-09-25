@@ -21,7 +21,7 @@ export function refreshHeader(scope=document){
 async function showResults(host,state,{focus=false}={}){
  const ticket=++generation,out=host.querySelector('[data-search-output]');if(!out)return;
  out.setAttribute('aria-busy','true');if(!out.querySelector('.q-search-results'))out.innerHTML='<p class="q-search-note" role="status">正在读取作品与资料…</p>';
- try{const data=await loadIndex();if(ticket!==generation||!host.isConnected||current!==host)return;const result=search(data,state);state.page=result.page;updateURL(state);out.innerHTML=resultsMarkup(result);if(focus){const n=out.querySelector('.q-search-count');n.tabIndex=-1;n.focus({preventScroll:true});n.scrollIntoView({block:'nearest',behavior:'auto'});}}
+ try{const data=await loadIndex();if(ticket!==generation||!host.isConnected||current!==host)return;const result=search(data,{...state,translate:value=>globalThis.SITE_I18N?.translate(value,'en')||value});state.page=result.page;updateURL(state);out.innerHTML=resultsMarkup(result);if(focus){const n=out.querySelector('.q-search-count');n.tabIndex=-1;n.focus({preventScroll:true});n.scrollIntoView({block:'nearest',behavior:'auto'});}}
  catch{if(ticket!==generation||!host.isConnected||current!==host)return;out.innerHTML='<div class="q-search-error" role="alert"><h2>搜索暂时不可用</h2><p>请重试，或从下方栏目继续浏览。</p><button type="button" class="button button--quiet" data-search-retry>重试搜索</button></div>';}
  finally{if(ticket===generation&&host.isConnected)out.setAttribute('aria-busy','false');}
 }

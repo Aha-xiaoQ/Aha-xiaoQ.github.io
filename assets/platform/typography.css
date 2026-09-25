@@ -1,0 +1,27 @@
+/* Typography only: retain the existing geometry, sizes, colors, and primary WenKai faces. */
+@font-face {
+  font-family: "LXGW WenKai Extended";
+  src: url("https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/files/lxgwwenkai-regular-subset-22.woff2") format("woff2"),
+       url("https://cdnjs.cloudflare.com/ajax/libs/lxgw-wenkai-webfont/1.7.0/files/lxgwwenkai-regular-subset-22.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+9E48, U+9E55;
+}
+@font-face {
+  font-family: "LXGW WenKai Extended";
+  src: url("https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/files/lxgwwenkai-bold-subset-22.woff2") format("woff2"),
+       url("https://cdnjs.cloudflare.com/ajax/libs/lxgw-wenkai-webfont/1.7.0/files/lxgwwenkai-bold-subset-22.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 500 700;
+  font-display: swap;
+  unicode-range: U+9E48, U+9E55;
+}
+html body {
+  --font-body: "LXGW WenKai Supplement", "LXGW WenKai", "LXGW WenKai Extended", KaiTi, "Kaiti SC", STKaiti, "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", serif;
+  font-family: var(--font-body);
+}
+#app :is(button,input,select,textarea) { font-family: inherit; }
+#app :is(pre,code,kbd,samp) { font-family: ui-monospace, Consolas, "SFMono-Regular", monospace; }
+html[lang="en"] #app :is(p,h1,h2,h3,button,a,label) { word-break: normal; }
+#app [data-prompt-text] { white-space: pre-wrap; }

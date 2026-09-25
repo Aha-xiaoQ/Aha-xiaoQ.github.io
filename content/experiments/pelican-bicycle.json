@@ -10,7 +10,9 @@
   "artifact": {
     "href": "/experiments/pelican-bicycle.html",
     "bytes": 40441,
-    "sha256": "ff9bd59b4ab3dbd7ac0af37bc2661c707a73b6111d941325e5db4d64cd40907c"
+    "sha256": "ff9bd59b4ab3dbd7ac0af37bc2661c707a73b6111d941325e5db4d64cd40907c",
+    "selfContained": true,
+    "downloadName": "pelican_bicycle.html"
   },
   "features": [
     {
@@ -27,5 +29,13 @@
     }
   ],
   "provenance": "这里提供最初生成的 HTML，展示页不重新绘制或替换动画。单个示例不等于通用性能评测。",
-  "verification": "提示词约束：不做测试。推理强度设置未记录，也没有统一评测数据。"
+  "verification": "提示词约束：不做测试。推理强度设置未记录，也没有统一评测数据。",
+  "visibility": "public",
+  "medium": "SVG",
+  "format": "HTML + SVG",
+  "promptLanguage": "zh-CN",
+  "spotlight": "沿海骑行的小小场景，附原始提示词、模型信息和独立 HTML。",
+  "previewDescription": "海岸线、微风，还有一只认真踩踏的鹈鹕。",
+  "kicker": "ONE PROMPT · ONE RIDE",
+  "controlsSummary": "在动画内选择速度或暂停；聚焦动画后可按空格键。"
 }

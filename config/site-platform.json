@@ -1,0 +1,248 @@
+{
+  "schemaVersion": 1,
+  "edition": "R45",
+  "site": {
+    "repository": "Aha-xiaoQ/Aha-xiaoQ.github.io",
+    "branch": "main",
+    "origin": "https://aha-xiaoq.github.io",
+    "defaultLocale": "zh",
+    "locales": [
+      "zh",
+      "en"
+    ]
+  },
+  "modules": [
+    {
+      "id": "content",
+      "dependsOn": [],
+      "sourceRoots": [
+        "content"
+      ],
+      "responsibility": "作品、项目、实验与翻译的编辑来源"
+    },
+    {
+      "id": "contracts",
+      "dependsOn": [],
+      "sourceRoots": [
+        "assets/platform"
+      ],
+      "responsibility": "浏览器与构建共用的纯数据约束"
+    },
+    {
+      "id": "localization",
+      "dependsOn": [
+        "content",
+        "contracts"
+      ],
+      "sourceRoots": [
+        "assets/site-i18n.js",
+        "assets/site-i18n-data.js",
+        "assets/site-i18n.css",
+        "assets/i18n",
+        "assets/fonts"
+      ],
+      "responsibility": "语言状态、消息与字体覆盖"
+    },
+    {
+      "id": "journal",
+      "dependsOn": [
+        "content",
+        "contracts",
+        "localization"
+      ],
+      "sourceRoots": [
+        "assets/journal",
+        "scripts/journal",
+        "scripts/dev-center"
+      ],
+      "responsibility": "项目目录、正文和实验展示"
+    },
+    {
+      "id": "shell",
+      "dependsOn": [
+        "content",
+        "localization"
+      ],
+      "sourceRoots": [
+        "assets/ui",
+        "scripts/workshop",
+        "scripts/showcase",
+        "scripts/experience",
+        "scripts/launch",
+        "assets/site-router.js",
+        "assets/site-shell.js",
+        "assets/promo.js",
+        "assets/experience",
+        "assets/launch",
+        "assets/chapters"
+      ],
+      "responsibility": "共享界面、路由、搜索和作品集合"
+    },
+    {
+      "id": "publication",
+      "dependsOn": [
+        "journal",
+        "shell"
+      ],
+      "sourceRoots": [
+        "scripts/publication"
+      ],
+      "responsibility": "公开产物投影与完整性检查，不执行 Git 推送"
+    },
+    {
+      "id": "delivery",
+      "dependsOn": [
+        "publication"
+      ],
+      "sourceRoots": [
+        "scripts/platform"
+      ],
+      "responsibility": "统一流水线、检查报告与增量包生成"
+    }
+  ],
+  "generated": [
+    {
+      "owner": "journal",
+      "record": "docs/development/generated-pages.json"
+    },
+    {
+      "owner": "shell",
+      "record": "docs/design-r07/generated-pages.json"
+    },
+    {
+      "owner": "shell",
+      "record": "docs/showcase-r25/generated-files.json"
+    },
+    {
+      "owner": "localization",
+      "record": "docs/platform/generated-files.json"
+    },
+    {
+      "owner": "shell",
+      "record": "docs/experience-r18/generated-files.json"
+    },
+    {
+      "owner": "shell",
+      "record": "docs/launch-r19/generated-files.json"
+    },
+    {
+      "owner": "journal",
+      "record": "docs/content-r15/generated-tasks.json"
+    },
+    {
+      "owner": "journal",
+      "record": "docs/chapters-r20/generated-files.json"
+    },
+    {
+      "owner": "shell",
+      "record": "docs/studio-r25/generated-files.json"
+    }
+  ],
+  "nativeEntries": [
+    "index.html",
+    "games/pixel-pipe-adventure/index.html",
+    "games/voxel-frontier/index.html",
+    "projects/q-mimi/index.html"
+  ],
+  "protectedArtifacts": [
+    "games/mario-mix/play.html",
+    "games/mario-mix-2/play.html",
+    "games/mario-mix-3/play.html",
+    "games/mario-mix-4/play.html",
+    "experiments/pelican-bicycle.html"
+  ],
+  "pipelines": {
+    "build": [
+      {
+        "id": "locale-content",
+        "file": "scripts/platform/content.mjs",
+        "args": []
+      },
+      {
+        "id": "development",
+        "script": "journal:build",
+        "after": [
+          "locale-content"
+        ]
+      },
+      {
+        "id": "collections",
+        "script": "site:build",
+        "after": [
+          "development"
+        ]
+      },
+      {
+        "id": "native-entries",
+        "file": "scripts/platform/native.mjs",
+        "args": [],
+        "after": [
+          "collections"
+        ]
+      }
+    ],
+    "verify": [
+      {
+        "id": "source-checks",
+        "script": "check"
+      },
+      {
+        "id": "source-tests",
+        "script": "test"
+      },
+      {
+        "id": "repository-doctor",
+        "script": "doctor"
+      },
+      {
+        "id": "font-coverage",
+        "file": "scripts/platform/fonts.mjs",
+        "args": []
+      },
+      {
+        "id": "publication-tests",
+        "script": "release:test"
+      },
+      {
+        "id": "publication-plan",
+        "script": "release:plan"
+      },
+      {
+        "id": "browser-components",
+        "file": "scripts/platform/browser-components.mjs",
+        "args": [],
+        "after": [
+          "source-tests"
+        ]
+      },
+      {
+        "id": "publication-build",
+        "script": "release:prepare",
+        "after": [
+          "source-checks",
+          "source-tests",
+          "publication-tests",
+          "publication-plan",
+          "repository-doctor",
+          "font-coverage",
+          "browser-components"
+        ]
+      },
+      {
+        "id": "publication-check",
+        "script": "release:check",
+        "after": [
+          "publication-build"
+        ]
+      },
+      {
+        "id": "browser-artifact",
+        "file": "scripts/platform/browser.mjs",
+        "args": [],
+        "after": [
+          "publication-check"
+        ]
+      }
+    ]
+  }
+}

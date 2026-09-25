@@ -1,7 +1,7 @@
-import {isPublicUpdate} from './update-audience.mjs?v=dev-r44-0f507510655a1cb1';
-import {developmentNav,labSpotlight,projectNavigation,projectOverview,projectDocument,documentDirectory} from './public-layout.mjs?v=dev-r44-0f507510655a1cb1';
+import {isPublicUpdate} from './update-audience.mjs?v=dev-r44-b4827cfe7c9fa959';
+import {developmentNav,labSpotlight,projectNavigation,projectOverview,projectDocument,documentDirectory} from './public-layout.mjs?v=dev-r44-b4827cfe7c9fa959';
 import {renderMarkdown} from './markdown.mjs?v=docs-r26';
-import {readingLink,readingDocument} from './documents.mjs?v=dev-r44-0f507510655a1cb1';
+import {readingLink,readingDocument} from './documents.mjs?v=dev-r44-b4827cfe7c9fa959';
 import {chapterSummary,chapterAtlas} from '../chapters/view.mjs?v=worlds-r21';
 import {tocMarkup} from '../experience/model.mjs?v=experience-r18';
 import {esc,safeLink,projectURL,STATUS_LABELS,CATEGORY_LABELS,filterTasks,visibleTasks,canClaim,projectStage,updateOrder,legacyProject} from './model.mjs?v=workshop-r21';
@@ -28,9 +28,10 @@ export function metadata(r,projects,catalog){
  const viewNames={tasks:'任务与反馈',docs:'开发资料',updates:'更新记录',contribute:'反馈与贡献',manage:'交接与管理'};
  return {title:d?.title||(r.view==='overview'?p.title:viewNames[r.view]),intro:d?.summary||(r.view==='overview'?p.summary:`${p.title} · ${viewNames[r.view]}`),eyebrow:'IN THE MAKING / '+CATEGORY_LABELS[p.category]};
 }
-export function selectProjects(projects,{q='',category='all',page=1}={}){
+export function selectProjects(projects,{q='',category='all',page=1,translate=value=>value}={}){
+ if(typeof translate!=='function')throw Error('Invalid search translator');
  q=String(q).trim().slice(0,100);
- const matches=projects.filter(p=>p.visibility!=='draft'&&(category==='archived'?p.visibility==='archived':p.visibility!=='archived'&&(category==='all'||p.category===category))&&(!q||[p.title,p.summary].join(' ').toLowerCase().includes(q.toLowerCase())));
+ const matches=projects.filter(p=>p.visibility!=='draft'&&(category==='archived'?p.visibility==='archived':p.visibility!=='archived'&&(category==='all'||p.category===category))&&(!q||[p.title,p.summary,translate(p.title),translate(p.summary)].join(' ').toLowerCase().includes(q.toLowerCase())));
  const count=matches.length,pages=Math.max(1,Math.ceil(count/6)),current=Math.min(pages,Math.max(1,Math.floor(Number(page))||1));
  return {count,pages,current,items:matches.slice((current-1)*6,current*6)};
 }
@@ -101,5 +102,5 @@ export function render(r,{projects,catalog,states={},errors={},notes=[],publicMo
   // Maintenance remains directly addressable, not a visitor call to action.
  }
  if(!p&&['updates','contribute'].includes(r.view))html=developmentNav(r.view)+html;
- return '<div class="journal" data-journal-view="'+esc(r.view)+'">'+html+'<p class="j-language-note" data-english-note hidden>Project records are currently written in Chinese.</p></div>';
+ return '<div class="journal" data-journal-view="'+esc(r.view)+'">'+html+'<p class="j-language-note" data-source-language-note hidden>未提供英文版本的内容保留中文原文。</p></div>';
 }

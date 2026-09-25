@@ -1,5 +1,7 @@
+import {EXPERIMENTS} from './data/experiments.mjs?v=dev-r44-b4827cfe7c9fa959';
+import {withExperimentDocuments} from '../platform/contracts.mjs';
 /** Metadata is cheap. Article bodies load only on the selected reading route. */
-import {DOCUMENTS} from './data/documents-index.mjs?v=dev-r44-0f507510655a1cb1';
+import {DOCUMENTS} from './data/documents-index.mjs?v=dev-r44-b4827cfe7c9fa959';
 const entries=new Map(DOCUMENTS.map(d=>[d.projectId+'/'+d.id,{...d}]));
 const pending=new Map();
 // The existing native-page generator needs synchronous article access in Node.
@@ -39,7 +41,7 @@ export function readingLink(href,source=''){
  return url.pathname+url.search+url.hash;
 }
 export function withDocuments(input){
- const p=JSON.parse(JSON.stringify(input));
+ const p=JSON.parse(JSON.stringify(withExperimentDocuments(input,EXPERIMENTS)));
  function rewrite(x){if(!x||typeof x!=='object')return;for(const[k,v]of Object.entries(x)){if(typeof v==='string'&&(k==='href'||k==='instructionsHref')&&bySource.has(v.split(/[?#]/)[0]))x[k]=readingLink(v);else if(v&&typeof v==='object')rewrite(v);}}
  rewrite(p);
  for(const d of entries.values())if(d.projectId===p.id&&!p.docs.some(x=>x.id===d.id))p.docs.push({id:d.id,title:d.title,summary:d.historical?'历史版本的开发资料。':'说明与参考资料。',sections:[],readingDocument:true,parentDoc:d.parent,versioned:d.historical});

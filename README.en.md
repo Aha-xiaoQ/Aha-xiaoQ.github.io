@@ -65,3 +65,7 @@ Include the page URL, device, and reproduction steps when reporting a problem. R
 See [LICENSE](LICENSE), [LICENSE.collab](LICENSE.collab), and [RIGHTS.md](RIGHTS.md) for their respective scope. Third-party game assets, artwork, fonts, and downloads retain their own terms.
 
 [Font licenses](assets/FONT_LICENSES.md) · [Changelog](CHANGELOG.md)
+
+## Website maintenance
+
+Run `npm run platform:verify` to build pages and verify both source and publication artifacts. See [Platform maintenance](docs/platform/README.en.md) for module ownership, content registration, localization, typography, and incremental packages. Existing commands remain available.

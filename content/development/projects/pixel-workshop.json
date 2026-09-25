@@ -115,7 +115,8 @@
         {
           "title": "实验记录",
           "paragraphs": [
-            "实验数据位于 content/experiments/，原始作品位于 experiments/。记录完整提示词、模型名称、已知设置和原始产物；没有记录的设置标注为“未记录”，作品展示与评测结论分开说明。"
+            "实验数据位于 content/experiments/，原始作品位于 experiments/。记录完整提示词、模型名称、已知设置和原始产物；没有记录的设置标注为“未记录”，作品展示与评测结论分开说明。",
+            "新实验登记在 content/experiments/catalog.json。复制一份记录，填写原始提示词、模型和产物校验值；页面、目录与下载入口由同一登记生成。"
           ]
         },
         {
@@ -161,6 +162,13 @@
           "paragraphs": [
             "packages/ 保存游戏和工具的独立工程；games/ 保存对应介绍与试玩入口。各工程的素材、依赖和运行方式以自身说明为准。"
           ]
+        },
+        {
+          "title": "框架、内容与发布",
+          "paragraphs": [
+            "运行、构建、校验和打包的入口由 config/site-platform.json 统一登记。旧命令继续有效；模块职责和生成文件归属见源码中的 docs/platform/。",
+            "语言与字体由共享模块处理；新增内容先登记译文，再生成页面并检查缺字与回退。"
+          ]
         }
       ],
       "sources": [
@@ -204,11 +212,11 @@
       "summary": "生成页面、核对改动，再通过 GitHub 发布。",
       "sections": [
         {
-          "title": "生成与检查",
+          "title": "统一构建与检查",
           "paragraphs": [
-            "先生成页面，再执行仓库已有检查。任何失败都应在提交前解决。"
+            "日常修改统一运行 npm run platform:verify。它依次生成内容与页面，汇总源代码检查和测试，再核对发布产物；任何失败都不会被当成发布通过。"
           ],
-          "code": "npm run journal:build\nnpm run site:build\nnpm run check\nnpm test"
+          "code": "npm run platform:plan\nnpm run platform:verify"
         },
         {
           "title": "网站发布目录",
@@ -222,6 +230,12 @@
           "paragraphs": [
             "查看 Git 差异，确认只包含本次修改。使用普通提交和推送；如远端有新提交，应先重新对齐，不要强制覆盖。",
             "部署工作流成功后，在浏览器确认主要入口、前进后退和移动端布局。自动检查不等于真实设备体验。"
+          ]
+        },
+        {
+          "title": "增量更新包",
+          "paragraphs": [
+            "更新包由明确的基线和文件差异生成。只携带本次修改，检查文件冲突、原始作品校验值和发布结果，不覆盖其他人的新提交。"
           ]
         }
       ],
@@ -260,5 +274,36 @@
       "sources": []
     }
   ],
-  "layout": "website"
+  "layout": "website",
+  "startDocuments": [
+    "start",
+    "content",
+    "publishing"
+  ],
+  "documentationGroups": [
+    {
+      "label": "01 / START",
+      "title": "入门与结构",
+      "documents": [
+        "start",
+        "architecture"
+      ]
+    },
+    {
+      "label": "02 / EDIT",
+      "title": "内容与扩展",
+      "documents": [
+        "content",
+        "add-project",
+        "writing"
+      ]
+    },
+    {
+      "label": "03 / PUBLISH",
+      "title": "构建与发布",
+      "documents": [
+        "publishing"
+      ]
+    }
+  ]
 }
