@@ -4,19 +4,19 @@
 
 小Q的个人作品网站：浏览器游戏、实用工具、制作记录与交互实验。
 
-[访问网站](https://aha-xiaoq.github.io/) · [项目](https://aha-xiaoq.github.io/projects/) · [游戏](https://aha-xiaoq.github.io/games/) · [工具](https://aha-xiaoq.github.io/tools/) · [开发](https://aha-xiaoq.github.io/notes/) · [实验室](https://aha-xiaoq.github.io/notes/lab/)
+[访问网站](https://aha-xiaoq.github.io/?lang=zh) · [项目](https://aha-xiaoq.github.io/projects/?lang=zh) · [游戏](https://aha-xiaoq.github.io/games/?lang=zh) · [工具](https://aha-xiaoq.github.io/tools/?lang=zh) · [开发](https://aha-xiaoq.github.io/notes/?lang=zh) · [实验室](https://aha-xiaoq.github.io/notes/lab/?lang=zh)
 
 ## 从这里开始
 
 | 想做什么 | 入口 |
 | --- | --- |
-| 体验游戏与工具 | [作品目录](https://aha-xiaoq.github.io/projects/) |
-| 了解混合马里奥 | [项目介绍与关卡进展](https://aha-xiaoq.github.io/notes/mario-mix/) |
-| 下载第三期开发源码 | [M07 候选版源码与运行说明](https://aha-xiaoq.github.io/notes/mario-mix/docs/terra-source/) |
-| 下载第四期源码 | [R43 源码与运行说明](https://aha-xiaoq.github.io/notes/mario-mix/docs/episode-4-source/) · [下载 R43 源码包](https://aha-xiaoq.github.io/downloads/source/MarioMix_Episode4_R43_Source.zip) |
+| 体验游戏与工具 | [作品目录](https://aha-xiaoq.github.io/projects/?lang=zh) |
+| 了解混合马里奥 | [项目介绍与关卡进展](https://aha-xiaoq.github.io/notes/mario-mix/?lang=zh) |
+| 下载第三期开发源码 | [M07 候选版源码与运行说明](https://aha-xiaoq.github.io/notes/mario-mix/docs/terra-source/?lang=zh) |
+| 下载第四期源码 | [R43 源码与运行说明](https://aha-xiaoq.github.io/notes/mario-mix/docs/episode-4-source/?lang=zh) · [下载 R43 源码包](https://aha-xiaoq.github.io/downloads/source/MarioMix_Episode4_R43_Source.zip) |
 | 制作关卡 | [地图工坊](https://aha-xiaoq.github.io/packages/mario-mix-worlds/atlas/editor.html) |
-| 查看提示词与实际效果 | [鹈鹕骑行实验](https://aha-xiaoq.github.io/notes/lab/docs/pelican-bicycle/) |
-| 修改这个网站 | [网站开发指南](https://aha-xiaoq.github.io/notes/pixel-workshop/docs/) |
+| 查看提示词与实际效果 | [鹈鹕骑行实验](https://aha-xiaoq.github.io/notes/lab/docs/pelican-bicycle/?lang=zh) |
+| 修改这个网站 | [网站开发指南](https://aha-xiaoq.github.io/notes/pixel-workshop/docs/?lang=zh) |
 
 混合马里奥各期试玩与开发源码独立维护；具体版本、可用范围与限制以对应项目资料为准。地图工坊提供参考底图、编辑与导出功能，不代表所有原作关卡均已完整复刻。
 
@@ -25,7 +25,7 @@
 
 | 内容 | 网站入口 | 视频状态 |
 | --- | --- | --- |
-| 第四期 · 索尼克 × 奥日 | [打开](https://aha-xiaoq.github.io/games/mario-mix-4/) | [观看视频](https://www.bilibili.com/video/BV1JBhh6iEXS/) |
+| 第四期 · 索尼克 × 奥日 | [打开](https://aha-xiaoq.github.io/games/mario-mix-4/?lang=zh) | [观看视频](https://www.bilibili.com/video/BV1JBhh6iEXS/) |
 | 马里奥地图工坊 | [打开](https://aha-xiaoq.github.io/packages/mario-mix-worlds/atlas/editor.html) | [观看视频](https://www.bilibili.com/video/BV1kLha63EyV/) |
 <!-- XIAOQ:VIDEOS:END -->
 
@@ -39,7 +39,7 @@ cd Aha-xiaoQ.github.io
 npm run dev
 ```
 
-打开 <http://127.0.0.1:4173/>。端口被占用时使用 `npm run dev -- --port 4174`；Windows 也可双击 `start-dev.cmd`。从完整仓库根目录启动，避免共享资源缺失。
+打开 <http://127.0.0.1:4173/?lang=zh>。端口被占用时使用 `npm run dev -- --port 4174`；Windows 也可双击 `start-dev.cmd`。从完整仓库根目录启动，避免共享资源缺失。
 
 ## 内容与开发
 
@@ -62,7 +62,7 @@ npm run check
 npm test
 ```
 
-[网站结构](https://aha-xiaoq.github.io/notes/pixel-workshop/docs/architecture/) · [内容编辑](https://aha-xiaoq.github.io/notes/pixel-workshop/docs/content/) · [构建与发布](https://aha-xiaoq.github.io/notes/pixel-workshop/docs/publishing/) · [维护资料索引](docs/README.md)
+[网站结构](https://aha-xiaoq.github.io/notes/pixel-workshop/docs/architecture/?lang=zh) · [内容编辑](https://aha-xiaoq.github.io/notes/pixel-workshop/docs/content/?lang=zh) · [构建与发布](https://aha-xiaoq.github.io/notes/pixel-workshop/docs/publishing/?lang=zh) · [维护资料索引](docs/README.md)
 
 ## 参与
 

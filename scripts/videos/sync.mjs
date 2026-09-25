@@ -2,6 +2,7 @@
 /** VIDEO-R1. Derive public video status from the two canonical videoUrl fields.
  * Never guesses a BV ID or treats a populated link as playback verification.
  */
+import {readmeSiteURL} from '../platform/readme-links.mjs';
 import path from 'node:path';
 import vm from 'node:vm';
 import {fileURLToPath} from 'node:url';
@@ -27,7 +28,7 @@ export function rows(data){
 const START='<!-- XIAOQ:VIDEOS:START -->',END='<!-- XIAOQ:VIDEOS:END -->';
 export function readmeBlock(items,en=false){
  const lines=en?['## Current videos','', '| Content | Website | Video |','| --- | --- | --- |']:['## 当前视频入口','', '| 内容 | 网站入口 | 视频状态 |','| --- | --- | --- |'];
- for(const t of items)lines.push(`| ${en?t.en:t.label} | [${en?'Open':'打开'}](https://aha-xiaoq.github.io${t.href}) | ${t.url?`[${en?'Watch video':'观看视频'}](${t.url})`:(en?'Video coming soon':'视频待发布')} |`);
+ for(const t of items)lines.push(`| ${en?t.en:t.label} | [${en?'Open':'打开'}](${readmeSiteURL('https://aha-xiaoq.github.io'+t.href,en?'en':'zh')}) | ${t.url?`[${en?'Watch video':'观看视频'}](${t.url})`:(en?'Video coming soon':'视频待发布')} |`);
  // README contains public video links; maintenance steps live in the website guide.
  return START+'\n'+lines.join('\n')+'\n'+END;
 }
