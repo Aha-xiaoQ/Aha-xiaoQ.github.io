@@ -53,16 +53,15 @@ npm run dev
 | `scripts/` · `tests/` | 构建和自动检查 |
 | `docs/` | 维护指南与历史记录 |
 
-编辑内容来源后，依次运行：
+编辑内容来源后，运行统一的构建与完整检查：
 
 ```sh
-npm run journal:build
-npm run site:build
-npm run check
-npm test
+npm run platform:verify
 ```
 
 [网站结构](https://aha-xiaoq.github.io/notes/pixel-workshop/docs/architecture/?lang=zh) · [内容编辑](https://aha-xiaoq.github.io/notes/pixel-workshop/docs/content/?lang=zh) · [构建与发布](https://aha-xiaoq.github.io/notes/pixel-workshop/docs/publishing/?lang=zh) · [维护资料索引](docs/README.md)
+
+仅为本地预览重新生成页面时，使用 `npm run platform:build`；它不代替完整检查。原有单项构建与测试命令继续可用。模块分工、语言维护和更新打包见[网站架构与维护](docs/platform/README.md)。
 
 ## 参与
 
@@ -73,7 +72,3 @@ npm test
 授权范围见 [LICENSE](LICENSE)、[LICENSE.collab](LICENSE.collab) 与 [RIGHTS.md](RIGHTS.md)。游戏、美术、字体和下载包的第三方条款以各自说明为准；请勿将代码许可套用于全部素材。
 
 [字体许可](assets/FONT_LICENSES.md) · [变更记录](CHANGELOG.md)
-
-## 网站维护
-
-日常修改运行 `npm run platform:verify`，统一生成页面并检查源码与发布产物。模块分工、内容登记、英文与字体维护及增量更新包说明见 [网站架构与维护](docs/platform/README.md)。原有命令仍然可用。

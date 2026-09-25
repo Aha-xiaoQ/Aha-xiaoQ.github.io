@@ -45,16 +45,15 @@ Open <http://127.0.0.1:4173/?lang=en>. Use `npm run dev -- --port 4174` when the
 
 `content/` and `config/` are the primary content sources. `assets/` contains shared UI, `notes/` contains generated development pages, `experiments/` contains standalone experiments, and `games/` and `packages/` hold game entries and independent projects.
 
-After editing source content:
+After editing source content, run the complete build and verification workflow:
 
 ```sh
-npm run journal:build
-npm run site:build
-npm run check
-npm test
+npm run platform:verify
 ```
 
-[Website structure](https://aha-xiaoq.github.io/notes/pixel-workshop/docs/architecture/?lang=en) · [Content editing](https://aha-xiaoq.github.io/notes/pixel-workshop/docs/content/?lang=en) · [Publishing](https://aha-xiaoq.github.io/notes/pixel-workshop/docs/publishing/?lang=en) · [Maintenance index](docs/README.md)
+[Website structure](https://aha-xiaoq.github.io/notes/pixel-workshop/docs/architecture/?lang=en) · [Content editing](https://aha-xiaoq.github.io/notes/pixel-workshop/docs/content/?lang=en) · [Publishing](https://aha-xiaoq.github.io/notes/pixel-workshop/docs/publishing/?lang=en) · [Maintenance index](docs/README.en.md)
+
+For a preview-only rebuild, use `npm run platform:build`. This does not replace verification. Existing individual build and test commands remain available. Module ownership, localization, and update packaging are documented in [Platform maintenance](docs/platform/README.en.md).
 
 ## Contribute
 
@@ -65,7 +64,3 @@ Include the page URL, device, and reproduction steps when reporting a problem. R
 See [LICENSE](LICENSE), [LICENSE.collab](LICENSE.collab), and [RIGHTS.md](RIGHTS.md) for their respective scope. Third-party game assets, artwork, fonts, and downloads retain their own terms.
 
 [Font licenses](assets/FONT_LICENSES.md) · [Changelog](CHANGELOG.md)
-
-## Website maintenance
-
-Run `npm run platform:verify` to build pages and verify both source and publication artifacts. See [Platform maintenance](docs/platform/README.en.md) for module ownership, content registration, localization, typography, and incremental packages. Existing commands remain available.

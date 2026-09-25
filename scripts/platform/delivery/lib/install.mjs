@@ -36,7 +36,9 @@ export function apply(root,changes){
  catch(error){for(const c of done.reverse()){const now=read(root,c.path);if(c.next?now?.equals(c.next):now===null){if(c.old)writeAtomic(root,c.path,c.old);else fs.unlinkSync(safe(root,c.path));}}throw error;}
  return done.length;
 }
-function normalized(p,b){if(!/\.(?:mjs|js|json|css|md|txt|html|svg|ps1|cmd)$/.test(p))return b.toString('hex');let s=b.toString('utf8').replace(/\r\n?/g,'\n');if(/^assets\/journal\/(?:runtime|render|documents|public-layout|experiment|update-audience)\.mjs$/.test(p))s=s.replace(/dev-r44(?:-[0-9a-f]{16})?/g,'dev-r44');return s;}
+// dev-center owns dev-r44 content revisions in the router as well as journal modules.
+// Normalize only that generator-owned token; arbitrary code or URL changes still fail.
+function normalized(p,b){if(!/\.(?:mjs|js|json|css|md|txt|html|svg|ps1|cmd)$/.test(p))return b.toString('hex');let s=b.toString('utf8').replace(/\r\n?/g,'\n');if(p==='assets/site-router.js'||/^assets\/journal\/(?:runtime|render|documents|public-layout|experiment|update-audience)\.mjs$/.test(p))s=s.replace(/dev-r44(?:-[0-9a-f]{16})?/g,'dev-r44');return s;}
 export function verify(root,m,bundle){
  for(const f of m.files){const now=read(root,f.path),expected=f.operation==='delete'?null:read(bundle,'payload/'+f.path);if(expected?(!now||normalized(f.path,now)!==normalized(f.path,expected)):now!==null)throw Error('Build changed an authored payload: '+f.path);}
  for(const g of m.protected){const b=read(root,g.path);if(!b||sha(b)!==g.sha256)throw Error('Original artifact changed: '+g.path);}

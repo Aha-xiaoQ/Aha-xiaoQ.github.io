@@ -20,16 +20,15 @@
       {
         "title": "实验记录",
         "paragraphs": [
-          "实验数据位于 content/experiments/，原始作品位于 experiments/。记录完整提示词、模型名称、已知设置和原始产物；没有记录的设置标注为“未记录”，作品展示与评测结论分开说明。",
-          "新实验登记在 content/experiments/catalog.json。复制一份记录，填写原始提示词、模型和产物校验值；页面、目录与下载入口由同一登记生成。"
+          "在 content/experiments/catalog.json 登记实验；记录文件放在 content/experiments/，原始作品放在 experiments/。保留完整提示词、模型与已记录的设置，没有记录的推理强度使用 null。目录、详情和下载入口由登记生成，不另改路由。"
         ]
       },
       {
         "title": "生成页面",
         "paragraphs": [
-          "生成命令同步开发页、目录和可按需读取的正文。随后生成网站其他页面。"
+          "先修改内容来源，再重新生成页面供本地预览；不要直接编辑 notes/ 中的生成页面。准备提交时，再运行完整检查，确认直达页面、导航和发布产物一致。"
         ],
-        "code": "npm run journal:build\nnpm run site:build"
+        "code": "npm run platform:build\nnpm run dev"
       }
     ],
     "sources": [

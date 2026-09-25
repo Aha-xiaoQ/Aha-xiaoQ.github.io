@@ -1,5 +1,5 @@
 /** Shared public layouts; no DOM or network work during import. */
-import {EXPERIMENTS} from './data/experiments.mjs?v=dev-r44-b4827cfe7c9fa959';
+import {EXPERIMENTS} from './data/experiments.mjs?v=dev-r44-55de28a9c31270b5';
 const esc=(s='')=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const url=(p,d='')=>'/notes/'+p.id+'/'+(d?'docs/'+d+'/':'');
 const a=(label,href,cls='j-link',more='')=>`<a class="${cls}" href="${esc(href)}" ${more}>${esc(label)}</a>`;

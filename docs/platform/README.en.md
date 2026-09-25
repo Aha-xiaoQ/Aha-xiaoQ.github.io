@@ -49,6 +49,14 @@ Typography keeps the existing WenKai faces and sizes. The scoped layer improves 
 
 `npm run platform:fonts` reads the actual repository fonts' cmap tables and writes `.local/platform/font-coverage.json`. Local coverage, declared remote supplementation and required system fallback are distinct. The command does not download or modify fonts, and does not certify remote font loading.
 
+## Page lifecycle
+
+`assets/site-router.js` is the sole owner of internal navigation. Late initial preparation must not overwrite a later route. Back and forward between same-page anchors retain the existing DOM, search input, and experiment preview. Loading the module twice must not attach duplicate routing listeners.
+
+The search module owns listeners per page and form. Remounting the same form preserves input; replacing a form detaches the previous listeners. Search waits until IME composition is committed. Asynchronous results update only the active page and do not reclaim focus after the visitor moves elsewhere. Result and error messages use the shared language owner before they are announced.
+
+A stylesheet retry creates a new request only for the failed resource, while already loaded styles remain reusable. Neither ignoring resource errors nor downloading all styles again is a recovery strategy.
+
 ## Code identity and public output
 
 A generated import map routes old module-version aliases to the current content hash, so one module does not acquire multiple runtime instances merely because its URL changed. Module entry script URLs are updated too. The public artifact rebuilds its own map from files it actually contains; a source map is not a public-file allowlist. Final audit checks map structure and target existence. Original embedded works do not receive site scripts.
@@ -73,3 +81,5 @@ Packaging requires the current workspace fingerprint to match the successful ver
 This generic delta workflow covers website code, copy, guides and new experiments. It rejects fonts, existing protected works, game packages, download archives, workflow changes and credentials; specialized game-release workflows remain separate.
 
 Extract into a new directory. `CHECK_ONLY.cmd` verifies without committing or pushing; `START.cmd` runs the same gates and then performs a normal push. The updater uses an isolated checkout and official GitHub CLI credentials, checks account/branch/base/staged scope, refuses conflicting remote changes, never force-pushes and never changes Pages settings automatically.
+
+Interaction regressions run the actual router and search source with controlled history, resource delivery, and fetch doubles. They test races and cleanup, not whole-site HTTP behavior. Keep component, publication-browser, and manual-device results separate.

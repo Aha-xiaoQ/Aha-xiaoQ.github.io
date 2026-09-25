@@ -5,7 +5,7 @@
   "category": "web",
   "visibility": "public",
   "stage": "持续维护",
-  "updatedAt": "2026-09-24",
+  "updatedAt": "2026-09-25",
   "summary": "小Q的作品展示网站。这里集中说明网站结构、内容编辑、项目接入与发布方式。",
   "intro": "游戏和工具在各自栏目体验；网站实现与维护资料在这里阅读。从本地启动开始，再按需要查找内容编辑或发布说明。",
   "highlights": [
@@ -80,7 +80,7 @@
         {
           "title": "选择下一步",
           "paragraphs": [
-            "修改文案与栏目内容，阅读“内容编辑”；添加作品，阅读“接入新项目”；准备上线，阅读“构建与发布”。"
+            "日常预览使用 npm run dev；修改后用 npm run platform:build 重新生成页面；提交前运行 npm run platform:verify。内容编辑、接入项目和发布细节分别见对应指南。"
           ]
         }
       ],
@@ -115,16 +115,15 @@
         {
           "title": "实验记录",
           "paragraphs": [
-            "实验数据位于 content/experiments/，原始作品位于 experiments/。记录完整提示词、模型名称、已知设置和原始产物；没有记录的设置标注为“未记录”，作品展示与评测结论分开说明。",
-            "新实验登记在 content/experiments/catalog.json。复制一份记录，填写原始提示词、模型和产物校验值；页面、目录与下载入口由同一登记生成。"
+            "在 content/experiments/catalog.json 登记实验；记录文件放在 content/experiments/，原始作品放在 experiments/。保留完整提示词、模型与已记录的设置，没有记录的推理强度使用 null。目录、详情和下载入口由登记生成，不另改路由。"
           ]
         },
         {
           "title": "生成页面",
           "paragraphs": [
-            "生成命令同步开发页、目录和可按需读取的正文。随后生成网站其他页面。"
+            "先修改内容来源，再重新生成页面供本地预览；不要直接编辑 notes/ 中的生成页面。准备提交时，再运行完整检查，确认直达页面、导航和发布产物一致。"
           ],
-          "code": "npm run journal:build\nnpm run site:build"
+          "code": "npm run platform:build\nnpm run dev"
         }
       ],
       "sources": [
@@ -167,7 +166,8 @@
           "title": "框架、内容与发布",
           "paragraphs": [
             "运行、构建、校验和打包的入口由 config/site-platform.json 统一登记。旧命令继续有效；模块职责和生成文件归属见源码中的 docs/platform/。",
-            "语言与字体由共享模块处理；新增内容先登记译文，再生成页面并检查缺字与回退。"
+            "语言与字体由共享模块处理；新增内容先登记译文，再生成页面并检查缺字与回退。",
+            "站内导航由一个路由模块负责，搜索与资料模块只管理自身内容和资源。异步结果只更新当前页面；离开页面后，旧事件和回调不得改写地址、抢走焦点或重新挂载内容。"
           ]
         }
       ],
@@ -199,9 +199,9 @@
         {
           "title": "公开与归档",
           "paragraphs": [
-            "资料齐全后将 visibility 设为 public，运行生成与检查命令。停止更新的项目可设为 archived，保留原链接和历史记录。"
+            "内容齐全后将 visibility 设为 public，运行完整检查并审阅生成结果，再提交发布。停止更新的项目可设为 archived，保留原地址；草稿、待验收与已发布状态应按实际情况填写。"
           ],
-          "code": "npm run journal:build\nnpm run site:build\nnpm run check"
+          "code": "npm run platform:verify"
         }
       ],
       "sources": []
@@ -214,14 +214,14 @@
         {
           "title": "统一构建与检查",
           "paragraphs": [
-            "日常修改统一运行 npm run platform:verify。它依次生成内容与页面，汇总源代码检查和测试，再核对发布产物；任何失败都不会被当成发布通过。"
+            "npm run platform:plan 只查看流程；npm run platform:verify 执行生成、源码测试、发布产物与浏览器检查。检查失败时先阅读失败摘要和对应日志，修复后重新验证，不跳过失败步骤。"
           ],
           "code": "npm run platform:plan\nnpm run platform:verify"
         },
         {
           "title": "网站发布目录",
           "paragraphs": [
-            "npm run release:prepare 生成 .local/publish，npm run release:check 核对发布产物。源码仓库与网站产物是不同目录；是否使用产物部署取决于仓库的 Pages 配置。"
+            "完整检查已包含 release:prepare 和 release:check，日常不必重复运行。它们分别生成和核对 .local/publish；单项诊断时才独立执行。源码提交成功与 Pages 部署完成是两个结果，上线后仍需检查实际网址。"
           ],
           "code": "npm run release:prepare\nnpm run release:check"
         },
@@ -235,8 +235,9 @@
         {
           "title": "增量更新包",
           "paragraphs": [
-            "更新包由明确的基线和文件差异生成。只携带本次修改，检查文件冲突、原始作品校验值和发布结果，不覆盖其他人的新提交。"
-          ]
+            "在完整仓库验证通过后，用明确的提交基线生成增量包。验证后再次修改文件，需要重新验证。接收端在独立工作区检查，遇到文件冲突或远端新提交会停止；游戏、字体和已有源码档案继续使用各自发布流程。"
+          ],
+          "code": "npm run platform:pack -- --base <完整提交SHA> --out ../XiaoQ_Site_Update.zip"
         }
       ],
       "sources": []
@@ -268,6 +269,12 @@
           "title": "保留来源",
           "paragraphs": [
             "保留署名、许可、素材来源和历史链接。实验展示说明提示词、模型与已知设置，不将推测写成记录。"
+          ]
+        },
+        {
+          "title": "语言入口与原文",
+          "paragraphs": [
+            "中文 README 的网站页面入口使用 lang=zh，英文 README 使用 lang=en。网页按钮和提示补齐对应译文；原始提示词、代码、许可及未翻译文章保留原文，不把中文隐藏来冒充翻译完成。"
           ]
         }
       ],

@@ -8,14 +8,14 @@
       {
         "title": "统一构建与检查",
         "paragraphs": [
-          "日常修改统一运行 npm run platform:verify。它依次生成内容与页面，汇总源代码检查和测试，再核对发布产物；任何失败都不会被当成发布通过。"
+          "npm run platform:plan 只查看流程；npm run platform:verify 执行生成、源码测试、发布产物与浏览器检查。检查失败时先阅读失败摘要和对应日志，修复后重新验证，不跳过失败步骤。"
         ],
         "code": "npm run platform:plan\nnpm run platform:verify"
       },
       {
         "title": "网站发布目录",
         "paragraphs": [
-          "npm run release:prepare 生成 .local/publish，npm run release:check 核对发布产物。源码仓库与网站产物是不同目录；是否使用产物部署取决于仓库的 Pages 配置。"
+          "完整检查已包含 release:prepare 和 release:check，日常不必重复运行。它们分别生成和核对 .local/publish；单项诊断时才独立执行。源码提交成功与 Pages 部署完成是两个结果，上线后仍需检查实际网址。"
         ],
         "code": "npm run release:prepare\nnpm run release:check"
       },
@@ -29,8 +29,9 @@
       {
         "title": "增量更新包",
         "paragraphs": [
-          "更新包由明确的基线和文件差异生成。只携带本次修改，检查文件冲突、原始作品校验值和发布结果，不覆盖其他人的新提交。"
-        ]
+          "在完整仓库验证通过后，用明确的提交基线生成增量包。验证后再次修改文件，需要重新验证。接收端在独立工作区检查，遇到文件冲突或远端新提交会停止；游戏、字体和已有源码档案继续使用各自发布流程。"
+        ],
+        "code": "npm run platform:pack -- --base <完整提交SHA> --out ../XiaoQ_Site_Update.zip"
       }
     ],
     "sources": []

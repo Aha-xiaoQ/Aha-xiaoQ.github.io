@@ -30,7 +30,20 @@ export function makeIndex({site={},projects=[]}={}){
 export function search(data,{q='',type='all',page=1,size=8,translate=value=>value}={}){
  if(typeof translate!=='function')throw Error('Invalid search translator');
  validateIndex(data);const query=normalize(q).slice(0,160),terms=query.split(' ').filter(Boolean),n=Math.max(1,Math.min(24,Math.floor(size)||8));
- const scored=data.entries.filter(e=>type==='all'||!TYPES[type]||e.type===type).map(e=>{const title=normalize(e.title),tags=normalize(e.tags.join(' ')),body=normalize(e.summary),all=title+' '+tags+' '+body+' '+normalize([translate(e.title),translate(e.summary),...e.tags.map(translate)].join(' '));if(!terms.every(t=>all.includes(t)))return null;const score=!query?({game:50,project:40,tool:30,note:20,guide:10}[e.type]||0):(title===query||normalize(translate(e.title))===query?150:0)+(title.startsWith(query)?60:0)+(title.includes(query)?30:0)+terms.reduce((s,t)=>s+(title.includes(t)?15:tags.includes(t)?6:1),0);return {e,score};}).filter(Boolean).sort((a,b)=>b.score-a.score||a.e.id.localeCompare(b.e.id));
+ const filter=Object.hasOwn(TYPES,type)?type:'all';
+ const scored=data.entries.filter(e=>filter==='all'||e.type===filter).map(e=>{
+  // Rank the source and translated titles equally; a translated title fragment
+  // must not lose to an unrelated description solely because of its entry ID.
+  const titles=[normalize(e.title),normalize(translate(e.title))];
+  const tags=[normalize(e.tags.join(' ')),normalize(e.tags.map(t=>translate(t)).join(' '))];
+  const all=[...titles,...tags,normalize(e.summary),normalize(translate(e.summary))].join(' ');
+  if(!terms.every(t=>all.includes(t)))return null;
+  const inTitle=t=>titles.some(title=>title.includes(t)),inTags=t=>tags.some(tag=>tag.includes(t));
+  const score=!query?({game:50,project:40,tool:30,note:20,guide:10}[e.type]||0):
+   (titles.some(title=>title===query)?150:0)+(titles.some(title=>title.startsWith(query))?60:0)+
+   (inTitle(query)?30:0)+terms.reduce((total,t)=>total+(inTitle(t)?15:inTags(t)?6:1),0);
+  return {e,score};
+ }).filter(Boolean).sort((a,b)=>b.score-a.score||a.e.id.localeCompare(b.e.id));
  const count=scored.length,pages=Math.max(1,Math.ceil(count/n)),current=Math.max(1,Math.min(pages,Math.floor(page)||1));return {items:scored.slice((current-1)*n,current*n).map(x=>x.e),count,page:current,pages};
 }
 export function searchMarkup(){return `<section class="section q-search" data-search-surface><form role="search" action="/search/" method="get" data-global-search><label for="q-global-query">搜索作品与资料</label><div class="q-search-line"><input id="q-global-query" name="q" type="search" maxlength="160" placeholder="游戏、工具、源码或操作指南" autocomplete="off"><button class="button" type="submit">搜索</button></div><fieldset class="q-search-filters"><legend>内容类型</legend>${Object.entries(TYPES).map(([v,t])=>`<label><input type="radio" name="type" value="${v}" ${v==='all'?'checked':''}><span>${t}</span></label>`).join('')}</fieldset></form><div data-search-output aria-busy="false"><p class="q-search-note">输入作品名称或关键词，也可以按类型浏览。</p><noscript><p>搜索需要 JavaScript。也可以直接浏览下方栏目。</p></noscript></div><div class="q-search-fallback"><a href="/games/">浏览游戏</a><a href="/projects/">浏览项目</a><a href="/tools/">浏览工具</a><a href="/notes/">开发资料</a></div></section>`;}

@@ -1,6 +1,7 @@
 /* Xiao Q site router: keep the public site in one document while preserving
    real URLs, history, deep links, and the existing route renderers. */
 (() => {
+  if (globalThis.SITE_ROUTER?.version === "site-r46") return;
   const app = document.querySelector("#app");
   if (!app) return;
 
@@ -16,14 +17,14 @@
     if (/^\/play-guide\/(?:index\.html)?$/.test(path)) return {kind:'content',page:'visitorHelp',title:'试玩帮助 · 在下_小Q'};
     if (path === '/404.html') return {kind:'content',page:'notFound',title:'页面未找到 · 在下_小Q'};
     if (/^\/search\/(?:index\.html)?$/.test(path)) return {kind:"content",page:"search",title:"搜索 · 在下_小Q"};
-    const detail = path.match(/\/(?:games)\/([^/]+)\/(?:index\.html)?$/);
+    const detail = path.match(/^\/(?:games)\/([^/]+)\/(?:index\.html)?$/);
     if (detail) {
       const itemSlug = detail[1];
       const item = globalThis.SITE_DATA?.items?.find((entry) => entry.primaryType === "game" && entry.slug === itemSlug);
       if (!item) return null;
       return { kind: "content", page: "detail", itemSlug, title: `${item.title} · 在下_小Q` };
     }
-    const section = path.match(/\/(games|projects|tools|notes|about|method)\/(?:index\.html)?$/);
+    const section = path.match(/^\/(games|projects|tools|notes|about|method)\/(?:index\.html)?$/);
     if (!section) return null;
     const page = section[1] === "method" ? "tools" : section[1];
     const titles = { games: "游戏 · 在下_小Q", projects: "项目 · 在下_小Q", tools: "工具 · 在下_小Q", notes: "笔记 · 在下_小Q", about: "关于 · 在下_小Q" };
@@ -46,11 +47,12 @@
   let journalModule, journalWarmup;
   const journalStyle = () => {
     let link=document.querySelector('[data-journal-css]');
+    if(link)link=renewStylesheet(link);
     if(link?.sheet)return Promise.resolve();
-    if(!link){link=document.createElement('link');link.rel='stylesheet';link.href=new URL('journal/journal.css?v=dev-r44-b4827cfe7c9fa959',routerURL).href;link.dataset.journalCss='';document.head.append(link);}
+    if(!link){link=document.createElement('link');link.rel='stylesheet';link.href=new URL('journal/journal.css?v=dev-r44-55de28a9c31270b5',routerURL).href;link.dataset.journalCss='';document.head.append(link);}
     return waitForLink(link);
   };
-  const importJournal=()=>journalModule ||= import(new URL('journal/runtime.mjs?v=dev-r44-b4827cfe7c9fa959',routerURL).href).catch(error=>{journalModule=null;throw error;});
+  const importJournal=()=>journalModule ||= import(new URL('journal/runtime.mjs?v=dev-r44-55de28a9c31270b5',routerURL).href).catch(error=>{journalModule=null;throw error;});
   const prepareJournal = async info => {
     if(info.page!=='journal')return;
     await Promise.all([journalStyle(),importJournal().then(()=>globalThis.SITE_JOURNAL.prepare(info))]);
@@ -100,6 +102,7 @@
     add("image", "backgrounds/bg-home-pixel-game-r3.webp", "image/webp");
   };
   const styleLinks = new Map();
+  const stylesheetLoads = new WeakMap(), failedStylesheets = new WeakSet();
   const stylePath = { home: "/assets/promo.css", content: "/assets/site-shell.css" };
   const hasLoadedSheet = (link) => {
     if (link.sheet) return true;
@@ -110,9 +113,18 @@
     const href = link.href;
     return Boolean(href && [...document.styleSheets].some((sheet) => sheet.href === href));
   };
+  // A failed link will not fetch again merely because another listener was added.
+  // Replace only failed resources on retry; loaded sheets and the current view stay intact.
+  const renewStylesheet = link => {
+    if (!failedStylesheets.has(link) || hasLoadedSheet(link)) return link;
+    const next = link.cloneNode(false);
+    link.replaceWith(next);
+    return next;
+  };
   const waitForLink = (link) => {
     if (hasLoadedSheet(link)) return Promise.resolve(link);
-    return new Promise((resolve, reject) => {
+    if (stylesheetLoads.has(link)) return stylesheetLoads.get(link);
+    const pending = new Promise((resolve, reject) => {
       let settled = false;
       const finish = (error) => {
         if (settled) return;
@@ -120,7 +132,7 @@
         window.clearTimeout(timer);
         link.removeEventListener("load", loaded);
         link.removeEventListener("error", failed);
-        if (error) reject(error); else resolve(link);
+        if (error) { failedStylesheets.add(link); reject(error); } else { failedStylesheets.delete(link); resolve(link); }
       };
       const loaded = () => finish();
       const failed = () => finish(new Error("Stylesheet unavailable"));
@@ -128,7 +140,9 @@
       link.addEventListener("load", loaded, { once: true });
       link.addEventListener("error", failed, { once: true });
       if (hasLoadedSheet(link)) loaded();
-    });
+    }).then(value => { stylesheetLoads.delete(link); return value; }, error => { stylesheetLoads.delete(link); throw error; });
+    stylesheetLoads.set(link, pending);
+    return pending;
   };
   const normalizeStylesheetLinks = () => document.querySelectorAll('link[rel="stylesheet"], link[rel="preload"][as="style"]').forEach((link) => {
     const raw = link.getAttribute("href");
@@ -136,10 +150,11 @@
   });
   const styleFor = (kind) => {
     const path = stylePath[kind];
-    const existing = [...document.querySelectorAll('link[rel="stylesheet"], link[rel="preload"][as="style"]')].find((link) => {
-      try { return new URL(link.href, location.href).pathname === path; } catch { return false; }
+    let existing = [...document.querySelectorAll('link[rel="stylesheet"], link[rel="preload"][as="style"]')].find((link) => {
+      try { const url = new URL(link.href, location.href); return url.origin === routerURL.origin && url.pathname === path; } catch { return false; }
     });
     if (existing) {
+      existing = renewStylesheet(existing);
       const wasPreload = existing.rel === "preload";
       if (wasPreload) existing.rel = "stylesheet";
       if (wasPreload) existing.media = "not all";
@@ -199,14 +214,14 @@
     globalThis.SITE_EXPERIENCE?.mount(app);
   };
   // R18: history entries own scroll and content focus; no query text is stored separately.
-  let renderedPath=location.pathname,scrollTick=0,viewSuspended=false;
+  let renderedPath=location.pathname,renderedSearch=location.search,scrollTick=0,viewSuspended=false;
   const plainState=()=>history.state&&typeof history.state==='object'?history.state:{};
   const contentFocus=()=>{
     const el=document.activeElement,main=app.querySelector('#main');if(!main?.contains(el)||el===main)return null;
     if(el.id)return {id:el.id};const a=el.closest('a[href]');
     if(a){const href=a.getAttribute('href'),links=[...main.querySelectorAll('a[href]')].filter(x=>x.getAttribute('href')===href);return {href,index:links.indexOf(a)};}return null;
   };
-  const saveView=()=>{if(viewSuspended||renderedPath!==location.pathname)return;const state=plainState();history.replaceState({...state,qView:{x:scrollX,y:scrollY,focus:contentFocus()||state.qView?.focus||null}},'',location.href);};
+  const saveView=()=>{if(viewSuspended||renderedPath!==location.pathname)return;renderedSearch=location.search;const state=plainState();history.replaceState({...state,qView:{x:scrollX,y:scrollY,focus:contentFocus()||state.qView?.focus||null}},'',location.href);};
   window.addEventListener('scroll',()=>{if(scrollTick)return;scrollTick=requestAnimationFrame(()=>{scrollTick=0;saveView();});},{passive:true});
   document.addEventListener('focusin',()=>{if(app.querySelector('#main')?.contains(document.activeElement))saveView();});
   if('scrollRestoration' in history)history.scrollRestoration='manual';
@@ -226,7 +241,13 @@
     (focus||main)?.focus({preventScroll:true});window.scrollTo({top:view?.y||0,left:view?.x||0,behavior:'instant'});saveView();
   }));
   const navigate=async(url,{historyMode="push",force=false,preserveView=false}={})=>{
-    url=new URL(url,location.href);const info=routeInfo(url.pathname);if(!info)return false;
+    try { url=new URL(url,location.href); } catch { return false; }
+    if(url.origin!==location.origin || !['push','replace','none'].includes(historyMode))return false;
+    const info=routeInfo(url.pathname);if(!info)return false;
+    // History through in-document headings must not remount forms or stop a preview.
+    if(historyMode==='none'&&!preserveView&&!navigating&&renderedPath===url.pathname&&renderedSearch===url.search){
+      restoreView(url,plainState().qView,navigationSequence);return true;
+    }
     if(!force&&url.pathname===location.pathname&&url.search===location.search&&!url.hash)return false;
     if(historyMode!=="none"||preserveView)saveView();
     const targetView=(historyMode==='none'||preserveView)?plainState().qView:null;
@@ -237,9 +258,14 @@
       applyStyles(info.kind);
       if(historyMode==='push')history.pushState({qView:{x:0,y:0,focus:null}},'',url.href);
       else if(historyMode==='replace')history.replaceState({...plainState(),qView:{x:0,y:0,focus:null}},'',url.href);
-      renderedPath=location.pathname;renderRoute(info);restoreView(url,targetView,navigationId);
+      renderedPath=location.pathname;renderedSearch=location.search;renderRoute(info);restoreView(url,targetView,navigationId);
     };
-    try{await Promise.all([styleFor(info.kind),prepareJournal(info),prepareExperience(info)]);if(info.canonical){url=new URL(url.href);url.pathname=info.canonical;}}
+    try{
+      const renderer=info.kind==='home'?globalThis.SITE_PROMO_RENDER:globalThis.SITE_SHELL_RENDER;
+      if(typeof renderer!=='function')throw Error('Page renderer unavailable');
+      await Promise.all([styleFor(info.kind),prepareJournal(info),prepareExperience(info)]);
+      if(info.canonical){url=new URL(url.href);url.pathname=info.canonical;}
+    }
     catch{if(navigationId!==navigationSequence)return false;navigating=false;showFailure(url,{historyMode,preserveView});return false;}
     if(navigationId!==navigationSequence)return false;
     if(typeof document.startViewTransition==='function'&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
@@ -248,16 +274,17 @@
     }
     commit();app.classList.add('q-route-new');requestAnimationFrame(()=>{if(navigationId!==navigationSequence)return;app.classList.add('q-route-new--in');setTimeout(()=>{if(navigationId!==navigationSequence)return;app.classList.remove('q-route-new','q-route-new--in');navigating=false;},240);});return true;
   };
-  globalThis.SITE_ROUTER={navigate};
+  globalThis.SITE_ROUTER={version:"site-r46",navigate};
 
   injectMotionStyle();
   normalizeStylesheetLinks();
   // No content-page prefetch of the homepage artwork; its normal entry still loads it.
   if(document.body.dataset.page==='home')warmHomeAssets();
   syncJournalNavigation();
-  const initial = routeInfo(location.pathname);
+  const initial = routeInfo(location.pathname), initialSequence = navigationSequence;
   // Destination styles are requested when their route is used.
   if (initial) Promise.all([styleFor(initial.kind),prepareJournal(initial),prepareExperience(initial)]).then(() => {
+    if(navigationSequence!==initialSequence)return;
     const current = routeInfo(location.pathname);
     if (current) applyStyles(current.kind);
     // Do not overwrite a newer navigation that completed while initial resources loaded.
@@ -273,7 +300,7 @@
     syncJournalNavigation();
   }).catch(() => {
     // Keep the meaningful server-rendered fallback; report failure, not a fake empty state.
-    if(initial?.page==='journal'){
+    if(navigationSequence===initialSequence&&initial?.page==='journal'){
       showFailure(new URL(location.href),{historyMode:'none',preserveView:true});
     }
   });
@@ -291,7 +318,7 @@
     if (!link || link.hasAttribute("data-router-ignore") || link.hasAttribute("download") || (link.target && link.target.toLowerCase()!=="_self") || link.relList.contains("external")) return;
     const url = new URL(link.href, location.href);
     if (url.origin !== location.origin || !routeInfo(url.pathname)) return;
-    if (url.pathname === location.pathname && url.search === location.search && url.hash) return;
+    if (url.pathname === location.pathname && url.search === location.search && url.hash) { saveView(); return; }
     saveView();
     event.preventDefault();
     void navigate(url);

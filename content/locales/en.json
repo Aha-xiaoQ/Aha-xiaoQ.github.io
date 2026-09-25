@@ -2756,6 +2756,56 @@
       "id": "about.avatar-alt",
       "source": "小Q的像素头像",
       "text": "XiaoQ's pixel avatar"
+    },
+    {
+      "id": "guide-r46-01",
+      "source": "日常预览使用 npm run dev；修改后用 npm run platform:build 重新生成页面；提交前运行 npm run platform:verify。内容编辑、接入项目和发布细节分别见对应指南。",
+      "text": "Use npm run dev for local preview, npm run platform:build to regenerate pages after edits, and npm run platform:verify before submitting changes. Separate guides cover content editing, project registration, and publishing."
+    },
+    {
+      "id": "guide-r46-02",
+      "source": "在 content/experiments/catalog.json 登记实验；记录文件放在 content/experiments/，原始作品放在 experiments/。保留完整提示词、模型与已记录的设置，没有记录的推理强度使用 null。目录、详情和下载入口由登记生成，不另改路由。",
+      "text": "Register experiments in content/experiments/catalog.json, keep their records in content/experiments/, and store original works in experiments/. Preserve the full prompt, model, and recorded settings; use null for unrecorded reasoning effort. Registration generates the directory, details, and download links without separate route edits."
+    },
+    {
+      "id": "guide-r46-03",
+      "source": "先修改内容来源，再重新生成页面供本地预览；不要直接编辑 notes/ 中的生成页面。准备提交时，再运行完整检查，确认直达页面、导航和发布产物一致。",
+      "text": "Edit the content source first, then regenerate pages for local preview; do not edit generated pages in notes/ directly. Before submitting, run full verification to check direct entries, navigation, and the publication artifact together."
+    },
+    {
+      "id": "guide-r46-04",
+      "source": "站内导航由一个路由模块负责，搜索与资料模块只管理自身内容和资源。异步结果只更新当前页面；离开页面后，旧事件和回调不得改写地址、抢走焦点或重新挂载内容。",
+      "text": "One router owns site navigation; search and guide modules manage only their own content and resources. Asynchronous results update only the active page. Events and callbacks from a previous page must not change the URL, steal focus, or remount content."
+    },
+    {
+      "id": "guide-r46-05",
+      "source": "内容齐全后将 visibility 设为 public，运行完整检查并审阅生成结果，再提交发布。停止更新的项目可设为 archived，保留原地址；草稿、待验收与已发布状态应按实际情况填写。",
+      "text": "Once the content is ready, set visibility to public, run full verification, review the generated result, and then submit it for publication. Projects no longer maintained can be archived while retaining their URLs. Draft, awaiting-review, and released states must reflect the actual project status."
+    },
+    {
+      "id": "guide-r46-06",
+      "source": "npm run platform:plan 只查看流程；npm run platform:verify 执行生成、源码测试、发布产物与浏览器检查。检查失败时先阅读失败摘要和对应日志，修复后重新验证，不跳过失败步骤。",
+      "text": "npm run platform:plan only displays the workflow. npm run platform:verify generates pages and runs source, publication-artifact, and browser checks. On failure, read the summary and relevant log, fix the cause, and verify again without skipping failed steps."
+    },
+    {
+      "id": "guide-r46-07",
+      "source": "完整检查已包含 release:prepare 和 release:check，日常不必重复运行。它们分别生成和核对 .local/publish；单项诊断时才独立执行。源码提交成功与 Pages 部署完成是两个结果，上线后仍需检查实际网址。",
+      "text": "Full verification already includes release:prepare and release:check; there is no need to rerun them routinely. They generate and validate .local/publish and can be run separately for diagnosis. A successful source push and a completed Pages deployment are different results; check the actual site after deployment."
+    },
+    {
+      "id": "guide-r46-08",
+      "source": "在完整仓库验证通过后，用明确的提交基线生成增量包。验证后再次修改文件，需要重新验证。接收端在独立工作区检查，遇到文件冲突或远端新提交会停止；游戏、字体和已有源码档案继续使用各自发布流程。",
+      "text": "After verification passes in the complete repository, generate an incremental package against an explicit commit baseline. Verify again after any further edit. The receiving workspace stops on file conflicts or new remote commits; games, fonts, and existing source archives keep their separate publication workflows."
+    },
+    {
+      "id": "guide-r46-09",
+      "source": "语言入口与原文",
+      "text": "Language entries and original text"
+    },
+    {
+      "id": "guide-r46-10",
+      "source": "中文 README 的网站页面入口使用 lang=zh，英文 README 使用 lang=en。网页按钮和提示补齐对应译文；原始提示词、代码、许可及未翻译文章保留原文，不把中文隐藏来冒充翻译完成。",
+      "text": "Website page links in the Chinese README use lang=zh; those in the English README use lang=en. Provide translations for interface controls and messages. Preserve original prompts, code, licenses, and untranslated articles rather than hiding Chinese text to imply complete translation."
     }
   ]
 }
