@@ -3,12 +3,15 @@ import path from 'node:path';import vm from 'node:vm';import {fileURLToPath} fro
 import {readOptional,writeAtomic,safe} from '../lib/safe-path.mjs';import {equalText,matchesTextHash} from '../lib/text-records.mjs';
 import {makeIndex,searchMarkup,validateIndex} from '../../assets/experience/model.mjs';
 import {validateCatalog,validateProject} from '../../assets/journal/model.mjs';
+// Consume the same compiled experiment catalog as native and soft-navigation pages.
+import {EXPERIMENTS} from '../../assets/journal/data/experiments.mjs';
+import {withExperimentDocuments} from '../../assets/platform/contracts.mjs';
 export const ROOT=fileURLToPath(new URL('../../',import.meta.url)),RECORD='docs/experience-r18/generated-files.json';
 const hash=b=>createHash('sha256').update(b).digest('hex');
 export async function planExperience(root,{reader=p=>readOptional(root,p)}={}){
  const get=async p=>{safe(root,p);const b=await reader(p);if(!b)throw Error('缺少搜索构建输入：'+p);return b.toString('utf8');};
  const catalog=validateCatalog(JSON.parse(await get('content/development/catalog.json'))),projects=[];
- for(const row of catalog.projects){const p=validateProject(JSON.parse(await get(row.file)));if(p.id!==row.id)throw Error('项目ID不一致');projects.push(p);}
+ for(const row of catalog.projects){const p=validateProject(JSON.parse(await get(row.file)));if(p.id!==row.id)throw Error('项目ID不一致');projects.push(withExperimentDocuments(p,EXPERIMENTS));}
  const context={};vm.runInNewContext(await get('content/site-data.js'),context,{timeout:1000});
  const index=makeIndex({site:context.SITE_DATA,projects});
  if(await reader('assets/launch/journey.js')){index.entries.push({id:'guide:visitor-help',type:'guide',href:'/play-guide/',title:'试玩帮助',summary:'第一次体验、声音播放、输入设备、加载问题与反馈方式。',tags:['试玩','声音','手机','手柄','帮助']});index.entries.sort((a,b)=>a.id.localeCompare(b.id));validateIndex(index);}

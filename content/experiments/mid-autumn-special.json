@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "kind": "video",
+  "id": "mid-autumn-special",
+  "title": "中秋特别节目",
+  "subtitle": "136 秒中秋文化短片，以《彩云追月》为配乐，附可直接播放的 HTML。",
+  "visibility": "public",
+  "createdAt": "2026-09-26",
+  "medium": "VIDEO",
+  "format": "节日特别节目",
+  "video": {
+    "provider": "bilibili",
+    "bvid": "BV1rHh16CE3T"
+  },
+  "provenance": "以中秋文化为主题，保留完整画面与中文字幕，配乐为《彩云追月》。HTML 可直接播放最终成片，制作工程包含绘制源码与配乐合成脚本。",
+  "verification": "提供彩云追月版 HTML、1080p 成片、时间轴、字幕与配乐合成工程；B 站视频通过原 BV 号观看。",
+  "resources": [
+    {
+      "role": "html",
+      "label": "HTML 直接播放",
+      "href": "/experiments/releases/mid-autumn-special/index.html",
+      "bytes": 10018,
+      "sha256": "8c780814c4de17b9adb96a2eafe61770bc4f56e23395127ab1a2299b5e19bda0"
+    },
+    {
+      "role": "video",
+      "label": "下载最终 MP4",
+      "href": "/experiments/releases/mid-autumn-special/final.mp4",
+      "bytes": 29587650,
+      "sha256": "be887d2ca180e2e0b7849d816075b03dc19347eb0b25e627111422d8d00a6da1"
+    },
+    {
+      "role": "source",
+      "label": "下载制作工程",
+      "href": "/experiments/releases/mid-autumn-special/source.zip",
+      "bytes": 33279487,
+      "sha256": "4e1aff05682d03d4e9d144caaaa95ea5e1e1e3731614131a9255e2f5cf01d158"
+    }
+  ]
+}

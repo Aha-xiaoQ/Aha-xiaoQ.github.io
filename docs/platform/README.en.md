@@ -83,3 +83,7 @@ This generic delta workflow covers website code, copy, guides and new experiment
 Extract into a new directory. `CHECK_ONLY.cmd` verifies without committing or pushing; `START.cmd` runs the same gates and then performs a normal push. The updater uses an isolated checkout and official GitHub CLI credentials, checks account/branch/base/staged scope, refuses conflicting remote changes, never force-pushes and never changes Pages settings automatically.
 
 Interaction regressions run the actual router and search source with controlled history, resource delivery, and fetch doubles. They test races and cleanup, not whole-site HTTP behavior. Keep component, publication-browser, and manual-device results separate.
+
+## Video works
+
+The Lab also supports `kind: "video"` records. They share registration, listings and detail routes with HTML experiments, without inventing prompts, model settings or downloadable source files. See [Maintaining Lab videos](lab-videos.en.md).

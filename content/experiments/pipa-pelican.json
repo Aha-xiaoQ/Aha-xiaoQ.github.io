@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "kind": "video",
+  "id": "pipa-pelican",
+  "title": "琵琶曲 | 鹈鹕骑车",
+  "subtitle": "48 秒原生 WebGL 动画，附最终成片与可直接播放的 HTML。",
+  "visibility": "public",
+  "createdAt": "2026-09-26",
+  "medium": "VIDEO",
+  "format": "音乐动画",
+  "video": {
+    "provider": "bilibili",
+    "bvid": "BV1TvhU6aEci"
+  },
+  "relatedExperimentId": "pelican-bicycle",
+  "provenance": "月夜骑行音乐动画。制作工程包含编舞、角色动作、自行车与命中音效代码；HTML 为原生 JavaScript / WebGL 动画。",
+  "verification": "提供原生动画 HTML、1080p60 成片与完整制作工程。",
+  "resources": [
+    {
+      "role": "html",
+      "label": "HTML 直接播放",
+      "href": "/experiments/releases/pipa-pelican/animation.html",
+      "bytes": 2152089,
+      "sha256": "ab2475d945cea10e3c465f61e3651e89d1615bce2dd7f37aeeabbfa04977bd88"
+    },
+    {
+      "role": "video",
+      "label": "下载最终 MP4",
+      "href": "/experiments/releases/pipa-pelican/final.mp4",
+      "bytes": 35371175,
+      "sha256": "be013e1dc34908a5bbbfe817cc65f4bf6e8a34da190bed1b43bb2a5c34df7fe0"
+    },
+    {
+      "role": "source",
+      "label": "下载制作工程",
+      "href": "/experiments/releases/pipa-pelican/source.zip",
+      "bytes": 28323641,
+      "sha256": "5b8ead6daf03cf60aeab308b90746dc701752a299990c0136f3801b0b4941ffb"
+    }
+  ]
+}

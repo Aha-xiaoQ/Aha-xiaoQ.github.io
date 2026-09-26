@@ -5,15 +5,23 @@
   "category": "experiment",
   "visibility": "public",
   "stage": "作品与能力观察",
-  "updatedAt": "2026-09-24",
-  "summary": "从提示词到可运行作品。保留原始输入、模型信息和实际效果，让结果自己说话。",
-  "intro": "这里收录小型交互与代码创作实验。每个实验提供提示词、已知设置和原始产物；观察具体表现，不给单次结果编造综合评分。",
+  "updatedAt": "2026-09-26",
+  "summary": "交互动画、音乐影像与主题节目。看作品，也看创作记录。",
+  "intro": "这里收录交互动画、音乐影像与主题节目。原始代码实验提供在线体验与源文件；视频作品提供完整成片的观看入口。",
   "highlights": [
-    "原始提示词可复制。",
-    "作品可在线体验，也可下载独立文件。",
-    "模型设置按实际记录展示，未知项不推断。"
+    "交互作品可在线体验，保留原始输入和独立文件。",
+    "音乐动画与主题节目在哔哩哔哩观看。",
+    "视频成片与原始代码实验分别展示。"
   ],
   "links": [
+    {
+      "label": "琵琶曲 | 鹈鹕骑车",
+      "href": "/notes/lab/docs/pipa-pelican/"
+    },
+    {
+      "label": "中秋特别节目",
+      "href": "/notes/lab/docs/mid-autumn-special/"
+    },
     {
       "label": "鹈鹕骑行",
       "href": "/notes/lab/docs/pelican-bicycle/"
@@ -34,6 +42,13 @@
     "path": "content/development/states/lab.json"
   },
   "updates": [
+    {
+      "id": "lab-video-selections",
+      "date": "2026-09-26",
+      "title": "实验室新增两部视频作品",
+      "status": "released",
+      "summary": "收录《琵琶曲 | 鹈鹕骑车》和《中秋特别节目》，保留原始 SVG 动画的独立体验入口。"
+    },
     {
       "id": "pelican-bicycle",
       "date": "2026-09-24",

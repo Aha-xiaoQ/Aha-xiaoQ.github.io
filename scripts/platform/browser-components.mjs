@@ -2,6 +2,8 @@
 /** Browser regressions with real locale/preview modules in isolated component fixtures.
  * This supplements, and never substitutes for, browser.mjs on the complete public artifact. */
 import vm from'node:vm';
+import {loadExperiments} from './experiments.mjs';
+import {experimentVideoURL} from '../../assets/platform/contracts.mjs';
 import {interactionFixture,INTERACTION_CASE_COUNT} from './browser/interaction-fixture.mjs';
 import {fixtureIcon,FIXTURE_ICON_LINK} from './browser/fixture-icon.mjs';
 import fs from'node:fs';import os from'node:os';import path from'node:path';import{fileURLToPath}from'node:url';import assert from'node:assert/strict';import{createHash}from'node:crypto';
@@ -12,9 +14,10 @@ export async function componentBrowser(root=ROOT,{save=true,launcher=launch,serv
  const report={schemaVersion:1,scope:'Locale, preview, module identity and controlled router/search lifecycle fixtures; not a full website audit',cases:[],errors:[],approved:false};let browser,server;
  try{
   put('favicon.ico',fixtureIcon());
-  for(const p of['assets/site-i18n.js','assets/platform/typography.css','assets/journal/experiment.mjs','assets/journal/public-layout.mjs'])put(p,readOptional(root,p));
+  for(const p of['assets/site-i18n.js','assets/platform/typography.css','assets/journal/experiment.mjs','assets/journal/public-layout.mjs','assets/platform/contracts.mjs'])put(p,readOptional(root,p));
   const compiled=planContent(root);put('assets/i18n/messages.js',compiled.files.get('assets/i18n/messages.js'));put('assets/platform/config.js',compiled.files.get('assets/platform/config.js'));
-  const first=JSON.parse(readOptional(root,'content/experiments/pelican-bicycle.json')),copy=structuredClone(first);copy.id='independent-fixture';copy.title='独立实验';copy.artifact.href='/experiments/fixture.html';copy.artifact.bytes=1;copy.artifact.sha256='0'.repeat(64);put('assets/journal/data/experiments.mjs','export const EXPERIMENTS='+JSON.stringify([first,copy])+';');
+  const fixtureVideos=loadExperiments(root).entries.filter(e=>e.kind==='video'&&e.visibility!=='archived');
+  const first=JSON.parse(readOptional(root,'content/experiments/pelican-bicycle.json')),copy=structuredClone(first);copy.id='independent-fixture';copy.title='独立实验';copy.artifact.href='/experiments/fixture.html';copy.artifact.bytes=1;copy.artifact.sha256='0'.repeat(64);put('assets/journal/data/experiments.mjs','export const EXPERIMENTS='+JSON.stringify([first,copy,...fixtureVideos])+';');
   put('experiments/fixture.html','<!doctype html><html lang="en"><head><title>Inert component fixture</title>'+FIXTURE_ICON_LINK+'</head><body><p>No animation script.</p></body></html>');
   // Exercise the real production 404/help generator, not a lookalike placeholder fixture.
   const visitorContext=vm.createContext({URL});
@@ -54,6 +57,13 @@ export async function componentBrowser(root=ROOT,{save=true,launcher=launch,serv
   await check('obsolete clipboard completion cannot overwrite a later mount status',async()=>{await evaluate(browser,"globalThis.clipboardResolve=null;Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:()=>new Promise(resolve=>clipboardResolve=resolve)}});cachedHost.querySelector('[data-copy-prompt]').click();PREVIEW.disposeExperiments(cachedHost);cachedHost.remove();document.querySelector('main').append(cachedHost);PREVIEW.bindExperiments(cachedHost);cachedHost.querySelector('[data-copy-prompt-status]').textContent='later mount';clipboardResolve();true");await wait(50);assert.equal(await evaluate(browser,"cachedHost.querySelector('[data-copy-prompt-status]').textContent"),'later mount');});
   await check('preview failure gives retry feedback and re-enables controls',async()=>{await evaluate(browser,"cachedHost.querySelector('[data-lab-play]').click();pendingFetch[2].resolve({ok:false});true");await until(browser,"!cachedHost.querySelector('[data-lab-play]').disabled");assert.match(await evaluate(browser,"cachedHost.querySelector('[data-lab-status]').textContent"),/could not|couldn't|failed|未能/i);});
   await check('returning to Chinese restores the original failure message',async()=>{await evaluate(browser,"SITE_I18N.setLanguage('zh');true");assert.equal(await evaluate(browser,"cachedHost.querySelector('[data-lab-status]').textContent"),'动画未能载入。请重试或在新窗口打开。');});
+  for(const video of fixtureVideos)await check('lab video entry preserves links and both languages: '+video.id,async()=>{
+   const id=JSON.stringify(video.id);
+   await evaluate(browser,`PREVIEW.disposeExperiments(cachedHost);cachedHost.innerHTML=LAYOUT.experimentDetail(${id});PREVIEW.bindExperiments(cachedHost);SITE_I18N.setLanguage('zh');globalThis.videoChinese=cachedHost.textContent;SITE_I18N.setLanguage('en');true`);
+   const result=await evaluate(browser,`(()=>{const host=cachedHost,a=host.querySelector('a[href^="https://www.bilibili.com/video/"]');return {href:a?.href,target:a?.target,rel:a?.rel,text:host.textContent,name:a?.getAttribute('aria-label'),frames:host.querySelectorAll('iframe,video,audio').length,prompts:host.querySelectorAll('[data-prompt-text],[data-lab-play]').length,downloads:Array.from(host.querySelectorAll('a[download]'),a=>a.getAttribute('href')).sort()};})()`);
+   assert.equal(result.href,experimentVideoURL(video.video));assert.equal(result.target,'_blank');assert.match(result.rel,/noopener/);assert.match(result.rel,/noreferrer/);assert.doesNotMatch(result.text,/[\u3400-\u9fff]/u);assert.doesNotMatch(result.name,/[\u3400-\u9fff]/u);assert.equal(result.frames,0);assert.equal(result.prompts,0);assert.deepEqual(result.downloads,(video.resources||[]).filter(r=>r.role!=='html').map(r=>r.href).sort());
+   await evaluate(browser,"SITE_I18N.setLanguage('zh');true");assert.equal(await evaluate(browser,'cachedHost.textContent===videoChinese'),true);
+  });
   await check('all declared typography rules remain readable when remote fonts are denied',async()=>{await evaluate(browser,'fetch=realFetch;true');await evaluate(browser,"Promise.race([document.fonts.ready,new Promise(r=>setTimeout(r,1000))]).then(()=>true)");assert.ok(await evaluate(browser,"getComputedStyle(query).fontFamily.includes('WenKai') && query.getBoundingClientRect().height>0"));});
   await check('production 404 placeholder and recovery copy are translated, not exempted',async()=>{
    await evaluate(browser,"SITE_I18N.setLanguage('en');globalThis.recoveryInput=document.getElementById('q-recovery-query');recoveryInput.value='用户保留的 404 查询';true");
