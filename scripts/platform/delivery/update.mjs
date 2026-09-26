@@ -54,6 +54,7 @@ async function validateStaging(manifest, label) {
   const log = path.join(work, `${String(++logCount).padStart(2,'0')}-git-diff-check.log`);
   const started = Date.now();
   const staged = await stageAndCheck(g, paths, manifest, {
+    repositoryRoot: path.join(work, 'repo'),
     pathspecFile:path.join(work,'stage-paths.txt'), logFile:log
   });
   report.steps.push({command:'git diff --cached --check',phase:label,result:'passed',

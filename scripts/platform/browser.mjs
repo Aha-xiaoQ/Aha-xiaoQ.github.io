@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+import {effectiveCoverage} from './font-support.mjs';
+import {auditFontFaces} from './browser/font-faces.mjs';
 /** Browser gate on the actual generated artifact, never on a synthetic pass page.
  * External services/fonts are deliberately unavailable in this fallback scenario.
  * Original game and animation scripts are not executed. */
@@ -12,6 +14,7 @@ const delay=ms=>new Promise(r=>setTimeout(r,ms));
 export async function auditBrowser(root=ROOT,{launcher=launch,widths=[1440,390,320],pages:requested=null,save=true}={}){
  const config=JSON.parse(readOptional(root,'config/publication.json')),artifact=safe(root,config.output);
  if(!fs.statSync(artifact).isDirectory())throw Error('Build the publication artifact first');
+ const fontCoverage=effectiveCoverage(root);
  const pages=requested||discover(artifact);if(!pages.length)throw Error('No website pages selected; browser verification cannot be empty');
  const report={schemaVersion:1,scope:'generated public HTML with shared site locale runtime; original embedded works excluded',remoteResources:'intentionally blocked by local CSP',remoteAvailabilityVerified:false,startedAt:new Date().toISOString(),pages:pages.length,cases:[],errors:[],warnings:[],approved:false};
  let server,browser,currentPage='',runtimeErrors=[],requests=new Map();
@@ -32,7 +35,8 @@ export async function auditBrowser(root=ROOT,{launcher=launch,widths=[1440,390,3
      await evaluate(browser,'SITE_I18N.setLanguage('+JSON.stringify(language)+')');await delay(60);
      for(const width of widths){
       await browser.cdp.send('Emulation.setDeviceMetricsOverride',{width,height:1000,deviceScaleFactor:1,mobile:width<600},browser.sessionId);await delay(40);
-      const state=await evaluate(browser,`(()=>{const app=document.querySelector('#app');const visible=e=>!!(e.getClientRects().length && getComputedStyle(e).visibility!=='hidden');return {lang:document.documentElement.lang,title:document.title,main:document.querySelectorAll('main').length,h1:document.querySelectorAll('h1').length,header:document.querySelectorAll('.site-header,.topbar').length,overflow:Math.max(document.documentElement.scrollWidth,document.body.scrollWidth)>innerWidth+2,localeButtons:document.querySelectorAll('[data-site-language]').length,resourceFailure:!!document.querySelector('.q-resource-error,.j-error,.q-search-error'),placeholders:[...document.querySelectorAll('input[placeholder]')].filter(e=>visible(e)&&!e.closest('[translate="no"],[data-i18n-skip],.guestbook-editor')).map(e=>e.placeholder),unknownChinese:[...(app||document.body).querySelectorAll('[data-original-language]')].filter(visible).map(e=>e.textContent.trim()).slice(0,8)};})()`);
+      const state=await evaluate(browser,`(()=>{const app=document.querySelector('#app');const visible=e=>!!(e.getClientRects().length && getComputedStyle(e).visibility!=='hidden');return {lang:document.documentElement.lang,title:document.title,main:document.querySelectorAll('main').length,h1:document.querySelectorAll('h1').length,header:document.querySelectorAll('.site-header,.topbar').length,overflow:Math.max(document.documentElement.scrollWidth,document.body.scrollWidth)>innerWidth+2,localeButtons:document.querySelectorAll('[data-site-language]').length,resourceFailure:!!document.querySelector('.q-resource-error,.j-error,.q-search-error'),placeholders:[...document.querySelectorAll('input[placeholder]')].filter(e=>visible(e)&&!e.closest('[translate="no"],[data-i18n-skip],.guestbook-editor')).map(e=>e.placeholder),glyphs:${width===widths[0]}?(()=>{const chars=new Set(),root=app||document.body,w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;while(n=w.nextNode()){if(n.parentElement?.closest('script,style,pre,code,kbd,samp,textarea'))continue;for(const c of n.textContent)if(/[\\p{L}\\p{M}\\p{N}\\p{P}]/u.test(c)&&!/[\\p{Default_Ignorable_Code_Point}]/u.test(c))chars.add(c.codePointAt(0));}for(const e of root.querySelectorAll('[placeholder],[aria-label],[alt]'))for(const a of ['placeholder','aria-label','alt'])for(const c of e.getAttribute(a)||'')if(/[\\p{L}\\p{M}\\p{N}\\p{P}]/u.test(c)&&!/[\\p{Default_Ignorable_Code_Point}]/u.test(c))chars.add(c.codePointAt(0));return [...chars];})():[],unknownChinese:[...(app||document.body).querySelectorAll('[data-original-language]')].filter(visible).map(e=>e.textContent.trim()).slice(0,8)};})()`);
+      const absent=(state.glyphs||[]).filter(n=>fontCoverage.some(f=>!f.coverage.has(n)));if(absent.length)report.errors.push({page,language,width,problem:'uncovered-rendered-glyphs',samples:absent.slice(0,20).map(n=>({character:String.fromCodePoint(n),unicode:'U+'+n.toString(16).toUpperCase()}))});
       const problems=[];if(state.lang!==(language==='en'?'en':'zh-CN'))problems.push('wrong-language');if(!state.title.trim())problems.push('missing-title');if(state.main!==1||state.h1!==1)problems.push('invalid-landmarks');if(state.localeButtons!==2)problems.push('locale-controls');if(state.resourceFailure)problems.push('resource-failure');if(state.overflow)problems.push('horizontal-overflow');if(language==='en'&&state.placeholders.some(s=>/[\u3400-\u9fff]/.test(s)))problems.push('untranslated-placeholder');
       const result={page,language,width,problems};report.cases.push(result);for(const problem of problems)report.errors.push({page,language,width,problem,...(problem==='untranslated-placeholder'?{samples:state.placeholders.filter(s=>/[\u3400-\u9fff]/.test(s)).slice(0,5)}:{})});
       if(language==='en'&&width===1440&&state.unknownChinese.length)report.warnings.push({page,problem:'original-language-copy',samples:state.unknownChinese});
@@ -47,9 +51,11 @@ export async function auditBrowser(root=ROOT,{launcher=launch,widths=[1440,390,3
   const checkPath='/notes/?lang=en&q=site';await browser.cdp.send('Page.navigate',{url:server.origin+checkPath},browser.sessionId);await until(browser,"!!globalThis.SITE_ROUTER && !!globalThis.SITE_JOURNAL && globalThis.SITE_I18N?.language==='en'");
   await evaluate(browser,"SITE_ROUTER.navigate(new URL('/notes/pixel-workshop/docs/?lang=zh',location.href))");await until(browser,"location.pathname==='/notes/pixel-workshop/docs/' && SITE_I18N.language==='zh'");
   await evaluate(browser,"history.back();true");await until(browser,"location.pathname==='/notes/' && SITE_I18N.language==='en' && new URL(location.href).searchParams.get('q')==='site'");report.routerHistory='passed';
+  report.fontFaces=await auditFontFaces(browser,JSON.parse(readOptional(root,'docs/platform/generated-fonts.json')));
+  for(const f of report.fontFaces)if(!f.passed)report.errors.push({page:'font-support',problem:'font-face-rendering',weight:f.weight,detail:f.error});
  }catch(error){report.errors.push({page:currentPage||null,problem:'browser-gate-failed',detail:error.message});}
  finally{try{await browser?.close();}finally{await server?.close();}}
- report.finishedAt=new Date().toISOString();report.ok=report.cases.length===pages.length*widths.length*2&&report.errors.length===0&&report.routerHistory==='passed'&&report.readmeEntries?.length===4&&report.readmeEntries.every(x=>x.passed);
+ report.finishedAt=new Date().toISOString();report.ok=report.fontFaces?.length===4&&report.fontFaces.every(f=>f.passed)&&report.cases.length===pages.length*widths.length*2&&report.errors.length===0&&report.routerHistory==='passed'&&report.readmeEntries?.length===4&&report.readmeEntries.every(x=>x.passed);
  if(save)writeAtomic(root,'.local/platform/browser-report.json',Buffer.from(JSON.stringify(report,null,2)+'\n'));
  return report;
 }

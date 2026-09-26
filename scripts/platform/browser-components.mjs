@@ -14,6 +14,11 @@ export async function componentBrowser(root=ROOT,{save=true,launcher=launch,serv
  const report={schemaVersion:1,scope:'Locale, preview, module identity and controlled router/search lifecycle fixtures; not a full website audit',cases:[],errors:[],approved:false};let browser,server;
  try{
   put('favicon.ico',fixtureIcon());
+  // Copy the real generated typography dependency closure into this temporary site.
+  // Never suppress missing font-resource errors or copy unrelated repository files.
+  const fontRecord=JSON.parse(readOptional(root,'docs/platform/generated-fonts.json')||'null');
+  if(!fontRecord)throw Error('Generate site font support before browser components');
+  for(const file of Object.keys(fontRecord.files||{}))if(file==='assets/platform/font-support.css'||/^assets\/platform\/font-support\/[a-f0-9]{64}\.woff2$/.test(file))put(file,readOptional(root,file));
   for(const p of['assets/site-i18n.js','assets/platform/typography.css','assets/journal/experiment.mjs','assets/journal/public-layout.mjs','assets/platform/contracts.mjs'])put(p,readOptional(root,p));
   const compiled=planContent(root);put('assets/i18n/messages.js',compiled.files.get('assets/i18n/messages.js'));put('assets/platform/config.js',compiled.files.get('assets/platform/config.js'));
   const fixtureVideos=loadExperiments(root).entries.filter(e=>e.kind==='video'&&e.visibility!=='archived');

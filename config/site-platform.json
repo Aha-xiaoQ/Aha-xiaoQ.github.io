@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "edition": "R46",
+  "edition": "R49",
   "site": {
     "repository": "Aha-xiaoQ/Aha-xiaoQ.github.io",
     "branch": "main",
@@ -136,6 +136,10 @@
     {
       "owner": "shell",
       "record": "docs/studio-r25/generated-files.json"
+    },
+    {
+      "owner": "localization",
+      "record": "docs/platform/generated-fonts.json"
     }
   ],
   "nativeEntries": [
@@ -159,10 +163,18 @@
         "args": []
       },
       {
+        "id": "font-support",
+        "file": "scripts/platform/font-support.mjs",
+        "args": [],
+        "after": [
+          "locale-content"
+        ]
+      },
+      {
         "id": "development",
         "script": "journal:build",
         "after": [
-          "locale-content"
+          "font-support"
         ]
       },
       {
@@ -179,9 +191,22 @@
         "after": [
           "collections"
         ]
+      },
+      {
+        "id": "font-refresh",
+        "file": "scripts/platform/font-support.mjs",
+        "args": [],
+        "after": [
+          "native-entries"
+        ]
       }
     ],
     "verify": [
+      {
+        "id": "font-coverage",
+        "file": "scripts/platform/fonts.mjs",
+        "args": []
+      },
       {
         "id": "source-checks",
         "script": "check"
@@ -193,11 +218,6 @@
       {
         "id": "repository-doctor",
         "script": "doctor"
-      },
-      {
-        "id": "font-coverage",
-        "file": "scripts/platform/fonts.mjs",
-        "args": []
       },
       {
         "id": "publication-tests",

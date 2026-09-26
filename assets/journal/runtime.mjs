@@ -1,9 +1,9 @@
-import {withDocuments,loadReadingDocument} from './documents.mjs?v=dev-r44-0d7f52b8acf1df74';
-import {CATALOG} from './data/catalog.mjs?v=dev-r44-0d7f52b8acf1df74';
-import {bindExperiments,disposeExperiments} from './experiment.mjs?v=dev-r44-0d7f52b8acf1df74';
+import {withDocuments,loadReadingDocument} from './documents.mjs?v=dev-r44-279054bb1330294e';
+import {CATALOG} from './data/catalog.mjs?v=dev-r44-279054bb1330294e';
+import {bindExperiments,disposeExperiments} from './experiment.mjs?v=dev-r44-279054bb1330294e';
 /** Content lifecycle only. Browser history and transition ownership stay in site-router.js. */
 import {validateCatalog,validateProject,normalizeState,route,MAX_BYTES,visibleTasks,projectURL,legacyProject} from './model.mjs?v=workshop-r21';
-import {render,metadata,renderProjectCards,selectProjects,taskResults} from './render.mjs?v=dev-r44-0d7f52b8acf1df74';
+import {render,metadata,renderProjectCards,selectProjects,taskResults} from './render.mjs?v=dev-r44-279054bb1330294e';
 const siteRoot=new URL('../../',import.meta.url), configURL=new URL('content/development/catalog.json',siteRoot);
 let catalogPromise, snapshot, current, activeLegacy;
 const states=new Map(), errors=new Map(), nodes=new Map(), filters=new Map(), loads=new Map();

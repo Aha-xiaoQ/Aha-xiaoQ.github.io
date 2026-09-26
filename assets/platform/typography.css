@@ -1,3 +1,4 @@
+@import url("./font-support.css?v=font-support-r49");
 /* Typography only: retain the existing geometry, sizes, colors, and primary WenKai faces. */
 @font-face {
   font-family: "LXGW WenKai Extended";
@@ -18,7 +19,7 @@
   unicode-range: U+9E48, U+9E55;
 }
 html body {
-  --font-body: "LXGW WenKai Supplement", "LXGW WenKai", "LXGW WenKai Extended", KaiTi, "Kaiti SC", STKaiti, "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", serif;
+  --font-body: "LXGW WenKai Local", "LXGW WenKai", "LXGW WenKai Supplement", "LXGW WenKai Extended", KaiTi, "Kaiti SC", STKaiti, "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", serif;
   font-family: var(--font-body);
 }
 #app :is(button,input,select,textarea) { font-family: inherit; }

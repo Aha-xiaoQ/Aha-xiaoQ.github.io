@@ -1,5 +1,5 @@
 ﻿param(
-    [ValidateSet('Push','Check')][string]$Mode = 'Push',
+    [ValidateSet('Push','Check','PackageCheck')][string]$Mode = 'Push',
     [switch]$ElevationTried
 )
 $ErrorActionPreference = 'Stop'
@@ -40,7 +40,17 @@ function Verify-Package {
     $base = [IO.Path]::GetFullPath($PSScriptRoot) + [IO.Path]::DirectorySeparatorChar
     $index = Get-Content -LiteralPath (Join-Path $PSScriptRoot 'integrity.json') -Raw -Encoding UTF8 | ConvertFrom-Json
     if ($index.schemaVersion -ne 1) { throw '校验清单版本不正确。' }
+    if ($index.files -isnot [Array] -or $index.files.Count -eq 0) {
+        throw '校验清单 files 必须是非空文件列表。请使用完整修复包，不要手工修改清单。'
+    }
+    $seen = @{}
     foreach ($entry in $index.files) {
+        if ($entry.path -isnot [string] -or [string]::IsNullOrWhiteSpace($entry.path) -or
+            $entry.sha256 -isnot [string] -or $entry.sha256 -notmatch '^[a-f0-9]{64}$') {
+            throw '校验清单文件记录不完整。'
+        }
+        if ($seen.ContainsKey($entry.path)) { throw '校验清单出现重复文件。' }
+        $seen[$entry.path] = $true
         $target = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot $entry.path))
         if (-not $target.StartsWith($base, [StringComparison]::OrdinalIgnoreCase)) { throw '校验清单出现越界路径。' }
         $item = Get-Item -LiteralPath $target -Force
@@ -58,6 +68,11 @@ try {
     Write-Host ''
     Write-Host '由同一套平台流程构建与检查，任何失败都会停止推送。原始作品和试玩受校验保护。'
     Verify-Package
+    Write-Host '更新包完整性校验通过。'
+    if ($Mode -eq 'PackageCheck') {
+        Write-Host '仅核对本地更新包；未安装工具、未登录、未克隆、未构建、未推送。'
+        exit 0
+    }
     $git = Ensure-Tool 'git.exe' 'Git.Git' 'Git for Windows'
     $gh = Ensure-Tool 'gh.exe' 'GitHub.cli' 'GitHub CLI'
     $node = Ensure-Tool 'node.exe' 'OpenJS.NodeJS.LTS' 'Node.js LTS'

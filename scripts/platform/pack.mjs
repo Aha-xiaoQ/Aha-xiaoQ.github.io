@@ -2,6 +2,7 @@
 /** Package a tested workspace delta. No commit, push, or permission changes. */
 import fs from'node:fs';import path from'node:path';import{fileURLToPath}from'node:url';import{createHash}from'node:crypto';
 import {safe,readOptional}from'../lib/safe-path.mjs';import{git,sourceFiles,sourceFingerprint}from'./source-identity.mjs';
+import{createIntegrity,verifyIntegrityEntries}from'./package-integrity.mjs';
 import{validateConfig}from'./model.mjs';import{permitted}from'./delivery/lib/install.mjs';import{zip}from'./zip.mjs';
 export const ROOT=fileURLToPath(new URL('../../',import.meta.url));const sha=b=>createHash('sha256').update(b).digest('hex');const json=o=>Buffer.from(JSON.stringify(o,null,2)+'\n');
 export function generatedPaths(root,config){
@@ -35,14 +36,17 @@ export function planPackage(root,{base,message='chore(site): update website cont
  const protectedFiles=config.protectedArtifacts.map(p=>{const current=readOptional(root,p);if(!current)throw Error('Missing original artifact');if(tracked.has(p)){const before=git(root,['show',commit+':'+p],{binary:true});if(!before.equals(current))throw Error('Original artifact changed since base: '+p);}return{path:p,sha256:sha(current)};});
  const manifest={schemaVersion:2,edition:'SITE-PLATFORM-'+config.edition,repository:config.site.repository,branch:config.site.branch,baselineCommit:commit,message,files,migrationPaths:[],protected:protectedFiles,sourceVerification:{sha256:review.sourceFingerprint.sha256,finishedAt:review.finishedAt,remoteDeploymentApproved:false}};
  const entries=[...templateFiles(root),['manifest.json',json(manifest)],...payload,['README.md',Buffer.from('# Website update package\n\nExtract into a new directory. Run START.cmd to verify and push, or CHECK_ONLY.cmd to verify without a commit. Existing GitHub CLI login is reused. The updater uses a separate checkout, refuses file/remote conflicts, preserves original artifacts, and never force-pushes.\n\nThis package applies to '+commit+'. A successful local check is not a remote deployment approval.\n')]];
- const integrity={schemaVersion:1,files:entries.map(([p,b])=>({path:p,sha256:sha(b)}))};entries.push(['integrity.json',json(integrity)]);
+ const integrity=createIntegrity(entries);entries.push(['integrity.json',json(integrity)]);
+ verifyIntegrityEntries(entries);
  return{entries,manifest};
 }
 export function writePackage(root,options){
  const output=path.resolve(options.output||'');if(!options.output||path.extname(output).toLowerCase()!=='.zip')throw Error('Supply --out <path.zip> outside the repository');
  const repo=fs.realpathSync(root),parent=fs.realpathSync(path.dirname(output)),within=path.relative(repo,parent);if(!within||!within.startsWith('..'+path.sep)&&within!=='..'&&!path.isAbsolute(within))throw Error('Package output must be outside the repository');
  if(fs.existsSync(output))throw Error('Output already exists; use a new filename');
- const planned=planPackage(root,options),bytes=zip(planned.entries.map(([p,b])=>['XiaoQ_Site_Update/'+p,b]));
+ const planned=planPackage(root,options);
+ verifyIntegrityEntries(planned.entries);
+ const bytes=zip(planned.entries.map(([p,b])=>['XiaoQ_Site_Update/'+p,b]));
  // Recheck exactly the inputs whose successful verification authorized this package.
  verifySavedReport(root);fs.writeFileSync(output,bytes,{flag:'wx'});return{output,bytes:bytes.length,sha256:sha(bytes),files:planned.manifest.files.length,baseline:planned.manifest.baselineCommit,pushed:false};
 }

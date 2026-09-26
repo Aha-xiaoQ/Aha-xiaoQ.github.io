@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+import {checkFontSupport} from './font-support.mjs';
+import {checkSourcePlayback} from './source-playback.mjs';
 /** Pure source/generated consistency and declared content ownership checks. */
 import {checkReadmeLinks} from './readme-links.mjs';
 import {verifyLabAssets,verifyLabPublicCopy} from './lab-assets.mjs';
@@ -9,7 +11,9 @@ import {build as content}from'./content.mjs';import {build as imports}from'./imp
 import {loadExperiments}from'./experiments.mjs';import {validateDocumentation}from'../../assets/platform/contracts.mjs';
 export const ROOT=fileURLToPath(new URL('../../',import.meta.url));
 export function check(root=ROOT){
+ const fontCoverage=checkFontSupport(root);if(!fontCoverage.ok)throw Error('Missing or stale website font coverage: '+JSON.stringify(fontCoverage.errors.slice(0,10)));
  const readmes=checkReadmeLinks(root);
+ const sourcePlayback=checkSourcePlayback(root);
  const get=p=>{const b=readOptional(root,p);if(!b)throw Error('Missing registered source: '+p);return b;};
  const config=validateConfig(JSON.parse(get('config/site-platform.json')));
  const a=content(root,{check:true}),b=imports(root,{check:true}),experiments=loadExperiments(root);
@@ -20,6 +24,6 @@ export function check(root=ROOT){
  const pkg=JSON.parse(get('package.json'));
  for(const phase of Object.values(config.pipelines))for(const step of phase){if(step.script&&!pkg.scripts[step.script])throw Error('Missing pipeline script: '+step.script);if(step.file)get(step.file);}
  for(const p of config.protectedArtifacts)get(p);
- return {releaseCopy,releaseAssets,readmeLanguages:readmes.map(x=>({file:x.file,locale:x.locale,links:x.links.length})),messages:a.messages,moduleAliases:b.aliases,experiments:experiments.entries.length,projectRecords:catalog.projects.length};
+ return {fontCoverage:{characters:fontCoverage.characters,ok:fontCoverage.ok},sourcePlayback,releaseCopy,releaseAssets,readmeLanguages:readmes.map(x=>({file:x.file,locale:x.locale,links:x.links.length})),messages:a.messages,moduleAliases:b.aliases,experiments:experiments.entries.length,projectRecords:catalog.projects.length};
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url))try{if(process.argv.length>2)throw Error('Unsupported option');console.log(check());}catch(e){console.error(e.message);process.exitCode=1;}

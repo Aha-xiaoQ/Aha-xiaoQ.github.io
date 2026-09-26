@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "archives": [
+    {
+      "path": "experiments/releases/mid-autumn-special/source-r49.zip",
+      "root": "MidAutumn_Final_Source",
+      "entry": "index.html",
+      "members": {
+        "index.html": "experiments/releases/mid-autumn-special/index.html",
+        "final.mp4": "experiments/releases/mid-autumn-special/final.mp4",
+        "poster.jpg": "experiments/releases/mid-autumn-special/poster.jpg"
+      },
+      "required": [
+        "PLAY.cmd",
+        "BUILD.cmd",
+        "README.md",
+        "README.en.md",
+        "finalize.py",
+        "final-config.json",
+        "manifest.json",
+        "player.template.html",
+        "drawing/film.py",
+        "drawing/font_paths.py",
+        "assets/picture-reference.mp4",
+        "assets/cai-yun-zhui-yue.mp3"
+      ]
+    }
+  ]
+}

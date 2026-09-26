@@ -42,12 +42,31 @@ function normalized(p,b){if(!/\.(?:mjs|js|json|css|md|txt|html|svg|ps1|cmd)$/.te
 export function verify(root,m,bundle){
  for(const f of m.files){const now=read(root,f.path),expected=f.operation==='delete'?null:read(bundle,'payload/'+f.path);if(expected?(!now||normalized(f.path,now)!==normalized(f.path,expected)):now!==null)throw Error('Build changed an authored payload: '+f.path);}
  for(const g of m.protected){const b=read(root,g.path);if(!b||sha(b)!==g.sha256)throw Error('Original artifact changed: '+g.path);}
+ verifyGeneratedFonts(root);
 }
-const generated=new Set(['assets/journal/journal.css','assets/platform/import-map.json','assets/i18n/messages.js','assets/platform/config.js','content/search-index.json','content/presentation.js',
+const generatedFontPath=p=>/^assets\/platform\/font-support\/[a-f0-9]{64}\.woff2$/.test(p);
+const fontTextPaths=new Set(['assets/platform/font-support.css','assets/platform/font-support/OFL.txt','docs/platform/font-provider.json']);
+/** Generated fonts never enter payloads. Staging requires actual local bytes and a matching build record. */
+export function verifyGeneratedFonts(root){
+ const b=read(root,'docs/platform/generated-fonts.json');if(!b)return new Set();
+ const record=JSON.parse(b);if(record.schemaVersion!==1||record.family!=='LXGW WenKai Local'||!Array.isArray(record.faces)||!record.files||Array.isArray(record.files))throw Error('Invalid generated font record');
+ const verified=new Set();
+ for(const [p,id]of Object.entries(record.files)){
+  if(!generatedFontPath(p)&&!fontTextPaths.has(p))throw Error('Invalid generated font path: '+p);
+  const data=read(root,p);if(!data||!checksum(id?.sha256)||data.length!==id.bytes||sha(data)!==id.sha256)throw Error('Generated font identity mismatch: '+p);
+  if(generatedFontPath(p)&&(p!=='assets/platform/font-support/'+sha(data)+'.woff2'||data.subarray(0,4).toString()!=='wOF2'))throw Error('Invalid generated WOFF2: '+p);
+  verified.add(p);
+ }
+ for(const face of record.faces)if(!generatedFontPath(face.file)||!verified.has(face.file)||record.files[face.file].sha256!==face.sha256)throw Error('Unverified generated font face');
+ for(const p of fontTextPaths)if(!verified.has(p))throw Error('Incomplete generated typography closure: '+p);
+ return verified;
+}
+const generated=new Set(['assets/platform/font-support.css','assets/platform/font-support/OFL.txt','docs/platform/font-provider.json','docs/platform/generated-fonts.json','assets/journal/journal.css','assets/platform/import-map.json','assets/i18n/messages.js','assets/platform/config.js','content/search-index.json','content/presentation.js',
 'docs/platform/generated-files.json','docs/development/generated-pages.json','docs/experience-r18/generated-files.json','docs/design-r07/generated-pages.json','docs/launch-r19/generated-files.json','docs/studio-r25/generated-files.json','docs/showcase-r25/generated-files.json','docs/content-r15/generated-tasks.json','docs/chapters-r20/generated-files.json',
 'index.html','404.html','about/index.html','projects/index.html','games/index.html','tools/index.html','method/index.html','search/index.html','play-guide/index.html','projects/q-mimi/index.html','sitemap.xml','robots.txt','content/development/projects/mario-mix.json',
 'assets/site-router.js','assets/journal/runtime.mjs','assets/journal/render.mjs','assets/journal/documents.mjs','assets/journal/public-layout.mjs','assets/journal/experiment.mjs','assets/journal/update-audience.mjs','assets/release/public-content.mjs']);
-export function assertScope(paths,m){
+export function assertScope(paths,m,root=null){
  const approved=new Set([...m.files.map(f=>f.path),...sourcePaths,...generated]);
- for(const p of paths){permitted(p);if(m.protected.some(x=>x.path===p))throw Error('Original artwork/game cannot be staged');if(!approved.has(p)&&!/^assets\/journal\/data\/[a-z0-9/-]+\.(?:mjs|json)$/.test(p)&&!/^notes\/(?:[a-z0-9-]+\/)*index\.html$/.test(p)&&!/^games\/[a-z0-9-]+\/index\.html$/.test(p))throw Error('Unexpected generated change: '+p);}
+ let fontFiles=null;
+ for(const p of paths){if(generatedFontPath(p)){if(!root)throw Error('Generated fonts require a verified repository root');fontFiles??=verifyGeneratedFonts(root);if(!fontFiles.has(p))throw Error('Unregistered generated font: '+p);}else permitted(p);if(m.protected.some(x=>x.path===p))throw Error('Original artwork/game cannot be staged');if(!approved.has(p)&&!fontFiles?.has(p)&&!/^assets\/journal\/data\/[a-z0-9/-]+\.(?:mjs|json)$/.test(p)&&!/^notes\/(?:[a-z0-9-]+\/)*index\.html$/.test(p)&&!/^games\/[a-z0-9-]+\/index\.html$/.test(p))throw Error('Unexpected generated change: '+p);}
 }
