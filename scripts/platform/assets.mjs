@@ -39,7 +39,7 @@ export function versionResources(html,reader) {
   return html.replace(/(\b(?:src|href)=["'])([^"']+)(["'])/g,(all,a,url,z)=>{
     const rel=assetPath(url);if(!rel)return all;
     // Existing route/ESM versions remain owned by their established generators.
-    if(!['assets/site-i18n.js','assets/site-i18n-data.js','assets/i18n/messages.js','assets/platform/config.js','assets/platform/typography.css'].includes(rel))return all;
+    if(!['assets/site-i18n.js','assets/site-i18n-data.js','assets/i18n/messages.js','assets/platform/config.js','assets/platform/typography.css','assets/platform/font-support.css'].includes(rel))return all;
     const bytes=reader(rel);if(!bytes)throw Error('Missing shared platform asset: '+rel);
     const parsed=new URL(url,'https://assets.invalid/');parsed.searchParams.set('v',hash(bytes));
     return a+url.split(/[?#]/)[0]+parsed.search+parsed.hash+z;

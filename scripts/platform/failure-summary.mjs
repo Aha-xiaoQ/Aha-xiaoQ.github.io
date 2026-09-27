@@ -8,7 +8,7 @@ export function readFailureDetails(root,report){
  const details={},failed=new Set(failedSteps(report).map(s=>s.id));
  const start=Date.parse(report?.startedAt),end=Date.parse(report?.finishedAt);
  if(!Number.isFinite(start)||!Number.isFinite(end)||end<start)return details;
- for(const[id,file]of [['browser-artifact','.local/platform/browser-report.json'],['browser-components','.local/platform/browser-components.json']]){
+ for(const[id,file]of [['browser-artifact','.local/platform/browser-report.json'],['browser-components','.local/platform/browser-components.json'],['font-source-pages','.local/platform/font-pages.json'],['font-render-regression','.local/platform/font-regression.json']]){
   if(!failed.has(id))continue;
   try{
    const bytes=readOptional(root,file);if(!bytes||bytes.length>8*1024*1024)continue;
@@ -33,7 +33,9 @@ export function failureSummary(report,details={}){
   if(Array.isArray(errors))for(const e of errors){
    const place=[e.page,e.language,e.width?`${e.width}px`:null].filter(Boolean).map(text).join(' / ');
    const issue=text(e.problem||e.name||'browser failure');
-   const detail=e.detail||e.error|| (Array.isArray(e.samples)?e.samples.map(text).join('；'):'');
+   const nodes=Array.isArray(e.details)?e.details:Array.isArray(e.errors)?e.errors:[];
+   const fontDetail=nodes.slice(0,2).map(n=>[n.tag||n.selector,n.text,n.weight?'weight '+n.weight:null,Array.isArray(n.fonts)?n.fonts.map(f=>f.family+(f.custom?' [web]':' [system]')).join(', '):null,n.detail].filter(Boolean).map(text).join(' / ')).join('；');
+   const detail=e.detail||e.error||fontDetail|| (Array.isArray(e.samples)?e.samples.map(text).join('；'):'');
    diagnostics.push((place?place+': ':'')+issue+(detail?' — '+text(detail):''));
   }
  }

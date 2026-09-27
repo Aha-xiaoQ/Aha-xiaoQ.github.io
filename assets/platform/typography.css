@@ -1,4 +1,3 @@
-@import url("./font-support.css?v=font-support-r49");
 /* Typography only: retain the existing geometry, sizes, colors, and primary WenKai faces. */
 @font-face {
   font-family: "LXGW WenKai Extended";
@@ -26,3 +25,6 @@ html body {
 #app :is(pre,code,kbd,samp) { font-family: ui-monospace, Consolas, "SFMono-Regular", monospace; }
 html[lang="en"] #app :is(p,h1,h2,h3,button,a,label) { word-break: normal; }
 #app [data-prompt-text] { white-space: pre-wrap; }
+
+/* Metadata is text, not the former Arial arrow icon inside .pw-action. */
+#app .pw-action .q-action-meta { font-family: inherit; }

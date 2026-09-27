@@ -139,7 +139,20 @@ export function planGlyphs(points,primaries,faces){
   return {...p,missing,selected,unsupported};
  });
 }
-export function stylesheet(rows){return '/* Generated from actual site text; preserve existing covered WenKai glyphs. */\n'+rows.flatMap(r=>[FAMILY,'LXGW WenKai'].map(family=>`@font-face {\n  font-family: "${family}";\n  src: url("./font-support/${r.sha256}.woff2") format("woff2");\n  font-style: normal;\n  font-weight: ${r.weight};\n  font-display: swap;\n  unicode-range: ${r.points.map(n=>'U+'+n.toString(16).toUpperCase()).join(', ')};\n}\n`)).join('');}
+/** A composite face requires identical style descriptors, not merely overlapping
+ * weight ranges. A later 500-700 face can shadow the discrete 500/600/700
+ * primary faces in Blink. Keep every supplemental face on the same exact
+ * weight as its existing primary. Do not rewrite or replace the font bytes. */
+export function faceWeights(weight){
+ if(weight==='400')return [400];
+ if(weight==='500 700')return [500,600,700];
+ throw Error('Unsupported site font weight: '+weight);
+}
+export function stylesheet(rows){
+ return '/* Generated same-origin glyph supplements; exact weights match existing primary faces. */\n'+rows.flatMap(r=>
+  [FAMILY,'LXGW WenKai'].flatMap(family=>faceWeights(r.weight).map(weight=>`@font-face {\n  font-family: "${family}";\n  src: url("./font-support/${r.sha256}.woff2") format("woff2");\n  font-style: normal;\n  font-weight: ${weight};\n  font-display: swap;\n  unicode-range: ${r.points.map(n=>'U+'+n.toString(16).toUpperCase()).join(', ')};\n}\n`))
+ ).join('');
+}
 function primaries(root){return PRIMARY.map(p=>{const b=readOptional(root,p.file);if(!b)throw Error('Missing existing site font: '+p.file);return {...p,coverage:fontCodepoints(b),sha256:sha(b)};});}
 function readRecord(root){const b=readOptional(root,RECORD);if(!b)return null;const r=JSON.parse(b);if(r.schemaVersion!==1||!Array.isArray(r.faces)||!r.files||Array.isArray(r.files)||r.family!==FAMILY)throw Error('Invalid generated font record');const seen=new Set();for(const f of r.faces){if(!generatedFont(f.file)||!['regular','bold'].includes(f.variant)||!['400','500 700'].includes(f.weight)||!Array.isArray(f.points)||f.points.some(n=>!Number.isInteger(n)||n<0||n>0x10ffff)||seen.has(f.name+'@'+f.weight))throw Error('Invalid generated font face');seen.add(f.name+'@'+f.weight);}return r;}
 function verifyOwned(root,r){if(!r)return;for(const [p,id]of Object.entries(r.files)){

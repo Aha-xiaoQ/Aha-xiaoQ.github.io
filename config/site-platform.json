@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "edition": "R49",
+  "edition": "R50",
   "site": {
     "repository": "Aha-xiaoQ/Aha-xiaoQ.github.io",
     "branch": "main",
@@ -194,7 +194,7 @@
       },
       {
         "id": "font-refresh",
-        "file": "scripts/platform/font-support.mjs",
+        "file": "scripts/platform/font-finalize.mjs",
         "args": [],
         "after": [
           "native-entries"
@@ -206,6 +206,22 @@
         "id": "font-coverage",
         "file": "scripts/platform/fonts.mjs",
         "args": []
+      },
+      {
+        "id": "font-render-regression",
+        "file": "scripts/platform/font-regression.mjs",
+        "args": [],
+        "after": [
+          "font-coverage"
+        ]
+      },
+      {
+        "id": "font-source-pages",
+        "file": "scripts/platform/font-pages.mjs",
+        "args": [],
+        "after": [
+          "font-render-regression"
+        ]
       },
       {
         "id": "source-checks",
@@ -245,7 +261,9 @@
           "publication-plan",
           "repository-doctor",
           "font-coverage",
-          "browser-components"
+          "browser-components",
+          "font-render-regression",
+          "font-source-pages"
         ]
       },
       {
