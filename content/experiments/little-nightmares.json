@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "kind": "video",
   "id": "little-nightmares",
-  "title": "小小梦魇｜帧外 · 等你一起走",
-  "subtitle": "当暂停、快进与倒带成了世界的规则，小六和诺姆试着走出播放器，寻找一条一起离开的路。",
+  "title": "GPT6程序动画·小小梦魇",
+  "subtitle": "当暂停、快进与倒带成了世界的规则，小六与诺姆们穿过追逐、回头救援，终于走向门外的世界。",
   "visibility": "public",
   "createdAt": "2026-10-01",
   "updatedAt": "2026-10-01",
@@ -15,8 +15,31 @@
   },
   "cover": {
     "src": "/assets/lab/little-nightmares-cover.webp",
-    "alt": "小六穿着黄色雨衣，带着两位诺姆走过昏暗门洞，左侧写着“小小梦魇”和“帧外 · 等你一起走”。"
+    "alt": "长臂角色俯身伸手，小六穿着黄色雨衣站在诺姆身旁，前景是暂停与播放装置。"
   },
-  "provenance": "受《小小梦魇》启发的非官方程序动画短片。暂停按钮、时间轴与播放控制走进了故事，小六和诺姆在这套规则中寻找出口。",
-  "verification": "视频待发布。角色、场景与动作由程序重建；本片为非官方同人创作，含 AI 辅助制作内容。配乐采用 Tobias Lilja 的《小小梦魇》原声，游戏与音乐权益归相应权利人。"
+  "provenance": "受《小小梦魇》启发的非官方程序动画短片。播放器的按钮与时间轴走进了故事；小六与诺姆们在机械和长臂之间寻找出口，也没有落下身边的同伴。门外的港湾是为本片设计的延伸空间。",
+  "verification": "136 秒，1920×1080，60 fps。MP4 保留完整剧情与标准三连片尾；HTML 为实时剧情动画，可暂停、跳转和转动场景，不是角色操控游戏。模型、场景与动作由程序重建，使用 GPT-6 Astra 辅助创作。配乐：Tobias Lilja《Little Nightmares》原声；环境与动作音为程序合成。片尾字体：霞鹜文楷。游戏、角色与音乐权益归相应权利人。哔哩哔哩链接待投稿后补充。",
+  "resources": [
+    {
+      "role": "video",
+      "label": "观看 MP4 成片（含标准片尾）",
+      "href": "/experiments/releases/little-nightmares/film-r13.mp4",
+      "bytes": 93275706,
+      "sha256": "f5f43b61a21089f312318c3e3cb0ff91683c6ea4220f0a9d72aed4e8f2e293cd"
+    },
+    {
+      "role": "html",
+      "label": "打开 HTML 动画",
+      "href": "/experiments/releases/little-nightmares/animation-r13.html",
+      "bytes": 11313489,
+      "sha256": "53adb25b2f53a33b26c0fedbe091b584e9c233235b03ff1b29468fdd7b990d58"
+    },
+    {
+      "role": "source",
+      "label": "下载 R13 制作源码",
+      "href": "/experiments/releases/little-nightmares/source-r13.zip",
+      "bytes": 24701672,
+      "sha256": "c998c82c40c0b672df386831ab2157956f2b5be949a23d56b4c20564e13a53bb"
+    }
+  ]
 }
