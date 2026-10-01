@@ -6,7 +6,7 @@ export function themeFor(setting='',star=false,timeLeft=400){
 }
 export function createSound(media={}){
  let music=null,track='',enabled=true,blocked=false;const effects=new Set(),events=[];const log=key=>{events.push(key);if(events.length>30)events.shift();};
- const url=key=>media[key]||'/games/mario-mix/assets/classic-audio/'+audioFiles[key];
+ const url=key=>media[key]||new URL('./assets/classic-audio/'+audioFiles[key],import.meta.url).href;
  function stop(){if(music){music.pause();music=null;}track='';for(const a of effects)a.pause();effects.clear();}
  async function background(key){if(!enabled||blocked||track===key)return;music?.pause();const a=new Audio(url(key));music=a;track=key;a.loop=true;a.volume=.35;try{await a.play();log(key);}catch{if(music===a){blocked=true;track='';}}}
  function effect(key){if(!enabled||!audioFiles[key])return;if(/^bill_[NMSFL]$/.test(key))for(const old of [...effects])if(/^bill_[NMSFL]$/.test(old.effectKey)){old.pause();effects.delete(old);}const a=new Audio(url(key));a.effectKey=key;a.volume=/^bill_[NMSFL]$/.test(key)?.12:.65;effects.add(a);a.onended=()=>effects.delete(a);a.play().then(()=>log(key)).catch(()=>effects.delete(a));}

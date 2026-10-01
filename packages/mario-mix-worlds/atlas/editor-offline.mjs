@@ -1,14 +1,14 @@
 import {audioFiles} from './editor-audio.mjs';
 // Embed the same modules and data as the browser preview. No server or CDN needed.
-export async function offlineFile(pack,rooms,read=async path=>{const r=await fetch(new URL(path,import.meta.url));if(!r.ok)throw Error('下载缺少文件：'+path);return r.text();},readAudio=async name=>{const r=await fetch(new URL('../../../games/mario-mix/assets/classic-audio/'+name,import.meta.url));if(!r.ok)throw Error('音频文件缺失：'+name);return new Uint8Array(await r.arrayBuffer());},onProgress=()=>{},options={}){
+export async function offlineFile(pack,rooms,read=async path=>{const r=await fetch(new URL(path,import.meta.url));if(!r.ok)throw Error('下载缺少文件：'+path);return r.text();},readAudio=async name=>{const r=await fetch(new URL('./assets/classic-audio/'+name,import.meta.url));if(!r.ok)throw Error('音频文件缺失：'+name);return new Uint8Array(await r.arrayBuffer());},onProgress=()=>{},options={}){
  const paths=['editor-heroes.mjs','editor-bill.mjs','chill-font.mjs','editor-gamepad.mjs','campaign-ui.mjs','source-sprite-data.mjs','source-art.mjs','runtime/stage-catalog.mjs','editor-mario-stage.mjs','runtime/platform-motor.mjs','editor-mario-motor.mjs','editor-audio.mjs','map-appearance.mjs','classic-art.mjs','editor-art.mjs','editor-play.mjs'];
  const total=paths.length+Object.keys(audioFiles).length+1;let done=0;onProgress(done,total);
  const imports={};
  for(const path of paths){const source=(await read('./'+path)).replace(/from\s+(['"])(\.\/[^'"]+)\1/g,(all,quote,p)=>'from '+JSON.stringify('workshop/'+p.slice(2)));imports['workshop/'+path]='data:text/javascript;charset=utf-8,'+encodeURIComponent(source);onProgress(++done,total);}
  const media={};for(const [key,name] of Object.entries(audioFiles)){const bytes=await readAudio(name);let raw='';for(const b of bytes)raw+=String.fromCharCode(b);media[key]='data:audio/'+(name.endsWith('.wav')?'wav':name.endsWith('.ogg')?'ogg':'mpeg')+';base64,'+btoa(raw);onProgress(++done,total);}
- media.brandCore='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(await read('../../../assets/q-logo-pixel-core.svg'));
- media.brandLogo='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(await read('../../../assets/q-logo-pixel-framed.svg'));
- media.brandAvatar='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(await read('../../../assets/identity/xiaoq-avatar-p63a.svg'));
+ media.brandCore='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(await read('./assets/q-logo-pixel-core.svg'));
+ media.brandLogo='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(await read('./assets/q-logo-pixel-framed.svg'));
+ media.brandAvatar='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(await read('./assets/xiaoq-avatar-p63a.svg'));
  const notice=(await read('./CLASSIC_ART_NOTICE.txt'))+'\n\n'+(await read('./CHILL_FONT_LICENSE.txt'));onProgress(++done,total);
  const safe=x=>JSON.stringify(x).replace(/</g,'\\u003c');
  const escape=x=>String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');

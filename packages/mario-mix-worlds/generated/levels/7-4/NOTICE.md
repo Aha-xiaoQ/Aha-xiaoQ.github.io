@@ -5,3 +5,5 @@
 `reference/LICENSE-MIT.txt` 保留该社区项目的 MIT 声明。代码声明与原作角色、美术、商标、音频等权利需分别核验；本包不声明已取得原作资源授权。没有加入新的官方 BGM、音效、ROM 或字体。配套 M06 保留原有素材来源声明。
 
 世界 2–8 的转录脚本在 `reference/transcription/`；构建使用静态 JSON，不执行第三方 JavaScript。地图中的疑似源数据错误保留并列入核验记录，不自动改写为猜测值。
+
+2026-10-01 独立包修复：`atlas/assets/classic-audio/`、`atlas/assets/character-audio/` 复用网站第一期已有录音，品牌 SVG 复用站点已有文件；`tests/fixtures/classic-mix.js` 是第一期源码的测试基线，不在地图工坊执行。素材身份见 `reference/STARTER_ASSETS.json`，原来源与许可说明保留在 `atlas/CLASSIC_ART_NOTICE.txt`。这些复制不授予新的素材权利，也不替换网站原游戏。

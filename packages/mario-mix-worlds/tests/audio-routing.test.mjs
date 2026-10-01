@@ -11,5 +11,5 @@ test('room music distinguishes castle, water, underground and star priority',()=
  }
 });
 test('all exported audio mappings resolve to nonempty local recordings',async()=>{
- for(const file of new Set(Object.values(audioFiles))){const bytes=await readFile(new URL('../../../games/mario-mix/assets/classic-audio/'+file,import.meta.url));assert.ok(bytes.length>100,file);}
+ for(const file of new Set(Object.values(audioFiles))){const bytes=await readFile(new URL('../atlas/assets/classic-audio/'+file,import.meta.url));assert.ok(bytes.length>100,file);}
 });

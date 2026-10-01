@@ -8,9 +8,9 @@ import {createPlatformMotor} from '../atlas/runtime/platform-motor.mjs';
 import {createStageCatalog} from '../atlas/runtime/stage-catalog.mjs';
 import {audioFiles} from '../atlas/editor-audio.mjs';
 test('classic pixel data and palette match existing 1-1 verbatim',async()=>{
- const old=await readFile(new URL('../../../games/mario-mix/classic-mix.js',import.meta.url),'utf8'),current=await readFile(new URL('../atlas/classic-art.mjs',import.meta.url),'utf8');
+ const old=await readFile(new URL('./fixtures/classic-mix.js',import.meta.url),'utf8'),current=await readFile(new URL('../atlas/classic-art.mjs',import.meta.url),'utf8');
  for(const name of ['CLASSIC_PALETTE','CLASSIC_DATA']){const re=new RegExp('const '+name+' = ([^\\n]+)');assert.equal(current.match(re)[1],old.match(re)[1]);}
- for(const name of Object.values(audioFiles))assert.ok((await stat(new URL('../../../games/mario-mix/assets/classic-audio/'+name,import.meta.url))).size>100);
+ for(const name of Object.values(audioFiles))assert.ok((await stat(new URL('../atlas/assets/classic-audio/'+name,import.meta.url))).size>100);
 });
 test('Mario preview has single jump, native small footprint and downward stomp',async()=>{
  const d=blank(),r=d.rooms[0];r.map.objects[0].y=0;r.map.geometry=[{id:'floor',x:0,y:64,w:1280,h:16,collision:'solid'}];r.map.objects.push({id:'enemy',kind:'walker',x:38,y:48,w:16,h:16});

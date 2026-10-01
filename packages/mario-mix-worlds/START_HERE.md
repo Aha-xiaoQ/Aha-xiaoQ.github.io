@@ -49,3 +49,9 @@ npm run pack
 重新生成后才分发。完整包生成在 `.local/MarioMix_Worlds_W02_Starter.zip`；逐关与逐世界包在 `generated/downloads/`。
 
 Tiled 仅对象层导出，不支持编辑后自动回写。几何检查中的静态平衡台、弹簧、桥等不等于对应机制实现。完整范围见 `docs/MAP_CONTRACT.md`。
+
+## 独立包资源
+
+Starter 内的编辑器音频、品牌 SVG 与测试基线均在包内，完整解压后无需外层网站仓库即可验证、试玩与导出离线 HTML。现有素材的署名与权利说明见 `atlas/CLASSIC_ART_NOTICE.txt` 和 `NOTICE.md`。
+
+在网站仓库重新打包时，同级第三期源码可能已升级到 M07。W02 仍固定使用 M06；请解压已有 M06 源码包，再运行 `npm run pack -- --game "M06源码目录"`。打包器会拒绝把其他版本标记为 M06。已解压的完整 Starter 可直接运行 `npm run pack`。

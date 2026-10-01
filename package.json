@@ -88,7 +88,7 @@
     "worlds:sync": "node scripts/worlds/sync.mjs",
     "worlds:dev": "npm --prefix packages/mario-mix-worlds run dev",
     "worlds:new": "npm --prefix packages/mario-mix-worlds run new --",
-    "worlds:pack": "npm --prefix packages/mario-mix-worlds run pack",
+    "worlds:pack": "npm --prefix packages/mario-mix-worlds run pack --",
     "test:worlds": "npm --prefix packages/mario-mix-worlds test && node --test tests/worlds/*.test.mjs",
     "worlds:atlas": "npm --prefix packages/mario-mix-worlds run atlas",
     "terra:test:player-ui": "npm --prefix packages/mario-mix-terra run test:player-ui",
