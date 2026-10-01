@@ -27,6 +27,7 @@ export function nativePage(template,body,meta,file){
  head=head.replace('</head>',`<meta name="description" content="${e(meta.intro)}">\n${file.includes('/manage/')?'<meta name="robots" content="noindex">':''}<link rel="stylesheet" data-workshop-css href="/assets/workshop-components.css?v=workshop-r08"><link rel="stylesheet" data-journal-css href="/assets/journal/journal.css?v=docs-r26">\n</head>`);
  let header=absolute(get(/<header\b[^>]*>[\s\S]*?<\/header>/i,'header'));
  header=header.replace(/<a\b[^>]*data-nav-key=["']dev["'][^>]*>[\s\S]*?<\/a>/g,'').replace(/\saria-current=["']page["']/g,'').replace(/(<a\b[^>]*data-nav-key=["']notes["'][^>]*>)[\s\S]*?(<\/a>)/g,'$1开发$2').replace(/(data-nav-key=["']notes["'])/,'$1 aria-current="page"');
+ header=header.replace(/<a\b[^>]*data-nav-key=["']notes["'][^>]*>/g,tag=>tag.replace(/\bhref=["'][^"']*["']/,'href="/notes/lab/"'));
  header=header.replace(/<nav\b([^>]*)>/g,(tag,attrs)=>{if(/\bstyle=/.test(attrs))return tag;return '<nav'+attrs+' style="flex-wrap:wrap">';});
  const footer=absolute(get(/<footer\b[^>]*>[\s\S]*?<\/footer>/i,'footer'));
  const tail=template.slice(template.lastIndexOf('</footer>')+9);const scripts=cacheHtml(absolute([...tail.matchAll(/<script\b[^>]*src=["'][^"']*["'][^>]*>\s*<\/script>/g)].map(m=>m[0]).join('\n')));

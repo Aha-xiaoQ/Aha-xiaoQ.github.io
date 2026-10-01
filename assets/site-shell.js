@@ -22,7 +22,7 @@
     return `${base}${documentPath}`;
   };
   const sortByDate = (list, key) => [...list].sort((a,b) => (b[key] || "").localeCompare(a[key] || "") || a.id.localeCompare(b.id));
-  const navItems = [["", "首页", "home"], ["projects/", "项目", "projects"], ["games/", "游戏", "games"], ["tools/", "工具", "tools"], ["notes/", "开发", "notes"], ["about/", "关于", "about"]];
+  const navItems = [["", "首页", "home"], ["projects/", "项目", "projects"], ["games/", "游戏", "games"], ["tools/", "工具", "tools"], ["notes/lab/", "开发", "notes"], ["about/", "关于", "about"]];
   const navLink = ([path, label, key]) => `<a href="${href(path)}" data-nav-key="${key}"${page === key || (page === "journal" && key === "notes") || (page === "detail" && key === "games") ? ' aria-current="page"' : ""}>${label}</a>`;
   const registeredLogo = globalThis.SITE_ASSETS?.brand?.logo;
   const siteLogo = registeredLogo?.src || "assets/q-logo-pixel-framed.svg?v=dd5b8227f5b3e07a8da6";

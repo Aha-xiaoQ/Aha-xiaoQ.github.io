@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import {nativePage} from '../../scripts/journal/build.mjs';
+import {labPrimaryEntry} from '../../scripts/ui-polish/native-html.mjs';
 import {developmentNav,labSpotlight,websiteOverview,documentDirectory,experimentGallery,experimentDetail,projectOverview} from '../../assets/journal/public-layout.mjs';
 import {CATALOG} from '../../assets/journal/data/catalog.mjs';
 import {EXPERIMENTS} from '../../assets/journal/data/experiments.mjs';
@@ -24,3 +26,20 @@ test('custom layouts use a declared layout rather than hard-coded IDs in the sha
 test('compiled navigation contains no regular guide paragraphs',()=>{for(const p of CATALOG.projects)for(const d of p.docs){if(d.readingDocument)continue;assert.deepEqual(d.sections,[]);assert.match(d.deferredGuide,/\.json\?v=dev-r44-[0-9a-f]{16}$/);}});
 test('preview teardown and sandbox are explicit in the wrapper, without editing the animation',()=>{const s=read('assets/journal/experiment.mjs');assert.match(s,/setAttribute\('sandbox','allow-scripts'\)/);assert.doesNotMatch(s,/allow-same-origin/);assert.match(s,/querySelector\('iframe'\)\?\.remove\(\)/);});
 test('new organization styles remain scoped to the journal and add no fonts or animation engine',()=>{const s=read('assets/journal/organization.css');assert.doesNotMatch(s,/@font-face|@keyframes|@import|:root/);assert.match(s,/prefers-reduced-motion/);assert.match(s,/max-width:760px/);});
+
+test('primary Dev entry opens Lab even when its source template points to Projects',()=>{
+ const template=read('notes/index.html').replace(/<a\b[^>]*data-nav-key=["']notes["'][^>]*>/g,tag=>tag.replace(/\bhref=["'][^"']*["']/,'href="/notes/"'));
+ const html=nativePage(template,'',{title:'开发',intro:'入口',eyebrow:'DEV'},'notes/index.html');
+ const primary=html.match(/<a\b[^>]*data-nav-key=["']notes["'][^>]*>/)[0];
+ assert.match(primary,/href="\/notes\/lab\/"/);
+ assert.match(developmentNav('projects'),/href="\/notes\/" aria-current="page"/);
+});
+
+test('primary Lab migration retains explicit Projects and protected source examples',()=>{
+ const input='<a data-nav-key="notes" href="notes/index.html">开发</a><a class="path path--notes" href="notes/index.html">开发</a><nav class="q-dev-nav"><a href="/notes/">项目</a></nav><script>const example=`<a data-nav-key="notes" href="/notes/">example</a>`;</script>';
+ const html=labPrimaryEntry(input);
+ assert.equal((html.match(/href="\/notes\/lab\/"/g)||[]).length,2);
+ assert.ok(html.includes('<nav class="q-dev-nav"><a href="/notes/">项目</a></nav>'));
+ assert.ok(html.includes('<script>const example=`<a data-nav-key="notes" href="/notes/">example</a>`;</script>'));
+ assert.equal(labPrimaryEntry(html),html);
+});

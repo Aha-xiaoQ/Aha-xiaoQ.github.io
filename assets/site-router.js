@@ -49,10 +49,10 @@
     let link=document.querySelector('[data-journal-css]');
     if(link)link=renewStylesheet(link);
     if(link?.sheet)return Promise.resolve();
-    if(!link){link=document.createElement('link');link.rel='stylesheet';link.href=new URL('journal/journal.css?v=dev-r44-f3c4ad8a5770ea5a',routerURL).href;link.dataset.journalCss='';document.head.append(link);}
+    if(!link){link=document.createElement('link');link.rel='stylesheet';link.href=new URL('journal/journal.css?v=dev-r44-2d2e48c7563e212d',routerURL).href;link.dataset.journalCss='';document.head.append(link);}
     return waitForLink(link);
   };
-  const importJournal=()=>journalModule ||= import(new URL('journal/runtime.mjs?v=dev-r44-f3c4ad8a5770ea5a',routerURL).href).catch(error=>{journalModule=null;throw error;});
+  const importJournal=()=>journalModule ||= import(new URL('journal/runtime.mjs?v=dev-r44-2d2e48c7563e212d',routerURL).href).catch(error=>{journalModule=null;throw error;});
   const prepareJournal = async info => {
     if(info.page!=='journal')return;
     await Promise.all([journalStyle(),importJournal().then(()=>globalThis.SITE_JOURNAL.prepare(info))]);
@@ -69,7 +69,7 @@
       nav.style.flexWrap='wrap';
       nav.querySelectorAll('[data-nav-key="dev"]').forEach(a=>a.remove());
       nav.querySelectorAll('[data-nav-key="notes"]').forEach(a=>{
-        a.dataset.i18nSkip='';a.href='/notes/';const label=en?'Dev':'开发';if(a.textContent!==label)a.textContent=label;
+        a.dataset.i18nSkip='';a.href='/notes/lab/';const label=en?'Dev':'开发';if(a.textContent!==label)a.textContent=label;
         if(inside){nav.querySelectorAll('[aria-current="page"]').forEach(n=>n.removeAttribute('aria-current'));a.setAttribute('aria-current','page');}else a.removeAttribute('aria-current');
       });
     });

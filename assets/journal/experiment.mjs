@@ -1,5 +1,5 @@
 /** Per-mount preview lifetime. Only a visitor click may request an original artifact. */
-import {EXPERIMENTS} from './data/experiments.mjs?v=dev-r44-f3c4ad8a5770ea5a';
+import {EXPERIMENTS} from './data/experiments.mjs?v=dev-r44-2d2e48c7563e212d';
 const bound=new WeakSet(),scopes=new WeakMap();
 const status=(box,selector,text)=>{const node=box.querySelector(selector);if(node){node.textContent=text;globalThis.SITE_I18N?.apply(node);}};
 function state(box){if(!scopes.has(box))scopes.set(box,{generation:0,controller:null,timer:null});return scopes.get(box);}

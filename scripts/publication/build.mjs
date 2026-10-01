@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import {loadExperiments} from '../platform/experiments.mjs';
 import {wirePlatform} from '../platform/wire.mjs';
+import {labPrimaryEntry} from '../ui-polish/native-html.mjs';
 import {importMap} from '../platform/assets.mjs';
 import {planContent} from '../platform/content.mjs';
 import {planJournalData} from '../dev-center/build.mjs';
@@ -24,6 +25,7 @@ const getJSON=(get,p)=>{const b=get(p);if(!b)throw Error('缺少发布输入：'
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function publicHTML(s,p,origin,data,cacheToken){
  if(/(?:^|\/)play\.html$/.test(p)||/^experiments\/.+\.html$/.test(p))return s;
+ s=labPrimaryEntry(s);
  const canonical=origin+'/'+p.replace(/index\.html$/,'');
  s=s.replace(/<script\b[^>]*data-public-release[^>]*>[\s\S]*?<\/script>\s*/gi,'');
  s=s.replace(/<head\b[^>]*>/i,m=>m+'\n<script data-public-release src="/assets/release/public-mode.js?v=release-r24"></script>');

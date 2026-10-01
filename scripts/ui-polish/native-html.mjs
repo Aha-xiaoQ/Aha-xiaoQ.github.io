@@ -1,6 +1,12 @@
 /** R17 build-time migration of known outer-page link decorations.
  * No content-wide arrow replacement; code, styles and scripts stay byte-for-byte.
  * Real href/target/download attributes are retained. No click forwarding. */
+// Only the marked primary Dev navigation and homepage shortcut use the Lab default.
+export function labPrimaryEntry(input){
+ const blocks=[];
+ const safe=input.replace(/<(script|style|pre|code)\b[^>]*>[\s\S]*?<\/\1\s*>/gi,block=>`\u0000LAB_BLOCK_${blocks.push(block)-1}\u0000`);
+ return safe.replace(/<a\b[^>]*>/gi,tag=>/\bdata-nav-key=["']notes["']/.test(tag)||/\bclass=["'][^"']*\bpath--notes\b/.test(tag)?tag.replace(/\bhref=["'][^"']*["']/,'href="/notes/lab/"'):tag).replace(/\u0000LAB_BLOCK_(\d+)\u0000/g,(_,i)=>blocks[+i]);
+}
 export function polishPromoSource(source){
  return source
   .replaceAll('<b aria-hidden="true">↗</b>','')
