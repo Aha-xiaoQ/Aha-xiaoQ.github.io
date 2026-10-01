@@ -1,2 +1,5 @@
 # Keep generated-file hashes identical on Windows and Linux.
 * text=auto eol=lf
+
+# Published experiment files are byte-bound originals, including standalone HTML.
+/experiments/releases/** -text
