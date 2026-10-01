@@ -34,7 +34,7 @@
     return input;
   }
   function validateEntry(entry) {
-    keys(entry, ['kind','preset','src','alt','fit','position','rendering','tone','sprite','categoryLabel'], '素材');
+    keys(entry, ['kind','preset','src','alt','fit','position','rendering','tone','sprite','categoryLabel','srcset'], '素材');
     assert(Object.hasOwn(presets, entry.preset), '未知背景预设');
     assert(presets[entry.preset].includes(entry.kind), '背景预设与素材类型不兼容');
     assert(entry.categoryLabel===undefined || (typeof entry.categoryLabel==='string' && entry.categoryLabel.trim().length>0 && [...entry.categoryLabel].length<=24), 'categoryLabel 必须是 1–24 字的分类文字');
@@ -49,6 +49,14 @@
     }
     if(entry.kind==='diagram') { assert(entry.src===undefined && entry.sprite===undefined, 'diagram 不能附带图像源'); }
     else safeURL(entry.src,{asset:true});
+    if(entry.srcset!==undefined) {
+      assert(entry.kind==='image' && Array.isArray(entry.srcset) && entry.srcset.length>0 && entry.srcset.length<=8, 'Invalid responsive image sources');
+      let previous=0;
+      for(const source of entry.srcset) {
+        keys(source,['src','width'],'Image source');safeURL(source.src,{asset:true});
+        assert(/\.webp(?:[?#]|$)/i.test(source.src) && Number.isInteger(source.width) && source.width>previous && source.width<=8192,'Invalid WebP source width');previous=source.width;
+      }
+    }
     if(entry.kind==='sprite') {
       keys(entry.sprite, ['width','height','columns','rows','frames','durationMs'], '精灵');
       const s=entry.sprite;
@@ -88,7 +96,9 @@
       return `<div ${attrs} style="${style}"><span class="pw-sprite-viewport"><img class="pw-sprite-sheet" src="${src}" alt="${esc(entry.alt||'')}" width="${s.width*s.columns}" height="${s.height*s.rows}" loading="${loading}" decoding="async"${pixel?' style="image-rendering:pixelated"':''}></span>${fallback}</div>`;
     }
     // width/height declare slot geometry, not alleged original image dimensions.
-    return `<div ${attrs}><img class="pw-media-image" src="${src}" alt="${esc(entry.alt||'')}" width="1600" height="900" loading="${loading}" decoding="async" style="object-fit:${fit};object-position:${entry.position||'50% 50%'};image-rendering:${pixel?'pixelated':'auto'}">${fallback}</div>`;
+    const source=entry.srcset?`<source type="image/webp" srcset="${entry.srcset.map(s=>esc(assetHref(s.src,base))+' '+s.width+'w').join(', ')}" sizes="(max-width:680px) calc(100vw - 44px), (max-width:1240px) calc((100vw - 92px) / 2), 570px">`:'';
+    const image=`<img class="pw-media-image" src="${src}" alt="${esc(entry.alt||'')}" width="1600" height="900" loading="${loading}" decoding="async"${index===0?' fetchpriority="high"':''} style="object-fit:${fit};object-position:${entry.position||'50% 50%'};image-rendering:${pixel?'pixelated':'auto'}">`;
+    return `<div ${attrs}>${source?`<picture>${source}${image}</picture>`:image}${fallback}</div>`;
   }
   root.SITE_MEDIA=Object.freeze({VERSION,presets,esc,localPath,safeURL,validateEntry,validateManifest,resolve,render,assetHref});
 })(globalThis);

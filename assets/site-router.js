@@ -43,16 +43,16 @@
     return url.href;
   };
   let experienceModule;
-  const prepareExperience=async info=>{if(info.page!=="search")return;experienceModule ||= import(new URL("experience/runtime.mjs?v=release-r24-b3baeb65ba54",routerURL).href).catch(e=>{experienceModule=null;throw e;});await experienceModule;};
+  const prepareExperience=async info=>{if(info.page!=="search")return;experienceModule ||= import(new URL("experience/runtime.mjs?v=release-r24-322f49005bf7",routerURL).href).catch(e=>{experienceModule=null;throw e;});await experienceModule;};
   let journalModule, journalWarmup;
   const journalStyle = () => {
     let link=document.querySelector('[data-journal-css]');
     if(link)link=renewStylesheet(link);
     if(link?.sheet)return Promise.resolve();
-    if(!link){link=document.createElement('link');link.rel='stylesheet';link.href=new URL('journal/journal.css?v=release-r24-b3baeb65ba54',routerURL).href;link.dataset.journalCss='';document.head.append(link);}
+    if(!link){link=document.createElement('link');link.rel='stylesheet';link.href=new URL('journal/journal.css?v=release-r24-322f49005bf7',routerURL).href;link.dataset.journalCss='';document.head.append(link);}
     return waitForLink(link);
   };
-  const importJournal=()=>journalModule ||= import(new URL('journal/runtime.mjs?v=release-r24-b3baeb65ba54',routerURL).href).catch(error=>{journalModule=null;throw error;});
+  const importJournal=()=>journalModule ||= import(new URL('journal/runtime.mjs?v=release-r24-322f49005bf7',routerURL).href).catch(error=>{journalModule=null;throw error;});
   const prepareJournal = async info => {
     if(info.page!=='journal')return;
     await Promise.all([journalStyle(),importJournal().then(()=>globalThis.SITE_JOURNAL.prepare(info))]);
@@ -98,7 +98,7 @@
     };
     add("style", "promo.css");
     // Font preloads already exist in every HTML entry with the CSS URLs.
-    add("image", "identity/xiaoq-avatar-p63a.svg");
+    // The eager portrait already loads its lossless WebP. Do not fetch the unused SVG.
     add("image", "backgrounds/bg-home-pixel-game-r3.webp", "image/webp");
   };
   const styleLinks = new Map();
