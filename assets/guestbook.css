@@ -1,0 +1,15 @@
+.guestbook { border-top: 2px solid #f7f4e9; padding-block: 3rem 5rem; }
+.guestbook-heading h2 { font-size: 2rem; margin: 0 0 .75rem; }
+.guestbook-heading p { font-size: 1.125rem; }
+.guestbook-privacy { max-width: 48rem; color: #c6c5cd; line-height: 1.8; }
+.guestbook-editor { --waline-font-size: 1rem; --waline-theme-color: #ef203e; --waline-active-color: #ff5570; --waline-color: #f7f4e9; --waline-bg-color: #111116; --waline-bg-color-light: #202027; --waline-border-color: #77747e; --waline-border: 1px solid #77747e; --waline-border-radius: 0; --waline-info-color: #c6c5cd; }
+.guestbook-editor input, .guestbook-editor textarea, .guestbook-editor button { font: inherit; font-synthesis: none; }
+.guestbook-editor .wl-panel { margin-top: 1.5rem; border: 2px solid #f7f4e9; box-shadow: 5px 5px 0 #ef203e; }
+.guestbook-editor .wl-cards > .wl-item { margin: 1.5rem 0; padding: 1.5rem; background: #f7edb8; color: #15151a; box-shadow: 5px 5px 0 #ef203e; }
+.guestbook-editor .wl-cards > .wl-item:nth-child(3n + 2) { background: #cdeafa; }
+.guestbook-editor .wl-cards > .wl-item:nth-child(3n) { background: #f3d7e3; }
+.guestbook-editor .wl-card { border: 0; overflow-wrap: anywhere; }
+.guestbook-editor .wl-card .wl-content, .guestbook-editor .wl-card .wl-nick { color: #15151a; }
+.guestbook-editor .wl-card .wl-time { color: #4f4c53; }
+.guestbook-editor :focus-visible { outline: 3px solid #ef203e; outline-offset: 4px; }
+@media (max-width: 600px) { .guestbook { padding-block: 2rem 3rem; } .guestbook-editor .wl-cards > .wl-item { padding: 1rem; } }

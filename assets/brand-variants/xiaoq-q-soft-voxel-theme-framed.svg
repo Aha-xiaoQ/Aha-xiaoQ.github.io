@@ -1,0 +1,351 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"
+  width="512" height="512" role="img"
+  aria-label="Xiao Q sunlit voxel material candidate">
+  <title>Xiao Q sunlit voxel material candidate</title>
+  <desc>Original brand Q geometry rendered as matte voxel blocks with one
+    consistent upper-left light direction. The supplied image is used only as
+    a private material-language reference.</desc>
+  
+  <defs>
+    <clipPath id="icon-shell-clip">
+      <path d="M76 18 C43 18 22 39 22 72 L22 176 C22 209 43 230 76 230 L180 230 C213 230 234 209 234 176 L234 72 C234 39 213 18 180 18 Z" transform="translate(0 4)"/>
+    </clipPath>
+    <filter id="icon-physical" x="-18%" y="-18%" width="136%" height="136%"
+      color-interpolation-filters="sRGB">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8.5" result="heightMap"/>
+      <feDiffuseLighting in="heightMap" surfaceScale="1.8" diffuseConstant="0.72"
+        lighting-color="#FFFFFF" result="diffuse">
+        <feDistantLight azimuth="225" elevation="52"/>
+      </feDiffuseLighting>
+      <feComposite in="diffuse" in2="SourceAlpha" operator="in"
+        result="diffuseClip"/>
+      <feComponentTransfer in="diffuseClip" result="diffuseSoft">
+        <feFuncR type="linear" slope="0.02" intercept="0.98"/>
+        <feFuncG type="linear" slope="0.02" intercept="0.98"/>
+        <feFuncB type="linear" slope="0.02" intercept="0.98"/>
+      </feComponentTransfer>
+      <feSpecularLighting in="heightMap" surfaceScale="2.2"
+        specularConstant="0.10" specularExponent="28"
+        lighting-color="#FFFFFF" result="specular">
+        <feDistantLight azimuth="225" elevation="55"/>
+      </feSpecularLighting>
+      <feComposite in="specular" in2="SourceAlpha" operator="in"
+        result="specularClip"/>
+      <feFlood flood-color="#FFFFFF" result="base"/>
+      <feComposite in="base" in2="SourceAlpha" operator="in"
+        result="baseClip"/>
+      <feBlend in="baseClip" in2="diffuseSoft" mode="multiply" result="body"/>
+      <feBlend in="body" in2="specularClip" mode="screen"/>
+    </filter>
+  </defs>
+  <g clip-path="url(#icon-shell-clip)">
+    <path d="M76 18 C43 18 22 39 22 72 L22 176 C22 209 43 230 76 230 L180 230 C213 230 234 209 234 176 L234 72 C234 39 213 18 180 18 Z" transform="translate(0 4)"
+      fill="#FFFFFF" stroke="#F0F0F0" stroke-width="2.8"
+      vector-effect="non-scaling-stroke" filter="url(#icon-physical)"/>
+    <g transform="translate(56 56) scale(16)">
+      
+      <g id="q-body-voxel" shape-rendering="geometricPrecision">
+        <g class="voxel-cell">
+          <rect x="2" y="0" width="1" height="1"
+            fill="#009FE8"/>
+          <path d="M2 0 H3 L2.86 0.14
+            H2.14 Z" fill="#27ADEF"/>
+          <path d="M2 0 L2.14 0.14 V0.86
+            L2 1 Z" fill="#11A5E9"/>
+          <path d="M3 0 V1 L2.86 0.86
+            V0.14 Z" fill="#0088C7"/>
+          <path d="M2 1 H3 L2.86 0.86
+            H2.14 Z" fill="#0090D2"/>
+        </g>
+        <g class="voxel-cell">
+          <rect x="3" y="0" width="1" height="1"
+            fill="#009FE8"/>
+          <path d="M3 0 H4 L3.86 0.14
+            H3.14 Z" fill="#27ADEF"/>
+          <path d="M3 0 L3.14 0.14 V0.86
+            L3 1 Z" fill="#11A5E9"/>
+          <path d="M4 0 V1 L3.86 0.86
+            V0.14 Z" fill="#0088C7"/>
+          <path d="M3 1 H4 L3.86 0.86
+            H3.14 Z" fill="#0090D2"/>
+        </g>
+        <g class="voxel-cell">
+          <rect x="4" y="0" width="1" height="1"
+            fill="#009FE8"/>
+          <path d="M4 0 H5 L4.86 0.14
+            H4.14 Z" fill="#27ADEF"/>
+          <path d="M4 0 L4.14 0.14 V0.86
+            L4 1 Z" fill="#11A5E9"/>
+          <path d="M5 0 V1 L4.86 0.86
+            V0.14 Z" fill="#0088C7"/>
+          <path d="M4 1 H5 L4.86 0.86
+            H4.14 Z" fill="#0090D2"/>
+        </g>
+        <g class="voxel-cell">
+          <rect x="5" y="0" width="1" height="1"
+            fill="#009FE8"/>
+          <path d="M5 0 H6 L5.86 0.14
+            H5.14 Z" fill="#27ADEF"/>
+          <path d="M5 0 L5.14 0.14 V0.86
+            L5 1 Z" fill="#11A5E9"/>
+          <path d="M6 0 V1 L5.86 0.86
+            V0.14 Z" fill="#0088C7"/>
+          <path d="M5 1 H6 L5.86 0.86
+            H5.14 Z" fill="#0090D2"/>
+        </g>
+        <g class="voxel-cell">
+          <rect x="1" y="1" width="1" height="1"
+            fill="#009FE8"/>
+          <path d="M1 1 H2 L1.8599999999999999 1.1400000000000001
+            H1.1400000000000001 Z" fill="#27ADEF"/>
+          <path d="M1 1 L1.1400000000000001 1.1400000000000001 V1.8599999999999999
+            L1 2 Z" fill="#11A5E9"/>
+          <path d="M2 1 V2 L1.8599999999999999 1.8599999999999999
+            V1.1400000000000001 Z" fill="#0088C7"/>
+          <path d="M1 2 H2 L1.8599999999999999 1.8599999999999999
+            H1.1400000000000001 Z" fill="#0090D2"/>
+        </g>
+        <g class="voxel-cell">
+          <rect x="6" y="1" width="1" height="1"
+            fill="#009FE8"/>
+          <path d="M6 1 H7 L6.86 1.1400000000000001
+            H6.14 Z" fill="#27ADEF"/>
+          <path d="M6 1 L6.14 1.1400000000000001 V1.8599999999999999
+            L6 2 Z" fill="#11A5E9"/>
+          <path d="M7 1 V2 L6.86 1.8599999999999999
+            V1.1400000000000001 Z" fill="#0088C7"/>
+          <path d="M6 2 H7 L6.86 1.8599999999999999
+            H6.14 Z" fill="#0090D2"/>
+        </g>
+        <g class="voxel-cell">
+          <rect x="0" y="2" width="1" height="1"
+            fill="#009FE8"/>
+          <path d="M0 2 H1 L0.86 2.14
+            H0.14 Z" fill="#27ADEF"/>
+          <path d="M0 2 L0.14 2.14 V2.86
+            L0 3 Z" fill="#11A5E9"/>
+          <path d="M1 2 V3 L0.86 2.86
+            V2.14 Z" fill="#0088C7"/>
+          <path d="M0 3 H1 L0.86 2.86
+            H0.14 Z" fill="#0090D2"/>
+        </g>
+        <g class="voxel-cell">
+          <rect x="7" y="2" width="1" height="1"
+            fill="#009FE8"/>
+          <path d="M7 2 H8 L7.86 2.14
+            H7.14 Z" fill="#27ADEF"/>
+          <path d="M7 2 L7.14 2.14 V2.86
+            L7 3 Z" fill="#11A5E9"/>
+          <path d="M8 2 V3 L7.86 2.86
+            V2.14 Z" fill="#0088C7"/>
+          <path d="M7 3 H8 L7.86 2.86
+            H7.14 Z" fill="#0090D2"/>
+        </g>
+        <g class="voxel-cell">
+          <rect x="0" y="3" width="1" height="1"
+            fill="#009FE8"/>
+          <path d="M0 3 H1 L0.86 3.14
+            H0.14 Z" fill="#27ADEF"/>
+          <path d="M0 3 L0.14 3.14 V3.86
+            L0 4 Z" fill="#11A5E9"/>
+          <path d="M1 3 V4 L0.86 3.86
+            V3.14 Z" fill="#0088C7"/>
+          <path d="M0 4 H1 L0.86 3.86
+            H0.14 Z" fill="#0090D2"/>
+        </g>
+        <g class="voxel-cell">
+          <rect x="7" y="3" width="1" height="1"
+            fill="#009FE8"/>
+          <path d="M7 3 H8 L7.86 3.14
+            H7.14 Z" fill="#27ADEF"/>
+          <path d="M7 3 L7.14 3.14 V3.86
+            L7 4 Z" fill="#11A5E9"/>
+          <path d="M8 3 V4 L7.86 3.86
+            V3.14 Z" fill="#0088C7"/>
+          <path d="M7 4 H8 L7.86 3.86
+            H7.14 Z" fill="#0090D2"/>
+        </g>
+        <g class="voxel-cell">
+          <rect x="0" y="4" width="1" height="1"
+            fill="#009FE8"/>
+          <path d="M0 4 H1 L0.86 4.14
+            H0.14 Z" fill="#27ADEF"/>
+          <path d="M0 4 L0.14 4.14 V4.86
+            L0 5 Z" fill="#11A5E9"/>
+          <path d="M1 4 V5 L0.86 4.86
+            V4.14 Z" fill="#0088C7"/>
+          <path d="M0 5 H1 L0.86 4.86
+            H0.14 Z" fill="#0090D2"/>
+        </g>
+        <g class="voxel-cell">
+          <rect x="7" y="4" width="1" height="1"
+            fill="#009FE8"/>
+          <path d="M7 4 H8 L7.86 4.14
+            H7.14 Z" fill="#27ADEF"/>
+          <path d="M7 4 L7.14 4.14 V4.86
+            L7 5 Z" fill="#11A5E9"/>
+          <path d="M8 4 V5 L7.86 4.86
+            V4.14 Z" fill="#0088C7"/>
+          <path d="M7 5 H8 L7.86 4.86
+            H7.14 Z" fill="#0090D2"/>
+        </g>
+        <g class="voxel-cell">
+          <rect x="0" y="5" width="1" height="1"
+            fill="#009FE8"/>
+          <path d="M0 5 H1 L0.86 5.14
+            H0.14 Z" fill="#27ADEF"/>
+          <path d="M0 5 L0.14 5.14 V5.86
+            L0 6 Z" fill="#11A5E9"/>
+          <path d="M1 5 V6 L0.86 5.86
+            V5.14 Z" fill="#0088C7"/>
+          <path d="M0 6 H1 L0.86 5.86
+            H0.14 Z" fill="#0090D2"/>
+        </g>
+        <g class="voxel-cell">
+          <rect x="7" y="5" width="1" height="1"
+            fill="#009FE8"/>
+          <path d="M7 5 H8 L7.86 5.14
+            H7.14 Z" fill="#27ADEF"/>
+          <path d="M7 5 L7.14 5.14 V5.86
+            L7 6 Z" fill="#11A5E9"/>
+          <path d="M8 5 V6 L7.86 5.86
+            V5.14 Z" fill="#0088C7"/>
+          <path d="M7 6 H8 L7.86 5.86
+            H7.14 Z" fill="#0090D2"/>
+        </g>
+        <g class="voxel-cell">
+          <rect x="0" y="6" width="1" height="1"
+            fill="#009FE8"/>
+          <path d="M0 6 H1 L0.86 6.14
+            H0.14 Z" fill="#27ADEF"/>
+          <path d="M0 6 L0.14 6.14 V6.86
+            L0 7 Z" fill="#11A5E9"/>
+          <path d="M1 6 V7 L0.86 6.86
+            V6.14 Z" fill="#0088C7"/>
+          <path d="M0 7 H1 L0.86 6.86
+            H0.14 Z" fill="#0090D2"/>
+        </g>
+        <g class="voxel-cell">
+          <rect x="7" y="6" width="1" height="1"
+            fill="#009FE8"/>
+          <path d="M7 6 H8 L7.86 6.14
+            H7.14 Z" fill="#27ADEF"/>
+          <path d="M7 6 L7.14 6.14 V6.86
+            L7 7 Z" fill="#11A5E9"/>
+          <path d="M8 6 V7 L7.86 6.86
+            V6.14 Z" fill="#0088C7"/>
+          <path d="M7 7 H8 L7.86 6.86
+            H7.14 Z" fill="#0090D2"/>
+        </g>
+        <g class="voxel-cell">
+          <rect x="1" y="7" width="1" height="1"
+            fill="#009FE8"/>
+          <path d="M1 7 H2 L1.8599999999999999 7.14
+            H1.1400000000000001 Z" fill="#27ADEF"/>
+          <path d="M1 7 L1.1400000000000001 7.14 V7.86
+            L1 8 Z" fill="#11A5E9"/>
+          <path d="M2 7 V8 L1.8599999999999999 7.86
+            V7.14 Z" fill="#0088C7"/>
+          <path d="M1 8 H2 L1.8599999999999999 7.86
+            H1.1400000000000001 Z" fill="#0090D2"/>
+        </g>
+        <g class="voxel-cell">
+          <rect x="2" y="8" width="1" height="1"
+            fill="#009FE8"/>
+          <path d="M2 8 H3 L2.86 8.14
+            H2.14 Z" fill="#27ADEF"/>
+          <path d="M2 8 L2.14 8.14 V8.86
+            L2 9 Z" fill="#11A5E9"/>
+          <path d="M3 8 V9 L2.86 8.86
+            V8.14 Z" fill="#0088C7"/>
+          <path d="M2 9 H3 L2.86 8.86
+            H2.14 Z" fill="#0090D2"/>
+        </g>
+        <g class="voxel-cell">
+          <rect x="3" y="8" width="1" height="1"
+            fill="#009FE8"/>
+          <path d="M3 8 H4 L3.86 8.14
+            H3.14 Z" fill="#27ADEF"/>
+          <path d="M3 8 L3.14 8.14 V8.86
+            L3 9 Z" fill="#11A5E9"/>
+          <path d="M4 8 V9 L3.86 8.86
+            V8.14 Z" fill="#0088C7"/>
+          <path d="M3 9 H4 L3.86 8.86
+            H3.14 Z" fill="#0090D2"/>
+        </g>
+        <g class="voxel-cell">
+          <rect x="4" y="8" width="1" height="1"
+            fill="#009FE8"/>
+          <path d="M4 8 H5 L4.86 8.14
+            H4.14 Z" fill="#27ADEF"/>
+          <path d="M4 8 L4.14 8.14 V8.86
+            L4 9 Z" fill="#11A5E9"/>
+          <path d="M5 8 V9 L4.86 8.86
+            V8.14 Z" fill="#0088C7"/>
+          <path d="M4 9 H5 L4.86 8.86
+            H4.14 Z" fill="#0090D2"/>
+        </g>
+        <g class="voxel-cell">
+          <rect x="5" y="8" width="1" height="1"
+            fill="#009FE8"/>
+          <path d="M5 8 H6 L5.86 8.14
+            H5.14 Z" fill="#27ADEF"/>
+          <path d="M5 8 L5.14 8.14 V8.86
+            L5 9 Z" fill="#11A5E9"/>
+          <path d="M6 8 V9 L5.86 8.86
+            V8.14 Z" fill="#0088C7"/>
+          <path d="M5 9 H6 L5.86 8.86
+            H5.14 Z" fill="#0090D2"/>
+        </g></g>
+      <g id="q-tail-voxel" shape-rendering="geometricPrecision">
+        <g class="voxel-cell">
+          <rect x="5" y="6" width="1" height="1"
+            fill="#F2C43E"/>
+          <path d="M5 6 H6 L5.86 6.14
+            H5.14 Z" fill="#FFE36F"/>
+          <path d="M5 6 L5.14 6.14 V6.86
+            L5 7 Z" fill="#FFDC5E"/>
+          <path d="M6 6 V7 L5.86 6.86
+            V6.14 Z" fill="#E2B92F"/>
+          <path d="M5 7 H6 L5.86 6.86
+            H5.14 Z" fill="#EDC43A"/>
+        </g>
+        <g class="voxel-cell">
+          <rect x="6" y="7" width="1" height="1"
+            fill="#F2C43E"/>
+          <path d="M6 7 H7 L6.86 7.14
+            H6.14 Z" fill="#FFE36F"/>
+          <path d="M6 7 L6.14 7.14 V7.86
+            L6 8 Z" fill="#FFDC5E"/>
+          <path d="M7 7 V8 L6.86 7.86
+            V7.14 Z" fill="#E2B92F"/>
+          <path d="M6 8 H7 L6.86 7.86
+            H6.14 Z" fill="#EDC43A"/>
+        </g>
+        <g class="voxel-cell">
+          <rect x="7" y="8" width="1" height="1"
+            fill="#F2C43E"/>
+          <path d="M7 8 H8 L7.86 8.14
+            H7.14 Z" fill="#FFE36F"/>
+          <path d="M7 8 L7.14 8.14 V8.86
+            L7 9 Z" fill="#FFDC5E"/>
+          <path d="M8 8 V9 L7.86 8.86
+            V8.14 Z" fill="#E2B92F"/>
+          <path d="M7 9 H8 L7.86 8.86
+            H7.14 Z" fill="#EDC43A"/>
+        </g>
+        <g class="voxel-cell">
+          <rect x="8" y="8" width="1" height="1"
+            fill="#F2C43E"/>
+          <path d="M8 8 H9 L8.86 8.14
+            H8.14 Z" fill="#FFE36F"/>
+          <path d="M8 8 L8.14 8.14 V8.86
+            L8 9 Z" fill="#FFDC5E"/>
+          <path d="M9 8 V9 L8.86 8.86
+            V8.14 Z" fill="#E2B92F"/>
+          <path d="M8 9 H9 L8.86 8.86
+            H8.14 Z" fill="#EDC43A"/>
+        </g></g>
+    </g>
+  </g>
+</svg>

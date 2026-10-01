@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "id": "lab",
+  "title": "实验室",
+  "category": "experiment",
+  "visibility": "public",
+  "stage": "作品与能力观察",
+  "updatedAt": "2026-09-30",
+  "summary": "交互动画、音乐影像与主题节目。看作品，也看创作记录。",
+  "intro": "这里收录交互动画、音乐影像与主题节目。原始代码实验提供在线体验与源文件；视频作品提供完整成片的观看入口。",
+  "highlights": [
+    "交互作品可在线体验，保留原始输入和独立文件。",
+    "音乐动画与主题节目在哔哩哔哩观看。",
+    "视频成片与原始代码实验分别展示。"
+  ],
+  "links": [
+    {
+      "label": "Bad Apple!!｜光织放映室",
+      "href": "/notes/lab/docs/bad-apple/"
+    },
+    {
+      "label": "当世界执行了我｜world.execute(me);",
+      "href": "/notes/lab/docs/world-execute-me/"
+    },
+    {
+      "label": "琵琶曲 | 鹈鹕骑车",
+      "href": "/notes/lab/docs/pipa-pelican/"
+    },
+    {
+      "label": "中秋特别节目",
+      "href": "/notes/lab/docs/mid-autumn-special/"
+    },
+    {
+      "label": "鹈鹕骑行",
+      "href": "/notes/lab/docs/pelican-bicycle/"
+    },
+    {
+      "label": "开发项目",
+      "href": "/notes/"
+    }
+  ],
+  "participation": {
+    "mode": "open",
+    "summary": "欢迎提出新的实验题目，或反馈作品在不同设备上的实际表现。",
+    "issueUrl": "https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/issues/new",
+    "repository": "https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io"
+  },
+  "state": {
+    "adapter": "project-v1",
+    "path": "content/development/states/lab-public.json"
+  },
+  "updates": [
+    {
+      "id": "bad-apple",
+      "date": "2026-09-30",
+      "title": "Bad Apple!!：光织放映室 MV 已发布",
+      "status": "released",
+      "summary": "在哔哩哔哩观看完整竖屏 MV：从黑白影绘到彩色与 MMD，光束、微镜与琴键共同演绎 Bad Apple!!。交互 HTML 与制作源码同步提供。",
+      "public": true
+    },
+    {
+      "id": "world-execute-me",
+      "date": "2026-09-29",
+      "title": "《world.execute(me);》程序动画 MV 已发布",
+      "status": "released",
+      "summary": "在哔哩哔哩观看完整 MV：整流桥把交流变成直流，NE555 持续跳动，字符与几何共同讲述一段没有返回的调用。",
+      "public": true
+    },
+    {
+      "id": "lab-video-selections",
+      "date": "2026-09-26",
+      "title": "实验室新增两部视频作品",
+      "status": "released",
+      "summary": "收录《琵琶曲 | 鹈鹕骑车》和《中秋特别节目》，保留原始 SVG 动画的独立体验入口。",
+      "public": true
+    },
+    {
+      "id": "pelican-bicycle",
+      "date": "2026-09-24",
+      "title": "鹈鹕骑自行车：SVG 动画",
+      "status": "released",
+      "summary": "收录一条提示词生成的海岸骑行小景，保留原始 HTML、模型信息和可操作的展示入口。",
+      "public": true
+    }
+  ],
+  "docs": [
+    {
+      "id": "pelican-bicycle",
+      "title": "鹈鹕，去兜风。",
+      "summary": "原始提示词、模型信息与可交互的 SVG 骑行动画。",
+      "sections": [
+        {
+          "title": "原始提示词",
+          "paragraphs": [
+            "生成一个鹈鹕骑自行车的SVG动画，用html实现，不用做任何测试"
+          ]
+        },
+        {
+          "title": "模型信息",
+          "paragraphs": [
+            "GPT-6 Astra Pro。推理强度设置未记录。"
+          ]
+        },
+        {
+          "title": "实际效果",
+          "paragraphs": [
+            "打开动画体验三档骑行速度和暂停控制，或下载原始 HTML。"
+          ]
+        }
+      ],
+      "sources": [],
+      "action": {
+        "label": "下载原始 HTML",
+        "href": "/experiments/pelican-bicycle.html"
+      },
+      "archived": false
+    },
+    {
+      "id": "bad-apple",
+      "title": "Bad Apple!!｜光织放映室",
+      "summary": "让光束、微镜与琴键一起演奏 Bad Apple!!。从黑白影绘到彩色与 MMD，在一间不断进化的放映室里重温这首歌。",
+      "sections": [],
+      "sources": [],
+      "archived": false,
+      "kind": "lab-video",
+      "action": {
+        "label": "观看视频",
+        "href": "https://www.bilibili.com/video/BV15pao6iEzF/"
+      }
+    },
+    {
+      "id": "world-execute-me",
+      "title": "当世界执行了我｜world.execute(me);",
+      "summary": "如果一段程序学会了爱，它能等到一次真正的回应吗？用电路、字符画与几何变换，重新想象 Mili 的音乐世界。",
+      "sections": [],
+      "sources": [],
+      "archived": false,
+      "kind": "lab-video",
+      "action": {
+        "label": "观看视频",
+        "href": "https://www.bilibili.com/video/BV1vkaW6CE8W/"
+      }
+    },
+    {
+      "id": "pipa-pelican",
+      "title": "琵琶曲 | 鹈鹕骑车",
+      "summary": "48 秒原生 WebGL 动画，附最终成片与可直接播放的 HTML。",
+      "sections": [],
+      "sources": [],
+      "archived": false,
+      "kind": "lab-video",
+      "action": {
+        "label": "观看视频",
+        "href": "https://www.bilibili.com/video/BV1TvhU6aEci/"
+      }
+    },
+    {
+      "id": "mid-autumn-special",
+      "title": "中秋特别节目",
+      "summary": "136 秒中秋文化短片，以《彩云追月》为配乐，附可直接播放的 HTML。",
+      "sections": [],
+      "sources": [],
+      "archived": false,
+      "kind": "lab-video",
+      "action": {
+        "label": "观看视频",
+        "href": "https://www.bilibili.com/video/BV1rHh16CE3T/"
+      }
+    }
+  ],
+  "layout": "experiments",
+  "publicSite": true
+}

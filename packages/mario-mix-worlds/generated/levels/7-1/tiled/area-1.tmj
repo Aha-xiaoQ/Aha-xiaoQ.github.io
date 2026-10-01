@@ -1,0 +1,1101 @@
+{
+  "type": "map",
+  "version": "1.10",
+  "orientation": "orthogonal",
+  "renderorder": "right-down",
+  "width": 17,
+  "height": 15,
+  "tilewidth": 16,
+  "tileheight": 16,
+  "infinite": false,
+  "nextlayerid": 4,
+  "nextobjectid": 58,
+  "tilesets": [],
+  "layers": [
+    {
+      "id": 1,
+      "name": "collision",
+      "type": "objectgroup",
+      "visible": true,
+      "opacity": 1,
+      "x": 0,
+      "y": 0,
+      "draworder": "index",
+      "objects": [
+        {
+          "id": 1,
+          "name": "r000",
+          "type": "solid",
+          "x": 64,
+          "y": 32,
+          "width": 112,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r000\",\"x\":64,\"y\":32,\"w\":112,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "r001",
+          "type": "solid",
+          "x": 0,
+          "y": 208,
+          "width": 272,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r001\",\"x\":0,\"y\":208,\"w\":272,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "name": "r002-0-0",
+          "type": "solid",
+          "x": 0,
+          "y": 192,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r002-0-0\",\"x\":0,\"y\":192,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "name": "r002-0-1",
+          "type": "solid",
+          "x": 0,
+          "y": 176,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r002-0-1\",\"x\":0,\"y\":176,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "name": "r002-0-2",
+          "type": "solid",
+          "x": 0,
+          "y": 160,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r002-0-2\",\"x\":0,\"y\":160,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "name": "r002-0-3",
+          "type": "solid",
+          "x": 0,
+          "y": 144,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r002-0-3\",\"x\":0,\"y\":144,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "name": "r002-0-4",
+          "type": "solid",
+          "x": 0,
+          "y": 128,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r002-0-4\",\"x\":0,\"y\":128,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "name": "r002-0-5",
+          "type": "solid",
+          "x": 0,
+          "y": 112,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r002-0-5\",\"x\":0,\"y\":112,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "name": "r002-0-6",
+          "type": "solid",
+          "x": 0,
+          "y": 96,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r002-0-6\",\"x\":0,\"y\":96,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "name": "r002-0-7",
+          "type": "solid",
+          "x": 0,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r002-0-7\",\"x\":0,\"y\":80,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "name": "r002-0-8",
+          "type": "solid",
+          "x": 0,
+          "y": 64,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r002-0-8\",\"x\":0,\"y\":64,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "name": "r002-0-9",
+          "type": "solid",
+          "x": 0,
+          "y": 48,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r002-0-9\",\"x\":0,\"y\":48,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "name": "r002-0-10",
+          "type": "solid",
+          "x": 0,
+          "y": 32,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r002-0-10\",\"x\":0,\"y\":32,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 14,
+          "name": "r003-0-0",
+          "type": "solid",
+          "x": 64,
+          "y": 192,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-0-0\",\"x\":64,\"y\":192,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 15,
+          "name": "r003-0-1",
+          "type": "solid",
+          "x": 64,
+          "y": 176,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-0-1\",\"x\":64,\"y\":176,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 16,
+          "name": "r003-0-2",
+          "type": "solid",
+          "x": 64,
+          "y": 160,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-0-2\",\"x\":64,\"y\":160,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 17,
+          "name": "r003-1-0",
+          "type": "solid",
+          "x": 80,
+          "y": 192,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-1-0\",\"x\":80,\"y\":192,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 18,
+          "name": "r003-1-1",
+          "type": "solid",
+          "x": 80,
+          "y": 176,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-1-1\",\"x\":80,\"y\":176,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 19,
+          "name": "r003-1-2",
+          "type": "solid",
+          "x": 80,
+          "y": 160,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-1-2\",\"x\":80,\"y\":160,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 20,
+          "name": "r003-2-0",
+          "type": "solid",
+          "x": 96,
+          "y": 192,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-2-0\",\"x\":96,\"y\":192,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 21,
+          "name": "r003-2-1",
+          "type": "solid",
+          "x": 96,
+          "y": 176,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-2-1\",\"x\":96,\"y\":176,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 22,
+          "name": "r003-2-2",
+          "type": "solid",
+          "x": 96,
+          "y": 160,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-2-2\",\"x\":96,\"y\":160,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 23,
+          "name": "r003-3-0",
+          "type": "solid",
+          "x": 112,
+          "y": 192,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-3-0\",\"x\":112,\"y\":192,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 24,
+          "name": "r003-3-1",
+          "type": "solid",
+          "x": 112,
+          "y": 176,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-3-1\",\"x\":112,\"y\":176,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 25,
+          "name": "r003-3-2",
+          "type": "solid",
+          "x": 112,
+          "y": 160,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-3-2\",\"x\":112,\"y\":160,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 26,
+          "name": "r003-4-0",
+          "type": "solid",
+          "x": 128,
+          "y": 192,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-4-0\",\"x\":128,\"y\":192,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 27,
+          "name": "r003-4-1",
+          "type": "solid",
+          "x": 128,
+          "y": 176,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-4-1\",\"x\":128,\"y\":176,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 28,
+          "name": "r003-4-2",
+          "type": "solid",
+          "x": 128,
+          "y": 160,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-4-2\",\"x\":128,\"y\":160,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 29,
+          "name": "r003-5-0",
+          "type": "solid",
+          "x": 144,
+          "y": 192,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-5-0\",\"x\":144,\"y\":192,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 30,
+          "name": "r003-5-1",
+          "type": "solid",
+          "x": 144,
+          "y": 176,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-5-1\",\"x\":144,\"y\":176,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 31,
+          "name": "r003-5-2",
+          "type": "solid",
+          "x": 144,
+          "y": 160,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-5-2\",\"x\":144,\"y\":160,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 32,
+          "name": "r003-6-0",
+          "type": "solid",
+          "x": 160,
+          "y": 192,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-6-0\",\"x\":160,\"y\":192,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 33,
+          "name": "r003-6-1",
+          "type": "solid",
+          "x": 160,
+          "y": 176,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-6-1\",\"x\":160,\"y\":176,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 34,
+          "name": "r003-6-2",
+          "type": "solid",
+          "x": 160,
+          "y": 160,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-6-2\",\"x\":160,\"y\":160,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 35,
+          "name": "r006",
+          "type": "solid",
+          "x": 208,
+          "y": 176,
+          "width": 39,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r006\",\"x\":208,\"y\":176,\"w\":39,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 36,
+          "name": "r007",
+          "type": "solid",
+          "x": 240,
+          "y": 32,
+          "width": 32,
+          "height": 176,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r007\",\"x\":240,\"y\":32,\"w\":32,\"h\":176,\"collision\":\"solid\"}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "objects",
+      "type": "objectgroup",
+      "visible": true,
+      "opacity": 1,
+      "x": 0,
+      "y": 0,
+      "draworder": "index",
+      "objects": [
+        {
+          "id": 37,
+          "name": "r004-0-0",
+          "type": "coin",
+          "x": 66,
+          "y": 146,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r004-0-0\",\"kind\":\"coin\",\"x\":66,\"y\":146,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 38,
+          "name": "r004-0-1",
+          "type": "coin",
+          "x": 66,
+          "y": 114,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r004-0-1\",\"kind\":\"coin\",\"x\":66,\"y\":114,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 39,
+          "name": "r004-1-0",
+          "type": "coin",
+          "x": 82,
+          "y": 146,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r004-1-0\",\"kind\":\"coin\",\"x\":82,\"y\":146,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 40,
+          "name": "r004-1-1",
+          "type": "coin",
+          "x": 82,
+          "y": 114,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r004-1-1\",\"kind\":\"coin\",\"x\":82,\"y\":114,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 41,
+          "name": "r004-2-0",
+          "type": "coin",
+          "x": 98,
+          "y": 146,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r004-2-0\",\"kind\":\"coin\",\"x\":98,\"y\":146,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 42,
+          "name": "r004-2-1",
+          "type": "coin",
+          "x": 98,
+          "y": 114,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r004-2-1\",\"kind\":\"coin\",\"x\":98,\"y\":114,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 43,
+          "name": "r004-3-0",
+          "type": "coin",
+          "x": 114,
+          "y": 146,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r004-3-0\",\"kind\":\"coin\",\"x\":114,\"y\":146,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 44,
+          "name": "r004-3-1",
+          "type": "coin",
+          "x": 114,
+          "y": 114,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r004-3-1\",\"kind\":\"coin\",\"x\":114,\"y\":114,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 45,
+          "name": "r004-4-0",
+          "type": "coin",
+          "x": 130,
+          "y": 146,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r004-4-0\",\"kind\":\"coin\",\"x\":130,\"y\":146,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 46,
+          "name": "r004-4-1",
+          "type": "coin",
+          "x": 130,
+          "y": 114,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r004-4-1\",\"kind\":\"coin\",\"x\":130,\"y\":114,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 47,
+          "name": "r004-5-0",
+          "type": "coin",
+          "x": 146,
+          "y": 146,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r004-5-0\",\"kind\":\"coin\",\"x\":146,\"y\":146,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 48,
+          "name": "r004-5-1",
+          "type": "coin",
+          "x": 146,
+          "y": 114,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r004-5-1\",\"kind\":\"coin\",\"x\":146,\"y\":114,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 49,
+          "name": "r004-6-0",
+          "type": "coin",
+          "x": 162,
+          "y": 146,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r004-6-0\",\"kind\":\"coin\",\"x\":162,\"y\":146,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 50,
+          "name": "r004-6-1",
+          "type": "coin",
+          "x": 162,
+          "y": 114,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r004-6-1\",\"kind\":\"coin\",\"x\":162,\"y\":114,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 51,
+          "name": "r005-0-0",
+          "type": "coin",
+          "x": 82,
+          "y": 82,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005-0-0\",\"kind\":\"coin\",\"x\":82,\"y\":82,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 52,
+          "name": "r005-1-0",
+          "type": "coin",
+          "x": 98,
+          "y": 82,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005-1-0\",\"kind\":\"coin\",\"x\":98,\"y\":82,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 53,
+          "name": "r005-2-0",
+          "type": "coin",
+          "x": 114,
+          "y": 82,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005-2-0\",\"kind\":\"coin\",\"x\":114,\"y\":82,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 54,
+          "name": "r005-3-0",
+          "type": "coin",
+          "x": 130,
+          "y": 82,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005-3-0\",\"kind\":\"coin\",\"x\":130,\"y\":82,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 55,
+          "name": "r005-4-0",
+          "type": "coin",
+          "x": 146,
+          "y": 82,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005-4-0\",\"kind\":\"coin\",\"x\":146,\"y\":82,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 56,
+          "name": "inspection-start",
+          "type": "spawn",
+          "x": 24,
+          "y": 184,
+          "width": 12,
+          "height": 24,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"inspection-start\",\"kind\":\"spawn\",\"x\":24,\"y\":184,\"w\":12,\"h\":24}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "pending-mechanics",
+      "type": "objectgroup",
+      "visible": true,
+      "opacity": 1,
+      "x": 0,
+      "y": 0,
+      "draworder": "index",
+      "objects": [
+        {
+          "id": 57,
+          "name": "r006-target",
+          "type": "missing-source-transport",
+          "x": 208,
+          "y": 176,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r006-target\",\"kind\":\"missing-source-transport\",\"source\":{\"thing\":\"PipeHorizontal\",\"x\":104,\"y\":16},\"sourcePath\":{\"area\":1,\"part\":\"base\",\"record\":\"r006\"},\"x\":208,\"y\":176}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "properties": [
+    {
+      "name": "room",
+      "type": "string",
+      "value": "area-1"
+    },
+    {
+      "name": "underwater",
+      "type": "bool",
+      "value": false
+    },
+    {
+      "name": "inspectionOnly",
+      "type": "bool",
+      "value": true
+    },
+    {
+      "name": "referenceReview",
+      "type": "string",
+      "value": "pending"
+    }
+  ]
+}

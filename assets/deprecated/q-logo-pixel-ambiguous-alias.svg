@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"
+  width="512" height="512" role="img" aria-label="Xiao Q scalable app icon">
+  <title>Xiao Q scalable app icon</title>
+  <desc>Smooth near-white SVG shell with the retained flat blue and yellow
+    integer-cell Q.</desc>
+  
+  <defs>
+    <clipPath id="icon-shell-clip">
+      <path d="M76 18 C43 18 22 39 22 72 L22 176 C22 209 43 230 76 230 L180 230 C213 230 234 209 234 176 L234 72 C234 39 213 18 180 18 Z" transform="translate(0 4)"/>
+    </clipPath>
+    <filter id="icon-physical" x="-18%" y="-18%" width="136%" height="136%"
+      color-interpolation-filters="sRGB">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8.5" result="heightMap"/>
+      <feDiffuseLighting in="heightMap" surfaceScale="1.8" diffuseConstant="0.72"
+        lighting-color="#FFFFFF" result="diffuse">
+        <feDistantLight azimuth="225" elevation="52"/>
+      </feDiffuseLighting>
+      <feComposite in="diffuse" in2="SourceAlpha" operator="in"
+        result="diffuseClip"/>
+      <feComponentTransfer in="diffuseClip" result="diffuseSoft">
+        <feFuncR type="linear" slope="0.02" intercept="0.98"/>
+        <feFuncG type="linear" slope="0.02" intercept="0.98"/>
+        <feFuncB type="linear" slope="0.02" intercept="0.98"/>
+      </feComponentTransfer>
+      <feSpecularLighting in="heightMap" surfaceScale="2.2"
+        specularConstant="0.10" specularExponent="28"
+        lighting-color="#FFFFFF" result="specular">
+        <feDistantLight azimuth="225" elevation="55"/>
+      </feSpecularLighting>
+      <feComposite in="specular" in2="SourceAlpha" operator="in"
+        result="specularClip"/>
+      <feFlood flood-color="#FFFFFF" result="base"/>
+      <feComposite in="base" in2="SourceAlpha" operator="in"
+        result="baseClip"/>
+      <feBlend in="baseClip" in2="diffuseSoft" mode="multiply" result="body"/>
+      <feBlend in="body" in2="specularClip" mode="screen"/>
+    </filter>
+  </defs>
+  <g clip-path="url(#icon-shell-clip)">
+    <path d="M76 18 C43 18 22 39 22 72 L22 176 C22 209 43 230 76 230 L180 230 C213 230 234 209 234 176 L234 72 C234 39 213 18 180 18 Z" transform="translate(0 4)"
+      fill="#FFFFFF" stroke="#F0F0F0" stroke-width="2.8"
+      vector-effect="non-scaling-stroke" filter="url(#icon-physical)"/>
+    <g transform="translate(56 56) scale(16)">
+      
+      <g id="q-body" shape-rendering="crispEdges">
+        <rect x="2" y="0" width="1" height="1" fill="#009FE8"/><rect x="3" y="0" width="1" height="1" fill="#009FE8"/><rect x="4" y="0" width="1" height="1" fill="#009FE8"/><rect x="5" y="0" width="1" height="1" fill="#009FE8"/><rect x="1" y="1" width="1" height="1" fill="#009FE8"/><rect x="6" y="1" width="1" height="1" fill="#009FE8"/><rect x="0" y="2" width="1" height="1" fill="#009FE8"/><rect x="7" y="2" width="1" height="1" fill="#009FE8"/><rect x="0" y="3" width="1" height="1" fill="#009FE8"/><rect x="7" y="3" width="1" height="1" fill="#009FE8"/><rect x="0" y="4" width="1" height="1" fill="#009FE8"/><rect x="7" y="4" width="1" height="1" fill="#009FE8"/><rect x="0" y="5" width="1" height="1" fill="#009FE8"/><rect x="7" y="5" width="1" height="1" fill="#009FE8"/><rect x="0" y="6" width="1" height="1" fill="#009FE8"/><rect x="7" y="6" width="1" height="1" fill="#009FE8"/><rect x="1" y="7" width="1" height="1" fill="#009FE8"/><rect x="2" y="8" width="1" height="1" fill="#009FE8"/><rect x="3" y="8" width="1" height="1" fill="#009FE8"/><rect x="4" y="8" width="1" height="1" fill="#009FE8"/><rect x="5" y="8" width="1" height="1" fill="#009FE8"/>
+      </g>
+      <g id="q-tail" shape-rendering="crispEdges">
+        <rect x="5" y="6" width="1" height="1" fill="#FFD84F"/><rect x="6" y="7" width="1" height="1" fill="#FFD84F"/><rect x="7" y="8" width="1" height="1" fill="#FFD84F"/><rect x="8" y="8" width="1" height="1" fill="#FFD84F"/>
+      </g>
+    </g>
+  </g>
+</svg>
+

@@ -1,0 +1,61 @@
+{
+  "projectId": "mario-mix",
+  "guide": {
+    "id": "terra-source",
+    "title": "第三期开发源码",
+    "summary": "开发源码 0.4.3。下载、运行与参与开发。",
+    "action": {
+      "label": "下载源码（0.4.3）",
+      "href": "/downloads/source/MarioMix_Terraria_M07_Source.zip"
+    },
+    "sections": [
+      {
+        "title": "运行项目",
+        "paragraphs": [
+          "需要 Node.js 22 或以上，无需 npm install。解压源码，在工程根目录执行："
+        ],
+        "code": "npm run build\nnpm run verify\nnpm run prepublish:check\nnpm run dev"
+      },
+      {
+        "title": "试玩与操作",
+        "paragraphs": [
+          "启动后访问 http://127.0.0.1:4193/play.html。角色选择中标明关卡；操作、按键和游戏设置从顶部进入。",
+          "界面升级包含清晰 HUD、窄屏快捷栏、角色操作说明及最近提示。重新开始和切换角色会先确认。"
+        ]
+      },
+      {
+        "title": "修改界面与参与开发",
+        "paragraphs": [
+          "当前 HTML 入口为 src/app/player.template.html。文案、界面交互和 HUD 各有独立模块，见 UI_CONTRACT.md。修改 src 后重启服务并刷新，不编辑 dist。",
+          "从项目任务页选择改进，按 CONTRIBUTING.md 运行检查。地图、战斗与素材沿用第三期底稿，本版没有新增正式关卡。"
+        ]
+      },
+      {
+        "title": "已知限制",
+        "paragraphs": [
+          "这是 0.4.3 开发候选，和已发布试玩分别维护；完整设备与自然通关验收尚未完成。",
+          "地图工具 W02 使用独立的 M06 运行时，完整角色尚不能直接用于任意地图。第四期试玩与源码另有入口。",
+          "源码包保留贡献指南、模块说明、测试和版本记录。"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "label": "代码贡献指南",
+        "href": "/notes/mario-mix/docs/terra-collaboration/"
+      },
+      {
+        "label": "当前界面与模块约定",
+        "href": "/notes/mario-mix/docs/terra-ui-contract/"
+      },
+      {
+        "label": "当前测试记录",
+        "href": "/notes/mario-mix/docs/terra-test-m07/"
+      },
+      {
+        "label": "发布前验收清单",
+        "href": "/notes/mario-mix/docs/terra-acceptance-m07/"
+      }
+    ]
+  }
+}

@@ -1,0 +1,3879 @@
+{
+  "schemaVersion": 1,
+  "level": "1-1",
+  "stage": {
+    "id": "template-1-1",
+    "title": "1-1 · 底图预览（实验）",
+    "driver": "platform-v1",
+    "status": "draft",
+    "entryRoom": "area-0",
+    "entrySpawn": "location-0",
+    "rooms": {
+      "area-0": "classic-1-1-area-0",
+      "area-1": "classic-1-1-area-1"
+    },
+    "characters": [
+      "lab-runner",
+      "lab-scout"
+    ],
+    "requiredCapabilities": [
+      "jump"
+    ],
+    "overlays": {},
+    "audio": "map-kit-silent",
+    "note": "社区参考底图与实验驱动。没有接入正式角色、道具箱、完整敌人和机关；不是正式关卡或奥日版本。"
+  },
+  "maps": [
+    {
+      "id": "classic-1-1-area-0",
+      "title": "1-1 · 地表",
+      "tileSize": 16,
+      "width": 3792,
+      "height": 240,
+      "provenance": {
+        "kind": "transcribed",
+        "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+        "review": "pending",
+        "note": "第一世界社区参考坐标转录。基础几何用于开发预览；机关、敌人行为与原版逐格保真尚待验收。"
+      },
+      "geometry": [
+        {
+          "id": "r000",
+          "x": 0,
+          "y": 208,
+          "w": 1104,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r001",
+          "x": 256,
+          "y": 144,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r002",
+          "x": 320,
+          "y": 144,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r003",
+          "x": 336,
+          "y": 144,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r005",
+          "x": 352,
+          "y": 144,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r006",
+          "x": 352,
+          "y": 80,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r007",
+          "x": 368,
+          "y": 144,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r008",
+          "x": 384,
+          "y": 144,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r009",
+          "x": 448,
+          "y": 176,
+          "w": 32,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r010",
+          "x": 608,
+          "y": 160,
+          "w": 32,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r012",
+          "x": 736,
+          "y": 144,
+          "w": 32,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r015",
+          "x": 912,
+          "y": 144,
+          "w": 32,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r017",
+          "x": 1136,
+          "y": 208,
+          "w": 240,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r018",
+          "x": 1232,
+          "y": 144,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r019",
+          "x": 1248,
+          "y": 144,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r020",
+          "x": 1264,
+          "y": 144,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r021",
+          "x": 1280,
+          "y": 144,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r023",
+          "x": 1296,
+          "y": 80,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r024",
+          "x": 1312,
+          "y": 80,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r026-0-0",
+          "x": 1328,
+          "y": 80,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r026-1-0",
+          "x": 1344,
+          "y": 80,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r026-2-0",
+          "x": 1360,
+          "y": 80,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r026-3-0",
+          "x": 1376,
+          "y": 80,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r026-4-0",
+          "x": 1392,
+          "y": 80,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r027",
+          "x": 1424,
+          "y": 208,
+          "w": 1024,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r028-0-0",
+          "x": 1456,
+          "y": 80,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r028-1-0",
+          "x": 1472,
+          "y": 80,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r028-2-0",
+          "x": 1488,
+          "y": 80,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r029",
+          "x": 1504,
+          "y": 144,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r030",
+          "x": 1504,
+          "y": 80,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r033",
+          "x": 1600,
+          "y": 144,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r034",
+          "x": 1616,
+          "y": 144,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r035",
+          "x": 1696,
+          "y": 144,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r037",
+          "x": 1744,
+          "y": 144,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r038",
+          "x": 1744,
+          "y": 80,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r039",
+          "x": 1792,
+          "y": 144,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r042",
+          "x": 1888,
+          "y": 144,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r043-0-0",
+          "x": 1936,
+          "y": 80,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r043-1-0",
+          "x": 1952,
+          "y": 80,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r043-2-0",
+          "x": 1968,
+          "y": 80,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r045",
+          "x": 2048,
+          "y": 80,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r046",
+          "x": 2064,
+          "y": 144,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r047",
+          "x": 2064,
+          "y": 80,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r048",
+          "x": 2080,
+          "y": 144,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r049",
+          "x": 2080,
+          "y": 80,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r050",
+          "x": 2096,
+          "y": 80,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r051",
+          "x": 2144,
+          "y": 192,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r052",
+          "x": 2160,
+          "y": 176,
+          "w": 16,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r053",
+          "x": 2176,
+          "y": 160,
+          "w": 16,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r054",
+          "x": 2192,
+          "y": 144,
+          "w": 16,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r055",
+          "x": 2240,
+          "y": 144,
+          "w": 16,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r056",
+          "x": 2256,
+          "y": 160,
+          "w": 16,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r057",
+          "x": 2272,
+          "y": 176,
+          "w": 16,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r058",
+          "x": 2288,
+          "y": 192,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r059",
+          "x": 2368,
+          "y": 192,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r060",
+          "x": 2384,
+          "y": 176,
+          "w": 16,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r061",
+          "x": 2400,
+          "y": 160,
+          "w": 16,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r062",
+          "x": 2416,
+          "y": 144,
+          "w": 16,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r063",
+          "x": 2432,
+          "y": 144,
+          "w": 16,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r064",
+          "x": 2480,
+          "y": 208,
+          "w": 1312,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r065",
+          "x": 2480,
+          "y": 144,
+          "w": 16,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r066",
+          "x": 2496,
+          "y": 160,
+          "w": 16,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r067",
+          "x": 2512,
+          "y": 176,
+          "w": 16,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r068",
+          "x": 2528,
+          "y": 192,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r069",
+          "x": 2608,
+          "y": 176,
+          "w": 32,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r070",
+          "x": 2688,
+          "y": 144,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r071",
+          "x": 2704,
+          "y": 144,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r072",
+          "x": 2720,
+          "y": 144,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r073",
+          "x": 2736,
+          "y": 144,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r076",
+          "x": 2864,
+          "y": 176,
+          "w": 32,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r077",
+          "x": 2896,
+          "y": 192,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r078",
+          "x": 2912,
+          "y": 176,
+          "w": 16,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r079",
+          "x": 2928,
+          "y": 160,
+          "w": 16,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r080",
+          "x": 2944,
+          "y": 144,
+          "w": 16,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r081",
+          "x": 2960,
+          "y": 128,
+          "w": 16,
+          "h": 80,
+          "collision": "solid"
+        },
+        {
+          "id": "r082",
+          "x": 2976,
+          "y": 112,
+          "w": 16,
+          "h": 96,
+          "collision": "solid"
+        },
+        {
+          "id": "r083",
+          "x": 2992,
+          "y": 96,
+          "w": 16,
+          "h": 112,
+          "collision": "solid"
+        },
+        {
+          "id": "r084",
+          "x": 3008,
+          "y": 80,
+          "w": 32,
+          "h": 128,
+          "collision": "solid"
+        },
+        {
+          "id": "r085-base",
+          "x": 3168,
+          "y": 192,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        }
+      ],
+      "objects": [
+        {
+          "id": "r015-portal",
+          "kind": "portal",
+          "x": 912,
+          "y": 126,
+          "w": 32,
+          "h": 24,
+          "targetRoom": "area-1",
+          "targetSpawn": "location-2"
+        },
+        {
+          "id": "r085-exit",
+          "kind": "exit",
+          "x": 3168,
+          "y": 40,
+          "w": 16,
+          "h": 168
+        },
+        {
+          "id": "location-0",
+          "kind": "spawn",
+          "x": 32,
+          "y": 184,
+          "w": 12,
+          "h": 24
+        },
+        {
+          "id": "location-1",
+          "kind": "spawn",
+          "x": 2616,
+          "y": 152,
+          "w": 12,
+          "h": 24
+        }
+      ]
+    },
+    {
+      "id": "classic-1-1-area-1",
+      "title": "1-1 · 地下",
+      "tileSize": 16,
+      "width": 272,
+      "height": 240,
+      "provenance": {
+        "kind": "transcribed",
+        "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+        "review": "pending",
+        "note": "第一世界社区参考坐标转录。基础几何用于开发预览；机关、敌人行为与原版逐格保真尚待验收。"
+      },
+      "geometry": [
+        {
+          "id": "r000",
+          "x": 64,
+          "y": 32,
+          "w": 112,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r001",
+          "x": 0,
+          "y": 208,
+          "w": 272,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r002-0-0",
+          "x": 0,
+          "y": 192,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r002-0-1",
+          "x": 0,
+          "y": 176,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r002-0-2",
+          "x": 0,
+          "y": 160,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r002-0-3",
+          "x": 0,
+          "y": 144,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r002-0-4",
+          "x": 0,
+          "y": 128,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r002-0-5",
+          "x": 0,
+          "y": 112,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r002-0-6",
+          "x": 0,
+          "y": 96,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r002-0-7",
+          "x": 0,
+          "y": 80,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r002-0-8",
+          "x": 0,
+          "y": 64,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r002-0-9",
+          "x": 0,
+          "y": 48,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r002-0-10",
+          "x": 0,
+          "y": 32,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r003-0-0",
+          "x": 64,
+          "y": 192,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r003-1-0",
+          "x": 80,
+          "y": 192,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r003-2-0",
+          "x": 96,
+          "y": 192,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r003-3-0",
+          "x": 112,
+          "y": 192,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r003-4-0",
+          "x": 128,
+          "y": 192,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r003-5-0",
+          "x": 144,
+          "y": 192,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r003-6-0",
+          "x": 160,
+          "y": 192,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r003-0-1",
+          "x": 64,
+          "y": 176,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r003-1-1",
+          "x": 80,
+          "y": 176,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r003-2-1",
+          "x": 96,
+          "y": 176,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r003-3-1",
+          "x": 112,
+          "y": 176,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r003-4-1",
+          "x": 128,
+          "y": 176,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r003-5-1",
+          "x": 144,
+          "y": 176,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r003-6-1",
+          "x": 160,
+          "y": 176,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r003-0-2",
+          "x": 64,
+          "y": 160,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r003-1-2",
+          "x": 80,
+          "y": 160,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r003-2-2",
+          "x": 96,
+          "y": 160,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r003-3-2",
+          "x": 112,
+          "y": 160,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r003-4-2",
+          "x": 128,
+          "y": 160,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r003-5-2",
+          "x": 144,
+          "y": 160,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r003-6-2",
+          "x": 160,
+          "y": 160,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r006",
+          "x": 208,
+          "y": 176,
+          "w": 32,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r007",
+          "x": 240,
+          "y": 32,
+          "w": 32,
+          "h": 176,
+          "collision": "solid"
+        }
+      ],
+      "objects": [
+        {
+          "id": "r004-0-0",
+          "kind": "coin",
+          "x": 66,
+          "y": 146,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r004-1-0",
+          "kind": "coin",
+          "x": 82,
+          "y": 146,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r004-2-0",
+          "kind": "coin",
+          "x": 98,
+          "y": 146,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r004-3-0",
+          "kind": "coin",
+          "x": 114,
+          "y": 146,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r004-4-0",
+          "kind": "coin",
+          "x": 130,
+          "y": 146,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r004-5-0",
+          "kind": "coin",
+          "x": 146,
+          "y": 146,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r004-6-0",
+          "kind": "coin",
+          "x": 162,
+          "y": 146,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r004-0-1",
+          "kind": "coin",
+          "x": 66,
+          "y": 114,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r004-1-1",
+          "kind": "coin",
+          "x": 82,
+          "y": 114,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r004-2-1",
+          "kind": "coin",
+          "x": 98,
+          "y": 114,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r004-3-1",
+          "kind": "coin",
+          "x": 114,
+          "y": 114,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r004-4-1",
+          "kind": "coin",
+          "x": 130,
+          "y": 114,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r004-5-1",
+          "kind": "coin",
+          "x": 146,
+          "y": 114,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r004-6-1",
+          "kind": "coin",
+          "x": 162,
+          "y": 114,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r005-0-0",
+          "kind": "coin",
+          "x": 82,
+          "y": 82,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r005-1-0",
+          "kind": "coin",
+          "x": 98,
+          "y": 82,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r005-2-0",
+          "kind": "coin",
+          "x": 114,
+          "y": 82,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r005-3-0",
+          "kind": "coin",
+          "x": 130,
+          "y": 82,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r005-4-0",
+          "kind": "coin",
+          "x": 146,
+          "y": 82,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r006-portal",
+          "kind": "portal",
+          "x": 190,
+          "y": 176,
+          "w": 22,
+          "h": 32,
+          "targetRoom": "area-0",
+          "targetSpawn": "location-1"
+        },
+        {
+          "id": "location-2",
+          "kind": "spawn",
+          "x": 32,
+          "y": 184,
+          "w": 12,
+          "h": 24
+        }
+      ]
+    }
+  ],
+  "rooms": [
+    {
+      "roomId": "area-0",
+      "setting": "Overworld",
+      "map": {
+        "id": "classic-1-1-area-0",
+        "title": "1-1 · 地表",
+        "tileSize": 16,
+        "width": 3792,
+        "height": 240,
+        "provenance": {
+          "kind": "transcribed",
+          "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+          "review": "pending",
+          "note": "第一世界社区参考坐标转录。基础几何用于开发预览；机关、敌人行为与原版逐格保真尚待验收。"
+        },
+        "geometry": [
+          {
+            "id": "r000",
+            "x": 0,
+            "y": 208,
+            "w": 1104,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r001",
+            "x": 256,
+            "y": 144,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r002",
+            "x": 320,
+            "y": 144,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r003",
+            "x": 336,
+            "y": 144,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r005",
+            "x": 352,
+            "y": 144,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r006",
+            "x": 352,
+            "y": 80,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r007",
+            "x": 368,
+            "y": 144,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r008",
+            "x": 384,
+            "y": 144,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r009",
+            "x": 448,
+            "y": 176,
+            "w": 32,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r010",
+            "x": 608,
+            "y": 160,
+            "w": 32,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r012",
+            "x": 736,
+            "y": 144,
+            "w": 32,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r015",
+            "x": 912,
+            "y": 144,
+            "w": 32,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r017",
+            "x": 1136,
+            "y": 208,
+            "w": 240,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r018",
+            "x": 1232,
+            "y": 144,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r019",
+            "x": 1248,
+            "y": 144,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r020",
+            "x": 1264,
+            "y": 144,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r021",
+            "x": 1280,
+            "y": 144,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r023",
+            "x": 1296,
+            "y": 80,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r024",
+            "x": 1312,
+            "y": 80,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r026-0-0",
+            "x": 1328,
+            "y": 80,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r026-1-0",
+            "x": 1344,
+            "y": 80,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r026-2-0",
+            "x": 1360,
+            "y": 80,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r026-3-0",
+            "x": 1376,
+            "y": 80,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r026-4-0",
+            "x": 1392,
+            "y": 80,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r027",
+            "x": 1424,
+            "y": 208,
+            "w": 1024,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r028-0-0",
+            "x": 1456,
+            "y": 80,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r028-1-0",
+            "x": 1472,
+            "y": 80,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r028-2-0",
+            "x": 1488,
+            "y": 80,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r029",
+            "x": 1504,
+            "y": 144,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r030",
+            "x": 1504,
+            "y": 80,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r033",
+            "x": 1600,
+            "y": 144,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r034",
+            "x": 1616,
+            "y": 144,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r035",
+            "x": 1696,
+            "y": 144,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r037",
+            "x": 1744,
+            "y": 144,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r038",
+            "x": 1744,
+            "y": 80,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r039",
+            "x": 1792,
+            "y": 144,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r042",
+            "x": 1888,
+            "y": 144,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r043-0-0",
+            "x": 1936,
+            "y": 80,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r043-1-0",
+            "x": 1952,
+            "y": 80,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r043-2-0",
+            "x": 1968,
+            "y": 80,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r045",
+            "x": 2048,
+            "y": 80,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r046",
+            "x": 2064,
+            "y": 144,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r047",
+            "x": 2064,
+            "y": 80,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r048",
+            "x": 2080,
+            "y": 144,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r049",
+            "x": 2080,
+            "y": 80,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r050",
+            "x": 2096,
+            "y": 80,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r051",
+            "x": 2144,
+            "y": 192,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r052",
+            "x": 2160,
+            "y": 176,
+            "w": 16,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r053",
+            "x": 2176,
+            "y": 160,
+            "w": 16,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r054",
+            "x": 2192,
+            "y": 144,
+            "w": 16,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r055",
+            "x": 2240,
+            "y": 144,
+            "w": 16,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r056",
+            "x": 2256,
+            "y": 160,
+            "w": 16,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r057",
+            "x": 2272,
+            "y": 176,
+            "w": 16,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r058",
+            "x": 2288,
+            "y": 192,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r059",
+            "x": 2368,
+            "y": 192,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r060",
+            "x": 2384,
+            "y": 176,
+            "w": 16,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r061",
+            "x": 2400,
+            "y": 160,
+            "w": 16,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r062",
+            "x": 2416,
+            "y": 144,
+            "w": 16,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r063",
+            "x": 2432,
+            "y": 144,
+            "w": 16,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r064",
+            "x": 2480,
+            "y": 208,
+            "w": 1312,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r065",
+            "x": 2480,
+            "y": 144,
+            "w": 16,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r066",
+            "x": 2496,
+            "y": 160,
+            "w": 16,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r067",
+            "x": 2512,
+            "y": 176,
+            "w": 16,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r068",
+            "x": 2528,
+            "y": 192,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r069",
+            "x": 2608,
+            "y": 176,
+            "w": 32,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r070",
+            "x": 2688,
+            "y": 144,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r071",
+            "x": 2704,
+            "y": 144,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r072",
+            "x": 2720,
+            "y": 144,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r073",
+            "x": 2736,
+            "y": 144,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r076",
+            "x": 2864,
+            "y": 176,
+            "w": 32,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r077",
+            "x": 2896,
+            "y": 192,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r078",
+            "x": 2912,
+            "y": 176,
+            "w": 16,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r079",
+            "x": 2928,
+            "y": 160,
+            "w": 16,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r080",
+            "x": 2944,
+            "y": 144,
+            "w": 16,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r081",
+            "x": 2960,
+            "y": 128,
+            "w": 16,
+            "h": 80,
+            "collision": "solid"
+          },
+          {
+            "id": "r082",
+            "x": 2976,
+            "y": 112,
+            "w": 16,
+            "h": 96,
+            "collision": "solid"
+          },
+          {
+            "id": "r083",
+            "x": 2992,
+            "y": 96,
+            "w": 16,
+            "h": 112,
+            "collision": "solid"
+          },
+          {
+            "id": "r084",
+            "x": 3008,
+            "y": 80,
+            "w": 32,
+            "h": 128,
+            "collision": "solid"
+          },
+          {
+            "id": "r085-base",
+            "x": 3168,
+            "y": 192,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          }
+        ],
+        "objects": [
+          {
+            "id": "r015-portal",
+            "kind": "portal",
+            "x": 912,
+            "y": 126,
+            "w": 32,
+            "h": 24,
+            "targetRoom": "area-1",
+            "targetSpawn": "location-2"
+          },
+          {
+            "id": "r085-exit",
+            "kind": "exit",
+            "x": 3168,
+            "y": 40,
+            "w": 16,
+            "h": 168
+          },
+          {
+            "id": "location-0",
+            "kind": "spawn",
+            "x": 32,
+            "y": 184,
+            "w": 12,
+            "h": 24
+          },
+          {
+            "id": "location-1",
+            "kind": "spawn",
+            "x": 2616,
+            "y": 152,
+            "w": 12,
+            "h": 24
+          }
+        ]
+      },
+      "markers": [
+        {
+          "id": "r003-contents",
+          "kind": "block-contents",
+          "source": {
+            "thing": "Block",
+            "x": 168,
+            "y": 32,
+            "contents": "Mushroom"
+          },
+          "x": 336,
+          "y": 144
+        },
+        {
+          "id": "r004",
+          "kind": "enemy-goomba",
+          "source": {
+            "thing": "Goomba",
+            "x": 176,
+            "y": 8
+          },
+          "x": 352,
+          "y": 192
+        },
+        {
+          "id": "r011",
+          "kind": "enemy-goomba",
+          "source": {
+            "thing": "Goomba",
+            "x": 340,
+            "y": 8
+          },
+          "x": 680,
+          "y": 192
+        },
+        {
+          "id": "r013",
+          "kind": "enemy-goomba",
+          "source": {
+            "thing": "Goomba",
+            "x": 412,
+            "y": 8
+          },
+          "x": 824,
+          "y": 192
+        },
+        {
+          "id": "r014",
+          "kind": "enemy-goomba",
+          "source": {
+            "thing": "Goomba",
+            "x": 422,
+            "y": 8
+          },
+          "x": 844,
+          "y": 192
+        },
+        {
+          "id": "r016",
+          "kind": "hidden-block",
+          "source": {
+            "thing": "Block",
+            "x": 512,
+            "y": 40,
+            "contents": "Mushroom1Up",
+            "hidden": true
+          },
+          "x": 1024,
+          "y": 128
+        },
+        {
+          "id": "r019-contents",
+          "kind": "block-contents",
+          "source": {
+            "thing": "Block",
+            "x": 624,
+            "y": 32,
+            "contents": "Mushroom"
+          },
+          "x": 1248,
+          "y": 144
+        },
+        {
+          "id": "r022",
+          "kind": "enemy-goomba",
+          "source": {
+            "thing": "Goomba",
+            "x": 640,
+            "y": 72
+          },
+          "x": 1280,
+          "y": 64
+        },
+        {
+          "id": "r025",
+          "kind": "enemy-goomba",
+          "source": {
+            "thing": "Goomba",
+            "x": 656,
+            "y": 72
+          },
+          "x": 1312,
+          "y": 64
+        },
+        {
+          "id": "r029-contents",
+          "kind": "block-contents",
+          "source": {
+            "thing": "Brick",
+            "x": 752,
+            "y": 32,
+            "contents": "Coin"
+          },
+          "x": 1504,
+          "y": 144
+        },
+        {
+          "id": "r031",
+          "kind": "enemy-goomba",
+          "source": {
+            "thing": "Goomba",
+            "x": 776,
+            "y": 8
+          },
+          "x": 1552,
+          "y": 192
+        },
+        {
+          "id": "r032",
+          "kind": "enemy-goomba",
+          "source": {
+            "thing": "Goomba",
+            "x": 788,
+            "y": 8
+          },
+          "x": 1576,
+          "y": 192
+        },
+        {
+          "id": "r034-contents",
+          "kind": "block-contents",
+          "source": {
+            "thing": "Brick",
+            "x": 808,
+            "y": 32,
+            "contents": "Star"
+          },
+          "x": 1616,
+          "y": 144
+        },
+        {
+          "id": "r036",
+          "kind": "enemy-koopa",
+          "source": {
+            "thing": "Koopa",
+            "x": 856,
+            "y": 12
+          },
+          "x": 1712,
+          "y": 184
+        },
+        {
+          "id": "r038-contents",
+          "kind": "block-contents",
+          "source": {
+            "thing": "Block",
+            "x": 872,
+            "y": 64,
+            "contents": "Mushroom"
+          },
+          "x": 1744,
+          "y": 80
+        },
+        {
+          "id": "r040",
+          "kind": "enemy-goomba",
+          "source": {
+            "thing": "Goomba",
+            "x": 912,
+            "y": 8
+          },
+          "x": 1824,
+          "y": 192
+        },
+        {
+          "id": "r041",
+          "kind": "enemy-goomba",
+          "source": {
+            "thing": "Goomba",
+            "x": 924,
+            "y": 8
+          },
+          "x": 1848,
+          "y": 192
+        },
+        {
+          "id": "r044-0-0",
+          "kind": "enemy-goomba",
+          "source": {
+            "x": 992,
+            "y": 8,
+            "thing": "Goomba"
+          },
+          "x": 1984,
+          "y": 192
+        },
+        {
+          "id": "r044-1-0",
+          "kind": "enemy-goomba",
+          "source": {
+            "x": 1008,
+            "y": 8,
+            "thing": "Goomba"
+          },
+          "x": 2016,
+          "y": 192
+        },
+        {
+          "id": "r044-2-0",
+          "kind": "enemy-goomba",
+          "source": {
+            "x": 1024,
+            "y": 8,
+            "thing": "Goomba"
+          },
+          "x": 2048,
+          "y": 192
+        },
+        {
+          "id": "r044-3-0",
+          "kind": "enemy-goomba",
+          "source": {
+            "x": 1040,
+            "y": 8,
+            "thing": "Goomba"
+          },
+          "x": 2080,
+          "y": 192
+        },
+        {
+          "id": "r074",
+          "kind": "enemy-goomba",
+          "source": {
+            "thing": "Goomba",
+            "x": 1392,
+            "y": 8
+          },
+          "x": 2784,
+          "y": 192
+        },
+        {
+          "id": "r075",
+          "kind": "enemy-goomba",
+          "source": {
+            "thing": "Goomba",
+            "x": 1404,
+            "y": 8
+          },
+          "x": 2808,
+          "y": 192
+        },
+        {
+          "id": "r085",
+          "kind": "flagpole-finish",
+          "source": {
+            "macro": "EndOutsideCastle",
+            "x": 1584,
+            "y": 0,
+            "transport": {
+              "map": "1-2"
+            }
+          },
+          "x": 3168,
+          "y": 208
+        }
+      ],
+      "semantics": [
+        {
+          "id": "r000",
+          "type": "Floor",
+          "source": {
+            "macro": "Floor",
+            "x": 0,
+            "y": 0,
+            "width": 552
+          }
+        },
+        {
+          "id": "r001",
+          "type": "Block",
+          "source": {
+            "thing": "Block",
+            "x": 128,
+            "y": 32
+          }
+        },
+        {
+          "id": "r002",
+          "type": "Brick",
+          "source": {
+            "thing": "Brick",
+            "x": 160,
+            "y": 32
+          }
+        },
+        {
+          "id": "r003",
+          "type": "Block",
+          "source": {
+            "thing": "Block",
+            "x": 168,
+            "y": 32,
+            "contents": "Mushroom"
+          }
+        },
+        {
+          "id": "r005",
+          "type": "Brick",
+          "source": {
+            "thing": "Brick",
+            "x": 176,
+            "y": 32
+          }
+        },
+        {
+          "id": "r006",
+          "type": "Block",
+          "source": {
+            "thing": "Block",
+            "x": 176,
+            "y": 64
+          }
+        },
+        {
+          "id": "r007",
+          "type": "Block",
+          "source": {
+            "thing": "Block",
+            "x": 184,
+            "y": 32
+          }
+        },
+        {
+          "id": "r008",
+          "type": "Brick",
+          "source": {
+            "thing": "Brick",
+            "x": 192,
+            "y": 32
+          }
+        },
+        {
+          "id": "r009",
+          "type": "PipeVertical",
+          "source": {
+            "x": 224,
+            "y": 16,
+            "height": 16,
+            "thing": "PipeVertical",
+            "width": 16
+          }
+        },
+        {
+          "id": "r010",
+          "type": "PipeVertical",
+          "source": {
+            "x": 304,
+            "y": 24,
+            "height": 24,
+            "thing": "PipeVertical",
+            "width": 16
+          }
+        },
+        {
+          "id": "r012",
+          "type": "PipeVertical",
+          "source": {
+            "x": 368,
+            "y": 32,
+            "height": 32,
+            "thing": "PipeVertical",
+            "width": 16
+          }
+        },
+        {
+          "id": "r015",
+          "type": "PipeVertical",
+          "source": {
+            "x": 456,
+            "y": 32,
+            "height": 32,
+            "transport": 2,
+            "thing": "PipeVertical",
+            "width": 16
+          }
+        },
+        {
+          "id": "r017",
+          "type": "Floor",
+          "source": {
+            "macro": "Floor",
+            "x": 568,
+            "y": 0,
+            "width": 120
+          }
+        },
+        {
+          "id": "r018",
+          "type": "Brick",
+          "source": {
+            "thing": "Brick",
+            "x": 616,
+            "y": 32
+          }
+        },
+        {
+          "id": "r019",
+          "type": "Block",
+          "source": {
+            "thing": "Block",
+            "x": 624,
+            "y": 32,
+            "contents": "Mushroom"
+          }
+        },
+        {
+          "id": "r020",
+          "type": "Brick",
+          "source": {
+            "thing": "Brick",
+            "x": 632,
+            "y": 32
+          }
+        },
+        {
+          "id": "r021",
+          "type": "Brick",
+          "source": {
+            "thing": "Brick",
+            "x": 640,
+            "y": 32
+          }
+        },
+        {
+          "id": "r023",
+          "type": "Brick",
+          "source": {
+            "thing": "Brick",
+            "x": 648,
+            "y": 64
+          }
+        },
+        {
+          "id": "r024",
+          "type": "Brick",
+          "source": {
+            "thing": "Brick",
+            "x": 656,
+            "y": 64
+          }
+        },
+        {
+          "id": "r026-0-0",
+          "type": "Brick",
+          "source": {
+            "x": 664,
+            "y": 64,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r026-1-0",
+          "type": "Brick",
+          "source": {
+            "x": 672,
+            "y": 64,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r026-2-0",
+          "type": "Brick",
+          "source": {
+            "x": 680,
+            "y": 64,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r026-3-0",
+          "type": "Brick",
+          "source": {
+            "x": 688,
+            "y": 64,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r026-4-0",
+          "type": "Brick",
+          "source": {
+            "x": 696,
+            "y": 64,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r027",
+          "type": "Floor",
+          "source": {
+            "macro": "Floor",
+            "x": 712,
+            "y": 0,
+            "width": 512
+          }
+        },
+        {
+          "id": "r028-0-0",
+          "type": "Brick",
+          "source": {
+            "x": 728,
+            "y": 64,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r028-1-0",
+          "type": "Brick",
+          "source": {
+            "x": 736,
+            "y": 64,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r028-2-0",
+          "type": "Brick",
+          "source": {
+            "x": 744,
+            "y": 64,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r029",
+          "type": "Brick",
+          "source": {
+            "thing": "Brick",
+            "x": 752,
+            "y": 32,
+            "contents": "Coin"
+          }
+        },
+        {
+          "id": "r030",
+          "type": "Block",
+          "source": {
+            "thing": "Block",
+            "x": 752,
+            "y": 64
+          }
+        },
+        {
+          "id": "r033",
+          "type": "Brick",
+          "source": {
+            "thing": "Brick",
+            "x": 800,
+            "y": 32
+          }
+        },
+        {
+          "id": "r034",
+          "type": "Brick",
+          "source": {
+            "thing": "Brick",
+            "x": 808,
+            "y": 32,
+            "contents": "Star"
+          }
+        },
+        {
+          "id": "r035",
+          "type": "Block",
+          "source": {
+            "thing": "Block",
+            "x": 848,
+            "y": 32
+          }
+        },
+        {
+          "id": "r037",
+          "type": "Block",
+          "source": {
+            "thing": "Block",
+            "x": 872,
+            "y": 32
+          }
+        },
+        {
+          "id": "r038",
+          "type": "Block",
+          "source": {
+            "thing": "Block",
+            "x": 872,
+            "y": 64,
+            "contents": "Mushroom"
+          }
+        },
+        {
+          "id": "r039",
+          "type": "Block",
+          "source": {
+            "thing": "Block",
+            "x": 896,
+            "y": 32
+          }
+        },
+        {
+          "id": "r042",
+          "type": "Brick",
+          "source": {
+            "thing": "Brick",
+            "x": 944,
+            "y": 32
+          }
+        },
+        {
+          "id": "r043-0-0",
+          "type": "Brick",
+          "source": {
+            "x": 968,
+            "y": 64,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r043-1-0",
+          "type": "Brick",
+          "source": {
+            "x": 976,
+            "y": 64,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r043-2-0",
+          "type": "Brick",
+          "source": {
+            "x": 984,
+            "y": 64,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r045",
+          "type": "Brick",
+          "source": {
+            "thing": "Brick",
+            "x": 1024,
+            "y": 64
+          }
+        },
+        {
+          "id": "r046",
+          "type": "Brick",
+          "source": {
+            "thing": "Brick",
+            "x": 1032,
+            "y": 32
+          }
+        },
+        {
+          "id": "r047",
+          "type": "Block",
+          "source": {
+            "thing": "Block",
+            "x": 1032,
+            "y": 64
+          }
+        },
+        {
+          "id": "r048",
+          "type": "Brick",
+          "source": {
+            "thing": "Brick",
+            "x": 1040,
+            "y": 32
+          }
+        },
+        {
+          "id": "r049",
+          "type": "Block",
+          "source": {
+            "thing": "Block",
+            "x": 1040,
+            "y": 64
+          }
+        },
+        {
+          "id": "r050",
+          "type": "Brick",
+          "source": {
+            "thing": "Brick",
+            "x": 1048,
+            "y": 64
+          }
+        },
+        {
+          "id": "r051",
+          "type": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 1072,
+            "y": 8,
+            "height": 8
+          }
+        },
+        {
+          "id": "r052",
+          "type": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 1080,
+            "y": 16,
+            "height": 16
+          }
+        },
+        {
+          "id": "r053",
+          "type": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 1088,
+            "y": 24,
+            "height": 24
+          }
+        },
+        {
+          "id": "r054",
+          "type": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 1096,
+            "y": 32,
+            "height": 32
+          }
+        },
+        {
+          "id": "r055",
+          "type": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 1120,
+            "y": 32,
+            "height": 32
+          }
+        },
+        {
+          "id": "r056",
+          "type": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 1128,
+            "y": 24,
+            "height": 24
+          }
+        },
+        {
+          "id": "r057",
+          "type": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 1136,
+            "y": 16,
+            "height": 16
+          }
+        },
+        {
+          "id": "r058",
+          "type": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 1144,
+            "y": 8,
+            "height": 8
+          }
+        },
+        {
+          "id": "r059",
+          "type": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 1184,
+            "y": 8,
+            "height": 8
+          }
+        },
+        {
+          "id": "r060",
+          "type": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 1192,
+            "y": 16,
+            "height": 16
+          }
+        },
+        {
+          "id": "r061",
+          "type": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 1200,
+            "y": 24,
+            "height": 24
+          }
+        },
+        {
+          "id": "r062",
+          "type": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 1208,
+            "y": 32,
+            "height": 32
+          }
+        },
+        {
+          "id": "r063",
+          "type": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 1216,
+            "y": 32,
+            "height": 32
+          }
+        },
+        {
+          "id": "r064",
+          "type": "Floor",
+          "source": {
+            "macro": "Floor",
+            "x": 1240,
+            "y": 0,
+            "width": 656
+          }
+        },
+        {
+          "id": "r065",
+          "type": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 1240,
+            "y": 32,
+            "height": 32
+          }
+        },
+        {
+          "id": "r066",
+          "type": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 1248,
+            "y": 24,
+            "height": 24
+          }
+        },
+        {
+          "id": "r067",
+          "type": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 1256,
+            "y": 16,
+            "height": 16
+          }
+        },
+        {
+          "id": "r068",
+          "type": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 1264,
+            "y": 8,
+            "height": 8
+          }
+        },
+        {
+          "id": "r069",
+          "type": "PipeVertical",
+          "source": {
+            "x": 1304,
+            "y": 16,
+            "height": 16,
+            "entrance": 1,
+            "thing": "PipeVertical",
+            "width": 16
+          }
+        },
+        {
+          "id": "r070",
+          "type": "Brick",
+          "source": {
+            "thing": "Brick",
+            "x": 1344,
+            "y": 32
+          }
+        },
+        {
+          "id": "r071",
+          "type": "Brick",
+          "source": {
+            "thing": "Brick",
+            "x": 1352,
+            "y": 32
+          }
+        },
+        {
+          "id": "r072",
+          "type": "Block",
+          "source": {
+            "thing": "Block",
+            "x": 1360,
+            "y": 32
+          }
+        },
+        {
+          "id": "r073",
+          "type": "Brick",
+          "source": {
+            "thing": "Brick",
+            "x": 1368,
+            "y": 32
+          }
+        },
+        {
+          "id": "r076",
+          "type": "PipeVertical",
+          "source": {
+            "x": 1432,
+            "y": 16,
+            "height": 16,
+            "thing": "PipeVertical",
+            "width": 16
+          }
+        },
+        {
+          "id": "r077",
+          "type": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 1448,
+            "y": 8,
+            "height": 8
+          }
+        },
+        {
+          "id": "r078",
+          "type": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 1456,
+            "y": 16,
+            "height": 16
+          }
+        },
+        {
+          "id": "r079",
+          "type": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 1464,
+            "y": 24,
+            "height": 24
+          }
+        },
+        {
+          "id": "r080",
+          "type": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 1472,
+            "y": 32,
+            "height": 32
+          }
+        },
+        {
+          "id": "r081",
+          "type": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 1480,
+            "y": 40,
+            "height": 40
+          }
+        },
+        {
+          "id": "r082",
+          "type": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 1488,
+            "y": 48,
+            "height": 48
+          }
+        },
+        {
+          "id": "r083",
+          "type": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 1496,
+            "y": 56,
+            "height": 56
+          }
+        },
+        {
+          "id": "r084",
+          "type": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 1504,
+            "y": 64,
+            "height": 64,
+            "width": 16
+          }
+        },
+        {
+          "id": "r085-base",
+          "type": "Stone",
+          "source": {
+            "macro": "EndOutsideCastle",
+            "x": 1584,
+            "y": 0,
+            "transport": {
+              "map": "1-2"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "roomId": "area-1",
+      "setting": "Underworld",
+      "map": {
+        "id": "classic-1-1-area-1",
+        "title": "1-1 · 地下",
+        "tileSize": 16,
+        "width": 272,
+        "height": 240,
+        "provenance": {
+          "kind": "transcribed",
+          "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+          "review": "pending",
+          "note": "第一世界社区参考坐标转录。基础几何用于开发预览；机关、敌人行为与原版逐格保真尚待验收。"
+        },
+        "geometry": [
+          {
+            "id": "r000",
+            "x": 64,
+            "y": 32,
+            "w": 112,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r001",
+            "x": 0,
+            "y": 208,
+            "w": 272,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r002-0-0",
+            "x": 0,
+            "y": 192,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r002-0-1",
+            "x": 0,
+            "y": 176,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r002-0-2",
+            "x": 0,
+            "y": 160,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r002-0-3",
+            "x": 0,
+            "y": 144,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r002-0-4",
+            "x": 0,
+            "y": 128,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r002-0-5",
+            "x": 0,
+            "y": 112,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r002-0-6",
+            "x": 0,
+            "y": 96,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r002-0-7",
+            "x": 0,
+            "y": 80,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r002-0-8",
+            "x": 0,
+            "y": 64,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r002-0-9",
+            "x": 0,
+            "y": 48,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r002-0-10",
+            "x": 0,
+            "y": 32,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r003-0-0",
+            "x": 64,
+            "y": 192,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r003-1-0",
+            "x": 80,
+            "y": 192,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r003-2-0",
+            "x": 96,
+            "y": 192,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r003-3-0",
+            "x": 112,
+            "y": 192,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r003-4-0",
+            "x": 128,
+            "y": 192,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r003-5-0",
+            "x": 144,
+            "y": 192,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r003-6-0",
+            "x": 160,
+            "y": 192,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r003-0-1",
+            "x": 64,
+            "y": 176,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r003-1-1",
+            "x": 80,
+            "y": 176,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r003-2-1",
+            "x": 96,
+            "y": 176,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r003-3-1",
+            "x": 112,
+            "y": 176,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r003-4-1",
+            "x": 128,
+            "y": 176,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r003-5-1",
+            "x": 144,
+            "y": 176,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r003-6-1",
+            "x": 160,
+            "y": 176,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r003-0-2",
+            "x": 64,
+            "y": 160,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r003-1-2",
+            "x": 80,
+            "y": 160,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r003-2-2",
+            "x": 96,
+            "y": 160,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r003-3-2",
+            "x": 112,
+            "y": 160,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r003-4-2",
+            "x": 128,
+            "y": 160,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r003-5-2",
+            "x": 144,
+            "y": 160,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r003-6-2",
+            "x": 160,
+            "y": 160,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r006",
+            "x": 208,
+            "y": 176,
+            "w": 32,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r007",
+            "x": 240,
+            "y": 32,
+            "w": 32,
+            "h": 176,
+            "collision": "solid"
+          }
+        ],
+        "objects": [
+          {
+            "id": "r004-0-0",
+            "kind": "coin",
+            "x": 66,
+            "y": 146,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r004-1-0",
+            "kind": "coin",
+            "x": 82,
+            "y": 146,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r004-2-0",
+            "kind": "coin",
+            "x": 98,
+            "y": 146,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r004-3-0",
+            "kind": "coin",
+            "x": 114,
+            "y": 146,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r004-4-0",
+            "kind": "coin",
+            "x": 130,
+            "y": 146,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r004-5-0",
+            "kind": "coin",
+            "x": 146,
+            "y": 146,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r004-6-0",
+            "kind": "coin",
+            "x": 162,
+            "y": 146,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r004-0-1",
+            "kind": "coin",
+            "x": 66,
+            "y": 114,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r004-1-1",
+            "kind": "coin",
+            "x": 82,
+            "y": 114,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r004-2-1",
+            "kind": "coin",
+            "x": 98,
+            "y": 114,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r004-3-1",
+            "kind": "coin",
+            "x": 114,
+            "y": 114,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r004-4-1",
+            "kind": "coin",
+            "x": 130,
+            "y": 114,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r004-5-1",
+            "kind": "coin",
+            "x": 146,
+            "y": 114,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r004-6-1",
+            "kind": "coin",
+            "x": 162,
+            "y": 114,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r005-0-0",
+            "kind": "coin",
+            "x": 82,
+            "y": 82,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r005-1-0",
+            "kind": "coin",
+            "x": 98,
+            "y": 82,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r005-2-0",
+            "kind": "coin",
+            "x": 114,
+            "y": 82,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r005-3-0",
+            "kind": "coin",
+            "x": 130,
+            "y": 82,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r005-4-0",
+            "kind": "coin",
+            "x": 146,
+            "y": 82,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r006-portal",
+            "kind": "portal",
+            "x": 190,
+            "y": 176,
+            "w": 22,
+            "h": 32,
+            "targetRoom": "area-0",
+            "targetSpawn": "location-1"
+          },
+          {
+            "id": "location-2",
+            "kind": "spawn",
+            "x": 32,
+            "y": 184,
+            "w": 12,
+            "h": 24
+          }
+        ]
+      },
+      "markers": [],
+      "semantics": [
+        {
+          "id": "r000",
+          "type": "Ceiling",
+          "source": {
+            "macro": "Ceiling",
+            "x": 32,
+            "y": 0,
+            "width": 56
+          }
+        },
+        {
+          "id": "r001",
+          "type": "Floor",
+          "source": {
+            "macro": "Floor",
+            "x": 0,
+            "y": 0,
+            "width": 136
+          }
+        },
+        {
+          "id": "r002-0-0",
+          "type": "Brick",
+          "source": {
+            "x": 0,
+            "y": 8,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r002-0-1",
+          "type": "Brick",
+          "source": {
+            "x": 0,
+            "y": 16,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r002-0-2",
+          "type": "Brick",
+          "source": {
+            "x": 0,
+            "y": 24,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r002-0-3",
+          "type": "Brick",
+          "source": {
+            "x": 0,
+            "y": 32,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r002-0-4",
+          "type": "Brick",
+          "source": {
+            "x": 0,
+            "y": 40,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r002-0-5",
+          "type": "Brick",
+          "source": {
+            "x": 0,
+            "y": 48,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r002-0-6",
+          "type": "Brick",
+          "source": {
+            "x": 0,
+            "y": 56,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r002-0-7",
+          "type": "Brick",
+          "source": {
+            "x": 0,
+            "y": 64,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r002-0-8",
+          "type": "Brick",
+          "source": {
+            "x": 0,
+            "y": 72,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r002-0-9",
+          "type": "Brick",
+          "source": {
+            "x": 0,
+            "y": 80,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r002-0-10",
+          "type": "Brick",
+          "source": {
+            "x": 0,
+            "y": 88,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r003-0-0",
+          "type": "Brick",
+          "source": {
+            "x": 32,
+            "y": 8,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r003-1-0",
+          "type": "Brick",
+          "source": {
+            "x": 40,
+            "y": 8,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r003-2-0",
+          "type": "Brick",
+          "source": {
+            "x": 48,
+            "y": 8,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r003-3-0",
+          "type": "Brick",
+          "source": {
+            "x": 56,
+            "y": 8,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r003-4-0",
+          "type": "Brick",
+          "source": {
+            "x": 64,
+            "y": 8,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r003-5-0",
+          "type": "Brick",
+          "source": {
+            "x": 72,
+            "y": 8,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r003-6-0",
+          "type": "Brick",
+          "source": {
+            "x": 80,
+            "y": 8,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r003-0-1",
+          "type": "Brick",
+          "source": {
+            "x": 32,
+            "y": 16,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r003-1-1",
+          "type": "Brick",
+          "source": {
+            "x": 40,
+            "y": 16,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r003-2-1",
+          "type": "Brick",
+          "source": {
+            "x": 48,
+            "y": 16,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r003-3-1",
+          "type": "Brick",
+          "source": {
+            "x": 56,
+            "y": 16,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r003-4-1",
+          "type": "Brick",
+          "source": {
+            "x": 64,
+            "y": 16,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r003-5-1",
+          "type": "Brick",
+          "source": {
+            "x": 72,
+            "y": 16,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r003-6-1",
+          "type": "Brick",
+          "source": {
+            "x": 80,
+            "y": 16,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r003-0-2",
+          "type": "Brick",
+          "source": {
+            "x": 32,
+            "y": 24,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r003-1-2",
+          "type": "Brick",
+          "source": {
+            "x": 40,
+            "y": 24,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r003-2-2",
+          "type": "Brick",
+          "source": {
+            "x": 48,
+            "y": 24,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r003-3-2",
+          "type": "Brick",
+          "source": {
+            "x": 56,
+            "y": 24,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r003-4-2",
+          "type": "Brick",
+          "source": {
+            "x": 64,
+            "y": 24,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r003-5-2",
+          "type": "Brick",
+          "source": {
+            "x": 72,
+            "y": 24,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r003-6-2",
+          "type": "Brick",
+          "source": {
+            "x": 80,
+            "y": 24,
+            "thing": "Brick"
+          }
+        },
+        {
+          "id": "r006",
+          "type": "PipeHorizontal",
+          "source": {
+            "thing": "PipeHorizontal",
+            "x": 104,
+            "y": 16,
+            "transport": 1,
+            "width": 16
+          }
+        },
+        {
+          "id": "r007",
+          "type": "PipeVertical",
+          "source": {
+            "thing": "PipeVertical",
+            "x": 120,
+            "y": 88,
+            "height": 88
+          }
+        }
+      ]
+    }
+  ],
+  "coverage": {
+    "placementRecords": 94,
+    "areas": 2,
+    "geometry": 115,
+    "objects": 25,
+    "pending": [
+      "block-contents",
+      "enemy-goomba",
+      "enemy-koopa",
+      "flagpole-finish",
+      "hidden-block"
+    ],
+    "details": [
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r003-contents",
+        "kind": "block-contents"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r004",
+        "kind": "enemy-goomba"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r011",
+        "kind": "enemy-goomba"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r013",
+        "kind": "enemy-goomba"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r014",
+        "kind": "enemy-goomba"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r016",
+        "kind": "hidden-block"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r019-contents",
+        "kind": "block-contents"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r022",
+        "kind": "enemy-goomba"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r025",
+        "kind": "enemy-goomba"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r029-contents",
+        "kind": "block-contents"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r031",
+        "kind": "enemy-goomba"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r032",
+        "kind": "enemy-goomba"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r034-contents",
+        "kind": "block-contents"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r036",
+        "kind": "enemy-koopa"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r038-contents",
+        "kind": "block-contents"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r040",
+        "kind": "enemy-goomba"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r041",
+        "kind": "enemy-goomba"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r044-0-0",
+        "kind": "enemy-goomba"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r044-1-0",
+        "kind": "enemy-goomba"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r044-2-0",
+        "kind": "enemy-goomba"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r044-3-0",
+        "kind": "enemy-goomba"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r074",
+        "kind": "enemy-goomba"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r075",
+        "kind": "enemy-goomba"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r085",
+        "kind": "flagpole-finish"
+      }
+    ],
+    "geometryReview": "reference-transcribed-pending-original-review",
+    "playability": "developer-preview-only"
+  },
+  "source": {
+    "repository": "umaim/Mario",
+    "commit": "980c275358704a49f868567aeec5bdfb347c4781",
+    "path": "Source/settings/maps.js",
+    "gitBlob": "657d750ad65bb06c0e63a3d8958736f9236ec3c0",
+    "range": "Worlds 1–8 gameplay layout transcription",
+    "url": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+    "method": "Manual transcription of gameplay placement records, area locations and section definitions. Pure background scenery omitted; not a byte-identical source export or original-game certification.",
+    "omittedVisuals": [
+      "Pattern",
+      "DecorativeBack",
+      "DecorativeDot",
+      "CustomText"
+    ]
+  }
+}

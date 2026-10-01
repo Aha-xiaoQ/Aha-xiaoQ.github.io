@@ -1,0 +1,70 @@
+/* WORKSHOP-R08 / content components only.
+ * Theme, page headers, nav geometry and route motion are owned by the original site.
+ * Angles are decorative; paragraphs and interactive hit areas stay rectangular.
+ */
+#main .pw-work-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;align-items:stretch}
+#main .pw-work-card{position:relative;isolation:isolate;display:flex;flex-direction:column;min-width:0;padding:28px 30px 0;color:var(--paper);background:var(--surface);border:2px solid var(--paper);box-shadow:7px 7px 0 var(--accent)}
+#main .pw-work-card::before{content:"";position:absolute;z-index:2;top:-2px;right:-2px;width:26px;height:26px;background:var(--accent);clip-path:polygon(0 0,100% 0,100% 100%);pointer-events:none}
+#main .pw-work-top{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:32px;margin-bottom:18px}
+#main .pw-kicker{font-size:14px;font-weight:700;letter-spacing:1px;padding:3px 12px;background:var(--accent);color:var(--paper);display:inline-block}
+#main .pw-ordinal{font:700 26px/1 ui-monospace,SFMono-Regular,Consolas,monospace;color:inherit;opacity:.75}
+#main .pw-work-copy{flex:1;min-width:0}
+#main .pw-work-copy h2{font-size:clamp(25px,2.4vw,34px);line-height:1.35;max-width:22em;overflow-wrap:anywhere;margin:0}
+#main .pw-work-copy p{margin:18px 0 26px;color:var(--muted);font-size:17px;line-height:1.9;max-width:34em}
+#main .pw-work-bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;border-top:1px solid var(--line);padding:16px 0 20px;margin-top:auto}
+#main .pw-tags{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--muted)}
+#main .pw-action{display:inline-flex;align-items:center;justify-content:space-between;gap:24px;min-height:44px;padding:6px 0 6px 12px;color:inherit;font-size:18px;white-space:nowrap}
+#main .pw-action span{font-family:Arial,sans-serif;font-size:28px;line-height:1;background:var(--accent);color:var(--paper);width:44px;height:44px;display:grid;place-items:center;transition:transform .14s ease}
+#main .pw-action:hover span{transform:translate(2px,-2px)}
+#main .pw-action:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+#main .pw-work-card--paper{color:var(--bg);background:var(--paper);border-color:var(--paper)}
+#main .pw-work-card--paper .pw-work-copy p,#main .pw-work-card--paper .pw-tags{color:#37353c}
+#main .pw-work-card--paper .pw-work-bottom{border-color:#b8b3b5}
+#main .pw-work-card:focus-within{box-shadow:10px 10px 0 var(--accent)}
+#main .pw-game-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:32px}
+#main .pw-game-card{position:relative;display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);align-items:center;gap:0;padding:0;border:2px solid var(--paper);box-shadow:6px 6px 0 var(--accent);background:var(--surface);min-width:0}
+#main .pw-game-card .media-row__cover{position:relative;align-self:stretch;width:100%;min-height:0;border:0;box-shadow:none;aspect-ratio:16/9}
+#main .pw-cover-number{position:absolute;bottom:0;left:0;background:var(--accent);color:var(--paper);font:700 22px/1.2 ui-monospace,monospace;padding:8px 24px 8px 14px;clip-path:polygon(0 0,100% 0,85% 100%,0 100%)}
+#main .pw-game-card .media-row__body{padding:26px 30px;align-self:stretch;display:flex;flex-direction:column;flex:1;min-width:0}
+#main .pw-game-card h2{font-size:clamp(24px,2.1vw,30px);line-height:1.35}
+#main .pw-game-card .media-row__body>p{font-size:17px;line-height:1.85}
+#main .pw-game-card .meta{margin-top:12px}
+#main .pw-game-card .actions{margin-top:8px;padding-top:20px;gap:12px}
+#main .pw-game-card .button{font-size:15px;padding:8px 13px;min-height:44px}
+#main .pw-game-card .condition:empty{display:none}
+#main .pw-tools-list{display:grid;gap:32px}
+#main .pw-tool-card{position:relative;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:32px;border:2px solid var(--paper);padding:32px;background:var(--surface);box-shadow:7px 7px 0 var(--accent);min-width:0}
+#main .pw-tool-copy{min-width:0;display:flex;flex-direction:column;align-items:flex-start}
+#main .pw-tool-copy h2{font-size:32px;line-height:1.35;margin-top:18px}
+#main .pw-tool-copy p{font-size:17px;line-height:1.85;color:var(--muted);margin:18px 0 22px}
+#main .pw-tool-copy .actions{margin-top:auto;gap:12px}
+#main .pw-tool-preview{position:relative;display:flex;align-items:center;min-width:0;min-height:180px;border:1px solid var(--line);background:var(--bg);align-self:stretch}
+#main .pw-tool-preview img{width:100%;height:auto;object-fit:contain}
+#main .pw-tool-preview span{position:absolute;bottom:8px;right:8px;font:700 11px/1.6 ui-monospace,monospace;background:var(--paper);color:var(--bg);padding:2px 8px}
+@media(hover:hover){#main .pw-work-card,#main .pw-game-card,#main .pw-tool-card{transition:box-shadow .14s ease}#main .pw-work-card:hover,#main .pw-game-card:hover,#main .pw-tool-card:hover{box-shadow:9px 9px 0 var(--accent)}}
+@media(max-width:1000px){#main .pw-tool-card{grid-template-columns:1fr}#main .pw-tool-preview{min-height:0}#main .pw-work-card{padding:24px 24px 0}}
+@media(max-width:680px){#main .pw-work-grid{grid-template-columns:1fr;gap:28px}#main .pw-game-grid{gap:28px}#main .pw-work-copy h2{font-size:27px}#main .pw-work-copy p{font-size:17px}#main .pw-tool-card{padding:22px;gap:24px}#main .pw-tool-copy h2{font-size:27px}#main .pw-game-card .media-row__body{padding:22px}#main .pw-work-bottom{flex-wrap:wrap}#main .pw-action{margin-left:auto}}
+@media(prefers-reduced-motion:reduce){#main .pw-action span,#main .pw-work-card,#main .pw-game-card,#main .pw-tool-card{transition:none}#main .pw-action:hover span{transform:none}}
+
+#main .pw-work-grid,#main .pw-game-grid,#main .pw-tools-list{padding-bottom:12px;padding-right:8px}
+#main .pw-work-card>.pw-media{margin-bottom:24px;border:1px solid var(--line)}
+#main .pw-cover-slot{position:relative;min-width:0;width:100%;aspect-ratio:16/9}
+#main .pw-cover-number{bottom:0;z-index:2;font-size:16px;padding:7px 20px 7px 12px}
+#main .pw-work-copy h2 a:hover,#main .pw-game-card h2 a:hover{text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:5px}
+#main .pw-game-card .pw-tags{margin-top:16px}
+#main .pw-access-note{margin:16px 0 0;font-size:14px;line-height:1.7;color:var(--muted)}
+#main .pw-tool-card>.pw-media{align-self:center}
+#main .pw-empty{padding:24px;border-left:4px solid var(--accent);color:var(--muted)}
+#main .pw-work-grid[role=list],#main .pw-game-grid[role=list],#main .pw-tools-list[role=list]{margin:0;list-style:none}
+#main .pw-work-grid,#main .pw-game-grid{align-items:stretch;grid-auto-flow:row}
+#main .pw-work-card,#main .pw-game-card{grid-column:auto}
+#main .pw-work-copy h2,#main .pw-game-card h2,#main .pw-tool-copy h2{overflow-wrap:anywhere}
+@media(prefers-reduced-motion:reduce){#main .pw-work-card:hover,#main .pw-game-card:hover,#main .pw-tool-card:hover{box-shadow:6px 6px 0 var(--accent)}}
+
+/* R08: one game per row at every breakpoint; only the inside changes on small screens. */
+#main .pw-game-card .pw-cover-slot{align-self:center}
+#main .pw-game-card .media-row__kicker{margin-bottom:12px;gap:12px;flex-wrap:wrap}
+#main .pw-game-card .pw-access-note{margin:14px 0 0;font-size:14px;line-height:1.7}
+#main .pw-game-card .pw-tags{margin-top:12px}
+@media(max-width:820px){#main .pw-game-card{grid-template-columns:minmax(0,1fr)}#main .pw-game-card .media-row__body{padding:24px}}
+@media(max-width:400px){#main .pw-game-card .media-row__body{padding:20px}#main .pw-game-card .actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;width:100%}#main .pw-game-card .button{padding:9px 8px;white-space:normal;text-align:center}}

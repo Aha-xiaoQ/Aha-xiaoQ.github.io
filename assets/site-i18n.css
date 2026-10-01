@@ -1,0 +1,21 @@
+/* Fit the language choice and longer English copy into the existing design. */
+.topbar,.site-header .bar{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:20px}
+.topbar>nav,.site-header .bar>nav{justify-self:end}
+.site-language{display:inline-flex;align-items:center;gap:2px;border:1px solid var(--line);padding:2px;white-space:nowrap}
+.site-language button{min-width:44px;min-height:40px;padding:6px 9px;border:0;background:transparent;color:var(--paper);font-size:14px;line-height:1.4;font-weight:700}
+.site-language button:hover{background:#35333a}
+.site-language button[aria-pressed=true]{background:var(--paper);color:#111116;box-shadow:inset 0 -3px var(--accent)}
+.site-language button:focus-visible{outline:3px solid #ffd24c;outline-offset:3px}
+.language-note{display:block;font-size:14px;line-height:1.5;font-weight:400;color:inherit;opacity:.8}
+.button:has(.language-note){flex-direction:column;gap:2px}
+html[lang=en] .identity__copy h1{font-size:72px;letter-spacing:-2px;line-height:1.1;overflow-wrap:anywhere}
+html[lang=en] .identity__copy p{max-width:29em;font-size:22px;line-height:1.5}
+html[lang=en] .page-head h1{overflow-wrap:anywhere}
+html[lang=en] .entry,html[lang=en] .media-row__body,html[lang=en] .pet-copy{min-width:0;overflow-wrap:break-word}
+html[lang=en] .now-signal{grid-template-columns:1fr;gap:6px}
+html[lang=en] .now-signal time{grid-column:1}
+html[lang=en] .corner-clock .clock-meta{font-size:14px;letter-spacing:0}
+html[lang=en] .filter-bar{flex-wrap:wrap}
+@media(max-width:1100px){.topbar,.site-header .bar{grid-template-columns:minmax(0,1fr) auto;padding-block:16px;gap:16px}.topbar>nav,.site-header .bar>nav{grid-row:2;grid-column:1/-1;justify-self:stretch;justify-content:space-between;width:100%}.site-language{grid-column:2;grid-row:1}html[lang=en] .identity__copy h1{font-size:56px}}
+@media(max-width:600px){html[lang=en] .identity__copy h1{font-size:46px;letter-spacing:-1px}html[lang=en] .identity__copy p{font-size:20px}html[lang=en] .topbar>nav,html[lang=en] .site-header .bar>nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}html[lang=en] nav a{text-align:center;padding:8px 5px;font-size:15px}.topbar .brand,.site-header .bar .brand{gap:8px;font-size:17px}.site-language button{min-width:40px;min-height:44px;padding:6px}.topbar,.site-header .bar{column-gap:10px}html[lang=en] .pixel-scene figcaption{flex-wrap:wrap;gap:4px}html[lang=en] .corner-clock{gap:8px;padding-inline:8px}}
+@media(max-width:380px){html[lang=en] .identity__copy h1{font-size:40px}.topbar .brand img,.site-header .bar .brand img{width:32px;height:32px}.topbar .brand,.site-header .bar .brand{font-size:16px}.brand small{letter-spacing:1px}}

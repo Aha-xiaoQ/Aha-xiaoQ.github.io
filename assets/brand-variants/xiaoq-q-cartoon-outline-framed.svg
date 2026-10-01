@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 270"
+  width="512" height="540" role="img"
+  aria-label="Xiao Q neutral physical lighting icon">
+  <title>Xiao Q neutral physical lighting icon</title>
+  <desc>A zero-saturation neutral shell lit by SVG diffuse and specular lighting, with the unchanged blue and yellow pixel Q.</desc>
+  
+  
+  <defs>
+    <clipPath id="icon-shell-clip">
+      <path d="M76 18 C43 18 22 39 22 72 L22 176 C22 209 43 230 76 230 L180 230 C213 230 234 209 234 176 L234 72 C234 39 213 18 180 18 Z"/>
+    </clipPath>
+    <filter id="icon-physical" x="-18%" y="-18%" width="136%" height="136%"
+      color-interpolation-filters="sRGB">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8.5" result="heightMap"/>
+      <feDiffuseLighting in="heightMap" surfaceScale="1.8" diffuseConstant="0.72"
+        lighting-color="#FFFFFF" result="diffuse">
+        <feDistantLight azimuth="225" elevation="52"/>
+      </feDiffuseLighting>
+      <feComposite in="diffuse" in2="SourceAlpha" operator="in" result="diffuseClip"/>
+      <feComponentTransfer in="diffuseClip" result="diffuseSoft">
+        <feFuncR type="linear" slope="0.02" intercept="0.98"/>
+        <feFuncG type="linear" slope="0.02" intercept="0.98"/>
+        <feFuncB type="linear" slope="0.02" intercept="0.98"/>
+      </feComponentTransfer>
+      <feSpecularLighting in="heightMap" surfaceScale="2.2" specularConstant="0.10"
+        specularExponent="28" lighting-color="#FFFFFF" result="specular">
+        <feDistantLight azimuth="225" elevation="55"/>
+      </feSpecularLighting>
+      <feComposite in="specular" in2="SourceAlpha" operator="in" result="specularClip"/>
+      <feFlood flood-color="#FFFFFF" result="base"/>
+      <feComposite in="base" in2="SourceAlpha" operator="in" result="baseClip"/>
+      <feBlend in="baseClip" in2="diffuseSoft" mode="multiply" result="body"/>
+      <feBlend in="body" in2="specularClip" mode="screen"/>
+    </filter>
+  </defs>
+  <g clip-path="url(#icon-shell-clip)">
+    <path d="M76 18 C43 18 22 39 22 72 L22 176 C22 209 43 230 76 230 L180 230 C213 230 234 209 234 176 L234 72 C234 39 213 18 180 18 Z" fill="#FFFFFF" stroke="#F0F0F0" stroke-width="2.8"
+      vector-effect="non-scaling-stroke" filter="url(#icon-physical)"/>
+    <g transform="translate(56 54) scale(16)">
+      
+      <g id="q-body-flat-brand" shape-rendering="crispEdges">
+        <rect x="2" y="0" width="1" height="1" fill="#009FE8"/><rect x="3" y="0" width="1" height="1" fill="#009FE8"/><rect x="4" y="0" width="1" height="1" fill="#009FE8"/><rect x="5" y="0" width="1" height="1" fill="#009FE8"/><rect x="1" y="1" width="1" height="1" fill="#009FE8"/><rect x="6" y="1" width="1" height="1" fill="#009FE8"/><rect x="0" y="2" width="1" height="1" fill="#009FE8"/><rect x="7" y="2" width="1" height="1" fill="#009FE8"/><rect x="0" y="3" width="1" height="1" fill="#009FE8"/><rect x="7" y="3" width="1" height="1" fill="#009FE8"/><rect x="0" y="4" width="1" height="1" fill="#009FE8"/><rect x="7" y="4" width="1" height="1" fill="#009FE8"/><rect x="0" y="5" width="1" height="1" fill="#009FE8"/><rect x="7" y="5" width="1" height="1" fill="#009FE8"/><rect x="0" y="6" width="1" height="1" fill="#009FE8"/><rect x="7" y="6" width="1" height="1" fill="#009FE8"/><rect x="1" y="7" width="1" height="1" fill="#009FE8"/><rect x="2" y="8" width="1" height="1" fill="#009FE8"/><rect x="3" y="8" width="1" height="1" fill="#009FE8"/><rect x="4" y="8" width="1" height="1" fill="#009FE8"/><rect x="5" y="8" width="1" height="1" fill="#009FE8"/>
+        <path d="M2 0 H3 M2 0 V1 M2 1 H3 M3 0 H4 M3 1 H4 M4 0 H5 M4 1 H5 M5 0 H6 M5 1 H6 M6 0 V1 M1 1 H2 M1 1 V2 M1 2 H2 M2 1 V2 M6 1 H7 M6 1 V2 M6 2 H7 M7 1 V2 M0 2 H1 M0 2 V3 M1 2 V3 M7 2 H8 M7 2 V3 M8 2 V3 M0 3 V4 M1 3 V4 M7 3 V4 M8 3 V4 M0 4 V5 M1 4 V5 M7 4 V5 M8 4 V5 M0 5 V6 M1 5 V6 M7 5 V6 M8 5 V6 M0 6 V7 M0 7 H1 M1 6 V7 M7 6 V7 M7 7 H8 M8 6 V7 M1 7 H2 M1 7 V8 M1 8 H2 M2 7 V8 M2 8 H3 M2 8 V9 M2 9 H3 M3 8 H4 M3 9 H4 M4 8 H5 M4 9 H5 M5 8 H6 M5 9 H6 M6 8 V9" fill="none" stroke="#006796" stroke-width="0.14" stroke-linecap="square" stroke-linejoin="miter"/>
+      </g>
+      <g id="q-tail-flat-brand" shape-rendering="crispEdges">
+        <rect x="5" y="6" width="1" height="1" fill="#E5B42B"/><rect x="6" y="7" width="1" height="1" fill="#F2C43E"/><rect x="7" y="8" width="1" height="1" fill="#F2C43E"/><rect x="8" y="8" width="1" height="1" fill="#F2C43E"/>
+        <path d="M5 6 H6 M5 6 V7 M5 7 H6 M6 6 V7 M6 7 H7 M6 7 V8 M6 8 H7 M7 7 V8 M7 8 H8 M7 8 V9 M7 9 H8 M8 8 H9 M8 9 H9 M9 8 V9" fill="none" stroke="#AE7F00" stroke-width="0.12" stroke-linecap="square" stroke-linejoin="miter"/>
+      </g>
+      <g id="pixel-highlight-clusters" fill="#FFFFFF">
+        <rect x="2.25" y="0.25" width="0.50" height="0.25"/>
+        <rect x="0.25" y="2.25" width="0.25" height="0.50"/>
+        <rect x="8.25" y="8.25" width="0.50" height="0.25"/>
+      </g>
+    </g>
+  </g>
+</svg>

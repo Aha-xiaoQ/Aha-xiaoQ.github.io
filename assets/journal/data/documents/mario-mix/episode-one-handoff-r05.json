@@ -1,0 +1,6 @@
+{
+  "projectId": "mario-mix",
+  "id": "episode-one-handoff-r05",
+  "source": "packages/mario-mix/docs/HANDOFF_R05.md",
+  "markdown": "# R05 历史工程说明\n\nR05 建立了第一期输入逻辑的协作开发入口。以下介绍该阶段的工程结构，不作为当前发布状态或操作授权。\n\n## 源码与构建\n\n`packages/mario-mix` 提供无 npm 依赖的开发命令、Bill 控制片段的纯函数与桥接拆分、基线匹配的候选构建、独立端口的原始版与候选试玩、Node HTTP 安全检查及可选浏览器对照脚本。\n\n第一期 HTML 实际加载 `classic-mix.js`；旧 `bill-controls.js` 是片段。该输入逻辑应修改 `packages/mario-mix/src/input/`，经构建才生效。第一期其余代码仍在原运行文件中；R05 未重构第二、三期。\n\n构建基线由 `baseline.json` 记录。基线不一致时应核对来源与差异，保留较新游戏；候选构建不覆盖稳定试玩。测试、设备验收、素材许可及发布批准分别核验。\n\n## 继续阅读\n\n[源码入口](../README.md) · [架构](ARCHITECTURE.md) · [贡献方法](../CONTRIBUTING.md) · [验收方法](ACCEPTANCE.md) · [许可说明](LICENSING.md)\n"
+}

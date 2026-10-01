@@ -1,0 +1,2974 @@
+{
+  "schemaVersion": 2,
+  "level": "6-3",
+  "stage": {
+    "id": "template-6-3",
+    "title": "6-3 · 区域 1（地形检查）",
+    "driver": "platform-v1",
+    "status": "draft",
+    "entryRoom": "area-0",
+    "entrySpawn": "inspection-start",
+    "rooms": {
+      "area-0": "classic-6-3-area-0"
+    },
+    "characters": [
+      "lab-runner",
+      "lab-scout"
+    ],
+    "requiredCapabilities": [
+      "jump"
+    ],
+    "overlays": {},
+    "audio": "map-kit-silent",
+    "note": "分区几何检查，不是整关通关。原房间连接、条件循环与未实现机制保留在模板 topology / coverage；静态机关只用于检查位置。"
+  },
+  "inspectionStages": [
+    {
+      "id": "template-6-3",
+      "title": "6-3 · 区域 1（地形检查）",
+      "driver": "platform-v1",
+      "status": "draft",
+      "entryRoom": "area-0",
+      "entrySpawn": "inspection-start",
+      "rooms": {
+        "area-0": "classic-6-3-area-0"
+      },
+      "characters": [
+        "lab-runner",
+        "lab-scout"
+      ],
+      "requiredCapabilities": [
+        "jump"
+      ],
+      "overlays": {},
+      "audio": "map-kit-silent",
+      "note": "分区几何检查，不是整关通关。原房间连接、条件循环与未实现机制保留在模板 topology / coverage；静态机关只用于检查位置。"
+    }
+  ],
+  "maps": [
+    {
+      "id": "classic-6-3-area-0",
+      "title": "6-3 · 区域 1",
+      "tileSize": 16,
+      "width": 3072,
+      "height": 240,
+      "provenance": {
+        "kind": "transcribed",
+        "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+        "review": "pending",
+        "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+      },
+      "geometry": [
+        {
+          "id": "r000",
+          "x": 0,
+          "y": 208,
+          "w": 256,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r002",
+          "x": 288,
+          "y": 208,
+          "w": 48,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r003",
+          "x": 336,
+          "y": 144,
+          "w": 48,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r004",
+          "x": 384,
+          "y": 208,
+          "w": 48,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r005",
+          "x": 448,
+          "y": 208,
+          "w": 32,
+          "h": 8,
+          "collision": "oneway",
+          "motion": {
+            "axis": "y",
+            "min": 96,
+            "max": 208,
+            "speed": 0.75
+          }
+        },
+        {
+          "id": "r007",
+          "x": 496,
+          "y": 144,
+          "w": 64,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r008",
+          "x": 592,
+          "y": 208,
+          "w": 48,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r009",
+          "x": 608,
+          "y": 179,
+          "w": 16,
+          "h": 29,
+          "collision": "solid"
+        },
+        {
+          "id": "r010",
+          "x": 688,
+          "y": 208,
+          "w": 48,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r012",
+          "x": 696,
+          "y": 80,
+          "w": 32,
+          "h": 8,
+          "collision": "oneway",
+          "motion": {
+            "axis": "x",
+            "min": 624,
+            "max": 728,
+            "speed": 0.75
+          }
+        },
+        {
+          "id": "r013",
+          "x": 776,
+          "y": 114,
+          "w": 32,
+          "h": 8,
+          "collision": "oneway",
+          "motion": {
+            "axis": "x",
+            "min": 712,
+            "max": 800,
+            "speed": 0.75
+          }
+        },
+        {
+          "id": "r014",
+          "x": 784,
+          "y": 176,
+          "w": 64,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r015",
+          "x": 880,
+          "y": 48,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r016",
+          "x": 888,
+          "y": 96,
+          "w": 32,
+          "h": 8,
+          "collision": "oneway",
+          "motion": {
+            "axis": "x",
+            "min": 816,
+            "max": 928,
+            "speed": 0.75
+          }
+        },
+        {
+          "id": "r017",
+          "x": 960,
+          "y": 194,
+          "w": 32,
+          "h": 8,
+          "collision": "oneway",
+          "motion": {
+            "axis": "y",
+            "min": 104,
+            "max": 224,
+            "speed": 0.75
+          }
+        },
+        {
+          "id": "r018",
+          "x": 1040,
+          "y": 144,
+          "w": 80,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r019-left",
+          "x": 1128,
+          "y": 84,
+          "w": 32,
+          "h": 8,
+          "collision": "oneway"
+        },
+        {
+          "id": "r019-right",
+          "x": 1192,
+          "y": 148,
+          "w": 32,
+          "h": 8,
+          "collision": "oneway"
+        },
+        {
+          "id": "r021-left",
+          "x": 1256,
+          "y": 84,
+          "w": 32,
+          "h": 8,
+          "collision": "oneway"
+        },
+        {
+          "id": "r021-right",
+          "x": 1304,
+          "y": 148,
+          "w": 32,
+          "h": 8,
+          "collision": "oneway"
+        },
+        {
+          "id": "r022",
+          "x": 1360,
+          "y": 160,
+          "w": 80,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r023",
+          "x": 1360,
+          "y": 48,
+          "w": 48,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r025",
+          "x": 1440,
+          "y": 128,
+          "w": 48,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r026",
+          "x": 1488,
+          "y": 208,
+          "w": 48,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r027",
+          "x": 1552,
+          "y": 208,
+          "w": 64,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r029",
+          "x": 1648,
+          "y": 208,
+          "w": 48,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r030",
+          "x": 1712,
+          "y": 144,
+          "w": 80,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r031",
+          "x": 1808,
+          "y": 208,
+          "w": 80,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r032",
+          "x": 1856,
+          "y": 179,
+          "w": 16,
+          "h": 29,
+          "collision": "solid"
+        },
+        {
+          "id": "r033",
+          "x": 1944,
+          "y": 82,
+          "w": 32,
+          "h": 8,
+          "collision": "oneway",
+          "motion": {
+            "axis": "x",
+            "min": 1880,
+            "max": 1984,
+            "speed": 0.75
+          }
+        },
+        {
+          "id": "r034",
+          "x": 1968,
+          "y": 208,
+          "w": 48,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r035-left",
+          "x": 2024,
+          "y": 100,
+          "w": 32,
+          "h": 8,
+          "collision": "oneway"
+        },
+        {
+          "id": "r035-right",
+          "x": 2072,
+          "y": 148,
+          "w": 32,
+          "h": 8,
+          "collision": "oneway"
+        },
+        {
+          "id": "r037",
+          "x": 2112,
+          "y": 208,
+          "w": 64,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r038",
+          "x": 2112,
+          "y": 80,
+          "w": 48,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r039",
+          "x": 2160,
+          "y": 144,
+          "w": 64,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r040",
+          "x": 2256,
+          "y": 114,
+          "w": 32,
+          "h": 8,
+          "collision": "oneway"
+        },
+        {
+          "id": "r041",
+          "x": 2320,
+          "y": 98,
+          "w": 32,
+          "h": 8,
+          "collision": "oneway"
+        },
+        {
+          "id": "r043",
+          "x": 2384,
+          "y": 106,
+          "w": 32,
+          "h": 8,
+          "collision": "oneway"
+        },
+        {
+          "id": "r044",
+          "x": 2448,
+          "y": 90,
+          "w": 32,
+          "h": 8,
+          "collision": "oneway"
+        },
+        {
+          "id": "r046",
+          "x": 2492,
+          "y": 64,
+          "w": 48,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r047",
+          "x": 2560,
+          "y": 208,
+          "w": 512,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r049-base",
+          "x": 2672,
+          "y": 192,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        }
+      ],
+      "objects": [
+        {
+          "id": "r006-0-0",
+          "kind": "coin",
+          "x": 452,
+          "y": 34,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r006-1-0",
+          "kind": "coin",
+          "x": 468,
+          "y": 34,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r011-0-0",
+          "kind": "coin",
+          "x": 690,
+          "y": 66,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r011-1-0",
+          "kind": "coin",
+          "x": 706,
+          "y": 66,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r011-2-0",
+          "kind": "coin",
+          "x": 722,
+          "y": 66,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r011-3-0",
+          "kind": "coin",
+          "x": 738,
+          "y": 66,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r011-4-0",
+          "kind": "coin",
+          "x": 754,
+          "y": 66,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r011-5-0",
+          "kind": "coin",
+          "x": 770,
+          "y": 66,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r011-6-0",
+          "kind": "coin",
+          "x": 786,
+          "y": 66,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r020-0-0",
+          "kind": "coin",
+          "x": 1170,
+          "y": 82,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r020-1-0",
+          "kind": "coin",
+          "x": 1186,
+          "y": 82,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r024-0-0",
+          "kind": "coin",
+          "x": 1362,
+          "y": 34,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r024-1-0",
+          "kind": "coin",
+          "x": 1378,
+          "y": 34,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r024-2-0",
+          "kind": "coin",
+          "x": 1394,
+          "y": 34,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r028-0-0",
+          "kind": "coin",
+          "x": 1602,
+          "y": 130,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r028-1-0",
+          "kind": "coin",
+          "x": 1618,
+          "y": 130,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r028-2-0",
+          "kind": "coin",
+          "x": 1634,
+          "y": 130,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r028-3-0",
+          "kind": "coin",
+          "x": 1650,
+          "y": 130,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r036-0-0",
+          "kind": "coin",
+          "x": 2050,
+          "y": 82,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r036-1-0",
+          "kind": "coin",
+          "x": 2066,
+          "y": 82,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r042-0-0",
+          "kind": "coin",
+          "x": 2322,
+          "y": 114,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r042-1-0",
+          "kind": "coin",
+          "x": 2338,
+          "y": 114,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r045-0-0",
+          "kind": "coin",
+          "x": 2466,
+          "y": 34,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r045-1-0",
+          "kind": "coin",
+          "x": 2482,
+          "y": 34,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "inspection-start",
+          "kind": "spawn",
+          "x": 24,
+          "y": 184,
+          "w": 12,
+          "h": 24
+        }
+      ]
+    }
+  ],
+  "rooms": [
+    {
+      "roomId": "area-0",
+      "label": "区域 1",
+      "setting": "Overworld Night Alt2",
+      "origin": {
+        "area": 0,
+        "part": "base"
+      },
+      "declaredWidth": null,
+      "underwater": false,
+      "inspectionOnly": true,
+      "previewSupported": true,
+      "map": {
+        "id": "classic-6-3-area-0",
+        "title": "6-3 · 区域 1",
+        "tileSize": 16,
+        "width": 3072,
+        "height": 240,
+        "provenance": {
+          "kind": "transcribed",
+          "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+          "review": "pending",
+          "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+        },
+        "geometry": [
+          {
+            "id": "r000",
+            "x": 0,
+            "y": 208,
+            "w": 256,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r002",
+            "x": 288,
+            "y": 208,
+            "w": 48,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r003",
+            "x": 336,
+            "y": 144,
+            "w": 48,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r004",
+            "x": 384,
+            "y": 208,
+            "w": 48,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r005",
+            "x": 448,
+            "y": 208,
+            "w": 32,
+            "h": 8,
+            "collision": "oneway",
+            "motion": {
+              "axis": "y",
+              "min": 96,
+              "max": 208,
+              "speed": 0.75
+            }
+          },
+          {
+            "id": "r007",
+            "x": 496,
+            "y": 144,
+            "w": 64,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r008",
+            "x": 592,
+            "y": 208,
+            "w": 48,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r009",
+            "x": 608,
+            "y": 179,
+            "w": 16,
+            "h": 29,
+            "collision": "solid"
+          },
+          {
+            "id": "r010",
+            "x": 688,
+            "y": 208,
+            "w": 48,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r012",
+            "x": 696,
+            "y": 80,
+            "w": 32,
+            "h": 8,
+            "collision": "oneway",
+            "motion": {
+              "axis": "x",
+              "min": 624,
+              "max": 728,
+              "speed": 0.75
+            }
+          },
+          {
+            "id": "r013",
+            "x": 776,
+            "y": 114,
+            "w": 32,
+            "h": 8,
+            "collision": "oneway",
+            "motion": {
+              "axis": "x",
+              "min": 712,
+              "max": 800,
+              "speed": 0.75
+            }
+          },
+          {
+            "id": "r014",
+            "x": 784,
+            "y": 176,
+            "w": 64,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r015",
+            "x": 880,
+            "y": 48,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r016",
+            "x": 888,
+            "y": 96,
+            "w": 32,
+            "h": 8,
+            "collision": "oneway",
+            "motion": {
+              "axis": "x",
+              "min": 816,
+              "max": 928,
+              "speed": 0.75
+            }
+          },
+          {
+            "id": "r017",
+            "x": 960,
+            "y": 194,
+            "w": 32,
+            "h": 8,
+            "collision": "oneway",
+            "motion": {
+              "axis": "y",
+              "min": 104,
+              "max": 224,
+              "speed": 0.75
+            }
+          },
+          {
+            "id": "r018",
+            "x": 1040,
+            "y": 144,
+            "w": 80,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r019-left",
+            "x": 1128,
+            "y": 84,
+            "w": 32,
+            "h": 8,
+            "collision": "oneway"
+          },
+          {
+            "id": "r019-right",
+            "x": 1192,
+            "y": 148,
+            "w": 32,
+            "h": 8,
+            "collision": "oneway"
+          },
+          {
+            "id": "r021-left",
+            "x": 1256,
+            "y": 84,
+            "w": 32,
+            "h": 8,
+            "collision": "oneway"
+          },
+          {
+            "id": "r021-right",
+            "x": 1304,
+            "y": 148,
+            "w": 32,
+            "h": 8,
+            "collision": "oneway"
+          },
+          {
+            "id": "r022",
+            "x": 1360,
+            "y": 160,
+            "w": 80,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r023",
+            "x": 1360,
+            "y": 48,
+            "w": 48,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r025",
+            "x": 1440,
+            "y": 128,
+            "w": 48,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r026",
+            "x": 1488,
+            "y": 208,
+            "w": 48,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r027",
+            "x": 1552,
+            "y": 208,
+            "w": 64,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r029",
+            "x": 1648,
+            "y": 208,
+            "w": 48,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r030",
+            "x": 1712,
+            "y": 144,
+            "w": 80,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r031",
+            "x": 1808,
+            "y": 208,
+            "w": 80,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r032",
+            "x": 1856,
+            "y": 179,
+            "w": 16,
+            "h": 29,
+            "collision": "solid"
+          },
+          {
+            "id": "r033",
+            "x": 1944,
+            "y": 82,
+            "w": 32,
+            "h": 8,
+            "collision": "oneway",
+            "motion": {
+              "axis": "x",
+              "min": 1880,
+              "max": 1984,
+              "speed": 0.75
+            }
+          },
+          {
+            "id": "r034",
+            "x": 1968,
+            "y": 208,
+            "w": 48,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r035-left",
+            "x": 2024,
+            "y": 100,
+            "w": 32,
+            "h": 8,
+            "collision": "oneway"
+          },
+          {
+            "id": "r035-right",
+            "x": 2072,
+            "y": 148,
+            "w": 32,
+            "h": 8,
+            "collision": "oneway"
+          },
+          {
+            "id": "r037",
+            "x": 2112,
+            "y": 208,
+            "w": 64,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r038",
+            "x": 2112,
+            "y": 80,
+            "w": 48,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r039",
+            "x": 2160,
+            "y": 144,
+            "w": 64,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r040",
+            "x": 2256,
+            "y": 114,
+            "w": 32,
+            "h": 8,
+            "collision": "oneway"
+          },
+          {
+            "id": "r041",
+            "x": 2320,
+            "y": 98,
+            "w": 32,
+            "h": 8,
+            "collision": "oneway"
+          },
+          {
+            "id": "r043",
+            "x": 2384,
+            "y": 106,
+            "w": 32,
+            "h": 8,
+            "collision": "oneway"
+          },
+          {
+            "id": "r044",
+            "x": 2448,
+            "y": 90,
+            "w": 32,
+            "h": 8,
+            "collision": "oneway"
+          },
+          {
+            "id": "r046",
+            "x": 2492,
+            "y": 64,
+            "w": 48,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r047",
+            "x": 2560,
+            "y": 208,
+            "w": 512,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r049-base",
+            "x": 2672,
+            "y": 192,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          }
+        ],
+        "objects": [
+          {
+            "id": "r006-0-0",
+            "kind": "coin",
+            "x": 452,
+            "y": 34,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r006-1-0",
+            "kind": "coin",
+            "x": 468,
+            "y": 34,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r011-0-0",
+            "kind": "coin",
+            "x": 690,
+            "y": 66,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r011-1-0",
+            "kind": "coin",
+            "x": 706,
+            "y": 66,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r011-2-0",
+            "kind": "coin",
+            "x": 722,
+            "y": 66,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r011-3-0",
+            "kind": "coin",
+            "x": 738,
+            "y": 66,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r011-4-0",
+            "kind": "coin",
+            "x": 754,
+            "y": 66,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r011-5-0",
+            "kind": "coin",
+            "x": 770,
+            "y": 66,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r011-6-0",
+            "kind": "coin",
+            "x": 786,
+            "y": 66,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r020-0-0",
+            "kind": "coin",
+            "x": 1170,
+            "y": 82,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r020-1-0",
+            "kind": "coin",
+            "x": 1186,
+            "y": 82,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r024-0-0",
+            "kind": "coin",
+            "x": 1362,
+            "y": 34,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r024-1-0",
+            "kind": "coin",
+            "x": 1378,
+            "y": 34,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r024-2-0",
+            "kind": "coin",
+            "x": 1394,
+            "y": 34,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r028-0-0",
+            "kind": "coin",
+            "x": 1602,
+            "y": 130,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r028-1-0",
+            "kind": "coin",
+            "x": 1618,
+            "y": 130,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r028-2-0",
+            "kind": "coin",
+            "x": 1634,
+            "y": 130,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r028-3-0",
+            "kind": "coin",
+            "x": 1650,
+            "y": 130,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r036-0-0",
+            "kind": "coin",
+            "x": 2050,
+            "y": 82,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r036-1-0",
+            "kind": "coin",
+            "x": 2066,
+            "y": 82,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r042-0-0",
+            "kind": "coin",
+            "x": 2322,
+            "y": 114,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r042-1-0",
+            "kind": "coin",
+            "x": 2338,
+            "y": 114,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r045-0-0",
+            "kind": "coin",
+            "x": 2466,
+            "y": 34,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r045-1-0",
+            "kind": "coin",
+            "x": 2482,
+            "y": 34,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "inspection-start",
+            "kind": "spawn",
+            "x": 24,
+            "y": 184,
+            "w": 12,
+            "h": 24
+          }
+        ]
+      },
+      "markers": [
+        {
+          "id": "r001",
+          "kind": "spawn-zone-BulletBillsStart",
+          "source": {
+            "macro": "BulletBillsStart",
+            "x": 128,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r001"
+          },
+          "x": 256,
+          "y": 208
+        },
+        {
+          "id": "r002-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Tree",
+            "width": 24,
+            "x": 144,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r002"
+          },
+          "x": 288,
+          "y": 208
+        },
+        {
+          "id": "r003-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Tree",
+            "width": 24,
+            "x": 168,
+            "y": 32
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r003"
+          },
+          "x": 336,
+          "y": 144
+        },
+        {
+          "id": "r004-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Tree",
+            "width": 24,
+            "x": 192,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r004"
+          },
+          "x": 384,
+          "y": 208
+        },
+        {
+          "id": "r005-timing",
+          "kind": "platform-timing",
+          "source": {
+            "thing": "Platform",
+            "width": 16,
+            "floating": true,
+            "begin": 0,
+            "end": 56,
+            "x": 224,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r005"
+          },
+          "x": 448,
+          "y": 208
+        },
+        {
+          "id": "r007-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Tree",
+            "width": 32,
+            "x": 248,
+            "y": 32
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r007"
+          },
+          "x": 496,
+          "y": 144
+        },
+        {
+          "id": "r008-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Tree",
+            "width": 24,
+            "x": 296,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r008"
+          },
+          "x": 592,
+          "y": 208
+        },
+        {
+          "id": "r009-spring",
+          "kind": "springboard",
+          "source": {
+            "thing": "Springboard",
+            "x": 304,
+            "y": 14.5
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r009"
+          },
+          "x": 608,
+          "y": 179
+        },
+        {
+          "id": "r010-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Tree",
+            "width": 24,
+            "x": 344,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r010"
+          },
+          "x": 688,
+          "y": 208
+        },
+        {
+          "id": "r012-timing",
+          "kind": "platform-timing",
+          "source": {
+            "thing": "Platform",
+            "width": 16,
+            "sliding": true,
+            "begin": 312,
+            "end": 364,
+            "x": 348,
+            "y": 64
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r012"
+          },
+          "x": 696,
+          "y": 80
+        },
+        {
+          "id": "r013-timing",
+          "kind": "platform-timing",
+          "source": {
+            "thing": "Platform",
+            "width": 16,
+            "sliding": true,
+            "begin": 356,
+            "end": 400,
+            "x": 388,
+            "y": 47
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r013"
+          },
+          "x": 776,
+          "y": 114
+        },
+        {
+          "id": "r014-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Tree",
+            "width": 32,
+            "x": 392,
+            "y": 16
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r014"
+          },
+          "x": 784,
+          "y": 176
+        },
+        {
+          "id": "r015-contents",
+          "kind": "block-contents",
+          "source": {
+            "thing": "Block",
+            "contents": "Mushroom",
+            "x": 440,
+            "y": 80
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r015"
+          },
+          "x": 880,
+          "y": 48
+        },
+        {
+          "id": "r016-timing",
+          "kind": "platform-timing",
+          "source": {
+            "thing": "Platform",
+            "width": 16,
+            "sliding": true,
+            "begin": 408,
+            "end": 464,
+            "x": 444,
+            "y": 56
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r016"
+          },
+          "x": 888,
+          "y": 96
+        },
+        {
+          "id": "r017-timing",
+          "kind": "platform-timing",
+          "source": {
+            "thing": "Platform",
+            "width": 16,
+            "floating": true,
+            "begin": -8,
+            "end": 52,
+            "x": 480,
+            "y": 7
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r017"
+          },
+          "x": 960,
+          "y": 194
+        },
+        {
+          "id": "r018-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Tree",
+            "width": 40,
+            "x": 520,
+            "y": 32
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r018"
+          },
+          "x": 1040,
+          "y": 144
+        },
+        {
+          "id": "r019",
+          "kind": "coupled-scale",
+          "source": {
+            "macro": "Scale",
+            "widthLeft": 16,
+            "widthRight": 16,
+            "between": 32,
+            "dropRight": 56,
+            "x": 572,
+            "y": 86
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r019"
+          },
+          "x": 1144,
+          "y": 36
+        },
+        {
+          "id": "r021",
+          "kind": "coupled-scale",
+          "source": {
+            "macro": "Scale",
+            "widthLeft": 16,
+            "widthRight": 16,
+            "between": 24,
+            "dropRight": 56,
+            "x": 636,
+            "y": 86
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r021"
+          },
+          "x": 1272,
+          "y": 36
+        },
+        {
+          "id": "r022-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Tree",
+            "width": 40,
+            "x": 680,
+            "y": 24
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r022"
+          },
+          "x": 1360,
+          "y": 160
+        },
+        {
+          "id": "r023-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Tree",
+            "width": 24,
+            "x": 680,
+            "y": 80
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r023"
+          },
+          "x": 1360,
+          "y": 48
+        },
+        {
+          "id": "r025-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Tree",
+            "width": 24,
+            "x": 720,
+            "y": 40
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r025"
+          },
+          "x": 1440,
+          "y": 128
+        },
+        {
+          "id": "r026-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Tree",
+            "width": 24,
+            "x": 744,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r026"
+          },
+          "x": 1488,
+          "y": 208
+        },
+        {
+          "id": "r027-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Tree",
+            "width": 32,
+            "x": 776,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r027"
+          },
+          "x": 1552,
+          "y": 208
+        },
+        {
+          "id": "r029-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Tree",
+            "width": 24,
+            "x": 824,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r029"
+          },
+          "x": 1648,
+          "y": 208
+        },
+        {
+          "id": "r030-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Tree",
+            "width": 40,
+            "x": 856,
+            "y": 32
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r030"
+          },
+          "x": 1712,
+          "y": 144
+        },
+        {
+          "id": "r031-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Tree",
+            "width": 40,
+            "x": 904,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r031"
+          },
+          "x": 1808,
+          "y": 208
+        },
+        {
+          "id": "r032-spring",
+          "kind": "springboard",
+          "source": {
+            "thing": "Springboard",
+            "x": 928,
+            "y": 14.5
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r032"
+          },
+          "x": 1856,
+          "y": 179
+        },
+        {
+          "id": "r033-timing",
+          "kind": "platform-timing",
+          "source": {
+            "thing": "Platform",
+            "width": 16,
+            "sliding": true,
+            "begin": 940,
+            "end": 992,
+            "x": 972,
+            "y": 63
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r033"
+          },
+          "x": 1944,
+          "y": 82
+        },
+        {
+          "id": "r034-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Tree",
+            "width": 24,
+            "x": 984,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r034"
+          },
+          "x": 1968,
+          "y": 208
+        },
+        {
+          "id": "r035",
+          "kind": "coupled-scale",
+          "source": {
+            "macro": "Scale",
+            "widthLeft": 16,
+            "widthRight": 16,
+            "between": 24,
+            "dropLeft": 32,
+            "dropRight": 56,
+            "x": 1020,
+            "y": 86
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r035"
+          },
+          "x": 2040,
+          "y": 36
+        },
+        {
+          "id": "r037-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Tree",
+            "width": 32,
+            "x": 1056,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r037"
+          },
+          "x": 2112,
+          "y": 208
+        },
+        {
+          "id": "r038-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Tree",
+            "width": 24,
+            "x": 1056,
+            "y": 64
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r038"
+          },
+          "x": 2112,
+          "y": 80
+        },
+        {
+          "id": "r039-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Tree",
+            "width": 32,
+            "x": 1080,
+            "y": 32
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r039"
+          },
+          "x": 2160,
+          "y": 144
+        },
+        {
+          "id": "r040-motion",
+          "kind": "falling-platform",
+          "source": {
+            "thing": "Platform",
+            "width": 16,
+            "falling": true,
+            "x": 1128,
+            "y": 47
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r040"
+          },
+          "x": 2256,
+          "y": 114
+        },
+        {
+          "id": "r041-motion",
+          "kind": "falling-platform",
+          "source": {
+            "thing": "Platform",
+            "width": 16,
+            "falling": true,
+            "x": 1160,
+            "y": 55
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r041"
+          },
+          "x": 2320,
+          "y": 98
+        },
+        {
+          "id": "r043-motion",
+          "kind": "falling-platform",
+          "source": {
+            "thing": "Platform",
+            "width": 16,
+            "falling": true,
+            "x": 1192,
+            "y": 51
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r043"
+          },
+          "x": 2384,
+          "y": 106
+        },
+        {
+          "id": "r044-motion",
+          "kind": "falling-platform",
+          "source": {
+            "thing": "Platform",
+            "width": 16,
+            "falling": true,
+            "x": 1224,
+            "y": 59
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r044"
+          },
+          "x": 2448,
+          "y": 90
+        },
+        {
+          "id": "r046-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Tree",
+            "width": 24,
+            "x": 1246,
+            "y": 72
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r046"
+          },
+          "x": 2492,
+          "y": 64
+        },
+        {
+          "id": "r048",
+          "kind": "spawn-zone-BulletBillsStop",
+          "source": {
+            "macro": "BulletBillsStop",
+            "x": 1280,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r048"
+          },
+          "x": 2560,
+          "y": 208
+        },
+        {
+          "id": "r049",
+          "kind": "flagpole-finish",
+          "source": {
+            "macro": "EndOutsideCastle",
+            "large": true,
+            "walls": 15,
+            "transport": {
+              "map": "6-4"
+            },
+            "x": 1336,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r049"
+          },
+          "x": 2672,
+          "y": 208
+        },
+        {
+          "id": "r049-transport",
+          "kind": "source-transport-not-simulated",
+          "source": {
+            "macro": "EndOutsideCastle",
+            "large": true,
+            "walls": 15,
+            "transport": {
+              "map": "6-4"
+            },
+            "x": 1336,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r049"
+          },
+          "x": 2672,
+          "y": 208
+        }
+      ],
+      "semantics": [
+        {
+          "id": "r000",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 128,
+            "x": 0,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 0,
+            "y": 208,
+            "w": 256,
+            "h": 32
+          }
+        },
+        {
+          "id": "r002",
+          "kind": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "width": 24,
+            "x": 144,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 288,
+            "y": 208,
+            "w": 48,
+            "h": 16
+          }
+        },
+        {
+          "id": "r003",
+          "kind": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "width": 24,
+            "x": 168,
+            "y": 32
+          },
+          "referenceRect": {
+            "x": 336,
+            "y": 144,
+            "w": 48,
+            "h": 16
+          }
+        },
+        {
+          "id": "r004",
+          "kind": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "width": 24,
+            "x": 192,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 384,
+            "y": 208,
+            "w": 48,
+            "h": 16
+          }
+        },
+        {
+          "id": "r005",
+          "kind": "Platform",
+          "source": {
+            "thing": "Platform",
+            "width": 16,
+            "floating": true,
+            "begin": 0,
+            "end": 56,
+            "x": 224,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 448,
+            "y": 208,
+            "w": 32,
+            "h": 8
+          }
+        },
+        {
+          "id": "r007",
+          "kind": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "width": 32,
+            "x": 248,
+            "y": 32
+          },
+          "referenceRect": {
+            "x": 496,
+            "y": 144,
+            "w": 64,
+            "h": 16
+          }
+        },
+        {
+          "id": "r008",
+          "kind": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "width": 24,
+            "x": 296,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 592,
+            "y": 208,
+            "w": 48,
+            "h": 16
+          }
+        },
+        {
+          "id": "r009",
+          "kind": "Springboard",
+          "source": {
+            "thing": "Springboard",
+            "x": 304,
+            "y": 14.5
+          },
+          "referenceRect": {
+            "x": 608,
+            "y": 179,
+            "w": 16,
+            "h": 29
+          }
+        },
+        {
+          "id": "r010",
+          "kind": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "width": 24,
+            "x": 344,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 688,
+            "y": 208,
+            "w": 48,
+            "h": 16
+          }
+        },
+        {
+          "id": "r012",
+          "kind": "Platform",
+          "source": {
+            "thing": "Platform",
+            "width": 16,
+            "sliding": true,
+            "begin": 312,
+            "end": 364,
+            "x": 348,
+            "y": 64
+          },
+          "referenceRect": {
+            "x": 696,
+            "y": 80,
+            "w": 32,
+            "h": 8
+          }
+        },
+        {
+          "id": "r013",
+          "kind": "Platform",
+          "source": {
+            "thing": "Platform",
+            "width": 16,
+            "sliding": true,
+            "begin": 356,
+            "end": 400,
+            "x": 388,
+            "y": 47
+          },
+          "referenceRect": {
+            "x": 776,
+            "y": 114,
+            "w": 32,
+            "h": 8
+          }
+        },
+        {
+          "id": "r014",
+          "kind": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "width": 32,
+            "x": 392,
+            "y": 16
+          },
+          "referenceRect": {
+            "x": 784,
+            "y": 176,
+            "w": 64,
+            "h": 16
+          }
+        },
+        {
+          "id": "r015",
+          "kind": "Block",
+          "source": {
+            "thing": "Block",
+            "contents": "Mushroom",
+            "x": 440,
+            "y": 80
+          },
+          "referenceRect": {
+            "x": 880,
+            "y": 48,
+            "w": 16,
+            "h": 16
+          }
+        },
+        {
+          "id": "r016",
+          "kind": "Platform",
+          "source": {
+            "thing": "Platform",
+            "width": 16,
+            "sliding": true,
+            "begin": 408,
+            "end": 464,
+            "x": 444,
+            "y": 56
+          },
+          "referenceRect": {
+            "x": 888,
+            "y": 96,
+            "w": 32,
+            "h": 8
+          }
+        },
+        {
+          "id": "r017",
+          "kind": "Platform",
+          "source": {
+            "thing": "Platform",
+            "width": 16,
+            "floating": true,
+            "begin": -8,
+            "end": 52,
+            "x": 480,
+            "y": 7
+          },
+          "referenceRect": {
+            "x": 960,
+            "y": 194,
+            "w": 32,
+            "h": 8
+          }
+        },
+        {
+          "id": "r018",
+          "kind": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "width": 40,
+            "x": 520,
+            "y": 32
+          },
+          "referenceRect": {
+            "x": 1040,
+            "y": 144,
+            "w": 80,
+            "h": 16
+          }
+        },
+        {
+          "id": "r019-left",
+          "kind": "ScalePlatform",
+          "source": {
+            "x": 564,
+            "y": 62
+          },
+          "referenceRect": {
+            "x": 1128,
+            "y": 84,
+            "w": 32,
+            "h": 8
+          }
+        },
+        {
+          "id": "r019-right",
+          "kind": "ScalePlatform",
+          "source": {
+            "x": 596,
+            "y": 30
+          },
+          "referenceRect": {
+            "x": 1192,
+            "y": 148,
+            "w": 32,
+            "h": 8
+          }
+        },
+        {
+          "id": "r021-left",
+          "kind": "ScalePlatform",
+          "source": {
+            "x": 628,
+            "y": 62
+          },
+          "referenceRect": {
+            "x": 1256,
+            "y": 84,
+            "w": 32,
+            "h": 8
+          }
+        },
+        {
+          "id": "r021-right",
+          "kind": "ScalePlatform",
+          "source": {
+            "x": 652,
+            "y": 30
+          },
+          "referenceRect": {
+            "x": 1304,
+            "y": 148,
+            "w": 32,
+            "h": 8
+          }
+        },
+        {
+          "id": "r022",
+          "kind": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "width": 40,
+            "x": 680,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 1360,
+            "y": 160,
+            "w": 80,
+            "h": 16
+          }
+        },
+        {
+          "id": "r023",
+          "kind": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "width": 24,
+            "x": 680,
+            "y": 80
+          },
+          "referenceRect": {
+            "x": 1360,
+            "y": 48,
+            "w": 48,
+            "h": 16
+          }
+        },
+        {
+          "id": "r025",
+          "kind": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "width": 24,
+            "x": 720,
+            "y": 40
+          },
+          "referenceRect": {
+            "x": 1440,
+            "y": 128,
+            "w": 48,
+            "h": 16
+          }
+        },
+        {
+          "id": "r026",
+          "kind": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "width": 24,
+            "x": 744,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 1488,
+            "y": 208,
+            "w": 48,
+            "h": 16
+          }
+        },
+        {
+          "id": "r027",
+          "kind": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "width": 32,
+            "x": 776,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 1552,
+            "y": 208,
+            "w": 64,
+            "h": 16
+          }
+        },
+        {
+          "id": "r029",
+          "kind": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "width": 24,
+            "x": 824,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 1648,
+            "y": 208,
+            "w": 48,
+            "h": 16
+          }
+        },
+        {
+          "id": "r030",
+          "kind": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "width": 40,
+            "x": 856,
+            "y": 32
+          },
+          "referenceRect": {
+            "x": 1712,
+            "y": 144,
+            "w": 80,
+            "h": 16
+          }
+        },
+        {
+          "id": "r031",
+          "kind": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "width": 40,
+            "x": 904,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 1808,
+            "y": 208,
+            "w": 80,
+            "h": 16
+          }
+        },
+        {
+          "id": "r032",
+          "kind": "Springboard",
+          "source": {
+            "thing": "Springboard",
+            "x": 928,
+            "y": 14.5
+          },
+          "referenceRect": {
+            "x": 1856,
+            "y": 179,
+            "w": 16,
+            "h": 29
+          }
+        },
+        {
+          "id": "r033",
+          "kind": "Platform",
+          "source": {
+            "thing": "Platform",
+            "width": 16,
+            "sliding": true,
+            "begin": 940,
+            "end": 992,
+            "x": 972,
+            "y": 63
+          },
+          "referenceRect": {
+            "x": 1944,
+            "y": 82,
+            "w": 32,
+            "h": 8
+          }
+        },
+        {
+          "id": "r034",
+          "kind": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "width": 24,
+            "x": 984,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 1968,
+            "y": 208,
+            "w": 48,
+            "h": 16
+          }
+        },
+        {
+          "id": "r035-left",
+          "kind": "ScalePlatform",
+          "source": {
+            "x": 1012,
+            "y": 54
+          },
+          "referenceRect": {
+            "x": 2024,
+            "y": 100,
+            "w": 32,
+            "h": 8
+          }
+        },
+        {
+          "id": "r035-right",
+          "kind": "ScalePlatform",
+          "source": {
+            "x": 1036,
+            "y": 30
+          },
+          "referenceRect": {
+            "x": 2072,
+            "y": 148,
+            "w": 32,
+            "h": 8
+          }
+        },
+        {
+          "id": "r037",
+          "kind": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "width": 32,
+            "x": 1056,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 2112,
+            "y": 208,
+            "w": 64,
+            "h": 16
+          }
+        },
+        {
+          "id": "r038",
+          "kind": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "width": 24,
+            "x": 1056,
+            "y": 64
+          },
+          "referenceRect": {
+            "x": 2112,
+            "y": 80,
+            "w": 48,
+            "h": 16
+          }
+        },
+        {
+          "id": "r039",
+          "kind": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "width": 32,
+            "x": 1080,
+            "y": 32
+          },
+          "referenceRect": {
+            "x": 2160,
+            "y": 144,
+            "w": 64,
+            "h": 16
+          }
+        },
+        {
+          "id": "r040",
+          "kind": "Platform",
+          "source": {
+            "thing": "Platform",
+            "width": 16,
+            "falling": true,
+            "x": 1128,
+            "y": 47
+          },
+          "referenceRect": {
+            "x": 2256,
+            "y": 114,
+            "w": 32,
+            "h": 8
+          }
+        },
+        {
+          "id": "r041",
+          "kind": "Platform",
+          "source": {
+            "thing": "Platform",
+            "width": 16,
+            "falling": true,
+            "x": 1160,
+            "y": 55
+          },
+          "referenceRect": {
+            "x": 2320,
+            "y": 98,
+            "w": 32,
+            "h": 8
+          }
+        },
+        {
+          "id": "r043",
+          "kind": "Platform",
+          "source": {
+            "thing": "Platform",
+            "width": 16,
+            "falling": true,
+            "x": 1192,
+            "y": 51
+          },
+          "referenceRect": {
+            "x": 2384,
+            "y": 106,
+            "w": 32,
+            "h": 8
+          }
+        },
+        {
+          "id": "r044",
+          "kind": "Platform",
+          "source": {
+            "thing": "Platform",
+            "width": 16,
+            "falling": true,
+            "x": 1224,
+            "y": 59
+          },
+          "referenceRect": {
+            "x": 2448,
+            "y": 90,
+            "w": 32,
+            "h": 8
+          }
+        },
+        {
+          "id": "r046",
+          "kind": "TreeTop",
+          "source": {
+            "macro": "Tree",
+            "width": 24,
+            "x": 1246,
+            "y": 72
+          },
+          "referenceRect": {
+            "x": 2492,
+            "y": 64,
+            "w": 48,
+            "h": 16
+          }
+        },
+        {
+          "id": "r047",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 256,
+            "x": 1280,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 2560,
+            "y": 208,
+            "w": 512,
+            "h": 32
+          }
+        },
+        {
+          "id": "r049-base",
+          "kind": "Stone",
+          "source": {
+            "macro": "EndOutsideCastle",
+            "large": true,
+            "walls": 15,
+            "transport": {
+              "map": "6-4"
+            },
+            "x": 1336,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 2672,
+            "y": 192,
+            "w": 16,
+            "h": 16
+          }
+        }
+      ],
+      "sourceRecordCount": 50
+    }
+  ],
+  "topology": {
+    "locations": [
+      {
+        "area": 0,
+        "entry": "Plain"
+      }
+    ],
+    "areas": [
+      {
+        "area": 0,
+        "setting": "Overworld Night Alt2",
+        "underwater": false,
+        "exit": null,
+        "sections": []
+      }
+    ],
+    "links": [
+      {
+        "from": {
+          "area": 0,
+          "part": "base",
+          "record": "r049"
+        },
+        "kind": "world",
+        "target": {
+          "map": "6-4"
+        }
+      }
+    ],
+    "issues": []
+  },
+  "coverage": {
+    "placementRecords": 50,
+    "areas": 1,
+    "sectionViews": 0,
+    "views": 1,
+    "geometry": 43,
+    "objects": 25,
+    "pending": [
+      "block-contents",
+      "coupled-scale",
+      "decorative-trunk",
+      "falling-platform",
+      "flagpole-finish",
+      "platform-timing",
+      "source-transport-not-simulated",
+      "spawn-zone-BulletBillsStart",
+      "spawn-zone-BulletBillsStop",
+      "springboard"
+    ],
+    "details": [
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r001",
+        "kind": "spawn-zone-BulletBillsStart"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r002-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r003-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r004-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r005-timing",
+        "kind": "platform-timing"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r007-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r008-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r009-spring",
+        "kind": "springboard"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r010-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r012-timing",
+        "kind": "platform-timing"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r013-timing",
+        "kind": "platform-timing"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r014-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r015-contents",
+        "kind": "block-contents"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r016-timing",
+        "kind": "platform-timing"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r017-timing",
+        "kind": "platform-timing"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r018-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r019",
+        "kind": "coupled-scale"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r021",
+        "kind": "coupled-scale"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r022-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r023-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r025-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r026-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r027-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r029-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r030-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r031-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r032-spring",
+        "kind": "springboard"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r033-timing",
+        "kind": "platform-timing"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r034-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r035",
+        "kind": "coupled-scale"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r037-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r038-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r039-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r040-motion",
+        "kind": "falling-platform"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r041-motion",
+        "kind": "falling-platform"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r043-motion",
+        "kind": "falling-platform"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r044-motion",
+        "kind": "falling-platform"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r046-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r048",
+        "kind": "spawn-zone-BulletBillsStop"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r049",
+        "kind": "flagpole-finish"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r049-transport",
+        "kind": "source-transport-not-simulated"
+      }
+    ],
+    "geometryReview": "reference-transcribed-pending-original-review",
+    "playability": "partition-inspection-not-level-completion",
+    "underwaterAreas": 0,
+    "sourceIssues": 0
+  },
+  "source": {
+    "repository": "umaim/Mario",
+    "commit": "980c275358704a49f868567aeec5bdfb347c4781",
+    "path": "Source/settings/maps.js",
+    "gitBlob": "657d750ad65bb06c0e63a3d8958736f9236ec3c0",
+    "range": "Worlds 1–8 gameplay layout transcription",
+    "url": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+    "method": "Manual transcription of gameplay placement records, area locations and section definitions. Pure background scenery omitted; not a byte-identical source export or original-game certification.",
+    "omittedVisuals": [
+      "Pattern",
+      "DecorativeBack",
+      "DecorativeDot",
+      "CustomText"
+    ]
+  }
+}
