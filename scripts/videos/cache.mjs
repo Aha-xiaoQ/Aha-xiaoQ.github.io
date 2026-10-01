@@ -2,6 +2,7 @@
 import {wirePlatform} from '../platform/wire.mjs';
 /** Version shared assets on native entry templates that no page generator owns. */
 import path from 'node:path';
+import {normalizeText} from '../lib/text-records.mjs';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import {readOptional,writeAtomic} from '../lib/safe-path.mjs';
@@ -14,7 +15,7 @@ export function versionEntry(text,root=ROOT){
   const p=url.replace(/^(?:\.\.\/)+/,'').replace(/^\//,'').split(/[?#]/)[0];
   if(!ASSETS.includes(p))return all;
   const bytes=readOptional(root,p);if(!bytes)throw Error('缺少版本资源：'+p);
-  return a+url.split(/[?#]/)[0]+'?v='+createHash('sha256').update(bytes).digest('hex').slice(0,16)+z;
+  return a+url.split(/[?#]/)[0]+'?v='+createHash('sha256').update(normalizeText(bytes)).digest('hex').slice(0,16)+z;
  }),{root});
 }
 export function sync(root=ROOT,{check=false}={}){
