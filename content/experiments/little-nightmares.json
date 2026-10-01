@@ -11,22 +11,15 @@
   "format": "程序动画短片",
   "video": {
     "provider": "bilibili",
-    "status": "pending"
+    "bvid": "BV1PVa66BErX"
   },
   "cover": {
     "src": "/assets/lab/little-nightmares-cover.webp",
     "alt": "长臂角色俯身伸手，小六穿着黄色雨衣站在诺姆身旁，前景是暂停与播放装置。"
   },
   "provenance": "受《小小梦魇》启发的非官方程序动画短片。播放器的按钮与时间轴走进了故事；小六与诺姆们在机械和长臂之间寻找出口，也没有落下身边的同伴。门外的港湾是为本片设计的延伸空间。",
-  "verification": "136 秒，1920×1080，60 fps。MP4 保留完整剧情与标准三连片尾；HTML 为实时剧情动画，可暂停、跳转和转动场景，不是角色操控游戏。模型、场景与动作由程序重建，使用 GPT-6 Astra 辅助创作。配乐：Tobias Lilja《Little Nightmares》原声；环境与动作音为程序合成。片尾字体：霞鹜文楷。游戏、角色与音乐权益归相应权利人。哔哩哔哩链接待投稿后补充。",
+  "verification": "136 秒，1920×1080，60 fps。视频成片含完整剧情与标准三连片尾；HTML 为实时剧情动画，可暂停、跳转和转动场景，不是角色操控游戏。模型、场景与动作由程序重建，使用 GPT-6 Astra 辅助创作。配乐：Tobias Lilja《Little Nightmares》原声；环境与动作音为程序合成。片尾字体：霞鹜文楷。游戏、角色与音乐权益归相应权利人。完整视频已在哔哩哔哩发布。",
   "resources": [
-    {
-      "role": "video",
-      "label": "观看 MP4 成片（含标准片尾）",
-      "href": "/experiments/releases/little-nightmares/film-r13.mp4",
-      "bytes": 93275706,
-      "sha256": "f5f43b61a21089f312318c3e3cb0ff91683c6ea4220f0a9d72aed4e8f2e293cd"
-    },
     {
       "role": "html",
       "label": "打开 HTML 动画",
