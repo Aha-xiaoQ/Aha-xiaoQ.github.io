@@ -32,7 +32,7 @@ function sizeNote(note){
     footer.replaceChildren(author);
     const time=document.createElement('time');
     time.dateTime=note.createdAt;
-    time.textContent=(cloudMode?'提交时间 · ':'预览时间 · ')+new Intl.DateTimeFormat('zh-CN',{timeZone:'Asia/Shanghai',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date(note.createdAt));
+    time.textContent=(note.reconstructed?'重建时间 · ':cloudMode?'提交时间 · ':'预览时间 · ')+new Intl.DateTimeFormat('zh-CN',{timeZone:'Asia/Shanghai',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date(note.createdAt));
     time.title='北京时间 · '+note.createdAt;
     footer.append(time);
   }
@@ -135,7 +135,7 @@ if(cloudMode){
   finder.addEventListener('input',stopPlacement);
   $('cancel').onclick=()=>{stopPlacement();$('status').textContent='已取消，草稿保留。';};
   summary.textContent='查找已加载的便签';
-  ownership.textContent='仅展示云端数据；“我的便签”依赖当前浏览器身份，清除网站数据后可能无法找回。';
+  ownership.textContent='“我的便签”仅包含新服务中在当前浏览器写下的便签；清除网站数据后可能无法找回编辑权。旧便签由站主管理。';
   const all=document.createElement('button'),mine=document.createElement('button'),more=document.createElement('button');
   all.textContent='公开便签';mine.textContent='我的便签';more.textContent='加载更多';
   all.type=mine.type=more.type='button';more.hidden=true;
@@ -161,7 +161,7 @@ if(cloudMode){
     if(busy)return;stopPlacement();busy=true;occupancyReady=false;controls();
     $('status').textContent='正在读取云端便签…';
     try{
-      const {loadCloudPage}=await import('./cloud-preview.mjs?v=dd5b8227f5b3e07a8da6');
+      const {loadCloudPage}=await import('./cloud-preview.mjs?v=sites-20261001');
       const page=await loadCloudPage(requestedOwn,reset?null:cursor);
       const context=[];let next=null;
       if(requestedOwn){do{const other=await loadCloudPage(false,next);context.push(...other.rows);next=other.next;if(context.length>5000)throw Error('OCCUPANCY_TOO_LARGE');}while(next);}
@@ -171,7 +171,7 @@ if(cloudMode){
       if(reset){for(const note of notes.values())note.el.remove();notes.clear();select(null);resizeViewport();}
       for(const row of page.rows){
         if([...notes.values()].some(n=>n.remoteId===row.id))continue;
-        pending={text:row.body,nick:row.placeholder?'待审核':row.nickname||'匿名访客',rawNick:row.nickname,color:row.color,shape:row.shape,createdAt:row.created_at,remoteId:row.id,revision:row.revision,status:row.status,owned:own,placeholder:!!row.placeholder,reservedWidth:row.width,reservedHeight:row.height};
+        pending={text:row.body,nick:row.placeholder?'待审核':row.nickname||'匿名访客',rawNick:row.nickname,color:row.color,shape:row.shape,createdAt:row.created_at,remoteId:row.id,revision:row.revision,reconstructed:row.reconstructed,status:row.status,owned:own,placeholder:!!row.placeholder,reservedWidth:row.width,reservedHeight:row.height};
         place(0,0);selected.x=row.x;selected.y=row.y;position(selected);
         selected.el.setAttribute('aria-label',`便签：${selected.nick}`);
         selected.el.classList.toggle('owned',own);
@@ -196,7 +196,7 @@ if(cloudMode){
     stopPlacement();busy=true;controls();$('status').textContent=target?'正在保存位置…':'正在提交，请勿重复点击…';
     let success=false,savedId=null;
     try{
-      const {getCloudClient}=await import('./cloud-preview.mjs?v=dd5b8227f5b3e07a8da6');const api=await getCloudClient();
+      const {getCloudClient}=await import('./cloud-preview.mjs?v=sites-20261001');const api=await getCloudClient();
       if(target){if(!await api.move(target.remoteId,px,py))throw Error('NOT_OWNED');savedId=target.remoteId;
         let page,before=null,saved;do{page=await api.mine(before);saved=page.rows.find(row=>row.id===savedId);before=page.next;}while(!saved&&before);
         if(!saved){target.moveUncertain=true;throw Error('MOVE_READ_UNCONFIRMED');}
@@ -224,7 +224,7 @@ if(cloudMode){
   retryButton.onclick=async()=>{
     if(busy||!uncertain||!lastSubmission)return;busy=true;controls();$('status').textContent='正在重试同一次提交，不会重复新增便签…';
     let success=false;
-    try{const {getCloudClient}=await import('./cloud-preview.mjs?v=dd5b8227f5b3e07a8da6');await (await getCloudClient()).submit(lastSubmission);if(text.value===lastSubmission.body){text.value='';$('counter').textContent='0 / 500 字';}lastSubmission=null;uncertain=false;success=true;}
+    try{const {getCloudClient}=await import('./cloud-preview.mjs?v=sites-20261001');await (await getCloudClient()).submit(lastSubmission);if(text.value===lastSubmission.body){text.value='';$('counter').textContent='0 / 500 字';}lastSubmission=null;uncertain=false;success=true;}
     catch(error){if(['SUBMISSIONS_PAUSED','INVALID_NOTE','RATE_LIMITED','WALL_CAPACITY_REACHED','REQUEST_RETIRED','REQUEST_CONFLICT'].includes(error.message)){uncertain=false;lastSubmission=null;}$('status').textContent=error.message==='REQUEST_RETIRED'?'这次提交对应的便签已删除，不会重新创建。':errorText(error);}
     finally{busy=false;controls();}
     if(success){await load(true,true);$('status').textContent='提交结果已确认，请在“我的便签”查看审核状态。';}
@@ -234,7 +234,7 @@ if(cloudMode){
     if(busy||editTarget||uncertain)return;
     if(!selected?.owned){$('status').textContent='请先打开“我的便签”，选中要编辑的便签。';return;}
     if(!['pending','approved'].includes(selected.status)){$('status').textContent='这张便签已被撤下或未通过审核，可以删除，但不能直接修改后恢复。';return;}
-    if(!Number.isInteger(selected.revision)){$('status').textContent='编辑功能需要先完成云端 008 升级，再刷新此页。';return;}
+    if(!Number.isInteger(selected.revision)){$('status').textContent='便签版本信息不完整，请刷新页面后重试。';return;}
     stopPlacement();editTarget={...selected};draftBackup=fields();fillFields({body:selected.text,nickname:selected.rawNick||'',color:selected.color,shape:selected.shape});
     heading.textContent=`编辑便签 #${selected.remoteId}`;submitButton.textContent='保存修改并送审';cancelEdit.hidden=editHelp.hidden=false;controls();
     removeHome=document.createComment('remove-home');$('remove').before(removeHome);form.append($('remove'));
@@ -246,7 +246,7 @@ if(cloudMode){
   async function saveEdit(){
     if(busy||!editTarget)return;const target=editTarget,draft=fields();busy=true;controls();$('status').textContent='正在保存修改…';
     let ok=false;
-    try{const {getCloudClient}=await import('./cloud-preview.mjs?v=dd5b8227f5b3e07a8da6');await (await getCloudClient()).edit(target.remoteId,target.revision,draft);ok=true;}
+    try{const {getCloudClient}=await import('./cloud-preview.mjs?v=sites-20261001');await (await getCloudClient()).edit(target.remoteId,target.revision,draft);ok=true;}
     catch(e){$('status').textContent=({STALE_NOTE:'便签已有更新。请复制保留你的修改，再取消编辑、刷新“我的便签”后重试。',NOT_OWNED:'便签已删除或不属于当前访客，修改未保存。',EDIT_NOT_ALLOWED:'便签已被撤下，不能继续编辑。'})[e.message]||errorText(e);}
     finally{busy=false;controls();}
     if(ok){endEdit();const loaded=await load(true,true);const saved=[...notes.values()].find(n=>n.remoteId===target.remoteId);if(saved){select(saved);goTo(saved.x+saved.width/2,saved.y+saved.height/2);}const shifted=saved&&(saved.x!==target.x||saved.y!==target.y);$('status').textContent=loaded?'修改已保存，请查看最新审核状态。'+(shifted?'尺寸变化，已自动移到附近空位。':''):'修改已保存，但读取失败，请刷新“我的便签”核对。';}
@@ -255,7 +255,7 @@ if(cloudMode){
     const target=editTarget||selected;if(busy||!target?.owned)return;
     if(!window.confirm(translate('删除这张便签？删除后将不再展示。')))return;
     stopPlacement();busy=true;controls();
-    try{const {getCloudClient}=await import('./cloud-preview.mjs?v=dd5b8227f5b3e07a8da6');if(!await (await getCloudClient()).remove(target.remoteId))throw Error('NOT_OWNED');notes.delete(target.id);target.el.remove();select(null);if(editTarget)endEdit();$('status').textContent='便签已删除，占位已释放。';}
+    try{const {getCloudClient}=await import('./cloud-preview.mjs?v=sites-20261001');if(!await (await getCloudClient()).remove(target.remoteId))throw Error('NOT_OWNED');notes.delete(target.id);target.el.remove();select(null);if(editTarget)endEdit();$('status').textContent='便签已删除，占位已释放。';}
     catch{$('status').textContent='删除结果未确认，请刷新“我的便签”核对。';}
     finally{busy=false;controls();}
   };

@@ -1,5 +1,5 @@
 import {validateDocumentation} from '../platform/contracts.mjs';
-import {validateChapterPlan} from '../chapters/view.mjs?v=release-r24-3d0f1554ee0e';
+import {validateChapterPlan} from '../chapters/view.mjs?v=release-r24-2fdf5fc0eb58';
 /** R04 data boundary. No DOM, network, browser storage or project-name branches. */
 export const REVISION='journal-r04';
 export const VIEWS=['overview','tasks','docs','updates','contribute','manage'];
