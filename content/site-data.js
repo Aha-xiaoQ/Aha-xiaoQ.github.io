@@ -7,11 +7,11 @@ globalThis.SITE_DATA = {
     "interests": [],
     "now": {
       "label": "最近作品",
-      "sourceId": "bad-apple",
-      "title": "Bad Apple!!｜光织放映室",
-      "summary": "让光束、微镜与琴键一起演奏 Bad Apple!!。从黑白影绘到彩色与 MMD，在一间不断进化的放映室里重温这首歌。",
-      "updatedAt": "2026-09-30",
-      "href": "/notes/lab/docs/bad-apple/",
+      "sourceId": "little-nightmares",
+      "title": "小小梦魇｜帧外 · 等你一起走",
+      "summary": "当暂停、快进与倒带成了世界的规则，小六和诺姆试着走出播放器，寻找一条一起离开的路。",
+      "updatedAt": "2026-10-01",
+      "href": "/notes/lab/docs/little-nightmares/",
       "entryLabel": "实验室",
       "items": []
     },
