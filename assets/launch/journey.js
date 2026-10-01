@@ -21,7 +21,6 @@
       <section class="q-launch-panel" aria-labelledby="q-play-heading"><p class="eyebrow">PLAY IN YOUR BROWSER</p><h2 id="q-play-heading">开始游玩</h2>
         <p>${escape(proof?.accessNote || '在浏览器中打开，按游戏内提示开始。')}</p>
         <div class="actions">${action('开始试玩', play, true)}${item.videoUrl ? action('观看演示', item.videoUrl) : root.SITE_ACTIONS.videoPending(item)}${item.downloadUrl ? action('下载游戏', local(item.downloadUrl), false, true) : ''}</div>
-        <p class="q-launch-note">这里打开已发布的试玩页。开发源码与实验功能在“开发”栏目中单独说明。</p>
         <details class="q-launch-help"><summary>操作与常见问题</summary><p>按键说明、声音和暂停选项请查看游戏内菜单。浏览器未播放声音时，先与游戏页面交互，再检查音量；也可以先静音体验。</p><p>${item.downloadUrl ? '下载后解压，再打开其中的 index.html。' : ''}浏览器游戏与可下载文件的可用内容，以该版本说明为准。</p><a href="/play-guide/">查看试玩帮助</a></details>
         <div class="q-launch-links"><a href="/games/">全部游戏</a><button type="button" data-copy-page>复制本页链接</button><span role="status" data-page-copy-status></span></div>
       </section></div></section>`;

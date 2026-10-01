@@ -2,7 +2,7 @@
 
 ## 可视化编辑地图
 
-双击 Open-Map-Editor.cmd，或运行 node scripts/editor-launch.mjs。需要 Node.js 22 或以上，无需 npm install。浏览器中可以编辑地图、保存工程、使用马里奥试玩并导出离线 HTML。详见 [地图工坊使用说明](docs/MAP_EDITOR_GUIDE.md)。地图工坊实现已于 2026-09-20 合入主分支，当前为测试版；复杂路线与设备兼容性继续核验。网站可从工具页直接进入。
+双击 Open-Map-Editor.cmd，或运行 node scripts/editor-launch.mjs。需要 Node.js 22 或以上，无需 npm install。浏览器中可以编辑地图、保存工程、选择马里奥或魂斗罗比尔试玩，并导出离线 HTML。详见 [地图工坊使用说明](docs/MAP_EDITOR_GUIDE.md)。当前为测试版；复杂路线与设备兼容性继续核验。网站可从工具页直接进入。
 
 ## 选择地图
 
@@ -36,7 +36,7 @@ npm run new -- --base 8-4 --room area-1-section-0-before --id castle-study --tit
 
 `reference/` 保存参考转录与来源；`content/catalog.json` 管理角色、制作状态、负责人和 Issue；`content/adaptations/` 是个人方案；`generated/levels/` 是模板、机制清单、源记录、SVG 和 Tiled 文件。
 
-世界 1–8 均有参考模板。前三期试玩状态保持原样，奥日 1-4 仍在开发中。其余 28 关的正式角色尚未指定；模板完成度不自动提升游戏发布状态。
+世界 1–8 均有参考模板。1-1 至 1-4 四期独立试玩已上线，第四期为索尼克与奥日。其余 28 关的正式角色尚未指定；模板完成度不自动提升游戏发布状态。
 
 ## 检查与分发
 

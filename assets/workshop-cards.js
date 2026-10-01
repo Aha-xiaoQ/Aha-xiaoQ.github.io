@@ -20,7 +20,7 @@
   }
   function toolCard(item,index=0,options={}){
     const b=options.base||'',m=media(item,'tool',index,options);
-    return `<article class="pw-tool-card" role="listitem" data-content-id="${e(item.id)}"><div class="pw-tool-copy"><span class="pw-kicker">${e(item.status||'工具')}</span><h2>${e(item.title)}</h2><p>${e(item.summary)}</p><div class="actions">${item.url?`${A.link(item.linkLabel||'打开工具',href(item.url,b),{className:'button',variant:'primary',ariaLabel:'打开 '+item.title})}`:''}${item.videoUrl?`${A.link('观看视频',href(item.videoUrl,b),{className:'button button--quiet',variant:'secondary',newTab:true,meta:''})}`:''}</div></div>${item.videoSlot===true?A.videoPanel(item,{cover:m.src?href(m.src,b):'',eager:index===0}):M.render(m,{base:b,index})}</article>`;
+    return `<article class="pw-tool-card" role="listitem" data-content-id="${e(item.id)}"><div class="pw-tool-copy"><span class="pw-kicker">${e(item.status||'工具')}</span><h2>${e(item.title)}</h2><p>${e(item.summary)}</p><div class="actions">${item.url?`${A.link(item.linkLabel||'打开工具',href(item.url,b),{className:'button',variant:'primary',ariaLabel:'打开 '+item.title})}`:''}${item.videoUrl&&item.videoSlot!==true?`${A.link('观看视频',href(item.videoUrl,b),{className:'button button--quiet',variant:'secondary',newTab:true,meta:''})}`:''}</div></div>${item.videoSlot===true?A.videoPanel(item,{cover:m.src?href(m.src,b):'',eager:index===0}):M.render(m,{base:b,index})}</article>`;
   }
   function renderCollection(page,data,taxonomy={},options={}){
     const b=options.base||'',o={...options,data,taxonomy},sort=(items)=>[...items].sort((a,c)=>(c.updatedAt||'').localeCompare(a.updatedAt||'')||a.id.localeCompare(c.id));

@@ -43,11 +43,11 @@ export function projectVideos(project,items){
  const labels=new Set(TARGETS.map(t=>t.label+' · 视频'));
  p.links=p.links.filter(l=>!labels.has(l.label));
  for(const t of items)if(t.url)p.links.push({label:t.label+' · 视频',href:t.url});
- const status='视频：'+items.map(t=>t.label+' '+(t.url?'视频入口已更新':'视频待发布')).join('；')+'。';
+ const status='视频：'+items.map(t=>t.label+' '+(t.url?'可观看视频':'视频待发布')).join('；')+'。';
  p.highlights=p.highlights.filter(x=>!x.startsWith('视频：'));p.highlights.push(status);
  const d=p.docs.find(d=>d.id==='episode-4');if(!d)throw Error('第四期资料页未登记');
  const title='视频入口';d.sections=d.sections.filter(x=>x.title!==title);
- d.sections.push({title,paragraphs:items.map(t=>t.label+'：'+(t.url?'视频入口已更新，请从下方链接观看。':'视频待发布。'))});
+ d.sections.push({title,paragraphs:items.map(t=>t.label+'：'+(t.url?'从下方链接观看视频。':'视频待发布。'))});
  d.sources=d.sources.filter(l=>!labels.has(l.label));for(const t of items)if(t.url)d.sources.push({label:t.label+' · 视频',href:t.url});
  return p;
 }

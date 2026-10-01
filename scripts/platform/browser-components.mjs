@@ -22,6 +22,7 @@ export async function componentBrowser(root=ROOT,{save=true,launcher=launch,serv
   for(const p of['assets/site-i18n.js','assets/platform/typography.css','assets/journal/experiment.mjs','assets/journal/public-layout.mjs','assets/platform/contracts.mjs'])put(p,readOptional(root,p));
   const compiled=planContent(root);put('assets/i18n/messages.js',compiled.files.get('assets/i18n/messages.js'));put('assets/platform/config.js',compiled.files.get('assets/platform/config.js'));
   const fixtureVideos=loadExperiments(root).entries.filter(e=>e.kind==='video'&&e.visibility!=='archived');
+  for(const video of fixtureVideos)if(video.cover)put(video.cover.src.slice(1),readOptional(root,video.cover.src.slice(1)));
   const first=JSON.parse(readOptional(root,'content/experiments/pelican-bicycle.json')),copy=structuredClone(first);copy.id='independent-fixture';copy.title='独立实验';copy.artifact.href='/experiments/fixture.html';copy.artifact.bytes=1;copy.artifact.sha256='0'.repeat(64);put('assets/journal/data/experiments.mjs','export const EXPERIMENTS='+JSON.stringify([first,copy,...fixtureVideos])+';');
   put('experiments/fixture.html','<!doctype html><html lang="en"><head><title>Inert component fixture</title>'+FIXTURE_ICON_LINK+'</head><body><p>No animation script.</p></body></html>');
   // Exercise the real production 404/help generator, not a lookalike placeholder fixture.

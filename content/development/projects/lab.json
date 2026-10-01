@@ -4,7 +4,7 @@
   "title": "实验室",
   "category": "experiment",
   "visibility": "public",
-  "stage": "作品与能力观察",
+  "stage": "交互动画与视频作品",
   "updatedAt": "2026-09-30",
   "summary": "交互动画、音乐影像与主题节目。看作品，也看创作记录。",
   "intro": "这里收录交互动画、音乐影像与主题节目。原始代码实验提供在线体验与源文件；视频作品提供完整成片的观看入口。",
@@ -53,30 +53,32 @@
     {
       "id": "bad-apple",
       "date": "2026-09-30",
-      "title": "Bad Apple!!：光织放映室 MV 已发布",
+      "title": "音乐 MV：Bad Apple!! 与 world.execute(me);",
       "status": "released",
-      "summary": "在哔哩哔哩观看完整竖屏 MV：从黑白影绘到彩色与 MMD，光束、微镜与琴键共同演绎 Bad Apple!!。交互 HTML 与制作源码同步提供。"
+      "summary": "新增两部音乐 MV，提供哔哩哔哩成片、交互 HTML 与制作源码。"
     },
     {
       "id": "world-execute-me",
       "date": "2026-09-29",
       "title": "《world.execute(me);》程序动画 MV 已发布",
       "status": "released",
-      "summary": "在哔哩哔哩观看完整 MV：整流桥把交流变成直流，NE555 持续跳动，字符与几何共同讲述一段没有返回的调用。"
+      "summary": "在哔哩哔哩观看完整 MV：整流桥把交流变成直流，NE555 持续跳动，字符与几何共同讲述一段没有返回的调用。",
+      "public": false
     },
     {
       "id": "lab-video-selections",
       "date": "2026-09-26",
-      "title": "实验室新增两部视频作品",
+      "title": "实验室：骑行动画与中秋节目",
       "status": "released",
-      "summary": "收录《琵琶曲 | 鹈鹕骑车》和《中秋特别节目》，保留原始 SVG 动画的独立体验入口。"
+      "summary": "收录鹈鹕海岸骑行、琵琶曲音乐动画与中秋特别节目，可观看成片或打开 HTML 体验。"
     },
     {
       "id": "pelican-bicycle",
       "date": "2026-09-24",
       "title": "鹈鹕骑自行车：SVG 动画",
       "status": "released",
-      "summary": "收录一条提示词生成的海岸骑行小景，保留原始 HTML、模型信息和可操作的展示入口。"
+      "summary": "收录一条提示词生成的海岸骑行小景，保留原始 HTML、模型信息和可操作的展示入口。",
+      "public": false
     }
   ],
   "docs": [

@@ -1,5 +1,5 @@
-import {isPublicUpdate} from '../journal/update-audience.mjs?v=dev-r44-7fc59f9e0f258c15';
-import {withDocuments} from '../journal/documents.mjs?v=dev-r44-7fc59f9e0f258c15';
+import {isPublicUpdate} from '../journal/update-audience.mjs?v=dev-r44-0987a6e4397d944f';
+import {withDocuments} from '../journal/documents.mjs?v=dev-r44-0987a6e4397d944f';
 /** Public-site projection. Source tasks and engineering records remain unchanged. */
 export const PUBLIC_EDITION='R24';
 export const CLUTTER=/布局测试|测试夹具|外围文本夹具|假数据|占位页面|lorem ipsum|我已为你|按你的要求|用户要求|用户曾反馈|不虚构|没有伪造|本轮|下一轮|更新包不会|#\s*[AB]：/i;
@@ -44,7 +44,7 @@ export function publicState(state){
  'SITE-004':{summary:'完成网站验收后，记录实际提交号、部署结果与线上地址。'},
  'SITE-006':{summary:'维护可重复运行的回归检查，并在完整网站中扩大覆盖。'},
  'M04-PUBLISH':{title:'当前开发源码的实机验收与发布'},
- 'M03-MAP14':{title:'核验 1-4 参考底图与机关规格',summary:'W02 已提供 1-4 参考底图。接下来对照原作独立核验地形、机关位置与通关条件；奥日关卡仍在开发。'}
+ 'M03-MAP14':{title:'核验 1-4 参考底图与机关规格',summary:'W02 已提供 1-4 参考底图。接下来对照原作独立核验地形、机关位置与通关条件；索尼克与奥日 1-4 已有独立试玩；通用地图中的角色接入仍在完善。'}
  };
  for(const t of s.tasks)if(repairs[t.id])Object.assign(t,repairs[t.id]);return s;
 }

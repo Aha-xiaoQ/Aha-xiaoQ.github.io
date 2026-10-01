@@ -135,7 +135,7 @@ if(cloudMode){
   finder.addEventListener('input',stopPlacement);
   $('cancel').onclick=()=>{stopPlacement();$('status').textContent='已取消，草稿保留。';};
   summary.textContent='查找已加载的便签';
-  ownership.textContent='“我的便签”仅包含新服务中在当前浏览器写下的便签；清除网站数据后可能无法找回编辑权。旧便签由站主管理。';
+  ownership.textContent='在此浏览器写下的便签可从“我的便签”查看和编辑。清除网站数据后可能失去编辑权；迁移前的便签由站主管理。';
   const all=document.createElement('button'),mine=document.createElement('button'),more=document.createElement('button');
   all.textContent='公开便签';mine.textContent='我的便签';more.textContent='加载更多';
   all.type=mine.type=more.type='button';more.hidden=true;
