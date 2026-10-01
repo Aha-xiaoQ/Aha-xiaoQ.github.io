@@ -1,5 +1,5 @@
-import {isPublicUpdate} from '../journal/update-audience.mjs?v=dev-r44-0987a6e4397d944f';
-import {withDocuments} from '../journal/documents.mjs?v=dev-r44-0987a6e4397d944f';
+import {isPublicUpdate} from '../journal/update-audience.mjs?v=dev-r44-4cf3b617ff306613';
+import {withDocuments} from '../journal/documents.mjs?v=dev-r44-4cf3b617ff306613';
 /** Public-site projection. Source tasks and engineering records remain unchanged. */
 export const PUBLIC_EDITION='R24';
 export const CLUTTER=/布局测试|测试夹具|外围文本夹具|假数据|占位页面|lorem ipsum|我已为你|按你的要求|用户要求|用户曾反馈|不虚构|没有伪造|本轮|下一轮|更新包不会|#\s*[AB]：/i;

@@ -9,8 +9,8 @@
   "scripts": {
     "dev": "node tools/dev-server.mjs",
     "start": "node tools/dev-server.mjs",
-    "check": "node tools/check.mjs && npm run journal:check && npm run game:check && npm run site:check && npm run terra:check && npm run content:check && npm run ui:check && npm run experience:check && npm run launch:check && npm run levels:check && npm run worlds:check && npm run site:ui:check && npm run showcase:check && npm run video:check && npm run video:cache:check && npm run episode4:check && npm run platform:check",
-    "test": "node --test tests/local-link.test.mjs tests/model.test.mjs tests/server.test.mjs tests/updater.test.mjs && npm run test:journal && npm run game:test && npm run test:r06 && npm run test:r07 && npm run test:r08 && npm run test:r12 && npm run test:r13 && npm run terra:test && npm run test:content && npm run test:release && npm run test:ui && npm run test:experience && npm run test:launch && npm run test:levels && npm run test:worlds && npm run test:site-ui && npm run test:showcase && npm run test:remote-audit && npm run test:video && npm run episode4:test && npm run episode4:integration:test && npm run test:dev-center && npm run platform:test",
+    "check": "node tools/check.mjs && npm run journal:check && npm run game:check && npm run site:check && npm run terra:check && npm run content:check && npm run ui:check && npm run experience:check && npm run launch:check && npm run levels:check && npm run worlds:check && npm run site:ui:check && npm run showcase:check && npm run video:check && npm run video:cache:check && npm run episode4:check && npm run platform:check && npm run images:check",
+    "test": "node --test tests/local-link.test.mjs tests/model.test.mjs tests/server.test.mjs tests/updater.test.mjs && npm run test:journal && npm run game:test && npm run test:r06 && npm run test:r07 && npm run test:r08 && npm run test:r12 && npm run test:r13 && npm run terra:test && npm run test:content && npm run test:release && npm run test:ui && npm run test:experience && npm run test:launch && npm run test:levels && npm run test:worlds && npm run test:site-ui && npm run test:showcase && npm run test:remote-audit && npm run test:video && npm run episode4:test && npm run episode4:integration:test && npm run test:dev-center && npm run platform:test && npm run test:images",
     "collab:build": "node tools/build-collab.mjs",
     "handoff": "node tools/handoff.mjs",
     "doctor": "node tools/doctor.mjs",
@@ -132,7 +132,9 @@
     "platform:browser:components": "node scripts/platform/browser-components.mjs",
     "platform:pack": "node scripts/platform/pack.mjs",
     "experiment:add": "node scripts/platform/add-experiment.mjs",
-    "site:status:check": "node scripts/platform/site-status.mjs"
+    "site:status:check": "node scripts/platform/site-status.mjs",
+    "images:check": "node scripts/images/check.mjs",
+    "test:images": "node --test tests/images/*.test.mjs"
   },
   "license": "SEE LICENSE IN LICENSE.collab"
 }

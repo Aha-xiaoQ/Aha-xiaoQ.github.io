@@ -4,7 +4,7 @@
     "project-q-mimi": {
       "kind": "sprite",
       "preset": "character-paper",
-      "src": "projects/q-mimi/spritesheet.webp",
+      "src": "assets/previews/q-mimi-first-row.webp",
       "alt": "Q咪的眨眼与挥爪动画",
       "fit": "contain",
       "rendering": "auto",
@@ -13,7 +13,7 @@
         "width": 96,
         "height": 104,
         "columns": 8,
-        "rows": 11,
+        "rows": 1,
         "frames": 6,
         "durationMs": 1560
       }
@@ -27,6 +27,114 @@
       "rendering": "auto",
       "tone": "paper",
       "categoryLabel": "开发工具"
+    },
+    "game-mario-mix-4": {
+      "kind": "image",
+      "preset": "poster",
+      "src": "games/mario-mix-4/cover.png?v=episode04-r43",
+      "srcset": [
+        {
+          "src": "assets/previews/mario-mix-4-640.webp",
+          "width": 640
+        },
+        {
+          "src": "assets/previews/mario-mix-4-1280.webp",
+          "width": 1280
+        }
+      ],
+      "alt": "",
+      "fit": "contain",
+      "rendering": "auto"
+    },
+    "game-mario-mix-3": {
+      "kind": "image",
+      "preset": "poster",
+      "src": "games/mario-mix-3/cover.png?v=video03-r31",
+      "srcset": [
+        {
+          "src": "assets/previews/mario-mix-3-640.webp",
+          "width": 640
+        },
+        {
+          "src": "assets/previews/mario-mix-3-1280.webp",
+          "width": 1280
+        }
+      ],
+      "alt": "",
+      "fit": "contain",
+      "rendering": "auto"
+    },
+    "game-mario-mix-2": {
+      "kind": "image",
+      "preset": "poster",
+      "src": "games/mario-mix-2/cover.jpg?v=dd5b8227f5b3e07a8da6",
+      "srcset": [
+        {
+          "src": "assets/previews/mario-mix-2-640.webp",
+          "width": 640
+        },
+        {
+          "src": "assets/previews/mario-mix-2-1280.webp",
+          "width": 1280
+        }
+      ],
+      "alt": "",
+      "fit": "contain",
+      "rendering": "auto"
+    },
+    "game-mario-mix": {
+      "kind": "image",
+      "preset": "poster",
+      "src": "games/mario-mix/cover.jpg?v=dd5b8227f5b3e07a8da6",
+      "srcset": [
+        {
+          "src": "assets/previews/mario-mix-640.webp",
+          "width": 640
+        },
+        {
+          "src": "assets/previews/mario-mix-1280.webp",
+          "width": 1280
+        }
+      ],
+      "alt": "",
+      "fit": "contain",
+      "rendering": "auto"
+    },
+    "game-pipebound": {
+      "kind": "image",
+      "preset": "poster",
+      "src": "assets/games/pipebound-cover.jpg?v=dd5b8227f5b3e07a8da6",
+      "srcset": [
+        {
+          "src": "assets/previews/pipebound-640.webp",
+          "width": 640
+        },
+        {
+          "src": "assets/previews/pipebound-1280.webp",
+          "width": 1280
+        }
+      ],
+      "alt": "",
+      "fit": "contain",
+      "rendering": "auto"
+    },
+    "game-mario-classic": {
+      "kind": "image",
+      "preset": "poster",
+      "src": "assets/games/mario-classic-cover.jpg?v=dd5b8227f5b3e07a8da6",
+      "srcset": [
+        {
+          "src": "assets/previews/mario-classic-640.webp",
+          "width": 640
+        },
+        {
+          "src": "assets/previews/mario-classic-1280.webp",
+          "width": 1280
+        }
+      ],
+      "alt": "",
+      "fit": "contain",
+      "rendering": "auto"
     }
   }
 }

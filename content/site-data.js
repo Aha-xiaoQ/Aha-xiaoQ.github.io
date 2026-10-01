@@ -289,7 +289,7 @@ globalThis.SITE_DATA = {
     },
     {
       "id": "quina-optics",
-      "preview": "tools/quina-optics/assets/preview.png?v=dd5b8227f5b3e07a8da6",
+      "preview": "assets/previews/quina-optics.webp",
       "previewAlt": "光学与机械实验平台：扫描光谱仪、光谱曲线与转轴拆装入口",
       "title": "启娜的光之工坊 · 拆开一束光",
       "status": "在线实验",

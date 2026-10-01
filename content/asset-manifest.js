@@ -64,7 +64,7 @@ globalThis.SITE_ASSETS = {
       "src": "assets/backgrounds/bg-notes-pixel-game-r3.webp?v=dd5b8227f5b3e07a8da6"
     },
     "about": {
-      "src": "assets/backgrounds/bg-about-phone-teardown-r4.webp?v=dd5b8227f5b3e07a8da6"
+      "src": "assets/previews/about-scene.webp"
     }
   },
   "works": {

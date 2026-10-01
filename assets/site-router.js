@@ -49,10 +49,10 @@
     let link=document.querySelector('[data-journal-css]');
     if(link)link=renewStylesheet(link);
     if(link?.sheet)return Promise.resolve();
-    if(!link){link=document.createElement('link');link.rel='stylesheet';link.href=new URL('journal/journal.css?v=dev-r44-0987a6e4397d944f',routerURL).href;link.dataset.journalCss='';document.head.append(link);}
+    if(!link){link=document.createElement('link');link.rel='stylesheet';link.href=new URL('journal/journal.css?v=dev-r44-4cf3b617ff306613',routerURL).href;link.dataset.journalCss='';document.head.append(link);}
     return waitForLink(link);
   };
-  const importJournal=()=>journalModule ||= import(new URL('journal/runtime.mjs?v=dev-r44-0987a6e4397d944f',routerURL).href).catch(error=>{journalModule=null;throw error;});
+  const importJournal=()=>journalModule ||= import(new URL('journal/runtime.mjs?v=dev-r44-4cf3b617ff306613',routerURL).href).catch(error=>{journalModule=null;throw error;});
   const prepareJournal = async info => {
     if(info.page!=='journal')return;
     await Promise.all([journalStyle(),importJournal().then(()=>globalThis.SITE_JOURNAL.prepare(info))]);
@@ -98,7 +98,7 @@
     };
     add("style", "promo.css");
     // Font preloads already exist in every HTML entry with the CSS URLs.
-    add("image", "identity/xiaoq-avatar-p63a.svg");
+    // The eager portrait already loads its lossless WebP. Do not fetch the unused SVG.
     add("image", "backgrounds/bg-home-pixel-game-r3.webp", "image/webp");
   };
   const styleLinks = new Map();

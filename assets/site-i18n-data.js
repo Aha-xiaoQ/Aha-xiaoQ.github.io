@@ -1,5 +1,7 @@
 /* Visitor-facing English copy. Chinese source content remains authoritative. */
 globalThis.SITE_EN = Object.freeze({
+  "预览暂不可用": "Preview unavailable",
+  "作品介绍与入口仍可使用": "Project details and links are still available.",
   "混合马里奥Ⅳ · 索尼克 × 奥日": "Mario Mix IV · Sonic × Ori",
   "第四期 · 索尼克与奥日加入马里奥 1-4，切换角色、穿过城堡关卡，完成营救公主的冒险。": "Episode 4 · Sonic and Ori enter Mario 1-4. Switch characters, cross the castle and rescue the princess.",
   "建议使用桌面浏览器；操作方式以游戏内说明为准。": "A desktop browser is recommended. Refer to the in-game controls.",
