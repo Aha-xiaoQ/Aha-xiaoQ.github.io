@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 /** Compile editable messages to a browser dictionary, without mutating the legacy dictionary. */
 import path from 'node:path';
+import {normalizeText} from '../lib/text-records.mjs';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import {readOptional,writeAtomic} from '../lib/safe-path.mjs';
 import {validateConfig} from './model.mjs';
 export const ROOT=fileURLToPath(new URL('../../',import.meta.url));
-const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
+const sha=bytes=>createHash('sha256').update(normalizeText(bytes)).digest('hex');
 const json=value=>Buffer.from(JSON.stringify(value,null,2)+'\n');
 export function validateMessages(data) {
   if(data?.schemaVersion!==1||data.language!=='en'||!Array.isArray(data.messages)||data.messages.length>10000)throw Error('Invalid English catalog');
