@@ -21,7 +21,7 @@ export function versionAssets(html){
   if(!['content/site-data.js','assets/site-brand-tokens.css','assets/workshop-cards.js','assets/ui/site-actions.js','assets/ui/site-actions.css','assets/launch/journey.js','assets/journal/model.mjs','assets/site-router.js','assets/journal/journal.css'].includes(rel))return all;
   const bytes=read(ROOT,rel);if(!bytes)return all;
   const base=url.split(/[?#]/)[0];
-  return lead+base+'?v='+hash(bytes).slice(0,16)+quote;
+  return lead+base+'?v='+hash(utf(bytes)).slice(0,16)+quote;
  });
 }
 export function wireHTML(input){
