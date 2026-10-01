@@ -49,10 +49,10 @@
     let link=document.querySelector('[data-journal-css]');
     if(link)link=renewStylesheet(link);
     if(link?.sheet)return Promise.resolve();
-    if(!link){link=document.createElement('link');link.rel='stylesheet';link.href=new URL('journal/journal.css?v=dev-r44-2d2e48c7563e212d',routerURL).href;link.dataset.journalCss='';document.head.append(link);}
+    if(!link){link=document.createElement('link');link.rel='stylesheet';link.href=new URL('journal/journal.css?v=dev-r44-7fc59f9e0f258c15',routerURL).href;link.dataset.journalCss='';document.head.append(link);}
     return waitForLink(link);
   };
-  const importJournal=()=>journalModule ||= import(new URL('journal/runtime.mjs?v=dev-r44-2d2e48c7563e212d',routerURL).href).catch(error=>{journalModule=null;throw error;});
+  const importJournal=()=>journalModule ||= import(new URL('journal/runtime.mjs?v=dev-r44-7fc59f9e0f258c15',routerURL).href).catch(error=>{journalModule=null;throw error;});
   const prepareJournal = async info => {
     if(info.page!=='journal')return;
     await Promise.all([journalStyle(),importJournal().then(()=>globalThis.SITE_JOURNAL.prepare(info))]);
@@ -260,7 +260,7 @@
       applyStyles(info.kind);
       if(historyMode==='push')history.pushState({qView:{x:0,y:0,focus:null}},'',url.href);
       else if(historyMode==='replace')history.replaceState({...plainState(),qView:{x:0,y:0,focus:null}},'',url.href);
-      renderedPath=location.pathname;renderedSearch=location.search;renderRoute(info);restoreView(url,targetView,navigationId);
+      renderedPath=location.pathname;renderedSearch=location.search;renderRoute(info);restoreView(url,targetView,navigationId);window.dispatchEvent(new CustomEvent('xiaoq:pageview'));
     };
     try{
       const renderer=info.kind==='home'?globalThis.SITE_PROMO_RENDER:globalThis.SITE_SHELL_RENDER;
