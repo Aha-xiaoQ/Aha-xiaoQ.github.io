@@ -1,7 +1,7 @@
-import {EXPERIMENTS} from './data/experiments.mjs?v=dev-r44-5dee9c2ea04cc131';
+import {EXPERIMENTS} from './data/experiments.mjs?v=dev-r44-a179bdc07ccd574b';
 import {withExperimentDocuments} from '../platform/contracts.mjs';
 /** Metadata is cheap. Article bodies load only on the selected reading route. */
-import {DOCUMENTS} from './data/documents-index.mjs?v=dev-r44-5dee9c2ea04cc131';
+import {DOCUMENTS} from './data/documents-index.mjs?v=dev-r44-a179bdc07ccd574b';
 const entries=new Map(DOCUMENTS.map(d=>[d.projectId+'/'+d.id,{...d}]));
 const pending=new Map();
 // The existing native-page generator needs synchronous article access in Node.
