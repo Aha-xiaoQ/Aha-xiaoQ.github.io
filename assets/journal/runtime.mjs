@@ -1,10 +1,10 @@
 /* public-edition:R24 */
-import {withDocuments,loadReadingDocument} from './documents.mjs?v=release-r24-f8792aa5999a';
-import {CATALOG} from './data/catalog.mjs?v=release-r24-f8792aa5999a';
-import {bindExperiments,disposeExperiments} from './experiment.mjs?v=release-r24-f8792aa5999a';
+import {withDocuments,loadReadingDocument} from './documents.mjs?v=release-r24-3d0f1554ee0e';
+import {CATALOG} from './data/catalog.mjs?v=release-r24-3d0f1554ee0e';
+import {bindExperiments,disposeExperiments} from './experiment.mjs?v=release-r24-3d0f1554ee0e';
 /** Content lifecycle only. Browser history and transition ownership stay in site-router.js. */
-import {validateCatalog,validateProject,normalizeState,route,MAX_BYTES,visibleTasks,projectURL,legacyProject} from './model.mjs?v=release-r24-f8792aa5999a';
-import {render,metadata,renderProjectCards,selectProjects,taskResults} from './render.mjs?v=release-r24-f8792aa5999a';
+import {validateCatalog,validateProject,normalizeState,route,MAX_BYTES,visibleTasks,projectURL,legacyProject} from './model.mjs?v=release-r24-3d0f1554ee0e';
+import {render,metadata,renderProjectCards,selectProjects,taskResults} from './render.mjs?v=release-r24-3d0f1554ee0e';
 const siteRoot=new URL('../../',import.meta.url), configURL=new URL('content/development/catalog.json',siteRoot);
 let catalogPromise, snapshot, current, activeLegacy;
 const states=new Map(), errors=new Map(), nodes=new Map(), filters=new Map(), loads=new Map();
@@ -67,7 +67,7 @@ export function syncNavigation(app=document){
  app.querySelectorAll('.site-header nav,.topbar>nav').forEach(nav=>{
   nav.style.flexWrap='wrap';
   nav.querySelectorAll('[data-nav-key="dev"]').forEach(n=>n.remove());
-  nav.querySelectorAll('[data-nav-key="notes"]').forEach(a=>{a.dataset.i18nSkip='';a.href=new URL('notes/',siteRoot);const value=en?'Dev':'开发';if(a.textContent!==value)a.textContent=value;if(inNotes){nav.querySelectorAll('[aria-current="page"]').forEach(n=>n.removeAttribute('aria-current'));a.setAttribute('aria-current','page');}else a.removeAttribute('aria-current');});
+  nav.querySelectorAll('[data-nav-key="notes"]').forEach(a=>{a.dataset.i18nSkip='';a.href=new URL('notes/lab/',siteRoot);const value=en?'Dev':'开发';if(a.textContent!==value)a.textContent=value;if(inNotes){nav.querySelectorAll('[aria-current="page"]').forEach(n=>n.removeAttribute('aria-current'));a.setAttribute('aria-current','page');}else a.removeAttribute('aria-current');});
  });
 }
 function filterState(id){if(!filters.has(id))filters.set(id,{q:'',status:'',page:1,size:6});return filters.get(id);}

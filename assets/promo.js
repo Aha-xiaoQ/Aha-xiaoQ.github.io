@@ -64,7 +64,7 @@
           ${navLink("projects/index.html", "项目", "projects")}
           ${navLink("games/index.html", "游戏", "games")}
           ${navLink("tools/index.html", "工具", "tools")}
-          ${navLink("notes/index.html", "开发", "notes")}
+          ${navLink("notes/lab/", "开发", "notes")}
           ${navLink("about/index.html", "关于", "about")}
         </nav>
       </header>
@@ -98,7 +98,7 @@
           <div class="paths__stack">
             <a class="path path--games" href="games/index.html"><span>01</span><strong>游戏</strong></a>
             <a class="path path--tools" href="tools/index.html"><span>02</span><strong>工具</strong></a>
-            <a class="path path--notes" href="notes/index.html"><span>03</span><strong>开发</strong></a>
+            <a class="path path--notes" href="notes/lab/"><span>03</span><strong>开发</strong></a>
             <a class="path path--about" href="about/index.html"><span>04</span><strong>关于我</strong></a>
           </div>
         </section>
