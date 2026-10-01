@@ -62,7 +62,7 @@ export function showCredits(session,{backLabel='返回选关',replay=null,title=
  installCreditsStyle();
  const pane=document.createElement('section');pane.className='campaign-card credits-card';pane.setAttribute('aria-label','通关制作信息');
  pane.innerHTML='<div class="credits-window"><div class="credits-roll"><h2>恭喜通关！</h2><p>感谢你完成这段冒险</p><section class="credit-group"><img class="credits-avatar" alt="在下_小Q像素头像"><h3>在下_小Q</h3><p>一张地图，一段自己的冒险。</p></section><section class="credit-group"><p class="credit-label">项目策划 · 制作与测试</p><h3>在下_小Q</h3><p class="credit-label">AI 编程协作</p><h3>GPT-6 Astra</h3><p>Pixel Workshop · 地图工坊</p></section><section class="credit-group"><p class="credit-label">第三方复刻参考与素材来源</p><h3>umaim/Mario</h3><p class="credit-label">原作角色、美术与音乐</p><h3>Nintendo</h3><p class="credit-label">中文像素字体</p><h3>寒蝉点阵体 · ChillBitmap</h3><p>Warren2060 / 寒蝉字型</p><p>非官方复刻项目</p></section><section class="credit-group credits-follow"><h2>下一段冒险，再见！</h2><p>欢迎关注在下_小Q<br>发现更多游戏，也来制作自己的地图。</p><p>aha-xiaoq.github.io</p></section></div></div>';
- pane.querySelector('img').src=session?.media?.brandAvatar||'/assets/identity/xiaoq-avatar-p63a.svg';
+ pane.querySelector('img').src=session?.media?.brandAvatar||new URL('./assets/xiaoq-avatar-p63a.svg',import.meta.url).href;
  if(title){const label=document.createElement('p');label.textContent=title;pane.querySelector('.credits-roll').prepend(label);}
  const actions=document.createElement('div');actions.className='credits-actions';
  const follow=document.createElement('a');follow.textContent='关注小Q · 访问网站';follow.href='https://aha-xiaoq.github.io/';follow.target='_blank';follow.rel='noopener';actions.append(follow);
