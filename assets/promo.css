@@ -38,3 +38,5 @@
 @media(max-width:760px){.studio::before{top:280px;width:50%;height:calc(100% - 280px)}.stage{grid-template-columns:1fr;grid-template-rows:auto auto auto;gap:36px;padding-top:60px;padding-bottom:40px}.identity{grid-row:1;grid-column:1;padding:0}.identity>.eyebrow{margin-bottom:28px}.identity__copy h1{font-size:60px}.identity__copy p{font-size:19px;margin-top:26px}.primary-path{max-width:none;margin-top:26px}.now-signal{max-width:none;margin-top:30px}.pixel-scene{grid-row:2;grid-column:1;margin:0 8px;transform:rotate(1deg)}.pixel-scene img{height:240px}.paths{grid-row:3;grid-column:1;transform:none}.path strong{font-size:25px}.corner-clock{top:16px}.paths__label{background:#111;display:inline-block;padding:2px 8px}}
 @media(max-width:400px){.identity__copy h1{font-size:52px}.pixel-scene img{height:200px}.corner-clock{font-size:12px}}
 @media(max-width:760px){.stage{padding-top:108px}.corner-clock{top:18px;gap:10px;padding:8px 14px 10px 10px}.corner-clock time{font-size:28px}.corner-clock .clock-meta{padding:5px 8px}}
+
+.primary-path>span{flex-shrink:0}.primary-path>strong{min-width:0;overflow-wrap:anywhere}

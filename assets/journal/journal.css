@@ -258,4 +258,11 @@
  .journal .q-dev-nav{gap:.25rem}.journal .q-dev-nav a{padding:.65rem .8rem}
 }
 @media(prefers-reduced-motion:reduce){.journal .q-dev-nav a,.journal .q-lab-mark,.journal .q-lab-visual strong{transform:none}}
+
+/* Optional original artwork on hosted video entries. Keep the complete frame. */
+.journal .q-lab-cover{display:flex;align-items:center;background:#142e2e;min-width:0}
+.journal .q-lab-cover img,.journal .q-video-poster img{display:block;width:100%;height:auto;object-fit:contain}
+.journal .q-video-poster{background:#142e2e;border:1px solid rgba(127,127,127,.35);overflow:hidden}
+
+.journal .q-video-pending{opacity:.6;cursor:default}
 /* DEV-CENTER:END */

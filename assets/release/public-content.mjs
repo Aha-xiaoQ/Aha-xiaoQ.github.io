@@ -1,5 +1,5 @@
-import {isPublicUpdate} from '../journal/update-audience.mjs?v=dev-r44-5ec0cbac0c9f3c94';
-import {withDocuments} from '../journal/documents.mjs?v=dev-r44-5ec0cbac0c9f3c94';
+import {isPublicUpdate} from '../journal/update-audience.mjs?v=dev-r44-d250b2ffe450490b';
+import {withDocuments} from '../journal/documents.mjs?v=dev-r44-d250b2ffe450490b';
 /** Public-site projection. Source tasks and engineering records remain unchanged. */
 export const PUBLIC_EDITION='R24';
 export const CLUTTER=/布局测试|测试夹具|外围文本夹具|假数据|占位页面|lorem ipsum|我已为你|按你的要求|用户要求|用户曾反馈|不虚构|没有伪造|本轮|下一轮|更新包不会|#\s*[AB]：/i;
@@ -48,11 +48,16 @@ export function publicState(state){
  };
  for(const t of s.tasks)if(repairs[t.id])Object.assign(t,repairs[t.id]);return s;
 }
-export function publicSiteData(input){
+export function publicSiteData(input,experiments=[]){
  const s=clone(input);
  for(const key of ['items','tools','notes'])if(Array.isArray(s[key]))s[key]=s[key].filter(x=>x.visibility==='public'||(key==='tools'&&!x.visibility));
  const playable=(s.items||[]).filter(x=>x.primaryType==='game'&&x.localUrl&&x.lifecycleStatus!=='archived').sort((a,b)=>String(b.updatedAt||'').localeCompare(String(a.updatedAt||''))||String(a.id).localeCompare(String(b.id)));
- if(s.profile?.now&&playable.length){const x=playable[0];s.profile.now={label:'最近作品',title:x.title,summary:x.summary,updatedAt:x.updatedAt,items:[]};}
+ if(s.profile?.now?.sourceId){
+  const id=s.profile.now.sourceId;
+  const x=experiments.find(e=>e.id===id&&e.visibility==='public') || [...(s.items||[]),...(s.tools||[])].find(e=>e.id===id&&e.visibility==='public'&&e.lifecycleStatus!=='archived');
+  if(!x)throw Error('Homepage work is unavailable: '+id);
+  s.profile.now={label:'最近作品',sourceId:id,title:x.title,summary:x.subtitle||x.summary,updatedAt:x.updatedAt||x.createdAt,href:experiments.includes(x)?'/notes/lab/docs/'+x.id+'/':x.detailUrl||x.localUrl||'/projects/',entryLabel:experiments.includes(x)?'实验室':x.title,items:[]};
+ } else if(s.profile?.now&&playable.length){const x=playable[0];s.profile.now={label:'最近作品',title:x.title,summary:x.summary,updatedAt:x.updatedAt,href:x.detailUrl||x.localUrl||'/projects/',entryLabel:x.title,items:[]};}
  if(s.profile?.copy?.worksIntro?.text)s.profile.copy.worksIntro.text='浏览作品，查看源码与开发记录。';
  return s;
 }

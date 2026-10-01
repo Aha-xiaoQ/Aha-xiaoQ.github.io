@@ -49,10 +49,10 @@
     let link=document.querySelector('[data-journal-css]');
     if(link)link=renewStylesheet(link);
     if(link?.sheet)return Promise.resolve();
-    if(!link){link=document.createElement('link');link.rel='stylesheet';link.href=new URL('journal/journal.css?v=dev-r44-5ec0cbac0c9f3c94',routerURL).href;link.dataset.journalCss='';document.head.append(link);}
+    if(!link){link=document.createElement('link');link.rel='stylesheet';link.href=new URL('journal/journal.css?v=dev-r44-d250b2ffe450490b',routerURL).href;link.dataset.journalCss='';document.head.append(link);}
     return waitForLink(link);
   };
-  const importJournal=()=>journalModule ||= import(new URL('journal/runtime.mjs?v=dev-r44-5ec0cbac0c9f3c94',routerURL).href).catch(error=>{journalModule=null;throw error;});
+  const importJournal=()=>journalModule ||= import(new URL('journal/runtime.mjs?v=dev-r44-d250b2ffe450490b',routerURL).href).catch(error=>{journalModule=null;throw error;});
   const prepareJournal = async info => {
     if(info.page!=='journal')return;
     await Promise.all([journalStyle(),importJournal().then(()=>globalThis.SITE_JOURNAL.prepare(info))]);
@@ -190,6 +190,7 @@
     document.head.append(style);
   };
   const renderRoute = (info) => {
+    globalThis.SITE_MOTION?.stop();
     globalThis.SITE_EXPERIENCE?.dispose();
     globalThis.SITE_GUESTBOOK_UNMOUNT?.();
     globalThis.SITE_JOURNAL?.unmount();
@@ -212,6 +213,7 @@
       }
     }
     globalThis.SITE_EXPERIENCE?.mount(app);
+    globalThis.SITE_BGM?.mount();
   };
   // R18: history entries own scroll and content focus; no query text is stored separately.
   let renderedPath=location.pathname,renderedSearch=location.search,scrollTick=0,viewSuspended=false;
@@ -270,9 +272,9 @@
     if(navigationId!==navigationSequence)return false;
     if(typeof document.startViewTransition==='function'&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
       const transition=document.startViewTransition(commit);activeTransition=transition;
-      transition.finished.finally(()=>{if(navigationId===navigationSequence)navigating=false;}).catch(()=>{});return true;
+      transition.finished.finally(()=>{if(navigationId!==navigationSequence)return;navigating=false;globalThis.SITE_MOTION?.mount({entry:false});}).catch(()=>{});return true;
     }
-    commit();app.classList.add('q-route-new');requestAnimationFrame(()=>{if(navigationId!==navigationSequence)return;app.classList.add('q-route-new--in');setTimeout(()=>{if(navigationId!==navigationSequence)return;app.classList.remove('q-route-new','q-route-new--in');navigating=false;},240);});return true;
+    commit();app.classList.add('q-route-new');requestAnimationFrame(()=>{if(navigationId!==navigationSequence)return;app.classList.add('q-route-new--in');setTimeout(()=>{if(navigationId!==navigationSequence)return;app.classList.remove('q-route-new','q-route-new--in');navigating=false;globalThis.SITE_MOTION?.mount({entry:false});},240);});return true;
   };
   globalThis.SITE_ROUTER={version:"site-r46",navigate};
 
@@ -296,8 +298,10 @@
       if(location.hash)requestAnimationFrame(()=>{try{document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView();}catch{}});
     }
     globalThis.SITE_EXPERIENCE?.mount(app);
+    globalThis.SITE_BGM?.mount();
     if(history.state?.qView)restoreView(new URL(location.href),history.state.qView,navigationSequence);
     syncJournalNavigation();
+    globalThis.SITE_MOTION?.mount({entry:!history.state?.qView&&!location.hash});
   }).catch(() => {
     // Keep the meaningful server-rendered fallback; report failure, not a fake empty state.
     if(navigationSequence===initialSequence&&initial?.page==='journal'){

@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "kind": "video",
+  "id": "bad-apple",
+  "title": "Bad Apple!!｜光织放映室",
+  "subtitle": "让光束、微镜与琴键一起演奏 Bad Apple!!。从黑白影绘到彩色与 MMD，在一间不断进化的放映室里重温这首歌。",
+  "visibility": "public",
+  "createdAt": "2026-09-29",
+  "medium": "VIDEO",
+  "format": "竖屏音乐 MV",
+  "video": {
+    "provider": "bilibili",
+    "bvid": "BV15pao6iEzF"
+  },
+  "cover": {
+    "src": "/assets/lab/bad-apple-cover.jpg",
+    "alt": "横向放映室实景：黑白影绘投在幕布上，光束经过透镜与微镜阵列，下方琴键随音乐亮起。"
+  },
+  "provenance": "同一首 Bad Apple!!，从合成音色走向原声，从黑白影绘走向灰度、彩色与 MMD。光束穿过放映装置，微镜阵列与琴键随音乐变化。画面里的光学结构是一种艺术化的数值演示。",
+  "verification": "打开 HTML，可以暂停、调节视角，观察放映室里的光路与微镜；完整 MV 的阶段字幕、声音交接与竖屏片尾请在哔哩哔哩观看。制作源码附有运行说明和素材清单。原曲：Bad Apple!! feat. nomico / Alstroemeria Records；影绘原作：sm8628149。策划、审校：在下_小Q；视觉、程序与剪辑：GPT-6 · Codex。字体：思源黑体、霞鹜文楷。本片为非官方同人 MV，含 AI 辅助制作内容。音乐、角色及影像权益归相应权利人。",
+  "resources": [
+    {
+      "role": "html",
+      "label": "打开 HTML 动画",
+      "href": "/experiments/releases/bad-apple/animation.html",
+      "bytes": 738062,
+      "sha256": "05c53b114c0d884982a99645cf4e1420c914850eead326fbe62dd599006cd945"
+    },
+    {
+      "role": "source",
+      "label": "下载制作源码",
+      "href": "/experiments/releases/bad-apple/source.zip",
+      "bytes": 3009964,
+      "sha256": "d0c2a113e203232847355972b3f2cd88d02f77963b828e7cd053d34cacd0c29e"
+    }
+  ],
+  "updatedAt": "2026-09-30",
+  "sourceVideos": [
+    {
+      "label": "黑白影绘",
+      "bvid": "BV1Wx411c7JT"
+    },
+    {
+      "label": "彩色重绘（含灰度阶段）",
+      "bvid": "BV1P78t68EMj"
+    },
+    {
+      "label": "MMD 动画",
+      "bvid": "BV1ce411N7Kd"
+    }
+  ]
+}

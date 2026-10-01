@@ -1,12 +1,12 @@
 /** Shared public layouts; no DOM or network work during import. */
-import {EXPERIMENTS} from './data/experiments.mjs?v=dev-r44-5ec0cbac0c9f3c94';
+import {EXPERIMENTS} from './data/experiments.mjs?v=dev-r44-d250b2ffe450490b';
 import {experimentVideoURL} from '../platform/contracts.mjs';
 const esc=(s='')=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const url=(p,d='')=>'/notes/'+p.id+'/'+(d?'docs/'+d+'/':'');
 const a=(label,href,cls='j-link',more='')=>`<a class="${cls}" href="${esc(href)}" ${more}>${esc(label)}</a>`;
 const head=(over,title,intro='')=>`<div class="section-head"><div><p class="eyebrow">${esc(over)}</p><h2>${esc(title)}</h2></div>${intro?`<p>${esc(intro)}</p>`:''}</div>`;
 export function developmentNav(active='projects'){
- return `<nav class="q-dev-nav" aria-label="开发栏目"><a href="/notes/"${active==='projects'?' aria-current="page"':''}>项目</a><a href="/notes/lab/"${active==='lab'?' aria-current="page"':''}>实验室</a><a href="/notes/updates/"${active==='updates'?' aria-current="page"':''}>更新</a><a href="/notes/contribute/"${active==='contribute'?' aria-current="page"':''}>参与</a></nav>`;
+ return `<nav class="q-dev-nav" aria-label="开发栏目"><a href="/notes/lab/"${active==='lab'?' aria-current="page"':''}>实验室</a><a href="/notes/"${active==='projects'?' aria-current="page"':''}>项目</a><a href="/notes/updates/"${active==='updates'?' aria-current="page"':''}>更新</a><a href="/notes/contribute/"${active==='contribute'?' aria-current="page"':''}>参与</a></nav>`;
 }
 export function labSpotlight(){
  const e=EXPERIMENTS.find(row=>row.kind!=='video'&&(!row.visibility||row.visibility==='public'));if(!e)return '';
@@ -34,24 +34,28 @@ export function documentDirectory(p){
  if(history.length)blocks.push(`<section class="section"><details class="j-legacy-details" data-history-docs><summary>历史版本与过程资料 · ${history.length}</summary><p>保留旧版本和原链接。当前开发请从上方指南开始。</p><ul>${history.map(d=>`<li>${a(d.title,url(p,d.id))}</li>`).join('')}</ul></details></section>`);
  return `<div class="q-doc-directory" data-current-docs>${blocks.join('')}</div>`;
 }
-const videoAction=e=>a('观看视频',experimentVideoURL(e.video),'button','target="_blank" rel="noopener noreferrer" aria-label="'+esc('观看《'+e.title+'》视频（在新标签页打开）')+'"');
+const videoAction=e=>!experimentVideoURL(e.video)?'<span class="button q-video-pending" aria-disabled="true">观看视频 · 待发布</span>':a('观看视频',experimentVideoURL(e.video),'button','target="_blank" rel="noopener noreferrer" aria-label="'+esc('观看《'+e.title+'》视频（在新标签页打开）')+'"');
 function releaseAction(resource) {
  const attrs=resource.role==='html'?'target="_blank" rel="noopener noreferrer" data-router-ignore':'download data-router-ignore';
  return a(resource.label,resource.href,'button button--quiet',attrs);
 }
 function releaseSection(e) {
  if(!e.resources?.length)return '';
- return `<section class="section" data-lab-release="${esc(e.id)}">${head('FILES','最终成片与制作资料')}<p>打开可播放的 HTML，或下载最终成片与制作工程。</p><div class="actions">${e.resources.map(releaseAction).join('')}</div><p class="j-small">此处为网站最终版本；B 站视频仍通过原 BV 号观看。</p></section>`;
+ return `<section class="section" data-lab-release="${esc(e.id)}">${head('FILES','作品文件与制作资料')}<p>打开或下载以下作品文件。</p><div class="actions">${e.resources.map(releaseAction).join('')}</div><p class="j-small">${e.video.status==='pending'?'完整视频将在哔哩哔哩发布，链接待补充。':'完整视频可通过上方哔哩哔哩入口观看。'}</p></section>`;
 }
 function videoCard(e,i){
- return `<article class="entry q-lab-card" data-lab-video-card="${esc(e.id)}"><div class="q-lab-visual" aria-hidden="true"><span>VIDEO WORK</span><strong>VIDEO<span>↗</span></strong><small>BILIBILI / ${String(i+1).padStart(3,'0')}</small></div><div class="q-lab-copy"><p class="eyebrow">BILIBILI · ${esc(e.format||'视频作品')}</p><h2>${esc(e.title)}</h2><p>${esc(e.subtitle)}</p><div class="actions">${videoAction(e)}${e.resources?.find(r=>r.role==='html')?releaseAction(e.resources.find(r=>r.role==='html')):''}${a('查看作品','/notes/lab/docs/'+e.id+'/','button button--quiet')}</div></div></article>`;
+ return `<article class="entry q-lab-card" data-lab-video-card="${esc(e.id)}">${e.cover?`<a class="q-lab-cover" href="/notes/lab/docs/${esc(e.id)}/"><img src="${esc(e.cover.src)}" alt="${esc(e.cover.alt)}" width="1920" height="1080" loading="lazy"></a>`:`<div class="q-lab-visual" aria-hidden="true"><span>VIDEO WORK</span><strong>VIDEO<span>↗</span></strong><small>BILIBILI / ${String(i+1).padStart(3,'0')}</small></div>`}<div class="q-lab-copy"><p class="eyebrow">BILIBILI · ${esc(e.format||'视频作品')}</p><h2>${esc(e.title)}</h2><p>${esc(e.subtitle)}</p><div class="actions">${videoAction(e)}${e.resources?.find(r=>r.role==='html')?releaseAction(e.resources.find(r=>r.role==='html')):''}${a('查看作品','/notes/lab/docs/'+e.id+'/','button button--quiet')}</div></div></article>`;
 }
 export function experimentGallery(){
  return `<section class="section q-lab-intro">${head('LAB / WORKS','从提示词到作品。')}<p class="j-lead">交互动画、音乐影像与主题节目。保留作品与相关记录，直接看实际效果。</p></section>${EXPERIMENTS.filter(e=>e.visibility!=='draft'&&e.visibility!=='archived').map((e,i)=>e.kind==='video'?videoCard(e,i):`<article class="entry q-lab-card"><div class="q-lab-visual" aria-hidden="true"><span>ONE PROMPT</span><strong>${esc(e.medium||'HTML')}<span>↗</span></strong><small>INTERACTIVE / ${String(i+1).padStart(3,'0')}</small></div><div class="q-lab-copy"><p class="eyebrow">${esc(e.model)} · ${esc(e.format||'HTML')}</p><h2>${esc(e.title)}</h2><p>${esc(e.subtitle)}</p><blockquote translate="no" lang="${esc(e.promptLanguage||'zh-CN')}">${esc(e.prompt)}</blockquote><div class="actions">${a('查看实验','/notes/lab/docs/'+e.id+'/','button')}${a('直接打开动画',e.artifact.href,'button button--quiet','target="_blank" rel="noopener noreferrer" data-router-ignore')}</div></div></article>`).join('')}${EXPERIMENTS.some(e=>e.visibility==='archived')?'<details class="j-legacy-details"><summary>历史实验</summary><ul>'+EXPERIMENTS.filter(e=>e.visibility==='archived').map(e=>'<li>'+a(e.title,'/notes/lab/docs/'+e.id+'/')+'</li>').join('')+'</ul></details>':''}<p class="j-small q-lab-footnote">作品记录用于观察具体效果，不代表跨模型基准测试结果。</p>`;
 }
+function sourceVideoCredits(e){
+ if(!e.sourceVideos?.length)return '';
+ return `<p class="j-small">影像素材：${e.sourceVideos.map(source=>a(source.label,experimentVideoURL({provider:'bilibili',bvid:source.bvid}),'j-link','target="_blank" rel="noopener noreferrer" data-router-ignore')+' <code translate="no">'+esc(source.bvid)+'</code>').join(' · ')}</p>`;
+}
 function videoDetail(e){
  const related=EXPERIMENTS.find(row=>row.id===e.relatedExperimentId&&row.visibility!=='draft');
- return `<article class="section q-experiment" data-lab-video="${esc(e.id)}">${e.visibility==='archived'?'<p class="j-notice">历史实验，保留原始记录。</p>':''}<div class="q-experiment-top"><p class="eyebrow">LAB / VIDEO</p>${a('返回实验室','/notes/lab/')}</div><div class="q-experiment-stage"><div class="q-lab-placeholder"><span class="q-lab-kicker">BILIBILI · VIDEO WORK</span><h2>${esc(e.title)}</h2><p>${esc(e.subtitle)}</p>${videoAction(e)}<span class="j-small">在哔哩哔哩观看完整视频，本页不会自动播放。</span></div></div><dl class="q-experiment-facts"><div><dt>作品形式</dt><dd>${esc(e.format||'视频作品')}</dd></div><div><dt>观看平台</dt><dd>哔哩哔哩</dd></div><div><dt>视频编号</dt><dd><code translate="no">${esc(e.video.bvid)}</code></dd></div><div><dt>收录日期</dt><dd><time datetime="${esc(e.createdAt)}">${esc(e.createdAt)}</time></dd></div></dl><section class="section">${head('ABOUT','作品说明')}<p>${esc(e.provenance)}</p><p class="j-small">${esc(e.verification)}</p></section>${releaseSection(e)}${related?`<section class="section">${head('RELATED','相关实验')}<p>视频成片与原始 SVG 动画分别保留。</p>${a(related.title,'/notes/lab/docs/'+related.id+'/','button button--quiet')}</section>`:''}</article>`;
+ return `<article class="section q-experiment" data-lab-video="${esc(e.id)}">${e.visibility==='archived'?'<p class="j-notice">历史实验，保留原始记录。</p>':''}<div class="q-experiment-top"><p class="eyebrow">LAB / VIDEO</p><div class="actions">${e.cover?videoAction(e):''}${a('返回实验室','/notes/lab/')}</div></div>${e.cover?`<div class="q-video-poster"><img src="${esc(e.cover.src)}" alt="${esc(e.cover.alt)}" width="1920" height="1080" fetchpriority="high"></div>`:''}${e.cover?'':`<div class="q-experiment-stage"><div class="q-lab-placeholder"><span class="q-lab-kicker">BILIBILI · VIDEO WORK</span><h2>${esc(e.title)}</h2><p>${esc(e.subtitle)}</p>${videoAction(e)}<span class="j-small">在哔哩哔哩观看完整视频，本页不会自动播放。</span></div></div>`}<dl class="q-experiment-facts"><div><dt>作品形式</dt><dd>${esc(e.format||'视频作品')}</dd></div><div><dt>观看平台</dt><dd>哔哩哔哩</dd></div><div><dt>视频编号</dt><dd>${e.video.status==='pending'?'待发布':`<code translate="no">${esc(e.video.bvid)}</code>`}</dd></div><div><dt>收录日期</dt><dd><time datetime="${esc(e.createdAt)}">${esc(e.createdAt)}</time></dd></div></dl><section class="section">${head('ABOUT','作品说明')}<p>${esc(e.provenance)}</p><p class="j-small">${esc(e.verification)}</p>${sourceVideoCredits(e)}</section>${releaseSection(e)}${related?`<section class="section">${head('RELATED','相关实验')}<p>视频成片与原始 SVG 动画分别保留。</p>${a(related.title,'/notes/lab/docs/'+related.id+'/','button button--quiet')}</section>`:''}</article>`;
 }
 export function experimentDetail(id){
  const e=EXPERIMENTS.find(x=>x.id===id&&x.visibility!=='draft');if(!e)return null;

@@ -10,8 +10,8 @@ export function loadExperiments(root, {reader = p => readOptional(root,p)} = {})
   for (const row of catalog.entries) {
     const record = validateExperiment(JSON.parse(get(row.file)));
     const target = record.kind === 'video' ? experimentVideoURL(record.video) : record.artifact.href;
-    if (record.id !== row.id || artifacts.has(target)) throw Error('Experiment identity or artifact duplication');
-    artifacts.add(target); records.push(record);
+    if (record.id !== row.id || (target && artifacts.has(target))) throw Error('Experiment identity or artifact duplication');
+    if(target)artifacts.add(target); records.push(record);
     if (record.kind !== 'video') {
       const bytes = get(record.artifact.href.slice(1));
       if (bytes.length !== record.artifact.bytes || sha(bytes) !== record.artifact.sha256) throw Error('Original experiment changed: '+record.id);

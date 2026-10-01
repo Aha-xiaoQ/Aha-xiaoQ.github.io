@@ -131,7 +131,8 @@
     "platform:browser": "node scripts/platform/browser.mjs",
     "platform:browser:components": "node scripts/platform/browser-components.mjs",
     "platform:pack": "node scripts/platform/pack.mjs",
-    "experiment:add": "node scripts/platform/add-experiment.mjs"
+    "experiment:add": "node scripts/platform/add-experiment.mjs",
+    "site:status:check": "node scripts/platform/site-status.mjs"
   },
   "license": "SEE LICENSE IN LICENSE.collab"
 }

@@ -6,7 +6,7 @@ import vm from 'node:vm';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import {CLUTTER} from '../../assets/release/public-content.mjs';
-import {auditFiles} from '../../scripts/publication/audit.mjs';
+import {auditFiles,htmlReferences,resolveRef} from '../../scripts/publication/audit.mjs';
 import {verifyLabPublicCopy,verifyLabAssets} from '../../scripts/platform/lab-assets.mjs';
 import {loadExperiments} from '../../scripts/platform/experiments.mjs';
 import {validateMessages} from '../../scripts/platform/content.mjs';
@@ -26,11 +26,18 @@ function localArtifact(){
  const files=new Map([['notes/lab/index.html',page('实验室',experimentGallery())]]);
  for(const e of records()){
   files.set('notes/lab/docs/'+e.id+'/index.html',page(e.title,experimentDetail(e.id)));
+  if(e.cover)files.set(e.cover.src.slice(1),read(e.cover.src.slice(1)));
   if(e.artifact)files.set(e.artifact.href.slice(1),read(e.artifact.href.slice(1)));
   for(const r of e.resources||[])files.set(r.href.slice(1),read(r.href.slice(1)));
  }
- // The player poster is an actual transitive dependency, not a placeholder fixture.
- files.set('experiments/releases/mid-autumn-special/poster.jpg',read('experiments/releases/mid-autumn-special/poster.jpg'));
+ // Collect real companion media as the publication builder does; never fabricate fixture bytes.
+ for(const [file,bytes] of files){
+  if(!file.startsWith('experiments/') || !file.endsWith('.html'))continue;
+  for(const ref of htmlReferences(bytes.toString())){
+   const resolved=resolveRef(file,ref.raw,origin);
+   if(resolved?.path && !files.has(resolved.path))files.set(resolved.path,read(resolved.path));
+  }
+ }
  return files;
 }
 function translator(){
@@ -73,7 +80,7 @@ for(const field of ['title','description'])test('observation '+field+' cannot ca
  assert.throws(()=>verifyLabPublicCopy([e],CLUTTER),/features\[0\]/);
 });
 test('download action labels are audited, not just the page description',()=>{
- const e=structuredClone(records().find(e=>e.kind==='video'));e.resources[0].label='本轮文件';
+ const e=structuredClone(records().find(e=>e.kind==='video'&&e.resources?.length));e.resources[0].label='本轮文件';
  assert.throws(()=>verifyLabPublicCopy([e],CLUTTER),/resources\[0\]\.label/);
 });
 test('draft copy stays private while publicly reachable archived copy is checked',()=>{

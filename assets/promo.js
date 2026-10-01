@@ -6,6 +6,8 @@
 
   const esc = (value = "") => String(value).replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]);
   const profile = data.profile;
+  const focusHref = typeof profile.now?.href === 'string' && /^(?:\/(?!\/)|(?:notes|games|projects|tools)\/)/.test(profile.now.href) && !/[\\\s]/.test(profile.now.href) ? profile.now.href : 'projects/index.html';
+  const focusLabel = profile.now?.entryLabel || profile.now?.title || '项目';
   const links = profile.links || [];
   const external = (label) => links.find((link) => link.label === label);
   const clockText = () => new Intl.DateTimeFormat('zh-CN', { hour: '2-digit', minute: '2-digit', hour12: false }).format(new Date());
@@ -83,7 +85,7 @@
             <h1 id="site-name">在下_<em>小Q</em></h1>
             <p>${esc(profile.publicStatement)}</p>
           </div>
-          <a class="primary-path" href="projects/index.html"><span>重点入口</span><strong>项目</strong></a>
+          <a class="primary-path" href="${esc(focusHref)}"><span>重点入口</span><strong>${esc(focusLabel)}</strong></a>
           ${nowBlock()}
         </section>
 
@@ -113,6 +115,12 @@
         </div>
       </footer>
     </div>`;
+    const primary = targetRoot.querySelector('.primary-path');
+    if (primary) {
+      primary.setAttribute('href', focusHref);
+      const label = primary.querySelector('strong');
+      if (label) label.textContent = focusLabel;
+    }
     const clock = targetRoot.querySelector('[data-clock]');
     const date = targetRoot.querySelector('[data-date]');
     const renderClock = () => {

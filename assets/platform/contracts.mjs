@@ -10,6 +10,7 @@ export function assertText(value, name, max = 500) {
   if (typeof value !== 'string' || !value.trim() || value.length > max) throw Error(`Invalid ${name}`);
 }
 export function experimentVideoURL(video) {
+  if(video?.provider==='bilibili' && video.status==='pending' && Object.keys(video).every(key=>['provider','status'].includes(key))) return null;
   if (!video || video.provider !== 'bilibili' || typeof video.bvid !== 'string' ||
       !/^BV1[0-9A-Za-z]{9}$/.test(video.bvid) ||
       Object.keys(video).some(key => !['provider','bvid'].includes(key))) throw Error('Invalid experiment video');
@@ -44,7 +45,23 @@ export function validateExperiment(input) {
   if(input.promptLanguage!==undefined&&!/^[a-z]{2,3}(?:-[a-zA-Z0-9]{2,8})*$/.test(input.promptLanguage))throw Error('Invalid prompt language');
   if (isVideo) {
     experimentVideoURL(input.video);
+    if (input.cover !== undefined) {
+      const c=input.cover;
+      if (!c || typeof c.src!=='string' || !c.src.startsWith('/assets/lab/') || !localFile(c.src.slice(1)) || !/\.(?:jpg|png|webp)$/.test(c.src) || Object.keys(c).some(k=>!['src','alt'].includes(k))) throw Error('Invalid video cover');
+      assertText(c.alt,'video cover description',300);
+    }
     validateExperimentResources(input);
+    if (input.sourceVideos !== undefined) {
+      if (!Array.isArray(input.sourceVideos) || input.sourceVideos.length < 1 || input.sourceVideos.length > 8) throw Error('Invalid source video credits');
+      const sourceIds = new Set();
+      for (const source of input.sourceVideos) {
+        if (!source || Object.keys(source).some(key => !['label','bvid'].includes(key))) throw Error('Invalid source video credit');
+        assertText(source.label,'source video label',60);
+        experimentVideoURL({provider:'bilibili',bvid:source.bvid});
+        if (sourceIds.has(source.bvid)) throw Error('Duplicate source video credit');
+        sourceIds.add(source.bvid);
+      }
+    }
     // A hosted video is not a downloadable, one-prompt HTML artifact.
     if (['artifact','prompt','model','reasoningEffort','promptLanguage','features','controlsSummary'].some(key => input[key] !== undefined)) throw Error('Video records must not impersonate HTML generation records');
     if (input.relatedExperimentId !== undefined && (!identifier(input.relatedExperimentId) || input.relatedExperimentId === input.id)) throw Error('Invalid related experiment');
@@ -96,7 +113,7 @@ export function withExperimentDocuments(input, entries) {
     const video=e.kind === 'video';
     const doc={id:e.id,title:e.title,summary:e.subtitle,sections:[],sources:[],archived:e.visibility === 'archived',
       ...(video ? {kind:'lab-video'} : {}),
-      action:video ? {label:'观看视频',href:experimentVideoURL(e.video)} : {label:'下载原始 HTML',href:e.artifact.href}};
+      action:video ? (experimentVideoURL(e.video) ? {label:'观看视频',href:experimentVideoURL(e.video)} : undefined) : {label:'下载原始 HTML',href:e.artifact.href}};
     if (existing) { if(video)Object.assign(existing,doc);else existing.archived=doc.archived; continue; }
     p.docs.push(doc);
   }

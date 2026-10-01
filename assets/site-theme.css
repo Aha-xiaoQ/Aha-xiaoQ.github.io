@@ -9,3 +9,58 @@
 @media(max-width:900px){:root{--q-page:calc(100% - 40px)}.topbar,.bar{flex-wrap:wrap;gap:16px;padding-block:18px}.brand img{width:52px;height:52px}nav{justify-content:space-between;gap:4px}nav a{padding:8px 13px;font-size:16px}h1{font-size:48px}}
 @media(max-width:600px){:root{--q-page:calc(100% - 32px)}body{font-size:17px}.topbar,.bar{gap:18px;padding-block:16px}.brand{font-size:19px}.brand img{width:48px;height:48px}nav{width:100%;gap:2px}nav a{padding:8px 9px;font-size:15px}.brand small{font-size:12px}h1{font-size:40px}h2{font-size:28px}.footer,.footer-inner{align-items:flex-start;flex-direction:column;justify-content:center;gap:12px;padding-block:24px}.contact,.footer-links{gap:20px}.button{font-size:16px;padding:10px 16px}.actions{gap:14px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+
+/* Finite sticker motion: preserve the established layout, palette and angles. */
+@media (prefers-reduced-motion:no-preference){
+ #app .button{transform:none}
+ #app :is(.q-lab-card,.pw-work-card,.pw-game-card,.pw-tool-card,.j-project-card){transition:translate 240ms cubic-bezier(.16,1,.3,1),box-shadow 240ms ease,border-color 200ms ease}
+ #app :is([data-action-variant],.button):not([data-action-variant=text]):not([data-action-variant=quiet]){transition:translate 180ms cubic-bezier(.16,1,.3,1),background-color 160ms ease,border-color 160ms ease,box-shadow 180ms ease}
+ #app :is(.path i,.primary-path b,.brand img,.q-footer-icon){transition:translate 220ms cubic-bezier(.16,1,.3,1),rotate 220ms ease}
+ #app .q-lab-cover img{transition:scale 480ms cubic-bezier(.16,1,.3,1)}
+ #app :is([data-action-variant],.button):not([data-action-variant=text]):not([data-action-variant=quiet]):not([aria-disabled=true]):active{translate:1px 2px;box-shadow:none}
+ #app :is(.path,.primary-path):active{translate:2px 2px}
+}
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+ #app :is(.q-lab-card,.pw-work-card,.pw-game-card,.pw-tool-card,.j-project-card):hover{translate:0 -4px;box-shadow:6px 7px 0 var(--accent)}
+ #app .q-lab-card:hover .q-lab-cover img{scale:1.025}
+ #app :is([data-action-variant],.button):not([data-action-variant=text]):not([data-action-variant=quiet]):not([aria-disabled=true]):hover{translate:-2px -2px}
+ #app :is([data-action-variant=primary],.button:not(.button--quiet)):hover{box-shadow:5px 5px 0 var(--accent)}
+ #app :is([data-action-variant],.button):not([data-action-variant=text]):not([data-action-variant=quiet]):not([aria-disabled=true]):hover:active{translate:1px 2px;box-shadow:none}
+ #app .path:hover i,#app .primary-path:hover b{translate:6px 0}
+ #app .brand:hover img{rotate:-6deg;translate:0 -2px}
+ #app .footer-links a:hover .q-footer-icon{translate:0 -3px}
+}
+
+/* Music belongs to the header tools; narrow screens reveal it with navigation. */
+.q-bgm{position:relative;flex:none;min-width:0;color:var(--paper,#f7f5ed);font-family:"LXGW WenKai",KaiTi,serif;view-transition-name:q-bgm}
+.q-bgm button{appearance:none;font:inherit;cursor:pointer;color:inherit;min-height:44px}
+.q-bgm .q-bgm-settings{display:flex;align-items:center;justify-content:center;gap:7px;padding:7px 10px;border:1px solid var(--line,#48464e);background:transparent;font-size:14px;line-height:1.4;white-space:nowrap}
+.q-bgm-settings[aria-expanded=true]{border-color:var(--paper);background:var(--surface)}
+.q-bgm-dot{width:5px;height:5px;background:var(--muted);flex:none;opacity:.45}
+.q-bgm[data-playing=true] .q-bgm-dot{background:var(--accent);opacity:1}
+.q-bgm-settings[aria-expanded=true] .q-bgm-chevron{rotate:180deg}
+.q-bgm-panel{position:absolute;right:0;top:calc(100% + 10px);z-index:20;width:300px;max-width:calc(100vw - 32px);padding:18px;background:var(--bg,#111116);border:1px solid var(--line,#48464e);box-shadow:3px 4px 0 var(--accent,#ed263d);font-size:15px}
+.q-bgm-panel[hidden]{display:none}.q-bgm-panel-head{display:flex;align-items:center;justify-content:space-between;gap:16px}.q-bgm-panel strong{font-weight:600}
+.q-bgm .q-bgm-toggle{padding:6px 14px;border:1px solid var(--paper);background:var(--paper);color:var(--bg);font-size:14px;line-height:1.4;min-width:64px}
+.q-bgm .q-bgm-toggle[aria-pressed=true]{background:transparent;color:var(--paper);border-color:var(--accent)}
+.q-bgm-sources{font-size:12px;color:var(--muted);text-underline-offset:3px}.q-bgm-sources:hover{text-decoration:underline;color:var(--paper)}
+.q-bgm-track-label{display:flex;justify-content:space-between;gap:12px;margin:14px 0 5px;font-size:13px;color:var(--muted)}.q-bgm-track-label span{font-variant-numeric:tabular-nums}
+.q-bgm select{display:block;width:100%;min-height:44px;padding:8px 26px 8px 10px;border:1px solid var(--line);border-radius:0;background:var(--surface);color:var(--paper);font:inherit;font-size:14px;cursor:pointer}
+.q-bgm-track{display:block;margin:6px 0 14px;font-size:12px;color:var(--muted);line-height:1.5}
+.q-bgm-attribution{display:grid;gap:3px;margin:-5px 0 14px;font-size:12px;line-height:1.5;overflow-wrap:anywhere}.q-bgm-attribution a:first-child{font-size:13px;color:var(--paper)}.q-bgm-attribution a:last-child{color:var(--muted)}.q-bgm-attribution a:hover{text-decoration:underline;text-underline-offset:3px}
+.q-bgm-controls{display:flex;align-items:center;gap:8px;margin-bottom:18px}.q-bgm-controls .q-bgm-toggle{flex:1}
+.q-bgm .q-bgm-step{display:grid;place-items:center;width:44px;padding:0;border:1px solid var(--line);background:transparent}.q-bgm-step:hover{border-color:var(--paper);background:var(--surface)}
+.q-bgm-volume{display:flex;justify-content:space-between;gap:12px;margin-bottom:4px;font-size:14px}.q-bgm-volume output{font-variant-numeric:tabular-nums}
+.q-bgm input{display:block;width:100%;height:32px;margin:0;accent-color:var(--accent,#ed263d);cursor:pointer}.q-bgm-notice{font-size:13px;line-height:1.6;margin:10px 0 0}.q-bgm-notice:empty{display:none}
+.q-bgm :is(button,input,select,a):focus-visible{outline:2px solid var(--paper,#f7f5ed);outline-offset:3px}
+::view-transition-old(q-bgm),::view-transition-new(q-bgm){animation:none}
+@media(hover:hover){.q-bgm-settings:hover{border-color:var(--paper);background:var(--surface)}}
+@media(max-width:720px){
+ #app .q-bgm{grid-column:1/-1;grid-row:3;margin-top:12px;width:100%}
+ #app .q-bgm .q-bgm-settings{width:100%;justify-content:flex-start;padding:8px 12px;font-size:15px}
+ #app .q-bgm-chevron{margin-left:auto}
+ #app .q-bgm-panel{position:static;width:100%;max-width:none;box-shadow:none;border-top:0;padding:16px;background:var(--surface)}
+}
+
+/* History restoration focuses this landmark, not an interactive control. */
+#app #main[tabindex="-1"]:focus{outline:none}

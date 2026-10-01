@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import {loadExperiments} from '../platform/experiments.mjs';
 import {wirePlatform} from '../platform/wire.mjs';
 import {importMap} from '../platform/assets.mjs';
 import {planContent} from '../platform/content.mjs';
@@ -29,7 +30,7 @@ function publicHTML(s,p,origin,data,cacheToken){
  s=s.replace(/<link\b[^>]*rel=["']canonical["'][^>]*>/gi,'');
  if(p!=='404.html')s=s.replace('</head>',`<link rel="canonical" href="${esc(canonical)}">\n</head>`);
  // HTML never promotes an unapproved candidate to the stable play URL.
- if(p==='index.html'&&data.profile?.now){const n=data.profile.now;s=s.replace(/<section\b[^>]*class=["']now-signal["'][^>]*>[\s\S]*?<\/section>/,`<section class="now-signal" aria-labelledby="now-title"><strong class="now-signal__label" id="now-title">${esc(n.label)}</strong><span class="now-signal__title">${esc(n.title)}</span><time datetime="${esc(n.updatedAt)}">${esc(n.updatedAt)}</time></section>`);}
+ if(p==='index.html'&&data.profile?.now){const n=data.profile.now;if(n.href)s=s.replace(/<a\b[^>]*class=["']primary-path["'][^>]*>[\s\S]*?<\/a>/,`<a class="primary-path" href="${esc(n.href)}"><span>重点入口</span><strong>${esc(n.entryLabel||n.title)}</strong></a>`);s=s.replace(/<section\b[^>]*class=["']now-signal["'][^>]*>[\s\S]*?<\/section>/,`<section class="now-signal" aria-labelledby="now-title"><strong class="now-signal__label" id="now-title">${esc(n.label)}</strong><span class="now-signal__title">${esc(n.title)}</span><time datetime="${esc(n.updatedAt)}">${esc(n.updatedAt)}</time></section>`);}
  // Cache parameters are consistent between direct pages and route-loaded modules.
  return s.replace(/\b(src|href)=(['"])([^'"]+)\2/g,(m,k,q,u)=>{
   const r=resolveRef(p,u,origin);if(!r?.path||!/^(?:assets|content)\/.+\.(?:mjs|js|css)$/.test(r.path))return m;
@@ -53,7 +54,7 @@ export async function planPublication(root=ROOT){
  const origin=new URL(cfg.origin).origin;if(!origin.startsWith('https://')||cfg.origin!==origin)throw Error('origin 需要不带路径的 HTTPS 地址。');
  const release=getJSON(get,cfg.candidatePath+'/release.json');if(release.version!==cfg.gameVersion)throw Error('当前游戏源码版本不符；请核对发布配置。');
  const mapPackage=getJSON(get,cfg.mapPath+'/package.json');if(mapPackage.version!==cfg.mapVersion)throw Error('地图工具版本不符。');
- const sourceSite=parseDataJS(get('content/site-data.js').toString()),site=publicSiteData(sourceSite);overlay.set('content/site-data.js',scriptData(site));
+ const sourceSite=parseDataJS(get('content/site-data.js').toString()),site=publicSiteData(sourceSite,loadExperiments(root,{reader:get}).entries);overlay.set('content/site-data.js',scriptData(site));
  const c=getJSON(get,'content/development/catalog.json'),originalProjects=[],projects=[];const taskPages=planTasks(root,{reader:get});let sourceFilesVerified=0;
  for(const row of c.projects){const p=validateProject(getJSON(get,row.file));if(p.id!==row.id)throw Error('项目索引与数据不符');if(p.visibility==='draft')continue;
   originalProjects.push(p);const projected=publicProject(p),state=publicState(normalizeState(JSON.parse(taskPages.get(p.state.path)||get(p.state.path)),p));validateProject(projected);projects.push(projected);

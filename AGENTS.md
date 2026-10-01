@@ -43,3 +43,8 @@
 第四期已发布 R43 的独立整理工程位于 `packages/mario-mix-episode4/`，入口 `START_HERE.md`，公开说明 `/notes/mario-mix/docs/episode-4-source/`。E04-S01 是源码整理编号，不是新游戏版本；保留第三期 M07 的 currentRelease 身份。运行 `npm run episode4:verify` 核对原版字节，`npm run episode4:pack` 更新源码下载。
 
 `src/runtime/*.part.js` 按 manifest 指定顺序编译到原共享作用域，不得当成独立 ES 模块打乱顺序；构建只写入本工程 dist，不覆盖 `games/mario-mix-4/play.html`。源包与在线玩法分别验收。
+
+## “更新网站”的交付范围
+
+用户说“更新网站”时，按 `docs/platform/site-update-workflow.md` 执行。它是整站关联内容更新，不能只新增详情页：核对最新远端基线，更新作品登记、首页状态、所属项目与全站更新记录、日期、相关入口、中英文及搜索；在实际 `.local/publish` 中逐页验证。现有本地预览约定继续有效，发布范围按当前授权判断。不要把视频已发布、网站已生成、网站已部署混为一谈。
+运行 `npm run site:status:check` 检查首页引用与更新记录；预览必须包含首页、全站更新、所属项目更新、作品目录和详情。该检查不能代替浏览器查看实际文案。维护流程变更要验证漏更新和草稿等反例。

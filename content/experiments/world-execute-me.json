@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "kind": "video",
+  "id": "world-execute-me",
+  "title": "当世界执行了我｜world.execute(me);",
+  "subtitle": "如果一段程序学会了爱，它能等到一次真正的回应吗？用电路、字符画与几何变换，重新想象 Mili 的音乐世界。",
+  "visibility": "public",
+  "createdAt": "2026-09-29",
+  "medium": "VIDEO",
+  "format": "程序动画 MV",
+  "video": {
+    "provider": "bilibili",
+    "bvid": "BV1vkaW6CE8W"
+  },
+  "cover": {
+    "src": "/assets/lab/world-execute-me-cover.jpg",
+    "alt": "AC to DC：左侧交流波形、中央整流桥与右侧逐渐平滑的直流波形"
+  },
+  "provenance": "电流从交流变成直流，NE555 的脉冲不停跳动；P2 离开了，调用栈却还在增长。献给写过代码、画过电路，也曾在游戏里等过另一个人的你。",
+  "verification": "HTML 提供交互动画体验；完整 MV 与经典侧边片尾请在哔哩哔哩观看。源码包包含动画程序、电路模型、字幕和制作脚本。 原曲：Mili《world.execute(me);》。策划、审校：在下_小Q；视觉、程序与剪辑：GPT-6 · Codex。本片为非官方同人 MV，含 AI 生成内容。音乐及歌词权益归相应权利人；电路采用简化模型，情感与角色变化属于艺术表达。",
+  "resources": [
+    {
+      "role": "html",
+      "label": "打开 HTML 动画",
+      "href": "/experiments/releases/world-execute-me/animation.html",
+      "bytes": 7345051,
+      "sha256": "98e58e1984d6840fb4549874b18a6684d3eb2a8454dd0b71989b74a3c066a3b2"
+    },
+    {
+      "role": "source",
+      "label": "下载制作源码",
+      "href": "/experiments/releases/world-execute-me/source.zip",
+      "bytes": 7595775,
+      "sha256": "3496536677b15c5d947a8581cfe4af9c1ee40ca78f7a130880df5d65afa765a9"
+    }
+  ]
+}

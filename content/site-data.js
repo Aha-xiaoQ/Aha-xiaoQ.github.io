@@ -6,16 +6,14 @@ globalThis.SITE_DATA = {
     "publicIntro": "欢迎来逛。",
     "interests": [],
     "now": {
-      "label": "正在做",
-      "title": "完善马里奥地图工坊",
-      "summary": "编辑地图、试玩关卡，导出可离线游玩的版本。继续核验隐藏路线、城堡机关与设备体验。",
-      "updatedAt": "2026-09-20",
-      "items": [
-        {
-          "label": "地图工坊",
-          "text": "32 关参考底图、地图编辑和离线试玩。"
-        }
-      ]
+      "label": "最近作品",
+      "sourceId": "bad-apple",
+      "title": "Bad Apple!!｜光织放映室",
+      "summary": "让光束、微镜与琴键一起演奏 Bad Apple!!。从黑白影绘到彩色与 MMD，在一间不断进化的放映室里重温这首歌。",
+      "updatedAt": "2026-09-30",
+      "items": [],
+      "href": "/notes/lab/docs/bad-apple/",
+      "entryLabel": "实验室"
     },
     "copy": {
       "role": "homepage-studio-v2",
