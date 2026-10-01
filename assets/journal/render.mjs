@@ -1,12 +1,12 @@
 /* public-edition:R24 */
-import {isPublicUpdate} from './update-audience.mjs?v=release-r24-2fdf5fc0eb58';
-import {developmentNav,labSpotlight,projectNavigation,projectOverview,projectDocument,documentDirectory} from './public-layout.mjs?v=release-r24-2fdf5fc0eb58';
-import {renderMarkdown} from './markdown.mjs?v=release-r24-2fdf5fc0eb58';
-import {readingLink,readingDocument} from './documents.mjs?v=release-r24-2fdf5fc0eb58';
-import {chapterSummary,chapterAtlas} from '../chapters/view.mjs?v=release-r24-2fdf5fc0eb58';
-import {tocMarkup} from '../experience/model.mjs?v=release-r24-2fdf5fc0eb58';
-import {esc,safeLink,projectURL,STATUS_LABELS,CATEGORY_LABELS,filterTasks,visibleTasks,canClaim,projectStage,updateOrder,legacyProject} from './model.mjs?v=release-r24-2fdf5fc0eb58';
-import '../ui/site-actions.js?v=release-r24-2fdf5fc0eb58';
+import {isPublicUpdate} from './update-audience.mjs?v=release-r24-b3baeb65ba54';
+import {developmentNav,labSpotlight,projectNavigation,projectOverview,projectDocument,documentDirectory} from './public-layout.mjs?v=release-r24-b3baeb65ba54';
+import {renderMarkdown} from './markdown.mjs?v=release-r24-b3baeb65ba54';
+import {readingLink,readingDocument} from './documents.mjs?v=release-r24-b3baeb65ba54';
+import {chapterSummary,chapterAtlas} from '../chapters/view.mjs?v=release-r24-b3baeb65ba54';
+import {tocMarkup} from '../experience/model.mjs?v=release-r24-b3baeb65ba54';
+import {esc,safeLink,projectURL,STATUS_LABELS,CATEGORY_LABELS,filterTasks,visibleTasks,canClaim,projectStage,updateOrder,legacyProject} from './model.mjs?v=release-r24-b3baeb65ba54';
+import '../ui/site-actions.js?v=release-r24-b3baeb65ba54';
 const A=globalThis.SITE_ACTIONS;
 const EMBLEMS=Object.freeze({game:['PLAY','controller'],web:['BUILD','web-studio'],tool:['TOOLS','workflow'],experiment:['LAB','experiment'],other:['CREATE','workflow']});
 // R12: compact identifiers for the two existing categories; no banner slogans.
@@ -45,7 +45,7 @@ export function renderProjectCards(projects,filters={}){
 export function updateRows(projects,{projectId,limit=100,audience='all'}={}){
  if(!['all','public'].includes(audience))throw Error('Unknown update audience');
  const rows=projects.filter(p=>p.visibility!=='draft'&&(!projectId||p.id===projectId)).flatMap(p=>p.updates.filter(u=>audience==='all'||isPublicUpdate(u,p)).map(u=>({...u,project:p}))).sort(updateOrder).slice(0,limit);
- if(!rows.length)return '<p class="j-empty-text">还没有公开的更新记录。计划确认后会在这里说明。</p>';
+ if(!rows.length)return '<p class="j-empty-text">还没有公开的更新记录。</p>';
  return '<ol class="j-update-list">'+rows.map(u=>`<li><time datetime="${u.date}">${esc(u.date)}</time><div><div class="j-meta"><span>${esc(u.project.title)}</span><span class="j-stage">${esc(updateLabels[u.status])}</span></div><h3>${link(u.title,projectURL(u.project.id,'updates'),'j-title-link')}</h3><p>${esc(u.summary)}</p></div></li>`).join('')+'</ol>';
 }
 function notesSection(notes){
@@ -96,7 +96,7 @@ export function render(r,{projects,catalog,states={},errors={},notes=[],publicMo
  if(m.notFound)html=`<section class="section"><div class="entry j-empty"><h2>没有可显示的记录</h2><p>${esc(m.intro)}</p>${link('返回开发','/notes/','button')}</div></section>`;
  else if(!p){html=r.view==='index'?indexPage(projects,notes):r.view==='updates'?`<section class="section">${sectionHead('JOURNAL','所有项目的更新','查看各项目的新功能、修复与计划。')}${updateRows(projects,{audience:'public'})}</section>`:contributePage();}
  else{html=navigation(p,r);if(p.visibility==='archived')html+='<p class="j-notice">此项目已归档。历史记录仍然保留，不再按活跃项目展示。</p>';
-  if(r.view==='overview')html+=overview(p);else if(r.view==='tasks')html+=tasksPage(p,states[p.id],errors[p.id]);else if(r.view==='docs')html+=docsPage(p,r);else if(r.view==='updates')html+=`<section class="section">${sectionHead('JOURNAL','项目更新','版本改动与开发记录。')}${updateRows([p],{audience:'public'})}</section>`;else if(r.view==='contribute')html+=contributePage(p);else html+=managePage(p,states[p.id]);
+  if(r.view==='overview')html+=overview(p);else if(r.view==='tasks')html+=tasksPage(p,states[p.id],errors[p.id]);else if(r.view==='docs')html+=docsPage(p,r);else if(r.view==='updates')html+=`<section class="section">${sectionHead('JOURNAL','项目更新','主要版本与作品更新。')}${updateRows([p],{audience:'public'})}</section>`;else if(r.view==='contribute')html+=contributePage(p);else html+=managePage(p,states[p.id]);
   // Maintenance remains directly addressable, not a visitor call to action.
  }
  if(!p&&['updates','contribute'].includes(r.view))html=developmentNav(r.view)+html;

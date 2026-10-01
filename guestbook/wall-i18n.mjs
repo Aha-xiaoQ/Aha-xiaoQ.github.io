@@ -1,6 +1,11 @@
 // UI-only translation. Never walk visitor messages, names or search excerpts.
 const dictionary = Object.fromEntries(`
 小Q的便签墙|Xiao Q’s Note Wall
+留言审核后公开；请勿填写联系方式等隐私信息。|Notes appear after review. Please do not share contact details or private information.
+拖动空白处移动墙面，滚轮缩放。拖动便签边缘调整位置；选中后也可用方向键移动。长留言可在便签内滚动查看。|Drag empty space to pan and use the wheel to zoom. Drag the edge of your own note to move it. Scroll inside long notes to read more.
+虚线框表示待审核占位，不展示正文和名字。位置冲突时自动就近避让；长留言可在便签内滚动。|Dashed outlines reserve space for notes awaiting review, without showing names or messages. Overlaps are moved nearby. Scroll inside long notes to read more.
+在此浏览器写下的便签可从“我的便签”查看和编辑。清除网站数据后可能失去编辑权；迁移前的便签由站主管理。|View and edit notes from this browser in My notes. Clearing site data may remove your editing access. The site owner manages notes posted before the migration.
+便签版本信息不完整，请刷新页面后重试。|This note could not be opened for editing. Refresh the page and try again.
 页面导航|Page navigation
 ← 返回关于|← About
 ＋ 留一句话|＋ Leave a note
@@ -127,6 +132,7 @@ export function translate(value){
  if(value.startsWith('已选中：'))return 'Selected: '+value.slice(4);
  if(value.startsWith('编辑便签 #'))return value.replace('编辑便签','Edit note');
  if(value.startsWith('便签：'))return 'Note: '+value.slice(3).replace('，可用方向键移动',', use arrow keys to move');
+ if(value.startsWith('重建时间 · '))return value.replace('重建时间','Restored');
  if(value.startsWith('提交时间 · '))return value.replace('提交时间','Submitted');
  if(value.startsWith('北京时间 · '))return value.replace('北京时间','Beijing time');
  const loaded=value.match(/^(我的便签|公开便签)：已加载 (\d+) 张。(.*)$/);
@@ -139,7 +145,7 @@ export function translate(value){
 }
 export function installWallI18n(){
  const originals=new WeakMap();
- const skip='script,style,textarea,.wall-feedback,.action-hint,.note:not(.reservation) .content,.note-author,.note-results,[data-i18n-skip]';
+ const skip='script,style,textarea,.note:not(.reservation) .content,.note-author,.note-results,[data-i18n-skip]';
  function convert(node,attribute){
   const current=attribute?node.getAttribute(attribute):node.nodeValue;
   let record=originals.get(node);if(!record){record={};originals.set(node,record);}
