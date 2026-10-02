@@ -2,6 +2,8 @@
 
 本文件是待办与操作指引，不是已经生效的 GitHub 配置。R01 制作时没有执行远端写入；只读基线返回 main 未受保护。上传 `.github` 文件不会自动替你设置保护规则。
 
+2026-10-02 状态核验：基线 `4bc75da9e038a45886a119b1d8c16402990702c9` 已有 [Collaboration checks 的成功 push 运行](https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/actions/runs/36907920805)，另见 [完整基线 CI 记录](../oss/MAINTAINER_AND_CI.md)。下面的 R01 首次设置步骤保留作操作指引；首次 PR、表单显示、审核请求和当前分支保护仍需核实，不能把历史“未运行”当成当前状态。
+
 ## 先把文件推上去，再检查功能
 
 维护者先在本地完成更新包检查、应用和浏览器验收，手动提交推送。确认 Actions 中出现 `Collaboration checks`，其中 job 为 `collab-checks`。该流程验证协作工具与入口文件，不代表游戏通关验收。当前包没有任何部署工作流，不更改已有 Pages 发布源。

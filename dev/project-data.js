@@ -3,13 +3,13 @@ globalThis.MM_PROJECT = {
   "schemaVersion": 1,
   "project": "混合马里奥 · 开发中心",
   "release": "collab-r01",
-  "updatedAt": "2026-09-14",
+  "updatedAt": "2026-10-02",
   "repository": "Aha-xiaoQ/Aha-xiaoQ.github.io",
-  "baseCommit": "ed76f0b668a9e7c1a8d8f71bed2489cb2b063c9e",
+  "baseCommit": "4bc75da9e038a45886a119b1d8c16402990702c9",
   "phase": "第一轮 · 协作基建",
-  "deliveryStatus": "本地交付包；等待维护者推送与线上验收",
+  "deliveryStatus": "main 已包含协作基础，基线 push CI 成功；本次原创许可补丁仍为本地，完整线上验收待核验",
   "summary": "先让每一次修改都有入口、有依据、有记录，再把游戏一步步做完整。",
-  "nextTask": "OPS-001",
+  "nextTask": "LIC-001",
   "guardrails": [
     "不直接推送或修改 GitHub 设置",
     "不覆盖三期游戏本体与已有下载包",
@@ -163,8 +163,8 @@ globalThis.MM_PROJECT = {
       "dependsOn": [
         "COL-003"
       ],
-      "evidence": "本地配置检查完成；远端 GitHub Actions 未运行，尚未启用分支保护。",
-      "notes": "",
+      "evidence": "2026-10-02 只读核验：基线 4bc75da9e038a45886a119b1d8c16402990702c9 的 push 工作流 Collaboration checks 成功：https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/actions/runs/36907920805。首次 PR、表单显示、CODEOWNERS 请求与分支规则仍待核验。",
+      "notes": "保留 review，push 成功不能替代 PR 验收或权限配置生效。",
       "issueUrl": ""
     },
     {
@@ -246,10 +246,10 @@ globalThis.MM_PROJECT = {
       "id": "LIC-001",
       "title": "逐项审计游戏代码与素材许可",
       "area": "素材",
-      "status": "ready",
+      "status": "in_progress",
       "priority": "P0",
-      "owner": "",
-      "summary": "先盘点，不把未知来源标成开源；本轮没有重新授权现有游戏。",
+      "owner": "Aha-xiaoQ",
+      "summary": "已按固定基线登记原创 MIT 组成部分、保留上游许可与未知项；继续审计游戏、字体、地图、音频和下载包，不把未知来源标成开源。",
       "acceptance": [
         "记录来源与许可证据",
         "区分原创 / 上游代码 / 第三方资产",
@@ -257,13 +257,15 @@ globalThis.MM_PROJECT = {
         "有明确可运行的授权素材方案"
       ],
       "paths": [
+        "docs/oss/FILE_MANIFEST.json",
+        "docs/oss/PROVENANCE.md",
         "collab/assets-register.json",
         "docs/collab/ASSETS.md",
         "RIGHTS.md"
       ],
       "dependsOn": [],
-      "evidence": "",
-      "notes": "",
+      "evidence": "2026-10-02 本地许可清单与来源说明已准备；精确基线与逐文件范围见 docs/oss/。旧素材和独立 ZIP 未重新授权。",
+      "notes": "未知/第三方混合权利仍开放，尚未完成全部验收；本地补丁未推送。",
       "issueUrl": ""
     },
     {

@@ -69,6 +69,10 @@ npm run platform:verify
 
 ## 许可与素材
 
-授权范围见 [LICENSE](LICENSE)、[LICENSE.collab](LICENSE.collab) 与 [RIGHTS.md](RIGHTS.md)。游戏、美术、字体和下载包的第三方条款以各自说明为准；请勿将代码许可套用于全部素材。
+已核验的原创部分采用 MIT，包括网站与构建工具的原创实现、地图编辑器的原创程序、四幅几何 SVG、鹈鹕骑行 HTML/SVG，以及光之工坊的原创程序部分。逐文件范围、固定基线和来源证据见 [许可审计](docs/oss/README.md)、[文件清单](docs/oss/FILE_MANIFEST.json) 与 [RIGHTS.md](RIGHTS.md)。
+
+这不是全仓 MIT。Acorn 保留上游 MIT，字体保留原许可；第三方游戏地图、美术、音频、厂商手册和未核验下载包不因此获得授权。Q咪现有 CC BY-NC 4.0 素材声明保留，本地 ZIP 的许可声明与精灵字节已核验；独立源码仓库与协调变更仍需另行核验。[LICENSE](LICENSE) 是本次原创范围许可，[LICENSE.collab](LICENSE.collab) 保留既有协作范围。
+
+[复现步骤与方法限制](docs/oss/REPRODUCIBILITY.md) · [维护者与 CI 证据](docs/oss/MAINTAINER_AND_CI.md) · 本地许可校验：`npm run oss:verify`
 
 [字体许可](assets/FONT_LICENSES.md) · [变更记录](CHANGELOG.md)

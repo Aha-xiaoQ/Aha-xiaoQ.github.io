@@ -61,6 +61,10 @@ Include the page URL, device, and reproduction steps when reporting a problem. R
 
 ## Licenses and assets
 
-See [LICENSE](LICENSE), [LICENSE.collab](LICENSE.collab), and [RIGHTS.md](RIGHTS.md) for their respective scope. Third-party game assets, artwork, fonts, and downloads retain their own terms.
+Reviewed original components use MIT: original website/build tooling, native map-editor implementation, four geometric SVGs, the pelican HTML/SVG, and original optical-workshop implementation. See the [audit guide](docs/oss/README.md), [exact-file manifest](docs/oss/FILE_MANIFEST.json), and [RIGHTS.md](RIGHTS.md) for scope, baseline and source evidence.
+
+This is not repository-wide MIT. Acorn retains upstream MIT; fonts retain their original terms. Third-party game maps/art/audio, manufacturer references and unverified archives receive no new grant. Existing Q咪 CC BY-NC 4.0 material notices remain; the local ZIP license and sprite identity are verified, while independent-repository comparison and coordinated changes remain separate. [LICENSE](LICENSE) covers the audited original scope; [LICENSE.collab](LICENSE.collab) preserves the existing collaboration grant.
+
+[Reproduction and limitations](docs/oss/REPRODUCIBILITY.md) · [Maintainer and CI evidence](docs/oss/MAINTAINER_AND_CI.md) · Local license checks: `npm run oss:verify`
 
 [Font licenses](assets/FONT_LICENSES.md) · [Changelog](CHANGELOG.md)

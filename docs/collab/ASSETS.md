@@ -1,8 +1,8 @@
 # 代码与素材许可核验
 
-本轮只建立流程，未完成历史资源审计。`collab/assets-register.json` 的 entries 为空是“尚未登记”，不是“全仓无第三方材料”。
+2026-10-02 已完成固定基线库存与部分原创/上游来源核验，详见 [逐文件清单](../oss/FILE_MANIFEST.json) 与 [来源说明](../oss/PROVENANCE.md)。`collab/assets-register.json` 指向该清单；其 entries 为空仍表示游戏素材专项登记尚未补齐，不是“全仓无第三方材料”或“授权已全部完成”。
 
-网站的限定 MIT、原游戏内许可证与各素材权利分别适用。新增协作工具许可见 `LICENSE.collab`，不扩大原 `RIGHTS.md` 的范围。
+原创组成部分的限定 MIT、原游戏内许可证与各素材权利分别适用。现行范围见根 `RIGHTS.md` 与逐文件清单；既有协作许可 `LICENSE.collab` 保留原范围。编辑器原创程序授权不能覆盖其中的地图、美术、字体、音频、fixture 与导出包。
 
 ## 新条目结构（示例，不是实际授权）
 
