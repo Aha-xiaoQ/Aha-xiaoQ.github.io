@@ -1,12 +1,12 @@
 /* public-edition:R24 */
-import {isPublicUpdate} from './update-audience.mjs?v=release-r24-c98d52e93033';
-import {developmentNav,labSpotlight,projectNavigation,projectOverview,projectDocument,documentDirectory} from './public-layout.mjs?v=release-r24-c98d52e93033';
-import {renderMarkdown} from './markdown.mjs?v=release-r24-c98d52e93033';
-import {readingLink,readingDocument} from './documents.mjs?v=release-r24-c98d52e93033';
-import {chapterSummary,chapterAtlas} from '../chapters/view.mjs?v=release-r24-c98d52e93033';
-import {tocMarkup} from '../experience/model.mjs?v=release-r24-c98d52e93033';
-import {esc,safeLink,projectURL,STATUS_LABELS,CATEGORY_LABELS,filterTasks,visibleTasks,canClaim,projectStage,updateOrder,legacyProject} from './model.mjs?v=release-r24-c98d52e93033';
-import '../ui/site-actions.js?v=release-r24-c98d52e93033';
+import {isPublicUpdate} from './update-audience.mjs?v=release-r24-f59e15bfffde';
+import {developmentNav,labSpotlight,projectNavigation,projectOverview,projectDocument,documentDirectory} from './public-layout.mjs?v=release-r24-f59e15bfffde';
+import {renderMarkdown} from './markdown.mjs?v=release-r24-f59e15bfffde';
+import {readingLink,readingDocument} from './documents.mjs?v=release-r24-f59e15bfffde';
+import {chapterSummary,chapterAtlas} from '../chapters/view.mjs?v=release-r24-f59e15bfffde';
+import {tocMarkup} from '../experience/model.mjs?v=release-r24-f59e15bfffde';
+import {esc,safeLink,projectURL,STATUS_LABELS,CATEGORY_LABELS,filterTasks,visibleTasks,canClaim,projectStage,updateOrder,legacyProject} from './model.mjs?v=release-r24-f59e15bfffde';
+import '../ui/site-actions.js?v=release-r24-f59e15bfffde';
 const A=globalThis.SITE_ACTIONS;
 const EMBLEMS=Object.freeze({game:['PLAY','controller'],web:['BUILD','web-studio'],tool:['TOOLS','workflow'],experiment:['LAB','experiment'],other:['CREATE','workflow']});
 // R12: compact identifiers for the two existing categories; no banner slogans.
@@ -88,7 +88,13 @@ function docsPage(p,r){
  return `<section class="section">${sectionHead('DEVELOP','从当前版本开始','下载源码，运行项目，再选择一个明确的改动。')}<div class="j-shortcuts" data-current-docs>${current.map(d=>`<article class="entry j-destination"><a ${A.attributes(projectURL(p.id,'docs',d.id),{className:'j-destination-link',ariaLabel:d.title})}><h3>${esc(d.title)}</h3><p>${esc(d.summary)}</p><span class="j-destination-label">${d.action?'下载与运行':'阅读指南'}</span></a></article>`).join('')||'<p>资料正在整理。</p>'}</div>${history.length?`<details class="j-legacy-details" data-history-docs><summary>历史版本与过程资料（${history.length}）</summary><p>保留旧链接和决策依据，不作为当前开发入口。</p><ul>${history.map(d=>`<li>${link(d.title,projectURL(p.id,'docs',d.id))}</li>`).join('')}</ul></details>`:''}</section>`;
 }
 
-function contributePage(p){return `<section class="section j-reading"><h2>${p?'从一项小改动开始':'选择你熟悉的方式'}</h2><p>${esc(p?.participation.summary||'不必先掌握整个项目。先选择感兴趣的作品，把一次体验、一个问题或一条清楚的建议带回来。')}</p><div class="j-contribute-options"><article class="entry"><h3>体验与反馈</h3><p>说明版本、设备与复现步骤，让另一个人也能看到同样的问题。</p></article><article class="entry"><h3>文档与设计</h3><p>改进不清楚的说明，补充素材来源，或提出有依据的交互建议。</p></article><article class="entry"><h3>代码与测试</h3><p>先讨论较大的改动。一项 PR 尽量只解决一件事，并附验证方式。</p></article></div><section><h2>参与之前</h2><p>先阅读项目范围，在 Issue 中说明计划；认领情况以维护者确认的记录为准。</p><p>请保留素材来源与许可说明。AI 辅助内容也需要提交者理解、检查并对结果负责。</p>${p?'<div class="actions">'+link('查看任务',projectURL(p.id,'tasks'),'button')+link('前往仓库讨论',p.participation.issueUrl,'button button--quiet')+'</div>':link('选择项目','/notes/','button')}</section></section>`;}
+// Reviewed source guides have parallel editions; the locale owner selects the URL.
+function sourceGuideLink(label,path,cls='j-link'){
+ const zh='https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/blob/main/'+path+'.md';
+ const en='https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/blob/main/'+path+'.en.md';
+ return link(label,zh,cls).replace('<a ','<a data-locale-href-zh="'+esc(zh)+'" data-locale-href-en="'+esc(en)+'" ');
+}
+function contributePage(p){return `<section class="section j-reading"><h2>${p?'从一项小改动开始':'选择你熟悉的方式'}</h2><p>${esc(p?.participation.summary||'不必先掌握整个项目。先选择感兴趣的作品，把一次体验、一个问题或一条清楚的建议带回来。')}</p><div class="j-contribute-options"><article class="entry"><h3>体验与反馈</h3><p>说明版本、设备与复现步骤，让另一个人也能看到同样的问题。</p></article><article class="entry"><h3>文档与设计</h3><p>改进不清楚的说明，补充素材来源，或提出有依据的交互建议。</p></article><article class="entry"><h3>代码与测试</h3><p>先讨论较大的改动。一项 PR 尽量只解决一件事，并附验证方式。</p></article></div><section><h2>参与之前</h2><p>先阅读项目范围，在 Issue 中说明计划；认领情况以维护者确认的记录为准。</p><p>请保留素材来源与许可说明。AI 辅助内容也需要提交者理解、检查并对结果负责。</p>${sourceGuideLink('阅读贡献指南','CONTRIBUTING')} · ${sourceGuideLink('本地启动说明','docs/collab/GETTING_STARTED')}${p?'<div class="actions">'+link('查看任务',projectURL(p.id,'tasks'),'button')+link('前往仓库讨论',p.participation.issueUrl,'button button--quiet')+'</div>':link('选择项目','/notes/','button')}</section></section>`;}
 function managePage(){return '';}
 export function render(r,{projects,catalog,states={},errors={},notes=[],publicMode=Boolean(globalThis.SITE_RELEASE?.publicMode)}){
  if(publicMode && r.view==='manage')r={view:'not-found'};
