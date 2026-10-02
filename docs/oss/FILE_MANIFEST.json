@@ -186,6 +186,17 @@
         "docs/oss/PROVENANCE.en.md"
       ],
       "limits": "Baseline classifications, component scope and every excluded third-party component remain unchanged. Current byte identities are separate from historical baseline evidence; this is not a new grant to previously unknown inventory entries."
+    },
+    "analytics-maintenance": {
+      "basis": "Maintainer-requested local privacy-friendly owner exclusion and regression coverage, reviewed against source 8735b6bffa39dcbd1cc635bd897ec59dfc7ef839 on 2026-10-02. Original implementation, bilingual explanations and generated version aliases only. Publication status is recorded separately; the review itself does not imply a deployment.",
+      "sources": [
+        "assets/site-analytics.js",
+        "tests/analytics/privacy.test.mjs",
+        "docs/platform/analytics.md",
+        "docs/platform/analytics.en.md",
+        "scripts/analytics/browser.mjs"
+      ],
+      "limits": "Existing classifications, baseline identities, excluded components and third-party rights are unchanged; no grant to unknown inventory, no backend schema or provider code changes."
     }
   },
   "newFiles": [
@@ -340,6 +351,33 @@
       "evidence": [
         "new-audit",
         "bilingual-maintenance"
+      ]
+    },
+    {
+      "path": "docs/platform/analytics.md",
+      "classification": "original-MIT",
+      "license": "MIT",
+      "scope": "New original owner-exclusion documentation or local browser verifier only; no license to referenced providers or copied material.",
+      "evidence": [
+        "analytics-maintenance"
+      ]
+    },
+    {
+      "path": "docs/platform/analytics.en.md",
+      "classification": "original-MIT",
+      "license": "MIT",
+      "scope": "New original owner-exclusion documentation or local browser verifier only; no license to referenced providers or copied material.",
+      "evidence": [
+        "analytics-maintenance"
+      ]
+    },
+    {
+      "path": "scripts/analytics/browser.mjs",
+      "classification": "original-MIT",
+      "license": "MIT",
+      "scope": "New original owner-exclusion documentation or local browser verifier only; no license to referenced providers or copied material.",
+      "evidence": [
+        "analytics-maintenance"
       ]
     }
   ],
@@ -33309,73 +33347,82 @@
       "path": "about/index.html",
       "baselineGitBlob": "b4c6b69895f238d69b4df5ed8147d85edc3adc21",
       "baselineSha256": "14f3537855046ab8be6066b66617c050ce9545aa6f696abc603ce7e618079093",
-      "gitBlob": "58d19f45843b01dd11d2251f3800da642a7de2f9",
-      "sha256": "4801083069cd68c3adf70c0144c293b3ebd2e3ed5c4dcfd9afa0eeb59197ace0",
+      "gitBlob": "afab67a875d078202772aef02e71fa2a14d81139",
+      "sha256": "18863c10558e80dd40bd8c6e48cf385307e0c48035c933c4a8679e2fb81b1fd6",
       "reviewDate": "2026-10-02",
-      "evidence": "bilingual-maintenance"
+      "evidence": "analytics-maintenance"
     },
     {
       "path": "assets/i18n/messages.js",
       "baselineGitBlob": "592306765289377fd1e2dc5dc95a085e6848aba9",
       "baselineSha256": "e1ef83eccf9ed624f5b936503064e2bf9ba6a4cec19a402ee4c12dfde1021f15",
-      "gitBlob": "02d47707ffe8685c035c2f1c3ea195c4c7ac97ad",
-      "sha256": "6c32885af4a53095315b3b4ee537d94f601766925196a0a9f3bdc5cd7ecc9e2b",
+      "gitBlob": "00c9cdc2efb4cb87008dcc42d56b840ee827a7ca",
+      "sha256": "02f7721e4bb62484046d6fb624e66a55d67462ec8a0b3c2544d9f6053bdcaac7",
       "reviewDate": "2026-10-02",
-      "evidence": "bilingual-maintenance"
+      "evidence": "analytics-maintenance"
     },
     {
       "path": "assets/journal/documents.mjs",
       "baselineGitBlob": "f1d865f9aa21d81fe7e03e7374982a2fc7b1ddaf",
       "baselineSha256": "ac614bd0ac679ed6614694d0c2d07441fc8b6789cff9bff06967c97c77bd23c4",
-      "gitBlob": "8297b165a5f9e174ecc36d8c1dfc7a7d1438d420",
-      "sha256": "4885f866432427173ae0a3fb084d5c2ddafc0eb54b8104dcdefce223cdced581",
+      "gitBlob": "0c0005b1116f5e44a0a8225c1133ab805ee4d3ea",
+      "sha256": "93631040c35de791b4e70de6def90a03777aa08e22ae29c08c213cf19cdac22f",
       "reviewDate": "2026-10-02",
-      "evidence": "bilingual-maintenance"
+      "evidence": "analytics-maintenance"
     },
     {
       "path": "assets/journal/experiment.mjs",
       "baselineGitBlob": "30a08b98efacc83111c528fc4848a83628263446",
       "baselineSha256": "dc5478c8bc43d16ecae1f585cba9a6bba323fb140b7cd4590bf10e91a2b85596",
-      "gitBlob": "85ee0796c3f6bd400087bc12d9696c627b5ddf29",
-      "sha256": "04bba47b092872e26e56eab61765ebf573fe525a83136fe93f872696cdec1340",
+      "gitBlob": "55e73b66174f5053978ff6ffd6793dd540dfdf00",
+      "sha256": "3e6c71869a099ab980d706265328594182afbb0c402153a1aa59453fe511e7f2",
       "reviewDate": "2026-10-02",
-      "evidence": "bilingual-maintenance"
+      "evidence": "analytics-maintenance"
     },
     {
       "path": "assets/journal/public-layout.mjs",
       "baselineGitBlob": "25bc488f32da2f9de2b4ef1107ff5571b74bb8ec",
       "baselineSha256": "bf4229ff50ceeb8071fb4af8b94e331642543b9856267db3d6193f93b81fa1eb",
-      "gitBlob": "4b8a938fe80b7b9f96c903f2f04064e833ee1813",
-      "sha256": "c1285fb3599e9b5b22619ea3fb11b489c94bc3b1116b38f8ed91178e0cb18be8",
+      "gitBlob": "0de0ce71041a3ff45df87e576ec5434e9a477b8f",
+      "sha256": "fe9d627729a3423f1cf8dbbbc2eb1d6bee554758cb3c8cb85ddc38ee68575aaf",
       "reviewDate": "2026-10-02",
-      "evidence": "bilingual-maintenance"
+      "evidence": "analytics-maintenance"
     },
     {
       "path": "assets/journal/render.mjs",
       "baselineGitBlob": "5b74c68409edfefaa6d990fc62111d09f7365c0b",
       "baselineSha256": "021ba67c6d27f8d1da66bbf949d7bb63c64580001deff22944d7847e731c4180",
-      "gitBlob": "5f2f663dd35a6edb78fa9b47bb5f43f595216e05",
-      "sha256": "285af7ec071e5e147299c8b6cff39a7381af1092fbb395191580dbd2b1f8af5c",
+      "gitBlob": "d3201427fcf0c069508cd2a4ad083f97e59f5f2d",
+      "sha256": "6ed83eb1d006ba75400ef51a4c9b3e6f4767acfd9ce6435479d17430b62f3792",
       "reviewDate": "2026-10-02",
-      "evidence": "bilingual-maintenance"
+      "evidence": "analytics-maintenance"
     },
     {
       "path": "assets/journal/runtime.mjs",
       "baselineGitBlob": "6899fd87a5a0d7a8295c832561bc0811d51b0e65",
       "baselineSha256": "a21d16de3732df431579b140a45e43101c0375a30d982aeb71241f84ab34c301",
-      "gitBlob": "5a59dd3114a9c51eff32b1cc9c202e9b073c26ad",
-      "sha256": "e165d272fa836f491b15dcd0fa75fb030c184af4af1a509aa076cf7193765131",
+      "gitBlob": "9c36b1618cb6d29dc6c9f1c90cdfd5c58d2b722b",
+      "sha256": "c94254b2031339b86b6e156d4bedf9bf3b629a18cd05aa05027f30dac5e07fd0",
       "reviewDate": "2026-10-02",
-      "evidence": "bilingual-maintenance"
+      "evidence": "analytics-maintenance"
     },
     {
       "path": "assets/release/public-content.mjs",
       "baselineGitBlob": "45e2ebbc03feae6d17dc48528143e83d6b65f62a",
       "baselineSha256": "3de04282d9f70aaa21a31a4183fbd37d36dfd59cc5784dea995beb1907ce0e5f",
-      "gitBlob": "f04f894140c3dea08e5908648881179eb60394ae",
-      "sha256": "86454a2e68c2b19509b09d47eb8584a4e8aaf0f1e22eb952ab55de1caf9338d1",
+      "gitBlob": "dd97d59b652bf0a97e0dd6a912f3e944472df777",
+      "sha256": "b508d7a764fe8c113ae38e171972f8c72e47e544504ac3d1124a24ab3cc58fc2",
       "reviewDate": "2026-10-02",
-      "evidence": "bilingual-maintenance"
+      "evidence": "analytics-maintenance"
+    },
+    {
+      "path": "assets/site-analytics.js",
+      "baselineGitBlob": "00537869f4f2687768d0c06e736d716addd7aa96",
+      "baselineSha256": "2b78742e69fe3698735e0aed28e75845700090374618fd0a95c4482e69e4ed67",
+      "gitBlob": "f6276b9234b62fe3cabec664ba98827b0d6cb5c4",
+      "sha256": "90d48868cc411f9de3561759bab1ab8a4f3c4161a6790809fac616c7a9b225d8",
+      "reviewDate": "2026-10-02",
+      "evidence": "analytics-maintenance"
     },
     {
       "path": "assets/site-i18n.js",
@@ -33390,100 +33437,109 @@
       "path": "assets/site-router.js",
       "baselineGitBlob": "c8bffef04c666670f07e136e1f40f9909d2a4ebc",
       "baselineSha256": "d7be7f7c218c4f8c736686852d96049c048c5d551d04278f8936079c8586dbc3",
-      "gitBlob": "209eefde41c3266a8bf86867d344d813dc7eeb9c",
-      "sha256": "f07175f34c6f3ff2d29daf2425c35e0ac63148a38f6b3e69e64abfa3a4854196",
+      "gitBlob": "88d621aaa73a6e6f9f311c14724f4e743be16bf7",
+      "sha256": "05830d766ebd18d7e6c73dcc4c0910fe5c5678feab0a28a5295a28a9d7a1eea5",
       "reviewDate": "2026-10-02",
-      "evidence": "bilingual-maintenance"
+      "evidence": "analytics-maintenance"
+    },
+    {
+      "path": "assets/site-theme.css",
+      "baselineGitBlob": "d31153d177ded43f577ecd96e36fa763e62bad74",
+      "baselineSha256": "0254c334d71858438d257aef7eb9b32bb39f4b8e01adf27ac08be6bad524c9a3",
+      "gitBlob": "0ce0d49bc4c01faf04fd3d5fde3beef96ad9302a",
+      "sha256": "906efa1cd24d8bdf8b6aedc91dea09bde19cac6947e754256388e6e054b488b1",
+      "reviewDate": "2026-10-02",
+      "evidence": "analytics-maintenance"
     },
     {
       "path": "games/index.html",
       "baselineGitBlob": "64c78896e8e263e48d704d76bd694b51f5be55a9",
       "baselineSha256": "859fda6c59ee8ac88c3a8c088765e091e5e92c49e5b70ab1d9e0c309cf32daa5",
-      "gitBlob": "86109eeb484da4c68cc32956315b09c412c28746",
-      "sha256": "dd5baecc4bb0149717dc97a267704ee9faf0f804986bd1c1dadaf05e6eefd715",
+      "gitBlob": "f0b8133f624e5f7ff7258243b1a41d8d1de25528",
+      "sha256": "db2b440927739594ccd321eda8d8b0f87180542fb9a91a99fc103f81b429232f",
       "reviewDate": "2026-10-02",
-      "evidence": "bilingual-maintenance"
+      "evidence": "analytics-maintenance"
     },
     {
       "path": "games/mario-classic/index.html",
       "baselineGitBlob": "212cec349506c6e9f05b0ce6ca0ddfa22890f69f",
       "baselineSha256": "ca2cf6d641fff43c726b000992507a238659c5832bf747b2138d68db4347f2ef",
-      "gitBlob": "3fe27aba1c48b3dce3d5dda8d227e91c111efb2c",
-      "sha256": "6e29ed32fd2eb69fc2152000af799c548fc740a54d519b9863e68bcf2bb7df50",
+      "gitBlob": "83921afe4a20c2ddc634ebb3db0ccc6089791b44",
+      "sha256": "c698e27d4bca7380ca80c0a434867ed8eaaf52f9eb6b679b2bb6297586f6757b",
       "reviewDate": "2026-10-02",
-      "evidence": "bilingual-maintenance"
+      "evidence": "analytics-maintenance"
     },
     {
       "path": "games/mario-mix/index.html",
       "baselineGitBlob": "9b8d8164e6e2ab576e71fe82f54283c2c74236d2",
       "baselineSha256": "4afab9b76acb4f1f766919473ef73a49ed2ef686cc7a747cd09cbcf20fd42f11",
-      "gitBlob": "26459085a09da12d31625ea9fe04a8e0c42d7dd1",
-      "sha256": "88df8b5ccca5e1921f9a67887d722bf26dc253fe0b42787b4d022962865dd095",
+      "gitBlob": "72337f19236a207c74261477fb54775e88a2e089",
+      "sha256": "3a956f99ee06db94b1fd831b7cdcf92707b5f4255990aab35c31e6b79fb859bb",
       "reviewDate": "2026-10-02",
-      "evidence": "bilingual-maintenance"
+      "evidence": "analytics-maintenance"
     },
     {
       "path": "games/pipebound/index.html",
       "baselineGitBlob": "cf14a36f4409acfefdf79986a5431abb118d4865",
       "baselineSha256": "b469f5c52f3c00ad9a01e2c890963830c18b0ec009bcdfa313f6d92137608937",
-      "gitBlob": "222dffe4e0833e7b51977d853a59d44740ab73a0",
-      "sha256": "21326658520ae901ee6e0a6f1215f621e36e6d1398dbaf64549bd5722011ffe9",
+      "gitBlob": "7b98d21d91c9d2a92cd4e32cc1302d8ff9e98e47",
+      "sha256": "a639922ac8059758d655f87e20a7b70e08e7d7fad9772841565c7d91de62e5aa",
       "reviewDate": "2026-10-02",
-      "evidence": "bilingual-maintenance"
+      "evidence": "analytics-maintenance"
     },
     {
       "path": "games/pixel-pipe-adventure/index.html",
       "baselineGitBlob": "f30f93e9701b7be1ab63308f7ce45ede31326278",
       "baselineSha256": "9e032e6320957edd7c9c473a6b4b7cb53e62af9e3463325f2c70ea4f7a57461d",
-      "gitBlob": "466aee524e9f9efd4e671318bdbd515bb698c364",
-      "sha256": "8ebcf7eee553bc32f56581815ca12b19812ebf99b2e852ba928353b7a2ec57a4",
+      "gitBlob": "62403470949fe97be8d1ab2725219928518e9f49",
+      "sha256": "528ac378162a9fc5c997a39ab78fd18fed4152ef86e158bdcf777e3b7c4c1aa1",
       "reviewDate": "2026-10-02",
-      "evidence": "bilingual-maintenance"
+      "evidence": "analytics-maintenance"
     },
     {
       "path": "games/voxel-frontier/index.html",
       "baselineGitBlob": "cc0a1eeaf8f9780a9d752e221d5c34f325b0b9b0",
       "baselineSha256": "35240e2af8c07e84c0b88137a9f8549b58ee994a9b2a60c38ad9038c8c6565c3",
-      "gitBlob": "db8a6d529d9ac800c2999062b0c86930c0686db5",
-      "sha256": "94011679869c5c31e5b5d736e017fbee952b8fe5482d53ac363768c1981c1294",
+      "gitBlob": "b2a4226b54cc035c69f031a2ff172eed4d47cb74",
+      "sha256": "15588a3c141ac00b4636b6f2180f62e27490c2cd992f4a24818ab0ff039bb8cf",
       "reviewDate": "2026-10-02",
-      "evidence": "bilingual-maintenance"
+      "evidence": "analytics-maintenance"
     },
     {
       "path": "index.html",
       "baselineGitBlob": "ba30bdc413adce5dc39476605082733cbe7ef1b6",
       "baselineSha256": "bf5269a0c063e71139f6ca7618b5bb158cfbee0ea504e225892878a815f53c30",
-      "gitBlob": "871f19ea9bedb8257e96b2add7de97b68ec5673b",
-      "sha256": "40b6264537829047bc35b1e6770111558037183d75ddcdd925f7431fbffb3351",
+      "gitBlob": "909a0f8641ea29d5d6b92c840bd80d4ef6b4fe05",
+      "sha256": "32a4805f0907419fd046367724c9bf70e4b50929f4a8ee9a51cf404f2929ba18",
       "reviewDate": "2026-10-02",
-      "evidence": "bilingual-maintenance"
+      "evidence": "analytics-maintenance"
     },
     {
       "path": "notes/index.html",
       "baselineGitBlob": "2798af72431d60f24ea38cb152474670e1ecf0ad",
       "baselineSha256": "88754e40cf1c5c0dcd79fc17afea0353b44836298fe5731ed509143b356beec9",
-      "gitBlob": "3194946020168d3425f8ee2e0477f1a1fbb88ea3",
-      "sha256": "ddf7d7412b94902bf83f2333fb8521344d95c1baef601490c72b51f6e087e692",
+      "gitBlob": "eafc21209fd2cf69dd156af0fce1f3487d7d1d7f",
+      "sha256": "ac94192678a986f6b6270d33265c4f976607f670dda50faa441400b94f6da958",
       "reviewDate": "2026-10-02",
-      "evidence": "bilingual-maintenance"
+      "evidence": "analytics-maintenance"
     },
     {
       "path": "projects/index.html",
       "baselineGitBlob": "e29006ec9904e4171b63620632c3dd0044455e18",
       "baselineSha256": "d4bee107d4e76b944e330ce48312a26bc13dd6ef0bcf725d7ffed54f097a9636",
-      "gitBlob": "ed6ee2b6b9415ab1757463b3cb3ab611fe3b6155",
-      "sha256": "cada0bab6aaeb87ad561e5922561743783570969501391301e87d865029f5a9a",
+      "gitBlob": "f8f1983e5b572f3cb8c4e33ecfcbf1e3aad7b294",
+      "sha256": "1cbbc37761f6906b6c451e4f739172d6f73cdf302bb4c456e9a2109abd6a243a",
       "reviewDate": "2026-10-02",
-      "evidence": "bilingual-maintenance"
+      "evidence": "analytics-maintenance"
     },
     {
       "path": "projects/q-mimi/index.html",
       "baselineGitBlob": "48c0b573d540ffeff57dc9e7808661f687559f25",
       "baselineSha256": "76a5551678228c5e9d0ec651a0503d3c271d28897a6899ac0012bace33105ea2",
-      "gitBlob": "c0cb22e3aff432faadf55c26d367554fb8887b32",
-      "sha256": "87a852673b1d776f6086879092934c8a29e13b9d73bf0e5ba9cc7d4774f64ed0",
+      "gitBlob": "40be7d43687bcb01fe2141c0236f9caf991fac12",
+      "sha256": "2380bd7a2ea5f2ce9b01bf461272ed7e5afc47459210b580c7ee7c85bdbd293b",
       "reviewDate": "2026-10-02",
-      "evidence": "bilingual-maintenance"
+      "evidence": "analytics-maintenance"
     },
     {
       "path": "scripts/platform/browser.mjs",
@@ -33495,13 +33551,22 @@
       "evidence": "bilingual-maintenance"
     },
     {
+      "path": "tests/analytics/privacy.test.mjs",
+      "baselineGitBlob": "6e3918a497d972872af6c45abb2f01e9d4c8bd49",
+      "baselineSha256": "4f05626b9df0d07fe38ad40d7182805c2711e2fbc39fd42beb45a645efdfb911",
+      "gitBlob": "b21320bb1b4493b98dc191793beec89b9bc243df",
+      "sha256": "b039ac5cb044e82efa251fcbbf7ec1c766ec1f5d2b678bb7ca507704613b4147",
+      "reviewDate": "2026-10-02",
+      "evidence": "analytics-maintenance"
+    },
+    {
       "path": "tools/index.html",
       "baselineGitBlob": "18d7df5efa55242ae4d0911831f822f15b7714ce",
       "baselineSha256": "bb728a205fa37790269227a32b559ca0b5dc8fdcb7edabb906857a68c57616a7",
-      "gitBlob": "cf0485a306388dbf584b388a958c9d94ad24cf0a",
-      "sha256": "112e6d4697c28d7c9436386efe8ead8131951b6dfea40f3a469416c4d3d028df",
+      "gitBlob": "8ac409518ddbf5e7c6db8585618aec8489cfc87c",
+      "sha256": "b62b37b7aadf5444b357b36eebc91728594ad768ae0c9b9a8cefa84a158e046e",
       "reviewDate": "2026-10-02",
-      "evidence": "bilingual-maintenance"
+      "evidence": "analytics-maintenance"
     }
   ]
 }

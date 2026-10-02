@@ -87,3 +87,7 @@ Interaction regressions run the actual router and search source with controlled 
 ## Video works
 
 The Lab also supports `kind: "video"` records. They share registration, listings and detail routes with HTML experiments, without inventing prompts, model settings or downloadable source files. See [Maintaining Lab videos](lab-videos.en.md).
+
+## Visit statistics and owner exclusion
+
+[Visit statistics and owner exclusion](analytics.en.md) describes the explicit opt-out, QA parameters, PV/visits semantics and front-end deduplication limits.

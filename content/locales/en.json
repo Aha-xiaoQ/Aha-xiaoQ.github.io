@@ -4751,6 +4751,131 @@
       "id": "bilingual-review.final.dependencies",
       "source": "SITE-001 · 待处理；SITE-002 · 待处理",
       "text": "SITE-001 · Ready; SITE-002 · Ready"
+    },
+    {
+      "id": "analytics.owner.01",
+      "source": "本浏览器本人访问不计入",
+      "text": "Exclude my visits in this browser"
+    },
+    {
+      "id": "analytics.owner.02",
+      "source": "访问统计说明",
+      "text": "About visit statistics"
+    },
+    {
+      "id": "analytics.owner.03",
+      "source": "默认计入访问；仅在主动开启后保存本浏览器的排除设置。保存成功后刷新生效，不能撤回已记录的访问。PV 是页面访问次数，visits 是标签页内的 30 分钟活动窗口，均不能确认真人或独立人数。",
+      "text": "Visits count by default. Only turning this setting on saves an exclusion for this browser. A successful save reloads the page to apply it; previous counts cannot be undone. PV counts page views; visits counts 30-minute activity windows within a tab. Neither confirms human visitors or unique people."
+    },
+    {
+      "id": "analytics.owner.04",
+      "source": "用不计入链接重新打开",
+      "text": "Reopen with counting disabled"
+    },
+    {
+      "id": "analytics.owner.05",
+      "source": "已开启：本浏览器本人访问不计入。再次点击可恢复计入。",
+      "text": "On: my visits in this browser are excluded. Click again to resume counting."
+    },
+    {
+      "id": "analytics.owner.06",
+      "source": "未开启：本人排除设置关闭。",
+      "text": "Off: owner exclusion is disabled."
+    },
+    {
+      "id": "analytics.owner.07",
+      "source": "存储不可用：仅暂停当前页面的聚合统计，不能保存。已载入的独立统计需用不计入链接重新打开。",
+      "text": "Storage unavailable: aggregate counting is paused only on this page; the setting cannot be saved. Reopen with counting disabled to stop an already loaded independent tracker."
+    },
+    {
+      "id": "analytics.owner.08",
+      "source": "存储不可用：设置无法保存；可用不计入链接重新打开。",
+      "text": "Storage unavailable: the setting cannot be saved. You can reopen with counting disabled."
+    },
+    {
+      "id": "analytics.owner.09",
+      "source": "当前标签页已使用 stats=off 排除；关闭本人设置不会取消此排除。",
+      "text": "This tab is excluded by stats=off; turning off the owner setting does not cancel that exclusion."
+    },
+    {
+      "id": "analytics.owner.10",
+      "source": "当前页面已禁用统计。",
+      "text": "Counting is disabled on this page."
+    },
+    {
+      "id": "analytics.guide.01",
+      "source": "可主动排除本浏览器的本人访问",
+      "text": "You can explicitly exclude your visits in this browser"
+    },
+    {
+      "id": "analytics.guide.02",
+      "source": "页脚新增默认关闭、可撤销的本人访问排除设置，补齐存储不可用和测试排除的说明。PV 与 visits 原有口径保留，不能据此确认真人或独立人数。",
+      "text": "The footer adds a reversible owner-exclusion setting that is off by default, with guidance for unavailable storage and QA exclusion. Existing PV and visits semantics remain unchanged; neither confirms human visitors or unique people."
+    },
+    {
+      "id": "analytics.guide.03",
+      "source": "访问统计与本人排除",
+      "text": "Visit statistics and owner exclusion"
+    },
+    {
+      "id": "analytics.guide.04",
+      "source": "按需排除本浏览器的本人访问，了解 PV 与 visits 的统计边界。",
+      "text": "Choose whether to exclude your visits in this browser, and understand the limits of PV and visits."
+    },
+    {
+      "id": "analytics.guide.05",
+      "source": "两步开启本人排除",
+      "text": "Enable owner exclusion in two steps"
+    },
+    {
+      "id": "analytics.guide.06",
+      "source": "先打开网站首页，滚动到页脚，找到“本浏览器本人访问不计入”。",
+      "text": "Open the home page, scroll to the footer and find “Exclude my visits in this browser”."
+    },
+    {
+      "id": "analytics.guide.07",
+      "source": "点击按钮，保存成功后页面会刷新，状态变为已开启。再次点击即可撤销；设置默认关闭，只影响主动设置的浏览器。",
+      "text": "Click the button. A successful save reloads the page and shows the setting as on. Click again to undo it. The setting is off by default and only affects a browser where you explicitly enable it."
+    },
+    {
+      "id": "analytics.guide.08",
+      "source": "已记录的访问与存储不可用",
+      "text": "Previous counts and unavailable storage"
+    },
+    {
+      "id": "analytics.guide.09",
+      "source": "首次开启前已经记录的访问不能撤回。其他已打开标签页的独立统计需刷新才能应用；不会强行刷新正在使用的页面。",
+      "text": "Counts recorded before the first activation cannot be undone. Already open tabs need a reload for their independent tracker to apply the exclusion; pages in use are not forcibly reloaded."
+    },
+    {
+      "id": "analytics.guide.10",
+      "source": "如果浏览器不能保存设置，按钮只暂停当前页面的聚合统计；请使用“不计入链接”重新打开，让测试排除在新页面载入时生效。",
+      "text": "If the browser cannot save the setting, the button pauses only the current page’s aggregate counter. Reopen with the counting-disabled link so QA exclusion applies as the new page loads."
+    },
+    {
+      "id": "analytics.guide.11",
+      "source": "PV 与 visits 的含义",
+      "text": "What PV and visits mean"
+    },
+    {
+      "id": "analytics.guide.12",
+      "source": "PV 是页面访问次数；visits 是标签页内的 30 分钟活动窗口，不能称为 UV，也不能确认真人或独立人数。本人排除是主动选择，不会识别访客身份或筛选机器人。",
+      "text": "PV counts page views; visits counts 30-minute activity windows within a tab. It is not UV and neither confirms humans or unique people. Owner exclusion is an explicit choice; it does not identify visitors or filter bots."
+    },
+    {
+      "id": "analytics.guide.13",
+      "source": "测试使用 stats=off 时继续排除当前标签页；关闭本人排除不会取消测试排除。历史统计、unknown 与未归类 404 的处理规则不变。",
+      "text": "QA visits using stats=off remain excluded in the current tab. Turning off owner exclusion does not cancel QA exclusion. Historical counts, unknown paths and uncategorized 404 rules remain unchanged."
+    },
+    {
+      "id": "analytics.guide.14",
+      "source": "维护说明 · 中文",
+      "text": "Maintenance guide · Chinese"
+    },
+    {
+      "id": "analytics.guide.15",
+      "source": "维护说明 · English",
+      "text": "Maintenance guide · English"
     }
   ]
 }
