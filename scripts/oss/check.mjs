@@ -30,6 +30,14 @@ export function validateManifest(m){
  }
  if(m.files.length!==2964)errors.push('Baseline inventory must contain exactly 2964 files');
  const by=new Map(m.files.map(r=>[r.path,r]));
+ const revised=new Set();
+ if(m.reviewedRevisions!==undefined&&!Array.isArray(m.reviewedRevisions))errors.push('Invalid reviewed revisions');
+ for(const r of Array.isArray(m.reviewedRevisions)?m.reviewedRevisions:[]){
+  const baseline=by.get(r.path);
+  if(!baseline||baseline.classification!=='original-MIT'||!baseline.sha256||revised.has(r.path)||r.baselineGitBlob!==baseline.gitBlob||r.baselineSha256!==baseline.sha256||!/^[a-f0-9]{40}$/.test(r.gitBlob||'')||!/^[a-f0-9]{64}$/.test(r.sha256||'')||r.reviewDate!=='2026-10-02'||r.evidence!=='bilingual-maintenance')errors.push('Invalid original-component revision: '+r.path);
+  revised.add(r.path);
+ }
+ if(revised.size&&!m.evidence['bilingual-maintenance'])errors.push('Missing bilingual revision evidence');
  const requiredOriginal=['assets/illustrations/controller.svg','assets/illustrations/web-studio.svg','assets/illustrations/workflow.svg','assets/illustrations/experiment.svg','scripts/lib/safe-path.mjs','tests/security/safe-path.test.mjs','assets/workshop-cards.js','assets/workshop-media.js','assets/workshop-media-runtime.js','experiments/pelican-bicycle.html','packages/mario-mix-worlds/atlas/editor-zip.mjs','packages/mario-mix-worlds/atlas/editor-gamepad.mjs','packages/mario-mix-worlds/atlas/editor-model.mjs','packages/mario-mix-worlds/atlas/editor.css','packages/mario-mix-worlds/scripts/editor-launch.mjs','packages/mario-mix-worlds/tests/gamepad.test.mjs','tools/quina-optics/index.html','tools/quina-optics/assembly.html','tools/quina-optics/optics/interactive.html'];
  for(const p of requiredOriginal)if(by.get(p)?.classification!=='original-MIT')errors.push('Missing audited original scope: '+p);
  const exceptions=['packages/mario-mix-worlds/atlas/editor-mario-stage.mjs','packages/mario-mix-worlds/atlas/editor-mario-motor.mjs','packages/mario-mix-worlds/atlas/editor-bill.mjs','scripts/platform/vendor/acorn/acorn.mjs','scripts/platform/vendor/acorn/LICENSE','assets/fonts/LXGWWenKai-OFL.txt','tests/platform/fixtures/wenkai-ofl-source.json','packages/mario-mix-worlds/atlas/chill-font.mjs','packages/mario-mix-worlds/atlas/source-sprite-data.mjs','packages/mario-mix-worlds/atlas/classic-art.mjs','packages/mario-mix-worlds/tests/fixtures/classic-mix.js','packages/mario-mix-worlds/atlas/classic-1-1.json','tools/quina-optics/references/Thorlabs_EDU-SPEBCT1_Manual.pdf','tools/quina-optics/precision-assembly.glb','tools/quina-optics/precision-assembly-bom.json','tools/quina-optics/assets/preview.png','tools/quina-optics/Quina_Interactive_v009.zip','projects/q-mimi/spritesheet.webp','projects/q-mimi/q-mimi.zip'];
@@ -54,9 +62,11 @@ export function check(root=ROOT,{git=true,bytes=true}={}){
  }
  let byteChecks=0;
  if(bytes){
+  const revisions=new Map((manifest.reviewedRevisions||[]).map(r=>[r.path,r]));
   for(const row of manifest.files){
    if(!row.sha256)continue;
-   const b=get(row.path);if(sha(b)!==row.sha256||gitBlob(b)!==row.gitBlob)errors.push('Audited source bytes changed; review scope before updating identity: '+row.path);byteChecks++;
+   const identity=revisions.get(row.path)||row;
+   const b=get(row.path);if(sha(b)!==identity.sha256||gitBlob(b)!==identity.gitBlob)errors.push('Audited source bytes changed; review scope before updating identity: '+row.path);byteChecks++;
   }
   for(const row of manifest.files){
    if(['third-party-original-license','existing-project-license'].includes(row.classification)&&row.path!=='scripts/platform/vendor/acorn/NOTICE.json'){if(gitBlob(get(row.path))!==row.gitBlob)errors.push('Retained third-party file was changed: '+row.path);}

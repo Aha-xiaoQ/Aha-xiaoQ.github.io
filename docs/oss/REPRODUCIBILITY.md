@@ -1,5 +1,7 @@
 # 复现步骤与方法限制 / Reproduction and limitations
 
+**简体中文** | [English](REPRODUCIBILITY.en.md)
+
 ## 固定源码与本地启动
 
 基线：`4bc75da9e038a45886a119b1d8c16402990702c9`。使用 Node.js 22+，原网站脚本无第三方 npm 依赖，不需要 `npm install`。
@@ -8,7 +10,8 @@
 git clone https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io.git
 cd Aha-xiaoQ.github.io
 git checkout 4bc75da9e038a45886a119b1d8c16402990702c9
-# 若复现本次许可修改，先在这个基线应用本地补丁
+# 复现已发布的许可文档修订时，改用下方精确提交
+# git checkout 12e4afacbe4e24e1514bc80f5054e5c61bb7acae
 npm run dev
 ```
 

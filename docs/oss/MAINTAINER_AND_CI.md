@@ -1,5 +1,7 @@
 # 维护者、项目范围与 CI 证据
 
+**简体中文** | [English](MAINTAINER_AND_CI.en.md)
+
 核验日期：2026-10-02。源码基线：`4bc75da9e038a45886a119b1d8c16402990702c9`。
 
 ## 维护角色
@@ -30,4 +32,8 @@ CODEOWNERS 是审阅路由，不是目录访问隔离；没有据此声称分支
 
 `OPS-001` 没有因源代码在 main 存在而自动标成全部上线验收完成；未核验的设备、下载和线上操作仍保持待验证。旧协作/游戏记录的历史状态不作为新结论。
 
-本次修改只在本地。没有推送、部署、改仓库权限或提交申请。后续提交后的远端 CI 必须按新提交再次核验。
+## 已发布的许可文档修订
+
+2026-10-02 已普通推送源码 [`12e4afacbe4e24e1514bc80f5054e5c61bb7acae`](https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/commit/12e4afacbe4e24e1514bc80f5054e5c61bb7acae) 和 Pages 产物 [`70fe435adbc21306f6276bda0d759f371d079701`](https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/commit/70fe435adbc21306f6276bda0d759f371d079701)。源码精确提交的 [Website platform regression](https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/actions/runs/37026675085) 与 [Collaboration checks](https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/actions/runs/37026675494) 成功；精确部署的 [Pages 运行](https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/actions/runs/37027034009)成功。该文档修订未触发仅针对游戏工程路径的 Mario Mix 工作流。
+
+上述是已发布许可文档修订的证据。后续双语维护提交必须按自己的新 SHA 再核验，不能继承这些运行结果。没有更改仓库权限或提交申请。

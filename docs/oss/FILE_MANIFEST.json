@@ -175,6 +175,17 @@
       ],
       "limits": "Only original rendering implementation is licensed. Copied HUD_GLYPHS and any copied/embedded font data are excluded; the conventional rectangle-intersection predicate in editor-model is not treated as proprietary copied code.",
       "sourceGameGitBlob": "33648e34156fb2d4d3b0ef85f80a6a331f8f64d1"
+    },
+    "bilingual-maintenance": {
+      "basis": "Maintainer-authorized bilingual documentation and language-entry maintenance, reviewed against published source 12e4afacbe4e24e1514bc80f5054e5c61bb7acae on 2026-10-02. Original implementation revisions and generated version aliases only.",
+      "sources": [
+        "CONTRIBUTING.md",
+        "CONTRIBUTING.en.md",
+        "docs/platform/README.md",
+        "docs/oss/PROVENANCE.md",
+        "docs/oss/PROVENANCE.en.md"
+      ],
+      "limits": "Baseline classifications, component scope and every excluded third-party component remain unchanged. Current byte identities are separate from historical baseline evidence; this is not a new grant to previously unknown inventory entries."
     }
   },
   "newFiles": [
@@ -259,6 +270,76 @@
       "sha256": "509b2d8f739a34ab8cf91c5f75653af633b421ca8913162ccad5271277e68c38",
       "evidence": [
         "acorn"
+      ]
+    },
+    {
+      "path": "docs/oss/README.en.md",
+      "classification": "original-MIT",
+      "license": "MIT",
+      "scope": "Original English edition of the listed original audit documentation only; cited works, upstream terms and historical prompts are excluded.",
+      "evidence": [
+        "new-audit",
+        "bilingual-maintenance"
+      ]
+    },
+    {
+      "path": "docs/oss/PROVENANCE.en.md",
+      "classification": "original-MIT",
+      "license": "MIT",
+      "scope": "Original English edition of the listed original audit documentation only; cited works, upstream terms and historical prompts are excluded.",
+      "evidence": [
+        "new-audit",
+        "bilingual-maintenance"
+      ]
+    },
+    {
+      "path": "docs/oss/REPRODUCIBILITY.en.md",
+      "classification": "original-MIT",
+      "license": "MIT",
+      "scope": "Original English edition of the listed original audit documentation only; cited works, upstream terms and historical prompts are excluded.",
+      "evidence": [
+        "new-audit",
+        "bilingual-maintenance"
+      ]
+    },
+    {
+      "path": "docs/oss/MAINTAINER_AND_CI.en.md",
+      "classification": "original-MIT",
+      "license": "MIT",
+      "scope": "Original English edition of the listed original audit documentation only; cited works, upstream terms and historical prompts are excluded.",
+      "evidence": [
+        "new-audit",
+        "bilingual-maintenance"
+      ]
+    },
+    {
+      "path": "docs/oss/VALIDATION.en.md",
+      "classification": "original-MIT",
+      "license": "MIT",
+      "scope": "Original English edition of the listed original audit documentation only; cited works, upstream terms and historical prompts are excluded.",
+      "evidence": [
+        "new-audit",
+        "bilingual-maintenance"
+      ]
+    },
+    {
+      "path": "tests/platform/bilingual-docs.test.mjs",
+      "classification": "original-MIT",
+      "license": "MIT",
+      "scope": "Original regression logic for bilingual documentation and contribution entry points only.",
+      "evidence": [
+        "new-audit",
+        "bilingual-maintenance"
+      ]
+    },
+    {
+      "path": "scripts/platform/browser/bilingual-docs.mjs",
+      "classification": "original-MIT",
+      "license": "MIT",
+      "scope": "Original browser audit implementation for bilingual documentation navigation only; artifacts, upstream notices and third-party content under test are excluded.",
+      "evidence": [
+        "new-audit",
+        "bilingual-maintenance"
       ]
     }
   ],
@@ -33221,6 +33302,206 @@
       "evidence": [
         "unreviewed"
       ]
+    }
+  ],
+  "reviewedRevisions": [
+    {
+      "path": "about/index.html",
+      "baselineGitBlob": "b4c6b69895f238d69b4df5ed8147d85edc3adc21",
+      "baselineSha256": "14f3537855046ab8be6066b66617c050ce9545aa6f696abc603ce7e618079093",
+      "gitBlob": "58d19f45843b01dd11d2251f3800da642a7de2f9",
+      "sha256": "4801083069cd68c3adf70c0144c293b3ebd2e3ed5c4dcfd9afa0eeb59197ace0",
+      "reviewDate": "2026-10-02",
+      "evidence": "bilingual-maintenance"
+    },
+    {
+      "path": "assets/i18n/messages.js",
+      "baselineGitBlob": "592306765289377fd1e2dc5dc95a085e6848aba9",
+      "baselineSha256": "e1ef83eccf9ed624f5b936503064e2bf9ba6a4cec19a402ee4c12dfde1021f15",
+      "gitBlob": "02d47707ffe8685c035c2f1c3ea195c4c7ac97ad",
+      "sha256": "6c32885af4a53095315b3b4ee537d94f601766925196a0a9f3bdc5cd7ecc9e2b",
+      "reviewDate": "2026-10-02",
+      "evidence": "bilingual-maintenance"
+    },
+    {
+      "path": "assets/journal/documents.mjs",
+      "baselineGitBlob": "f1d865f9aa21d81fe7e03e7374982a2fc7b1ddaf",
+      "baselineSha256": "ac614bd0ac679ed6614694d0c2d07441fc8b6789cff9bff06967c97c77bd23c4",
+      "gitBlob": "8297b165a5f9e174ecc36d8c1dfc7a7d1438d420",
+      "sha256": "4885f866432427173ae0a3fb084d5c2ddafc0eb54b8104dcdefce223cdced581",
+      "reviewDate": "2026-10-02",
+      "evidence": "bilingual-maintenance"
+    },
+    {
+      "path": "assets/journal/experiment.mjs",
+      "baselineGitBlob": "30a08b98efacc83111c528fc4848a83628263446",
+      "baselineSha256": "dc5478c8bc43d16ecae1f585cba9a6bba323fb140b7cd4590bf10e91a2b85596",
+      "gitBlob": "85ee0796c3f6bd400087bc12d9696c627b5ddf29",
+      "sha256": "04bba47b092872e26e56eab61765ebf573fe525a83136fe93f872696cdec1340",
+      "reviewDate": "2026-10-02",
+      "evidence": "bilingual-maintenance"
+    },
+    {
+      "path": "assets/journal/public-layout.mjs",
+      "baselineGitBlob": "25bc488f32da2f9de2b4ef1107ff5571b74bb8ec",
+      "baselineSha256": "bf4229ff50ceeb8071fb4af8b94e331642543b9856267db3d6193f93b81fa1eb",
+      "gitBlob": "4b8a938fe80b7b9f96c903f2f04064e833ee1813",
+      "sha256": "c1285fb3599e9b5b22619ea3fb11b489c94bc3b1116b38f8ed91178e0cb18be8",
+      "reviewDate": "2026-10-02",
+      "evidence": "bilingual-maintenance"
+    },
+    {
+      "path": "assets/journal/render.mjs",
+      "baselineGitBlob": "5b74c68409edfefaa6d990fc62111d09f7365c0b",
+      "baselineSha256": "021ba67c6d27f8d1da66bbf949d7bb63c64580001deff22944d7847e731c4180",
+      "gitBlob": "5f2f663dd35a6edb78fa9b47bb5f43f595216e05",
+      "sha256": "285af7ec071e5e147299c8b6cff39a7381af1092fbb395191580dbd2b1f8af5c",
+      "reviewDate": "2026-10-02",
+      "evidence": "bilingual-maintenance"
+    },
+    {
+      "path": "assets/journal/runtime.mjs",
+      "baselineGitBlob": "6899fd87a5a0d7a8295c832561bc0811d51b0e65",
+      "baselineSha256": "a21d16de3732df431579b140a45e43101c0375a30d982aeb71241f84ab34c301",
+      "gitBlob": "5a59dd3114a9c51eff32b1cc9c202e9b073c26ad",
+      "sha256": "e165d272fa836f491b15dcd0fa75fb030c184af4af1a509aa076cf7193765131",
+      "reviewDate": "2026-10-02",
+      "evidence": "bilingual-maintenance"
+    },
+    {
+      "path": "assets/release/public-content.mjs",
+      "baselineGitBlob": "45e2ebbc03feae6d17dc48528143e83d6b65f62a",
+      "baselineSha256": "3de04282d9f70aaa21a31a4183fbd37d36dfd59cc5784dea995beb1907ce0e5f",
+      "gitBlob": "f04f894140c3dea08e5908648881179eb60394ae",
+      "sha256": "86454a2e68c2b19509b09d47eb8584a4e8aaf0f1e22eb952ab55de1caf9338d1",
+      "reviewDate": "2026-10-02",
+      "evidence": "bilingual-maintenance"
+    },
+    {
+      "path": "assets/site-i18n.js",
+      "baselineGitBlob": "059bac589390be362925e675deffa4f47a719627",
+      "baselineSha256": "1c451493b06d546bf381d93d27376f7b7a18df9aa5c91c6b855143a9871618eb",
+      "gitBlob": "f670ad627a869f022735d1b531726a50d622bfa2",
+      "sha256": "1ac6f7012af4a22d8021e8e690f962fbd35d4575bad16ec46cf36e37cb188dd0",
+      "reviewDate": "2026-10-02",
+      "evidence": "bilingual-maintenance"
+    },
+    {
+      "path": "assets/site-router.js",
+      "baselineGitBlob": "c8bffef04c666670f07e136e1f40f9909d2a4ebc",
+      "baselineSha256": "d7be7f7c218c4f8c736686852d96049c048c5d551d04278f8936079c8586dbc3",
+      "gitBlob": "209eefde41c3266a8bf86867d344d813dc7eeb9c",
+      "sha256": "f07175f34c6f3ff2d29daf2425c35e0ac63148a38f6b3e69e64abfa3a4854196",
+      "reviewDate": "2026-10-02",
+      "evidence": "bilingual-maintenance"
+    },
+    {
+      "path": "games/index.html",
+      "baselineGitBlob": "64c78896e8e263e48d704d76bd694b51f5be55a9",
+      "baselineSha256": "859fda6c59ee8ac88c3a8c088765e091e5e92c49e5b70ab1d9e0c309cf32daa5",
+      "gitBlob": "86109eeb484da4c68cc32956315b09c412c28746",
+      "sha256": "dd5baecc4bb0149717dc97a267704ee9faf0f804986bd1c1dadaf05e6eefd715",
+      "reviewDate": "2026-10-02",
+      "evidence": "bilingual-maintenance"
+    },
+    {
+      "path": "games/mario-classic/index.html",
+      "baselineGitBlob": "212cec349506c6e9f05b0ce6ca0ddfa22890f69f",
+      "baselineSha256": "ca2cf6d641fff43c726b000992507a238659c5832bf747b2138d68db4347f2ef",
+      "gitBlob": "3fe27aba1c48b3dce3d5dda8d227e91c111efb2c",
+      "sha256": "6e29ed32fd2eb69fc2152000af799c548fc740a54d519b9863e68bcf2bb7df50",
+      "reviewDate": "2026-10-02",
+      "evidence": "bilingual-maintenance"
+    },
+    {
+      "path": "games/mario-mix/index.html",
+      "baselineGitBlob": "9b8d8164e6e2ab576e71fe82f54283c2c74236d2",
+      "baselineSha256": "4afab9b76acb4f1f766919473ef73a49ed2ef686cc7a747cd09cbcf20fd42f11",
+      "gitBlob": "26459085a09da12d31625ea9fe04a8e0c42d7dd1",
+      "sha256": "88df8b5ccca5e1921f9a67887d722bf26dc253fe0b42787b4d022962865dd095",
+      "reviewDate": "2026-10-02",
+      "evidence": "bilingual-maintenance"
+    },
+    {
+      "path": "games/pipebound/index.html",
+      "baselineGitBlob": "cf14a36f4409acfefdf79986a5431abb118d4865",
+      "baselineSha256": "b469f5c52f3c00ad9a01e2c890963830c18b0ec009bcdfa313f6d92137608937",
+      "gitBlob": "222dffe4e0833e7b51977d853a59d44740ab73a0",
+      "sha256": "21326658520ae901ee6e0a6f1215f621e36e6d1398dbaf64549bd5722011ffe9",
+      "reviewDate": "2026-10-02",
+      "evidence": "bilingual-maintenance"
+    },
+    {
+      "path": "games/pixel-pipe-adventure/index.html",
+      "baselineGitBlob": "f30f93e9701b7be1ab63308f7ce45ede31326278",
+      "baselineSha256": "9e032e6320957edd7c9c473a6b4b7cb53e62af9e3463325f2c70ea4f7a57461d",
+      "gitBlob": "466aee524e9f9efd4e671318bdbd515bb698c364",
+      "sha256": "8ebcf7eee553bc32f56581815ca12b19812ebf99b2e852ba928353b7a2ec57a4",
+      "reviewDate": "2026-10-02",
+      "evidence": "bilingual-maintenance"
+    },
+    {
+      "path": "games/voxel-frontier/index.html",
+      "baselineGitBlob": "cc0a1eeaf8f9780a9d752e221d5c34f325b0b9b0",
+      "baselineSha256": "35240e2af8c07e84c0b88137a9f8549b58ee994a9b2a60c38ad9038c8c6565c3",
+      "gitBlob": "db8a6d529d9ac800c2999062b0c86930c0686db5",
+      "sha256": "94011679869c5c31e5b5d736e017fbee952b8fe5482d53ac363768c1981c1294",
+      "reviewDate": "2026-10-02",
+      "evidence": "bilingual-maintenance"
+    },
+    {
+      "path": "index.html",
+      "baselineGitBlob": "ba30bdc413adce5dc39476605082733cbe7ef1b6",
+      "baselineSha256": "bf5269a0c063e71139f6ca7618b5bb158cfbee0ea504e225892878a815f53c30",
+      "gitBlob": "871f19ea9bedb8257e96b2add7de97b68ec5673b",
+      "sha256": "40b6264537829047bc35b1e6770111558037183d75ddcdd925f7431fbffb3351",
+      "reviewDate": "2026-10-02",
+      "evidence": "bilingual-maintenance"
+    },
+    {
+      "path": "notes/index.html",
+      "baselineGitBlob": "2798af72431d60f24ea38cb152474670e1ecf0ad",
+      "baselineSha256": "88754e40cf1c5c0dcd79fc17afea0353b44836298fe5731ed509143b356beec9",
+      "gitBlob": "3194946020168d3425f8ee2e0477f1a1fbb88ea3",
+      "sha256": "ddf7d7412b94902bf83f2333fb8521344d95c1baef601490c72b51f6e087e692",
+      "reviewDate": "2026-10-02",
+      "evidence": "bilingual-maintenance"
+    },
+    {
+      "path": "projects/index.html",
+      "baselineGitBlob": "e29006ec9904e4171b63620632c3dd0044455e18",
+      "baselineSha256": "d4bee107d4e76b944e330ce48312a26bc13dd6ef0bcf725d7ffed54f097a9636",
+      "gitBlob": "ed6ee2b6b9415ab1757463b3cb3ab611fe3b6155",
+      "sha256": "cada0bab6aaeb87ad561e5922561743783570969501391301e87d865029f5a9a",
+      "reviewDate": "2026-10-02",
+      "evidence": "bilingual-maintenance"
+    },
+    {
+      "path": "projects/q-mimi/index.html",
+      "baselineGitBlob": "48c0b573d540ffeff57dc9e7808661f687559f25",
+      "baselineSha256": "76a5551678228c5e9d0ec651a0503d3c271d28897a6899ac0012bace33105ea2",
+      "gitBlob": "c0cb22e3aff432faadf55c26d367554fb8887b32",
+      "sha256": "87a852673b1d776f6086879092934c8a29e13b9d73bf0e5ba9cc7d4774f64ed0",
+      "reviewDate": "2026-10-02",
+      "evidence": "bilingual-maintenance"
+    },
+    {
+      "path": "scripts/platform/browser.mjs",
+      "baselineGitBlob": "cf1e45236f2c1fd633c9e79639e529351893feaa",
+      "baselineSha256": "7396a7b08aedf10ab8d0907cd3691df8f2af8295989fe55398fb52e69459f954",
+      "gitBlob": "125b8d6f45bb9bd0797ec2620e2d68de18352eb1",
+      "sha256": "09208c79d0c0cf76d59513cd924c71a5df193f98e7b765b445ad85702eca593d",
+      "reviewDate": "2026-10-02",
+      "evidence": "bilingual-maintenance"
+    },
+    {
+      "path": "tools/index.html",
+      "baselineGitBlob": "18d7df5efa55242ae4d0911831f822f15b7714ce",
+      "baselineSha256": "bb728a205fa37790269227a32b559ca0b5dc8fdcb7edabb906857a68c57616a7",
+      "gitBlob": "cf0485a306388dbf584b388a958c9d94ad24cf0a",
+      "sha256": "112e6d4697c28d7c9436386efe8ead8131951b6dfea40f3a469416c4d3d028df",
+      "reviewDate": "2026-10-02",
+      "evidence": "bilingual-maintenance"
     }
   ]
 }

@@ -197,6 +197,19 @@
       note.hidden = language !== 'en';
     }
   }
+  function localeLinks(root = document) {
+    const selector = 'a[data-locale-href-zh][data-locale-href-en]';
+    const links = root.matches?.(selector) ? [root] : root.querySelectorAll?.(selector) || [];
+    for (const link of links) {
+      if (protectedNode(link)) continue;
+      const raw = link.getAttribute('data-locale-href-' + language);
+      let url; try { url = new URL(raw, location.href); } catch { continue; }
+      const repository = url.origin === 'https://github.com' && url.pathname.startsWith('/Aha-xiaoQ/Aha-xiaoQ.github.io/blob/main/');
+      if ((url.origin === location.origin || repository) && ['http:', 'https:'].includes(url.protocol) && !url.username && !url.password) {
+        if (link.getAttribute('href') !== raw) link.setAttribute('href', raw);
+      }
+    }
+  }
   function metadata() {
     localize(document, 'title', document.title, value => { document.title = value; });
     document.querySelectorAll('meta[name="description"],meta[property="og:title"],meta[property="og:description"],meta[name="twitter:title"],meta[name="twitter:description"]').forEach(node => {
@@ -218,7 +231,7 @@
     applying = true; observer?.disconnect();
     try {
       document.documentElement.lang = language === 'en' ? 'en' : 'zh-CN';
-      controls(); subtree(root); metadata(); notices(root);
+      controls(); subtree(root); localeLinks(root); metadata(); notices(root);
       sourceNotes();
     } finally { applying = false; observe(); }
   }
@@ -241,7 +254,7 @@
         const top = roots.filter(node => !roots.some(other => other !== node && other.contains?.(node)));
         for (const node of top) {
           if (node.nodeType === 1 && (node.matches('.topbar,.site-header') || node.querySelector('.topbar,.site-header'))) controls();
-          if (node === document.head || document.head.contains(node)) metadata(); else { subtree(node); notices(node); }
+          if (node === document.head || document.head.contains(node)) metadata(); else { subtree(node); localeLinks(node); notices(node); }
         }
         sourceNotes();
       } finally { applying = false; observe(); }

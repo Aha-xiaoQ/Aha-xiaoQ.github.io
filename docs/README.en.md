@@ -27,3 +27,7 @@ Games and map tools keep their instructions in their own `packages/` projects. S
 `config/documents.json` registers Markdown reading material. `scripts/dev-center/build.mjs` generates the navigation snapshot and on-demand article bodies. Do not hand-edit `assets/journal/data/`. Publication output is in `.local/publish`; verification logs stay in `.local/platform/` and are not public page content.
 
 Hidden routes and noindex are not access control. Keep credentials, private data, and personal browser profiles out of the public repository.
+
+## Contributing and licensing
+
+[Contribution guide](../CONTRIBUTING.en.md) · [Local setup](collab/GETTING_STARTED.en.md) · [Audited original scope](oss/README.en.md). English editions preserve the same exclusions and validation limits as the Chinese source.

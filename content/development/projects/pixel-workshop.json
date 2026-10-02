@@ -5,7 +5,7 @@
   "category": "web",
   "visibility": "public",
   "stage": "持续维护",
-  "updatedAt": "2026-10-01",
+  "updatedAt": "2026-10-02",
   "summary": "小Q的作品展示网站。这里集中说明网站结构、内容编辑、项目接入与发布方式。",
   "intro": "游戏和工具在各自栏目体验；网站实现与维护资料在这里阅读。从本地启动开始，再按需要查找内容编辑或发布说明。",
   "highlights": [
@@ -64,6 +64,15 @@
       "status": "released",
       "summary": "各项目分别提供概览、任务、资料与更新入口。",
       "public": false
+    },
+    {
+      "id": "bilingual-docs-20261002",
+      "date": "2026-10-02",
+      "title": "补齐双语贡献与开源说明",
+      "summary": "贡献指南、本地启动和原创开源文档补齐英文，修正语言入口与过时的本地交付说明。许可范围与历史验收边界保留。",
+      "kind": "docs",
+      "href": "/notes/pixel-workshop/docs/contributing/",
+      "status": "released"
     }
   ],
   "docs": [
@@ -288,6 +297,44 @@
         }
       ],
       "sources": []
+    },
+    {
+      "id": "contributing",
+      "title": "贡献与原创开源范围",
+      "summary": "贡献流程、启动说明和精确许可边界的中英文入口。",
+      "sections": [
+        {
+          "title": "从一项明确的贡献开始",
+          "paragraphs": [
+            "先阅读贡献指南，选择项目和版本，再在 Issue 说明计划。普通贡献者使用 Fork 与功能分支；网页任务卡不会自动认领 GitHub Issue。"
+          ]
+        },
+        {
+          "title": "原创授权与第三方素材分开",
+          "paragraphs": [
+            "固定基线清单列出 348 项原创 MIT 组成部分、85 项保留上游许可、2 项保留 Q咪 CC BY-NC 声明和 2529 项 unknown / NOASSERTION。它不是全仓 MIT，第三方素材、混合游戏和未知下载不因此获得新授权。",
+            "开源文档中英文版本使用同一清单、证据和排除范围；原始提示词、上游通知和未翻译历史文章保留原文。"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "贡献指南 · 中文",
+          "href": "https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/blob/main/CONTRIBUTING.md"
+        },
+        {
+          "label": "贡献指南 · English",
+          "href": "https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/blob/main/CONTRIBUTING.en.md"
+        },
+        {
+          "label": "许可审计 · 中文",
+          "href": "https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/blob/main/docs/oss/README.md"
+        },
+        {
+          "label": "许可审计 · English",
+          "href": "https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/blob/main/docs/oss/README.en.md"
+        }
+      ]
     }
   ],
   "layout": "website",
@@ -302,7 +349,8 @@
       "title": "入门与结构",
       "documents": [
         "start",
-        "architecture"
+        "architecture",
+        "contributing"
       ]
     },
     {

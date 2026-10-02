@@ -27,3 +27,7 @@
 `config/documents.json` 登记 Markdown 阅读资料；开发目录快照和按需正文由 `scripts/dev-center/build.mjs` 生成。不要手改 `assets/journal/data/`。发布目录为 `.local/publish`，检查日志保存在 `.local/platform/`，不作为公开网页内容。
 
 隐藏入口或 noindex 不是访问控制。不要把密钥、私人数据和个人浏览器配置放进公开仓库。
+
+## 参与与许可
+
+[贡献指南](../CONTRIBUTING.md) · [本地启动](collab/GETTING_STARTED.md) · [原创开源范围](oss/README.md)。英文版保留相同的许可排除项和验证边界。

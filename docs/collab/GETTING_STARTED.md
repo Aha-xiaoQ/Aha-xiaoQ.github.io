@@ -1,47 +1,40 @@
-# 启动与路径
+# 本地启动与路径
+
+**简体中文** | [English](GETTING_STARTED.en.md)
 
 ## 当前前提
 
-`collab-r01` 是叠加到现有仓库的更新包，不包含原游戏本体、下载档案或字体。已有 Git 工作副本可先新建分支；只有仓库 ZIP 的情况也可以本地预览，但提交前仍需使用正确的 Git 仓库。
-
-使用 Node.js 22 或更新版本。协作工具只使用 Node 标准库，没有第三方 npm 依赖，无需 `npm install`。本轮只在 Linux / Node 22.16.0 环境执行，Windows 命令脚本仍需在真实 Windows 验证。
+使用完整仓库和 Node.js 22+。网站与协作脚本使用 Node 标准库，没有第三方 npm 依赖，无需 `npm install`。旧 `collab-r01` 增量包不含游戏本体、字体或完整下载档案，不能替代完整 checkout。历史 Linux 测试不代表 Windows 原生验收已完成。
 
 ## 启动
 
-在仓库根目录运行：
+在完整仓库根目录运行：
 
 ```sh
 npm run dev
 ```
 
-访问 `http://127.0.0.1:4173/dev/`。Windows 也可双击 `start-dev.cmd`。服务只绑定本机 127.0.0.1，只允许读取，不提供写入或上传接口。停止方式是 Ctrl+C。端口占用可改为 `npm run dev -- --port 4174`。
+访问 `http://127.0.0.1:4173/notes/?lang=zh`。Windows 可以使用 `start-dev.cmd`；端口占用时运行 `npm run dev -- --port 4174`。服务只绑定本机 127.0.0.1，只读，不提供上传或写入；Ctrl+C 停止。不要从游戏子目录启动临时服务器，共享资源依赖仓库根路径。
 
-不要把终端工作目录缩到 `games/mario-mix` 后用临时服务器启动；共享字体、网站资源与相对链接可能依赖整个仓库根目录。
+| 用途 | 当前路径 |
+| --- | --- |
+| 网站首页 | `/` |
+| 开发目录 | `/notes/` |
+| 参与指南 | `/notes/contribute/` |
+| 网站开发资料 | `/notes/pixel-workshop/docs/` |
+| 混合马里奥资料 | `/notes/mario-mix/docs/` |
+| 四期已发布试玩 | `/games/mario-mix/play.html`、`/games/mario-mix-2/play.html`、`/games/mario-mix-3/play.html`、`/games/mario-mix-4/play.html` |
 
-| 用途 | 路径 |
-|---|---|
-| 原网站 | `/index.html` |
-| 保留的笔记页 | `/notes/index.html` |
-| 新开发中心 | `/dev/index.html` |
-| 参与指南 | `/dev/guide.html` |
-| 第一期 | `/games/mario-mix/play.html` |
-| 第二期 | `/games/mario-mix-2/play.html` |
-| 第三期 | `/games/mario-mix-3/play.html` |
+`/dev/` 与 `/dev/guide.html` 是兼容旧链接，不再是新贡献者的主入口。网址的 `lang=zh` / `lang=en` 选择网站语言；游戏、原始实验及未翻译的历史资料保留自己的原语言。
 
-## 改状态后需要做什么
+## 改内容与状态
 
-编辑 `collab/project.json`，或在开发中心保存草稿后导出并覆盖该文件。核对 `updatedAt`、`nextTask`、`deliveryStatus` 和验收依据。然后运行 `npm run collab:build`；把状态源、`dev/project-data.js`、`collab/TASKS.md` 一起提交。
+网站内容改 `content/` 与 `config/`，项目资料改 `content/development/projects/`。阅读[当前网站指南](https://aha-xiaoq.github.io/notes/pixel-workshop/docs/?lang=zh)，再运行 `npm run platform:verify`。它执行构建、检查、测试与发布产物浏览器回归，不自动推送或部署。
 
-网页草稿不会自动同步 GitHub。新版源状态与旧草稿不匹配时，页面会隔离旧草稿，不能静默覆盖新版。需要先导出旧稿、逐项核对再修改。
+协作状态改 `collab/project.json`，核对日期、下一步、交付状态与验收依据，再运行 `npm run collab:build`；将源、`dev/project-data.js`、`collab/TASKS.md` 一起提交。网页草稿不自动同步 GitHub；旧草稿与新版源冲突时先导出逐项核对，不覆盖新版。
 
-## 检查命令
+`npm run check` 与 `npm test` 是当前仓库 aggregate 检查和测试，已不限于旧协作工具。`npm run doctor` 检查入口与 Git 状态，不下载或修复缺失文件，也不验证游戏体验。`npm run oss:verify` 校验精确许可清单与来源一致性，不证明未知素材已授权。
 
-`npm run check` 检查本轮新增工具的数据、文档链接、脚本语法、模板结构和生成文件一致性。`npm test` 执行协作工具逻辑测试。`npm run doctor` 检查原游戏入口和本地 Git 状态，不验证游戏运行质量；缺失入口时退出失败。它不会下载游戏或修复缺失文件。
+## 验证边界
 
-## 常见问题
-
-- 增量包内游戏链接 404：这不是完整仓库，先按更新说明应用到原目录。
-- 网页字体与原站不同：原字体文件未在更新包中再分发。应用到原仓库后继续引用原路径；没有字体时使用系统字体。
-- 推送后还看不到导航入口：先直接打开 `/dev/`，再对原网页执行 Ctrl+F5；本轮不修改全站版本号机制，避免对其他页面造成错误更新提示。
-- 双击 HTML 与 HTTP 服务表现不同：开发以 `npm run dev` 为准。开发中心采用普通脚本并可离线预览，但不承诺原游戏所有离线模式都通过本轮测试。
-- 所有检查通过但手感有问题：工具检查不覆盖手柄、音频听感和通关，按玩法规范另测。
+缺失游戏、字体或下载文件时应补齐正确仓库内容；不要以系统回退或假文件掩盖缺失。使用 HTTP 服务开发，不以双击 HTML 代表全部运行方式。自动测试不能替代音频听感、自然通关、触屏或实体手柄验收，未测的设备必须明示。

@@ -7,6 +7,7 @@ import {auditRenderedFonts} from './browser/rendered-fonts.mjs';
  * Original game and animation scripts are not executed. */
 import {checkReadmeLinks} from './readme-links.mjs';
 import {auditReadmeNavigation} from './browser/readme-navigation.mjs';
+import {auditBilingualNavigation} from './browser/bilingual-docs.mjs';
 import fs from'node:fs';import path from'node:path';import{fileURLToPath}from'node:url';
 import {safe,readOptional,writeAtomic}from'../lib/safe-path.mjs';
 import {launch,evaluate,until}from'./browser/cdp.mjs';import {serve,discover}from'./browser/server.mjs';
@@ -49,6 +50,8 @@ export async function auditBrowser(root=ROOT,{launcher=launch,widths=[1440,390,3
   }
   report.readmeEntries=await auditReadmeNavigation(browser,checkReadmeLinks(root),server.origin);
   for(const entry of report.readmeEntries)if(!entry.passed)report.errors.push({page:entry.pathname,problem:'readme-entry-language',readme:entry.file,language:entry.language,detail:entry.detail});
+  report.bilingualNavigation=await auditBilingualNavigation(browser,server.origin);
+  for(const entry of report.bilingualNavigation)if(!entry.passed)report.errors.push({page:entry.path,problem:'bilingual-document-navigation',detail:entry.detail});
   // Check a real router transition and a query preserved by the language owner.
   const checkPath='/notes/?lang=en&q=site';await browser.cdp.send('Page.navigate',{url:server.origin+checkPath},browser.sessionId);await until(browser,"!!globalThis.SITE_ROUTER && !!globalThis.SITE_JOURNAL && globalThis.SITE_I18N?.language==='en'");
   await evaluate(browser,"SITE_ROUTER.navigate(new URL('/notes/pixel-workshop/docs/?lang=zh',location.href))");await until(browser,"location.pathname==='/notes/pixel-workshop/docs/' && SITE_I18N.language==='zh'");
@@ -57,7 +60,7 @@ export async function auditBrowser(root=ROOT,{launcher=launch,widths=[1440,390,3
   for(const f of report.fontFaces)if(!f.passed)report.errors.push({page:'font-support',problem:'font-face-rendering',weight:f.weight,detail:f.error});
  }catch(error){report.errors.push({page:currentPage||null,problem:'browser-gate-failed',detail:error.message});}
  finally{try{await browser?.close();}finally{await server?.close();}}
- report.finishedAt=new Date().toISOString();report.ok=report.fontFaces?.length===4&&report.fontFaces.every(f=>f.passed)&&report.cases.length===pages.length*widths.length*2&&report.errors.length===0&&report.routerHistory==='passed'&&report.readmeEntries?.length===4&&report.readmeEntries.every(x=>x.passed);
+ report.finishedAt=new Date().toISOString();report.ok=report.fontFaces?.length===4&&report.fontFaces.every(f=>f.passed)&&report.cases.length===pages.length*widths.length*2&&report.errors.length===0&&report.routerHistory==='passed'&&report.readmeEntries?.length===4&&report.readmeEntries.every(x=>x.passed)&&report.bilingualNavigation?.length===16&&report.bilingualNavigation.every(x=>x.passed);
  if(save)writeAtomic(root,'.local/platform/browser-report.json',Buffer.from(JSON.stringify(report,null,2)+'\n'));
  return report;
 }
