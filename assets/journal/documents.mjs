@@ -1,13 +1,13 @@
-import {EXPERIMENTS} from './data/experiments.mjs?v=release-r24-f59e15bfffde';
+import {EXPERIMENTS} from './data/experiments.mjs?v=release-r24-a6acb19ed1a5';
 import {withExperimentDocuments} from '../platform/contracts.mjs';
 /** Metadata is cheap. Article bodies load only on the selected reading route. */
-import {DOCUMENTS} from './data/documents-index.mjs?v=release-r24-f59e15bfffde';
+import {DOCUMENTS} from './data/documents-index.mjs?v=release-r24-a6acb19ed1a5';
 const entries=new Map(DOCUMENTS.map(d=>[d.projectId+'/'+d.id,{...d}]));
 const pending=new Map();
 // The existing native-page generator needs synchronous article access in Node.
 // This branch never downloads documents-data.mjs in a browser.
 if(typeof window==='undefined'){
- const {DOCUMENTS:full}=await import('./documents-data.mjs?v=release-r24-f59e15bfffde');
+ const {DOCUMENTS:full}=await import('./documents-data.mjs?v=release-r24-a6acb19ed1a5');
  for(const d of full){const entry=entries.get(d.projectId+'/'+d.id);if(entry)Object.assign(entry,d);}
 }
 export const documentURL=d=>`/notes/${d.projectId}/docs/${d.id}/`;

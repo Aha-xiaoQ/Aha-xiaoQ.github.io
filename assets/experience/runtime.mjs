@@ -1,6 +1,6 @@
 /** Progressive site tools: search is loaded only on the search page. No analytics or persistent query history. */
-import {mountNavigation,disposeNavigation,headerMutation} from '../ui/site-refinement.mjs?v=release-r24-f59e15bfffde';
-import {searchState,stateURL,validateIndex,search,searchMarkup,resultsMarkup} from './model.mjs?v=release-r24-f59e15bfffde';
+import {mountNavigation,disposeNavigation,headerMutation} from '../ui/site-refinement.mjs?v=release-r24-a6acb19ed1a5';
+import {searchState,stateURL,validateIndex,search,searchMarkup,resultsMarkup} from './model.mjs?v=release-r24-a6acb19ed1a5';
 const rootURL=new URL('../../',import.meta.url),indexURL=new URL('content/search-index.json?v=experience-r18',rootURL);
 let indexPromise,current=null,queryTimer=0,generation=0;
 const attached=new WeakMap();
