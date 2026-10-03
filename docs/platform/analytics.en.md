@@ -1,31 +1,27 @@
-# Visit statistics and owner exclusion
+# Visit statistics maintenance
 
 [中文](analytics.md)
 
-These are the owner-exclusion rules and their maintenance limits. Implementation review baseline: `8735b6bffa39dcbd1cc635bd897ec59dfc7ef839`. Implementation: `assets/site-analytics.js`; regression tests: `tests/analytics/privacy.test.mjs`.
+The public footer control, explanation and owner-exclusion guide were withdrawn on 2026-10-03. Review baseline: `0c771ad1c4458f3b7c1e5585fc410db8a4395283`. Implementation: `assets/site-analytics.js`; regression: `tests/analytics/privacy.test.mjs`.
 
-## Visitor controls
+## Saved preferences and administration
 
-The shared footer offers “Exclude my visits in this browser”, with a pressed state and visible status. Exclusion is off by default. Viewing a page or opening the explanation does not save an owner preference. Only a deliberate click saves `xiaoq-stats-owner-excluded=1` in same-origin localStorage; undo removes that key. It is a boolean choice, without an account, device identifier, IP, UA, path or inferred identity. Browsers, profiles and origins have separate settings; clearing site storage removes the preference.
+An existing same-origin localStorage value `xiaoq-stats-owner-excluded=1` continues to exclude that browser. Withdrawal does not delete or rewrite preferences. This boolean is not authentication. Public pages expose no administration controls, and there is no authenticated owner-only entry. Repository maintenance documents remain public source documents, not private administration pages.
 
-A successful save reloads the clicked page, so both the aggregate counter and the existing Cloudflare beacon initial loader respect the preference. Previous counts cannot be undone. Other open tabs update their controls on a storage event and respect the preference on subsequent aggregate page events; they are not forcibly reloaded. Their already loaded independent beacon requires a reload to respect the initial-loader exclusion. Removing a script element cannot reliably stop executed code.
+SITE_ANALYTICS.getState() supports maintenance checks. The compatible setOwnerExcluded(boolean) interface only changes the preference: it creates no PV, reload or controls, and cannot identify a user. Unavailable storage retains a choice only in the current document. An already loaded independent Cloudflare beacon needs a new document to respect initial-loader exclusion; previous reports cannot be undone. Other same-origin tabs read preference changes for subsequent aggregate events without an automatic reload.
 
-If storage is unavailable, the button retains a choice only in the current document and pauses subsequent aggregate reports, with an explicit persistence warning. It cannot reliably control an already loaded independent tracker. “Reopen with counting disabled” adds stats=off so both loaders are excluded when the new document starts. This same-origin link preserves other query parameters and the anchor; its URL is not submitted as analytics data.
+## QA parameters and counting semantics
 
-## QA compatibility and counting semantics
+- stats=off retains tab-scoped QA exclusion across routes and reloads when sessionStorage works. Otherwise it still excludes the current document; reopened links must retain the parameter.
+- stats=on clears only QA exclusion, without overriding saved preferences or the global disabled flag. Clearing the owner preference does not clear QA exclusion.
+- Aggregate POST requests run only on the production HTTPS host in a top-level, unexcluded page. The payload remains normalized path and visitStart, with omitted credentials and no referrer. It includes no query, fragment, referring page or visitor ID.
+- **PV** counts page views. Consecutive same-path events, language/query/anchor changes, index.html aliases and duplicate initialization add no view. A → B → A counts each; a real reload can add a PV.
+- **visits** uses the last counted PV time in tab sessionStorage: empty storage or at least 30 minutes sets visitStart=true; recent activity sets false. Duplicate events do not extend the window and exclusion does not update it. Unavailable storage yields null. Duplicated tabs or copied opener storage may inherit the previous time.
 
-- stats=off keeps the existing tab-scoped QA exclusion across routes and reloads when sessionStorage works. Without storage, exclusion still holds within the current document; a reopened link must retain the parameter.
-- stats=on clears only QA exclusion. It cannot override the owner preference or the global disabled flag. Turning off owner exclusion does not clear QA exclusion.
-- Aggregate POST requests still run only on the production HTTPS host, in a top-level page without an exclusion. The payload remains normalized path and visitStart only, with omitted credentials and no referrer. No query, fragment, referring page or visitor ID is submitted.
-- **PV** still counts page views. Consecutive same-path events within one document, language/query/anchor changes, index.html aliases and duplicate initialization do not add views. A → B → A counts each view; a real reload can add a PV.
-- **visits** still uses the last counted PV time in tab sessionStorage: an empty session or at least 30 minutes of inactivity sets visitStart=true; recent activity sets false. Duplicate events do not extend the window; exclusion does not update it. Unavailable storage yields null, retaining unknown coverage. An ordinary new tab with empty storage starts a window. Tabs receiving copied opener storage or duplicated tabs may inherit the previous time; this is an existing limitation.
+visits is not UV, unique people or confirmed humans. No bot or dwell-time filter was added. unknown, uncategorized 404 and historical-count rules remain unchanged.
 
-visits is not UV, unique people or confirmed humans. The owner control excludes an explicitly chosen browser; it does not identify who is using it. No bot filter or short-dwell heuristic was added because there is no evidence supporting human identification here. unknown and uncategorized 404 rules remain unchanged. Past counts cannot be retroactively classified as human or deducted.
+## Verification limits
 
-## Maintenance and verification limits
+This withdrawal changes public entry points without changing backend databases, schema, secrets, historical counts, moderation or permissions. It adds no persistent IP/UA records and makes no claim that existing services keep no logs. Front-end deduplication cannot guarantee backend concurrency deduplication or human identification. A future private administration page needs actual authentication; a query parameter, hidden URL or local boolean cannot substitute for access control.
 
-SITE_ANALYTICS.getState() exposes exclusion state. setOwnerExcluded(boolean) sets a preference and updates the controls; it does not synthesize a PV or reload. The footer click reloads only after a successful persistent save. A single initialization guard, successful-route event and path comparison remain the reporting entry points. Tests run through npm run test:analytics and npm test.
-
-This implementation does not change backend databases, schema, secrets, historical counts, moderation or permissions. Transport and existing providers still have their own processing rules; a small front-end payload does not remove those. This change adds no persistent IP/UA records and does not claim that servers keep no logs. Front-end event deduplication cannot guarantee backend concurrency deduplication or human identification; backend idempotency or schema changes require a separate proposal.
-
-Local browser checks use an isolated temporary profile and a loopback server for the publication artifact, without visiting production to create test traffic. Counting semantics: “You can explicitly exclude your own browser; repeated front-end events do not add PVs; all other counting semantics remain unchanged.” Record the effective version. Counts may decline because of exclusions; that does not indicate an increased human share.
+npm run test:analytics checks exclusion and counting compatibility. npm run analytics:browser checks the local publication artifact in an isolated temporary browser: absent public controls, preserved existing preferences and unavailable storage, without creating production analytics traffic.

@@ -127,7 +127,3 @@ npm run platform:pack -- --base <完整提交SHA> --out ../XiaoQ_Site_Update.zip
 ## 视频作品
 
 实验室也支持 `kind: "video"` 的视频记录。它与默认 HTML 实验共用登记、目录和详情路由，但不伪造提示词、模型设置或源文件下载。添加方式和验证要求见 [实验室视频维护](lab-videos.md)。
-
-## 访问统计与本人排除
-
-[访问统计与本人排除](analytics.md)说明主动排除设置、QA 参数、PV/visits 口径与前端去重边界。

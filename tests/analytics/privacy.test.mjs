@@ -31,7 +31,7 @@ test('production PV sends only path and activity-window start, without URL detai
 test('duplicate initialization, DOM readiness and repeated route events cannot duplicate one page', () => {
   const t = setup({ ready: 'loading', footer: true }); assert.equal(t.sent.length, 0);
   t.rerun(); t.emit('DOMContentLoaded'); t.emit('DOMContentLoaded'); t.emit('xiaoq:pageview'); t.rerun();
-  assert.equal(t.sent.length, 1); assert.equal(t.beacons.length, 1); assert.equal(t.footerNode.children.length, 1);
+  assert.equal(t.sent.length, 1); assert.equal(t.beacons.length, 1); assert.equal(t.footerNode.children.length, 0);
 });
 test('same-path language/hash/view events and index.html aliases do not count; returning to a page does', () => {
   const t = setup(); t.navigate('/index.html'); assert.equal(t.sent.length, 1);
@@ -56,12 +56,13 @@ test('owner opt-out is absent by default and persists only after an explicit cho
   next.api.setOwnerExcluded(false); assert.equal(t.local.has(ownerKey), false);
   const restored = setup({ local: t.local }); assert.equal(restored.sent.length, 1); assert.equal(restored.beacons.length, 1);
 });
-test('visible owner button alone saves and reloads; remounting or viewing instructions does not save', () => {
-  const t = setup({ footer: true }); const button = t.footerNode.querySelector('[data-stats-owner-toggle]');
-  assert.equal(button.attrs['aria-pressed'], 'false'); assert.equal(t.local.size, 0); assert.equal(t.reloads, 0);
-  t.navigate('/about/'); assert.equal(t.footerNode.children.length, 1); button.listeners.click();
-  assert.equal(t.local.get(ownerKey), '1'); assert.equal(button.attrs['aria-pressed'], 'true'); assert.equal(t.reloads, 1);
-  button.listeners.click(); assert.equal(t.local.has(ownerKey), false); assert.equal(t.reloads, 2);
+test('public footer remains untouched for new and previously excluded browsers across routes', () => {
+  for (const local of [new Map(), new Map([[ownerKey, '1']])]) {
+    const t = setup({ footer: true, local }); const before = Array.from(local);
+    t.navigate('/about/'); t.rerun(); t.emit('DOMContentLoaded');
+    assert.equal(t.footerNode.children.length, 0); assert.deepEqual(Array.from(local), before);
+    assert.equal(t.reloads, 0); assert.equal(t.api.getState().ownerExcluded, local.has(ownerKey));
+  }
 });
 test('stats=off retains QA exclusion across routes and reloads and suppresses both initial loaders', () => {
   const t = setup({ search: '?stats=off' }); t.navigate('/about/'); t.rerun();
@@ -75,13 +76,13 @@ test('stats=on only clears QA exclusion and cannot override the owner or global 
   off.navigate('/games/', '?stats=on'); assert.equal(off.sent.length, 1);
   assert.equal(setup({ disabled: true, search: '?stats=on' }).sent.length, 0);
 });
-test('blocked local storage yields an honest page-only setting and fallback link, without reload', () => {
-  const t = setup({ localBroken: true, footer: true, search: '?lang=en#anchor' });
-  t.footerNode.querySelector('[data-stats-owner-toggle]').listeners.click();
-  assert.equal(t.api.getState().ownerExcluded, true); assert.equal(t.api.getState().persistent, false); assert.equal(t.reloads, 0); assert.equal(t.local.size, 0);
-  assert.match(t.footerNode.querySelector('[data-stats-owner-status]').textContent, /仅暂停当前页面/);
-  const url = new URL(t.footerNode.querySelector('[data-stats-off-link]').href); assert.equal(url.searchParams.get('stats'), 'off'); assert.equal(url.searchParams.get('lang'), 'en'); assert.equal(url.hash, '#anchor');
-  t.navigate('/about/'); assert.equal(t.sent.length, 1); t.api.setOwnerExcluded(false); t.navigate('/games/'); assert.equal(t.sent.length, 2);
+test('blocked local storage retains only the document choice without public controls or reload', () => {
+  const t = setup({ localBroken: true, footer: true }); t.api.setOwnerExcluded(true);
+  assert.equal(t.api.getState().ownerExcluded, true); assert.equal(t.api.getState().persistent, false);
+  assert.equal(t.api.getState().scope, 'page'); assert.equal(t.reloads, 0); assert.equal(t.local.size, 0);
+  assert.equal(t.footerNode.children.length, 0);
+  t.navigate('/about/'); assert.equal(t.sent.length, 1); t.api.setOwnerExcluded(false);
+  t.navigate('/games/'); assert.equal(t.sent.length, 2); assert.equal(t.footerNode.children.length, 0);
 });
 test('blocked session storage leaves visit coverage unknown; explicit QA exclusion works in memory', () => {
   const t = setup({ sessionBroken: true }); assert.equal(t.sent[0].body.visitStart, null); t.navigate('/about/'); assert.equal(t.sent[1].body.visitStart, null);
