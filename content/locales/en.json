@@ -4751,6 +4751,31 @@
       "id": "bilingual-review.final.dependencies",
       "source": "SITE-001 · 待处理；SITE-002 · 待处理",
       "text": "SITE-001 · Ready; SITE-002 · Ready"
+    },
+    {
+      "id": "security.private.heading",
+      "source": "安全问题私下反馈",
+      "text": "Report security issues privately"
+    },
+    {
+      "id": "security.private.report",
+      "source": "涉及密钥泄露、任意代码执行、用户数据或发布权限的问题，请通过 hfutqdm@163.com 私下联系维护者。不要在公开 Issue、PR 或讨论中发布可利用细节、令牌或私人数据；普通玩法问题、功能建议或文档错误使用 Issue 模板。",
+      "text": "For exposed credentials, arbitrary code execution, user data exposure or unauthorized publishing access, contact the maintainer privately at hfutqdm@163.com. Do not post exploitable details, tokens or private data in public Issues, PRs or discussions. Use Issue templates for ordinary gameplay problems, feature requests or documentation errors."
+    },
+    {
+      "id": "security.external.review",
+      "source": "运行外部贡献代码前，先审阅代码、工作流与构建脚本。低权限 CI 检查通过不代表代码可信；未经审阅的代码不得在持有部署密钥或写权限的环境中执行，也不要在个人电脑上直接运行不理解的脚本。",
+      "text": "Before running external contributions, review the code, workflows and build scripts. Passing CI with limited permissions does not establish that code is trustworthy. Do not execute unreviewed code in an environment with deployment credentials or write access, or run unfamiliar scripts directly on your personal computer."
+    },
+    {
+      "id": "security.guide.zh",
+      "source": "安全反馈指南 · 中文",
+      "text": "Security reporting guide · Chinese"
+    },
+    {
+      "id": "security.guide.en",
+      "source": "安全反馈指南 · English",
+      "text": "Security reporting guide · English"
     }
   ]
 }

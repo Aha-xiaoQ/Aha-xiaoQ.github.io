@@ -207,6 +207,17 @@
         "scripts/analytics/browser.mjs"
       ],
       "limits": "Only already audited original implementation revisions; baseline classifications and all third-party, binary and unknown exclusions remain unchanged. No authenticated private administration entry is claimed."
+    },
+    "security-documentation": {
+      "basis": "Bilingual security documentation and contribution-guide content refresh on 2026-10-04. Reviewed generated message content, page output and cache identifiers; existing original implementation scope and every third-party exclusion remain unchanged.",
+      "sources": [
+        "SECURITY.md",
+        "SECURITY.en.md",
+        "content/development/projects/pixel-workshop.json",
+        "content/locales/en.json",
+        "tests/platform/bilingual-docs.test.mjs"
+      ],
+      "limits": "Revision identity review only. No new license grant, file classification change or repository-wide MIT claim."
     }
   },
   "newFiles": [
@@ -33357,73 +33368,73 @@
       "path": "about/index.html",
       "baselineGitBlob": "b4c6b69895f238d69b4df5ed8147d85edc3adc21",
       "baselineSha256": "14f3537855046ab8be6066b66617c050ce9545aa6f696abc603ce7e618079093",
-      "gitBlob": "79d94537946c6bed6904b6ba3aed14f55ae78c90",
-      "sha256": "6497deba0d4bdb15748e5427557fd7509d0561bdff540174a44b056c7a0e75cd",
-      "reviewDate": "2026-10-03",
-      "evidence": "analytics-ui-withdrawal"
+      "gitBlob": "458baa913cfb823161e1c14f7d2112a1ac8c6b3b",
+      "sha256": "5b1e0957fbbf682c6282b5f53caf19d0ecac01ce8af166bd6f4d8a8676b71314",
+      "reviewDate": "2026-10-04",
+      "evidence": "security-documentation"
     },
     {
       "path": "assets/i18n/messages.js",
       "baselineGitBlob": "592306765289377fd1e2dc5dc95a085e6848aba9",
       "baselineSha256": "e1ef83eccf9ed624f5b936503064e2bf9ba6a4cec19a402ee4c12dfde1021f15",
-      "gitBlob": "02d47707ffe8685c035c2f1c3ea195c4c7ac97ad",
-      "sha256": "6c32885af4a53095315b3b4ee537d94f601766925196a0a9f3bdc5cd7ecc9e2b",
-      "reviewDate": "2026-10-03",
-      "evidence": "analytics-ui-withdrawal"
+      "gitBlob": "77d917addcb244b7306ea363a4341d1c9342c6aa",
+      "sha256": "6d25f9d36d2f4aca213ef0f30a3a202f5e51b4c5612e176e9a17831c83b5520c",
+      "reviewDate": "2026-10-04",
+      "evidence": "security-documentation"
     },
     {
       "path": "assets/journal/documents.mjs",
       "baselineGitBlob": "f1d865f9aa21d81fe7e03e7374982a2fc7b1ddaf",
       "baselineSha256": "ac614bd0ac679ed6614694d0c2d07441fc8b6789cff9bff06967c97c77bd23c4",
-      "gitBlob": "8297b165a5f9e174ecc36d8c1dfc7a7d1438d420",
-      "sha256": "4885f866432427173ae0a3fb084d5c2ddafc0eb54b8104dcdefce223cdced581",
-      "reviewDate": "2026-10-03",
-      "evidence": "analytics-ui-withdrawal"
+      "gitBlob": "577528c6304285435ab61c88cfcce81cb666d84b",
+      "sha256": "2ba9edb01a7bf9627f8613f149ae4f2bffed8be8d6e9aef079d783f573622f0e",
+      "reviewDate": "2026-10-04",
+      "evidence": "security-documentation"
     },
     {
       "path": "assets/journal/experiment.mjs",
       "baselineGitBlob": "30a08b98efacc83111c528fc4848a83628263446",
       "baselineSha256": "dc5478c8bc43d16ecae1f585cba9a6bba323fb140b7cd4590bf10e91a2b85596",
-      "gitBlob": "85ee0796c3f6bd400087bc12d9696c627b5ddf29",
-      "sha256": "04bba47b092872e26e56eab61765ebf573fe525a83136fe93f872696cdec1340",
-      "reviewDate": "2026-10-03",
-      "evidence": "analytics-ui-withdrawal"
+      "gitBlob": "addd3aa81808096950f0dcc9f292a8d3a8dab3a0",
+      "sha256": "1ec2e004ad502755e73de699e22edd38ee2e2c395ab91e404ec9faff693f1d07",
+      "reviewDate": "2026-10-04",
+      "evidence": "security-documentation"
     },
     {
       "path": "assets/journal/public-layout.mjs",
       "baselineGitBlob": "25bc488f32da2f9de2b4ef1107ff5571b74bb8ec",
       "baselineSha256": "bf4229ff50ceeb8071fb4af8b94e331642543b9856267db3d6193f93b81fa1eb",
-      "gitBlob": "4b8a938fe80b7b9f96c903f2f04064e833ee1813",
-      "sha256": "c1285fb3599e9b5b22619ea3fb11b489c94bc3b1116b38f8ed91178e0cb18be8",
-      "reviewDate": "2026-10-03",
-      "evidence": "analytics-ui-withdrawal"
+      "gitBlob": "a711319d40c1d888dcd55c0077c5d4beae0d1cf4",
+      "sha256": "67c12e943238ebb8c0b07c1612e58f9cd35a91738e6a57a2d2853fbf47820b11",
+      "reviewDate": "2026-10-04",
+      "evidence": "security-documentation"
     },
     {
       "path": "assets/journal/render.mjs",
       "baselineGitBlob": "5b74c68409edfefaa6d990fc62111d09f7365c0b",
       "baselineSha256": "021ba67c6d27f8d1da66bbf949d7bb63c64580001deff22944d7847e731c4180",
-      "gitBlob": "5f2f663dd35a6edb78fa9b47bb5f43f595216e05",
-      "sha256": "285af7ec071e5e147299c8b6cff39a7381af1092fbb395191580dbd2b1f8af5c",
-      "reviewDate": "2026-10-03",
-      "evidence": "analytics-ui-withdrawal"
+      "gitBlob": "c503aad5bd5f45926f620a1f5b22004b176881fc",
+      "sha256": "5eef595523699667782526e8979d9b7ac844733445d42196242bb038cfcf0350",
+      "reviewDate": "2026-10-04",
+      "evidence": "security-documentation"
     },
     {
       "path": "assets/journal/runtime.mjs",
       "baselineGitBlob": "6899fd87a5a0d7a8295c832561bc0811d51b0e65",
       "baselineSha256": "a21d16de3732df431579b140a45e43101c0375a30d982aeb71241f84ab34c301",
-      "gitBlob": "5a59dd3114a9c51eff32b1cc9c202e9b073c26ad",
-      "sha256": "e165d272fa836f491b15dcd0fa75fb030c184af4af1a509aa076cf7193765131",
-      "reviewDate": "2026-10-03",
-      "evidence": "analytics-ui-withdrawal"
+      "gitBlob": "8f122a3526210881f6467bdb3e7027b63d6df19f",
+      "sha256": "178c8657b0ec53146902b744a18826fa7b18370c4608ea46cbfedcd814e3318f",
+      "reviewDate": "2026-10-04",
+      "evidence": "security-documentation"
     },
     {
       "path": "assets/release/public-content.mjs",
       "baselineGitBlob": "45e2ebbc03feae6d17dc48528143e83d6b65f62a",
       "baselineSha256": "3de04282d9f70aaa21a31a4183fbd37d36dfd59cc5784dea995beb1907ce0e5f",
-      "gitBlob": "f04f894140c3dea08e5908648881179eb60394ae",
-      "sha256": "86454a2e68c2b19509b09d47eb8584a4e8aaf0f1e22eb952ab55de1caf9338d1",
-      "reviewDate": "2026-10-03",
-      "evidence": "analytics-ui-withdrawal"
+      "gitBlob": "1e9d4b5a9f8f7a2a95e9efef2e638992f56c9f25",
+      "sha256": "c269b11f232f5bed7ad3d76f264dafd2ce385d24608a6ad347a9a50b1593a2de",
+      "reviewDate": "2026-10-04",
+      "evidence": "security-documentation"
     },
     {
       "path": "assets/site-analytics.js",
@@ -33447,100 +33458,100 @@
       "path": "assets/site-router.js",
       "baselineGitBlob": "c8bffef04c666670f07e136e1f40f9909d2a4ebc",
       "baselineSha256": "d7be7f7c218c4f8c736686852d96049c048c5d551d04278f8936079c8586dbc3",
-      "gitBlob": "209eefde41c3266a8bf86867d344d813dc7eeb9c",
-      "sha256": "f07175f34c6f3ff2d29daf2425c35e0ac63148a38f6b3e69e64abfa3a4854196",
-      "reviewDate": "2026-10-03",
-      "evidence": "analytics-ui-withdrawal"
+      "gitBlob": "ba577ce83e3e11b86c187b9d0730b5ac27f07bdb",
+      "sha256": "4a2369fb25e9a42fd9b3062c6a4a5bddf4b0f2477b63d46c644d3f468bab2807",
+      "reviewDate": "2026-10-04",
+      "evidence": "security-documentation"
     },
     {
       "path": "games/index.html",
       "baselineGitBlob": "64c78896e8e263e48d704d76bd694b51f5be55a9",
       "baselineSha256": "859fda6c59ee8ac88c3a8c088765e091e5e92c49e5b70ab1d9e0c309cf32daa5",
-      "gitBlob": "9fd51a0a650e3f861a9834e313849b289234ca78",
-      "sha256": "b1c8611cc2ac386c9efbb3a33fd993ce954434cf49974762e843f22762bab30a",
-      "reviewDate": "2026-10-03",
-      "evidence": "analytics-ui-withdrawal"
+      "gitBlob": "f13c474453bc31ec2c9c4d539f0d4aac966540c0",
+      "sha256": "0442d0e60f562abda52cc57f711a7ee1bbc74d4c296f3c866f05af854d7d1865",
+      "reviewDate": "2026-10-04",
+      "evidence": "security-documentation"
     },
     {
       "path": "games/mario-classic/index.html",
       "baselineGitBlob": "212cec349506c6e9f05b0ce6ca0ddfa22890f69f",
       "baselineSha256": "ca2cf6d641fff43c726b000992507a238659c5832bf747b2138d68db4347f2ef",
-      "gitBlob": "909973fd9bf4683e413e31e0ab2c6218e4afeeba",
-      "sha256": "e436c42d4f6d805da21a336d531602e444fa58b5c283d5778c669b59771f3016",
-      "reviewDate": "2026-10-03",
-      "evidence": "analytics-ui-withdrawal"
+      "gitBlob": "862b60b1619d4b8e9f253b3f3568cce6618e6c74",
+      "sha256": "bdd1a58bf9cc22ffc18b226bf4bd4d04d1cfb7647aa1eed948c14ffa04ed4132",
+      "reviewDate": "2026-10-04",
+      "evidence": "security-documentation"
     },
     {
       "path": "games/mario-mix/index.html",
       "baselineGitBlob": "9b8d8164e6e2ab576e71fe82f54283c2c74236d2",
       "baselineSha256": "4afab9b76acb4f1f766919473ef73a49ed2ef686cc7a747cd09cbcf20fd42f11",
-      "gitBlob": "ed4a7e3d4dec3032bde1fddd5ae48e18d4cd2262",
-      "sha256": "163505a61e87713f03e5446325b90152bea4fb09bb10cb09f713b22647d95da0",
-      "reviewDate": "2026-10-03",
-      "evidence": "analytics-ui-withdrawal"
+      "gitBlob": "2543a41633e5409d22365e24d75ac9b9e67953d0",
+      "sha256": "750e9a93eabd3f16ad506326e3fddc330db2997ce3fd57a69627d68c27133b31",
+      "reviewDate": "2026-10-04",
+      "evidence": "security-documentation"
     },
     {
       "path": "games/pipebound/index.html",
       "baselineGitBlob": "cf14a36f4409acfefdf79986a5431abb118d4865",
       "baselineSha256": "b469f5c52f3c00ad9a01e2c890963830c18b0ec009bcdfa313f6d92137608937",
-      "gitBlob": "b3189228ff8d22823680f33fa4e42c4071945c0f",
-      "sha256": "a5e861e6f1e5d9eff49f9fcea8a7a18b232a585dc331c4a679e3ff0d43a98ac1",
-      "reviewDate": "2026-10-03",
-      "evidence": "analytics-ui-withdrawal"
+      "gitBlob": "82716c1e9032e4c6c76bd77df83c8c6c5c03fa55",
+      "sha256": "7399993d8f10dfb63990c15a28ea6840231fbc962e43d7868ad68e11f48a7c29",
+      "reviewDate": "2026-10-04",
+      "evidence": "security-documentation"
     },
     {
       "path": "games/pixel-pipe-adventure/index.html",
       "baselineGitBlob": "f30f93e9701b7be1ab63308f7ce45ede31326278",
       "baselineSha256": "9e032e6320957edd7c9c473a6b4b7cb53e62af9e3463325f2c70ea4f7a57461d",
-      "gitBlob": "6f32402b9431a6183b2e17456fa49f2ed2067e46",
-      "sha256": "a8107558d8d5ad7ea131b618f9a8430ae624ee7ecec6f329d8f488c784ab305e",
-      "reviewDate": "2026-10-03",
-      "evidence": "analytics-ui-withdrawal"
+      "gitBlob": "11475e3d9426f9ed740f4331604d8d89171df848",
+      "sha256": "aafe612273f1f0ae5540421e10f5720e1f18bbf9aacb6e220e48682e1bfc46bd",
+      "reviewDate": "2026-10-04",
+      "evidence": "security-documentation"
     },
     {
       "path": "games/voxel-frontier/index.html",
       "baselineGitBlob": "cc0a1eeaf8f9780a9d752e221d5c34f325b0b9b0",
       "baselineSha256": "35240e2af8c07e84c0b88137a9f8549b58ee994a9b2a60c38ad9038c8c6565c3",
-      "gitBlob": "5a290c4c9e4b9ba26d325ef98d67ae3184567c37",
-      "sha256": "37fd7093d7015ab98266f3aaa467d26a0eb07b5171fb2ddc41e79b694d097cf0",
-      "reviewDate": "2026-10-03",
-      "evidence": "analytics-ui-withdrawal"
+      "gitBlob": "aacda61298ed9a40ac442bde2ea0bc61b5c1cabe",
+      "sha256": "02a22b1e89cde2aff1866579deb9f6fec09c3f839a2eb08bfedd93062991d767",
+      "reviewDate": "2026-10-04",
+      "evidence": "security-documentation"
     },
     {
       "path": "index.html",
       "baselineGitBlob": "ba30bdc413adce5dc39476605082733cbe7ef1b6",
       "baselineSha256": "bf5269a0c063e71139f6ca7618b5bb158cfbee0ea504e225892878a815f53c30",
-      "gitBlob": "a1926914a335d4faa1b6abca2c38a789cc48d2a3",
-      "sha256": "755673fd0660666a64e28238780b790358bda579c6d85ed683c55ee4d1139837",
-      "reviewDate": "2026-10-03",
-      "evidence": "analytics-ui-withdrawal"
+      "gitBlob": "e18d4636cac8a55ef407c7048e0503a87cf01056",
+      "sha256": "8f4d278c36840f5e0ffdea70d25fe6f80546b190f52b0c60a55f46138b037cee",
+      "reviewDate": "2026-10-04",
+      "evidence": "security-documentation"
     },
     {
       "path": "notes/index.html",
       "baselineGitBlob": "2798af72431d60f24ea38cb152474670e1ecf0ad",
       "baselineSha256": "88754e40cf1c5c0dcd79fc17afea0353b44836298fe5731ed509143b356beec9",
-      "gitBlob": "cd6fa1f4e9609234b71a62c814937fde8a418d8a",
-      "sha256": "bc60ac957987b5bc36a18eb47dcd349a6b3bff7a5965184d83d5e6f2c37f03c2",
-      "reviewDate": "2026-10-03",
-      "evidence": "analytics-ui-withdrawal"
+      "gitBlob": "3b37b2516dd09dfa61d1600cc307bf5fb50e6208",
+      "sha256": "8849d4f2267edd7d4a8c40f4290f5436a0f53d9549e2492410e29f281c41f32c",
+      "reviewDate": "2026-10-04",
+      "evidence": "security-documentation"
     },
     {
       "path": "projects/index.html",
       "baselineGitBlob": "e29006ec9904e4171b63620632c3dd0044455e18",
       "baselineSha256": "d4bee107d4e76b944e330ce48312a26bc13dd6ef0bcf725d7ffed54f097a9636",
-      "gitBlob": "bb7d9697d670a435ff1f3031937b23127b58bde6",
-      "sha256": "f65dfcb385982c9355ecf923cd856e3de0429033c1fd6296feb38bd91972f3e0",
-      "reviewDate": "2026-10-03",
-      "evidence": "analytics-ui-withdrawal"
+      "gitBlob": "6cb70f1f5e28638d7af448c7d2d647fdd4aee67e",
+      "sha256": "b4eada983a1aacd37d6e2107bff67fce52db98314f618c9ba9756a10e24282f9",
+      "reviewDate": "2026-10-04",
+      "evidence": "security-documentation"
     },
     {
       "path": "projects/q-mimi/index.html",
       "baselineGitBlob": "48c0b573d540ffeff57dc9e7808661f687559f25",
       "baselineSha256": "76a5551678228c5e9d0ec651a0503d3c271d28897a6899ac0012bace33105ea2",
-      "gitBlob": "8254928eb6228246923070c34b24411ca17f6518",
-      "sha256": "f4a1bed34c832b97cc83b9ddc962b89b53d543ce9a37eb47072f3b44ca6736a5",
-      "reviewDate": "2026-10-03",
-      "evidence": "analytics-ui-withdrawal"
+      "gitBlob": "f386bb8ee621e77e7ac81c4f3ec23fdc24ec2a13",
+      "sha256": "f88b451c25c84a45b971ac1b393a05a6355f18504dfcee057dcff22567cb519f",
+      "reviewDate": "2026-10-04",
+      "evidence": "security-documentation"
     },
     {
       "path": "scripts/platform/browser.mjs",
@@ -33564,10 +33575,10 @@
       "path": "tools/index.html",
       "baselineGitBlob": "18d7df5efa55242ae4d0911831f822f15b7714ce",
       "baselineSha256": "bb728a205fa37790269227a32b559ca0b5dc8fdcb7edabb906857a68c57616a7",
-      "gitBlob": "5620052900dee923de56fa9279cddb35167599a9",
-      "sha256": "fa7be34aed6d306443131a5119113b4e67bb60c5ef97081356e5afd267ad03af",
-      "reviewDate": "2026-10-03",
-      "evidence": "analytics-ui-withdrawal"
+      "gitBlob": "dedbea70f581d5e175377daf349f5cdae82421c7",
+      "sha256": "112db6caae006305e09265d8ddd596a7191485ffa0cb6e094de8c92861cc2d50",
+      "reviewDate": "2026-10-04",
+      "evidence": "security-documentation"
     }
   ]
 }

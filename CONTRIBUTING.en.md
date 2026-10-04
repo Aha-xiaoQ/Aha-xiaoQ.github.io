@@ -41,4 +41,4 @@ AI assistance is welcome, but contributors must understand changes, check proven
 
 After merging, the maintainer updates the appropriate project records and preserves authorship and contributions. A browser draft does not claim a remote Issue or notify others automatically. Completion needs reviewable evidence; a source merge does not imply deployment or device acceptance.
 
-Respect contributors, discuss implementation and evidence, avoid personal attacks and do not expose private information. Report security issues through the channels in [SECURITY.md (Chinese original)](SECURITY.md).
+Respect contributors, discuss implementation and evidence, avoid personal attacks and do not expose private information. Report vulnerabilities privately as described in the [security reporting guide](SECURITY.en.md); use Issue templates for ordinary problems.

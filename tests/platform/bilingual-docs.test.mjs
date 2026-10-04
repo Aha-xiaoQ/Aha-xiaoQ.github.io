@@ -42,6 +42,10 @@ for(const p of [null,...projects])test('actual contribution page is bilingual: '
 for(const id of ['contributing','start','content','architecture','add-project','publishing','writing'])test('website guide text has complete English coverage: '+id,()=>{
  const route={view:'docs',projectId:'pixel-workshop',doc:id},html=render(route,context);
  assert.deepEqual(prose(html).filter(s=>/[\u3400-\u9fff]/.test(api.translate(s,'en'))),[]);
+ if(id==='contributing'){
+  assert.match(html,/hfutqdm@163\.com/);
+  for(const file of ['SECURITY.md','SECURITY.en.md'])assert.ok(html.includes('/blob/main/'+file));
+ }
 });
 for(const id of ['episode-one-contributing','terra-contributing'])test('game contribution instructions retain scope and have an English edition: '+id,()=>{
  const html=render({view:'docs',projectId:'mario-mix',doc:id},context);
@@ -50,8 +54,9 @@ for(const id of ['episode-one-contributing','terra-contributing'])test('game con
 });
 test('English README and index use corresponding contribution, setup and OSS editions',()=>{
  assert.match(read('README.en.md'),/\(CONTRIBUTING.en.md\)/);
+ assert.match(read('CONTRIBUTING.en.md'),/\(SECURITY.en.md\)/);
  for(const name of ['README','REPRODUCIBILITY','MAINTAINER_AND_CI'])assert.ok(read('README.en.md').includes('docs/oss/'+name+'.en.md'));
- for(const name of ['CONTRIBUTING','docs/collab/GETTING_STARTED','docs/oss/README','docs/oss/PROVENANCE','docs/oss/REPRODUCIBILITY','docs/oss/MAINTAINER_AND_CI','docs/oss/VALIDATION']){
+ for(const name of ['CONTRIBUTING','SECURITY','docs/collab/GETTING_STARTED','docs/oss/README','docs/oss/PROVENANCE','docs/oss/REPRODUCIBILITY','docs/oss/MAINTAINER_AND_CI','docs/oss/VALIDATION']){
   const source=read(name+'.md'),english=read(name+'.en.md');assert.ok(source.includes(name.split('/').at(-1)+'.en.md'));assert.ok(english.includes(name.split('/').at(-1)+'.md'));
   const html=renderMarkdown(english);
   for(const [,raw]of html.matchAll(/href="([^"]+)"/g)){

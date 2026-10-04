@@ -34,7 +34,7 @@ export function validateManifest(m){
  if(m.reviewedRevisions!==undefined&&!Array.isArray(m.reviewedRevisions))errors.push('Invalid reviewed revisions');
  for(const r of Array.isArray(m.reviewedRevisions)?m.reviewedRevisions:[]){
   const baseline=by.get(r.path);
-  if(!baseline||baseline.classification!=='original-MIT'||!baseline.sha256||revised.has(r.path)||r.baselineGitBlob!==baseline.gitBlob||r.baselineSha256!==baseline.sha256||!/^[a-f0-9]{40}$/.test(r.gitBlob||'')||!/^[a-f0-9]{64}$/.test(r.sha256||'')||!['bilingual-maintenance','analytics-maintenance','analytics-ui-withdrawal'].includes(r.evidence)||r.reviewDate!==({'bilingual-maintenance':'2026-10-02','analytics-maintenance':'2026-10-02','analytics-ui-withdrawal':'2026-10-03'}[r.evidence])||!m.evidence[r.evidence])errors.push('Invalid original-component revision: '+r.path);
+  if(!baseline||baseline.classification!=='original-MIT'||!baseline.sha256||revised.has(r.path)||r.baselineGitBlob!==baseline.gitBlob||r.baselineSha256!==baseline.sha256||!/^[a-f0-9]{40}$/.test(r.gitBlob||'')||!/^[a-f0-9]{64}$/.test(r.sha256||'')||!['bilingual-maintenance','analytics-maintenance','analytics-ui-withdrawal','security-documentation'].includes(r.evidence)||r.reviewDate!==({'bilingual-maintenance':'2026-10-02','analytics-maintenance':'2026-10-02','analytics-ui-withdrawal':'2026-10-03','security-documentation':'2026-10-04'}[r.evidence])||!m.evidence[r.evidence])errors.push('Invalid original-component revision: '+r.path);
   revised.add(r.path);
  }
  for(const r of Array.isArray(m.reviewedRevisions)?m.reviewedRevisions:[])if(!m.evidence[r.evidence])errors.push('Missing original revision evidence');

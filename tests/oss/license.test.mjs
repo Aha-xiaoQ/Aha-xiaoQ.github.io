@@ -38,7 +38,7 @@ test('reviewed revisions cannot relabel unknown/upstream files or replace baseli
  assert.match(validateManifest(m).join('\n'),/Invalid original-component revision/);
 });
 test('reviewed revisions keep unique exact identities and registered review evidence',()=>{
- for(const mutate of [m=>m.reviewedRevisions.push({...m.reviewedRevisions[0]}),m=>m.reviewedRevisions[0].sha256='broken',m=>m.reviewedRevisions[0].reviewDate='2026-10-04',m=>delete m.evidence['bilingual-maintenance'],m=>{m.evidence.invented={basis:'unreviewed'};m.reviewedRevisions[0].evidence='invented';}]){
+ for(const mutate of [m=>m.reviewedRevisions.push({...m.reviewedRevisions[0]}),m=>m.reviewedRevisions[0].sha256='broken',m=>m.reviewedRevisions[0].reviewDate='2099-01-01',m=>delete m.evidence['bilingual-maintenance'],m=>{m.evidence.invented={basis:'unreviewed'};m.reviewedRevisions[0].evidence='invented';}]){
   const m=copy();mutate(m);assert.ok(validateManifest(m).length);
  }
 });

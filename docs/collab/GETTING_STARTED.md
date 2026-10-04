@@ -31,7 +31,7 @@ npm run dev
 
 网站内容改 `content/` 与 `config/`，项目资料改 `content/development/projects/`。阅读[当前网站指南](https://aha-xiaoq.github.io/notes/pixel-workshop/docs/?lang=zh)，再运行 `npm run platform:verify`。它执行构建、检查、测试与发布产物浏览器回归，不自动推送或部署。
 
-协作状态改 `collab/project.json`，核对日期、下一步、交付状态与验收依据，再运行 `npm run collab:build`；将源、`dev/project-data.js`、`collab/TASKS.md` 一起提交。网页草稿不自动同步 GitHub；旧草稿与新版源冲突时先导出逐项核对，不覆盖新版。
+协作状态改 `collab/project.json`，核对日期、下一步、交付状态与验收依据，再运行 `npm run collab:build`；将源、`dev/project-data.js`、`collab/TASKS.md` 一起提交。旧协作工作区以 `dev/project-data.js` 中的仓库快照为初始状态；编辑后的草稿保存在当前浏览器的 localStorage，不上传到服务器，也不自动同步 GitHub。浏览器不允许保存时，改动只在当前页面有效，应及时导出。旧草稿与新版源冲突时先导出逐项核对，不覆盖新版。
 
 `npm run check` 与 `npm test` 是当前仓库 aggregate 检查和测试，已不限于旧协作工具。`npm run doctor` 检查入口与 Git 状态，不下载或修复缺失文件，也不验证游戏体验。`npm run oss:verify` 校验精确许可清单与来源一致性，不证明未知素材已授权。
 
