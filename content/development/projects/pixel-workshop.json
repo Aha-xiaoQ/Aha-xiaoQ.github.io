@@ -296,6 +296,13 @@
           ]
         },
         {
+          "title": "安全问题私下反馈",
+          "paragraphs": [
+            "涉及密钥泄露、任意代码执行、用户数据或发布权限的问题，请通过 hfutqdm@163.com 私下联系维护者。不要在公开 Issue、PR 或讨论中发布可利用细节、令牌或私人数据；普通玩法问题、功能建议或文档错误使用 Issue 模板。",
+            "运行外部贡献代码前，先审阅代码、工作流与构建脚本。低权限 CI 检查通过不代表代码可信；未经审阅的代码不得在持有部署密钥或写权限的环境中执行，也不要在个人电脑上直接运行不理解的脚本。"
+          ]
+        },
+        {
           "title": "原创授权与第三方素材分开",
           "paragraphs": [
             "固定基线清单列出 348 项原创 MIT 组成部分、85 项保留上游许可、2 项保留 Q咪 CC BY-NC 声明和 2529 项 unknown / NOASSERTION。它不是全仓 MIT，第三方素材、混合游戏和未知下载不因此获得新授权。",
@@ -311,6 +318,14 @@
         {
           "label": "贡献指南 · English",
           "href": "https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/blob/main/CONTRIBUTING.en.md"
+        },
+        {
+          "label": "安全反馈指南 · 中文",
+          "href": "https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/blob/main/SECURITY.md"
+        },
+        {
+          "label": "安全反馈指南 · English",
+          "href": "https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/blob/main/SECURITY.en.md"
         },
         {
           "label": "许可审计 · 中文",
