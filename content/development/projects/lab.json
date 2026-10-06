@@ -5,7 +5,7 @@
   "category": "experiment",
   "visibility": "public",
   "stage": "交互动画与视频作品",
-  "updatedAt": "2026-10-01",
+  "updatedAt": "2026-10-06",
   "summary": "交互动画、音乐影像与主题节目。看作品，也看创作记录。",
   "intro": "这里收录交互动画、音乐影像与主题节目。原始代码实验提供在线体验与源文件；视频作品提供完整成片的观看入口。",
   "highlights": [
@@ -14,6 +14,10 @@
     "视频成片与原始代码实验分别展示。"
   ],
   "links": [
+    {
+      "label": "仿真示波器音乐播放器",
+      "href": "/notes/lab/docs/oscilloscope-music/"
+    },
     {
       "label": "GPT6程序动画·小小梦魇",
       "href": "/notes/lab/docs/little-nightmares/"
@@ -54,6 +58,14 @@
     "path": "content/development/states/lab-public.json"
   },
   "updates": [
+    {
+      "id": "oscilloscope-music",
+      "date": "2026-10-06",
+      "title": "仿真示波器音乐播放器",
+      "status": "released",
+      "summary": "新增可下载的四通道本地播放器，支持音乐与视频导入、XY 声音实验及 MP4 导出；配套演示视频已发布。",
+      "public": true
+    },
     {
       "id": "little-nightmares",
       "date": "2026-10-01",
@@ -110,6 +122,19 @@
         "href": "/experiments/pelican-bicycle.html"
       },
       "archived": false
+    },
+    {
+      "id": "oscilloscope-music",
+      "title": "仿真示波器音乐播放器",
+      "summary": "导入自己的音乐或视频，在四通道示波器上查看 XY、频谱、包络与 PWM，调节旋钮并导出画面。播放器在电脑本机运行。",
+      "sections": [],
+      "sources": [],
+      "archived": false,
+      "kind": "lab-video",
+      "action": {
+        "label": "观看视频",
+        "href": "https://www.bilibili.com/video/BV1b7pF63Ei7/"
+      }
     },
     {
       "id": "little-nightmares",
