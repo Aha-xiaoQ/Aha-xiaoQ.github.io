@@ -12,11 +12,12 @@
 | --- | --- |
 | 体验游戏与工具 | [作品目录](https://aha-xiaoq.github.io/projects/?lang=zh) |
 | 了解混合马里奥 | [项目介绍与关卡进展](https://aha-xiaoq.github.io/notes/mario-mix/?lang=zh) |
-| 下载第三期开发源码 | [M07 候选版源码与运行说明](https://aha-xiaoq.github.io/notes/mario-mix/docs/terra-source/?lang=zh) |
-| 下载第四期源码 | [R43 源码与运行说明](https://aha-xiaoq.github.io/notes/mario-mix/docs/episode-4-source/?lang=zh) · [下载 R43 源码包](https://aha-xiaoq.github.io/downloads/source/MarioMix_Episode4_R43_Source.zip) |
+| 查找混合马里奥源码与运行说明 | [项目资料索引](https://aha-xiaoq.github.io/notes/mario-mix/docs/?lang=zh) |
 | 制作关卡 | [地图工坊](https://aha-xiaoq.github.io/packages/mario-mix-worlds/atlas/editor.html) |
-| 查看提示词与实际效果 | [鹈鹕骑行实验](https://aha-xiaoq.github.io/notes/lab/docs/pelican-bicycle/?lang=zh) |
+| 观看动画、视频与交互实验 | [实验室](https://aha-xiaoq.github.io/notes/lab/?lang=zh) |
 | 修改这个网站 | [网站开发指南](https://aha-xiaoq.github.io/notes/pixel-workshop/docs/?lang=zh) |
+
+工具目录收录仿真示波器音乐播放器等作品，支持导入音乐与视频、XY 声音实验及画面导出。各工具的使用说明和下载见对应资料页。
 
 混合马里奥各期试玩与开发源码独立维护；具体版本、可用范围与限制以对应项目资料为准。地图工坊提供参考底图、编辑与导出功能，不代表所有原作关卡均已完整复刻。
 

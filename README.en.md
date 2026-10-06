@@ -12,11 +12,12 @@ A personal portfolio of browser games, useful tools, development notes, and inte
 | --- | --- |
 | Play a game or use a tool | [Project directory](https://aha-xiaoq.github.io/projects/?lang=en) |
 | Explore Mario Mix | [Project overview](https://aha-xiaoq.github.io/notes/mario-mix/?lang=en) |
-| Work with the Episode 3 development source | [M07 candidate source and setup](https://aha-xiaoq.github.io/notes/mario-mix/docs/terra-source/?lang=en) |
-| Work with Episode 4 | [R43 source guide](https://aha-xiaoq.github.io/notes/mario-mix/docs/episode-4-source/?lang=en) · [Download R43 source](https://aha-xiaoq.github.io/downloads/source/MarioMix_Episode4_R43_Source.zip) |
+| Find Mario Mix source and setup instructions | [Project documentation](https://aha-xiaoq.github.io/notes/mario-mix/docs/?lang=en) |
 | Create a level | [Map Workshop](https://aha-xiaoq.github.io/packages/mario-mix-worlds/atlas/editor.html) |
-| Read a prompt and run its result | [Pelican bicycle experiment](https://aha-xiaoq.github.io/notes/lab/docs/pelican-bicycle/?lang=en) |
+| Watch animations, videos and interactive experiments | [Lab](https://aha-xiaoq.github.io/notes/lab/?lang=en) |
 | Modify the website | [Website guides](https://aha-xiaoq.github.io/notes/pixel-workshop/docs/?lang=en) |
+
+The Tools directory includes the simulated oscilloscope music player, with music and video import, XY sound experiments and video export. Each tool links to its instructions and downloads.
 
 Released games and development source packages are maintained separately. Consult each project guide for its version and supported scope. Reference maps and editor features do not imply a complete recreation of every original level.
 

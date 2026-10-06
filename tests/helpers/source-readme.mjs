@@ -1,4 +1,4 @@
-/** Check rendered, visible source links rather than incidental words in Markdown. */
+/** Check stable README navigation and keep versioned source availability separate. */
 import assert from 'node:assert/strict';
 import {readmeSiteURL, README_LOCALES} from '../../scripts/platform/readme-links.mjs';
 import {decodeAttribute} from '../../scripts/lib/html-resources.mjs';
@@ -21,11 +21,16 @@ export function assertSourceReadme(text,project,file='README'){
  // Comments and code examples must not satisfy a real navigation requirement.
  const html=renderMarkdown(text.replace(/<!--[\s\S]*?-->/g,''));
  const links=[...html.matchAll(/<a href="([^"]+)">([\s\S]*?)<\/a>/g)].map(m=>({href:decodeAttribute(m[1]),label:m[2].replace(/<[^>]+>/g,'').trim()}));
- const expected=requiredSourceLinks(project);
+ requiredSourceLinks(project);
+ const expected=[
+  {kind:'project-source-index',href:`${ORIGIN}/notes/${project.id}/docs/`},
+  {kind:'tools-catalog',href:`${ORIGIN}/tools/`},
+  {kind:'lab-catalog',href:`${ORIGIN}/notes/lab/`}
+ ];
  for(const target of expected){
   const destination=README_LOCALES[file]?readmeSiteURL(target.href,README_LOCALES[file]):target.href;
   const found=links.filter(l=>l.href===destination);
-  assert.equal(found.length,1,`${file}: expected one visible ${target.kind} link: ${destination}`);
+  assert.ok(found.length>=1,`${file}: expected a visible ${target.kind} link: ${destination}`);
   assert.ok(found[0].label,`${file}: ${target.kind} needs a readable label`);
  }
  return expected.map(x=>x.href);

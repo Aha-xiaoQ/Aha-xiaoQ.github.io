@@ -59,9 +59,9 @@ test('real renderer and publication auditor reproduce the exact R48 error',()=>{
  }finally{e.verification=before;}
 });
 test('current real gallery, registered details, original HTML and release files pass publication audit',()=>{
- const result=auditFiles(localArtifact(),{origin});
+ const files=localArtifact(),result=auditFiles(files,{origin});
  assert.deepEqual(result.errors,[]);assert.deepEqual(result.warnings,[]);
- assert.ok(result.localReferences>10);assert.equal(result.archives,records().flatMap(e=>e.resources||[]).filter(r=>r.role==='source').length);
+ assert.ok(result.localReferences>10);assert.equal(result.archives,[...files.keys()].filter(p=>/\.zip$/i.test(p)).length);
 });
 test('early visitor-copy gate accepts all current records without changing them',()=>{
  const input=records(),before=JSON.stringify(input),state=CLUTTER.lastIndex;

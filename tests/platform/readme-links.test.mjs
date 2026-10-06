@@ -19,9 +19,9 @@ for(const [file,locale] of Object.entries(README_LOCALES)) {
   const pages=assertReadmeLanguage(read(file),file);assert.ok(pages.length>=10);
   for(const link of pages)assert.equal(new URL(link.href).searchParams.get('lang'),locale);
  });
- test(file+' retains the third/fourth source guides and unmodified source download',()=>{
+ test(file+' uses stable source and tool catalog entries without versioned download links',()=>{
   const required=assertSourceReadme(read(file),projectFixture,file);assert.equal(required.length,3);
-  const zip=readmeLinks(read(file)).find(x=>x.href.endsWith('MarioMix_Episode4_R43_Source.zip'));assert.ok(zip);
+  assert.equal(readmeLinks(read(file)).filter(x=>new URL(x.href).pathname.startsWith('/downloads/source/')).length,0);
  });
  test(file+' reversed website language is rejected',()=>{
   const bad=read(file).replace(/lang=(?:en|zh)/g,'lang='+(locale==='zh'?'en':'zh'));
