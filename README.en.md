@@ -21,15 +21,6 @@ The Tools directory includes the simulated oscilloscope music player, with music
 
 Released games and development source packages are maintained separately. Consult each project guide for its version and supported scope. Reference maps and editor features do not imply a complete recreation of every original level.
 
-<!-- XIAOQ:VIDEOS:START -->
-## Current videos
-
-| Content | Website | Video |
-| --- | --- | --- |
-| Episode 4: Sonic × Ori | [Open](https://aha-xiaoq.github.io/games/mario-mix-4/?lang=en) | [Watch video](https://www.bilibili.com/video/BV1JBhh6iEXS/) |
-| Mario Map Workshop | [Open](https://aha-xiaoq.github.io/packages/mario-mix-worlds/atlas/editor.html) | [Watch video](https://www.bilibili.com/video/BV1kLha63EyV/) |
-<!-- XIAOQ:VIDEOS:END -->
-
 ## Run locally
 
 Use Node.js 22 or newer. The website scripts have no third-party npm dependencies; `npm install` is not required.

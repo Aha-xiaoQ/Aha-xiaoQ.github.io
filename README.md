@@ -21,15 +21,6 @@
 
 混合马里奥各期试玩与开发源码独立维护；具体版本、可用范围与限制以对应项目资料为准。地图工坊提供参考底图、编辑与导出功能，不代表所有原作关卡均已完整复刻。
 
-<!-- XIAOQ:VIDEOS:START -->
-## 当前视频入口
-
-| 内容 | 网站入口 | 视频状态 |
-| --- | --- | --- |
-| 第四期 · 索尼克 × 奥日 | [打开](https://aha-xiaoq.github.io/games/mario-mix-4/?lang=zh) | [观看视频](https://www.bilibili.com/video/BV1JBhh6iEXS/) |
-| 马里奥地图工坊 | [打开](https://aha-xiaoq.github.io/packages/mario-mix-worlds/atlas/editor.html) | [观看视频](https://www.bilibili.com/video/BV1kLha63EyV/) |
-<!-- XIAOQ:VIDEOS:END -->
-
 ## 本地运行
 
 需要 Node.js 22 或更新版本。网站脚本没有第三方 npm 依赖，无需先运行 `npm install`。

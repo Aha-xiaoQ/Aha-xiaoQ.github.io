@@ -6,7 +6,7 @@ import path from 'node:path';
 import vm from 'node:vm';
 import {fileURLToPath} from 'node:url';
 import {README_LOCALES, readmeSiteURL, readmeLinks, assertReadmeLanguage, checkReadmeLinks} from '../../scripts/platform/readme-links.mjs';
-import {readmeBlock, replaceReadme, sync, TARGETS, PROJECT} from '../../scripts/videos/sync.mjs';
+import {sync, PROJECT} from '../../scripts/videos/sync.mjs';
 import {assertSourceReadme} from '../helpers/source-readme.mjs';
 import {entryCases} from '../../scripts/platform/browser/readme-navigation.mjs';
 const root=fileURLToPath(new URL('../../',import.meta.url));
@@ -43,13 +43,6 @@ for(const [file,locale] of Object.entries(README_LOCALES)) {
   for(const hidden of ['<!-- '+markdown+' -->','`'+markdown+'`','\n```md\n'+markdown+'\n```\n']){
    assert.throws(()=>assertReadmeLanguage(text.replace(markdown,hidden),file),/visible \/ entry/);
   }
- });
- test(file+' video block regeneration keeps its website language and Bilibili URLs',()=>{
-  const rows=TARGETS.map((t,i)=>({...t,url:i?'https://www.bilibili.com/video/BV1kLha63EyV/':'https://www.bilibili.com/video/BV1JBhh6iEXS/'}));
-  const block=readmeBlock(rows,locale==='en'),once=replaceReadme(read(file),block);
-  assert.equal(once,read(file));assert.equal(replaceReadme(once,block),once);assertReadmeLanguage(once,file);
-  for(const r of rows)assert.ok(block.includes(']('+r.url+')'));
-  assert.ok(block.includes('](https://aha-xiaoq.github.io/packages/mario-mix-worlds/atlas/editor.html)'));
  });
 }
 test('both README files retain identical page destinations apart from locale',()=>assert.equal(checkReadmeLinks(root).length,2));
@@ -109,7 +102,7 @@ test('old neutral links reproduce the reported opposite-language outcomes',()=>{
  assert.equal(boot('https://aha-xiaoq.github.io/','en').api.language,'en');
  assert.equal(boot('https://aha-xiaoq.github.io/','zh').api.language,'zh');
 });
-test('real video sync cannot undo language links during initial or repeat generation',()=>{
+test('real video sync leaves both README files untouched on initial and repeat generation',()=>{
  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'xiaoq-readme-sync-'));
  const put=(p,s)=>{fs.mkdirSync(path.dirname(path.join(dir,p)),{recursive:true});fs.writeFileSync(path.join(dir,p),s);};
  try {

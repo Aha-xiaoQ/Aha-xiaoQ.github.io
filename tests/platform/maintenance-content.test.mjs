@@ -26,10 +26,9 @@ test('the two READMEs retain explicit opposing locale choices',()=>{
  for(const entry of results)for(const route of ['/','/projects/','/games/','/tools/','/notes/','/notes/lab/'])assert.ok(entry.links.some(link=>new URL(link.href).pathname===route),entry.file+': '+route);
 });
 for(const [file,locale] of [['README.md','zh'],['README.en.md','en']]){
- test(file+' preserves stable source catalogs, workshop and videos',()=>{
+ test(file+' preserves stable source catalogs and workshop',()=>{
   const s=read(file);assertSourceReadme(s,JSON.parse(read('content/development/projects/mario-mix.json')),file);
   assert.ok(s.includes('/packages/mario-mix-worlds/atlas/editor.html)'));
-  assert.equal(s.split('<!-- XIAOQ:VIDEOS:START -->').length-1,1);assert.equal(s.split('<!-- XIAOQ:VIDEOS:END -->').length-1,1);
  });
  test(file+' presents one canonical build-and-verify command without a duplicate maintenance section',()=>{
   const s=read(file);assert.equal((s.match(/^npm run platform:verify$/gm)||[]).length,1);

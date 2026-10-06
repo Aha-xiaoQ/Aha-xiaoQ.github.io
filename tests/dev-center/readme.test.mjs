@@ -9,10 +9,8 @@ for(const file of ['README.md','README.en.md']){
  test(file+' retains visible stable source and tool catalogs',()=>{
   assertSourceReadme(read(file),project,file);
  });
- test(file+' has exactly one bounded video section and no duplicate second-level headings',()=>{
-  const s=read(file),start='<!-- XIAOQ:VIDEOS:START -->',end='<!-- XIAOQ:VIDEOS:END -->';
-  assert.equal(s.split(start).length-1,1,file);assert.equal(s.split(end).length-1,1,file);
-  assert.ok(s.indexOf(start)<s.indexOf(end),file);
+ test(file+' omits the standalone video list and has no duplicate second-level headings',()=>{
+  const s=read(file);assert.doesNotMatch(s,/XIAOQ:VIDEOS|^## (?:当前视频入口|Current videos)$/m);
   const headings=[...s.matchAll(/^## (.+)$/gm)].map(m=>m[1]);
   assert.equal(new Set(headings).size,headings.length,file);
  });
