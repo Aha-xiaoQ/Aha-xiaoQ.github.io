@@ -218,6 +218,15 @@
         "tests/platform/bilingual-docs.test.mjs"
       ],
       "limits": "Revision identity review only. No new license grant, file classification change or repository-wide MIT claim."
+    },
+    "oscilloscope-preview": {
+      "basis": "Reviewed original website component revisions for the oscilloscope local preview: generated content and translations, optional HTML cover rendering with preserved path constraints, and cache/import-map identities.",
+      "sources": [
+        "docs/oss/reviews/2026-10-06-oscilloscope-preview.md",
+        "content/site-data.js",
+        "content/experiments/oscilloscope-music.json"
+      ],
+      "limits": "Revision identity review only. No new license grant, file classification change or repository-wide MIT claim."
     }
   },
   "newFiles": [
@@ -33368,73 +33377,73 @@
       "path": "about/index.html",
       "baselineGitBlob": "b4c6b69895f238d69b4df5ed8147d85edc3adc21",
       "baselineSha256": "14f3537855046ab8be6066b66617c050ce9545aa6f696abc603ce7e618079093",
-      "gitBlob": "458baa913cfb823161e1c14f7d2112a1ac8c6b3b",
-      "sha256": "5b1e0957fbbf682c6282b5f53caf19d0ecac01ce8af166bd6f4d8a8676b71314",
-      "reviewDate": "2026-10-04",
-      "evidence": "security-documentation"
+      "gitBlob": "ce049c08b0fd6ed2f198cb4d8bf6a60c4ffde8ab",
+      "sha256": "806342110c979b02f2ef6ff89fe4ee6d17a716e0b2d844cbc1d81922a1c2a0e8",
+      "reviewDate": "2026-10-06",
+      "evidence": "oscilloscope-preview"
     },
     {
       "path": "assets/i18n/messages.js",
       "baselineGitBlob": "592306765289377fd1e2dc5dc95a085e6848aba9",
       "baselineSha256": "e1ef83eccf9ed624f5b936503064e2bf9ba6a4cec19a402ee4c12dfde1021f15",
-      "gitBlob": "77d917addcb244b7306ea363a4341d1c9342c6aa",
-      "sha256": "6d25f9d36d2f4aca213ef0f30a3a202f5e51b4c5612e176e9a17831c83b5520c",
-      "reviewDate": "2026-10-04",
-      "evidence": "security-documentation"
+      "gitBlob": "236de0d83daebe1479884ccf8c001733443e365a",
+      "sha256": "2f274f2e3c887eb2990433af19cc05d7d81b3fe95590f87680327d67e2b9f913",
+      "reviewDate": "2026-10-06",
+      "evidence": "oscilloscope-preview"
     },
     {
       "path": "assets/journal/documents.mjs",
       "baselineGitBlob": "f1d865f9aa21d81fe7e03e7374982a2fc7b1ddaf",
       "baselineSha256": "ac614bd0ac679ed6614694d0c2d07441fc8b6789cff9bff06967c97c77bd23c4",
-      "gitBlob": "577528c6304285435ab61c88cfcce81cb666d84b",
-      "sha256": "2ba9edb01a7bf9627f8613f149ae4f2bffed8be8d6e9aef079d783f573622f0e",
-      "reviewDate": "2026-10-04",
-      "evidence": "security-documentation"
+      "gitBlob": "70bec8e6e63c3b799a0b460bd085e546db530998",
+      "sha256": "b18f9e0bd1309bb0d5bbe2bf06ab3400e6ed3b2ef9e146a94e1e2f67b11a4549",
+      "reviewDate": "2026-10-06",
+      "evidence": "oscilloscope-preview"
     },
     {
       "path": "assets/journal/experiment.mjs",
       "baselineGitBlob": "30a08b98efacc83111c528fc4848a83628263446",
       "baselineSha256": "dc5478c8bc43d16ecae1f585cba9a6bba323fb140b7cd4590bf10e91a2b85596",
-      "gitBlob": "addd3aa81808096950f0dcc9f292a8d3a8dab3a0",
-      "sha256": "1ec2e004ad502755e73de699e22edd38ee2e2c395ab91e404ec9faff693f1d07",
-      "reviewDate": "2026-10-04",
-      "evidence": "security-documentation"
+      "gitBlob": "c5ea582dc873aadea3cd1658406de0dd4da7241b",
+      "sha256": "1ad4dd54ba62467cccefbb3cc3abdcfd7511e349b71f4ad6cca11efd9928f25d",
+      "reviewDate": "2026-10-06",
+      "evidence": "oscilloscope-preview"
     },
     {
       "path": "assets/journal/public-layout.mjs",
       "baselineGitBlob": "25bc488f32da2f9de2b4ef1107ff5571b74bb8ec",
       "baselineSha256": "bf4229ff50ceeb8071fb4af8b94e331642543b9856267db3d6193f93b81fa1eb",
-      "gitBlob": "a711319d40c1d888dcd55c0077c5d4beae0d1cf4",
-      "sha256": "67c12e943238ebb8c0b07c1612e58f9cd35a91738e6a57a2d2853fbf47820b11",
-      "reviewDate": "2026-10-04",
-      "evidence": "security-documentation"
+      "gitBlob": "b44630a6fb25cb114c6de917fb943692aad5929d",
+      "sha256": "9105506e56655f480ed4bcbfcc9eefd0ee7d28552cb7f4fb35543075377b8e54",
+      "reviewDate": "2026-10-06",
+      "evidence": "oscilloscope-preview"
     },
     {
       "path": "assets/journal/render.mjs",
       "baselineGitBlob": "5b74c68409edfefaa6d990fc62111d09f7365c0b",
       "baselineSha256": "021ba67c6d27f8d1da66bbf949d7bb63c64580001deff22944d7847e731c4180",
-      "gitBlob": "c503aad5bd5f45926f620a1f5b22004b176881fc",
-      "sha256": "5eef595523699667782526e8979d9b7ac844733445d42196242bb038cfcf0350",
-      "reviewDate": "2026-10-04",
-      "evidence": "security-documentation"
+      "gitBlob": "c169913bc03ace773cc1edf9e24341a9c9957482",
+      "sha256": "f8b2b0bf7c4356cf9af3de615da62602fb767f016f315493eceef8448f9317a4",
+      "reviewDate": "2026-10-06",
+      "evidence": "oscilloscope-preview"
     },
     {
       "path": "assets/journal/runtime.mjs",
       "baselineGitBlob": "6899fd87a5a0d7a8295c832561bc0811d51b0e65",
       "baselineSha256": "a21d16de3732df431579b140a45e43101c0375a30d982aeb71241f84ab34c301",
-      "gitBlob": "8f122a3526210881f6467bdb3e7027b63d6df19f",
-      "sha256": "178c8657b0ec53146902b744a18826fa7b18370c4608ea46cbfedcd814e3318f",
-      "reviewDate": "2026-10-04",
-      "evidence": "security-documentation"
+      "gitBlob": "b08db0322cf8560cfef917fb2334b53497860151",
+      "sha256": "aa8dda165383f9bdc368f13742b893b06e74d791b5a8266a53efff566fff8d67",
+      "reviewDate": "2026-10-06",
+      "evidence": "oscilloscope-preview"
     },
     {
       "path": "assets/release/public-content.mjs",
       "baselineGitBlob": "45e2ebbc03feae6d17dc48528143e83d6b65f62a",
       "baselineSha256": "3de04282d9f70aaa21a31a4183fbd37d36dfd59cc5784dea995beb1907ce0e5f",
-      "gitBlob": "1e9d4b5a9f8f7a2a95e9efef2e638992f56c9f25",
-      "sha256": "c269b11f232f5bed7ad3d76f264dafd2ce385d24608a6ad347a9a50b1593a2de",
-      "reviewDate": "2026-10-04",
-      "evidence": "security-documentation"
+      "gitBlob": "b1a09dff85867356fc7917e76d1a2622085deede",
+      "sha256": "14a7fb2a95f7bedcb05b85c66e3d9953204701d87355881fb5d9927ee3f5c3d3",
+      "reviewDate": "2026-10-06",
+      "evidence": "oscilloscope-preview"
     },
     {
       "path": "assets/site-analytics.js",
@@ -33458,100 +33467,100 @@
       "path": "assets/site-router.js",
       "baselineGitBlob": "c8bffef04c666670f07e136e1f40f9909d2a4ebc",
       "baselineSha256": "d7be7f7c218c4f8c736686852d96049c048c5d551d04278f8936079c8586dbc3",
-      "gitBlob": "ba577ce83e3e11b86c187b9d0730b5ac27f07bdb",
-      "sha256": "4a2369fb25e9a42fd9b3062c6a4a5bddf4b0f2477b63d46c644d3f468bab2807",
-      "reviewDate": "2026-10-04",
-      "evidence": "security-documentation"
+      "gitBlob": "84a5feb30bef674fe2adfdf8ab6e432473d8da1f",
+      "sha256": "5e0665c2a920efb0f367b5f23b909dcdedf50c79194e0a6010c8b3411b14d182",
+      "reviewDate": "2026-10-06",
+      "evidence": "oscilloscope-preview"
     },
     {
       "path": "games/index.html",
       "baselineGitBlob": "64c78896e8e263e48d704d76bd694b51f5be55a9",
       "baselineSha256": "859fda6c59ee8ac88c3a8c088765e091e5e92c49e5b70ab1d9e0c309cf32daa5",
-      "gitBlob": "f13c474453bc31ec2c9c4d539f0d4aac966540c0",
-      "sha256": "0442d0e60f562abda52cc57f711a7ee1bbc74d4c296f3c866f05af854d7d1865",
-      "reviewDate": "2026-10-04",
-      "evidence": "security-documentation"
+      "gitBlob": "2395dfc95a10df20998591bbc33f337dfa9bd4c8",
+      "sha256": "7a2e806ee97bed4abb7aadb3d8be6b252d54a2cf087d7238d032bdbc9cfa3e62",
+      "reviewDate": "2026-10-06",
+      "evidence": "oscilloscope-preview"
     },
     {
       "path": "games/mario-classic/index.html",
       "baselineGitBlob": "212cec349506c6e9f05b0ce6ca0ddfa22890f69f",
       "baselineSha256": "ca2cf6d641fff43c726b000992507a238659c5832bf747b2138d68db4347f2ef",
-      "gitBlob": "862b60b1619d4b8e9f253b3f3568cce6618e6c74",
-      "sha256": "bdd1a58bf9cc22ffc18b226bf4bd4d04d1cfb7647aa1eed948c14ffa04ed4132",
-      "reviewDate": "2026-10-04",
-      "evidence": "security-documentation"
+      "gitBlob": "8e6099513d31a6bfb5c6be41f980f94a0fd210fe",
+      "sha256": "572774668657720250e32814379875e8b929d7c32b5f902da0a9261cd13677d3",
+      "reviewDate": "2026-10-06",
+      "evidence": "oscilloscope-preview"
     },
     {
       "path": "games/mario-mix/index.html",
       "baselineGitBlob": "9b8d8164e6e2ab576e71fe82f54283c2c74236d2",
       "baselineSha256": "4afab9b76acb4f1f766919473ef73a49ed2ef686cc7a747cd09cbcf20fd42f11",
-      "gitBlob": "2543a41633e5409d22365e24d75ac9b9e67953d0",
-      "sha256": "750e9a93eabd3f16ad506326e3fddc330db2997ce3fd57a69627d68c27133b31",
-      "reviewDate": "2026-10-04",
-      "evidence": "security-documentation"
+      "gitBlob": "479ff65e69c0ae71bb81c9ec28d9faa374524617",
+      "sha256": "44939dd113fc3cef2642b407b24e589d3a775b00dd5fb8d5c89f65d3c13b9d35",
+      "reviewDate": "2026-10-06",
+      "evidence": "oscilloscope-preview"
     },
     {
       "path": "games/pipebound/index.html",
       "baselineGitBlob": "cf14a36f4409acfefdf79986a5431abb118d4865",
       "baselineSha256": "b469f5c52f3c00ad9a01e2c890963830c18b0ec009bcdfa313f6d92137608937",
-      "gitBlob": "82716c1e9032e4c6c76bd77df83c8c6c5c03fa55",
-      "sha256": "7399993d8f10dfb63990c15a28ea6840231fbc962e43d7868ad68e11f48a7c29",
-      "reviewDate": "2026-10-04",
-      "evidence": "security-documentation"
+      "gitBlob": "940c0308c9126399099918dbfcbf7296d0d6a48d",
+      "sha256": "0a1c922c04055ac9b94919b1e306e310fc300094efc6ece33a27eebee31af4cb",
+      "reviewDate": "2026-10-06",
+      "evidence": "oscilloscope-preview"
     },
     {
       "path": "games/pixel-pipe-adventure/index.html",
       "baselineGitBlob": "f30f93e9701b7be1ab63308f7ce45ede31326278",
       "baselineSha256": "9e032e6320957edd7c9c473a6b4b7cb53e62af9e3463325f2c70ea4f7a57461d",
-      "gitBlob": "11475e3d9426f9ed740f4331604d8d89171df848",
-      "sha256": "aafe612273f1f0ae5540421e10f5720e1f18bbf9aacb6e220e48682e1bfc46bd",
-      "reviewDate": "2026-10-04",
-      "evidence": "security-documentation"
+      "gitBlob": "ee13358b51b61366d51dedde8f85798ae32ac0d5",
+      "sha256": "3d46b3394284306c5a23d5677c3d3096a178fed842a3b4df950153f41543ed52",
+      "reviewDate": "2026-10-06",
+      "evidence": "oscilloscope-preview"
     },
     {
       "path": "games/voxel-frontier/index.html",
       "baselineGitBlob": "cc0a1eeaf8f9780a9d752e221d5c34f325b0b9b0",
       "baselineSha256": "35240e2af8c07e84c0b88137a9f8549b58ee994a9b2a60c38ad9038c8c6565c3",
-      "gitBlob": "aacda61298ed9a40ac442bde2ea0bc61b5c1cabe",
-      "sha256": "02a22b1e89cde2aff1866579deb9f6fec09c3f839a2eb08bfedd93062991d767",
-      "reviewDate": "2026-10-04",
-      "evidence": "security-documentation"
+      "gitBlob": "18f9e441ee1bd7199c93effb10391193b37735c8",
+      "sha256": "ecf2fc57683fa43b9bdf671dfaf83ae4182072125515b4f4326035f895cfbb2e",
+      "reviewDate": "2026-10-06",
+      "evidence": "oscilloscope-preview"
     },
     {
       "path": "index.html",
       "baselineGitBlob": "ba30bdc413adce5dc39476605082733cbe7ef1b6",
       "baselineSha256": "bf5269a0c063e71139f6ca7618b5bb158cfbee0ea504e225892878a815f53c30",
-      "gitBlob": "e18d4636cac8a55ef407c7048e0503a87cf01056",
-      "sha256": "8f4d278c36840f5e0ffdea70d25fe6f80546b190f52b0c60a55f46138b037cee",
-      "reviewDate": "2026-10-04",
-      "evidence": "security-documentation"
+      "gitBlob": "3734734450511eeef3c1b1478549487668ae1fff",
+      "sha256": "9f879440d3dadae0be26991850cad6f2a152e0c8f71f248cc139d6cf2597756f",
+      "reviewDate": "2026-10-06",
+      "evidence": "oscilloscope-preview"
     },
     {
       "path": "notes/index.html",
       "baselineGitBlob": "2798af72431d60f24ea38cb152474670e1ecf0ad",
       "baselineSha256": "88754e40cf1c5c0dcd79fc17afea0353b44836298fe5731ed509143b356beec9",
-      "gitBlob": "3b37b2516dd09dfa61d1600cc307bf5fb50e6208",
-      "sha256": "8849d4f2267edd7d4a8c40f4290f5436a0f53d9549e2492410e29f281c41f32c",
-      "reviewDate": "2026-10-04",
-      "evidence": "security-documentation"
+      "gitBlob": "6f24ffba20bb3416a9b1824f0338f48252e3537b",
+      "sha256": "c0a67f1a7ec54e557d35042edc71acc47c5ff2d7fd17a49f0138c914ad99c140",
+      "reviewDate": "2026-10-06",
+      "evidence": "oscilloscope-preview"
     },
     {
       "path": "projects/index.html",
       "baselineGitBlob": "e29006ec9904e4171b63620632c3dd0044455e18",
       "baselineSha256": "d4bee107d4e76b944e330ce48312a26bc13dd6ef0bcf725d7ffed54f097a9636",
-      "gitBlob": "6cb70f1f5e28638d7af448c7d2d647fdd4aee67e",
-      "sha256": "b4eada983a1aacd37d6e2107bff67fce52db98314f618c9ba9756a10e24282f9",
-      "reviewDate": "2026-10-04",
-      "evidence": "security-documentation"
+      "gitBlob": "b28fd1964e5dee21d09c15d5258ed5af717e214b",
+      "sha256": "f22b40d3794acf790435be97bdda9003a73ef128e28d25e5923204463fe95c02",
+      "reviewDate": "2026-10-06",
+      "evidence": "oscilloscope-preview"
     },
     {
       "path": "projects/q-mimi/index.html",
       "baselineGitBlob": "48c0b573d540ffeff57dc9e7808661f687559f25",
       "baselineSha256": "76a5551678228c5e9d0ec651a0503d3c271d28897a6899ac0012bace33105ea2",
-      "gitBlob": "f386bb8ee621e77e7ac81c4f3ec23fdc24ec2a13",
-      "sha256": "f88b451c25c84a45b971ac1b393a05a6355f18504dfcee057dcff22567cb519f",
-      "reviewDate": "2026-10-04",
-      "evidence": "security-documentation"
+      "gitBlob": "dc29affe4d789248b6c848bd080330767a1abeb1",
+      "sha256": "11c06ea4eabf792803974b4dad7a2cb4fc5a69edd50f4bad0ade158a898dbe7f",
+      "reviewDate": "2026-10-06",
+      "evidence": "oscilloscope-preview"
     },
     {
       "path": "scripts/platform/browser.mjs",
@@ -33575,10 +33584,28 @@
       "path": "tools/index.html",
       "baselineGitBlob": "18d7df5efa55242ae4d0911831f822f15b7714ce",
       "baselineSha256": "bb728a205fa37790269227a32b559ca0b5dc8fdcb7edabb906857a68c57616a7",
-      "gitBlob": "dedbea70f581d5e175377daf349f5cdae82421c7",
-      "sha256": "112db6caae006305e09265d8ddd596a7191485ffa0cb6e094de8c92861cc2d50",
-      "reviewDate": "2026-10-04",
-      "evidence": "security-documentation"
+      "gitBlob": "87bf70abbf377ebc208b9aaf02e69645946fdbe4",
+      "sha256": "ad6ddae10c86404dbea69103de0b947741b5c493e3f7adea1092707c38f1f7e4",
+      "reviewDate": "2026-10-06",
+      "evidence": "oscilloscope-preview"
+    },
+    {
+      "path": "assets/platform/contracts.mjs",
+      "baselineGitBlob": "294a00f6b32f1b8b7f06a8b11aaad87d6e9de575",
+      "baselineSha256": "f02da4fc71dac9c996b699bfe46ac7654ba2711b9f3e06ac54b909ddfc77f467",
+      "gitBlob": "fa27fdd2860534af2f38dc81d32be6f6277579ea",
+      "sha256": "aef357ee30c9e84031165661f0275f1fa6ee96fbf99523c6047c9ff7460ef2dc",
+      "reviewDate": "2026-10-06",
+      "evidence": "oscilloscope-preview"
+    },
+    {
+      "path": "assets/platform/font-support.css",
+      "baselineGitBlob": "0cda94702279ec09be8cfe945a0f3c42c1f8de50",
+      "baselineSha256": "2f3a315563764c9b1f36dcc3792f19019ed5c548c0cb8d9c0a7f3b96c4abcc58",
+      "gitBlob": "21677aff9076c85c99dfbb939f21f8ed3818de72",
+      "sha256": "7e77a0a43e1ad8dc5ca9ce9919676cbba80375c11a612dfd12481749f8aa8f53",
+      "reviewDate": "2026-10-06",
+      "evidence": "oscilloscope-preview"
     }
   ]
 }

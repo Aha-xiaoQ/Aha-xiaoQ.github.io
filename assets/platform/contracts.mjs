@@ -43,13 +43,13 @@ export function validateExperiment(input) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(input.createdAt) || !Number.isFinite(Date.parse(input.createdAt)) || new Date(input.createdAt).toISOString().slice(0,10) !== input.createdAt) throw Error('Invalid experiment date');
   for(const key of ['medium','format','spotlight','previewDescription','kicker','controlsSummary'])if(input[key]!==undefined)assertText(input[key],key,key==='medium'?24:500);
   if(input.promptLanguage!==undefined&&!/^[a-z]{2,3}(?:-[a-zA-Z0-9]{2,8})*$/.test(input.promptLanguage))throw Error('Invalid prompt language');
+  if (input.cover !== undefined) {
+    const c=input.cover,kind=isVideo?'video':'HTML';
+    if (!c || typeof c.src!=='string' || !c.src.startsWith('/assets/lab/') || !localFile(c.src.slice(1)) || !/\.(?:jpg|png|webp)$/.test(c.src) || Object.keys(c).some(k=>!['src','alt'].includes(k))) throw Error(`Invalid ${kind} cover`);
+    assertText(c.alt,kind+' cover description',300);
+  }
   if (isVideo) {
     experimentVideoURL(input.video);
-    if (input.cover !== undefined) {
-      const c=input.cover;
-      if (!c || typeof c.src!=='string' || !c.src.startsWith('/assets/lab/') || !localFile(c.src.slice(1)) || !/\.(?:jpg|png|webp)$/.test(c.src) || Object.keys(c).some(k=>!['src','alt'].includes(k))) throw Error('Invalid video cover');
-      assertText(c.alt,'video cover description',300);
-    }
     validateExperimentResources(input);
     if (input.sourceVideos !== undefined) {
       if (!Array.isArray(input.sourceVideos) || input.sourceVideos.length < 1 || input.sourceVideos.length > 8) throw Error('Invalid source video credits');

@@ -136,6 +136,14 @@ globalThis.SITE_PRESENTATION = {
       "alt": "",
       "fit": "contain",
       "rendering": "auto"
+    },
+    "oscilloscope-music-player": {
+      "kind": "image",
+      "preset": "poster",
+      "src": "assets/lab/oscilloscope-music.png",
+      "alt": "四通道示波器整机：黄色人物 XY 轨迹、绿色频谱、蓝色包络与红色 PWM。",
+      "fit": "contain",
+      "rendering": "auto"
     }
   }
 };

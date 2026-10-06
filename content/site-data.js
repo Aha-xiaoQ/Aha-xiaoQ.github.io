@@ -7,13 +7,13 @@ globalThis.SITE_DATA = {
     "interests": [],
     "now": {
       "label": "最近作品",
-      "sourceId": "little-nightmares",
-      "title": "GPT6程序动画·小小梦魇",
-      "summary": "当暂停、快进与倒带成了世界的规则，小六与诺姆们穿过追逐、回头救援，终于走向门外的世界。",
-      "updatedAt": "2026-10-01",
+      "sourceId": "oscilloscope-music-player",
+      "title": "仿真示波器音乐播放器",
+      "summary": "导入自己的音乐或视频，在四通道示波器上查看 XY、频谱、包络与 PWM，调节旋钮并导出画面。播放器在电脑本机运行。",
+      "updatedAt": "2026-10-06",
       "items": [],
-      "href": "/notes/lab/docs/little-nightmares/",
-      "entryLabel": "实验室"
+      "href": "/notes/lab/docs/oscilloscope-music/",
+      "entryLabel": "仿真示波器音乐播放器"
     },
     "copy": {
       "role": "homepage-studio-v2",
@@ -275,6 +275,25 @@ globalThis.SITE_DATA = {
   ],
   "notes": [],
   "tools": [
+    {
+      "id": "oscilloscope-music-player",
+      "primaryType": "tool",
+      "visibility": "public",
+      "lifecycleStatus": "active",
+      "accessMode": "download",
+      "createdAt": "2026-10-06",
+      "updatedAt": "2026-10-06",
+      "preview": "assets/lab/oscilloscope-music.png",
+      "previewAlt": "四通道示波器整机：黄色人物 XY 轨迹、绿色频谱、蓝色包络与红色 PWM。",
+      "title": "仿真示波器音乐播放器",
+      "status": "本地播放器",
+      "summary": "导入自己的音乐或视频，在四通道示波器上查看 XY、频谱、包络与 PWM，调节旋钮并导出画面。播放器在电脑本机运行。",
+      "url": "/notes/lab/docs/oscilloscope-music/",
+      "detailUrl": "/notes/lab/docs/oscilloscope-music/",
+      "linkLabel": "使用与下载",
+      "videoSlot": true,
+      "videoUrl": "https://www.bilibili.com/video/BV1b7pF63Ei7/"
+    },
     {
       "id": "mario-map-workshop",
       "preview": "assets/illustrations/mario-map-workshop.png",

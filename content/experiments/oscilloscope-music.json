@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "kind": "video",
+  "id": "oscilloscope-music",
+  "title": "仿真示波器音乐播放器",
+  "subtitle": "导入自己的音乐或视频，在四通道示波器上查看 XY、频谱、包络与 PWM，调节旋钮并导出画面。播放器在电脑本机运行。",
+  "visibility": "public",
+  "createdAt": "2026-10-06",
+  "updatedAt": "2026-10-06",
+  "medium": "VIDEO",
+  "format": "本地播放器与音乐演示",
+  "video": {
+    "provider": "bilibili",
+    "bvid": "BV1b7pF63Ei7"
+  },
+  "cover": {
+    "src": "/assets/lab/oscilloscope-music.png",
+    "alt": "四通道示波器整机：黄色人物 XY 轨迹、绿色频谱、蓝色包络与红色 PWM。"
+  },
+  "provenance": "把声音变成曲线，也把曲线变成声音。播放器支持音乐与视频导入、四通道独立显示、CH1–4、横纵轴旋钮、RUN/STOP、电源和 Auto 复位；可切换整机或屏幕取景。XY 实验支持函数和图片轮廓生成双声道 WAV，片段可导出为 MP4。",
+  "verification": "本地播放器需 Python 3.12、FFmpeg 和支持 WebGL 2 的桌面浏览器；下载包内附说明，默认载入完整 Bad Apple，首次准备需要稍等。XY 实验可直接载入完整作品，包括 Primer；其他作品首次载入需要联网下载和本机准备，之后复用缓存。完整素材页同时提供手动下载入口，所选媒体在本机处理。外观参考 Keysight UXR，为独立软件仿真。配套演示片长 2 分 02.37 秒，采用节选，Keil → Primer → Bad Apple 为最后三段；配套演示视频已在 B 站发布。策划、制作：在下_小Q；程序仿真、视频剪辑：GPT-6 Astra · Codex。",
+  "resources": [
+    {
+      "role": "source",
+      "label": "下载本地播放器与源码",
+      "href": "/experiments/releases/oscilloscope-music/player-r23.zip",
+      "bytes": 95998512,
+      "sha256": "332e71713d5be638dbf64d0510b84b704773d0db17f9dfff92e22f0420f89cf1"
+    },
+    {
+      "role": "html",
+      "label": "完整素材与来源",
+      "href": "/experiments/releases/oscilloscope-music/materials.html",
+      "bytes": 5252,
+      "sha256": "9606e7e29b22776fd14a95ae5912d8e5ffb7f8575989c3000ffd08bdcfc2feb1"
+    },
+    {
+      "role": "video",
+      "label": "下载完整 Bad Apple 素材",
+      "href": "/experiments/releases/oscilloscope-music/badapple-source.mp4",
+      "bytes": 65928474,
+      "sha256": "154c164aae492765b0eb3d896892aac9a520d395d88fe2c4b030780ee61739bf"
+    }
+  ]
+}

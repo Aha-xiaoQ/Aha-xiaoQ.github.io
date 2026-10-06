@@ -5,7 +5,7 @@
   "category": "experiment",
   "visibility": "public",
   "stage": "交互动画与视频作品",
-  "updatedAt": "2026-10-01",
+  "updatedAt": "2026-10-06",
   "summary": "交互动画、音乐影像与主题节目。看作品，也看创作记录。",
   "intro": "这里收录交互动画、音乐影像与主题节目。原始代码实验提供在线体验与源文件；视频作品提供完整成片的观看入口。",
   "highlights": [
@@ -14,6 +14,10 @@
     "视频成片与原始代码实验分别展示。"
   ],
   "links": [
+    {
+      "label": "仿真示波器音乐播放器",
+      "href": "/notes/lab/docs/oscilloscope-music/"
+    },
     {
       "label": "GPT6程序动画·小小梦魇",
       "href": "/notes/lab/docs/little-nightmares/"
@@ -54,6 +58,13 @@
     "path": "content/development/states/lab.json"
   },
   "updates": [
+    {
+      "id": "oscilloscope-music",
+      "date": "2026-10-06",
+      "title": "仿真示波器音乐播放器",
+      "status": "released",
+      "summary": "新增可下载的四通道本地播放器，支持音乐与视频导入、XY 声音实验及 MP4 导出；配套演示视频已发布。"
+    },
     {
       "id": "little-nightmares",
       "date": "2026-10-01",
