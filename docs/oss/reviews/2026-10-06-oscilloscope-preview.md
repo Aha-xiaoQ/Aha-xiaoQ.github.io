@@ -10,7 +10,7 @@ Three unchanged build scripts were restored from CRLF to the repository's declar
 
 The existing font-support generator adds the pinned subset-106 declaration needed by the three cover descriptions. The original fonts are unchanged; existing verified provider files are reused, the generated font record matches the stylesheet, and the coverage gate reports zero missing characters. Font URLs in generated pages update accordingly. This review records the original stylesheet wrapper identity, not a license grant for the third-party font binaries.
 
-Four existing original test components now verify stable README catalog and documentation entries while retaining the separate current-source guide and Episode 4 archive availability checks. Both README languages preserve their bounded generated video section, usage and license text. The publication audit counts every actual ZIP in its public file map, including companion source archives; its error and warning checks remain unchanged. This records only the four original test revisions. README classifications remain unchanged and receive no new license grant.
+Six existing original test components now verify stable README catalog and documentation entries while retaining the separate current-source guide and Episode 4 archive availability checks. Both README languages preserve their bounded generated video section, usage and license text. The publication audit counts every actual ZIP in its public file map, including companion source archives; its error and warning checks remain unchanged. The Episode 4 integration and maintenance suites use the same stable README entry contract and retain separate source registration, archive identity and corruption checks. The maintenance suite checks each required stable website category instead of an arbitrary minimum link count. This records only the six original test revisions. README classifications remain unchanged and receive no new license grant.
 
 本次只记录既有网站原创组件的内容、翻译及构建缓存修订，不扩大授权范围，不给示波器照片、模型、字体、第三方库或下载包新增许可声明。视频链接为 BV1b7pF63Ei7；此处记录源码审阅，网站部署状态另行验证。
 
@@ -41,3 +41,5 @@ Reviewed paths:
 - tests/helpers/source-readme.mjs
 - tests/platform/readme-links.test.mjs
 - tests/platform/lab-public-copy.test.mjs
+- tests/episode4/source-publication.test.mjs
+- tests/platform/maintenance-content.test.mjs

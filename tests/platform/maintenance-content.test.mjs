@@ -6,6 +6,7 @@ import {fileURLToPath} from 'node:url';
 import {validateMessages,planContent} from '../../scripts/platform/content.mjs';
 import {validateDocumentation} from '../../assets/platform/contracts.mjs';
 import {checkReadmeLinks} from '../../scripts/platform/readme-links.mjs';
+import {assertSourceReadme} from '../helpers/source-readme.mjs';
 const root=fileURLToPath(new URL('../../',import.meta.url));
 const read=p=>fs.readFileSync(root+p,'utf8');
 const website=JSON.parse(read('content/development/projects/pixel-workshop.json'));
@@ -22,12 +23,11 @@ test('website documentation groups and all six stable routes still validate',()=
 });
 test('the two READMEs retain explicit opposing locale choices',()=>{
  const results=checkReadmeLinks(root);assert.deepEqual(results.map(x=>x.locale),['zh','en']);
- assert.ok(results.every(x=>x.links.length>=16));
+ for(const entry of results)for(const route of ['/','/projects/','/games/','/tools/','/notes/','/notes/lab/'])assert.ok(entry.links.some(link=>new URL(link.href).pathname===route),entry.file+': '+route);
 });
 for(const [file,locale] of [['README.md','zh'],['README.en.md','en']]){
- test(file+' preserves third/fourth guides, archive, workshop and videos',()=>{
-  const s=read(file);for(const path of ['terra-source/','episode-4-source/'])assert.ok(s.includes(path+'?lang='+locale));
-  assert.ok(s.includes('downloads/source/MarioMix_Episode4_R43_Source.zip)'));
+ test(file+' preserves stable source catalogs, workshop and videos',()=>{
+  const s=read(file);assertSourceReadme(s,JSON.parse(read('content/development/projects/mario-mix.json')),file);
   assert.ok(s.includes('/packages/mario-mix-worlds/atlas/editor.html)'));
   assert.equal(s.split('<!-- XIAOQ:VIDEOS:START -->').length-1,1);assert.equal(s.split('<!-- XIAOQ:VIDEOS:END -->').length-1,1);
  });
