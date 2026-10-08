@@ -13,7 +13,7 @@ A personal portfolio of browser games, useful tools, development notes, and inte
 | Play a game or use a tool | [Project directory](https://aha-xiaoq.github.io/projects/?lang=en) |
 | Explore Mario Mix | [Project overview](https://aha-xiaoq.github.io/notes/mario-mix/?lang=en) |
 | Find Mario Mix source and setup instructions | [Project documentation](https://aha-xiaoq.github.io/notes/mario-mix/docs/?lang=en) |
-| Create a level | [Map Workshop](https://aha-xiaoq.github.io/tools/?lang=en) |
+| Create a level | [Map Workshop](https://aha-xiaoq.github.io/tools/?lang=en)  · [Previous online editor](https://aha-xiaoq.github.io/packages/mario-mix-worlds/atlas/editor.html) |
 | Watch animations, videos and interactive experiments | [Lab](https://aha-xiaoq.github.io/notes/lab/?lang=en) |
 | Modify the website | [Website guides](https://aha-xiaoq.github.io/notes/pixel-workshop/docs/?lang=en) |
 

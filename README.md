@@ -13,7 +13,7 @@
 | 体验游戏与工具 | [作品目录](https://aha-xiaoq.github.io/projects/?lang=zh) |
 | 了解混合马里奥 | [项目介绍与关卡进展](https://aha-xiaoq.github.io/notes/mario-mix/?lang=zh) |
 | 查找混合马里奥源码与运行说明 | [项目资料索引](https://aha-xiaoq.github.io/notes/mario-mix/docs/?lang=zh) |
-| 制作关卡 | [地图工坊](https://aha-xiaoq.github.io/tools/?lang=zh) |
+| 制作关卡 | [地图工坊](https://aha-xiaoq.github.io/tools/?lang=zh)  · [旧版在线编辑器](https://aha-xiaoq.github.io/packages/mario-mix-worlds/atlas/editor.html) |
 | 观看动画、视频与交互实验 | [实验室](https://aha-xiaoq.github.io/notes/lab/?lang=zh) |
 | 修改这个网站 | [网站开发指南](https://aha-xiaoq.github.io/notes/pixel-workshop/docs/?lang=zh) |
 
