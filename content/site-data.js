@@ -7,13 +7,13 @@ globalThis.SITE_DATA = {
     "interests": [],
     "now": {
       "label": "最近作品",
-      "sourceId": "oscilloscope-music-player",
-      "title": "仿真示波器音乐播放器",
-      "summary": "导入自己的音乐或视频，在四通道示波器上查看 XY、频谱、包络与 PWM，调节旋钮并导出画面。播放器在电脑本机运行。",
-      "updatedAt": "2026-10-06",
-      "items": [],
-      "href": "/notes/lab/docs/oscilloscope-music/",
-      "entryLabel": "仿真示波器音乐播放器"
+      "sourceId": "game-five-regions",
+      "title": "自制马里奥1：我们一起打蜜蜂",
+      "summary": "穿过五扇门，挑战不同机关，收集五枚粉币，带着钥匙抵达终点。",
+      "updatedAt": "2026-10-08",
+      "href": "/games/five-regions/",
+      "entryLabel": "自制马里奥1：我们一起打蜜蜂",
+      "items": []
     },
     "copy": {
       "role": "homepage-studio-v2",
@@ -61,6 +61,39 @@ globalThis.SITE_DATA = {
     "visibility": "public"
   },
   "items": [
+    {
+      "id": "game-five-regions",
+      "slug": "five-regions",
+      "primaryType": "game",
+      "relatedIds": [],
+      "title": "自制马里奥1：我们一起打蜜蜂",
+      "summary": "穿过五扇门，挑战不同机关，收集五枚粉币，带着钥匙抵达终点。",
+      "lifecycleStatus": "active",
+      "visibility": "public",
+      "accessMode": "online",
+      "createdAt": "2026-10-08",
+      "updatedAt": "2026-10-08",
+      "categories": [
+        "side-scrolling"
+      ],
+      "tags": [
+        "自制关卡",
+        "机关挑战",
+        "浏览器游戏"
+      ],
+      "cover": "games/five-regions/cover.png",
+      "evidenceIds": [
+        "evidence-five-regions"
+      ],
+      "detailUrl": "/games/five-regions/",
+      "localUrl": "games/five-regions/play.html",
+      "downloadUrl": "downloads/games/Five_Regions_1.10.36.html",
+      "downloadLabel": "下载 HTML",
+      "downloadInstructions": "下载后用浏览器打开 HTML 文件，即可离线游玩。",
+      "videoSlot": true,
+      "videoUrl": "https://www.bilibili.com/video/BV1cHH965ECn/",
+      "videoLabel": "B站观看"
+    },
     {
       "id": "game-mario-mix-4",
       "slug": "mario-mix-4",
@@ -299,12 +332,37 @@ globalThis.SITE_DATA = {
       "preview": "assets/illustrations/mario-map-workshop.png",
       "previewAlt": "马里奥地图工坊：地块画板、地图画布与试玩设置",
       "title": "马里奥地图工坊",
-      "status": "在线工具 · 测试版",
-      "summary": "从 32 关参考底图开始，或绘制自己的地图。放置地形、敌人与奖励，边编辑边试玩；保存工程，也能下载单关或连续版离线试玩。",
-      "url": "packages/mario-mix-worlds/atlas/editor.html",
-      "linkLabel": "打开地图工坊 →",
+      "status": "地图编辑 · AI 辅助制图",
+      "summary": "绘制地图，放置地形、敌人与奖励，边编辑边试玩。用 AI 辅助制图，保存工程并导出自己的关卡。",
+      "url": "/tools/mario-map-workshop-2-0/",
+      "linkLabel": "使用与下载",
       "videoSlot": true,
-      "videoUrl": "https://www.bilibili.com/video/BV1kLha63EyV/"
+      "videoUrl": "https://www.bilibili.com/video/BV1kLha63EyV/",
+      "detailUrl": "/tools/mario-map-workshop-2-0/",
+      "guide": {
+        "heading": "开始制图",
+        "intro": "下载地图工坊，在本地编辑、试玩并导出自己的关卡。源码包包含 AI 制图 Skill。",
+        "usageHeading": "如何使用",
+        "steps": [
+          "解压源码包，进入 MapWorkshop_Tools_Source 文件夹。",
+          "依次运行 npm ci 和 npm run dev。打开终端给出的地址，再访问 /atlas/editor.html。",
+          "创建或打开地图，编辑后试玩；保存工程或导出离线试玩。"
+        ],
+        "skillHeading": "用 AI 辅助制图",
+        "skillIntro": "包内入口：.agents/skills/map-workshop/SKILL.md。让支持 Skill 的编程助手在源码目录读取该文件，无需全局安装。先描述玩法目标，再检查并试玩生成的地图。",
+        "onlineHeading": "旧版在线体验",
+        "onlineIntro": "无需下载，直接在浏览器中体验地图编辑、试玩和离线导出。",
+        "onlineLabel": "打开旧版在线体验",
+        "onlineUrl": "/packages/mario-mix-worlds/atlas/editor.html",
+        "exampleHeading": "作品范例 · 五门挑战",
+        "exampleIntro": "用地图工坊制作的独立关卡，包含五种机关挑战。可试玩、下载单文件 HTML，并观看完整通关实况。",
+        "exampleLabel": "查看自制马里奥1：我们一起打蜜蜂",
+        "exampleUrl": "/games/five-regions/",
+        "licenseNote": "使用范围见包内许可说明。",
+        "downloadLabel": "下载地图工坊 2.0",
+        "downloadUrl": "/downloads/tools/Map_Workshop_2.0_Source_With_Skill.zip"
+      },
+      "videoLabel": "旧版演示视频"
     },
     {
       "id": "quina-optics",
@@ -320,6 +378,11 @@ globalThis.SITE_DATA = {
   ],
   "methods": [],
   "evidence": [
+    {
+      "id": "evidence-five-regions",
+      "sourceItemId": "game-five-regions",
+      "accessNote": "方向键移动，空格键跳跃，↑ 进门。骑云进入射击区后自动开火。"
+    },
     {
       "id": "evidence-mario-mix-4",
       "type": "playable",

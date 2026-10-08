@@ -34,7 +34,7 @@
 
 第四期与地图工坊视频 URL 唯一来源为 `content/site-data.js` 中各自的 `videoUrl`；
 `videoSlot: true` 只声明展示位置，没有 URL 时必须显示“视频待发布”，不能生成空播放器或假链接。
-运行 `npm run video:sync` 同步 README 视频表及开发页说明，再运行原有生成链。
+运行 `npm run video:sync` 同步开发页说明；README 保留稳定入口，不再生成视频列表，再运行原有生成链。
 玩法进度改 `packages/mario-mix-worlds/content/catalog.json` 与历史 K01 进度登记；
 不要手工改生成的 chapterPlan/levelPlan、HTML 或测试记录。视频链接已填写不等于远端视频已通过播放验收。
 
@@ -48,3 +48,7 @@
 
 用户说“更新网站”时，按 `docs/platform/site-update-workflow.md` 执行。它是整站关联内容更新，不能只新增详情页：核对最新远端基线，更新作品登记、首页状态、所属项目与全站更新记录、日期、相关入口、中英文及搜索；在实际 `.local/publish` 中逐页验证。现有本地预览约定继续有效，发布范围按当前授权判断。不要把视频已发布、网站已生成、网站已部署混为一谈。
 运行 `npm run site:status:check` 检查首页引用与更新记录；预览必须包含首页、全站更新、所属项目更新、作品目录和详情。该检查不能代替浏览器查看实际文案。维护流程变更要验证漏更新和草稿等反例。
+
+## 固定双端发布约定
+
+站主已明确：拉取 GitHub 最新版 → 严格沿用最新模板放置素材 → 取得并核实 BV、更新视频链接 → GitHub 与现有 GPT 网站双端发布和验证。按 `docs/platform/site-update-workflow.md` 完成全流程，不逐次等待提醒。用户明确仅本地、暂停或撤销发布时，以最新指令为准。视频展示使用现有封面链接跳转 B 站；不要自行加入原生播放器或 MP4 下载按钮。

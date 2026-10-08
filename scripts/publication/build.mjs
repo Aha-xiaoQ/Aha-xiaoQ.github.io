@@ -23,8 +23,8 @@ export const ROOT=fileURLToPath(new URL('../../',import.meta.url));
 export const OUTPUT='.local/publish', RECORD='.local/release-r24/artifact.json';
 const getJSON=(get,p)=>{const b=get(p);if(!b)throw Error('缺少发布输入：'+p);return JSON.parse(b);};
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function publicHTML(s,p,origin,data,cacheToken){
- if(/(?:^|\/)play\.html$/.test(p)||/^experiments\/.+\.html$/.test(p))return s;
+export function publicHTML(s,p,origin,data,cacheToken){
+ if(/^downloads\/games\/[^/]+\.html$/.test(p)||/(?:^|\/)play\.html$/.test(p)||/^experiments\/.+\.html$/.test(p))return s;
  s=labPrimaryEntry(s);
  const canonical=origin+'/'+p.replace(/index\.html$/,'');
  s=s.replace(/<script\b[^>]*data-public-release[^>]*>[\s\S]*?<\/script>\s*/gi,'');

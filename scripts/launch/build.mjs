@@ -19,6 +19,14 @@ export async function planLaunch(root,{reader=p=>readOptional(root,p)}={}){
   for(const p of ['content/site-data.js','assets/ui/site-actions.js','assets/launch/journey.js'])new vm.Script(await get(p),{filename:p}).runInContext(context,{timeout:1000});
   const data=context.SITE_DATA,journey=context.SITE_JOURNEY,files=new Map(),missingDetails=[],supports={};
   const template=await get('notes/index.html');
+  for(const item of data.tools||[]){
+    if(!item.guide)continue;
+    if(!/^\/tools\/[a-z0-9-]+\/$/.test(item.detailUrl||''))throw Error('工具详情路径无效');
+    const file=item.detailUrl.slice(1)+'index.html';
+    let html=nativePage(template,journey.toolGuide(item),{title:item.title,intro:item.summary,eyebrow:'TOOL / CREATE & PLAY'},file);
+    html=html.replace('data-page="notes"','data-page="toolGuide"').replace('data-page="toolGuide"',`data-page="toolGuide" data-item-slug="${item.id}"`).replace(/\sdata-journal-page="[^"]*"/,'').replace(' data-journal-slot','').replace(/(data-nav-key="notes")\s+aria-current="page"/g,'$1').replace('data-nav-key="tools"','data-nav-key="tools" aria-current="page"');
+    files.set(file,Buffer.from(html));
+  }
   for(const [file,body,title,intro,page] of [
     ['play-guide/index.html',journey.helpPage(),'试玩帮助','体验作品、查看源码，遇到问题也有去处。','visitorHelp'],
     ['404.html',journey.notFound(),'页面未找到','这个地址没有对应的公开页面。','notFound']]) {

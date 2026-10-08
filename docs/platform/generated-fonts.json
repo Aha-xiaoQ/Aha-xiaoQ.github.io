@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "family": "LXGW WenKai Local",
   "providerVersion": "1.7.0",
-  "corpus": "ddc629461db2f4e66ae89d97c2aedb3b5186f1a08dd33fc5033f91b0b64652b7",
+  "corpus": "15ccb35fd980c466dfa3d775e81c66bfdaeed04f7dc62f4a3afcf956ced01319",
   "license": {
     "source": "assets/fonts/LXGWWenKai-OFL.txt",
     "sourceSha256": "1a25e35da1031c6c3436fde545bb9cb5aca954e9873afe510c834b8b79bd21a0",
@@ -26,6 +26,17 @@
   ],
   "faces": [
     {
+      "file": "assets/platform/font-support/bc3f99c9c16bdb2163689923ead061104f6306d9b17db4cbce8d66fe9a15b051.woff2",
+      "sha256": "bc3f99c9c16bdb2163689923ead061104f6306d9b17db4cbce8d66fe9a15b051",
+      "blob": "fe60c5907783d78c88c00fd8b6a78de0dc772f2e",
+      "name": "lxgwwenkai-bold-subset-102.woff2",
+      "weight": "500 700",
+      "variant": "bold",
+      "points": [
+        34633
+      ]
+    },
+    {
       "file": "assets/platform/font-support/78ef13ce6887c8a18a27368b915f2144f78ac3dd1ec42aba5e18dfcf73392e52.woff2",
       "sha256": "78ef13ce6887c8a18a27368b915f2144f78ac3dd1ec42aba5e18dfcf73392e52",
       "blob": "076c28311756e0efddcab1715444f4e2b86f8d20",
@@ -33,6 +44,7 @@
       "weight": "500 700",
       "variant": "bold",
       "points": [
+        26647,
         33181
       ]
     },
@@ -119,7 +131,9 @@
       "weight": "500 700",
       "variant": "bold",
       "points": [
-        20420
+        20420,
+        23506,
+        34588
       ]
     },
     {
@@ -236,6 +250,17 @@
       ]
     },
     {
+      "file": "assets/platform/font-support/d0ff138da1d5e5becd2aef31e3497519ea8aaf371a8ebb8ae5ebb79a00d20823.woff2",
+      "sha256": "d0ff138da1d5e5becd2aef31e3497519ea8aaf371a8ebb8ae5ebb79a00d20823",
+      "blob": "6628e567428141c0875c7fa00d43577e04ffa59a",
+      "name": "lxgwwenkai-regular-subset-102.woff2",
+      "weight": "400",
+      "variant": "regular",
+      "points": [
+        34633
+      ]
+    },
+    {
       "file": "assets/platform/font-support/848229017d5dd1e6cdf2a18a21e25479d1ef22edc44fc016b33061aecd1a9325.woff2",
       "sha256": "848229017d5dd1e6cdf2a18a21e25479d1ef22edc44fc016b33061aecd1a9325",
       "blob": "d74a3a4f379c6d956a7a458b67fd399a3ca91a16",
@@ -243,6 +268,7 @@
       "weight": "400",
       "variant": "regular",
       "points": [
+        26647,
         33181
       ]
     },
@@ -329,7 +355,9 @@
       "weight": "400",
       "variant": "regular",
       "points": [
-        20420
+        20420,
+        23506,
+        34588
       ]
     },
     {
@@ -524,8 +552,8 @@
       "bytes": 61552
     },
     "assets/platform/font-support.css": {
-      "sha256": "7e77a0a43e1ad8dc5ca9ce9919676cbba80375c11a612dfd12481749f8aa8f53",
-      "bytes": 36107
+      "sha256": "7928b4993d3a7b0b1323684170214e92db1882cdd49b38a3c1dcca60ad5acf31",
+      "bytes": 38331
     },
     "assets/platform/font-support/OFL.txt": {
       "sha256": "4248ee53f0c37edaf4cfabe67ef620f8eef50cb2700d090c59337919d6539f1b",
@@ -594,6 +622,14 @@
     "assets/platform/font-support/b65f5d6621c382113000dab26945ee740c953f0e49cbdfaa8af17885b8e0c429.woff2": {
       "sha256": "b65f5d6621c382113000dab26945ee740c953f0e49cbdfaa8af17885b8e0c429",
       "bytes": 58932
+    },
+    "assets/platform/font-support/d0ff138da1d5e5becd2aef31e3497519ea8aaf371a8ebb8ae5ebb79a00d20823.woff2": {
+      "sha256": "d0ff138da1d5e5becd2aef31e3497519ea8aaf371a8ebb8ae5ebb79a00d20823",
+      "bytes": 59064
+    },
+    "assets/platform/font-support/bc3f99c9c16bdb2163689923ead061104f6306d9b17db4cbce8d66fe9a15b051.woff2": {
+      "sha256": "bc3f99c9c16bdb2163689923ead061104f6306d9b17db4cbce8d66fe9a15b051",
+      "bytes": 58032
     }
   }
 }
