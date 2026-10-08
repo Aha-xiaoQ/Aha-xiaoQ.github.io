@@ -1,5 +1,5 @@
 (() => {
-  const guestbookModuleURL = new URL('./guestbook.js?v=release-r24-bc8c601fb1a5', document.currentScript.src).href;
+  const guestbookModuleURL = new URL('./guestbook.js?v=release-r24-9429b498246d', document.currentScript.src).href;
   const A=globalThis.SITE_ACTIONS;
   const data = globalThis.SITE_DATA;
   const taxonomy = globalThis.SITE_TAXONOMY;
@@ -23,7 +23,7 @@
   };
   const sortByDate = (list, key) => [...list].sort((a,b) => (b[key] || "").localeCompare(a[key] || "") || a.id.localeCompare(b.id));
   const navItems = [["", "首页", "home"], ["projects/", "项目", "projects"], ["games/", "游戏", "games"], ["tools/", "工具", "tools"], ["notes/lab/", "开发", "notes"], ["about/", "关于", "about"]];
-  const navLink = ([path, label, key]) => `<a href="${href(path)}" data-nav-key="${key}"${page === key || (page === "journal" && key === "notes") || (page === "detail" && key === "games") ? ' aria-current="page"' : ""}>${label}</a>`;
+  const navLink = ([path, label, key]) => `<a href="${href(path)}" data-nav-key="${key}"${page === key || (page === "journal" && key === "notes") || (page === "detail" && key === "games") || (page === "toolGuide" && key === "tools") ? ' aria-current="page"' : ""}>${label}</a>`;
   const registeredLogo = globalThis.SITE_ASSETS?.brand?.logo;
   const siteLogo = registeredLogo?.src || "assets/q-logo-pixel-framed.svg?v=dd5b8227f5b3e07a8da6";
   const siteLogoAlt = registeredLogo?.alt || "Q 标识";
@@ -51,6 +51,11 @@
   const renderProjects = () => head("PROJECT INDEX", "项目", "从想法到作品，记录每一次动手实践。") + collection('projects');
   const renderGames = () => head("GAME SHELF", "游戏", "从经典关卡到跨界角色，选择一款开始冒险。") + collection('games');
   const renderTools = () => head("TOOLS", "工具", "实用小工具与可亲手操作的实验。") + collection('tools');
+  const renderToolGuide = () => {
+    const item = (data.tools || []).find(entry => entry.id === itemSlug && entry.guide);
+    if (!item) return renderTools();
+    return head('TOOL / CREATE & PLAY',item.title,item.summary) + '<main id="main" tabindex="-1">' + globalThis.SITE_JOURNEY.toolGuide(item) + '</main>';
+  };
   const renderNotes = () => { const notes = sortByDate(data.notes.filter((note) => note.visibility === "public"), "publishedAt"); return `${head("NOTES", "笔记", "学习、折腾和动手过程中的随手记录。")}<main id="main" tabindex="-1"><section class="section"><div class="shell"><div class="section-head"><div><p class="eyebrow">时间</p><h2>笔记本</h2></div></div><div class="entry-grid">${notes.length ? notes.slice(0,20).map((note) => `<article class="entry"><p class="entry__kind">${esc(note.publishedAt)} / ${esc(note.type)}</p><h3>${esc(note.title)}</h3><p>${esc(note.summary)}</p></article>`).join("") : empty("暂无笔记")}</div></div></section></main>`; };
   const renderAbout = () => head("ABOUT", "关于", data.profile.publicStatement || "做项目，也做工具，偶尔做点游戏。") + globalThis.SITE_SHOWCASE.aboutMain(data.profile, base, globalThis.SITE_ABOUT_SUPPORT || {});
   const renderDetail = () => {
@@ -67,7 +72,7 @@
     return head(meta.eyebrow,meta.title,meta.intro)+'<main id="main" tabindex="-1"><div class="shell" data-journal-slot></div></main>';
   };
   const renderSearch = () => head("FIND SOMETHING GOOD","搜索","查找游戏、工具、项目与开发资料。")+'<main id="main" tabindex="-1"><div class="shell" data-site-search-root></div></main>';
-  const renderers = { visitorHelp:renderVisitorHelp, notFound:renderNotFound, search:renderSearch, journal:renderJournal, home: renderHome, projects: renderProjects, games: renderGames, tools: renderTools, notes: renderNotes, about: renderAbout, detail: renderDetail };
+  const renderers = { toolGuide:renderToolGuide, visitorHelp:renderVisitorHelp, notFound:renderNotFound, search:renderSearch, journal:renderJournal, home: renderHome, projects: renderProjects, games: renderGames, tools: renderTools, notes: renderNotes, about: renderAbout, detail: renderDetail };
   const bindFilters = () => { const buttons = [...activeRoot.querySelectorAll("[data-filter]")]; const rows = [...activeRoot.querySelectorAll("#game-list .media-row")]; const summary = activeRoot.querySelector("[data-filter-summary]"); if (!buttons.length || !rows.length) return; const apply = (filter) => { let shown = 0; buttons.forEach((item) => item.setAttribute("aria-pressed", String(item.dataset.filter === filter))); rows.forEach((row) => { const matches = filter === "all" || row.dataset.categories.split(" ").includes(filter); row.hidden = !matches; if (matches) shown += 1; }); if (summary) { const button = buttons.find((item) => item.dataset.filter === filter); const label = gameCategoryById.get(filter)?.label || "全部游戏"; summary.textContent = filter === "all" ? `显示全部 ${shown} 款游戏` : `${label} · ${shown} 款`; } }; buttons.forEach((button) => button.addEventListener("click", () => apply(button.dataset.filter))); apply(buttons.find((button) => button.getAttribute("aria-pressed") === "true")?.dataset.filter || "all"); };
   const renderShell = ({ targetRoot = activeRoot, nextPage = page, nextBase = base, nextItemSlug = itemSlug } = {}) => { activeRoot = targetRoot; page = nextPage; base = nextBase; itemSlug = nextItemSlug; body.dataset.page = page === "journal" ? "notes" : page; body.dataset.itemSlug = itemSlug; const prerendered = activeRoot.dataset.prerendered === "true"; activeRoot.removeAttribute("data-prerendered"); if (!prerendered) activeRoot.innerHTML = header() + (renderers[page] || renderHome)() + footer(); bindFilters(); globalThis.SITE_MEDIA_RUNTIME?.mount(activeRoot); import(guestbookModuleURL).then(module => module.mount(targetRoot, body.dataset.page)).catch(() => {}); };
   globalThis.SITE_SHELL_RENDER = renderShell;

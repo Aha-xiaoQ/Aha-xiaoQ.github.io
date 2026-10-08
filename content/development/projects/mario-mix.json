@@ -5,7 +5,7 @@
   "category": "game",
   "visibility": "public",
   "stage": "四期试玩已上线 · 地图工坊测试版",
-  "updatedAt": "2026-09-21",
+  "updatedAt": "2026-10-08",
   "summary": "不同作品的角色接力闯过经典关卡。查看每关有哪些角色、哪些可以试玩，以及下一步的开发计划。",
   "intro": "第一至第四期已开放独立试玩：魂斗罗与洛克人、忍者与坦克、泰拉瑞亚，以及索尼克与奥日城堡关。地图工坊支持从 32 关参考底图创建地图、试玩和离线导出。M07 开发候选与已上线试玩分开维护。",
   "highlights": [
@@ -14,6 +14,14 @@
     "视频：第四期 · 索尼克 × 奥日 可观看视频；马里奥地图工坊 可观看视频。"
   ],
   "links": [
+    {
+      "label": "自制马里奥1：我们一起打蜜蜂",
+      "href": "/games/five-regions/"
+    },
+    {
+      "label": "自制马里奥1：我们一起打蜜蜂 · 视频",
+      "href": "https://www.bilibili.com/video/BV1cHH965ECn/"
+    },
     {
       "label": "试玩第四期 · 索尼克 × 奥日",
       "href": "/games/mario-mix-4/play.html"
@@ -27,8 +35,8 @@
       "href": "/notes/mario-mix/docs/episode-4-source/"
     },
     {
-      "label": "打开地图工坊",
-      "href": "/packages/mario-mix-worlds/atlas/editor.html"
+      "label": "马里奥地图工坊",
+      "href": "/tools/mario-map-workshop-2-0/"
     },
     {
       "label": "试玩线上第三期",
@@ -66,6 +74,24 @@
     "path": "content/development/states/mario-mix-public.json"
   },
   "updates": [
+    {
+      "id": "map-workshop-source-20261008",
+      "date": "2026-10-08",
+      "title": "马里奥地图工坊",
+      "status": "released",
+      "summary": "地图编辑、AI 辅助制图与离线导出。提供下载和使用说明，也可打开旧版在线体验或试玩五门挑战范例。",
+      "kind": "content",
+      "public": true
+    },
+    {
+      "id": "five-regions-20261008",
+      "date": "2026-10-08",
+      "title": "自制马里奥1：我们一起打蜜蜂",
+      "status": "released",
+      "summary": "五种机关挑战，支持浏览器试玩与单文件 HTML 下载。完整通关实况已在 B 站发布。",
+      "kind": "content",
+      "public": true
+    },
     {
       "id": "episode4-source-s01",
       "date": "2026-09-21",

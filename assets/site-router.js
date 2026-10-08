@@ -17,6 +17,8 @@
     if (/^\/play-guide\/(?:index\.html)?$/.test(path)) return {kind:'content',page:'visitorHelp',title:'试玩帮助 · 在下_小Q'};
     if (path === '/404.html') return {kind:'content',page:'notFound',title:'页面未找到 · 在下_小Q'};
     if (/^\/search\/(?:index\.html)?$/.test(path)) return {kind:"content",page:"search",title:"搜索 · 在下_小Q"};
+    const tool = globalThis.SITE_DATA?.tools?.find(entry => entry.guide && entry.detailUrl === path.replace(/index\.html$/, ''));
+    if (tool) return {kind:'content',page:'toolGuide',itemSlug:tool.id,title:`${tool.title} · 在下_小Q`};
     const detail = path.match(/^\/(?:games)\/([^/]+)\/(?:index\.html)?$/);
     if (detail) {
       const itemSlug = detail[1];
@@ -43,16 +45,16 @@
     return url.href;
   };
   let experienceModule;
-  const prepareExperience=async info=>{if(info.page!=="search")return;experienceModule ||= import(new URL("experience/runtime.mjs?v=release-r24-bc8c601fb1a5",routerURL).href).catch(e=>{experienceModule=null;throw e;});await experienceModule;};
+  const prepareExperience=async info=>{if(info.page!=="search")return;experienceModule ||= import(new URL("experience/runtime.mjs?v=release-r24-9429b498246d",routerURL).href).catch(e=>{experienceModule=null;throw e;});await experienceModule;};
   let journalModule, journalWarmup;
   const journalStyle = () => {
     let link=document.querySelector('[data-journal-css]');
     if(link)link=renewStylesheet(link);
     if(link?.sheet)return Promise.resolve();
-    if(!link){link=document.createElement('link');link.rel='stylesheet';link.href=new URL('journal/journal.css?v=release-r24-bc8c601fb1a5',routerURL).href;link.dataset.journalCss='';document.head.append(link);}
+    if(!link){link=document.createElement('link');link.rel='stylesheet';link.href=new URL('journal/journal.css?v=release-r24-9429b498246d',routerURL).href;link.dataset.journalCss='';document.head.append(link);}
     return waitForLink(link);
   };
-  const importJournal=()=>journalModule ||= import(new URL('journal/runtime.mjs?v=release-r24-bc8c601fb1a5',routerURL).href).catch(error=>{journalModule=null;throw error;});
+  const importJournal=()=>journalModule ||= import(new URL('journal/runtime.mjs?v=release-r24-9429b498246d',routerURL).href).catch(error=>{journalModule=null;throw error;});
   const prepareJournal = async info => {
     if(info.page!=='journal')return;
     await Promise.all([journalStyle(),importJournal().then(()=>globalThis.SITE_JOURNAL.prepare(info))]);

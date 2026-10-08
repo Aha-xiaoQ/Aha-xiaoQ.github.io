@@ -44,13 +44,13 @@
    url=u.href;
   }
   if(cover)inspect(cover);
-  const title=url?'观看视频':'视频待发布',state=url?'available':'pending';
+  const title=url?String(item.videoLabel||'观看视频'):String(item.videoPendingLabel||'视频待发布'),state=url?'available':'pending';
   const image=cover?`<img class="q-video-cover" src="${esc(cover)}" alt="" width="1600" height="900" loading="${eager?'eager':'lazy'}" decoding="async">`:'';
   const icon=url?'<path d="M9 5v14l11-7z"/>':'<path d="M4 9h16v11H4zM4 4h16v5H4zM8 4l3 5M14 4l3 5"/>';
-  const inside=`${image}<span class="q-video-shade" aria-hidden="true"></span><span class="q-video-copy"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">${icon}</svg><strong>${title}</strong><span>${url?'Bilibili · 新标签页打开':'制作视频准备中'}</span></span>`;
+  const inside=`${image}<span class="q-video-shade" aria-hidden="true"></span><span class="q-video-copy"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">${icon}</svg><strong>${esc(title)}</strong><span>${url?'Bilibili · 新标签页打开':esc(item.videoPendingNote||'制作视频准备中')}</span></span>`;
   const attrs=`data-video-slot="${esc(item.id||item.slug||'video')}" data-video-state="${state}"`;
-  return url?`<a ${attributes(url,{className:'q-video-panel',variant:'card',newTab:true,ariaLabel:'观看 '+item.title+' 视频'})} ${attrs}>${inside}</a>`:`<div class="q-video-panel q-video-panel--pending" ${attrs} role="group" aria-label="${esc(item.title)}：视频待发布">${inside}</div>`;
+  return url?`<a ${attributes(url,{className:'q-video-panel',variant:'card',newTab:true,ariaLabel:item.videoLabel||'观看 '+item.title+' 视频'})} ${attrs}>${inside}</a>`:`<div class="q-video-panel q-video-panel--pending" ${attrs} role="group" aria-label="${esc(item.title)}：${esc(title)}">${inside}</div>`;
  }
- function videoPending(item){return item.videoSlot===true&&!item.videoUrl?'<span class="q-video-pending-label">视频待发布</span>':'';}
+ function videoPending(item){return item.videoSlot===true&&!item.videoUrl?'<span class="q-video-pending-label">'+esc(item.videoPendingLabel||'视频待发布')+'</span>':'';}
  root.SITE_ACTIONS=Object.freeze({version,esc,label,inspect,attributes,link,videoPanel,videoPending});
 })(globalThis);
