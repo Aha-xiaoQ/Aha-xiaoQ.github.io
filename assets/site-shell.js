@@ -1,5 +1,5 @@
 (() => {
-  const guestbookModuleURL = new URL('./guestbook.js?v=release-r24-d7a41d048095', document.currentScript.src).href;
+  const guestbookModuleURL = new URL('./guestbook.js?v=release-r24-f82adf6b4fc8', document.currentScript.src).href;
   const A=globalThis.SITE_ACTIONS;
   const data = globalThis.SITE_DATA;
   const taxonomy = globalThis.SITE_TAXONOMY;
@@ -54,7 +54,7 @@
   const renderToolGuide = () => {
     const item = (data.tools || []).find(entry => entry.id === itemSlug && entry.guide);
     if (!item) return renderTools();
-    return head('TOOL / CREATE & PLAY',item.title,item.summary) + '<main id="main" tabindex="-1">' + globalThis.SITE_JOURNEY.toolGuide(item) + '</main>';
+    return head('TOOL / CREATE & PLAY',item.title,item.summary) + '<main id="main" tabindex="-1"><div class="shell">' + globalThis.SITE_JOURNEY.toolGuide(item) + '</div></main>';
   };
   const renderNotes = () => { const notes = sortByDate(data.notes.filter((note) => note.visibility === "public"), "publishedAt"); return `${head("NOTES", "笔记", "学习、折腾和动手过程中的随手记录。")}<main id="main" tabindex="-1"><section class="section"><div class="shell"><div class="section-head"><div><p class="eyebrow">时间</p><h2>笔记本</h2></div></div><div class="entry-grid">${notes.length ? notes.slice(0,20).map((note) => `<article class="entry"><p class="entry__kind">${esc(note.publishedAt)} / ${esc(note.type)}</p><h3>${esc(note.title)}</h3><p>${esc(note.summary)}</p></article>`).join("") : empty("暂无笔记")}</div></div></section></main>`; };
   const renderAbout = () => head("ABOUT", "关于", data.profile.publicStatement || "做项目，也做工具，偶尔做点游戏。") + globalThis.SITE_SHOWCASE.aboutMain(data.profile, base, globalThis.SITE_ABOUT_SUPPORT || {});
@@ -74,7 +74,7 @@
   const renderSearch = () => head("FIND SOMETHING GOOD","搜索","查找游戏、工具、项目与开发资料。")+'<main id="main" tabindex="-1"><div class="shell" data-site-search-root></div></main>';
   const renderers = { toolGuide:renderToolGuide, visitorHelp:renderVisitorHelp, notFound:renderNotFound, search:renderSearch, journal:renderJournal, home: renderHome, projects: renderProjects, games: renderGames, tools: renderTools, notes: renderNotes, about: renderAbout, detail: renderDetail };
   const bindFilters = () => { const buttons = [...activeRoot.querySelectorAll("[data-filter]")]; const rows = [...activeRoot.querySelectorAll("#game-list .media-row")]; const summary = activeRoot.querySelector("[data-filter-summary]"); if (!buttons.length || !rows.length) return; const apply = (filter) => { let shown = 0; buttons.forEach((item) => item.setAttribute("aria-pressed", String(item.dataset.filter === filter))); rows.forEach((row) => { const matches = filter === "all" || row.dataset.categories.split(" ").includes(filter); row.hidden = !matches; if (matches) shown += 1; }); if (summary) { const button = buttons.find((item) => item.dataset.filter === filter); const label = gameCategoryById.get(filter)?.label || "全部游戏"; summary.textContent = filter === "all" ? `显示全部 ${shown} 款游戏` : `${label} · ${shown} 款`; } }; buttons.forEach((button) => button.addEventListener("click", () => apply(button.dataset.filter))); apply(buttons.find((button) => button.getAttribute("aria-pressed") === "true")?.dataset.filter || "all"); };
-  const renderShell = ({ targetRoot = activeRoot, nextPage = page, nextBase = base, nextItemSlug = itemSlug } = {}) => { activeRoot = targetRoot; page = nextPage; base = nextBase; itemSlug = nextItemSlug; body.dataset.page = page === "journal" ? "notes" : page; body.dataset.itemSlug = itemSlug; const prerendered = activeRoot.dataset.prerendered === "true"; activeRoot.removeAttribute("data-prerendered"); if (!prerendered) activeRoot.innerHTML = header() + (renderers[page] || renderHome)() + footer(); bindFilters(); globalThis.SITE_MEDIA_RUNTIME?.mount(activeRoot); import(guestbookModuleURL).then(module => module.mount(targetRoot, body.dataset.page)).catch(() => {}); };
+  const renderShell = ({ targetRoot = activeRoot, nextPage = page, nextBase = base, nextItemSlug = itemSlug, initialHydrate = false } = {}) => { activeRoot = targetRoot; page = nextPage; base = nextBase; itemSlug = nextItemSlug; body.dataset.page = page === "journal" ? "notes" : page; body.dataset.itemSlug = itemSlug; const prerendered = initialHydrate && activeRoot.dataset.prerendered === "true"; activeRoot.removeAttribute("data-prerendered"); if (!prerendered) activeRoot.innerHTML = header() + (renderers[page] || renderHome)() + footer(); bindFilters(); globalThis.SITE_MEDIA_RUNTIME?.mount(activeRoot); import(guestbookModuleURL).then(module => module.mount(targetRoot, body.dataset.page)).catch(() => {}); };
   globalThis.SITE_SHELL_RENDER = renderShell;
-  if (body.dataset.page) renderShell();
+  if (body.dataset.page) renderShell({ initialHydrate: true });
 })();

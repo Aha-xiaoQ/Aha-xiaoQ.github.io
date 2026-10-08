@@ -45,16 +45,16 @@
     return url.href;
   };
   let experienceModule;
-  const prepareExperience=async info=>{if(info.page!=="search")return;experienceModule ||= import(new URL("experience/runtime.mjs?v=release-r24-d7a41d048095",routerURL).href).catch(e=>{experienceModule=null;throw e;});await experienceModule;};
+  const prepareExperience=async info=>{if(info.page!=="search")return;experienceModule ||= import(new URL("experience/runtime.mjs?v=release-r24-f82adf6b4fc8",routerURL).href).catch(e=>{experienceModule=null;throw e;});await experienceModule;};
   let journalModule, journalWarmup;
   const journalStyle = () => {
     let link=document.querySelector('[data-journal-css]');
     if(link)link=renewStylesheet(link);
     if(link?.sheet)return Promise.resolve();
-    if(!link){link=document.createElement('link');link.rel='stylesheet';link.href=new URL('journal/journal.css?v=release-r24-d7a41d048095',routerURL).href;link.dataset.journalCss='';document.head.append(link);}
+    if(!link){link=document.createElement('link');link.rel='stylesheet';link.href=new URL('journal/journal.css?v=release-r24-f82adf6b4fc8',routerURL).href;link.dataset.journalCss='';document.head.append(link);}
     return waitForLink(link);
   };
-  const importJournal=()=>journalModule ||= import(new URL('journal/runtime.mjs?v=release-r24-d7a41d048095',routerURL).href).catch(error=>{journalModule=null;throw error;});
+  const importJournal=()=>journalModule ||= import(new URL('journal/runtime.mjs?v=release-r24-f82adf6b4fc8',routerURL).href).catch(error=>{journalModule=null;throw error;});
   const prepareJournal = async info => {
     if(info.page!=='journal')return;
     await Promise.all([journalStyle(),importJournal().then(()=>globalThis.SITE_JOURNAL.prepare(info))]);
@@ -259,10 +259,17 @@
     const navigationId=++navigationSequence;navigating=true;activeTransition?.skipTransition?.();app.classList.remove('q-route-new','q-route-new--in');
     const commit=()=>{
       if(navigationId!==navigationSequence)return;
-      applyStyles(info.kind);
-      if(historyMode==='push')history.pushState({qView:{x:0,y:0,focus:null}},'',url.href);
-      else if(historyMode==='replace')history.replaceState({...plainState(),qView:{x:0,y:0,focus:null}},'',url.href);
-      renderedPath=location.pathname;renderedSearch=location.search;renderRoute(info);restoreView(url,targetView,navigationId);window.dispatchEvent(new CustomEvent('xiaoq:pageview'));
+      try {
+        applyStyles(info.kind);
+        if(historyMode==='push')history.pushState({qView:{x:0,y:0,focus:null}},'',url.href);
+        else if(historyMode==='replace')history.replaceState({...plainState(),qView:{x:0,y:0,focus:null}},'',url.href);
+        renderedPath=location.pathname;renderedSearch=location.search;renderRoute(info);restoreView(url,targetView,navigationId);window.dispatchEvent(new CustomEvent('xiaoq:pageview'));
+      } catch {
+        // A partial script load must never leave old content under a new URL/style.
+        // Reuse the same history entry and the complete static document fallback.
+        navigating=false;
+        location.replace(url.href);
+      }
     };
     try{
       const renderer=info.kind==='home'?globalThis.SITE_PROMO_RENDER:globalThis.SITE_SHELL_RENDER;
