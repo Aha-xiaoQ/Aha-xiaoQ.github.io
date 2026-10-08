@@ -1,5 +1,5 @@
 /** Shared public layouts; no DOM or network work during import. */
-import {EXPERIMENTS} from './data/experiments.mjs?v=dev-r44-6cc33e1e57d00f99';
+import {EXPERIMENTS} from './data/experiments.mjs?v=dev-r44-fb48a94eba552682';
 import {experimentVideoURL} from '../platform/contracts.mjs';
 const esc=(s='')=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const url=(p,d='')=>'/notes/'+p.id+'/'+(d?'docs/'+d+'/':'');
