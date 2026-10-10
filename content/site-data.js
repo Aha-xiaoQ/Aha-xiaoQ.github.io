@@ -7,12 +7,12 @@ globalThis.SITE_DATA = {
     "interests": [],
     "now": {
       "label": "最近作品",
-      "sourceId": "game-five-regions",
-      "title": "自制马里奥1：我们一起打蜜蜂",
-      "summary": "穿过五扇门，挑战不同机关，收集五枚粉币，带着钥匙抵达终点。",
-      "updatedAt": "2026-10-08",
-      "href": "/games/five-regions/",
-      "entryLabel": "自制马里奥1：我们一起打蜜蜂",
+      "sourceId": "mario-midnight-kitchen",
+      "title": "自制马里奥2 | 小小梦魇 · 午夜厨房",
+      "summary": "误入小小梦魇的厨房：引开厨师、躲进桌底、推箱开门，再与小六一起乘吊钩离开。",
+      "updatedAt": "2026-10-10",
+      "href": "/notes/lab/docs/mario-midnight-kitchen/",
+      "entryLabel": "实验室",
       "items": []
     },
     "copy": {

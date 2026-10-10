@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "kind": "video",
+  "id": "mario-midnight-kitchen",
+  "title": "自制马里奥2 | 小小梦魇 · 午夜厨房",
+  "subtitle": "误入小小梦魇的厨房：引开厨师、躲进桌底、推箱开门，再与小六一起乘吊钩离开。",
+  "visibility": "public",
+  "createdAt": "2026-10-10",
+  "updatedAt": "2026-10-10",
+  "medium": "VIDEO",
+  "format": "3D 潜行游戏",
+  "video": {
+    "provider": "bilibili",
+    "bvid": "BV18BpG6LEaF"
+  },
+  "cover": {
+    "src": "/assets/lab/mario-midnight-kitchen-cover.png",
+    "alt": "马里奥置身昏暗的三维厨房，封面标题为马里奥·午夜厨房。"
+  },
+  "provenance": "把马里奥的跳跃与《小小梦魇》的潜行氛围放进同一个 3D HTML 关卡。敲响锅盖引开厨师，利用桌底与箱子寻找出路，出口还有小六等候。本作是非官方同人关卡。",
+  "verification": "游戏制作：GPT-6.1 sol。策划、制作：在下_小Q；AI 辅助与视频剪辑：Codex。HTML 是可操作的 3D 游戏；约 44 秒的视频为通关剪辑，另含配乐与三连片尾，完整视频已在哔哩哔哩发布。配乐：Tobias Lilja《Little Nightmares》原声选段。片尾与封面字体：霞鹜文楷。角色、模型与原声音乐的权利归各自权利人所有。",
+  "resources": [
+    {
+      "role": "html",
+      "label": "打开 3D 游戏",
+      "href": "/experiments/releases/mario-midnight-kitchen/game.html",
+      "bytes": 8556466,
+      "sha256": "97aaa7509c2c87883d75702b2c276826842e812f2057a06061b56bc93b66581c"
+    },
+    {
+      "role": "source",
+      "label": "下载游戏源码",
+      "href": "/experiments/releases/mario-midnight-kitchen/source.zip",
+      "bytes": 7072250,
+      "sha256": "e80c93a7d53f93c03593bce8fc068ea995817e93f718b57adbf59b90a7c3f5ea"
+    }
+  ]
+}

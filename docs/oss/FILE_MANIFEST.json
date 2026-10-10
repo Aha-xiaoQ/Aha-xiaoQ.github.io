@@ -236,6 +236,14 @@
         "content/development/projects/mario-mix.json"
       ],
       "limits": "Identity update of the existing original components only; baseline, classifications and third-party exclusions unchanged. Downloaded archives, game media and font binaries receive no new license grant."
+    },
+    "midnight-kitchen-publication": {
+      "basis": "Generated website content, bilingual messages, cache references and font ranges updated for the Mario Midnight Kitchen entry using existing generators. Original implementation classification is unchanged.",
+      "sources": [
+        "content/experiments/mario-midnight-kitchen.json",
+        "docs/platform/site-update-workflow.md"
+      ],
+      "limits": "No additional license grant for game models, audio, artwork, or downloadable archives."
     }
   },
   "newFiles": [
@@ -33386,73 +33394,73 @@
       "path": "about/index.html",
       "baselineGitBlob": "b4c6b69895f238d69b4df5ed8147d85edc3adc21",
       "baselineSha256": "14f3537855046ab8be6066b66617c050ce9545aa6f696abc603ce7e618079093",
-      "gitBlob": "26b9a77eb2ca1e959b007b763b616eb735691fd4",
-      "sha256": "604426cd509c574de45192a2941375b2895583be41fe3d3a194a93c7e909d809",
-      "reviewDate": "2026-10-08",
-      "evidence": "five-regions-publication"
+      "gitBlob": "d9bd9d79442aea73c5d4b3ee7e5a2c7aa372dae1",
+      "sha256": "8f8b1a4bb31b335bc53b5a7fbe119dae5dcbee061ca8d94681f168049bb586a8",
+      "reviewDate": "2026-10-10",
+      "evidence": "midnight-kitchen-publication"
     },
     {
       "path": "assets/i18n/messages.js",
       "baselineGitBlob": "592306765289377fd1e2dc5dc95a085e6848aba9",
       "baselineSha256": "e1ef83eccf9ed624f5b936503064e2bf9ba6a4cec19a402ee4c12dfde1021f15",
-      "gitBlob": "3318fcbd93ef3a428346d50678b1adfbe511c062",
-      "sha256": "798580a74cec4b7d06d05b877e1c6b12fbc83d00dca74149a8f65cbf14be2853",
-      "reviewDate": "2026-10-08",
-      "evidence": "five-regions-publication"
+      "gitBlob": "b20f35b5f043d1cf22138dc24fc700883bb6e9d8",
+      "sha256": "1e3700f95d1f9990275b88465dc93f99fb59ca0ea8f485239d51ba99235dd220",
+      "reviewDate": "2026-10-10",
+      "evidence": "midnight-kitchen-publication"
     },
     {
       "path": "assets/journal/documents.mjs",
       "baselineGitBlob": "f1d865f9aa21d81fe7e03e7374982a2fc7b1ddaf",
       "baselineSha256": "ac614bd0ac679ed6614694d0c2d07441fc8b6789cff9bff06967c97c77bd23c4",
-      "gitBlob": "07645789063fdaffb3acd1a6da1888d9018aa623",
-      "sha256": "0608d2c7aaaeaa12f383459395089162cc14d0bae428fc0cc5e0ae2f9dcb34af",
-      "reviewDate": "2026-10-08",
-      "evidence": "five-regions-publication"
+      "gitBlob": "268af80fa602deccec515fab146a7c8298a34372",
+      "sha256": "0f8ca9472d2a62c478181beb6afd9e416789dc710e773b679493022c97edc81d",
+      "reviewDate": "2026-10-10",
+      "evidence": "midnight-kitchen-publication"
     },
     {
       "path": "assets/journal/experiment.mjs",
       "baselineGitBlob": "30a08b98efacc83111c528fc4848a83628263446",
       "baselineSha256": "dc5478c8bc43d16ecae1f585cba9a6bba323fb140b7cd4590bf10e91a2b85596",
-      "gitBlob": "ec8d1ace2a90eed8d761f23ee99251c6b936a324",
-      "sha256": "f1d2d6e478c650c13b402ac52b730b6a5b52f8547ee43471da078235bb96be59",
-      "reviewDate": "2026-10-08",
-      "evidence": "five-regions-publication"
+      "gitBlob": "0df3e0e61e5a155d8d4ae6df1a448ea80832d54b",
+      "sha256": "28f51f185a53104805a3254da12f1e6768af9a2d41af46d5715347c674a57e50",
+      "reviewDate": "2026-10-10",
+      "evidence": "midnight-kitchen-publication"
     },
     {
       "path": "assets/journal/public-layout.mjs",
       "baselineGitBlob": "25bc488f32da2f9de2b4ef1107ff5571b74bb8ec",
       "baselineSha256": "bf4229ff50ceeb8071fb4af8b94e331642543b9856267db3d6193f93b81fa1eb",
-      "gitBlob": "2e496b4e0ca2aad83a1a5e95b6d12965e2fdb4d7",
-      "sha256": "003e997e51fb1260a692c197a32d85b10e4eebaec55a0c7a4cbfe92893efa6e2",
-      "reviewDate": "2026-10-08",
-      "evidence": "five-regions-publication"
+      "gitBlob": "5a0c9891923af6a7344a2dc659b15c73ac4f079b",
+      "sha256": "a9f722cc4869d38b861dea06987ba1b80bfa04962c98f696133841feac0b011c",
+      "reviewDate": "2026-10-10",
+      "evidence": "midnight-kitchen-publication"
     },
     {
       "path": "assets/journal/render.mjs",
       "baselineGitBlob": "5b74c68409edfefaa6d990fc62111d09f7365c0b",
       "baselineSha256": "021ba67c6d27f8d1da66bbf949d7bb63c64580001deff22944d7847e731c4180",
-      "gitBlob": "f38bb792897ee8dd7c5653129f5c2183eac8d53c",
-      "sha256": "574d57ac71e85c684d655a64ed26998da50a51e88dcd8f3fec721a1426a97024",
-      "reviewDate": "2026-10-08",
-      "evidence": "five-regions-publication"
+      "gitBlob": "5d2441a9adf2129966b06a99f0e69a81b00292af",
+      "sha256": "0907ebd98781f0ab9eb0d89868b3d84fdda94f28335cfaea4c849ce107b0fb08",
+      "reviewDate": "2026-10-10",
+      "evidence": "midnight-kitchen-publication"
     },
     {
       "path": "assets/journal/runtime.mjs",
       "baselineGitBlob": "6899fd87a5a0d7a8295c832561bc0811d51b0e65",
       "baselineSha256": "a21d16de3732df431579b140a45e43101c0375a30d982aeb71241f84ab34c301",
-      "gitBlob": "82b77b4f79cde6d28e14d99fc5173adcd678ef37",
-      "sha256": "5d97ac26b78787a1ed320f5bcb2f7ea1915fa7e792f33b19ecc0a3833b985755",
-      "reviewDate": "2026-10-08",
-      "evidence": "five-regions-publication"
+      "gitBlob": "196e05b4c51286869ddfc5f0cb0d5d36fa31bb43",
+      "sha256": "e302e870e6dea525f6fe5f50bd6f68dacb402db19a55e25732d240949be1c88d",
+      "reviewDate": "2026-10-10",
+      "evidence": "midnight-kitchen-publication"
     },
     {
       "path": "assets/release/public-content.mjs",
       "baselineGitBlob": "45e2ebbc03feae6d17dc48528143e83d6b65f62a",
       "baselineSha256": "3de04282d9f70aaa21a31a4183fbd37d36dfd59cc5784dea995beb1907ce0e5f",
-      "gitBlob": "96869aa0521bf90b42d4ac5721003ffa83430b91",
-      "sha256": "5f0094c72e39626011fb05d14c7fa40365072d1590d5a3f139b6d0764eac05e8",
-      "reviewDate": "2026-10-08",
-      "evidence": "five-regions-publication"
+      "gitBlob": "2ef9562770ef42ddccd1ebb0d912da0151f34591",
+      "sha256": "a0bf5952212fed6239a90548d5e61db4e22144150862738436b048f82b3572fc",
+      "reviewDate": "2026-10-10",
+      "evidence": "midnight-kitchen-publication"
     },
     {
       "path": "assets/site-analytics.js",
@@ -33476,100 +33484,100 @@
       "path": "assets/site-router.js",
       "baselineGitBlob": "c8bffef04c666670f07e136e1f40f9909d2a4ebc",
       "baselineSha256": "d7be7f7c218c4f8c736686852d96049c048c5d551d04278f8936079c8586dbc3",
-      "gitBlob": "829546630f5e3fe95c9f019de282dc82d4bef369",
-      "sha256": "f9876453dc5a51bbe324bc450f46fffb1fe1582dea549d6187ab03bd31cc3021",
-      "reviewDate": "2026-10-08",
-      "evidence": "five-regions-publication"
+      "gitBlob": "84e0006402d507d80e1e4097ea28af9c5aa0c0e7",
+      "sha256": "b2f54aa65ec8375b6d51d892708eff15eb49150465e08456346e7a2f97723f0a",
+      "reviewDate": "2026-10-10",
+      "evidence": "midnight-kitchen-publication"
     },
     {
       "path": "games/index.html",
       "baselineGitBlob": "64c78896e8e263e48d704d76bd694b51f5be55a9",
       "baselineSha256": "859fda6c59ee8ac88c3a8c088765e091e5e92c49e5b70ab1d9e0c309cf32daa5",
-      "gitBlob": "6d56af376f0762692e8d8cb7f1806bb32138e9ce",
-      "sha256": "1a444e99e0a1e1d3b3f694a73ced25d47f41f6febfc9daa14cc4ccfe574e3ee4",
-      "reviewDate": "2026-10-08",
-      "evidence": "five-regions-publication"
+      "gitBlob": "775158f3a557f0c3834b3a1faddeab50aa8a3bd0",
+      "sha256": "77385326f1e5be2765cba9be66a033cecc34189a73e05321127dc23f909253fa",
+      "reviewDate": "2026-10-10",
+      "evidence": "midnight-kitchen-publication"
     },
     {
       "path": "games/mario-classic/index.html",
       "baselineGitBlob": "212cec349506c6e9f05b0ce6ca0ddfa22890f69f",
       "baselineSha256": "ca2cf6d641fff43c726b000992507a238659c5832bf747b2138d68db4347f2ef",
-      "gitBlob": "82753364a57ad5a91ceb54b72e2c242962d5b7ae",
-      "sha256": "ca817072857816bfd0d33dfc07e1b2e1bcd5a1c7fe05d4ba2959ab935348d8ee",
-      "reviewDate": "2026-10-08",
-      "evidence": "five-regions-publication"
+      "gitBlob": "e386069c4d4852112fd7d7786d83f88faffa2d8d",
+      "sha256": "689e39da869eead211e11bcb8dcca7d3bab855bd4c729a050a41f5e25c13bff8",
+      "reviewDate": "2026-10-10",
+      "evidence": "midnight-kitchen-publication"
     },
     {
       "path": "games/mario-mix/index.html",
       "baselineGitBlob": "9b8d8164e6e2ab576e71fe82f54283c2c74236d2",
       "baselineSha256": "4afab9b76acb4f1f766919473ef73a49ed2ef686cc7a747cd09cbcf20fd42f11",
-      "gitBlob": "29a08fa67156779cf0eb991951b1f03a061d5227",
-      "sha256": "15f2657489274b0c6c65197afd84d4dd8ed131f4b816f8485e6aaf2d9eb2b97a",
-      "reviewDate": "2026-10-08",
-      "evidence": "five-regions-publication"
+      "gitBlob": "e129bc407bf9b9e6ce9c14fa03eefe5b63940317",
+      "sha256": "12f681ea3886e47639242c755a9e6b5be6229536529ccec53c677d566ea5219b",
+      "reviewDate": "2026-10-10",
+      "evidence": "midnight-kitchen-publication"
     },
     {
       "path": "games/pipebound/index.html",
       "baselineGitBlob": "cf14a36f4409acfefdf79986a5431abb118d4865",
       "baselineSha256": "b469f5c52f3c00ad9a01e2c890963830c18b0ec009bcdfa313f6d92137608937",
-      "gitBlob": "67399d3e5fb1b3a67d09f0f8bf1386a713c01310",
-      "sha256": "7bb2344f717fd8dbd0733ac9d4a47590a432f3d452bcfa7fc8516f5c7faa1efb",
-      "reviewDate": "2026-10-08",
-      "evidence": "five-regions-publication"
+      "gitBlob": "990b7ccd251b4f869e772e41bba9c556d90da63b",
+      "sha256": "d9740b49af1053f3a44cc8e6c3adaf397d09a7b9a6f42fe95c80fb4888d02399",
+      "reviewDate": "2026-10-10",
+      "evidence": "midnight-kitchen-publication"
     },
     {
       "path": "games/pixel-pipe-adventure/index.html",
       "baselineGitBlob": "f30f93e9701b7be1ab63308f7ce45ede31326278",
       "baselineSha256": "9e032e6320957edd7c9c473a6b4b7cb53e62af9e3463325f2c70ea4f7a57461d",
-      "gitBlob": "e317dee2c2875531278aa9c5b0ee04ed25f0ef19",
-      "sha256": "72acd55dbedf4a5045fb685657169c77f2f09710b446cb0844273b16789bc9a1",
-      "reviewDate": "2026-10-08",
-      "evidence": "five-regions-publication"
+      "gitBlob": "29f97847c5fb13b6d6643faa6405d243f500a562",
+      "sha256": "8b019396cfa6a77f1683d660adc8b75c55b235f9241f18afef25d800e44e5233",
+      "reviewDate": "2026-10-10",
+      "evidence": "midnight-kitchen-publication"
     },
     {
       "path": "games/voxel-frontier/index.html",
       "baselineGitBlob": "cc0a1eeaf8f9780a9d752e221d5c34f325b0b9b0",
       "baselineSha256": "35240e2af8c07e84c0b88137a9f8549b58ee994a9b2a60c38ad9038c8c6565c3",
-      "gitBlob": "7489b069fbe9088d2992cba0e791ada5bff262f7",
-      "sha256": "8447bd5b0a69f82321cd38f9201887a9e8ca78736fe489b0765d7e6354c4a24b",
-      "reviewDate": "2026-10-08",
-      "evidence": "five-regions-publication"
+      "gitBlob": "d1fa2ba19a0125d8c1ef30cf7f8f68209517836e",
+      "sha256": "06bb54d3cd9ba294293843fea46c032754527ba421be88eaebcbea8c11ebe840",
+      "reviewDate": "2026-10-10",
+      "evidence": "midnight-kitchen-publication"
     },
     {
       "path": "index.html",
       "baselineGitBlob": "ba30bdc413adce5dc39476605082733cbe7ef1b6",
       "baselineSha256": "bf5269a0c063e71139f6ca7618b5bb158cfbee0ea504e225892878a815f53c30",
-      "gitBlob": "e07c989c6922dbf08cade2449ac67c98a4fa50cd",
-      "sha256": "924675fffd60d73b77af9743f45baa555ae0f22fadc9bdd4fdf269a2cd226705",
-      "reviewDate": "2026-10-08",
-      "evidence": "five-regions-publication"
+      "gitBlob": "0dc4e8c30b58017e204b4fcf9a64731214fa3d0b",
+      "sha256": "4f2bcc794ad68a23f4b1d92bfa67f3919f6ca7ed2bfb3b43bda598762a558a1b",
+      "reviewDate": "2026-10-10",
+      "evidence": "midnight-kitchen-publication"
     },
     {
       "path": "notes/index.html",
       "baselineGitBlob": "2798af72431d60f24ea38cb152474670e1ecf0ad",
       "baselineSha256": "88754e40cf1c5c0dcd79fc17afea0353b44836298fe5731ed509143b356beec9",
-      "gitBlob": "a0187be8104e49458f2e9220415609a3b120415d",
-      "sha256": "0d2d52767b43d16c8fcbaf29da3d660f6d509d674af41b7668062a6f86e2b8df",
-      "reviewDate": "2026-10-08",
-      "evidence": "five-regions-publication"
+      "gitBlob": "5b2b4992781a14b75733e063bea2b410b6891638",
+      "sha256": "2b60b36a2ac08c7a4618b64ab863d2ea39528efeb51a6ac3f6aec7705462cad5",
+      "reviewDate": "2026-10-10",
+      "evidence": "midnight-kitchen-publication"
     },
     {
       "path": "projects/index.html",
       "baselineGitBlob": "e29006ec9904e4171b63620632c3dd0044455e18",
       "baselineSha256": "d4bee107d4e76b944e330ce48312a26bc13dd6ef0bcf725d7ffed54f097a9636",
-      "gitBlob": "3d9ce0cf8e2e2b5fb1630fbda2d85cba0c4776bf",
-      "sha256": "96fc29567c0053bf44876f491f0cd1c535b63c0c1dfd74f921846bcd0ebe6537",
-      "reviewDate": "2026-10-08",
-      "evidence": "five-regions-publication"
+      "gitBlob": "0184c8963b53bc771e81868d6b0e43c52bbb1aae",
+      "sha256": "602a7aa05e12e92486196aaf2f372efd32405ba12c8249bd62b1844ffa228138",
+      "reviewDate": "2026-10-10",
+      "evidence": "midnight-kitchen-publication"
     },
     {
       "path": "projects/q-mimi/index.html",
       "baselineGitBlob": "48c0b573d540ffeff57dc9e7808661f687559f25",
       "baselineSha256": "76a5551678228c5e9d0ec651a0503d3c271d28897a6899ac0012bace33105ea2",
-      "gitBlob": "e2fb6b285f8d4d6b3c2984dc2bce5239ea30db6f",
-      "sha256": "1f9b852cb0cad536f159c0d1e83abd9ea727deb3ad9ef2f4187626ff81695246",
-      "reviewDate": "2026-10-08",
-      "evidence": "five-regions-publication"
+      "gitBlob": "119917dc6da3cc5a124a8649974fddc6c4367004",
+      "sha256": "291ddc837202a007f310956a82f2fb38fd70ea80a9255bda5444203d0ed88af1",
+      "reviewDate": "2026-10-10",
+      "evidence": "midnight-kitchen-publication"
     },
     {
       "path": "scripts/platform/browser.mjs",
@@ -33593,10 +33601,10 @@
       "path": "tools/index.html",
       "baselineGitBlob": "18d7df5efa55242ae4d0911831f822f15b7714ce",
       "baselineSha256": "bb728a205fa37790269227a32b559ca0b5dc8fdcb7edabb906857a68c57616a7",
-      "gitBlob": "fa5963695d800936892654f91814beef5613b6b2",
-      "sha256": "82d52a68272f81883672282af4dcf7ae2c25ff5cf88a6a4d5343319caae5aecb",
-      "reviewDate": "2026-10-08",
-      "evidence": "five-regions-publication"
+      "gitBlob": "7134a9732ce9c7258b6d1d47a862369e172e84cd",
+      "sha256": "bca9eeb1c227f49d7cf33f7155052246f07aba4fd2338a3ed314bd975c618859",
+      "reviewDate": "2026-10-10",
+      "evidence": "midnight-kitchen-publication"
     },
     {
       "path": "assets/platform/contracts.mjs",
@@ -33611,10 +33619,10 @@
       "path": "assets/platform/font-support.css",
       "baselineGitBlob": "0cda94702279ec09be8cfe945a0f3c42c1f8de50",
       "baselineSha256": "2f3a315563764c9b1f36dcc3792f19019ed5c548c0cb8d9c0a7f3b96c4abcc58",
-      "gitBlob": "5b67a62c27792ef98c8cf1c7e782de8388d4bc1c",
-      "sha256": "7928b4993d3a7b0b1323684170214e92db1882cdd49b38a3c1dcca60ad5acf31",
-      "reviewDate": "2026-10-08",
-      "evidence": "five-regions-publication"
+      "gitBlob": "6c46a5dcc734229b331b3b4ce78916c6bbcb84f4",
+      "sha256": "d5aa67b90d091f60f9b8ab5c86a7a1b1763d123b9b8ff1307f1e2413e709cce6",
+      "reviewDate": "2026-10-10",
+      "evidence": "midnight-kitchen-publication"
     },
     {
       "path": "tests/dev-center/readme.test.mjs",
