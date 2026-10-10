@@ -7,11 +7,11 @@ globalThis.SITE_DATA = {
     "interests": [],
     "now": {
       "label": "最近作品",
-      "sourceId": "mario-midnight-kitchen",
-      "title": "自制马里奥2 | 小小梦魇 · 午夜厨房",
-      "summary": "误入小小梦魇的厨房：引开厨师、躲进桌底、推箱开门，再与小六一起乘吊钩离开。",
-      "updatedAt": "2026-10-10",
-      "href": "/notes/lab/docs/mario-midnight-kitchen/",
+      "sourceId": "badapple-mario",
+      "title": "自制马里奥3 | Bad Apple!! 音乐小剧场",
+      "summary": "跟着 Bad Apple!! 的节拍跳跃、下蹲与发射火球，看金币和砖块把平面舞台展开成立体音乐剧。",
+      "updatedAt": "2026-10-11",
+      "href": "/notes/lab/docs/badapple-mario/",
       "entryLabel": "实验室",
       "items": []
     },
