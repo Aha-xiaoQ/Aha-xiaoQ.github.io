@@ -5,7 +5,7 @@
   "category": "experiment",
   "visibility": "public",
   "stage": "交互动画与视频作品",
-  "updatedAt": "2026-10-06",
+  "updatedAt": "2026-10-10",
   "summary": "交互动画、音乐影像与主题节目。看作品，也看创作记录。",
   "intro": "这里收录交互动画、音乐影像与主题节目。原始代码实验提供在线体验与源文件；视频作品提供完整成片的观看入口。",
   "highlights": [
@@ -14,6 +14,10 @@
     "视频成片与原始代码实验分别展示。"
   ],
   "links": [
+    {
+      "label": "自制马里奥2 | 小小梦魇 · 午夜厨房",
+      "href": "/notes/lab/docs/mario-midnight-kitchen/"
+    },
     {
       "label": "仿真示波器音乐播放器",
       "href": "/notes/lab/docs/oscilloscope-music/"
@@ -58,6 +62,14 @@
     "path": "content/development/states/lab-public.json"
   },
   "updates": [
+    {
+      "id": "mario-midnight-kitchen",
+      "date": "2026-10-10",
+      "title": "自制马里奥2 | 小小梦魇 · 午夜厨房",
+      "status": "released",
+      "summary": "新增可玩的 3D 厨房潜行关卡与游戏源码；马里奥在出口遇见小六，两人一起随吊钩离开。完整视频已在哔哩哔哩发布。",
+      "public": true
+    },
     {
       "id": "oscilloscope-music",
       "date": "2026-10-06",
@@ -122,6 +134,19 @@
         "href": "/experiments/pelican-bicycle.html"
       },
       "archived": false
+    },
+    {
+      "id": "mario-midnight-kitchen",
+      "title": "自制马里奥2 | 小小梦魇 · 午夜厨房",
+      "summary": "误入小小梦魇的厨房：引开厨师、躲进桌底、推箱开门，再与小六一起乘吊钩离开。",
+      "sections": [],
+      "sources": [],
+      "archived": false,
+      "kind": "lab-video",
+      "action": {
+        "label": "观看视频",
+        "href": "https://www.bilibili.com/video/BV18BpG6LEaF/"
+      }
     },
     {
       "id": "oscilloscope-music",
