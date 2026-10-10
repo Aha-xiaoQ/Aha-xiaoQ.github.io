@@ -5,7 +5,7 @@
   "category": "experiment",
   "visibility": "public",
   "stage": "交互动画与视频作品",
-  "updatedAt": "2026-10-10",
+  "updatedAt": "2026-10-11",
   "summary": "交互动画、音乐影像与主题节目。看作品，也看创作记录。",
   "intro": "这里收录交互动画、音乐影像与主题节目。原始代码实验提供在线体验与源文件；视频作品提供完整成片的观看入口。",
   "highlights": [
@@ -14,6 +14,10 @@
     "视频成片与原始代码实验分别展示。"
   ],
   "links": [
+    {
+      "label": "自制马里奥3 | Bad Apple!! 音乐小剧场",
+      "href": "/notes/lab/docs/badapple-mario/"
+    },
     {
       "label": "自制马里奥2 | 小小梦魇 · 午夜厨房",
       "href": "/notes/lab/docs/mario-midnight-kitchen/"
@@ -62,6 +66,14 @@
     "path": "content/development/states/lab-public.json"
   },
   "updates": [
+    {
+      "id": "badapple-mario",
+      "date": "2026-10-11",
+      "title": "自制马里奥3 | Bad Apple!! 音乐小剧场",
+      "status": "released",
+      "summary": "新增完整音乐关、游戏源码与演示介绍：跟随节拍跳跃、下蹲和发射火球，后半段展开立体舞台。完整视频已在哔哩哔哩发布。",
+      "public": true
+    },
     {
       "id": "mario-midnight-kitchen",
       "date": "2026-10-10",
@@ -134,6 +146,19 @@
         "href": "/experiments/pelican-bicycle.html"
       },
       "archived": false
+    },
+    {
+      "id": "badapple-mario",
+      "title": "自制马里奥3 | Bad Apple!! 音乐小剧场",
+      "summary": "跟着 Bad Apple!! 的节拍跳跃、下蹲与发射火球，看金币和砖块把平面舞台展开成立体音乐剧。",
+      "sections": [],
+      "sources": [],
+      "archived": false,
+      "kind": "lab-video",
+      "action": {
+        "label": "观看视频",
+        "href": "https://www.bilibili.com/video/BV1L1p36DETJ/"
+      }
     },
     {
       "id": "mario-midnight-kitchen",
