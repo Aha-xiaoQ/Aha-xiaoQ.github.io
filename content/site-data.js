@@ -7,12 +7,12 @@ globalThis.SITE_DATA = {
     "interests": [],
     "now": {
       "label": "最近作品",
-      "sourceId": "game-mario-mix-xiaoq",
-      "title": "混合马里奥在下_小Q版",
-      "summary": "九位角色，九种打法，同一个蘑菇王国。钻进管道挑战专属隐藏关，寻找彩蛋、解锁成就，再一路救出公主。",
+      "sourceId": "little-nightmares-seedance",
+      "title": "如果小六能按下暂停键……｜小小梦魇同人短片《帧外》",
+      "summary": "追逐按下暂停，小六回头救出两个诺姆。一起推开门，看见巨颚号之外的海。",
       "updatedAt": "2026-10-11",
-      "href": "/games/mario-mix-xiaoq/",
-      "entryLabel": "混合马里奥在下_小Q版",
+      "href": "/notes/lab/docs/little-nightmares-seedance/",
+      "entryLabel": "实验室",
       "items": []
     },
     "copy": {
