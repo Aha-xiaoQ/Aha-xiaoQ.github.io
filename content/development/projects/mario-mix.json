@@ -5,15 +5,31 @@
   "category": "game",
   "visibility": "public",
   "stage": "四期试玩上线 · M07 开发版待验收",
-  "updatedAt": "2026-10-08",
-  "summary": "不同作品的角色接力闯过经典关卡。查看每关有哪些角色、哪些可以试玩，以及下一步的开发计划。",
-  "intro": "第一至第四期已开放独立试玩：魂斗罗与洛克人、忍者与坦克、泰拉瑞亚，以及索尼克与奥日城堡关。地图工坊支持从 32 关参考底图创建地图、试玩和离线导出。M07 开发候选与已上线试玩分开维护。",
+  "updatedAt": "2026-10-11",
+  "summary": "九位角色的混合冒险与独立自制关卡。试玩游戏，查看制作记录与源码。",
+  "intro": "混合马里奥在下_小Q版包含九位角色、经典关卡、角色专属隐藏关、彩蛋与成就。也可以体验自制马里奥系列：五门挑战、午夜厨房潜行与 Bad Apple!! 音乐小剧场。",
   "highlights": [
-    "1-1 至 1-4 四期独立试玩已上线；第四期为索尼克与奥日。",
-    "地图工坊提供 32 关参考底图与地图编辑、试玩、离线导出；不等同于八世界成品。",
+    "九位角色，九种打法，同一个蘑菇王国。钻进管道挑战专属隐藏关，寻找彩蛋、解锁成就，再一路救出公主。",
+    "自制马里奥 1、2、3 提供独立试玩和下载。",
     "视频：第四期 · 索尼克 × 奥日 可观看视频；马里奥地图工坊 可观看视频。"
   ],
   "links": [
+    {
+      "label": "混合马里奥在下_小Q版",
+      "href": "/games/mario-mix-xiaoq/"
+    },
+    {
+      "label": "混合马里奥在下_小Q版 · 视频",
+      "href": "https://www.bilibili.com/video/BV1gNpj6WE32/"
+    },
+    {
+      "label": "自制马里奥3 | Bad Apple!! 音乐小剧场",
+      "href": "/games/badapple-mario/"
+    },
+    {
+      "label": "自制马里奥2 | 小小梦魇 · 午夜厨房",
+      "href": "/games/mario-midnight-kitchen/"
+    },
     {
       "label": "自制马里奥1：我们一起打蜜蜂",
       "href": "/games/five-regions/"
@@ -75,6 +91,31 @@
     "generatedFrom": "packages/mario-mix-terra/docs/TASKS.json"
   },
   "updates": [
+    {
+      "id": "mario-mix-xiaoq",
+      "date": "2026-10-11",
+      "title": "混合马里奥在下_小Q版",
+      "status": "released",
+      "kind": "content",
+      "summary": "九位角色的混合冒险，提供浏览器试玩、离线游戏与源码。演示视频已在 B 站发布。",
+      "revision": 23
+    },
+    {
+      "id": "badapple-mario",
+      "date": "2026-10-11",
+      "title": "自制马里奥3 | Bad Apple!! 音乐小剧场",
+      "status": "released",
+      "summary": "新增完整音乐关、游戏源码与演示介绍：跟随节拍跳跃、下蹲和发射火球，后半段展开立体舞台。完整视频已在哔哩哔哩发布。",
+      "kind": "content"
+    },
+    {
+      "id": "mario-midnight-kitchen",
+      "date": "2026-10-10",
+      "title": "自制马里奥2 | 小小梦魇 · 午夜厨房",
+      "status": "released",
+      "summary": "新增可玩的 3D 厨房潜行关卡与游戏源码；马里奥在出口遇见小六，两人一起随吊钩离开。完整视频已在哔哩哔哩发布。",
+      "kind": "content"
+    },
     {
       "id": "map-workshop-source-20261008",
       "date": "2026-10-08",
@@ -2794,5 +2835,5 @@
       }
     ]
   },
-  "publicStage": "四期试玩已上线 · 地图工坊测试版"
+  "publicStage": "混合马里奥与自制关卡"
 }

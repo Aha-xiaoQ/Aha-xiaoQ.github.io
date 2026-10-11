@@ -16,6 +16,19 @@ test('external tab is explicit and opener safe',()=>{const h=A.link('GitHub','ht
 test('external current-tab links remain current-tab',()=>assert.ok(!A.link('GitHub','https://github.com/a/b').includes('target=')));
 test('same-site download keeps href and download, with format text',()=>{const h=A.link('下载源码 ↓','/downloads/s.zip',{download:true});assert.ok(h.includes(' download'));assert.ok(h.includes('ZIP'));assert.ok(!h.includes('target='));});
 test('cross-origin download cannot pretend to force a file save',()=>assert.throws(()=>A.link('下载','https://elsewhere.test/x.zip',{download:true})));
+
+const ownedArchive='https://raw.githubusercontent.com/Aha-xiaoQ/Aha-xiaoQ.github.io/'+'a'.repeat(40)+'/release-assets/game-v1/Game.zip';
+test('immutable owned archive keeps ZIP semantics without a cross-origin download attribute',()=>{
+ const h=A.link('下载游戏',ownedArchive,{download:true});
+ assert.ok(h.includes('data-action-kind="download"'));assert.ok(h.includes('href="'+ownedArchive+'"'));assert.ok(h.includes('ZIP'));
+ assert.ok(!/\sdownload(?:[\s=>])/.test(h));
+});
+test('XiaoQ game detail source and offline ZIP links retain valid native semantics',()=>{
+ const links=txt('games/mario-mix-xiaoq/index.html').match(/<a\b[^>]*href="https:\/\/raw\.githubusercontent\.com\/Aha-xiaoQ\/Aha-xiaoQ\.github\.io\/[^\"]+\.zip"[^>]*>/g)||[];
+ assert.equal(links.length,2);
+ for(const link of links){assert.ok(link.includes('data-action-kind="download"'));assert.ok(!/\sdownload(?:[\s=>])/.test(link));}
+});
+for(const u of [ownedArchive.replace('a'.repeat(40),'main'),ownedArchive.replace('Aha-xiaoQ/','other/'),ownedArchive.replace('/release-assets/','/private/'),ownedArchive.replace('/game-v1/','/../'),ownedArchive.replace('/game-v1/','/%2e%2e/'),ownedArchive+'?token=test',ownedArchive+'#file',ownedArchive.replace('.zip','.html'),ownedArchive.replace('raw.githubusercontent.com','raw.githubusercontent.com.evil.test')])test('unapproved remote archive rejected '+u,()=>assert.throws(()=>A.link('下载',u,{download:true})));
 test('hash query and path are preserved',()=>assert.ok(A.link('章节','/notes/a/?lang=en#part').includes('/notes/a/?lang=en#part')));
 test('email semantics do not turn into new tabs',()=>{const h=A.link('邮箱','mailto:hello@example.test?subject=Hello',{newTab:true});assert.ok(h.includes('data-action-kind="email"'));assert.ok(!h.includes('target='));});
 for(const u of ['javascript:alert(1)','data:text/html,a','//evil.test','https://u:p@example.test/','https://example.test/"','x\\y'])test('unsafe URL rejected '+u,()=>assert.throws(()=>A.link('查看',u)));

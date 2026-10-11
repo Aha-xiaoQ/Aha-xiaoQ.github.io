@@ -254,6 +254,16 @@
         "docs/oss/reviews/badapple-mario-prepublication.md"
       ],
       "limits": "Identity refresh only for the listed existing original-MIT implementation files. No license classification, baseline grant, third-party media rights or external publication scope changes."
+    },
+    "mario-xiaoq-prepublication": {
+      "basis": "Existing game templates, current game registration and order, bilingual copy, generated font ranges and versioned imports for Mario Mix XiaoQ and the two migrated custom Mario entries.",
+      "sources": [
+        "content/site-data.js",
+        "content/development/projects/mario-mix.json",
+        "content/locales/en.json",
+        "docs/oss/reviews/mario-xiaoq-prepublication.md"
+      ],
+      "limits": "Only identities of listed existing original-MIT implementation files are refreshed. Baseline, classification, license checks, third-party rights and publication permissions remain unchanged."
     }
   },
   "newFiles": [
@@ -33404,73 +33414,73 @@
       "path": "about/index.html",
       "baselineGitBlob": "b4c6b69895f238d69b4df5ed8147d85edc3adc21",
       "baselineSha256": "14f3537855046ab8be6066b66617c050ce9545aa6f696abc603ce7e618079093",
-      "gitBlob": "a7b11494095be4c7e91bc19bc20aeadb22b6665b",
-      "sha256": "84ed1da6e558dbe7bb29f67630d0179ee8d662e80db0757c8e9f69e474cbfcea",
+      "gitBlob": "bd1c9ebdda98e11787ad574cb01828fd3d93a3af",
+      "sha256": "3cbeae68be5fdbd78e0266b50f1378e82633085ad34933c8ebc60988f3086386",
       "reviewDate": "2026-10-11",
-      "evidence": "badapple-mario-prepublication"
+      "evidence": "mario-xiaoq-prepublication"
     },
     {
       "path": "assets/i18n/messages.js",
       "baselineGitBlob": "592306765289377fd1e2dc5dc95a085e6848aba9",
       "baselineSha256": "e1ef83eccf9ed624f5b936503064e2bf9ba6a4cec19a402ee4c12dfde1021f15",
-      "gitBlob": "76b4429605edeac6a2492aa45eaaddb0969b58af",
-      "sha256": "99a4fa3f882988e0e37a2c256f773c65180bff133c9cfed030d1e701ede442b0",
+      "gitBlob": "e2c4ce50619aca98b4b49f47a3d0630a99a2a7c0",
+      "sha256": "979211fd3d614840fd67285381d5887acb9c07450b7205522feb39585b6d5d0c",
       "reviewDate": "2026-10-11",
-      "evidence": "badapple-mario-prepublication"
+      "evidence": "mario-xiaoq-prepublication"
     },
     {
       "path": "assets/journal/documents.mjs",
       "baselineGitBlob": "f1d865f9aa21d81fe7e03e7374982a2fc7b1ddaf",
       "baselineSha256": "ac614bd0ac679ed6614694d0c2d07441fc8b6789cff9bff06967c97c77bd23c4",
-      "gitBlob": "4cd685a5a843c57d66842db3f83b300960189ebc",
-      "sha256": "4f1a75524fd86fea970ee5588abdf2ce18217d7f8cb2cd58994b8f69bf34c2c4",
+      "gitBlob": "ee2eed68e0a332d07fd4ba39d83bdc3b3eb87220",
+      "sha256": "8737d556f87bffc5dfe8ae539a87be799de04d0077d288e4d76e7f6e90a5fc8e",
       "reviewDate": "2026-10-11",
-      "evidence": "badapple-mario-prepublication"
+      "evidence": "mario-xiaoq-prepublication"
     },
     {
       "path": "assets/journal/experiment.mjs",
       "baselineGitBlob": "30a08b98efacc83111c528fc4848a83628263446",
       "baselineSha256": "dc5478c8bc43d16ecae1f585cba9a6bba323fb140b7cd4590bf10e91a2b85596",
-      "gitBlob": "9a8b02c323cf8170acbeeebab9097b01f99ec0fd",
-      "sha256": "544f3ed56ac873f5885361fd507e4b47ab2a3f3943cd04ed3335b8facd581a79",
+      "gitBlob": "1ec7744608213c2273eec45871464d38edfd6ddb",
+      "sha256": "91695c5b54002f4e189b05177fc6edac84eccde28f0bd989d2f7c7b120962301",
       "reviewDate": "2026-10-11",
-      "evidence": "badapple-mario-prepublication"
+      "evidence": "mario-xiaoq-prepublication"
     },
     {
       "path": "assets/journal/public-layout.mjs",
       "baselineGitBlob": "25bc488f32da2f9de2b4ef1107ff5571b74bb8ec",
       "baselineSha256": "bf4229ff50ceeb8071fb4af8b94e331642543b9856267db3d6193f93b81fa1eb",
-      "gitBlob": "6c9a8594b431a801a39d6c38ef3cad57d49118b2",
-      "sha256": "be378ddde9978f89308d3cbebd1395ef3219dbc89d40a280e2d51d7bd8e5f031",
+      "gitBlob": "d102c7b539ab49d2360847fab18ef62102ff1f46",
+      "sha256": "b13fa8ac24d87d638c7e36bc0073cc8193003def41b04a7b0c7c7e25cefdb6fc",
       "reviewDate": "2026-10-11",
-      "evidence": "badapple-mario-prepublication"
+      "evidence": "mario-xiaoq-prepublication"
     },
     {
       "path": "assets/journal/render.mjs",
       "baselineGitBlob": "5b74c68409edfefaa6d990fc62111d09f7365c0b",
       "baselineSha256": "021ba67c6d27f8d1da66bbf949d7bb63c64580001deff22944d7847e731c4180",
-      "gitBlob": "31d35f55918d6b69bc32144cc6d2cc71cb87962f",
-      "sha256": "9603551fa240a5fe4f5ac132c4c33e68dcea60c1d9144ae6870c09f0b3659d9a",
+      "gitBlob": "78a3b52d335d5813043a5d015c8d81e2a61375f5",
+      "sha256": "e2c6afcda5418138571cea63fec4764f20fabca0eae7d2a7b3b9fede08f30552",
       "reviewDate": "2026-10-11",
-      "evidence": "badapple-mario-prepublication"
+      "evidence": "mario-xiaoq-prepublication"
     },
     {
       "path": "assets/journal/runtime.mjs",
       "baselineGitBlob": "6899fd87a5a0d7a8295c832561bc0811d51b0e65",
       "baselineSha256": "a21d16de3732df431579b140a45e43101c0375a30d982aeb71241f84ab34c301",
-      "gitBlob": "45f34e4904bd6c305760d267a2ace1db9eafd9dd",
-      "sha256": "619e841ea8bc19905428248ffde1246a685b1ef35093921d64738b21a63145e8",
+      "gitBlob": "5ec1a24e5c0f3b76b0869a764f2aae71309c4d30",
+      "sha256": "a436e620dd9dac43433d2f908d35ef52bcd6e69335031ddb65f9147c26136201",
       "reviewDate": "2026-10-11",
-      "evidence": "badapple-mario-prepublication"
+      "evidence": "mario-xiaoq-prepublication"
     },
     {
       "path": "assets/release/public-content.mjs",
       "baselineGitBlob": "45e2ebbc03feae6d17dc48528143e83d6b65f62a",
       "baselineSha256": "3de04282d9f70aaa21a31a4183fbd37d36dfd59cc5784dea995beb1907ce0e5f",
-      "gitBlob": "018cac9de22fcc62c7fb86bc272781acd4d50176",
-      "sha256": "2340088cb90185918c939949a746ac8a133b39c05b09b6688a20e4706a1c91cb",
+      "gitBlob": "f8ba21f0fc40277e11ceb1007ec9a666855f6b07",
+      "sha256": "bbc0698e12def8318ede3338ee10695980ad0e19aaa0b88d2b72b35356a20956",
       "reviewDate": "2026-10-11",
-      "evidence": "badapple-mario-prepublication"
+      "evidence": "mario-xiaoq-prepublication"
     },
     {
       "path": "assets/site-analytics.js",
@@ -33494,100 +33504,100 @@
       "path": "assets/site-router.js",
       "baselineGitBlob": "c8bffef04c666670f07e136e1f40f9909d2a4ebc",
       "baselineSha256": "d7be7f7c218c4f8c736686852d96049c048c5d551d04278f8936079c8586dbc3",
-      "gitBlob": "a394f69ffe6972741493fd820558fc213511352c",
-      "sha256": "9b0ac6438a27d692d8078576785ec71be182683835bbd1c844208381989138ca",
+      "gitBlob": "0afebf1966681c0ca656ff666c76bbc08cceb39e",
+      "sha256": "615546590a914e936d545167787963e99df538430ea9c1a6e656d29ce821db95",
       "reviewDate": "2026-10-11",
-      "evidence": "badapple-mario-prepublication"
+      "evidence": "mario-xiaoq-prepublication"
     },
     {
       "path": "games/index.html",
       "baselineGitBlob": "64c78896e8e263e48d704d76bd694b51f5be55a9",
       "baselineSha256": "859fda6c59ee8ac88c3a8c088765e091e5e92c49e5b70ab1d9e0c309cf32daa5",
-      "gitBlob": "a574b23076d11c1d04c475bf111cbbeafd867df7",
-      "sha256": "6b51412af8dea9d162f0ac0ec93f009fe5c5d81477419895928eddd40ed24373",
+      "gitBlob": "d1f682b435f515a26563d14d658e4ffdafb96da4",
+      "sha256": "348386ff2ef907114a5ffd84084358f70ed1356cf75ae3ec737176d662802efe",
       "reviewDate": "2026-10-11",
-      "evidence": "badapple-mario-prepublication"
+      "evidence": "mario-xiaoq-prepublication"
     },
     {
       "path": "games/mario-classic/index.html",
       "baselineGitBlob": "212cec349506c6e9f05b0ce6ca0ddfa22890f69f",
       "baselineSha256": "ca2cf6d641fff43c726b000992507a238659c5832bf747b2138d68db4347f2ef",
-      "gitBlob": "8057e376f256f1147e508e5473f7f0c8d8d795cb",
-      "sha256": "b522957ce9897950c837f83dcac33089542682bbb6afee3b7e046dbbe597b756",
+      "gitBlob": "d0ebcce87e7a0aebd9399010c2430a0f450447ae",
+      "sha256": "b865f811cf4004b875c50e1dee4dc2181f55673259e3fee185b5aa6f29eb621c",
       "reviewDate": "2026-10-11",
-      "evidence": "badapple-mario-prepublication"
+      "evidence": "mario-xiaoq-prepublication"
     },
     {
       "path": "games/mario-mix/index.html",
       "baselineGitBlob": "9b8d8164e6e2ab576e71fe82f54283c2c74236d2",
       "baselineSha256": "4afab9b76acb4f1f766919473ef73a49ed2ef686cc7a747cd09cbcf20fd42f11",
-      "gitBlob": "dd616ef594abbdbf153baa8dc83c684a20034eda",
-      "sha256": "1f7463cee0d388a26ca55299bca39c537208cbecd2355c7161785cde58a12411",
+      "gitBlob": "18dd6cd0ccbd102636aa658724e722d03da26a24",
+      "sha256": "14a91c55a2324bbb3dd4203b31bd7a8ac99f371b43deb682326b836eeb89cdf1",
       "reviewDate": "2026-10-11",
-      "evidence": "badapple-mario-prepublication"
+      "evidence": "mario-xiaoq-prepublication"
     },
     {
       "path": "games/pipebound/index.html",
       "baselineGitBlob": "cf14a36f4409acfefdf79986a5431abb118d4865",
       "baselineSha256": "b469f5c52f3c00ad9a01e2c890963830c18b0ec009bcdfa313f6d92137608937",
-      "gitBlob": "668110de1c4a737cc5804a670cc0e8a9676e7532",
-      "sha256": "b8afb24edfc79215e41e7f3934eb11c11d2f97754e926202e0f4e64e02ddcbb2",
+      "gitBlob": "0ace9c06e249202ebecdfa962a8b56ed6725a266",
+      "sha256": "3f74f1c89b131e9caf9a487af1a5e288e32af8662301bb543dffd2d3332085dd",
       "reviewDate": "2026-10-11",
-      "evidence": "badapple-mario-prepublication"
+      "evidence": "mario-xiaoq-prepublication"
     },
     {
       "path": "games/pixel-pipe-adventure/index.html",
       "baselineGitBlob": "f30f93e9701b7be1ab63308f7ce45ede31326278",
       "baselineSha256": "9e032e6320957edd7c9c473a6b4b7cb53e62af9e3463325f2c70ea4f7a57461d",
-      "gitBlob": "6a5333dabf735d40243ed2e8355c517554043103",
-      "sha256": "7c76d658316f4c74225b5e329d848fe64072c48ca09279122f0c5813886d037a",
+      "gitBlob": "ec9b0260381144e4e42acc2d2d56aed1e0c46dd3",
+      "sha256": "6a17bb519b2725ec34f46efc33ad95227585e664a1aadf1413b42b325966ed1a",
       "reviewDate": "2026-10-11",
-      "evidence": "badapple-mario-prepublication"
+      "evidence": "mario-xiaoq-prepublication"
     },
     {
       "path": "games/voxel-frontier/index.html",
       "baselineGitBlob": "cc0a1eeaf8f9780a9d752e221d5c34f325b0b9b0",
       "baselineSha256": "35240e2af8c07e84c0b88137a9f8549b58ee994a9b2a60c38ad9038c8c6565c3",
-      "gitBlob": "f7b1da53951105de024d326b77158c132752559a",
-      "sha256": "57487e6963691a9331911c0530d3eebe7e3e9258f4ed518fcb4905980d9757e4",
+      "gitBlob": "0f8aa08b9a7dc881812abfca8cb01e18dd33770f",
+      "sha256": "42e939f21110c0e4b771a4d721b9b9f69f7fdd84f6ebf9fb13b9730c5d96905c",
       "reviewDate": "2026-10-11",
-      "evidence": "badapple-mario-prepublication"
+      "evidence": "mario-xiaoq-prepublication"
     },
     {
       "path": "index.html",
       "baselineGitBlob": "ba30bdc413adce5dc39476605082733cbe7ef1b6",
       "baselineSha256": "bf5269a0c063e71139f6ca7618b5bb158cfbee0ea504e225892878a815f53c30",
-      "gitBlob": "9f8190d694cd967931cdf75e6739c19e3a36e346",
-      "sha256": "a31ade242770c94c99b401cca25ceff82f19b94e306c22f9b8874d61af95367a",
+      "gitBlob": "98914d492640789dedd920908c54415e42f2c41a",
+      "sha256": "ba818d690726df0bd6784221a75a7ba10ce801fd23f00518ca1aeb29a4bb964d",
       "reviewDate": "2026-10-11",
-      "evidence": "badapple-mario-prepublication"
+      "evidence": "mario-xiaoq-prepublication"
     },
     {
       "path": "notes/index.html",
       "baselineGitBlob": "2798af72431d60f24ea38cb152474670e1ecf0ad",
       "baselineSha256": "88754e40cf1c5c0dcd79fc17afea0353b44836298fe5731ed509143b356beec9",
-      "gitBlob": "62a968469bd1c4c0aee4819611245a24202f04e6",
-      "sha256": "4bd228d015987381f14f43218112c3629b87c2e411bfbf53a5a4a14913cfd3d2",
+      "gitBlob": "52290a48e3344c224073e677b5368fbf49101ecd",
+      "sha256": "66a366cad55c589a74e02978ac5f555cb7ec9863f09476f36210d7f5f4175469",
       "reviewDate": "2026-10-11",
-      "evidence": "badapple-mario-prepublication"
+      "evidence": "mario-xiaoq-prepublication"
     },
     {
       "path": "projects/index.html",
       "baselineGitBlob": "e29006ec9904e4171b63620632c3dd0044455e18",
       "baselineSha256": "d4bee107d4e76b944e330ce48312a26bc13dd6ef0bcf725d7ffed54f097a9636",
-      "gitBlob": "0d7e191f29efc90415f9f4d33c2f113e1d9055f7",
-      "sha256": "9c6cddc9fbd0460d571be51d8485c78554f409323de6bd79007e8a7401bfd2f3",
+      "gitBlob": "d8522f772f961ea9040a599753c49900ca1d74c6",
+      "sha256": "2dd723b374b8a0dfe2f2927ced49224e7c8d21a227b2aaf7376e67dba3a82cf5",
       "reviewDate": "2026-10-11",
-      "evidence": "badapple-mario-prepublication"
+      "evidence": "mario-xiaoq-prepublication"
     },
     {
       "path": "projects/q-mimi/index.html",
       "baselineGitBlob": "48c0b573d540ffeff57dc9e7808661f687559f25",
       "baselineSha256": "76a5551678228c5e9d0ec651a0503d3c271d28897a6899ac0012bace33105ea2",
-      "gitBlob": "8c336dcd6e4be48c533a39c2dee23598abc66594",
-      "sha256": "6e603f6cb223faefbcba9b48bd5cfb485acf61c4f8bc5db8bacbf2aab516d571",
+      "gitBlob": "944d7dfb7c2ccbe08eaf8937886be00353eff539",
+      "sha256": "f635851d10543e7323ffff244a7690a4f023e702f1fd1beea1d8087641fe524f",
       "reviewDate": "2026-10-11",
-      "evidence": "badapple-mario-prepublication"
+      "evidence": "mario-xiaoq-prepublication"
     },
     {
       "path": "scripts/platform/browser.mjs",
@@ -33611,10 +33621,10 @@
       "path": "tools/index.html",
       "baselineGitBlob": "18d7df5efa55242ae4d0911831f822f15b7714ce",
       "baselineSha256": "bb728a205fa37790269227a32b559ca0b5dc8fdcb7edabb906857a68c57616a7",
-      "gitBlob": "fe8fcb0af5e55a2fd7b2486c83704941b92709cb",
-      "sha256": "649ff7ed2e90ede5089c91a7efa337fb1cfa71b4910821c4c30ef17a7c7b2d1b",
+      "gitBlob": "219c5d43c1e85664b549e0c604a3bcd532ac07a1",
+      "sha256": "911e0d35feacaadde51a0321b5ec834a9b989d03cf77c4c0475b8fe045135fc7",
       "reviewDate": "2026-10-11",
-      "evidence": "badapple-mario-prepublication"
+      "evidence": "mario-xiaoq-prepublication"
     },
     {
       "path": "assets/platform/contracts.mjs",
@@ -33629,10 +33639,10 @@
       "path": "assets/platform/font-support.css",
       "baselineGitBlob": "0cda94702279ec09be8cfe945a0f3c42c1f8de50",
       "baselineSha256": "2f3a315563764c9b1f36dcc3792f19019ed5c548c0cb8d9c0a7f3b96c4abcc58",
-      "gitBlob": "8ea82815f500d9b32c41ccb571405f9565d5360f",
-      "sha256": "cb9b5c9b5d78e8709a50a0c450780f2af9fa9ea1c369c1177c908394154b75e5",
+      "gitBlob": "b9dcc691dac93fafcc990fe1db064601f9fe7d13",
+      "sha256": "4f02fd73bf4ff41f3044793c68ce72f1e07b2e6127bfc4c5422c5e1b3da40edb",
       "reviewDate": "2026-10-11",
-      "evidence": "badapple-mario-prepublication"
+      "evidence": "mario-xiaoq-prepublication"
     },
     {
       "path": "tests/dev-center/readme.test.mjs",
@@ -33719,10 +33729,10 @@
       "path": "assets/ui/site-actions.js",
       "baselineGitBlob": "ff8ba1d68dec803b435d3c7625cb371880100135",
       "baselineSha256": "0e3760e96c021719a32bc76691bcc0f6daf9eadf3402d7ae37f0654de1e32d9b",
-      "gitBlob": "d530ce60dbedd17aedbbbc16dfcee1c91347aa5b",
-      "sha256": "e88438763b93f4fc0c14f1637b311bde76d136022d5ca7f6dcb49d68ed3746d4",
-      "reviewDate": "2026-10-08",
-      "evidence": "five-regions-publication"
+      "gitBlob": "03198e429296093373f7f7e0a490b8abea0efaed",
+      "sha256": "550a0decc72256dbb411fc11f9612a23cd302bbe48e4e65256c5fa45ae83f61b",
+      "reviewDate": "2026-10-11",
+      "evidence": "mario-xiaoq-prepublication"
     },
     {
       "path": "scripts/launch/build.mjs",
@@ -33759,6 +33769,24 @@
       "sha256": "636e45764c79ae6263363ad1805c548a08a340eed47a21a00eebc003f2176fcb",
       "reviewDate": "2026-10-08",
       "evidence": "five-regions-publication"
+    },
+    {
+      "path": "assets/workshop-cards.js",
+      "baselineGitBlob": "628e169a61c1b7802f801c7e47b5ee6cbfdb2422",
+      "baselineSha256": "15245ec98b3b9fc9ae846cf3350a7221c130f0ea54b368d764b438765f8d4fc1",
+      "gitBlob": "2628b79f895cab0c5cc7e8525531ebf417744aba",
+      "sha256": "a58ce9afbdc4f5886fcdc2c71247babeb2dad6b9b5200d5eae5424f72959294c",
+      "reviewDate": "2026-10-11",
+      "evidence": "mario-xiaoq-prepublication"
+    },
+    {
+      "path": "tests/ui-polish/actions.test.mjs",
+      "baselineGitBlob": "0848b2a50277261b2750065a0ca42f305d7048be",
+      "baselineSha256": "57bfe638cca2562076e3743b231744ecbd277dfc18033f864e1811d91057b3d3",
+      "gitBlob": "bd983b33eea0cc2c7ce11fd1e3e5f08d49e5b7b2",
+      "sha256": "b2321052772d51e0c3ad30e4e7225c6ffc6ed1f6dd6163f6cdc728e4f19fe4bd",
+      "reviewDate": "2026-10-11",
+      "evidence": "mario-xiaoq-prepublication"
     }
   ]
 }
