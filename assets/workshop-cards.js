@@ -23,7 +23,7 @@
     return `<article class="pw-tool-card" role="listitem" data-content-id="${e(item.id)}"><div class="pw-tool-copy"><span class="pw-kicker">${e(item.status||'工具')}</span><h2>${e(item.title)}</h2><p>${e(item.summary)}</p><div class="actions">${item.url?`${A.link(item.linkLabel||'打开工具',href(item.url,b),{className:'button',variant:'primary',ariaLabel:'打开 '+item.title})}`:''}${item.videoUrl&&item.videoSlot!==true?`${A.link('观看视频',href(item.videoUrl,b),{className:'button button--quiet',variant:'secondary',newTab:true,meta:''})}`:''}</div></div>${item.videoSlot===true?A.videoPanel(item,{cover:m.src?href(m.src,b):'',eager:index===0}):M.render(m,{base:b,index})}</article>`;
   }
   function renderCollection(page,data,taxonomy={},options={}){
-    const b=options.base||'',o={...options,data,taxonomy},sort=(items)=>[...items].sort((a,c)=>(c.updatedAt||'').localeCompare(a.updatedAt||'')||a.id.localeCompare(c.id));
+    const b=options.base||'',o={...options,data,taxonomy},sort=(items)=>[...items].sort((a,c)=>(c.updatedAt||'').localeCompare(a.updatedAt||'')||((c.displayOrder||0)-(a.displayOrder||0))||a.id.localeCompare(c.id));
     const all=data.items||[];let title,kicker,cards,filter='';
     if(page==='projects'){
       const items=sort(all.filter(x=>x.primaryType==='project'&&x.visibility==='public'&&x.lifecycleStatus!=='archived'));title='想法，动手实现。';kicker='SELECTED WORK / 项目记录';

@@ -7,12 +7,12 @@ globalThis.SITE_DATA = {
     "interests": [],
     "now": {
       "label": "最近作品",
-      "sourceId": "badapple-mario",
-      "title": "自制马里奥3 | Bad Apple!! 音乐小剧场",
-      "summary": "跟着 Bad Apple!! 的节拍跳跃、下蹲与发射火球，看金币和砖块把平面舞台展开成立体音乐剧。",
+      "sourceId": "game-mario-mix-xiaoq",
+      "title": "混合马里奥在下_小Q版",
+      "summary": "九位角色，九种打法，同一个蘑菇王国。钻进管道挑战专属隐藏关，寻找彩蛋、解锁成就，再一路救出公主。",
       "updatedAt": "2026-10-11",
-      "href": "/notes/lab/docs/badapple-mario/",
-      "entryLabel": "实验室",
+      "href": "/games/mario-mix-xiaoq/",
+      "entryLabel": "混合马里奥在下_小Q版",
       "items": []
     },
     "copy": {
@@ -61,6 +61,97 @@ globalThis.SITE_DATA = {
     "visibility": "public"
   },
   "items": [
+    {
+      "id": "game-mario-mix-xiaoq",
+      "slug": "mario-mix-xiaoq",
+      "primaryType": "game",
+      "relatedIds": [],
+      "title": "混合马里奥在下_小Q版",
+      "summary": "九位角色，九种打法，同一个蘑菇王国。钻进管道挑战专属隐藏关，寻找彩蛋、解锁成就，再一路救出公主。",
+      "lifecycleStatus": "active",
+      "visibility": "public",
+      "accessMode": "online",
+      "createdAt": "2026-10-11",
+      "updatedAt": "2026-10-11",
+      "displayOrder": 100,
+      "categories": [
+        "side-scrolling"
+      ],
+      "tags": [
+        "九位角色",
+        "隐藏关",
+        "彩蛋与成就"
+      ],
+      "cover": "games/mario-mix-xiaoq/cover.png",
+      "evidenceIds": [],
+      "detailUrl": "/games/mario-mix-xiaoq/",
+      "localUrl": "games/mario-mix-xiaoq/play.html",
+      "downloadUrl": "https://raw.githubusercontent.com/Aha-xiaoQ/Aha-xiaoQ.github.io/5d70762f08793109a00a2c295d0b03e027e5619d/release-assets/mario-mix-xiaoq-0.8.12-r3/MarioMix_XiaoQ_0.8.12_r3_Game.zip",
+      "downloadLabel": "下载离线游戏",
+      "downloadInstructions": "下载后解压，用近期版本 Chrome 或 Edge 打开 play.html。",
+      "videoSlot": true,
+      "videoUrl": "https://www.bilibili.com/video/BV1gNpj6WE32/"
+    },
+    {
+      "id": "game-badapple-mario",
+      "slug": "badapple-mario",
+      "primaryType": "game",
+      "relatedIds": [],
+      "title": "自制马里奥3 | Bad Apple!! 音乐小剧场",
+      "summary": "跟着 Bad Apple!! 的节拍跳跃、下蹲与发射火球，看金币和砖块把平面舞台展开成立体音乐剧。",
+      "lifecycleStatus": "active",
+      "visibility": "public",
+      "accessMode": "online",
+      "createdAt": "2026-10-11",
+      "updatedAt": "2026-10-11",
+      "displayOrder": 90,
+      "categories": [
+        "side-scrolling"
+      ],
+      "tags": [
+        "节奏跑酷音乐剧",
+        "自制关卡"
+      ],
+      "cover": "/assets/lab/badapple-mario-cover.png",
+      "evidenceIds": [],
+      "detailUrl": "/games/badapple-mario/",
+      "localUrl": "/experiments/releases/badapple-mario/game.html",
+      "downloadUrl": "/experiments/releases/badapple-mario/game.html",
+      "downloadLabel": "下载 HTML",
+      "downloadInstructions": "下载 HTML 后，用近期版本 Chrome 或 Edge 打开。",
+      "videoSlot": true,
+      "videoUrl": "https://www.bilibili.com/video/BV1L1p36DETJ/"
+    },
+    {
+      "id": "game-mario-midnight-kitchen",
+      "slug": "mario-midnight-kitchen",
+      "primaryType": "game",
+      "relatedIds": [],
+      "title": "自制马里奥2 | 小小梦魇 · 午夜厨房",
+      "summary": "误入小小梦魇的厨房：引开厨师、躲进桌底、推箱开门，再与小六一起乘吊钩离开。",
+      "lifecycleStatus": "active",
+      "visibility": "public",
+      "accessMode": "online",
+      "createdAt": "2026-10-10",
+      "updatedAt": "2026-10-10",
+      "displayOrder": 89,
+      "categories": [
+        "side-scrolling"
+      ],
+      "tags": [
+        "3D 潜行游戏",
+        "自制关卡"
+      ],
+      "cover": "/assets/lab/mario-midnight-kitchen-cover.png",
+      "evidenceIds": [],
+      "detailUrl": "/games/mario-midnight-kitchen/",
+      "localUrl": "/experiments/releases/mario-midnight-kitchen/game.html",
+      "downloadUrl": "/experiments/releases/mario-midnight-kitchen/game.html",
+      "downloadLabel": "下载 HTML",
+      "downloadInstructions": "下载 HTML 后，用近期版本 Chrome 或 Edge 打开。",
+      "videoSlot": true,
+      "videoUrl": "https://www.bilibili.com/video/BV18BpG6LEaF/"
+    },
     {
       "id": "game-five-regions",
       "slug": "five-regions",
