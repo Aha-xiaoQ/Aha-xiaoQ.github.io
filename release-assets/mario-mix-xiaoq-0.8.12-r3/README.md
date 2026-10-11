@@ -1,0 +1,3 @@
+# 混合马里奥在下_小Q版 · 游戏文件
+
+Game.zip 为离线游戏，Source.zip 为可构建源码；来源和许可说明随源码包提供。game-data 文件供网站载入游戏使用。文件摘要见 manifest.json。
