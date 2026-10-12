@@ -274,6 +274,16 @@
         "docs/oss/reviews/mario-mobile-publication.md"
       ],
       "limits": "Only existing original implementation identities are refreshed. Baseline hashes, file classifications, third-party notices and rights scope remain unchanged."
+    },
+    "frame-out-publication": {
+      "basis": "Frame Out video registration, viewer-facing bilingual copy, canonical Bilibili link, generated import versions and font coverage using the existing site build chain. Existing related-work wording now covers procedural animation as well as SVG.",
+      "sources": [
+        "docs/oss/reviews/frame-out-publication.md",
+        "content/experiments/little-nightmares-seedance.json",
+        "content/development/projects/lab.json",
+        "content/locales/en.json"
+      ],
+      "limits": "Only the exact identities of the listed already audited original-MIT implementation files are refreshed. Historical inventory, baseline hashes, classifications and third-party exclusions are unchanged. No new grant for game characters, media, fonts, archives or previously unknown files."
     }
   },
   "newFiles": [
@@ -33424,73 +33434,100 @@
       "path": "about/index.html",
       "baselineGitBlob": "b4c6b69895f238d69b4df5ed8147d85edc3adc21",
       "baselineSha256": "14f3537855046ab8be6066b66617c050ce9545aa6f696abc603ce7e618079093",
-      "gitBlob": "8ed5b9f8076c4a46cdf1ffb4ccfe1cc4e2e55353",
-      "sha256": "453fe7d88b43a43c8b48e1186cff95dc5d0893e060ba10be0684028c50f8027c",
+      "gitBlob": "95c5d664e2155abfbaf9787d2ba1419d3bed627a",
+      "sha256": "081d7a0f22518e0276b8762d15f8e81b59d415e8dbe91e4fff6d56614089cc36",
       "reviewDate": "2026-10-12",
-      "evidence": "mario-mobile-publication"
+      "evidence": "frame-out-publication"
     },
     {
       "path": "assets/i18n/messages.js",
       "baselineGitBlob": "592306765289377fd1e2dc5dc95a085e6848aba9",
       "baselineSha256": "e1ef83eccf9ed624f5b936503064e2bf9ba6a4cec19a402ee4c12dfde1021f15",
-      "gitBlob": "004ed13467a5a222456f7fb7d5fc70462c150c07",
-      "sha256": "5ff73d4148a42dd30dae2fafc16819b47cd7e7899ebe32f993edbec5c794485e",
+      "gitBlob": "a03586874d1b246f3c2964d2930fe6e49de944fb",
+      "sha256": "6ca4564bcb8ed9a5b6113eb835104ad144e4d1b8b65ff2067986101419a0d608",
       "reviewDate": "2026-10-12",
-      "evidence": "mario-mobile-publication"
+      "evidence": "frame-out-publication"
     },
     {
       "path": "assets/journal/documents.mjs",
       "baselineGitBlob": "f1d865f9aa21d81fe7e03e7374982a2fc7b1ddaf",
       "baselineSha256": "ac614bd0ac679ed6614694d0c2d07441fc8b6789cff9bff06967c97c77bd23c4",
-      "gitBlob": "26c11319a9fc2243ebe5bcf2c32a0d0ee9f0630a",
-      "sha256": "aeb739957f8b485244e9e0817b5634d5f95f88bba60785f2fe15d26023df774d",
+      "gitBlob": "ff385d30bcfa217100757fdfedbb9d49093d8e21",
+      "sha256": "4f8276949f7ee12346cc7974c23b40d32ffaa72e9b701cc695701ab7411886a9",
       "reviewDate": "2026-10-12",
-      "evidence": "mario-mobile-publication"
+      "evidence": "frame-out-publication"
     },
     {
       "path": "assets/journal/experiment.mjs",
       "baselineGitBlob": "30a08b98efacc83111c528fc4848a83628263446",
       "baselineSha256": "dc5478c8bc43d16ecae1f585cba9a6bba323fb140b7cd4590bf10e91a2b85596",
-      "gitBlob": "8bbb5946b941dbd74b4ee3af7a2a96532d35713f",
-      "sha256": "b96b60a992ac37ee23f6e984964bb7d28d5f0318a6a9bb9eb320cecc5ec107c9",
+      "gitBlob": "2917d97d28390eab6d5f5da3c6d8b5b6d12d571a",
+      "sha256": "36402e5e389aea8ba4759e3673978af295a944de80b7ea297ba97918dd2cb8d6",
       "reviewDate": "2026-10-12",
-      "evidence": "mario-mobile-publication"
+      "evidence": "frame-out-publication"
     },
     {
       "path": "assets/journal/public-layout.mjs",
       "baselineGitBlob": "25bc488f32da2f9de2b4ef1107ff5571b74bb8ec",
       "baselineSha256": "bf4229ff50ceeb8071fb4af8b94e331642543b9856267db3d6193f93b81fa1eb",
-      "gitBlob": "2b6f3ba0961114af566204a28477af341e587f62",
-      "sha256": "3ce9745a23ab452605a3a8132b9fa9f77e3d02583f1f37cb882b9a41868bebdc",
+      "gitBlob": "89e93b317f2d62a21bba7324be718fcb413716be",
+      "sha256": "bb84759202f2a434b4ca534d4a42cebd263b64853ad519b67a83f83504149e43",
       "reviewDate": "2026-10-12",
-      "evidence": "mario-mobile-publication"
+      "evidence": "frame-out-publication"
     },
     {
       "path": "assets/journal/render.mjs",
       "baselineGitBlob": "5b74c68409edfefaa6d990fc62111d09f7365c0b",
       "baselineSha256": "021ba67c6d27f8d1da66bbf949d7bb63c64580001deff22944d7847e731c4180",
-      "gitBlob": "cfbc39d5471ee9981c5b44ac85bb40aea517f836",
-      "sha256": "6d736a8162f5a8ba6437fef1bbcb51e0668d978934b3149435f98a6ae0599d64",
+      "gitBlob": "b0107518a248660101a0df3249a5ca9e9afcccf1",
+      "sha256": "22274e6b9c5d3d9afa518057be0770e611383dfd4a0e633f45d9856e9d77b0b3",
       "reviewDate": "2026-10-12",
-      "evidence": "mario-mobile-publication"
+      "evidence": "frame-out-publication"
     },
     {
       "path": "assets/journal/runtime.mjs",
       "baselineGitBlob": "6899fd87a5a0d7a8295c832561bc0811d51b0e65",
       "baselineSha256": "a21d16de3732df431579b140a45e43101c0375a30d982aeb71241f84ab34c301",
-      "gitBlob": "5f9149764e9ef8521af17e71ae65511884f7dd1f",
-      "sha256": "01445c96e8547c7131a396610921c0ab75f0b462fc31fd685e7cb5b2b29ebcff",
+      "gitBlob": "d22303d0a9fce2182fab07a1ced868c413b90ec7",
+      "sha256": "d798cff24d50e54eb98565d593225522aebc9fffec88599b6221000c0188481f",
       "reviewDate": "2026-10-12",
-      "evidence": "mario-mobile-publication"
+      "evidence": "frame-out-publication"
+    },
+    {
+      "path": "assets/launch/journey.js",
+      "baselineGitBlob": "50dae9a5942800132eec6b5472fc38eea86a5ee8",
+      "baselineSha256": "27ee54d748a1492a1107e7814fc4ff2c539b29fbd3bcd8def02bf95857b199ff",
+      "gitBlob": "da16636e1a5ce13fd08a2243c67433288400e6a0",
+      "sha256": "dce8b106c8fe737378a92a035e68e9826b592a6a0b761534d7020af6347569dd",
+      "reviewDate": "2026-10-08",
+      "evidence": "five-regions-publication"
+    },
+    {
+      "path": "assets/platform/contracts.mjs",
+      "baselineGitBlob": "294a00f6b32f1b8b7f06a8b11aaad87d6e9de575",
+      "baselineSha256": "f02da4fc71dac9c996b699bfe46ac7654ba2711b9f3e06ac54b909ddfc77f467",
+      "gitBlob": "fa27fdd2860534af2f38dc81d32be6f6277579ea",
+      "sha256": "aef357ee30c9e84031165661f0275f1fa6ee96fbf99523c6047c9ff7460ef2dc",
+      "reviewDate": "2026-10-06",
+      "evidence": "oscilloscope-preview"
+    },
+    {
+      "path": "assets/platform/font-support.css",
+      "baselineGitBlob": "0cda94702279ec09be8cfe945a0f3c42c1f8de50",
+      "baselineSha256": "2f3a315563764c9b1f36dcc3792f19019ed5c548c0cb8d9c0a7f3b96c4abcc58",
+      "gitBlob": "123b2be032f5c2e075cda1d9da37570174768063",
+      "sha256": "c2349fb6ea87b65be6ecea832298a5639da1343e470f195112651b2635dc698d",
+      "reviewDate": "2026-10-12",
+      "evidence": "frame-out-publication"
     },
     {
       "path": "assets/release/public-content.mjs",
       "baselineGitBlob": "45e2ebbc03feae6d17dc48528143e83d6b65f62a",
       "baselineSha256": "3de04282d9f70aaa21a31a4183fbd37d36dfd59cc5784dea995beb1907ce0e5f",
-      "gitBlob": "a295645ea1171dbdb14ecf311072bae91f53f3ce",
-      "sha256": "36cdec342ca791edda54455525da48674f43f7556787a7d92d844d6353797a28",
+      "gitBlob": "5b2103707b86143179edfdd9e555c3ef55fc3a6d",
+      "sha256": "93b4f8521d55b3485f81e5af502718b233ac101e995f1cfc53d338eb7c2f8a63",
       "reviewDate": "2026-10-12",
-      "evidence": "mario-mobile-publication"
+      "evidence": "frame-out-publication"
     },
     {
       "path": "assets/site-analytics.js",
@@ -33514,224 +33551,17 @@
       "path": "assets/site-router.js",
       "baselineGitBlob": "c8bffef04c666670f07e136e1f40f9909d2a4ebc",
       "baselineSha256": "d7be7f7c218c4f8c736686852d96049c048c5d551d04278f8936079c8586dbc3",
-      "gitBlob": "c53e28e999ff3a694ec9fce59dc9629b776ae06d",
-      "sha256": "bf76eb7000764ab73a2e5663fef8df7fd2ac5c8bfac25bb3ab3a44ac28df670d",
+      "gitBlob": "7ca5cb782f0693893ce6c9bd7d0d10004005e116",
+      "sha256": "6eff5a169e121729bbcdc33580ab970a5fdf6bc0ab96c8b82ea8fbd7c76ff5ab",
       "reviewDate": "2026-10-12",
-      "evidence": "mario-mobile-publication"
+      "evidence": "frame-out-publication"
     },
     {
-      "path": "games/index.html",
-      "baselineGitBlob": "64c78896e8e263e48d704d76bd694b51f5be55a9",
-      "baselineSha256": "859fda6c59ee8ac88c3a8c088765e091e5e92c49e5b70ab1d9e0c309cf32daa5",
-      "gitBlob": "c68ea0b06f876121840ebd02aafb3d8864f4b074",
-      "sha256": "d2b7473226fe29fb51082f7292c56e144aea255df5a104e53982eedb75f5f8ba",
-      "reviewDate": "2026-10-12",
-      "evidence": "mario-mobile-publication"
-    },
-    {
-      "path": "games/mario-classic/index.html",
-      "baselineGitBlob": "212cec349506c6e9f05b0ce6ca0ddfa22890f69f",
-      "baselineSha256": "ca2cf6d641fff43c726b000992507a238659c5832bf747b2138d68db4347f2ef",
-      "gitBlob": "a160ade4c1f33867b67ee47912fb41d2d960362c",
-      "sha256": "36cf15b4d4c654c8b6a8ef09746503886a0487a2cf9870921e6a2250cb17a715",
-      "reviewDate": "2026-10-12",
-      "evidence": "mario-mobile-publication"
-    },
-    {
-      "path": "games/mario-mix/index.html",
-      "baselineGitBlob": "9b8d8164e6e2ab576e71fe82f54283c2c74236d2",
-      "baselineSha256": "4afab9b76acb4f1f766919473ef73a49ed2ef686cc7a747cd09cbcf20fd42f11",
-      "gitBlob": "386ae0d6d3c1800b4a8519644140d7415b1ba57f",
-      "sha256": "4935dbdee263b09b62f59fe8315e64e04db49c2a1b70bb96455a277608fd50b4",
-      "reviewDate": "2026-10-12",
-      "evidence": "mario-mobile-publication"
-    },
-    {
-      "path": "games/pipebound/index.html",
-      "baselineGitBlob": "cf14a36f4409acfefdf79986a5431abb118d4865",
-      "baselineSha256": "b469f5c52f3c00ad9a01e2c890963830c18b0ec009bcdfa313f6d92137608937",
-      "gitBlob": "fe85bb997d96394d99e6bdd1efbc2194bbc6e42a",
-      "sha256": "ed4c2e2bfc3851f19080b031cd8cbeeae2d455b9c58fd54aed5dfb4d6e1d598c",
-      "reviewDate": "2026-10-12",
-      "evidence": "mario-mobile-publication"
-    },
-    {
-      "path": "games/pixel-pipe-adventure/index.html",
-      "baselineGitBlob": "f30f93e9701b7be1ab63308f7ce45ede31326278",
-      "baselineSha256": "9e032e6320957edd7c9c473a6b4b7cb53e62af9e3463325f2c70ea4f7a57461d",
-      "gitBlob": "3fc5588193dcb54f923c1f74beb0598582930d2e",
-      "sha256": "b93fc9ba04aba78fa549c6da25ba1ff48eadc7279c6c5721d1b021dff9221b7c",
-      "reviewDate": "2026-10-12",
-      "evidence": "mario-mobile-publication"
-    },
-    {
-      "path": "games/voxel-frontier/index.html",
-      "baselineGitBlob": "cc0a1eeaf8f9780a9d752e221d5c34f325b0b9b0",
-      "baselineSha256": "35240e2af8c07e84c0b88137a9f8549b58ee994a9b2a60c38ad9038c8c6565c3",
-      "gitBlob": "74a26508d2fd1c27ab109bbec05e9a2ea0e7a4c5",
-      "sha256": "50e6e73840586a82a4d71e308939cbde044f2d6d497ffee50345258ec42bf331",
-      "reviewDate": "2026-10-12",
-      "evidence": "mario-mobile-publication"
-    },
-    {
-      "path": "index.html",
-      "baselineGitBlob": "ba30bdc413adce5dc39476605082733cbe7ef1b6",
-      "baselineSha256": "bf5269a0c063e71139f6ca7618b5bb158cfbee0ea504e225892878a815f53c30",
-      "gitBlob": "cccdc8b6c11bce6c1afff7add0a2ce6900228fe2",
-      "sha256": "957165b47f9ca7508fde6a926c3e33c973c6a1c02b7a0211471b60954009362e",
-      "reviewDate": "2026-10-12",
-      "evidence": "mario-mobile-publication"
-    },
-    {
-      "path": "notes/index.html",
-      "baselineGitBlob": "2798af72431d60f24ea38cb152474670e1ecf0ad",
-      "baselineSha256": "88754e40cf1c5c0dcd79fc17afea0353b44836298fe5731ed509143b356beec9",
-      "gitBlob": "8111873a38c3b79493da4e1486a1f0affe50445d",
-      "sha256": "1a2de5cfae8dc8c02f5823aff74dea08f44f611e2331c8d2d52adf8c0eaa9dbd",
-      "reviewDate": "2026-10-12",
-      "evidence": "mario-mobile-publication"
-    },
-    {
-      "path": "projects/index.html",
-      "baselineGitBlob": "e29006ec9904e4171b63620632c3dd0044455e18",
-      "baselineSha256": "d4bee107d4e76b944e330ce48312a26bc13dd6ef0bcf725d7ffed54f097a9636",
-      "gitBlob": "3a14b70b25c3ad94ec4303899c2c2fd3754eaee3",
-      "sha256": "c3a02ebac2dd9317a3847b804ffc13a1ce8f25100e29616f1c7fa6e8502d41dc",
-      "reviewDate": "2026-10-12",
-      "evidence": "mario-mobile-publication"
-    },
-    {
-      "path": "projects/q-mimi/index.html",
-      "baselineGitBlob": "48c0b573d540ffeff57dc9e7808661f687559f25",
-      "baselineSha256": "76a5551678228c5e9d0ec651a0503d3c271d28897a6899ac0012bace33105ea2",
-      "gitBlob": "c663d6a76e6fe98e1b0ef2f8841a838f0e101272",
-      "sha256": "794fad25d96f85900798f74be3ffb5c8c1b732b4bc8478768895929193b31267",
-      "reviewDate": "2026-10-12",
-      "evidence": "mario-mobile-publication"
-    },
-    {
-      "path": "scripts/platform/browser.mjs",
-      "baselineGitBlob": "cf1e45236f2c1fd633c9e79639e529351893feaa",
-      "baselineSha256": "7396a7b08aedf10ab8d0907cd3691df8f2af8295989fe55398fb52e69459f954",
-      "gitBlob": "125b8d6f45bb9bd0797ec2620e2d68de18352eb1",
-      "sha256": "09208c79d0c0cf76d59513cd924c71a5df193f98e7b765b445ad85702eca593d",
-      "reviewDate": "2026-10-02",
-      "evidence": "bilingual-maintenance"
-    },
-    {
-      "path": "tests/analytics/privacy.test.mjs",
-      "baselineGitBlob": "6e3918a497d972872af6c45abb2f01e9d4c8bd49",
-      "baselineSha256": "4f05626b9df0d07fe38ad40d7182805c2711e2fbc39fd42beb45a645efdfb911",
-      "gitBlob": "c12774d25327bb73c4f5421930e6744b5cbbe216",
-      "sha256": "a86cdc17e673c125549e268aabc6a5c2f8bb3e8af52c3d44ab9afdb16afbf412",
-      "reviewDate": "2026-10-03",
-      "evidence": "analytics-ui-withdrawal"
-    },
-    {
-      "path": "tools/index.html",
-      "baselineGitBlob": "18d7df5efa55242ae4d0911831f822f15b7714ce",
-      "baselineSha256": "bb728a205fa37790269227a32b559ca0b5dc8fdcb7edabb906857a68c57616a7",
-      "gitBlob": "711057cb2fd2569f49ebf934b19080e4a1801f94",
-      "sha256": "0fcd783eb983e15329411eac855ceedf67217a399c333406a14163964dd69802",
-      "reviewDate": "2026-10-12",
-      "evidence": "mario-mobile-publication"
-    },
-    {
-      "path": "assets/platform/contracts.mjs",
-      "baselineGitBlob": "294a00f6b32f1b8b7f06a8b11aaad87d6e9de575",
-      "baselineSha256": "f02da4fc71dac9c996b699bfe46ac7654ba2711b9f3e06ac54b909ddfc77f467",
-      "gitBlob": "fa27fdd2860534af2f38dc81d32be6f6277579ea",
-      "sha256": "aef357ee30c9e84031165661f0275f1fa6ee96fbf99523c6047c9ff7460ef2dc",
-      "reviewDate": "2026-10-06",
-      "evidence": "oscilloscope-preview"
-    },
-    {
-      "path": "assets/platform/font-support.css",
-      "baselineGitBlob": "0cda94702279ec09be8cfe945a0f3c42c1f8de50",
-      "baselineSha256": "2f3a315563764c9b1f36dcc3792f19019ed5c548c0cb8d9c0a7f3b96c4abcc58",
-      "gitBlob": "b9dcc691dac93fafcc990fe1db064601f9fe7d13",
-      "sha256": "4f02fd73bf4ff41f3044793c68ce72f1e07b2e6127bfc4c5422c5e1b3da40edb",
-      "reviewDate": "2026-10-11",
-      "evidence": "mario-xiaoq-prepublication"
-    },
-    {
-      "path": "tests/dev-center/readme.test.mjs",
-      "baselineGitBlob": "a60aada23246b997343458b18d3af1fcac1a9c38",
-      "baselineSha256": "c5b3efc520cbaf9317ed32593fc7b2cae7c835bfa9483c385bd3e0d28245f88c",
-      "gitBlob": "353e1546f1bdd36fe39ed21c66e438bb256e7a03",
-      "sha256": "a637ef21ea29282cd8c0751491dd7612038a6f4b0ff0f113bfb7efdecd08129a",
-      "reviewDate": "2026-10-06",
-      "evidence": "oscilloscope-preview"
-    },
-    {
-      "path": "tests/helpers/source-readme.mjs",
-      "baselineGitBlob": "ed8d060c231e8a242bde8ab1b4838d85fd1dff15",
-      "baselineSha256": "d0d6753944525d2b4bb4fc86f65f5256537eae09f1c0a82acfff3a9e0fc0d317",
-      "gitBlob": "f2bedfb7a0da51a4bd38bb89b283150ca324c475",
-      "sha256": "e1152616385bae372fa3961914b3bb0aec6b153cd55e3a9ad4a4e4eddb50c808",
-      "reviewDate": "2026-10-06",
-      "evidence": "oscilloscope-preview"
-    },
-    {
-      "path": "tests/platform/readme-links.test.mjs",
-      "baselineGitBlob": "5af2188741447c19f5114228776421fc9002d7c0",
-      "baselineSha256": "0280ea78ce0becfe0f4b289b9d4ffac738eb2eb43e79166550f73b9b036c3001",
-      "gitBlob": "e63a710e61b1728b9dcc5c1b24eaa8dd6979bd2e",
-      "sha256": "1e1e016d149b64e8b88df9422c7c6f7f42d9e0e0e7742437975ddae7a8623e0d",
-      "reviewDate": "2026-10-06",
-      "evidence": "oscilloscope-preview"
-    },
-    {
-      "path": "tests/platform/lab-public-copy.test.mjs",
-      "baselineGitBlob": "6f8127e4bd634fc71cf13b04630fa2f8d06b66da",
-      "baselineSha256": "2cc910e4d38f4d2870951e9da71ef19d1bc18f7b81ee37fa0a0e0d3d06eaf215",
-      "gitBlob": "bee61df878f1ab6cba02a372640b9ff8fd14aa44",
-      "sha256": "c4e4bbca476ab15eb589be9afa7a6eea4fc89cfe7c3c9cd0903e46fd51f49046",
-      "reviewDate": "2026-10-06",
-      "evidence": "oscilloscope-preview"
-    },
-    {
-      "path": "tests/episode4/source-publication.test.mjs",
-      "baselineGitBlob": "857c78c3c8be9128f38a2b223a3be44d3026867c",
-      "baselineSha256": "c7f4b400a2014c2202e3f3d14a1dfbc2844ac121d180ce22dba47944a64df5bc",
-      "gitBlob": "392d43fb6b245c166c3af6db7b1154d51a49480f",
-      "sha256": "d69e1ca0c81a8e40658e1432aef433706cf1628c1b1506876dfbf40007bffa57",
-      "reviewDate": "2026-10-06",
-      "evidence": "oscilloscope-preview"
-    },
-    {
-      "path": "tests/platform/maintenance-content.test.mjs",
-      "baselineGitBlob": "fc1a37775fad4533c6318fcc382ee3e08ca3e43f",
-      "baselineSha256": "846eeedc2fe49c68b5ae5d18d994a4809d1cd23459911644e7eb4797eee1f66c",
-      "gitBlob": "ee388e5539c3ceb7107d7b81c99c854fa342b745",
-      "sha256": "eeb63a63e20e95fbbf332d56060521c25cf8310611df5ac9b88a73932e915cac",
-      "reviewDate": "2026-10-06",
-      "evidence": "oscilloscope-preview"
-    },
-    {
-      "path": "scripts/videos/sync.mjs",
-      "baselineGitBlob": "2b318250d62b1d4be11765e7ba166b47dbea596e",
-      "baselineSha256": "fe57d3165a5c7935fc8ee9ac9ad981c49821c7e2316d3a86a72477bbe22426b2",
-      "gitBlob": "20995abf51c7c09bc09fc871ef543d90cedf227d",
-      "sha256": "6ceb0b942ec9fa46770fa5e87980ebb463d77544f35de486c99c9df64f9497ea",
-      "reviewDate": "2026-10-06",
-      "evidence": "oscilloscope-preview"
-    },
-    {
-      "path": "tests/videos/video-status.test.mjs",
-      "baselineGitBlob": "e4bf2a0222997bbd6d4565a113b4416d91fdbabe",
-      "baselineSha256": "fb875eb0d6d7645f05ad47cd85f93202f1cec77ca187eb459cd6f3de98d8cd0d",
-      "gitBlob": "aea5c326909c5c00b05dd34b5f0340d4ed4ed81d",
-      "sha256": "2ad78928f6922c277f4cedde7af38a9a0a87951e7f5f40e47873e4da25f52b88",
-      "reviewDate": "2026-10-06",
-      "evidence": "oscilloscope-preview"
-    },
-    {
-      "path": "assets/launch/journey.js",
-      "baselineGitBlob": "50dae9a5942800132eec6b5472fc38eea86a5ee8",
-      "baselineSha256": "27ee54d748a1492a1107e7814fc4ff2c539b29fbd3bcd8def02bf95857b199ff",
-      "gitBlob": "da16636e1a5ce13fd08a2243c67433288400e6a0",
-      "sha256": "dce8b106c8fe737378a92a035e68e9826b592a6a0b761534d7020af6347569dd",
+      "path": "assets/site-shell.js",
+      "baselineGitBlob": "36d4e337d5e9c0f9d996ee3e5b3ed9d00bb40f13",
+      "baselineSha256": "aeaeef6d4337b8460d166210b3eab62c07464a75436432c0dd644f1aad762357",
+      "gitBlob": "e13baab6545f301d6dd82fa69223b67d604dcaf1",
+      "sha256": "636e45764c79ae6263363ad1805c548a08a340eed47a21a00eebc003f2176fcb",
       "reviewDate": "2026-10-08",
       "evidence": "five-regions-publication"
     },
@@ -33745,6 +33575,105 @@
       "evidence": "mario-xiaoq-prepublication"
     },
     {
+      "path": "assets/workshop-cards.js",
+      "baselineGitBlob": "628e169a61c1b7802f801c7e47b5ee6cbfdb2422",
+      "baselineSha256": "15245ec98b3b9fc9ae846cf3350a7221c130f0ea54b368d764b438765f8d4fc1",
+      "gitBlob": "2628b79f895cab0c5cc7e8525531ebf417744aba",
+      "sha256": "a58ce9afbdc4f5886fcdc2c71247babeb2dad6b9b5200d5eae5424f72959294c",
+      "reviewDate": "2026-10-11",
+      "evidence": "mario-xiaoq-prepublication"
+    },
+    {
+      "path": "games/index.html",
+      "baselineGitBlob": "64c78896e8e263e48d704d76bd694b51f5be55a9",
+      "baselineSha256": "859fda6c59ee8ac88c3a8c088765e091e5e92c49e5b70ab1d9e0c309cf32daa5",
+      "gitBlob": "6f2ec9aa6a148fd8106ae5252b743c818eea67e3",
+      "sha256": "e5deb858fd35d1353d3bcd071dc0bdff22523c01f9062a9987c2d7b3dc30b0af",
+      "reviewDate": "2026-10-12",
+      "evidence": "frame-out-publication"
+    },
+    {
+      "path": "games/mario-classic/index.html",
+      "baselineGitBlob": "212cec349506c6e9f05b0ce6ca0ddfa22890f69f",
+      "baselineSha256": "ca2cf6d641fff43c726b000992507a238659c5832bf747b2138d68db4347f2ef",
+      "gitBlob": "bb52ec2d597dbb7e0e82cda8bbf2585464da734e",
+      "sha256": "d592985ae3459c70d1a2840659fbc03d0da85e032fe7e9f67f34f998038e29f4",
+      "reviewDate": "2026-10-12",
+      "evidence": "frame-out-publication"
+    },
+    {
+      "path": "games/mario-mix/index.html",
+      "baselineGitBlob": "9b8d8164e6e2ab576e71fe82f54283c2c74236d2",
+      "baselineSha256": "4afab9b76acb4f1f766919473ef73a49ed2ef686cc7a747cd09cbcf20fd42f11",
+      "gitBlob": "089a8fd25de7b8a9630b5ad63b01d9c3e38d74cc",
+      "sha256": "09b44b366fbdefb10faf76ba357520bcae9a4634d1deacc618b6e9966ff1ea7b",
+      "reviewDate": "2026-10-12",
+      "evidence": "frame-out-publication"
+    },
+    {
+      "path": "games/pipebound/index.html",
+      "baselineGitBlob": "cf14a36f4409acfefdf79986a5431abb118d4865",
+      "baselineSha256": "b469f5c52f3c00ad9a01e2c890963830c18b0ec009bcdfa313f6d92137608937",
+      "gitBlob": "f7486009cec42a4fbb777b6cf099bc048bd1371f",
+      "sha256": "d9021fbc0299ce001852b543298f55878b21be6c7975cdb5fe9bfcd15bb2ad68",
+      "reviewDate": "2026-10-12",
+      "evidence": "frame-out-publication"
+    },
+    {
+      "path": "games/pixel-pipe-adventure/index.html",
+      "baselineGitBlob": "f30f93e9701b7be1ab63308f7ce45ede31326278",
+      "baselineSha256": "9e032e6320957edd7c9c473a6b4b7cb53e62af9e3463325f2c70ea4f7a57461d",
+      "gitBlob": "d83cdea3c02181c1ee66c6741c0fdbd40e18c44d",
+      "sha256": "eeaa08b1aa19dd812a26eb33058c32f060420c1c0016ee6701ac8645658663dc",
+      "reviewDate": "2026-10-12",
+      "evidence": "frame-out-publication"
+    },
+    {
+      "path": "games/voxel-frontier/index.html",
+      "baselineGitBlob": "cc0a1eeaf8f9780a9d752e221d5c34f325b0b9b0",
+      "baselineSha256": "35240e2af8c07e84c0b88137a9f8549b58ee994a9b2a60c38ad9038c8c6565c3",
+      "gitBlob": "9d8961fd17c7e33b531191abb2d6cdf1d2184a76",
+      "sha256": "ab760b41afa78d0c57b0535a91763f9bddadd4a73ef2d38cfe116f4269699f72",
+      "reviewDate": "2026-10-12",
+      "evidence": "frame-out-publication"
+    },
+    {
+      "path": "index.html",
+      "baselineGitBlob": "ba30bdc413adce5dc39476605082733cbe7ef1b6",
+      "baselineSha256": "bf5269a0c063e71139f6ca7618b5bb158cfbee0ea504e225892878a815f53c30",
+      "gitBlob": "c7bb9e380d4343ea9a152ba7b320de9cd06d93d9",
+      "sha256": "9701d2cc02c6b8690d37b184f4233d181871771efa1b7456301db10e11e39644",
+      "reviewDate": "2026-10-12",
+      "evidence": "frame-out-publication"
+    },
+    {
+      "path": "notes/index.html",
+      "baselineGitBlob": "2798af72431d60f24ea38cb152474670e1ecf0ad",
+      "baselineSha256": "88754e40cf1c5c0dcd79fc17afea0353b44836298fe5731ed509143b356beec9",
+      "gitBlob": "ca4d8ed0a0f4093e85066ab141abae5442fe31e6",
+      "sha256": "be50843162e4073ade04418997cde7f64932dccc6749815df8e6dc8759598b45",
+      "reviewDate": "2026-10-12",
+      "evidence": "frame-out-publication"
+    },
+    {
+      "path": "projects/index.html",
+      "baselineGitBlob": "e29006ec9904e4171b63620632c3dd0044455e18",
+      "baselineSha256": "d4bee107d4e76b944e330ce48312a26bc13dd6ef0bcf725d7ffed54f097a9636",
+      "gitBlob": "0c19484a9cf1fb25a38049e8d6b6150a5771667d",
+      "sha256": "772edabd42729dce4308e518a5c14cfdd00d1dc79ca2d9794fbb141bf9e17d83",
+      "reviewDate": "2026-10-12",
+      "evidence": "frame-out-publication"
+    },
+    {
+      "path": "projects/q-mimi/index.html",
+      "baselineGitBlob": "48c0b573d540ffeff57dc9e7808661f687559f25",
+      "baselineSha256": "76a5551678228c5e9d0ec651a0503d3c271d28897a6899ac0012bace33105ea2",
+      "gitBlob": "e5deec30fb4f4add36b01a276819d3dfdda646d8",
+      "sha256": "61ec30cc6605bf3b51671683383ac5e91f817f3ce0f662d6c36e33d2760e26fd",
+      "reviewDate": "2026-10-12",
+      "evidence": "frame-out-publication"
+    },
+    {
       "path": "scripts/launch/build.mjs",
       "baselineGitBlob": "8f028f58afc2f743db85dd9fa9ee0bc53f552225",
       "baselineSha256": "946a3217a9bdf7c726873a8408be265c406d489c4e2ce0c1814b90c08c3160a2",
@@ -33752,6 +33681,15 @@
       "sha256": "fbb01670f126186fd1df41ed2d76be861082819b6c310eaf273da6816bb54126",
       "reviewDate": "2026-10-08",
       "evidence": "five-regions-publication"
+    },
+    {
+      "path": "scripts/platform/browser.mjs",
+      "baselineGitBlob": "cf1e45236f2c1fd633c9e79639e529351893feaa",
+      "baselineSha256": "7396a7b08aedf10ab8d0907cd3691df8f2af8295989fe55398fb52e69459f954",
+      "gitBlob": "125b8d6f45bb9bd0797ec2620e2d68de18352eb1",
+      "sha256": "09208c79d0c0cf76d59513cd924c71a5df193f98e7b765b445ad85702eca593d",
+      "reviewDate": "2026-10-02",
+      "evidence": "bilingual-maintenance"
     },
     {
       "path": "scripts/platform/import-map-audit.mjs",
@@ -33772,22 +33710,76 @@
       "evidence": "five-regions-publication"
     },
     {
-      "path": "assets/site-shell.js",
-      "baselineGitBlob": "36d4e337d5e9c0f9d996ee3e5b3ed9d00bb40f13",
-      "baselineSha256": "aeaeef6d4337b8460d166210b3eab62c07464a75436432c0dd644f1aad762357",
-      "gitBlob": "e13baab6545f301d6dd82fa69223b67d604dcaf1",
-      "sha256": "636e45764c79ae6263363ad1805c548a08a340eed47a21a00eebc003f2176fcb",
-      "reviewDate": "2026-10-08",
-      "evidence": "five-regions-publication"
+      "path": "scripts/videos/sync.mjs",
+      "baselineGitBlob": "2b318250d62b1d4be11765e7ba166b47dbea596e",
+      "baselineSha256": "fe57d3165a5c7935fc8ee9ac9ad981c49821c7e2316d3a86a72477bbe22426b2",
+      "gitBlob": "20995abf51c7c09bc09fc871ef543d90cedf227d",
+      "sha256": "6ceb0b942ec9fa46770fa5e87980ebb463d77544f35de486c99c9df64f9497ea",
+      "reviewDate": "2026-10-06",
+      "evidence": "oscilloscope-preview"
     },
     {
-      "path": "assets/workshop-cards.js",
-      "baselineGitBlob": "628e169a61c1b7802f801c7e47b5ee6cbfdb2422",
-      "baselineSha256": "15245ec98b3b9fc9ae846cf3350a7221c130f0ea54b368d764b438765f8d4fc1",
-      "gitBlob": "2628b79f895cab0c5cc7e8525531ebf417744aba",
-      "sha256": "a58ce9afbdc4f5886fcdc2c71247babeb2dad6b9b5200d5eae5424f72959294c",
-      "reviewDate": "2026-10-11",
-      "evidence": "mario-xiaoq-prepublication"
+      "path": "tests/analytics/privacy.test.mjs",
+      "baselineGitBlob": "6e3918a497d972872af6c45abb2f01e9d4c8bd49",
+      "baselineSha256": "4f05626b9df0d07fe38ad40d7182805c2711e2fbc39fd42beb45a645efdfb911",
+      "gitBlob": "c12774d25327bb73c4f5421930e6744b5cbbe216",
+      "sha256": "a86cdc17e673c125549e268aabc6a5c2f8bb3e8af52c3d44ab9afdb16afbf412",
+      "reviewDate": "2026-10-03",
+      "evidence": "analytics-ui-withdrawal"
+    },
+    {
+      "path": "tests/dev-center/readme.test.mjs",
+      "baselineGitBlob": "a60aada23246b997343458b18d3af1fcac1a9c38",
+      "baselineSha256": "c5b3efc520cbaf9317ed32593fc7b2cae7c835bfa9483c385bd3e0d28245f88c",
+      "gitBlob": "353e1546f1bdd36fe39ed21c66e438bb256e7a03",
+      "sha256": "a637ef21ea29282cd8c0751491dd7612038a6f4b0ff0f113bfb7efdecd08129a",
+      "reviewDate": "2026-10-06",
+      "evidence": "oscilloscope-preview"
+    },
+    {
+      "path": "tests/episode4/source-publication.test.mjs",
+      "baselineGitBlob": "857c78c3c8be9128f38a2b223a3be44d3026867c",
+      "baselineSha256": "c7f4b400a2014c2202e3f3d14a1dfbc2844ac121d180ce22dba47944a64df5bc",
+      "gitBlob": "392d43fb6b245c166c3af6db7b1154d51a49480f",
+      "sha256": "d69e1ca0c81a8e40658e1432aef433706cf1628c1b1506876dfbf40007bffa57",
+      "reviewDate": "2026-10-06",
+      "evidence": "oscilloscope-preview"
+    },
+    {
+      "path": "tests/helpers/source-readme.mjs",
+      "baselineGitBlob": "ed8d060c231e8a242bde8ab1b4838d85fd1dff15",
+      "baselineSha256": "d0d6753944525d2b4bb4fc86f65f5256537eae09f1c0a82acfff3a9e0fc0d317",
+      "gitBlob": "f2bedfb7a0da51a4bd38bb89b283150ca324c475",
+      "sha256": "e1152616385bae372fa3961914b3bb0aec6b153cd55e3a9ad4a4e4eddb50c808",
+      "reviewDate": "2026-10-06",
+      "evidence": "oscilloscope-preview"
+    },
+    {
+      "path": "tests/platform/lab-public-copy.test.mjs",
+      "baselineGitBlob": "6f8127e4bd634fc71cf13b04630fa2f8d06b66da",
+      "baselineSha256": "2cc910e4d38f4d2870951e9da71ef19d1bc18f7b81ee37fa0a0e0d3d06eaf215",
+      "gitBlob": "bee61df878f1ab6cba02a372640b9ff8fd14aa44",
+      "sha256": "c4e4bbca476ab15eb589be9afa7a6eea4fc89cfe7c3c9cd0903e46fd51f49046",
+      "reviewDate": "2026-10-06",
+      "evidence": "oscilloscope-preview"
+    },
+    {
+      "path": "tests/platform/maintenance-content.test.mjs",
+      "baselineGitBlob": "fc1a37775fad4533c6318fcc382ee3e08ca3e43f",
+      "baselineSha256": "846eeedc2fe49c68b5ae5d18d994a4809d1cd23459911644e7eb4797eee1f66c",
+      "gitBlob": "ee388e5539c3ceb7107d7b81c99c854fa342b745",
+      "sha256": "eeb63a63e20e95fbbf332d56060521c25cf8310611df5ac9b88a73932e915cac",
+      "reviewDate": "2026-10-06",
+      "evidence": "oscilloscope-preview"
+    },
+    {
+      "path": "tests/platform/readme-links.test.mjs",
+      "baselineGitBlob": "5af2188741447c19f5114228776421fc9002d7c0",
+      "baselineSha256": "0280ea78ce0becfe0f4b289b9d4ffac738eb2eb43e79166550f73b9b036c3001",
+      "gitBlob": "e63a710e61b1728b9dcc5c1b24eaa8dd6979bd2e",
+      "sha256": "1e1e016d149b64e8b88df9422c7c6f7f42d9e0e0e7742437975ddae7a8623e0d",
+      "reviewDate": "2026-10-06",
+      "evidence": "oscilloscope-preview"
     },
     {
       "path": "tests/ui-polish/actions.test.mjs",
@@ -33797,6 +33789,24 @@
       "sha256": "b2321052772d51e0c3ad30e4e7225c6ffc6ed1f6dd6163f6cdc728e4f19fe4bd",
       "reviewDate": "2026-10-11",
       "evidence": "mario-xiaoq-prepublication"
+    },
+    {
+      "path": "tests/videos/video-status.test.mjs",
+      "baselineGitBlob": "e4bf2a0222997bbd6d4565a113b4416d91fdbabe",
+      "baselineSha256": "fb875eb0d6d7645f05ad47cd85f93202f1cec77ca187eb459cd6f3de98d8cd0d",
+      "gitBlob": "aea5c326909c5c00b05dd34b5f0340d4ed4ed81d",
+      "sha256": "2ad78928f6922c277f4cedde7af38a9a0a87951e7f5f40e47873e4da25f52b88",
+      "reviewDate": "2026-10-06",
+      "evidence": "oscilloscope-preview"
+    },
+    {
+      "path": "tools/index.html",
+      "baselineGitBlob": "18d7df5efa55242ae4d0911831f822f15b7714ce",
+      "baselineSha256": "bb728a205fa37790269227a32b559ca0b5dc8fdcb7edabb906857a68c57616a7",
+      "gitBlob": "8b541cc4e408fda962f63d6c264975d2178220c2",
+      "sha256": "bd847cf1784156b38854d7d8bf980a88eb467348114fd4d875ebf8bcb023e57d",
+      "reviewDate": "2026-10-12",
+      "evidence": "frame-out-publication"
     }
   ]
 }
