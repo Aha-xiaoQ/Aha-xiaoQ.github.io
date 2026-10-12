@@ -24,9 +24,9 @@ test('immutable owned archive keeps ZIP semantics without a cross-origin downloa
  assert.ok(!/\sdownload(?:[\s=>])/.test(h));
 });
 test('XiaoQ game detail source and offline ZIP links retain valid native semantics',()=>{
- const links=txt('games/mario-mix-xiaoq/index.html').match(/<a\b[^>]*href="\/downloads\/(?:games|source)\/MarioMix_XiaoQ_0\.8\.14_(?:Game|Source)\.zip"[^>]*>/g)||[];
+ const links=txt('games/mario-mix-xiaoq/index.html').match(/<a\b[^>]*href="https:\/\/raw\.githubusercontent\.com\/Aha-xiaoQ\/Aha-xiaoQ\.github\.io\/[^\"]+\.zip"[^>]*>/g)||[];
  assert.equal(links.length,2);
- for(const link of links){assert.ok(link.includes('data-action-kind="download"'));assert.ok(/\sdownload(?:[\s=>])/.test(link));assert.ok(!link.includes('target='));}
+ for(const link of links){assert.ok(link.includes('data-action-kind="download"'));assert.ok(!/\sdownload(?:[\s=>])/.test(link));}
 });
 for(const u of [ownedArchive.replace('a'.repeat(40),'main'),ownedArchive.replace('Aha-xiaoQ/','other/'),ownedArchive.replace('/release-assets/','/private/'),ownedArchive.replace('/game-v1/','/../'),ownedArchive.replace('/game-v1/','/%2e%2e/'),ownedArchive+'?token=test',ownedArchive+'#file',ownedArchive.replace('.zip','.html'),ownedArchive.replace('raw.githubusercontent.com','raw.githubusercontent.com.evil.test')])test('unapproved remote archive rejected '+u,()=>assert.throws(()=>A.link('下载',u,{download:true})));
 test('hash query and path are preserved',()=>assert.ok(A.link('章节','/notes/a/?lang=en#part').includes('/notes/a/?lang=en#part')));
