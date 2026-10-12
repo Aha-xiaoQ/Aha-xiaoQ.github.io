@@ -1,12 +1,12 @@
 /* public-edition:R24 */
-import {isPublicUpdate} from './update-audience.mjs?v=release-r24-c473152413ea';
-import {developmentNav,labSpotlight,projectNavigation,projectOverview,projectDocument,documentDirectory} from './public-layout.mjs?v=release-r24-c473152413ea';
-import {renderMarkdown} from './markdown.mjs?v=release-r24-c473152413ea';
-import {readingLink,readingDocument} from './documents.mjs?v=release-r24-c473152413ea';
-import {chapterSummary,chapterAtlas} from '../chapters/view.mjs?v=release-r24-c473152413ea';
-import {tocMarkup} from '../experience/model.mjs?v=release-r24-c473152413ea';
-import {esc,safeLink,projectURL,STATUS_LABELS,CATEGORY_LABELS,filterTasks,visibleTasks,canClaim,projectStage,updateOrder,legacyProject} from './model.mjs?v=release-r24-c473152413ea';
-import '../ui/site-actions.js?v=release-r24-c473152413ea';
+import {isPublicUpdate} from './update-audience.mjs?v=release-r24-97bacfe4cd3c';
+import {developmentNav,labSpotlight,projectNavigation,projectOverview,projectDocument,documentDirectory} from './public-layout.mjs?v=release-r24-97bacfe4cd3c';
+import {renderMarkdown} from './markdown.mjs?v=release-r24-97bacfe4cd3c';
+import {readingLink,readingDocument} from './documents.mjs?v=release-r24-97bacfe4cd3c';
+import {chapterSummary,chapterAtlas} from '../chapters/view.mjs?v=release-r24-97bacfe4cd3c';
+import {tocMarkup} from '../experience/model.mjs?v=release-r24-97bacfe4cd3c';
+import {esc,safeLink,projectURL,STATUS_LABELS,CATEGORY_LABELS,filterTasks,visibleTasks,canClaim,projectStage,updateOrder,legacyProject} from './model.mjs?v=release-r24-97bacfe4cd3c';
+import '../ui/site-actions.js?v=release-r24-97bacfe4cd3c';
 const A=globalThis.SITE_ACTIONS;
 const EMBLEMS=Object.freeze({game:['PLAY','controller'],web:['BUILD','web-studio'],tool:['TOOLS','workflow'],experiment:['LAB','experiment'],other:['CREATE','workflow']});
 // R12: compact identifiers for the two existing categories; no banner slogans.

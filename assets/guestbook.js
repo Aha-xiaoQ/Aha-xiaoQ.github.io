@@ -1,9 +1,9 @@
-import config from './guestbook-config.js?v=release-r24-c473152413ea';
+import config from './guestbook-config.js?v=release-r24-97bacfe4cd3c';
 let widget;
 let generation = 0;
 let activeSection;
 const styleLoads = new Map();
-const styleURL = new URL('./guestbook.css?v=release-r24-c473152413ea', import.meta.url).href;
+const styleURL = new URL('./guestbook.css?v=release-r24-97bacfe4cd3c', import.meta.url).href;
 const languageOptions = () => ({
   path: '/guestbook/',
   lang: globalThis.SITE_I18N?.language === 'en' ? 'en' : 'zh-CN',
