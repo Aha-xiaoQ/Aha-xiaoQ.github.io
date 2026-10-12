@@ -86,7 +86,7 @@ globalThis.SITE_DATA = {
       "evidenceIds": [],
       "detailUrl": "/games/mario-mix-xiaoq/",
       "localUrl": "games/mario-mix-xiaoq/play.html",
-      "downloadUrl": "https://raw.githubusercontent.com/Aha-xiaoQ/Aha-xiaoQ.github.io/d3a29a3ce724baf3283a89410f4b499f36a4cf68/release-assets/mario-mix-xiaoq-0.8.13/MarioMix_XiaoQ_0.8.13_Game.zip",
+      "downloadUrl": "/downloads/games/MarioMix_XiaoQ_0.8.14_Game.zip",
       "downloadLabel": "下载离线游戏",
       "downloadInstructions": "下载后解压，用近期版本 Chrome 或 Edge 打开 play.html。",
       "videoSlot": true,
