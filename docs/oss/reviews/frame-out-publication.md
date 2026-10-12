@@ -1,6 +1,6 @@
 # Frame Out video registration
 
-2026-10-12. Website baseline: f7badbda4521256db95f5280526462fb217d3249.
+2026-10-12. Website baseline: fa6307157f3b3889a72a3fe1c5c2e3107e4bbc3d.
 
 The existing Lab templates register the Frame Out AI fan short, its Bilibili link,
 viewer-facing Chinese and English descriptions, and the related original procedural
