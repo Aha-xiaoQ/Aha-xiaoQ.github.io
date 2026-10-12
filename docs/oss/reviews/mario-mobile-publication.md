@@ -16,3 +16,7 @@ The existing templates now reference 0.8.14, on-demand asset loading, background
 - projects/index.html
 - tests/ui-polish/actions.test.mjs
 - tools/index.html
+
+## Lab navigation follow-up · 2026-10-12
+
+On latest source 20c1603c7ac6442352f97348f0a543a86b1fe1da, removed the lab gallery’s redundant archived-game list. Games and legacy URLs retain their content. Only existing original template and generated identities change; licensing classifications, grants, third-party notices and game assets remain unchanged.

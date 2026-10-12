@@ -266,7 +266,7 @@
       "limits": "Only identities of listed existing original-MIT implementation files are refreshed. Baseline, classification, license checks, third-party rights and publication permissions remain unchanged."
     },
     "mario-mobile-publication": {
-      "basis": "Mario Mix 0.8.13 and 0.8.14 versions, download pointers, dated update, English text and generated imports using the existing website templates.",
+      "basis": "Mario Mix 0.8.13 and 0.8.14 versions, download pointers, dated update, English text and generated imports using the existing website templates. Follow-up: remove the redundant archived Mario game links from the lab gallery after their move to Games; retain game pages and legacy URLs.",
       "sources": [
         "content/site-data.js",
         "content/development/projects/mario-mix.json",
@@ -33434,10 +33434,10 @@
       "path": "about/index.html",
       "baselineGitBlob": "b4c6b69895f238d69b4df5ed8147d85edc3adc21",
       "baselineSha256": "14f3537855046ab8be6066b66617c050ce9545aa6f696abc603ce7e618079093",
-      "gitBlob": "a5cd1c33ea3ee615db640aa7ee108f2709905861",
-      "sha256": "f024d893585a87e7a3a607ba37925f415f571c8767c13f99e028e417e684e46e",
+      "gitBlob": "19fe04d4cba01ddd3e108514a33460642afafd0c",
+      "sha256": "6e1440712d60feed755a2d40e9e4eae963fba29d80002435793861557caeff93",
       "reviewDate": "2026-10-12",
-      "evidence": "frame-out-publication"
+      "evidence": "mario-mobile-publication"
     },
     {
       "path": "assets/i18n/messages.js",
@@ -33452,46 +33452,46 @@
       "path": "assets/journal/documents.mjs",
       "baselineGitBlob": "f1d865f9aa21d81fe7e03e7374982a2fc7b1ddaf",
       "baselineSha256": "ac614bd0ac679ed6614694d0c2d07441fc8b6789cff9bff06967c97c77bd23c4",
-      "gitBlob": "cbf2f1f414f3daaecb5f2556a750740d2f11ba45",
-      "sha256": "a010832f481e7490bdd5fbf0adf3b5504c93e5a7258dcc534c38789f7f60a02a",
+      "gitBlob": "aa54ab0332bd3ee8c3c8eb72826038e93832a463",
+      "sha256": "c6f659e30f71cab3334576b6f398b2a8324de9079a4e4797bdc2dac1810f2afa",
       "reviewDate": "2026-10-12",
-      "evidence": "frame-out-publication"
+      "evidence": "mario-mobile-publication"
     },
     {
       "path": "assets/journal/experiment.mjs",
       "baselineGitBlob": "30a08b98efacc83111c528fc4848a83628263446",
       "baselineSha256": "dc5478c8bc43d16ecae1f585cba9a6bba323fb140b7cd4590bf10e91a2b85596",
-      "gitBlob": "b317919fa093b6af4130caf362d39a6fb380bdc7",
-      "sha256": "49a12919561d080825fea5cfdaca0d56533aa10d97ca4293125922f65cf080af",
+      "gitBlob": "78c93a1f483bbbea1a7adda5100cf5c228811a7d",
+      "sha256": "16f425b7d2b4c6b1460ea1d78e8c72d133cdc938fa607b467c05972282ff8c61",
       "reviewDate": "2026-10-12",
-      "evidence": "frame-out-publication"
+      "evidence": "mario-mobile-publication"
     },
     {
       "path": "assets/journal/public-layout.mjs",
       "baselineGitBlob": "25bc488f32da2f9de2b4ef1107ff5571b74bb8ec",
       "baselineSha256": "bf4229ff50ceeb8071fb4af8b94e331642543b9856267db3d6193f93b81fa1eb",
-      "gitBlob": "e8d88e9bc2f72f90922725f2749bd2be8efde133",
-      "sha256": "7f79be6629dd0110aa0d047ec050e17f18494b68550833b616954359b3bb3431",
+      "gitBlob": "c6e1d94517e851efe09a22d1472a9b1397412d7e",
+      "sha256": "4e0af6788320e60623d3cc5c3fa3514d73be9ab8b9fd184f63b0c6cf2484a980",
       "reviewDate": "2026-10-12",
-      "evidence": "frame-out-publication"
+      "evidence": "mario-mobile-publication"
     },
     {
       "path": "assets/journal/render.mjs",
       "baselineGitBlob": "5b74c68409edfefaa6d990fc62111d09f7365c0b",
       "baselineSha256": "021ba67c6d27f8d1da66bbf949d7bb63c64580001deff22944d7847e731c4180",
-      "gitBlob": "dfce1d531ac156c027d4caebc8ae95a8899aac6c",
-      "sha256": "4e0c4243c55417332ba4fe8678e95b7040d6ff587597fb53a96883bbeada84d5",
+      "gitBlob": "63ebf4a0795ad6da51ac9fc7118bdd5064952d7a",
+      "sha256": "1060a4197d922a7cc659408da1b920579a8bf2a69bffec9d81884493533e13c6",
       "reviewDate": "2026-10-12",
-      "evidence": "frame-out-publication"
+      "evidence": "mario-mobile-publication"
     },
     {
       "path": "assets/journal/runtime.mjs",
       "baselineGitBlob": "6899fd87a5a0d7a8295c832561bc0811d51b0e65",
       "baselineSha256": "a21d16de3732df431579b140a45e43101c0375a30d982aeb71241f84ab34c301",
-      "gitBlob": "607f4916da5a94ed8b1a5cf90fe29341e232a959",
-      "sha256": "3fa2f197aa3a4063aaac865feb8f48438b9ed0ce4dee5730a06c64789b5589ba",
+      "gitBlob": "83495f9e8fceced95fb3696a15f33f8ce20e9d18",
+      "sha256": "8e8919d421fe1cbd2e70bdce44e3dc3f93c224ae7945b859c723ebbdb8252fc0",
       "reviewDate": "2026-10-12",
-      "evidence": "frame-out-publication"
+      "evidence": "mario-mobile-publication"
     },
     {
       "path": "assets/launch/journey.js",
@@ -33524,10 +33524,10 @@
       "path": "assets/release/public-content.mjs",
       "baselineGitBlob": "45e2ebbc03feae6d17dc48528143e83d6b65f62a",
       "baselineSha256": "3de04282d9f70aaa21a31a4183fbd37d36dfd59cc5784dea995beb1907ce0e5f",
-      "gitBlob": "6d624ba4fd7d0374997514f0452144af710d2f2b",
-      "sha256": "d40061edfb0c3159c1c8245f6ff3bbbe28e068beb8e30658935ffff280bc699f",
+      "gitBlob": "5a8b25399ca687883a77c82ab66216ccceeb6848",
+      "sha256": "d7cae46359e7719e94d5e5b37e4fdbc236d7a6638d3a677e0cce14ca5954e06b",
       "reviewDate": "2026-10-12",
-      "evidence": "frame-out-publication"
+      "evidence": "mario-mobile-publication"
     },
     {
       "path": "assets/site-analytics.js",
@@ -33551,10 +33551,10 @@
       "path": "assets/site-router.js",
       "baselineGitBlob": "c8bffef04c666670f07e136e1f40f9909d2a4ebc",
       "baselineSha256": "d7be7f7c218c4f8c736686852d96049c048c5d551d04278f8936079c8586dbc3",
-      "gitBlob": "4ff8f1b20bd83b0475af294b456c4c9f8ae753a4",
-      "sha256": "c606b422447f49da1f9b7b7abf6fe3e7d974f2e8d3b2fbb778ae4e0678fed68d",
+      "gitBlob": "bc2497b43f494ea5d15a286ea0e5e3db2efe0bb4",
+      "sha256": "6cdc4f9b687ab67005f9ab108c9809db40af2e4aac56443be73b56d04025e7a1",
       "reviewDate": "2026-10-12",
-      "evidence": "frame-out-publication"
+      "evidence": "mario-mobile-publication"
     },
     {
       "path": "assets/site-shell.js",
@@ -33587,91 +33587,91 @@
       "path": "games/index.html",
       "baselineGitBlob": "64c78896e8e263e48d704d76bd694b51f5be55a9",
       "baselineSha256": "859fda6c59ee8ac88c3a8c088765e091e5e92c49e5b70ab1d9e0c309cf32daa5",
-      "gitBlob": "a28a29a7f10d8cb9c690dd5d146612d9a5739573",
-      "sha256": "0ecc989fabf245af0cbe137aa3c0df494edf69b86c1111d9509071bec0377750",
+      "gitBlob": "c73b376c651e60721bb3ad1ee66a75cb60d65b36",
+      "sha256": "30aea1199cae9e083be5f3d98195ad241e08bdae5baa09e43fbc40c48d5fbe8f",
       "reviewDate": "2026-10-12",
-      "evidence": "frame-out-publication"
+      "evidence": "mario-mobile-publication"
     },
     {
       "path": "games/mario-classic/index.html",
       "baselineGitBlob": "212cec349506c6e9f05b0ce6ca0ddfa22890f69f",
       "baselineSha256": "ca2cf6d641fff43c726b000992507a238659c5832bf747b2138d68db4347f2ef",
-      "gitBlob": "69ab1e40d593bc8cbe8681e34b149d4dca7c2aa9",
-      "sha256": "ebfcf2734894cf40686a96b86ce03502ecc392bae7ca4e4fb5eeee3f59d36958",
+      "gitBlob": "07c4c0fc97ca66024aca3f2a3a486822d1c7744d",
+      "sha256": "ca0144a4decc8195de03230527ffadcd9c645a9c43208f7959d92e93eb83b033",
       "reviewDate": "2026-10-12",
-      "evidence": "frame-out-publication"
+      "evidence": "mario-mobile-publication"
     },
     {
       "path": "games/mario-mix/index.html",
       "baselineGitBlob": "9b8d8164e6e2ab576e71fe82f54283c2c74236d2",
       "baselineSha256": "4afab9b76acb4f1f766919473ef73a49ed2ef686cc7a747cd09cbcf20fd42f11",
-      "gitBlob": "2a47b27b499a4db63083ede8d9e1bc1d68962ebb",
-      "sha256": "883c87f182f1b2a53af2af7346176922d61a96ea39565b90d9e8175064793862",
+      "gitBlob": "6641d091b6c64b0041d10a3b2a58165857c8238e",
+      "sha256": "88ba5fab518886468c8bf3e8075395db4cb1b9cbdbed5ac455674f263e02d21b",
       "reviewDate": "2026-10-12",
-      "evidence": "frame-out-publication"
+      "evidence": "mario-mobile-publication"
     },
     {
       "path": "games/pipebound/index.html",
       "baselineGitBlob": "cf14a36f4409acfefdf79986a5431abb118d4865",
       "baselineSha256": "b469f5c52f3c00ad9a01e2c890963830c18b0ec009bcdfa313f6d92137608937",
-      "gitBlob": "313cd36df0bea87473f98e1c1d350a5beedf56be",
-      "sha256": "f271e2e57dad0656b9c8c69946b6ce49e8d719a8ade3771641daf36150acbea8",
+      "gitBlob": "d5943ffc48ffef5348baff5e6c8809bb37abc0aa",
+      "sha256": "7cbd1b181b3d28e02cdfa0ac9df7c608b59cd341d927e6117d5c3155ba5d189a",
       "reviewDate": "2026-10-12",
-      "evidence": "frame-out-publication"
+      "evidence": "mario-mobile-publication"
     },
     {
       "path": "games/pixel-pipe-adventure/index.html",
       "baselineGitBlob": "f30f93e9701b7be1ab63308f7ce45ede31326278",
       "baselineSha256": "9e032e6320957edd7c9c473a6b4b7cb53e62af9e3463325f2c70ea4f7a57461d",
-      "gitBlob": "548be37a3b5e82a6c49ce5ab6ac2496827899f31",
-      "sha256": "d3e01861368c31356a4c1140aa739813c2e8578623325dea73023ac7dcaf9bd8",
+      "gitBlob": "0dd2446264b22c7b6add8dc69a381fcd8b722398",
+      "sha256": "0f40f923371508781ab57f70511a8825be65f6f7470cbaba1c48514845eecd30",
       "reviewDate": "2026-10-12",
-      "evidence": "frame-out-publication"
+      "evidence": "mario-mobile-publication"
     },
     {
       "path": "games/voxel-frontier/index.html",
       "baselineGitBlob": "cc0a1eeaf8f9780a9d752e221d5c34f325b0b9b0",
       "baselineSha256": "35240e2af8c07e84c0b88137a9f8549b58ee994a9b2a60c38ad9038c8c6565c3",
-      "gitBlob": "4570729f8088ce645d5fcbed326a69bcb6c1dc71",
-      "sha256": "cdd4317d803678e69c248008f0afc340b7dd9e1c4c230a9bd926bba260e42bbd",
+      "gitBlob": "dd3e045728d42ea2d3256f5c7a8e21051bdb2619",
+      "sha256": "f9df1e5dee6f9e23f98347efb5a40dc4cff76cc25c858d9a1bb90c725d907a1f",
       "reviewDate": "2026-10-12",
-      "evidence": "frame-out-publication"
+      "evidence": "mario-mobile-publication"
     },
     {
       "path": "index.html",
       "baselineGitBlob": "ba30bdc413adce5dc39476605082733cbe7ef1b6",
       "baselineSha256": "bf5269a0c063e71139f6ca7618b5bb158cfbee0ea504e225892878a815f53c30",
-      "gitBlob": "9da6a1b96706a809d9b8dd07dd50d4883baa0fc9",
-      "sha256": "d614a3adff1c14b19de8eff067e4036d1ceb8bba4fdb973396c9f120fd4da209",
+      "gitBlob": "02e1a59be1989d371b85ca0fb0fb6014c71c1a33",
+      "sha256": "3df9bb9485eb6944bfef6d374a34cc57413ef109559762dc28a15755487bec1b",
       "reviewDate": "2026-10-12",
-      "evidence": "frame-out-publication"
+      "evidence": "mario-mobile-publication"
     },
     {
       "path": "notes/index.html",
       "baselineGitBlob": "2798af72431d60f24ea38cb152474670e1ecf0ad",
       "baselineSha256": "88754e40cf1c5c0dcd79fc17afea0353b44836298fe5731ed509143b356beec9",
-      "gitBlob": "9ad551103a2289c2a783b3125a04a6d5878704be",
-      "sha256": "f8c49423d374892e61d150f8da0ec1bb7bd4ec53d7fd78971dccdaf52e3883a7",
+      "gitBlob": "20545d2e3b521ea7edc04017120bcb2d8fab8cda",
+      "sha256": "62395fefd23448975d52ccb88c300f383826eae5e7a3bbbf19c3f8dc1625e85d",
       "reviewDate": "2026-10-12",
-      "evidence": "frame-out-publication"
+      "evidence": "mario-mobile-publication"
     },
     {
       "path": "projects/index.html",
       "baselineGitBlob": "e29006ec9904e4171b63620632c3dd0044455e18",
       "baselineSha256": "d4bee107d4e76b944e330ce48312a26bc13dd6ef0bcf725d7ffed54f097a9636",
-      "gitBlob": "315df57f439960c651788859abdf622c55216ec3",
-      "sha256": "01050d15a8c100e7a37cd3e48d6ddb569c6a61e54c61f7bd0a61dbab8c0ca24a",
+      "gitBlob": "946f42e1baf1e288deeab5c0a1339c643c8b6228",
+      "sha256": "7815ddeeb882cc0282e908728f7e722e86834cb8eadd53a6c87b6d1dc9d52722",
       "reviewDate": "2026-10-12",
-      "evidence": "frame-out-publication"
+      "evidence": "mario-mobile-publication"
     },
     {
       "path": "projects/q-mimi/index.html",
       "baselineGitBlob": "48c0b573d540ffeff57dc9e7808661f687559f25",
       "baselineSha256": "76a5551678228c5e9d0ec651a0503d3c271d28897a6899ac0012bace33105ea2",
-      "gitBlob": "b05fb808388e565e8793f1fb678c085230e2362f",
-      "sha256": "8969644dd6478d3bcd46e616cc73eab6db6c78aebe654269638ca7476f24bd05",
+      "gitBlob": "69d61c766f47225a52c6715e89f230a9abdde0ae",
+      "sha256": "628e13271c96189d69be0ebe291052ddd47da4cf38ae7e130dcb8c4b5d9d09e5",
       "reviewDate": "2026-10-12",
-      "evidence": "frame-out-publication"
+      "evidence": "mario-mobile-publication"
     },
     {
       "path": "scripts/launch/build.mjs",
@@ -33803,10 +33803,10 @@
       "path": "tools/index.html",
       "baselineGitBlob": "18d7df5efa55242ae4d0911831f822f15b7714ce",
       "baselineSha256": "bb728a205fa37790269227a32b559ca0b5dc8fdcb7edabb906857a68c57616a7",
-      "gitBlob": "23cbd61632d17427537e11f33bee51288fb26fb4",
-      "sha256": "0d275a1fd7a1c5810d7d7ef2465245994ac6ba06914b3eb35ba4a8da9ec84286",
+      "gitBlob": "1cb134cf8be1442070078d7b45400736cde8b622",
+      "sha256": "a9eed454e9c60f9eef94333a3e4754a01bb22aa6101bab6fdb7203cbe8e7a5e6",
       "reviewDate": "2026-10-12",
-      "evidence": "frame-out-publication"
+      "evidence": "mario-mobile-publication"
     }
   ]
 }
