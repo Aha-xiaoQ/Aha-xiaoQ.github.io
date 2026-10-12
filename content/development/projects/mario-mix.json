@@ -5,7 +5,7 @@
   "category": "game",
   "visibility": "public",
   "stage": "混合马里奥与自制关卡",
-  "updatedAt": "2026-10-11",
+  "updatedAt": "2026-10-12",
   "summary": "九位角色的混合冒险与独立自制关卡。试玩游戏，查看制作记录与源码。",
   "intro": "混合马里奥在下_小Q版包含九位角色、经典关卡、角色专属隐藏关、彩蛋与成就。也可以体验自制马里奥系列：五门挑战、午夜厨房潜行与 Bad Apple!! 音乐小剧场。",
   "highlights": [
@@ -90,6 +90,16 @@
     "path": "content/development/states/mario-mix-public.json"
   },
   "updates": [
+    {
+      "id": "mario-mobile-0813",
+      "date": "2026-10-12",
+      "revision": 24,
+      "title": "混合马里奥：手机操作与加载优化",
+      "status": "released",
+      "kind": "content",
+      "summary": "修复手机虚拟 A 键开始时误触返回的问题；首开下载量减少 28.4%，加入加载进度、失败重试与素材缓存。",
+      "public": true
+    },
     {
       "id": "mario-mix-xiaoq",
       "date": "2026-10-11",

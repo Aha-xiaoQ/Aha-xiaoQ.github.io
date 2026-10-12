@@ -10,7 +10,7 @@ globalThis.SITE_DATA = {
       "sourceId": "game-mario-mix-xiaoq",
       "title": "混合马里奥在下_小Q版",
       "summary": "九位角色，九种打法，同一个蘑菇王国。钻进管道挑战专属隐藏关，寻找彩蛋、解锁成就，再一路救出公主。",
-      "updatedAt": "2026-10-11",
+      "updatedAt": "2026-10-12",
       "href": "/games/mario-mix-xiaoq/",
       "entryLabel": "混合马里奥在下_小Q版",
       "items": []
@@ -72,7 +72,7 @@ globalThis.SITE_DATA = {
       "visibility": "public",
       "accessMode": "online",
       "createdAt": "2026-10-11",
-      "updatedAt": "2026-10-11",
+      "updatedAt": "2026-10-12",
       "displayOrder": 100,
       "categories": [
         "side-scrolling"
@@ -86,7 +86,7 @@ globalThis.SITE_DATA = {
       "evidenceIds": [],
       "detailUrl": "/games/mario-mix-xiaoq/",
       "localUrl": "games/mario-mix-xiaoq/play.html",
-      "downloadUrl": "https://raw.githubusercontent.com/Aha-xiaoQ/Aha-xiaoQ.github.io/5d70762f08793109a00a2c295d0b03e027e5619d/release-assets/mario-mix-xiaoq-0.8.12-r3/MarioMix_XiaoQ_0.8.12_r3_Game.zip",
+      "downloadUrl": "https://raw.githubusercontent.com/Aha-xiaoQ/Aha-xiaoQ.github.io/d3a29a3ce724baf3283a89410f4b499f36a4cf68/release-assets/mario-mix-xiaoq-0.8.13/MarioMix_XiaoQ_0.8.13_Game.zip",
       "downloadLabel": "下载离线游戏",
       "downloadInstructions": "下载后解压，用近期版本 Chrome 或 Edge 打开 play.html。",
       "videoSlot": true,
