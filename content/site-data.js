@@ -6,7 +6,7 @@ globalThis.SITE_DATA = {
     "publicIntro": "欢迎来逛。",
     "interests": [],
     "now": {
-      "label": "最近作品",
+      "label": "重点作品",
       "sourceId": "game-mario-mix-xiaoq",
       "title": "混合马里奥在下_小Q版",
       "summary": "九位角色，九种打法，同一个蘑菇王国。钻进管道挑战专属隐藏关，寻找彩蛋、解锁成就，再一路救出公主。",

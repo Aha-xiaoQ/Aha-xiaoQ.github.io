@@ -1,5 +1,5 @@
-import {isPublicUpdate} from '../journal/update-audience.mjs?v=dev-r44-94188aa455d4e736';
-import {withDocuments} from '../journal/documents.mjs?v=dev-r44-94188aa455d4e736';
+import {isPublicUpdate} from '../journal/update-audience.mjs?v=dev-r44-f1c9b1c4b70c5989';
+import {withDocuments} from '../journal/documents.mjs?v=dev-r44-f1c9b1c4b70c5989';
 /** Public-site projection. Source tasks and engineering records remain unchanged. */
 export const PUBLIC_EDITION='R24';
 export const CLUTTER=/布局测试|测试夹具|外围文本夹具|假数据|占位页面|lorem ipsum|我已为你|按你的要求|用户要求|用户曾反馈|不虚构|没有伪造|本轮|下一轮|更新包不会|#\s*[AB]：/i;
@@ -56,7 +56,7 @@ export function publicSiteData(input,experiments=[]){
   const id=s.profile.now.sourceId;
   const x=experiments.find(e=>e.id===id&&e.visibility==='public') || [...(s.items||[]),...(s.tools||[])].find(e=>e.id===id&&e.visibility==='public'&&e.lifecycleStatus!=='archived');
   if(!x)throw Error('Homepage work is unavailable: '+id);
-  s.profile.now={label:'最近作品',sourceId:id,title:x.title,summary:x.subtitle||x.summary,updatedAt:x.updatedAt||x.createdAt,href:experiments.includes(x)?'/notes/lab/docs/'+x.id+'/':x.detailUrl||x.localUrl||'/projects/',entryLabel:experiments.includes(x)?'实验室':x.title,items:[]};
+  s.profile.now={label:s.profile.now.label==='重点作品'?'重点作品':'最近作品',sourceId:id,title:x.title,summary:x.subtitle||x.summary,updatedAt:x.updatedAt||x.createdAt,href:experiments.includes(x)?'/notes/lab/docs/'+x.id+'/':x.detailUrl||x.localUrl||'/projects/',entryLabel:experiments.includes(x)?'实验室':x.title,items:[]};
  } else if(s.profile?.now&&playable.length){const x=playable[0];s.profile.now={label:'最近作品',title:x.title,summary:x.summary,updatedAt:x.updatedAt,href:x.detailUrl||x.localUrl||'/projects/',entryLabel:x.title,items:[]};}
  if(s.profile?.copy?.worksIntro?.text)s.profile.copy.worksIntro.text='浏览作品，查看源码与开发记录。';
  return s;
