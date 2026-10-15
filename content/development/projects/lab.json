@@ -5,7 +5,7 @@
   "category": "experiment",
   "visibility": "public",
   "stage": "交互动画与视频作品",
-  "updatedAt": "2026-10-12",
+  "updatedAt": "2026-10-16",
   "summary": "交互动画、音乐影像与主题节目。看作品，也看创作记录。",
   "intro": "这里收录交互动画、音乐影像与主题节目。原始代码实验提供在线体验与源文件；视频作品提供完整成片的观看入口。",
   "highlights": [
@@ -14,6 +14,10 @@
     "视频成片与原始代码实验分别展示。"
   ],
   "links": [
+    {
+      "label": "小小梦魇闪身步",
+      "href": "/notes/lab/docs/little-nightmares-shanshenbu/"
+    },
     {
       "label": "如果小六能按下暂停键……｜小小梦魇同人短片《帧外》",
       "href": "/notes/lab/docs/little-nightmares-seedance/"
@@ -62,6 +66,14 @@
     "path": "content/development/states/lab-public.json"
   },
   "updates": [
+    {
+      "id": "little-nightmares-shanshenbu",
+      "date": "2026-10-16",
+      "title": "小小梦魇闪身步",
+      "status": "released",
+      "summary": "小六和 Mono 的双人舞蹈同人动画已在哔哩哔哩发布。跟着老师学四组动作，一起找找学校走廊里的彩蛋。",
+      "public": true
+    },
     {
       "id": "little-nightmares-seedance",
       "date": "2026-10-12",
@@ -134,6 +146,19 @@
         "href": "/experiments/pelican-bicycle.html"
       },
       "archived": false
+    },
+    {
+      "id": "little-nightmares-shanshenbu",
+      "title": "小小梦魇闪身步",
+      "summary": "小六和 Mono 跟着老师学闪身步：念一遍，再跳一遍。走廊里还藏着熟悉的身影。",
+      "sections": [],
+      "sources": [],
+      "archived": false,
+      "kind": "lab-video",
+      "action": {
+        "label": "观看视频",
+        "href": "https://www.bilibili.com/video/BV1n9J26HEr7/"
+      }
     },
     {
       "id": "little-nightmares-seedance",
