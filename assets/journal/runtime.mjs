@@ -1,10 +1,10 @@
 /* public-edition:R24 */
-import {withDocuments,loadReadingDocument} from './documents.mjs?v=release-r24-61f3fc60982f';
-import {CATALOG} from './data/catalog.mjs?v=release-r24-61f3fc60982f';
-import {bindExperiments,disposeExperiments} from './experiment.mjs?v=release-r24-61f3fc60982f';
+import {withDocuments,loadReadingDocument} from './documents.mjs?v=release-r24-2c87c2ccb86c';
+import {CATALOG} from './data/catalog.mjs?v=release-r24-2c87c2ccb86c';
+import {bindExperiments,disposeExperiments} from './experiment.mjs?v=release-r24-2c87c2ccb86c';
 /** Content lifecycle only. Browser history and transition ownership stay in site-router.js. */
-import {validateCatalog,validateProject,normalizeState,route,MAX_BYTES,visibleTasks,projectURL,legacyProject} from './model.mjs?v=release-r24-61f3fc60982f';
-import {render,metadata,renderProjectCards,selectProjects,taskResults} from './render.mjs?v=release-r24-61f3fc60982f';
+import {validateCatalog,validateProject,normalizeState,route,MAX_BYTES,visibleTasks,projectURL,legacyProject} from './model.mjs?v=release-r24-2c87c2ccb86c';
+import {render,metadata,renderProjectCards,selectProjects,taskResults} from './render.mjs?v=release-r24-2c87c2ccb86c';
 const siteRoot=new URL('../../',import.meta.url), configURL=new URL('content/development/catalog.json',siteRoot);
 let catalogPromise, snapshot, current, activeLegacy;
 const states=new Map(), errors=new Map(), nodes=new Map(), filters=new Map(), loads=new Map();
