@@ -296,6 +296,16 @@
         "tests/platform/site-status.test.mjs"
       ],
       "limits": "Refresh only the exact identities of listed already audited original-MIT implementation files. Historical inventory, baseline hashes, grants, classifications and third-party exclusions are unchanged. No new grant for Little Nightmares characters, gameplay references, cover artwork, audio, video, font binaries or archives. This is local preparation, not external publication or legal clearance."
+    },
+    "mario-web-r10-prepublication": {
+      "basis": "Existing Mario Mix website template: online loading and control fixes, dated project update, explicit offline download version, English text and generated cache/font references.",
+      "sources": [
+        "content/site-data.js",
+        "content/development/projects/mario-mix.json",
+        "content/locales/en.json",
+        "docs/oss/reviews/mario-web-r10-prepublication.md"
+      ],
+      "limits": "Refresh existing original implementation identities only; baseline hashes, classifications, notices and all third-party rights remain unchanged."
     }
   },
   "newFiles": [
@@ -33446,64 +33456,64 @@
       "path": "about/index.html",
       "baselineGitBlob": "b4c6b69895f238d69b4df5ed8147d85edc3adc21",
       "baselineSha256": "14f3537855046ab8be6066b66617c050ce9545aa6f696abc603ce7e618079093",
-      "gitBlob": "a9a6b32eb467305b0cecbf431088313fc846932f",
-      "sha256": "41aae36597250c5f89e96c1a71d0da9785658e05fd62492e2ed1ba784b293f41",
+      "gitBlob": "843937f3ace375713a260d6a7ae60799de42981d",
+      "sha256": "414e25050cfdf22ba11f3772bd972beede6dc0fe360fb7f64e567e40c091797e",
       "reviewDate": "2026-10-16",
-      "evidence": "shanshenbu-predeployment"
+      "evidence": "mario-web-r10-prepublication"
     },
     {
       "path": "assets/i18n/messages.js",
       "baselineGitBlob": "592306765289377fd1e2dc5dc95a085e6848aba9",
       "baselineSha256": "e1ef83eccf9ed624f5b936503064e2bf9ba6a4cec19a402ee4c12dfde1021f15",
-      "gitBlob": "f2a835c8829b298420e2f8877cf8405786d692b1",
-      "sha256": "3843e38cdfc7f186ad96802e9a46aba14dc4ee125e5511b3a3c000130e124561",
+      "gitBlob": "3cf2d84bbd6dd8f04ce87906aa3cbdab3e84a0df",
+      "sha256": "3c9ac8bcdc3d7892a5ca52b050f6cecc28d806ba90769235e1b901323330a5a5",
       "reviewDate": "2026-10-16",
-      "evidence": "shanshenbu-predeployment"
+      "evidence": "mario-web-r10-prepublication"
     },
     {
       "path": "assets/journal/documents.mjs",
       "baselineGitBlob": "f1d865f9aa21d81fe7e03e7374982a2fc7b1ddaf",
       "baselineSha256": "ac614bd0ac679ed6614694d0c2d07441fc8b6789cff9bff06967c97c77bd23c4",
-      "gitBlob": "e532850c8f332e9a2fb9184f7035e60a59805468",
-      "sha256": "d35080c246ecfa06b569bf7a2c52fdc4d7518ede37b95cfbabf9b67a058c1f57",
+      "gitBlob": "a1e8aa2fa4efa4aeb8d25f481fac4c128fd16703",
+      "sha256": "932ca8b7c3fffe1aa2f97a726d896eaf0e970aaebc1875dadf4d1be55be21133",
       "reviewDate": "2026-10-16",
-      "evidence": "shanshenbu-predeployment"
+      "evidence": "mario-web-r10-prepublication"
     },
     {
       "path": "assets/journal/experiment.mjs",
       "baselineGitBlob": "30a08b98efacc83111c528fc4848a83628263446",
       "baselineSha256": "dc5478c8bc43d16ecae1f585cba9a6bba323fb140b7cd4590bf10e91a2b85596",
-      "gitBlob": "a537a983d50c6b730cfa08d848f504ff8ef5b61d",
-      "sha256": "8a46df9d172b5371da1f8983100ae226ce1b63e914c232ea0075c5cc5bc5eeff",
+      "gitBlob": "c93774e8e80aaca03f64b28f38001f3a7bc995da",
+      "sha256": "75ea6fb3442cf48ef6173cd9cc34e523be6db9e26e7984377a0331d5c6e78079",
       "reviewDate": "2026-10-16",
-      "evidence": "shanshenbu-predeployment"
+      "evidence": "mario-web-r10-prepublication"
     },
     {
       "path": "assets/journal/public-layout.mjs",
       "baselineGitBlob": "25bc488f32da2f9de2b4ef1107ff5571b74bb8ec",
       "baselineSha256": "bf4229ff50ceeb8071fb4af8b94e331642543b9856267db3d6193f93b81fa1eb",
-      "gitBlob": "78ac1b0fcc136941039bf99bfdc9af3f44d4e69b",
-      "sha256": "b0e19dc1320ba1faadd836e605a301073e991ecb187c1da6b238c450a618a148",
+      "gitBlob": "a93394dc80998d7abc14ac65069de250ddba6fdd",
+      "sha256": "ea88293dcfb396e97442a52571b2b4f7aa10c1f3201363deec2f4d5b41cf5f0c",
       "reviewDate": "2026-10-16",
-      "evidence": "shanshenbu-predeployment"
+      "evidence": "mario-web-r10-prepublication"
     },
     {
       "path": "assets/journal/render.mjs",
       "baselineGitBlob": "5b74c68409edfefaa6d990fc62111d09f7365c0b",
       "baselineSha256": "021ba67c6d27f8d1da66bbf949d7bb63c64580001deff22944d7847e731c4180",
-      "gitBlob": "1fc289fb0a61446726d552197d25586a66fa218e",
-      "sha256": "9fc75a87437e2caca2455285a0a172d989b165ba93bfbae7668bbe28ac0091d3",
+      "gitBlob": "5ba3c000b1f37dfb189a71e796eacc8871251100",
+      "sha256": "06f11fa99f5a67f91647a0dcba9f2f341c7ff225f9da87a463ca097ed8d8a839",
       "reviewDate": "2026-10-16",
-      "evidence": "shanshenbu-predeployment"
+      "evidence": "mario-web-r10-prepublication"
     },
     {
       "path": "assets/journal/runtime.mjs",
       "baselineGitBlob": "6899fd87a5a0d7a8295c832561bc0811d51b0e65",
       "baselineSha256": "a21d16de3732df431579b140a45e43101c0375a30d982aeb71241f84ab34c301",
-      "gitBlob": "e64a48fb54f306313ea4d63b7bec39b3dec61a6b",
-      "sha256": "dcb1b18cd72aad07d2ea3d027d88bf8f95dd66b078cf84c7a79b0cb34914c9ca",
+      "gitBlob": "f1fdaaf105046bc32a4d811eaf3e169699555837",
+      "sha256": "bd128ea625d74e111507b008ccf4e8a7f1b9268182600866e7f0e7ef5d11c7b1",
       "reviewDate": "2026-10-16",
-      "evidence": "shanshenbu-predeployment"
+      "evidence": "mario-web-r10-prepublication"
     },
     {
       "path": "assets/launch/journey.js",
@@ -33527,19 +33537,19 @@
       "path": "assets/platform/font-support.css",
       "baselineGitBlob": "0cda94702279ec09be8cfe945a0f3c42c1f8de50",
       "baselineSha256": "2f3a315563764c9b1f36dcc3792f19019ed5c548c0cb8d9c0a7f3b96c4abcc58",
-      "gitBlob": "b7619b4db0204e771f873767a44d6b2c753c3eec",
-      "sha256": "dd89e620a511b6e1ef00bd2f05688afe7d3b8046de8d7140791c3b4f8aa61a1a",
+      "gitBlob": "ab89b5308bf93994c95247b440ec2bf8e79e045c",
+      "sha256": "80f85f5f1140c6a9f4a6a478761c4b26e9fa7f2ced1e39b10bbab7d8c8f18b7f",
       "reviewDate": "2026-10-16",
-      "evidence": "shanshenbu-predeployment"
+      "evidence": "mario-web-r10-prepublication"
     },
     {
       "path": "assets/release/public-content.mjs",
       "baselineGitBlob": "45e2ebbc03feae6d17dc48528143e83d6b65f62a",
       "baselineSha256": "3de04282d9f70aaa21a31a4183fbd37d36dfd59cc5784dea995beb1907ce0e5f",
-      "gitBlob": "15d54de25f1959ad92ac9a940cb23c9accbefe44",
-      "sha256": "bc41984a94bb2c4ca9763039f27828b64377e41997fcd37e31fb0a4e6bd0711a",
+      "gitBlob": "bf17b22eac111dc36a3970c8ea765c3e68caaaa1",
+      "sha256": "0d609fdf47f7e3e29f7ad9009eec5e1afc10a0e0d5354f1e529137f9c9634342",
       "reviewDate": "2026-10-16",
-      "evidence": "shanshenbu-predeployment"
+      "evidence": "mario-web-r10-prepublication"
     },
     {
       "path": "assets/site-analytics.js",
@@ -33563,10 +33573,10 @@
       "path": "assets/site-router.js",
       "baselineGitBlob": "c8bffef04c666670f07e136e1f40f9909d2a4ebc",
       "baselineSha256": "d7be7f7c218c4f8c736686852d96049c048c5d551d04278f8936079c8586dbc3",
-      "gitBlob": "08dd44f2d6c755e7547c5915a8e61ba994595be5",
-      "sha256": "4a5c885bdaec4f3dcb87fa0e9244cb4663c8559c7e4714e5e71a44bda9110643",
+      "gitBlob": "ee10544de96cc35124c65c72d1b5d0c6e73cf5a6",
+      "sha256": "48d39bedbef5bb00b2e81c7cb8be0958f0becec5f384b0a72483362612c69eeb",
       "reviewDate": "2026-10-16",
-      "evidence": "shanshenbu-predeployment"
+      "evidence": "mario-web-r10-prepublication"
     },
     {
       "path": "assets/site-shell.js",
@@ -33599,91 +33609,91 @@
       "path": "games/index.html",
       "baselineGitBlob": "64c78896e8e263e48d704d76bd694b51f5be55a9",
       "baselineSha256": "859fda6c59ee8ac88c3a8c088765e091e5e92c49e5b70ab1d9e0c309cf32daa5",
-      "gitBlob": "756edb6e84bd9acff6b5b71deb128779dbe73fd5",
-      "sha256": "85c8f1c77a24f6008cb7c175f3246f02ba2b9a7f19f4bad45384e3e386736e57",
+      "gitBlob": "9d87d660ca1cdf7c7c314bd48765c5699cc74f56",
+      "sha256": "3fea39a4067a7393018e59fa2aa2376c6f6942498a56803b5c1c8006bbffdbbc",
       "reviewDate": "2026-10-16",
-      "evidence": "shanshenbu-predeployment"
+      "evidence": "mario-web-r10-prepublication"
     },
     {
       "path": "games/mario-classic/index.html",
       "baselineGitBlob": "212cec349506c6e9f05b0ce6ca0ddfa22890f69f",
       "baselineSha256": "ca2cf6d641fff43c726b000992507a238659c5832bf747b2138d68db4347f2ef",
-      "gitBlob": "08dd46f62a34ba70562c698e92955d61cff188b9",
-      "sha256": "2fc08d6bae7b832bb681ac5efd65d5b668286c54b6ec3edcb040ffc299768aee",
+      "gitBlob": "bb9122c4e83df073e7f685a77e0c46ccaa93c24b",
+      "sha256": "a941d8036dc3a586bcf032231c0b2c1151b7ccb85b8c8bc47e2681625497d381",
       "reviewDate": "2026-10-16",
-      "evidence": "shanshenbu-predeployment"
+      "evidence": "mario-web-r10-prepublication"
     },
     {
       "path": "games/mario-mix/index.html",
       "baselineGitBlob": "9b8d8164e6e2ab576e71fe82f54283c2c74236d2",
       "baselineSha256": "4afab9b76acb4f1f766919473ef73a49ed2ef686cc7a747cd09cbcf20fd42f11",
-      "gitBlob": "07638c38a8bebabeaedae7dfbd21d142bbfd4e63",
-      "sha256": "e0dc12f1551684e7480cd75d430b58d5fd9c6e4bc2caf1c1f73d7b1a487d0e3f",
+      "gitBlob": "40a55ace7985e93e430129a5f5bfbd10aba6f59b",
+      "sha256": "1b6dd1d7697d47ce8286755b3002cb68cfe1ce1e446fa97e029194cae4304d1c",
       "reviewDate": "2026-10-16",
-      "evidence": "shanshenbu-predeployment"
+      "evidence": "mario-web-r10-prepublication"
     },
     {
       "path": "games/pipebound/index.html",
       "baselineGitBlob": "cf14a36f4409acfefdf79986a5431abb118d4865",
       "baselineSha256": "b469f5c52f3c00ad9a01e2c890963830c18b0ec009bcdfa313f6d92137608937",
-      "gitBlob": "b4516abe0758be6dd2f3cd2a01db756591cd3da0",
-      "sha256": "c3ce939f79e1d0033171fd8a48a525ecd40a7a8d27a79ddcb129be995dc3a1eb",
+      "gitBlob": "d9d9e1c8d6c7fdc2f516299ded1f4cc12676cbca",
+      "sha256": "42d57ae4c912a71018840d9c7924a8b80ef10a5defc7644b84cfb2a7af11dc77",
       "reviewDate": "2026-10-16",
-      "evidence": "shanshenbu-predeployment"
+      "evidence": "mario-web-r10-prepublication"
     },
     {
       "path": "games/pixel-pipe-adventure/index.html",
       "baselineGitBlob": "f30f93e9701b7be1ab63308f7ce45ede31326278",
       "baselineSha256": "9e032e6320957edd7c9c473a6b4b7cb53e62af9e3463325f2c70ea4f7a57461d",
-      "gitBlob": "934dd21b788f5ed98cb98328dfb54675ea717c65",
-      "sha256": "1b7489789e7fdb1ac9dff57309df448dd38f6c71be34010f698fb2a28e729bb6",
+      "gitBlob": "013d4dd3e07994158fc4c4282d2700164b35ce72",
+      "sha256": "4b1ad3214ef8cd33d5a9a0e23645a2f8e600ccb188e59e784843830410dc779b",
       "reviewDate": "2026-10-16",
-      "evidence": "shanshenbu-predeployment"
+      "evidence": "mario-web-r10-prepublication"
     },
     {
       "path": "games/voxel-frontier/index.html",
       "baselineGitBlob": "cc0a1eeaf8f9780a9d752e221d5c34f325b0b9b0",
       "baselineSha256": "35240e2af8c07e84c0b88137a9f8549b58ee994a9b2a60c38ad9038c8c6565c3",
-      "gitBlob": "819ede6d7a85e17937b16db618951c6dc12da156",
-      "sha256": "50213543d0413fdc0d57915450786b9fc738f0799887eb19cc352fd759471646",
+      "gitBlob": "0812c0608cef10d2c1412840af15769c1c161818",
+      "sha256": "2a90d06d9c2659b24d6125eddea0bf37192b20e9d2eae6c5ef4ffdb6bdc349a1",
       "reviewDate": "2026-10-16",
-      "evidence": "shanshenbu-predeployment"
+      "evidence": "mario-web-r10-prepublication"
     },
     {
       "path": "index.html",
       "baselineGitBlob": "ba30bdc413adce5dc39476605082733cbe7ef1b6",
       "baselineSha256": "bf5269a0c063e71139f6ca7618b5bb158cfbee0ea504e225892878a815f53c30",
-      "gitBlob": "b09d38facfe659181ef78427447a83467051113b",
-      "sha256": "a8c265fe3c74c944e95aba976a2b1ea0fd470dcbee85d9b3a526c0970e4e2a7c",
+      "gitBlob": "41bccd4a6ec371efb4ee8e85345a11914931d472",
+      "sha256": "c8f055a0c9d83d91596638676acddad95b65d4c3e8d66d5291f566ff1596ca4b",
       "reviewDate": "2026-10-16",
-      "evidence": "shanshenbu-predeployment"
+      "evidence": "mario-web-r10-prepublication"
     },
     {
       "path": "notes/index.html",
       "baselineGitBlob": "2798af72431d60f24ea38cb152474670e1ecf0ad",
       "baselineSha256": "88754e40cf1c5c0dcd79fc17afea0353b44836298fe5731ed509143b356beec9",
-      "gitBlob": "ac74949ab3ee5b5a3821345afc8edd3472c54f16",
-      "sha256": "d8ca1b01508e256d975940886842d314430c37e04bdc872abdb0fa3b6cbc49fd",
+      "gitBlob": "acdd1e4c1e84911e987699079229679d10f83896",
+      "sha256": "2db25379baef0a2adbfe91c7953689895e3321fed78d648c051bfe4139fc20a8",
       "reviewDate": "2026-10-16",
-      "evidence": "shanshenbu-predeployment"
+      "evidence": "mario-web-r10-prepublication"
     },
     {
       "path": "projects/index.html",
       "baselineGitBlob": "e29006ec9904e4171b63620632c3dd0044455e18",
       "baselineSha256": "d4bee107d4e76b944e330ce48312a26bc13dd6ef0bcf725d7ffed54f097a9636",
-      "gitBlob": "5fb870a759e26542bdd2c57d09f2d6ac67805cbe",
-      "sha256": "7bce48f00bd0988e01da3240826b2b42d2ae10381e75dfd54e2096e3982ff718",
+      "gitBlob": "350b90badb85eb238c9d47d3783905b0409aab92",
+      "sha256": "388bb56d97e1c4bc959b6984999e414167e5865dfa98c92fb728c641da6dd11c",
       "reviewDate": "2026-10-16",
-      "evidence": "shanshenbu-predeployment"
+      "evidence": "mario-web-r10-prepublication"
     },
     {
       "path": "projects/q-mimi/index.html",
       "baselineGitBlob": "48c0b573d540ffeff57dc9e7808661f687559f25",
       "baselineSha256": "76a5551678228c5e9d0ec651a0503d3c271d28897a6899ac0012bace33105ea2",
-      "gitBlob": "b55aef9498578a367aae2d6a28f7a64c961c89a6",
-      "sha256": "6069411d99f5ed04aa3e1324e1fa5a88550a7d95e78ed4304e4d807f4b29bc94",
+      "gitBlob": "6032cb4638929a0eb5d876bffe7fe2c05212a8a8",
+      "sha256": "4e9a3829071963110c53b7847c8991eb3b4acddd37a4780ed77ebb4060321aaf",
       "reviewDate": "2026-10-16",
-      "evidence": "shanshenbu-predeployment"
+      "evidence": "mario-web-r10-prepublication"
     },
     {
       "path": "scripts/launch/build.mjs",
@@ -33833,10 +33843,10 @@
       "path": "tools/index.html",
       "baselineGitBlob": "18d7df5efa55242ae4d0911831f822f15b7714ce",
       "baselineSha256": "bb728a205fa37790269227a32b559ca0b5dc8fdcb7edabb906857a68c57616a7",
-      "gitBlob": "738df57523fd95678d7892ff49a5f640629212a8",
-      "sha256": "6a00a60ef57a08b72a9e2145a926ea61b69f4313f931430186d0cc29d05041a1",
+      "gitBlob": "42aa966c6ce41fbe14a3405cd91c5b48bdb096b4",
+      "sha256": "bc4be42e184a1dc219f40426132dbc60a1e6bee5850e99c642bab22438579ace",
       "reviewDate": "2026-10-16",
-      "evidence": "shanshenbu-predeployment"
+      "evidence": "mario-web-r10-prepublication"
     }
   ]
 }
