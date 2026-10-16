@@ -789,7 +789,7 @@ body.e04-select.c23-campaign #stage:fullscreen #game,body.e04-select.c23-campaig
  },{passive:false});
 })();
 </script></head>
-<body id="episode4" data-mix-build="0.8.14-web-r10">
+<body id="episode4" data-mix-build="0.8.14-web-r11">
 <div id="e04-loading" role="status"><strong>MARIO MIX</strong><span>正在载入游戏与角色素材…</span></div>
 <main class="app">
 <header><div class="brand"><div class="mark">M</div><div><h1>混合马里奥</h1><small>RESCUE RELAY / WORLD 1-2</small></div></div><span class="offline">地下援军 · 定稿 1.0</span></header>
@@ -24487,6 +24487,7 @@ readInput=function(){
  const v={x,y,aimX:0,aimY:0,jump:k('Space')||k('KeyK')||k('KeyZ')||pad&&t17Action(0),action:k('KeyJ')||k('KeyX')||k('ShiftLeft')||k('ShiftRight')||pad&&(t17Action(1)||t17Action(2)||t17Action(7))||!pad&&t17Input.mouseDown,auxiliary:false,auxEdge:false,tool:false,toolEdge:false};
  for(const a of touch.values()){if(a==='left')v.x=-1;else if(a==='right')v.x=1;else if(a==='up')v.y=-1;else if(a==='down')v.y=1;else if(a==='jump')v.jump=true;else if(a==='run')v.action=true;else if(a==='special'&&!prev.auxiliary){t17Interact();v.auxiliary=true;}}
  v.action=active&&(v.action||!!pending.action);v.jump=active&&v.jump;v.jumpEdge=active&&(!!pending.jump||v.jump&&!prev.jump);if(!active)v.x=v.y=0;pending={};
+ v.aimAssist=active&&!pad&&!t17Input.mouseDown&&['KeyJ','KeyX','ShiftLeft','ShiftRight'].some(k);t17Input.attackAssist=state?.tool===0&&v.aimAssist;
  t13Pointer.down=active&&!pad&&t17Input.mouseDown&&!t17Input.mouseBlocked;r05Pointer.down=t13Pointer.down;r05Pointer.pressed=false;return v;
 };
 // Installed ahead of legacy listeners by build.py so a key has exactly one owner.
@@ -24531,7 +24532,7 @@ const t17SyncBase=t15Sync;t15Sync=function(s){t17SyncBase(s);if(!isTrio())return
 const t17RenderBase=render;
 render=function(){const out=t17RenderBase();if(!isTrio()||!state)return out;const s=state;
  if(mode==='inventory')t17UpdateChest();
- if(mode==='playing'&&s.tool===0&&t20Device==='keyboard'&&t17Input.source==='mouse'&&t17Input.explicit){const a=t17AimPoint(s),w=s.r05Arena?R06_VIEW.w:W,h=s.r05Arena?R06_VIEW.h:H,x=a.x-s.cam,y=a.y-(s.r05Arena?(s.camY??-96):s.r07CamY||0),sz=s.r05Arena?5:3;
+ if(mode==='playing'&&s.tool===0&&!t17Input.attackAssist&&t20Device==='keyboard'&&t17Input.source==='mouse'&&t17Input.explicit){const a=t17AimPoint(s),w=s.r05Arena?R06_VIEW.w:W,h=s.r05Arena?R06_VIEW.h:H,x=a.x-s.cam,y=a.y-(s.r05Arena?(s.camY??-96):s.r07CamY||0),sz=s.r05Arena?5:3;
   if(x>3&&x<w-3&&y>38&&y<h-3){ctx.save();ctx.setTransform(canvas.width/w,0,0,canvas.height/h,0,0);ctx.lineWidth=s.r05Arena?1.25:.75;ctx.strokeStyle='#171e29';ctx.beginPath();ctx.arc(x,y,sz+1,0,Math.PI*2);ctx.stroke();ctx.strokeStyle='#fff3cf';ctx.beginPath();ctx.moveTo(x-sz-2,y);ctx.lineTo(x-2,y);ctx.moveTo(x+2,y);ctx.lineTo(x+sz+2,y);ctx.moveTo(x,y-sz-2);ctx.lineTo(x,y-2);ctx.moveTo(x,y+2);ctx.lineTo(x,y+sz+2);ctx.stroke();ctx.restore();}}
  return out;};
 const t17Style=document.createElement('style');t17Style.textContent='#t13ChestPanel button.t17-selected{outline:3px solid #fff0a6;outline-offset:3px}#t15Help table{width:100%;border-collapse:collapse;font-size:11px;line-height:1.65}#t15Help th,#t15Help td{text-align:left;padding:5px;border-bottom:1px solid #55637266}#t15Help th{color:#e8d9b6}';document.head.append(t17Style);
@@ -24748,12 +24749,12 @@ for(const [k,url] of Object.entries(T20_ASSETS))t20AssetJobs.push(new Promise(re
 // Mouse coordinates always use the visible canvas content rectangle, including
 // its border/letterboxing and the current camera; idle pointer does not own a pad.
 t17AimPoint=function(s,v={},tools=false){
- const p=s.p,sc=t10Scale(s),origin={x:p.x+p.w/2,y:p.y+p.h/2};
- if(t20Device==='keyboard'&&t17Input.source==='mouse'&&t17Input.lastMouse){
+ const p=s.p,sc=t10Scale(s),origin={x:p.x+p.w/2,y:p.y+p.h/2},assisted=!tools&&s.tool===0&&(t20Device==='gamepad'||t20Device==='touch'&&v.aimAssist!==false||v.aimAssist===true);
+ if(!assisted&&t20Device==='keyboard'&&t17Input.source==='mouse'&&t17Input.lastMouse){
   t13SamplePointer({clientX:t17Input.lastMouse[0],clientY:t17Input.lastMouse[1]});
   if(t13Pointer.active)return{x:t13Pointer.x,y:t13Pointer.y,source:'mouse',pointer:true};
  }
-  if((t20Device==='gamepad'||t20Device==='touch'&&v.aimAssist!==false)&&!tools){
+  if(assisted){
    // Use the same visible target registry as trajectory prediction and hits.
    // An arriving/off-screen eye must not steal aim from playable targets.
    const eye=s.r05Arena&&s.phase==='battle'?r06AllTargets(s).find(t=>t.obj===s.eye&&terraTrajectoryVisible(s,t)):null;
@@ -24762,7 +24763,7 @@ t17AimPoint=function(s,v={},tools=false){
    // Aim assistance only sets the launch location. Arrows remain ordinary projectiles.
    const lead=0; // The shared weapon launch profile owns prediction for every device.
    const x=target.x+clamp((target.vx||0)*lead,-600,600),y=target.y+clamp((target.vy||0)*lead,-450,450);
-    return{x,y,source:t20Device==='touch'?'touch-auto':'gamepad-auto',pointer:false,targetId:target.id};
+    return{x,y,source:t20Device+'-auto',pointer:false,targetId:target.id};
   }
  }
  let dx=v.x||t20LeftAim[0]||p.facing,dy=v.y||t20LeftAim[1]||0;
@@ -24966,7 +24967,7 @@ const t20Status=document.querySelector('.status-card'),t20Buttons=document.query
 for(const id of ['relayMessage','heroStatus','gamepadStatus'])if($(id))t20Status.append($(id));
 t20Buttons.prepend($('charactersButton'));t20Buttons.after(t15Help);
 const t20Audio=document.createElement('details');t20Audio.id='t20Audio';t20Audio.innerHTML='<summary>声音设置</summary>';const t20AudioPanel=document.querySelector('.audio-panel');t20AudioPanel.before(t20Audio);t20Audio.append(t20AudioPanel);t15Help.after(t20Audio);
-t15Help.innerHTML=`<summary>操作指南 · 手柄 / 键鼠</summary><table><thead><tr><th>动作</th><th>手柄</th><th>键鼠</th></tr></thead><tbody><tr><td>移动</td><td>左摇杆 / 十字键</td><td>WASD / 方向键</td></tr><tr><td>瞄准</td><td>自动索敌；无目标随方向</td><td>鼠标</td></tr><tr><td>跳跃 / 跳车</td><td>A</td><td>空格 / K / Z</td></tr><tr><td>攻击 / 工具</td><td>B / X / RT</td><td>左键 / J</td></tr><tr><td>切换工具</td><td>LB / RB</td><td>1–6 / 滚轮 / [ ]</td></tr><tr><td>切换武器</td><td>按下右摇杆</td><td>Q</td></tr><tr><td>交互 / 管道</td><td>Y / 方向↓</td><td>E / L / 右键 / ↓</td></tr><tr><td>上下已得坐骑</td><td>LT</td><td>F</td></tr><tr><td>治疗</td><td>按下左摇杆</td><td>H</td></tr><tr><td>暂停</td><td>Start</td><td>P / Esc</td></tr></tbody></table><p>宝箱接触后打开并领取。矿车接触上车，跳跃下车；跳下后车辆停在原处，离开再碰到可以重新上车。左方向控制矿车运行方向，松开继续巡航，下方向刹车。</p><p>键鼠由鼠标瞄准，手柄自动选择敌人；按实际输入切换。右摇杆偏转不影响武器方向。镐与斧按左方向使用，鼠标可精确选块。子弹、箭无限，武器自带追踪行为保留。</p><p>补给箱先取云朵瓶、饰品与弓，最后拿最右边的可疑眼球。战斗中不能返程，胜利后从原管道返回。套装拾取后自动换装并骑 UFO；UFO 向下可穿过木平台。</p>`;
+t15Help.innerHTML=`<summary>操作指南 · 手柄 / 键鼠</summary><table><thead><tr><th>动作</th><th>手柄</th><th>键鼠</th></tr></thead><tbody><tr><td>移动</td><td>左摇杆 / 十字键</td><td>WASD / 方向键</td></tr><tr><td>瞄准</td><td>自动索敌；无目标随方向</td><td>J 自动索敌；左键按准星瞄准</td></tr><tr><td>跳跃 / 跳车</td><td>A</td><td>空格 / K / Z</td></tr><tr><td>攻击 / 工具</td><td>B / X / RT</td><td>左键 / J</td></tr><tr><td>切换工具</td><td>LB / RB</td><td>1–6 / 滚轮 / [ ]</td></tr><tr><td>切换武器</td><td>按下右摇杆</td><td>Q</td></tr><tr><td>交互 / 管道</td><td>Y / 方向↓</td><td>E / L / 右键 / ↓</td></tr><tr><td>上下已得坐骑</td><td>LT</td><td>F</td></tr><tr><td>治疗</td><td>按下左摇杆</td><td>H</td></tr><tr><td>暂停</td><td>Start</td><td>P / Esc</td></tr></tbody></table><p>宝箱接触后打开并领取。矿车接触上车，跳跃下车；跳下后车辆停在原处，离开再碰到可以重新上车。左方向控制矿车运行方向，松开继续巡航，下方向刹车。</p><p>按键盘攻击键自动选择敌人；按住鼠标左键按准星瞄准，松开左键后键盘攻击恢复自动索敌。手柄和触屏自动选择敌人。右摇杆可手动瞄准。镐与斧按左方向使用，鼠标可精确选块。子弹、箭无限，武器自带追踪行为保留。</p><p>补给箱先取云朵瓶、饰品与弓，最后拿最右边的可疑眼球。战斗中不能返程，胜利后从原管道返回。套装拾取后自动换装并骑 UFO；UFO 向下可穿过木平台。</p>`;
 function t20CleanUI(){if(!isTrio())return;
  $('bestLabel').textContent='';document.querySelector('header .offline').textContent='TERRARIA · 1-3';t10Build.textContent='';
  const card=document.querySelector('[data-hero="sandboxTrio"] small');if(card)card.textContent='关卡 1-3';
@@ -25595,6 +25596,7 @@ function terraMainlineCommands(input,v=input){
   for(const [key,action]of [['weaponPressed','weapon'],['mountPressed','mount'],['mountCyclePressed','mountCycle'],['healPressed','heal'],['interactPressed','interact'],['toolPrevPressed','toolPrev'],['torchPressed','torch'],['recallPressed','recall']])if(input[key])t17Perform(action);
 }
 function terraMainlinePointerInput(s,v){
+  t17Input.attackAssist=s.tool===0&&v.aimAssist===true;
   const q=v.pointer,gamepad=v.device==='gamepad'||v.inputDevice==='gamepad',touch=v.device==='touch'||v.inputDevice==='touch';
   if(gamepad||touch){t13Pointer.active=t13Pointer.down=r05Pointer.active=r05Pointer.down=r05Pointer.pressed=false;t20Device=touch?'touch':'gamepad';t17Input.source=t20Device;t17Input.explicit=false;t20LeftAim=[v.x||s.p.facing,v.y||0];}
   else if(q&&Number.isFinite(q.x)&&Number.isFinite(q.y)){
@@ -26206,7 +26208,7 @@ r05SyncPointer=function(){if(state?.mainline||state?.mainlineInput)return;return
 const terraMainlineAimBase=t17AimPoint,terraMainlineMouseTargetBase=t21MouseTarget;
 t17AimPoint=function(s,v={},tool=false){
   if((s?.mainline||s?.mainlineInput)&&v.rightAim&&Math.hypot(v.ax||0,v.ay||0)>.25){const len=Math.hypot(v.ax,v.ay);return{x:s.p.x+s.p.w/2+v.ax/len*160,y:s.p.y+s.p.h/2+v.ay/len*160,source:'stick',pointer:false};}
-  if((s?.mainline||s?.mainlineInput)&&t20Device==='keyboard'&&t17Input.source==='mouse'&&t13Pointer.active)
+  if((s?.mainline||s?.mainlineInput)&&(tool||s.tool!==0||v.aimAssist!==true)&&t20Device==='keyboard'&&t17Input.source==='mouse'&&t13Pointer.active)
     return {x:t13Pointer.x,y:t13Pointer.y,source:'mouse',pointer:true};
   return terraMainlineAimBase(s,v,tool);
 };
@@ -32549,8 +32551,12 @@ function projectLegacyInput(env,mode){
     const binds=bindings;commandBindings=binds;
     Object.assign(v,E04Modules.mapInputActions(binds?withActionTouch(binds):TERRA_FALLBACK_ACTIONS,env));
     if(pad.buttons.some(Boolean)||pad.x||pad.up||pad.down)v.device='gamepad';v.attack ||=pointer.down||pointerAttack;v.tool=v.toolNext||held('ability')||held('special');v.cycle=false;v.mount ||=held('extra');v.weapon ||=held('cycle');
+    // A keyboard attack owns weapon aim unless the mouse is actively firing.
+    // Merely hovering over the canvas must not keep an old cursor in charge of
+    // J/X. Keep the pointer intact for tools and intentional mouse attacks.
+    if(v.device==='keyboard'&&!pointer.down&&!pointerAttack&&(binds||TERRA_FALLBACK_ACTIONS).attack?.keys?.some(k=>press(k)))v.aimAssist=true;
     // Touch has no separate aiming surface. It shares assisted targeting with
-    // a pad's left stick, while mouse and right-stick aim stay explicit.
+    // keyboard attacks and a pad's left stick; mouse/right-stick stay explicit.
     if(v.device==='touch'){v.aimAssist=true;v.pointer.active=v.pointer.down=false;}
     if(binds){v.x=Math.sign(Number(v.right)-Number(v.left)+pad.x);v.up ||=pad.up;v.down ||=pad.down;}
    }else{v.run ||=held('attack')||held('extra');v.attack=v.attack||v.run||(mode==='abilityAttack'&&(held('special')||held('ability')));if(mode==='ryu')Object.assign(v,E04Modules.mapInputActions(RYU_INPUT_ACTIONS,env));}
@@ -32574,7 +32580,7 @@ const RYU_INPUT_ACTIONS={ability:{keys:['KeyL'],pad:[2],touch:['special','abilit
 const TERRA_FALLBACK_ACTIONS={attack:{keys:['KeyJ','KeyX','ShiftLeft','ShiftRight'],pad:[1,2,7],touch:['attack','run']},toolPrev:{keys:['BracketLeft'],pad:[4]},toolNext:{keys:['BracketRight'],pad:[5]},weapon:{keys:['KeyQ'],pad:[3]},mount:{keys:['KeyF'],pad:[11]},heal:{keys:['KeyH'],pad:[10]},interact:{keys:['KeyE','KeyL'],pad:[6]},mountCycle:{keys:['KeyV']},torch:{keys:['KeyG']},recall:{keys:['KeyB'],pad:[8]}};
 const LEGACY_INPUT_KEYS=['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','KeyA','KeyD','KeyW','KeyS','Space','KeyK','KeyZ','KeyJ','KeyX','KeyE','KeyL','ShiftLeft','ShiftRight','KeyQ','KeyV','KeyM','KeyN','KeyH','KeyG','KeyB','BracketLeft','BracketRight','Digit1','Digit2','Digit3','Digit4','Digit5','Digit6'];
 // These are existing strings moved with their profiles; no UI copy changes.
-const legacyInputHelp={bill:'射击　J / X · 方向瞄准<br>下穿　↓ + 空格',megaman:'蓄力炮　按住 J / X，松开发射',ryu:'挥刀　J / X<br>忍术　L · 换武器 E',tank:'移动　方向键 / WASD<br>开炮　J / X / 空格',sandboxTrio:'工具　1–6 / [ ] · 使用 J / 鼠标<br>武器　Q · 坐骑 F / V<br>治疗　H · 交互 E',ori:'精灵之火　J / 鼠标左键<br>弹射　E / 鼠标右键<br>冲刺　Shift · 滑翔 Q · 光弹 L',sonic:'蓄力冲刺　按住 J，松开发射<br>追踪　E · 空中冲刺 Shift<br>贴墙上跑　方向 + ↑'};
+const legacyInputHelp={bill:'射击　J / X · 方向瞄准<br>下穿　↓ + 空格',megaman:'蓄力炮　按住 J / X，松开发射',ryu:'挥刀　J / X<br>忍术　L · 换武器 E',tank:'移动　方向键 / WASD<br>开炮　J / X / 空格',sandboxTrio:'攻击　J 自动索敌 / 左键手瞄<br>工具　1–6 / [ ] · 武器 Q<br>坐骑 F / V · 治疗 H · 交互 E',ori:'精灵之火　J / 鼠标左键<br>弹射　E / 鼠标右键<br>冲刺　Shift · 滑翔 Q · 光弹 L',sonic:'蓄力冲刺　按住 J，松开发射<br>追踪　E · 空中冲刺 Shift<br>贴墙上跑　方向 + ↑'};
 function legacyInputProfile(id,mode,options={}){
  return {version:1,id:'legacy:'+id,actions:LEGACY_INPUT_ACTIONS,acceptKeys:LEGACY_INPUT_KEYS,ownedKeys:[],capturePointer:[],conflicts:'allow',
   help:legacyInputHelp[id],showJumpHelp:id!=='tank',abilityLabel:({sandboxTrio:'工具',ryu:'忍术',ori:'弹射',sonic:'追踪',tank:'开炮',bill:'射击',megaman:'蓄力'})[id]||'能力',
