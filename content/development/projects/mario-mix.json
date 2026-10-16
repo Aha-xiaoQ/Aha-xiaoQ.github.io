@@ -5,7 +5,7 @@
   "category": "game",
   "visibility": "public",
   "stage": "混合马里奥与自制关卡",
-  "updatedAt": "2026-10-12",
+  "updatedAt": "2026-10-16",
   "summary": "九位角色的混合冒险与独立自制关卡。试玩游戏，查看制作记录与源码。",
   "intro": "混合马里奥在下_小Q版包含九位角色、经典关卡、角色专属隐藏关、彩蛋与成就。也可以体验自制马里奥系列：五门挑战、午夜厨房潜行与 Bad Apple!! 音乐小剧场。",
   "highlights": [
@@ -90,6 +90,16 @@
     "path": "content/development/states/mario-mix-public.json"
   },
   "updates": [
+    {
+      "id": "mario-web-r11",
+      "date": "2026-10-16",
+      "revision": 26,
+      "title": "混合马里奥：加载、操作与瞄准修复",
+      "status": "released",
+      "kind": "content",
+      "summary": "改进选人后的素材加载与失败重试，优化手机操作和全屏成就，修复天空出口与坦克卡关，调整追踪弹和龟壳碰撞。泰拉瑞亚隐藏关按 J 自动瞄准，按住鼠标左键手动瞄准。",
+      "public": true
+    },
     {
       "id": "mario-background-0814",
       "date": "2026-10-12",
