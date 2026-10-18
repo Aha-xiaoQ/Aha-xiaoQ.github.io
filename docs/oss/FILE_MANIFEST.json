@@ -316,6 +316,16 @@
         "docs/oss/reviews/mario-minecraft-prepublication.md"
       ],
       "limits": "Identity maintenance only. Original baseline, classifications, licenses and third-party notices remain unchanged. No rights grant for the game HTML, source/audio archives, cover art, original characters, music or font programs. This is local prepublication, not deployment."
+    },
+    "map-workshop-1-11-0-publication": {
+      "basis": "The existing tool guide and directory identify Map Workshop implementation 1.11.0, its setup steps, and its unchanged download route. Project updates and English copy follow the existing generators. The homepage keeps the owner-selected Custom Mario entry. Refreshed original components were compared against 0fe1f7dde0e5f083e46f65e40c26471b76295fbd.",
+      "sources": [
+        "content/site-data.js",
+        "content/development/projects/mario-mix.json",
+        "content/locales/en.json",
+        "docs/oss/reviews/map-workshop-1-11-0-publication.md"
+      ],
+      "limits": "Exact identity maintenance only. Baselines, classifications, license grants and third-party notices are unchanged. The tool archive retains its own license and attribution files; this record grants no additional rights to the archive, game assets, characters, music or fonts."
     }
   },
   "newFiles": [
@@ -33466,64 +33476,64 @@
       "path": "about/index.html",
       "baselineGitBlob": "b4c6b69895f238d69b4df5ed8147d85edc3adc21",
       "baselineSha256": "14f3537855046ab8be6066b66617c050ce9545aa6f696abc603ce7e618079093",
-      "gitBlob": "0377de022d6146b0a0595d472e0d97a711feeb78",
-      "sha256": "cda75e705b03ee62e222047e167bb7682fa83595d771d5c7cf9ffdd326110862",
+      "gitBlob": "e9caac23c502da7174853ee07cab346f4e5ce775",
+      "sha256": "139b59349978eca5d35e4851871897160d736d2937ddac3ff768fbcc1ee8c203",
       "reviewDate": "2026-10-19",
-      "evidence": "mario-minecraft-prepublication"
+      "evidence": "map-workshop-1-11-0-publication"
     },
     {
       "path": "assets/i18n/messages.js",
       "baselineGitBlob": "592306765289377fd1e2dc5dc95a085e6848aba9",
       "baselineSha256": "e1ef83eccf9ed624f5b936503064e2bf9ba6a4cec19a402ee4c12dfde1021f15",
-      "gitBlob": "7887dc0b539305a8e642ac545c5051eb182345a2",
-      "sha256": "7691893e8272698a57d0cfb19c675c52ba290f4cd3e3b7d31983f20108741ae4",
+      "gitBlob": "5656bb878847b639f5a48180a0af23c1dfca0f79",
+      "sha256": "01442f71c5ed254267c6066c9e226753bee3c3538f673fa3e421212b7da106ad",
       "reviewDate": "2026-10-19",
-      "evidence": "mario-minecraft-prepublication"
+      "evidence": "map-workshop-1-11-0-publication"
     },
     {
       "path": "assets/journal/documents.mjs",
       "baselineGitBlob": "f1d865f9aa21d81fe7e03e7374982a2fc7b1ddaf",
       "baselineSha256": "ac614bd0ac679ed6614694d0c2d07441fc8b6789cff9bff06967c97c77bd23c4",
-      "gitBlob": "f17cf14801d2bc7a922339c9ca7818f5ac7a7740",
-      "sha256": "2b849a0c048fd67eaa331f5ab1c1eef9b89c9573260a2a9d4828c162b899195c",
+      "gitBlob": "a7e3bee41c5da278d12520a1cc265603d0ccbffa",
+      "sha256": "f56230b1818d9d8d7d2c199b04780a1172878955c85c19f68da29910635446c9",
       "reviewDate": "2026-10-19",
-      "evidence": "mario-minecraft-prepublication"
+      "evidence": "map-workshop-1-11-0-publication"
     },
     {
       "path": "assets/journal/experiment.mjs",
       "baselineGitBlob": "30a08b98efacc83111c528fc4848a83628263446",
       "baselineSha256": "dc5478c8bc43d16ecae1f585cba9a6bba323fb140b7cd4590bf10e91a2b85596",
-      "gitBlob": "e5b47a2885e86615b2254c3d8b6d50718e485de4",
-      "sha256": "2e3151612873a2365169e2dd7824b8f3e0bdb699dce09bc8774461fdd5f7db9f",
+      "gitBlob": "a6f50e547426629072bb8f43dfb270a16c919a61",
+      "sha256": "25b8db1108f7378cbb84fcd52223171e784661bcc18c2f0048ea2684ff024cd2",
       "reviewDate": "2026-10-19",
-      "evidence": "mario-minecraft-prepublication"
+      "evidence": "map-workshop-1-11-0-publication"
     },
     {
       "path": "assets/journal/public-layout.mjs",
       "baselineGitBlob": "25bc488f32da2f9de2b4ef1107ff5571b74bb8ec",
       "baselineSha256": "bf4229ff50ceeb8071fb4af8b94e331642543b9856267db3d6193f93b81fa1eb",
-      "gitBlob": "7759f9a446a01b04a0c3ac547354bcb90b7b2214",
-      "sha256": "7565f46bb170a0c3aea580aa8b87eef458ea1fe2d2ea05cb6fb9b306c1c76d9a",
+      "gitBlob": "7702ce1f0af69f4d0dd436ddecca6bc28b86b719",
+      "sha256": "b6684543280c82fedf78db3eb42d12336e1896065dca40e2de6a0985e67cfbc3",
       "reviewDate": "2026-10-19",
-      "evidence": "mario-minecraft-prepublication"
+      "evidence": "map-workshop-1-11-0-publication"
     },
     {
       "path": "assets/journal/render.mjs",
       "baselineGitBlob": "5b74c68409edfefaa6d990fc62111d09f7365c0b",
       "baselineSha256": "021ba67c6d27f8d1da66bbf949d7bb63c64580001deff22944d7847e731c4180",
-      "gitBlob": "5bc838319358227a5fc0fce88dc6777d75db6001",
-      "sha256": "417f1100660d5cc3b6b6ac81a758787196c7f2bf3a38fa63be88cef4b45d28ec",
+      "gitBlob": "fda04381329ce66985cccb50d44ad7b089d7f385",
+      "sha256": "c8160129bf288658385ef69d954e12e03040ccfbed806bafff29c8ee40caca85",
       "reviewDate": "2026-10-19",
-      "evidence": "mario-minecraft-prepublication"
+      "evidence": "map-workshop-1-11-0-publication"
     },
     {
       "path": "assets/journal/runtime.mjs",
       "baselineGitBlob": "6899fd87a5a0d7a8295c832561bc0811d51b0e65",
       "baselineSha256": "a21d16de3732df431579b140a45e43101c0375a30d982aeb71241f84ab34c301",
-      "gitBlob": "90a0ec89f7c82755d93956a2e42eec46ac3b1b67",
-      "sha256": "e9225d1dddcc4c4b9bd55fa793487d2862b46824a41846ae120ffd7744c3b850",
+      "gitBlob": "be5efcae86f3ec1948aa1cc427170dd07d4eb86f",
+      "sha256": "302de37befbbe45b8db65bd9afa3e0853d2fb210f805f998de179fea5f5d561f",
       "reviewDate": "2026-10-19",
-      "evidence": "mario-minecraft-prepublication"
+      "evidence": "map-workshop-1-11-0-publication"
     },
     {
       "path": "assets/launch/journey.js",
@@ -33556,10 +33566,10 @@
       "path": "assets/release/public-content.mjs",
       "baselineGitBlob": "45e2ebbc03feae6d17dc48528143e83d6b65f62a",
       "baselineSha256": "3de04282d9f70aaa21a31a4183fbd37d36dfd59cc5784dea995beb1907ce0e5f",
-      "gitBlob": "2b31459487966efcde427e54045479cb4de87b87",
-      "sha256": "ea53a16fc8a80b27d49b4dcce70c87a70fe85addb389976bfede153deba4537e",
+      "gitBlob": "d76bd640fff1e80d16f46f4d4d911eb922483a79",
+      "sha256": "f5c0beebb5596e22ce458b05db207294d92d99430f0c0c3630b8befedec88c7a",
       "reviewDate": "2026-10-19",
-      "evidence": "mario-minecraft-prepublication"
+      "evidence": "map-workshop-1-11-0-publication"
     },
     {
       "path": "assets/site-analytics.js",
@@ -33583,10 +33593,10 @@
       "path": "assets/site-router.js",
       "baselineGitBlob": "c8bffef04c666670f07e136e1f40f9909d2a4ebc",
       "baselineSha256": "d7be7f7c218c4f8c736686852d96049c048c5d551d04278f8936079c8586dbc3",
-      "gitBlob": "c52acbc89335e912fe7f6f3ca7df4cc17df73aee",
-      "sha256": "768d706379607c591c44d34055086b5553a40798a249081fcc8c4fdc1d6b2d0a",
+      "gitBlob": "4c4be1ef2b6a06498b4b2be3224115d572b751c3",
+      "sha256": "ce91e35c3c622655e642c2c07a49d270dbcdb9e62d3a7ed4f3349db586eda5a1",
       "reviewDate": "2026-10-19",
-      "evidence": "mario-minecraft-prepublication"
+      "evidence": "map-workshop-1-11-0-publication"
     },
     {
       "path": "assets/site-shell.js",
@@ -33619,91 +33629,91 @@
       "path": "games/index.html",
       "baselineGitBlob": "64c78896e8e263e48d704d76bd694b51f5be55a9",
       "baselineSha256": "859fda6c59ee8ac88c3a8c088765e091e5e92c49e5b70ab1d9e0c309cf32daa5",
-      "gitBlob": "3387d93883095abf3c7e00fbe1779e2890d57b0c",
-      "sha256": "0cf2a00992e9c62432b4f55a6f5c5a1cc1703b7dea46538377e0ab9ee9be778e",
+      "gitBlob": "c19f3599076701cb4cad14cf5df460b4a65c5884",
+      "sha256": "43a6f92ad30661eb0c13edc6cbb83972d71f4a03e4c8e82949efd06fe778e3ec",
       "reviewDate": "2026-10-19",
-      "evidence": "mario-minecraft-prepublication"
+      "evidence": "map-workshop-1-11-0-publication"
     },
     {
       "path": "games/mario-classic/index.html",
       "baselineGitBlob": "212cec349506c6e9f05b0ce6ca0ddfa22890f69f",
       "baselineSha256": "ca2cf6d641fff43c726b000992507a238659c5832bf747b2138d68db4347f2ef",
-      "gitBlob": "710ab89d0f088acbe27105acb5c101d756b8c197",
-      "sha256": "9225a869442ed6e9b505b11cdf04cff8db01e51447645e6ec4b7eccd7441e3b1",
+      "gitBlob": "85be3522f9bd24160412fcbf1226b724b28a933e",
+      "sha256": "c67b7ced8b3bf5b3b7666ac74c585f61fff8496601905e42aa25d7a0c0969443",
       "reviewDate": "2026-10-19",
-      "evidence": "mario-minecraft-prepublication"
+      "evidence": "map-workshop-1-11-0-publication"
     },
     {
       "path": "games/mario-mix/index.html",
       "baselineGitBlob": "9b8d8164e6e2ab576e71fe82f54283c2c74236d2",
       "baselineSha256": "4afab9b76acb4f1f766919473ef73a49ed2ef686cc7a747cd09cbcf20fd42f11",
-      "gitBlob": "f75edc29d623d96fa771dac1a3200337a938c203",
-      "sha256": "686eeb662f13d79f2f93e99434ba9fa1c7b803989a170cdd982d67e103e0c4fa",
+      "gitBlob": "a183171032c9890453b4d61b16bfdefdcdda4db6",
+      "sha256": "1554ba183a394bd691b6ca11580d58ccaefba607ec731e1bdd58ecc105fd2d29",
       "reviewDate": "2026-10-19",
-      "evidence": "mario-minecraft-prepublication"
+      "evidence": "map-workshop-1-11-0-publication"
     },
     {
       "path": "games/pipebound/index.html",
       "baselineGitBlob": "cf14a36f4409acfefdf79986a5431abb118d4865",
       "baselineSha256": "b469f5c52f3c00ad9a01e2c890963830c18b0ec009bcdfa313f6d92137608937",
-      "gitBlob": "e08fd4fdfaafd2c17181248d51b26dbb31bf8002",
-      "sha256": "bda10e06c0a6552e5930dd167e35b52c3bb93ad7883d3ae057de8cf6d157012b",
+      "gitBlob": "64d3cea433494ee2c82ba8356b2183eb391e84ac",
+      "sha256": "9fec89b94bb467af33a8bb1c7fdb5134b68568a9f8aefd6b76b488c9e0e8aab4",
       "reviewDate": "2026-10-19",
-      "evidence": "mario-minecraft-prepublication"
+      "evidence": "map-workshop-1-11-0-publication"
     },
     {
       "path": "games/pixel-pipe-adventure/index.html",
       "baselineGitBlob": "f30f93e9701b7be1ab63308f7ce45ede31326278",
       "baselineSha256": "9e032e6320957edd7c9c473a6b4b7cb53e62af9e3463325f2c70ea4f7a57461d",
-      "gitBlob": "579adbf8ccc67ff84c53dd4a2c9b2486f9ab40e2",
-      "sha256": "0bd44db5ca71153dfdd340f9dc606c1070a135779c441908f1ec9b530285d51e",
+      "gitBlob": "95679855e6123f606951e14291c12cfb2eac3f64",
+      "sha256": "2d9cd447c347feb6bfef08f347bcf5068121373276a541b76633ff9b5b06bd09",
       "reviewDate": "2026-10-19",
-      "evidence": "mario-minecraft-prepublication"
+      "evidence": "map-workshop-1-11-0-publication"
     },
     {
       "path": "games/voxel-frontier/index.html",
       "baselineGitBlob": "cc0a1eeaf8f9780a9d752e221d5c34f325b0b9b0",
       "baselineSha256": "35240e2af8c07e84c0b88137a9f8549b58ee994a9b2a60c38ad9038c8c6565c3",
-      "gitBlob": "6d5b9b8889f9da676539d1041c889280675fa1bd",
-      "sha256": "8fbba285966b2efcf938b6c184c2e1677393ab808dcd4569e4b2549d3c69d39a",
+      "gitBlob": "db11ee1f3582ba7ab32aaf4985e799484ff6cb33",
+      "sha256": "ba5ed0ffbd24876834977a8716fe41b21ec75a32fb3f32e4c3fec3b29620ba26",
       "reviewDate": "2026-10-19",
-      "evidence": "mario-minecraft-prepublication"
+      "evidence": "map-workshop-1-11-0-publication"
     },
     {
       "path": "index.html",
       "baselineGitBlob": "ba30bdc413adce5dc39476605082733cbe7ef1b6",
       "baselineSha256": "bf5269a0c063e71139f6ca7618b5bb158cfbee0ea504e225892878a815f53c30",
-      "gitBlob": "15119a9853d0165389da6eea8137b5e1438e9258",
-      "sha256": "0c2146e180b6e569e687ba418a49dea2d216ff1b207172aa745cbe2e525ba843",
+      "gitBlob": "9a49af869eeeca305268b00a00f5908196d81ca6",
+      "sha256": "416aed09765b85a3f2d425e355d3e61483268b950b1329b5be92668d59f577b1",
       "reviewDate": "2026-10-19",
-      "evidence": "mario-minecraft-prepublication"
+      "evidence": "map-workshop-1-11-0-publication"
     },
     {
       "path": "notes/index.html",
       "baselineGitBlob": "2798af72431d60f24ea38cb152474670e1ecf0ad",
       "baselineSha256": "88754e40cf1c5c0dcd79fc17afea0353b44836298fe5731ed509143b356beec9",
-      "gitBlob": "a2ecd049ca822faf544a5fb76c397d50819d2faf",
-      "sha256": "473caab8c1360c61643afa2b8065c149bb2db7c08ce158eedfc8c72613723af4",
+      "gitBlob": "11a55d272e7a3b640c090e26b0769e33af4de14d",
+      "sha256": "c074767d00e0ded52851f34010ea1ee60f26e944698e365c7c8e803aae817236",
       "reviewDate": "2026-10-19",
-      "evidence": "mario-minecraft-prepublication"
+      "evidence": "map-workshop-1-11-0-publication"
     },
     {
       "path": "projects/index.html",
       "baselineGitBlob": "e29006ec9904e4171b63620632c3dd0044455e18",
       "baselineSha256": "d4bee107d4e76b944e330ce48312a26bc13dd6ef0bcf725d7ffed54f097a9636",
-      "gitBlob": "28710d999a2606497fcdeb4cf36ab6c5b0a2a804",
-      "sha256": "6daf9f186788d1bbe34dd2aacfeae79cd356069b4f8574d8d6fdcaa805cb950d",
+      "gitBlob": "8be97a0416f948a3efe987f0c3a90d5f43871767",
+      "sha256": "f6358f45bc425ff9ce53891215c1ea1182ed23960f434704a8634330e3c17b04",
       "reviewDate": "2026-10-19",
-      "evidence": "mario-minecraft-prepublication"
+      "evidence": "map-workshop-1-11-0-publication"
     },
     {
       "path": "projects/q-mimi/index.html",
       "baselineGitBlob": "48c0b573d540ffeff57dc9e7808661f687559f25",
       "baselineSha256": "76a5551678228c5e9d0ec651a0503d3c271d28897a6899ac0012bace33105ea2",
-      "gitBlob": "1f88acd20302da8d8fafb5e32c5a46ca3ea03437",
-      "sha256": "42b7e73705663450d353dd5c8e4c909e4b534bf24a9ed5da2cc7c881728bc98a",
+      "gitBlob": "02045cc8274fad8c003e5aba41561feb46e2d133",
+      "sha256": "5a3cb718a081051f30bd218cc8d6e6ce4a7e2456a92678e16a68e83dc39fa14d",
       "reviewDate": "2026-10-19",
-      "evidence": "mario-minecraft-prepublication"
+      "evidence": "map-workshop-1-11-0-publication"
     },
     {
       "path": "scripts/launch/build.mjs",
@@ -33853,10 +33863,10 @@
       "path": "tools/index.html",
       "baselineGitBlob": "18d7df5efa55242ae4d0911831f822f15b7714ce",
       "baselineSha256": "bb728a205fa37790269227a32b559ca0b5dc8fdcb7edabb906857a68c57616a7",
-      "gitBlob": "290b3a57409be181eeca68bf15f7705e0a4e533b",
-      "sha256": "b26d6ab0dbb03347ab697d15480341dfa2522a0da931018f10b78df7bd62557e",
+      "gitBlob": "01ea2f293dc55d394a3cf48bc05695432ff64e13",
+      "sha256": "a40534c8faf58a90f2731e30524272e6ac4a8b6dba2cdb1297bf6d8596b4b8ea",
       "reviewDate": "2026-10-19",
-      "evidence": "mario-minecraft-prepublication"
+      "evidence": "map-workshop-1-11-0-publication"
     }
   ]
 }
