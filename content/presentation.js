@@ -176,6 +176,14 @@ globalThis.SITE_PRESENTATION = {
       "alt": "自制马里奥2 | 小小梦魇 · 午夜厨房游戏画面",
       "fit": "contain",
       "rendering": "auto"
+    },
+    "game-mario-minecraft": {
+      "kind": "image",
+      "preset": "poster",
+      "src": "/assets/lab/mario-minecraft-cover.png",
+      "alt": "马里奥与方块世界的冒险：矿车、下界与末影龙。",
+      "fit": "contain",
+      "rendering": "auto"
     }
   }
 };

@@ -6,13 +6,13 @@ globalThis.SITE_DATA = {
     "publicIntro": "欢迎来逛。",
     "interests": [],
     "now": {
-      "label": "重点作品",
-      "sourceId": "game-mario-mix-xiaoq",
-      "title": "混合马里奥在下_小Q版",
-      "summary": "九位角色，九种打法，同一个蘑菇王国。钻进管道挑战专属隐藏关，寻找彩蛋、解锁成就，再一路救出公主。",
-      "updatedAt": "2026-10-16",
-      "href": "/games/mario-mix-xiaoq/",
-      "entryLabel": "混合马里奥在下_小Q版",
+      "label": "最近作品",
+      "sourceId": "game-mario-minecraft",
+      "title": "自制马里奥4 | 我的世界横版闯关",
+      "summary": "穿过雨夜森林、乘矿车深入矿洞，在下界躲过恶魂，解开红石音符机关，再用三叉戟迎战末影龙。",
+      "updatedAt": "2026-10-19",
+      "href": "/games/mario-minecraft/",
+      "entryLabel": "自制马里奥4 | 我的世界横版闯关",
       "items": []
     },
     "copy": {
@@ -91,6 +91,37 @@ globalThis.SITE_DATA = {
       "downloadInstructions": "下载后解压，用近期版本 Chrome 或 Edge 打开 play.html。离线下载为 0.8.14；本次修复请使用在线试玩。",
       "videoSlot": true,
       "videoUrl": "https://www.bilibili.com/video/BV1gNpj6WE32/"
+    },
+    {
+      "id": "game-mario-minecraft",
+      "slug": "mario-minecraft",
+      "primaryType": "game",
+      "relatedIds": [],
+      "title": "自制马里奥4 | 我的世界横版闯关",
+      "summary": "穿过雨夜森林、乘矿车深入矿洞，在下界躲过恶魂，解开红石音符机关，再用三叉戟迎战末影龙。",
+      "lifecycleStatus": "active",
+      "visibility": "public",
+      "accessMode": "online",
+      "createdAt": "2026-10-19",
+      "updatedAt": "2026-10-19",
+      "displayOrder": 91,
+      "categories": [
+        "side-scrolling"
+      ],
+      "tags": [
+        "我的世界联动",
+        "矿车与红石",
+        "自制关卡"
+      ],
+      "cover": "/assets/lab/mario-minecraft-cover.png",
+      "evidenceIds": [],
+      "detailUrl": "/games/mario-minecraft/",
+      "localUrl": "/experiments/releases/mario-minecraft/game.html",
+      "downloadUrl": "/experiments/releases/mario-minecraft/game.html",
+      "downloadLabel": "下载 HTML",
+      "downloadInstructions": "下载 HTML 后，用近期版本 Chrome 或 Edge 打开。",
+      "videoSlot": true,
+      "videoUrl": "https://www.bilibili.com/video/BV1fknG69EZL/"
     },
     {
       "id": "game-badapple-mario",
