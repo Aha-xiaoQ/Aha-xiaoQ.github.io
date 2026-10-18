@@ -5,12 +5,12 @@
   "category": "game",
   "visibility": "public",
   "stage": "混合马里奥与自制关卡",
-  "updatedAt": "2026-10-16",
+  "updatedAt": "2026-10-19",
   "summary": "九位角色的混合冒险与独立自制关卡。试玩游戏，查看制作记录与源码。",
-  "intro": "混合马里奥在下_小Q版包含九位角色、经典关卡、角色专属隐藏关、彩蛋与成就。也可以体验自制马里奥系列：五门挑战、午夜厨房潜行与 Bad Apple!! 音乐小剧场。",
+  "intro": "混合马里奥在下_小Q版包含九位角色、经典关卡、角色专属隐藏关、彩蛋与成就。自制马里奥系列还包括五门挑战、午夜厨房潜行、Bad Apple!! 音乐小剧场，以及深入《我的世界》的方块冒险。",
   "highlights": [
     "九位角色，九种打法，同一个蘑菇王国。钻进管道挑战专属隐藏关，寻找彩蛋、解锁成就，再一路救出公主。",
-    "自制马里奥 1、2、3 提供独立试玩和下载。",
+    "自制马里奥 1—4 提供独立试玩和下载；第 4 期演示视频已在 B 站发布。",
     "视频：第四期 · 索尼克 × 奥日 可观看视频；马里奥地图工坊 可观看视频。"
   ],
   "links": [
@@ -21,6 +21,14 @@
     {
       "label": "混合马里奥在下_小Q版 · 视频",
       "href": "https://www.bilibili.com/video/BV1gNpj6WE32/"
+    },
+    {
+      "label": "自制马里奥4 | 我的世界横版闯关",
+      "href": "/games/mario-minecraft/"
+    },
+    {
+      "label": "自制马里奥4 | 我的世界横版闯关 · 视频",
+      "href": "https://www.bilibili.com/video/BV1fknG69EZL/"
     },
     {
       "label": "自制马里奥3 | Bad Apple!! 音乐小剧场",
@@ -90,6 +98,24 @@
     "path": "content/development/states/mario-mix-public.json"
   },
   "updates": [
+    {
+      "id": "map-workshop-1-11-0",
+      "date": "2026-10-19",
+      "title": "马里奥地图工坊 1.11.0",
+      "status": "released",
+      "kind": "content",
+      "summary": "地图工坊 2.0 下载包更新至实现 1.11.0：新增可选 Minecraft 房间设置与逐房间音乐，改进试玩和离线导出；包内包含完整源码、图像、音频与 AI 制图 Skill。旧版在线体验保持原版本。",
+      "public": true
+    },
+    {
+      "id": "mario-minecraft",
+      "date": "2026-10-19",
+      "title": "自制马里奥4 | 我的世界横版闯关",
+      "status": "released",
+      "kind": "content",
+      "summary": "自制马里奥第 4 期：雨夜森林、矿洞矿车、下界与末地冒险。提供 HTML 试玩、源码和音频素材包；演示视频已在 B 站发布。",
+      "public": true
+    },
     {
       "id": "mario-web-r12",
       "date": "2026-10-16",

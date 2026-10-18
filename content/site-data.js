@@ -7,12 +7,12 @@ globalThis.SITE_DATA = {
     "interests": [],
     "now": {
       "label": "重点作品",
-      "sourceId": "game-mario-mix-xiaoq",
-      "title": "混合马里奥在下_小Q版",
-      "summary": "九位角色，九种打法，同一个蘑菇王国。钻进管道挑战专属隐藏关，寻找彩蛋、解锁成就，再一路救出公主。",
-      "updatedAt": "2026-10-16",
-      "href": "/games/mario-mix-xiaoq/",
-      "entryLabel": "混合马里奥在下_小Q版",
+      "sourceId": "game-mario-minecraft",
+      "title": "自制马里奥4 | 我的世界横版闯关",
+      "summary": "穿过雨夜森林、乘矿车深入矿洞，在下界躲过恶魂，解开红石音符机关，再用三叉戟迎战末影龙。",
+      "updatedAt": "2026-10-19",
+      "href": "/games/mario-minecraft/",
+      "entryLabel": "自制马里奥4 | 我的世界横版闯关",
       "items": []
     },
     "copy": {
@@ -91,6 +91,37 @@ globalThis.SITE_DATA = {
       "downloadInstructions": "下载后解压，用近期版本 Chrome 或 Edge 打开 play.html。离线下载为 0.8.14；本次修复请使用在线试玩。",
       "videoSlot": true,
       "videoUrl": "https://www.bilibili.com/video/BV1gNpj6WE32/"
+    },
+    {
+      "id": "game-mario-minecraft",
+      "slug": "mario-minecraft",
+      "primaryType": "game",
+      "relatedIds": [],
+      "title": "自制马里奥4 | 我的世界横版闯关",
+      "summary": "穿过雨夜森林、乘矿车深入矿洞，在下界躲过恶魂，解开红石音符机关，再用三叉戟迎战末影龙。",
+      "lifecycleStatus": "active",
+      "visibility": "public",
+      "accessMode": "online",
+      "createdAt": "2026-10-19",
+      "updatedAt": "2026-10-19",
+      "displayOrder": 91,
+      "categories": [
+        "side-scrolling"
+      ],
+      "tags": [
+        "我的世界联动",
+        "矿车与红石",
+        "自制关卡"
+      ],
+      "cover": "/assets/lab/mario-minecraft-cover.png",
+      "evidenceIds": [],
+      "detailUrl": "/games/mario-minecraft/",
+      "localUrl": "/experiments/releases/mario-minecraft/game.html",
+      "downloadUrl": "/experiments/releases/mario-minecraft/game.html",
+      "downloadLabel": "下载 HTML",
+      "downloadInstructions": "下载 HTML 后，用近期版本 Chrome 或 Edge 打开。",
+      "videoSlot": true,
+      "videoUrl": "https://www.bilibili.com/video/BV1fknG69EZL/"
     },
     {
       "id": "game-badapple-mario",
@@ -423,7 +454,7 @@ globalThis.SITE_DATA = {
       "preview": "assets/illustrations/mario-map-workshop.png",
       "previewAlt": "马里奥地图工坊：地块画板、地图画布与试玩设置",
       "title": "马里奥地图工坊",
-      "status": "地图编辑 · AI 辅助制图",
+      "status": "1.11.0 · 地图编辑 · AI 辅助制图",
       "summary": "绘制地图，放置地形、敌人与奖励，边编辑边试玩。用 AI 辅助制图，保存工程并导出自己的关卡。",
       "url": "/tools/mario-map-workshop-2-0/",
       "linkLabel": "使用与下载",
@@ -432,17 +463,17 @@ globalThis.SITE_DATA = {
       "detailUrl": "/tools/mario-map-workshop-2-0/",
       "guide": {
         "heading": "开始制图",
-        "intro": "下载地图工坊，在本地编辑、试玩并导出自己的关卡。源码包包含 AI 制图 Skill。",
+        "intro": "地图工坊 2.0 当前实现版本为 1.11.0，新增可选 Minecraft 房间设置、逐房间音乐，并改进试玩和离线导出。源码、图像、音频与 AI 制图 Skill 已打包在一起。",
         "usageHeading": "如何使用",
         "steps": [
           "解压源码包，进入 MapWorkshop_Tools_Source 文件夹。",
-          "依次运行 npm ci 和 npm run dev。打开终端给出的地址，再访问 /atlas/editor.html。",
-          "创建或打开地图，编辑后试玩；保存工程或导出离线试玩。"
+          "安装 Node.js 22 或更新版本，运行 node server.mjs，打开终端给出的编辑器地址。普通编辑和试玩无需先安装 npm 依赖。",
+          "创建或打开地图，编辑后试玩，保存工程。运行构建、CLI 或原生测试前，先执行 npm ci。"
         ],
         "skillHeading": "用 AI 辅助制图",
         "skillIntro": "包内入口：.agents/skills/map-workshop/SKILL.md。让支持 Skill 的编程助手在源码目录读取该文件，无需全局安装。先描述玩法目标，再检查并试玩生成的地图。",
         "onlineHeading": "旧版在线体验",
-        "onlineIntro": "无需下载，直接在浏览器中体验地图编辑、试玩和离线导出。",
+        "onlineIntro": "旧版在线编辑器可直接体验地图编辑、试玩和离线导出。1.11.0 的新功能请使用上方下载包。",
         "onlineLabel": "打开旧版在线体验",
         "onlineUrl": "/packages/mario-mix-worlds/atlas/editor.html",
         "exampleHeading": "作品范例 · 五门挑战",
@@ -450,10 +481,11 @@ globalThis.SITE_DATA = {
         "exampleLabel": "查看自制马里奥1：我们一起打蜜蜂",
         "exampleUrl": "/games/five-regions/",
         "licenseNote": "使用范围见包内许可说明。",
-        "downloadLabel": "下载地图工坊 2.0",
+        "downloadLabel": "下载地图工坊 2.0（1.11.0）",
         "downloadUrl": "/downloads/tools/Map_Workshop_2.0_Source_With_Skill.zip"
       },
-      "videoLabel": "旧版演示视频"
+      "videoLabel": "旧版演示视频",
+      "updatedAt": "2026-10-19"
     },
     {
       "id": "quina-optics",

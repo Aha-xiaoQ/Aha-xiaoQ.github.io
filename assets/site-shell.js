@@ -1,5 +1,5 @@
 (() => {
-  const guestbookModuleURL = new URL('./guestbook.js?v=release-r24-2c87c2ccb86c', document.currentScript.src).href;
+  const guestbookModuleURL = new URL('./guestbook.js?v=release-r24-cf5147d024ee', document.currentScript.src).href;
   const A=globalThis.SITE_ACTIONS;
   const data = globalThis.SITE_DATA;
   const taxonomy = globalThis.SITE_TAXONOMY;
