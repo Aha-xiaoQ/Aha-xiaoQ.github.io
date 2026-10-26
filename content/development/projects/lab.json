@@ -1,0 +1,257 @@
+{
+  "schemaVersion": 1,
+  "id": "lab",
+  "title": "实验室",
+  "category": "experiment",
+  "visibility": "public",
+  "stage": "交互动画与视频作品",
+  "updatedAt": "2026-10-16",
+  "summary": "交互动画、音乐影像与主题节目。看作品，也看创作记录。",
+  "intro": "这里收录交互动画、音乐影像与主题节目。原始代码实验提供在线体验与源文件；视频作品提供完整成片的观看入口。",
+  "highlights": [
+    "交互作品可在线体验，保留原始输入和独立文件。",
+    "音乐动画与主题节目在哔哩哔哩观看。",
+    "视频成片与原始代码实验分别展示。"
+  ],
+  "links": [
+    {
+      "label": "小小梦魇闪身步",
+      "href": "/notes/lab/docs/little-nightmares-shanshenbu/"
+    },
+    {
+      "label": "如果小六能按下暂停键……｜小小梦魇同人短片《帧外》",
+      "href": "/notes/lab/docs/little-nightmares-seedance/"
+    },
+    {
+      "label": "仿真示波器音乐播放器",
+      "href": "/notes/lab/docs/oscilloscope-music/"
+    },
+    {
+      "label": "GPT6程序动画·小小梦魇",
+      "href": "/notes/lab/docs/little-nightmares/"
+    },
+    {
+      "label": "Bad Apple!!｜光织放映室",
+      "href": "/notes/lab/docs/bad-apple/"
+    },
+    {
+      "label": "当世界执行了我｜world.execute(me);",
+      "href": "/notes/lab/docs/world-execute-me/"
+    },
+    {
+      "label": "琵琶曲 | 鹈鹕骑车",
+      "href": "/notes/lab/docs/pipa-pelican/"
+    },
+    {
+      "label": "中秋特别节目",
+      "href": "/notes/lab/docs/mid-autumn-special/"
+    },
+    {
+      "label": "鹈鹕骑行",
+      "href": "/notes/lab/docs/pelican-bicycle/"
+    },
+    {
+      "label": "开发项目",
+      "href": "/notes/"
+    }
+  ],
+  "participation": {
+    "mode": "open",
+    "summary": "欢迎提出新的实验题目，或反馈作品在不同设备上的实际表现。",
+    "issueUrl": "https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/issues/new",
+    "repository": "https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io"
+  },
+  "state": {
+    "adapter": "project-v1",
+    "path": "content/development/states/lab-public.json"
+  },
+  "updates": [
+    {
+      "id": "little-nightmares-shanshenbu",
+      "date": "2026-10-16",
+      "title": "小小梦魇闪身步",
+      "status": "released",
+      "summary": "小六和 Mono 的双人舞蹈同人动画已在哔哩哔哩发布。跟着老师学四组动作，一起找找学校走廊里的彩蛋。",
+      "public": true
+    },
+    {
+      "id": "little-nightmares-seedance",
+      "date": "2026-10-12",
+      "title": "如果小六能按下暂停键……｜小小梦魇同人短片《帧外》",
+      "status": "released",
+      "summary": "《帧外》AI同人短片已在哔哩哔哩发布：小六按下暂停，回头救援同伴。可观看成片，或打开程序动画原版。",
+      "public": true
+    },
+    {
+      "id": "oscilloscope-music",
+      "date": "2026-10-06",
+      "title": "仿真示波器音乐播放器",
+      "status": "released",
+      "summary": "新增可下载的四通道本地播放器，支持音乐与视频导入、XY 声音实验及 MP4 导出；配套演示视频已发布。",
+      "public": true
+    },
+    {
+      "id": "little-nightmares",
+      "date": "2026-10-01",
+      "title": "GPT6程序动画·小小梦魇",
+      "status": "released",
+      "summary": "视频已在哔哩哔哩发布，实时 HTML 动画与 R13 制作源码一并收录。小六与诺姆们一起走向门外的港湾。",
+      "public": true
+    },
+    {
+      "id": "bad-apple",
+      "date": "2026-09-30",
+      "title": "音乐 MV：Bad Apple!! 与 world.execute(me);",
+      "status": "released",
+      "summary": "新增两部音乐 MV，提供哔哩哔哩成片、交互 HTML 与制作源码。",
+      "public": true
+    },
+    {
+      "id": "lab-video-selections",
+      "date": "2026-09-26",
+      "title": "实验室：骑行动画与中秋节目",
+      "status": "released",
+      "summary": "收录鹈鹕海岸骑行、琵琶曲音乐动画与中秋特别节目，可观看成片或打开 HTML 体验。",
+      "public": true
+    }
+  ],
+  "docs": [
+    {
+      "id": "pelican-bicycle",
+      "title": "鹈鹕，去兜风。",
+      "summary": "原始提示词、模型信息与可交互的 SVG 骑行动画。",
+      "sections": [
+        {
+          "title": "原始提示词",
+          "paragraphs": [
+            "生成一个鹈鹕骑自行车的SVG动画，用html实现，不用做任何测试"
+          ]
+        },
+        {
+          "title": "模型信息",
+          "paragraphs": [
+            "GPT-6 Astra Pro。推理强度设置未记录。"
+          ]
+        },
+        {
+          "title": "实际效果",
+          "paragraphs": [
+            "打开动画体验三档骑行速度和暂停控制，或下载原始 HTML。"
+          ]
+        }
+      ],
+      "sources": [],
+      "action": {
+        "label": "下载原始 HTML",
+        "href": "/experiments/pelican-bicycle.html"
+      },
+      "archived": false
+    },
+    {
+      "id": "little-nightmares-shanshenbu",
+      "title": "小小梦魇闪身步",
+      "summary": "小六和 Mono 跟着老师学闪身步：念一遍，再跳一遍。走廊里还藏着熟悉的身影。",
+      "sections": [],
+      "sources": [],
+      "archived": false,
+      "kind": "lab-video",
+      "action": {
+        "label": "观看视频",
+        "href": "https://www.bilibili.com/video/BV1n9J26HEr7/"
+      }
+    },
+    {
+      "id": "little-nightmares-seedance",
+      "title": "如果小六能按下暂停键……｜小小梦魇同人短片《帧外》",
+      "summary": "追逐按下暂停，小六回头救出两个诺姆。一起推开门，看见巨颚号之外的海。",
+      "sections": [],
+      "sources": [],
+      "archived": false,
+      "kind": "lab-video",
+      "action": {
+        "label": "观看视频",
+        "href": "https://www.bilibili.com/video/BV1xypd6FEr3/"
+      }
+    },
+    {
+      "id": "oscilloscope-music",
+      "title": "仿真示波器音乐播放器",
+      "summary": "导入自己的音乐或视频，在四通道示波器上查看 XY、频谱、包络与 PWM，调节旋钮并导出画面。播放器在电脑本机运行。",
+      "sections": [],
+      "sources": [],
+      "archived": false,
+      "kind": "lab-video",
+      "action": {
+        "label": "观看视频",
+        "href": "https://www.bilibili.com/video/BV1b7pF63Ei7/"
+      }
+    },
+    {
+      "id": "little-nightmares",
+      "title": "GPT6程序动画·小小梦魇",
+      "summary": "当暂停、快进与倒带成了世界的规则，小六与诺姆们穿过追逐、回头救援，终于走向门外的世界。",
+      "sections": [],
+      "sources": [],
+      "archived": false,
+      "kind": "lab-video",
+      "action": {
+        "label": "观看视频",
+        "href": "https://www.bilibili.com/video/BV1PVa66BErX/"
+      }
+    },
+    {
+      "id": "bad-apple",
+      "title": "Bad Apple!!｜光织放映室",
+      "summary": "让光束、微镜与琴键一起演奏 Bad Apple!!。从黑白影绘到彩色与 MMD，在一间不断进化的放映室里重温这首歌。",
+      "sections": [],
+      "sources": [],
+      "archived": false,
+      "kind": "lab-video",
+      "action": {
+        "label": "观看视频",
+        "href": "https://www.bilibili.com/video/BV15pao6iEzF/"
+      }
+    },
+    {
+      "id": "world-execute-me",
+      "title": "当世界执行了我｜world.execute(me);",
+      "summary": "如果一段程序学会了爱，它能等到一次真正的回应吗？用电路、字符画与几何变换，重新想象 Mili 的音乐世界。",
+      "sections": [],
+      "sources": [],
+      "archived": false,
+      "kind": "lab-video",
+      "action": {
+        "label": "观看视频",
+        "href": "https://www.bilibili.com/video/BV1vkaW6CE8W/"
+      }
+    },
+    {
+      "id": "pipa-pelican",
+      "title": "琵琶曲 | 鹈鹕骑车",
+      "summary": "48 秒原生 WebGL 动画，附最终成片与可直接播放的 HTML。",
+      "sections": [],
+      "sources": [],
+      "archived": false,
+      "kind": "lab-video",
+      "action": {
+        "label": "观看视频",
+        "href": "https://www.bilibili.com/video/BV1TvhU6aEci/"
+      }
+    },
+    {
+      "id": "mid-autumn-special",
+      "title": "中秋特别节目",
+      "summary": "136 秒中秋文化短片，以《彩云追月》为配乐，附可直接播放的 HTML。",
+      "sections": [],
+      "sources": [],
+      "archived": false,
+      "kind": "lab-video",
+      "action": {
+        "label": "观看视频",
+        "href": "https://www.bilibili.com/video/BV1rHh16CE3T/"
+      }
+    }
+  ],
+  "layout": "experiments",
+  "publicSite": true
+}

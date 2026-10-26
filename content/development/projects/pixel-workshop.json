@@ -1,0 +1,413 @@
+{
+  "schemaVersion": 1,
+  "id": "pixel-workshop",
+  "title": "作品网站",
+  "category": "web",
+  "visibility": "public",
+  "stage": "持续维护",
+  "updatedAt": "2026-10-02",
+  "summary": "小Q的作品展示网站。这里集中说明网站结构、内容编辑、项目接入与发布方式。",
+  "intro": "游戏和工具在各自栏目体验；网站实现与维护资料在这里阅读。从本地启动开始，再按需要查找内容编辑或发布说明。",
+  "highlights": [
+    "访客入口与开发资料分开组织，先找到内容，再深入实现。",
+    "各项目共用导航与视觉规范，保留独立的内容、源码与更新记录。",
+    "实验室记录提示词、模型信息与可直接运行的作品。"
+  ],
+  "links": [
+    {
+      "label": "浏览网站",
+      "href": "/"
+    },
+    {
+      "label": "本地启动",
+      "href": "/notes/pixel-workshop/docs/start/"
+    },
+    {
+      "label": "实验室",
+      "href": "/notes/lab/"
+    }
+  ],
+  "participation": {
+    "mode": "open",
+    "summary": "欢迎反馈链接、阅读和移动端体验问题。较大的结构或视觉调整，请先在 Issue 中说明目标与方案。",
+    "issueUrl": "https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/issues/new",
+    "repository": "https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io"
+  },
+  "state": {
+    "adapter": "project-v1",
+    "path": "content/development/states/pixel-workshop-public.json"
+  },
+  "updates": [
+    {
+      "id": "visitor-maintenance-20261001",
+      "date": "2026-10-01",
+      "title": "便签墙与网站浏览体验",
+      "status": "released",
+      "summary": "便签墙迁至新服务，留言审核后公开；新增页面浏览与标签页会话估算。整理作品说明和更新记录，补齐便签墙英文提示。",
+      "public": true
+    },
+    {
+      "id": "bilingual-docs-20261002",
+      "date": "2026-10-02",
+      "title": "补齐双语贡献与开源说明",
+      "summary": "贡献指南、本地启动和原创开源文档补齐英文，修正语言入口与过时的本地交付说明。许可范围与历史验收边界保留。",
+      "kind": "docs",
+      "href": "/notes/pixel-workshop/docs/contributing/",
+      "status": "released",
+      "public": true
+    }
+  ],
+  "docs": [
+    {
+      "id": "source-distributions",
+      "title": "源码开放范围",
+      "summary": "源码包暂停提供，试玩与 HTML 下载保留。",
+      "category": "reference",
+      "archived": false,
+      "sections": [
+        {
+          "title": "源码暂不提供下载",
+          "paragraphs": [
+            "网站已撤下源码包及其下载入口，在线试玩与 HTML 游戏下载保留。代码和素材的来源与许可正在逐项核实，后续是否重新开放将以明确的文件范围和许可说明为准。",
+            "保留试玩或下载不代表其全部内容可作为原创开源代码复用；第三方内容仍受各自权利与许可约束。"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "许可与权利说明",
+          "href": "https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/blob/main/RIGHTS.md"
+        }
+      ]
+    },
+    {
+      "id": "start",
+      "title": "本地启动",
+      "summary": "从完整仓库启动网站，了解开发入口与常用命令。",
+      "sections": [
+        {
+          "title": "获取并启动",
+          "paragraphs": [
+            "需要 Node.js 22 或更新版本。从仓库根目录启动；网站脚本无需安装第三方 npm 依赖。"
+          ],
+          "code": "git clone https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io.git\ncd Aha-xiaoQ.github.io\nnpm run dev"
+        },
+        {
+          "title": "访问页面",
+          "paragraphs": [
+            "在浏览器打开 http://127.0.0.1:4173/。开发栏目为 /notes/，实验室为 /notes/lab/。请使用本地 HTTP 服务，不要直接双击网站的 index.html。",
+            "端口占用时运行 npm run dev -- --port 4174。Windows 也可使用根目录的 start-dev.cmd。"
+          ]
+        },
+        {
+          "title": "选择下一步",
+          "paragraphs": [
+            "日常预览使用 npm run dev；修改后用 npm run platform:build 重新生成页面；提交前运行 npm run platform:verify。内容编辑、接入项目和发布细节分别见对应指南。"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "内容编辑",
+          "href": "/notes/pixel-workshop/docs/content/"
+        },
+        {
+          "label": "构建与发布",
+          "href": "/notes/pixel-workshop/docs/publishing/"
+        }
+      ]
+    },
+    {
+      "id": "content",
+      "title": "内容编辑",
+      "summary": "找到正确的数据源，避免在多个页面重复维护同一段说明。",
+      "sections": [
+        {
+          "title": "作品与视频",
+          "paragraphs": [
+            "作品名称、简介和视频地址维护在 content/site-data.js。保留视频状态区的生成标记，由 npm run video:sync 同步关联入口。不要在各个 HTML 中逐一修改同一个 BV 号。"
+          ]
+        },
+        {
+          "title": "项目与资料",
+          "paragraphs": [
+            "开发项目登记在 content/development/catalog.json；各项目说明维护在 content/development/projects/。先编辑来源，再生成 notes 页面。Markdown 阅读资料由 config/documents.json 登记。"
+          ]
+        },
+        {
+          "title": "实验记录",
+          "paragraphs": [
+            "在 content/experiments/catalog.json 登记实验；记录文件放在 content/experiments/，原始作品放在 experiments/。保留完整提示词、模型与已记录的设置，没有记录的推理强度使用 null。目录、详情和下载入口由登记生成，不另改路由。"
+          ]
+        },
+        {
+          "title": "生成页面",
+          "paragraphs": [
+            "先修改内容来源，再重新生成页面供本地预览；不要直接编辑 notes/ 中的生成页面。准备提交时，再运行完整检查，确认直达页面、导航和发布产物一致。"
+          ],
+          "code": "npm run platform:build\nnpm run dev"
+        }
+      ],
+      "sources": [
+        {
+          "label": "公开文案规范",
+          "href": "/notes/pixel-workshop/docs/writing/"
+        }
+      ]
+    },
+    {
+      "id": "architecture",
+      "title": "网站结构",
+      "summary": "了解页面、内容与脚本的职责，按模块查找源码。",
+      "sections": [
+        {
+          "title": "页面与共享界面",
+          "paragraphs": [
+            "index.html、projects/、games/、tools/、about/ 和 notes/ 提供可直接访问的页面。assets/ 维护共享样式、交互与站内导航。原有页面地址保留。"
+          ]
+        },
+        {
+          "title": "内容来源",
+          "paragraphs": [
+            "content/ 保存作品、项目与状态数据；config/ 保存资料登记和发布配置。notes/ 与搜索索引主要由脚本生成，不作为文案的首选编辑位置。"
+          ]
+        },
+        {
+          "title": "开发页加载",
+          "paragraphs": [
+            "目录与摘要在构建时合并；文章正文在打开文章时读取。导航意图预加载尊重节省流量设置，动画不会随目录页面自动启动。"
+          ]
+        },
+        {
+          "title": "项目工程",
+          "paragraphs": [
+            "packages/ 保存游戏和工具的独立工程；games/ 保存对应介绍与试玩入口。各工程的素材、依赖和运行方式以自身说明为准。"
+          ]
+        },
+        {
+          "title": "框架、内容与发布",
+          "paragraphs": [
+            "运行、构建、校验和打包的入口由 config/site-platform.json 统一登记。旧命令继续有效；模块职责和生成文件归属见源码中的 docs/platform/。",
+            "语言与字体由共享模块处理；新增内容先登记译文，再生成页面并检查缺字与回退。",
+            "站内导航由一个路由模块负责，搜索与资料模块只管理自身内容和资源。异步结果只更新当前页面；离开页面后，旧事件和回调不得改写地址、抢走焦点或重新挂载内容。"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "字体与许可",
+          "href": "/notes/pixel-workshop/docs/font-licenses/"
+        }
+      ]
+    },
+    {
+      "id": "add-project",
+      "title": "接入新项目",
+      "summary": "登记一个作品，复用现有项目页面与导航。",
+      "sections": [
+        {
+          "title": "创建记录",
+          "paragraphs": [
+            "项目 ID 使用简短的英文小写和连字符。命令创建草稿，不会立即出现在公开目录中。"
+          ],
+          "code": "npm run journal:add -- --id my-project --title \"我的项目\" --category tool"
+        },
+        {
+          "title": "填写项目内容",
+          "paragraphs": [
+            "填写简介、可用链接、当前阶段、资料和参与方式。一个项目使用独立状态文件；不要复用其他项目的任务来源。"
+          ]
+        },
+        {
+          "title": "公开与归档",
+          "paragraphs": [
+            "内容齐全后将 visibility 设为 public，运行完整检查并审阅生成结果，再提交发布。停止更新的项目可设为 archived，保留原地址；草稿、待验收与已发布状态应按实际情况填写。"
+          ],
+          "code": "npm run platform:verify"
+        }
+      ],
+      "sources": []
+    },
+    {
+      "id": "publishing",
+      "title": "构建与发布",
+      "summary": "生成页面、核对改动，再通过 GitHub 发布。",
+      "sections": [
+        {
+          "title": "统一构建与检查",
+          "paragraphs": [
+            "npm run platform:plan 只查看流程；npm run platform:verify 执行生成、源码测试、发布产物与浏览器检查。检查失败时先阅读失败摘要和对应日志，修复后重新验证，不跳过失败步骤。"
+          ],
+          "code": "npm run platform:plan\nnpm run platform:verify"
+        },
+        {
+          "title": "网站发布目录",
+          "paragraphs": [
+            "完整检查已包含 release:prepare 和 release:check，日常不必重复运行。它们分别生成和核对 .local/publish；单项诊断时才独立执行。源码提交成功与 Pages 部署完成是两个结果，上线后仍需检查实际网址。"
+          ],
+          "code": "npm run release:prepare\nnpm run release:check"
+        },
+        {
+          "title": "提交改动",
+          "paragraphs": [
+            "查看 Git 差异，确认只包含本次修改。使用普通提交和推送；如远端有新提交，应先重新对齐，不要强制覆盖。",
+            "部署工作流成功后，在浏览器确认主要入口、前进后退和移动端布局。自动检查不等于真实设备体验。"
+          ]
+        },
+        {
+          "title": "增量更新包",
+          "paragraphs": [
+            "在完整仓库验证通过后，用明确的提交基线生成增量包。验证后再次修改文件，需要重新验证。接收端在独立工作区检查，遇到文件冲突或远端新提交会停止；游戏、字体和已有源码档案继续使用各自发布流程。"
+          ],
+          "code": "npm run platform:pack -- --base <完整提交SHA> --out ../XiaoQ_Site_Update.zip"
+        }
+      ],
+      "sources": []
+    },
+    {
+      "id": "writing",
+      "title": "公开文案规范",
+      "summary": "统一标题、状态与资料分工，让访客知道可以做什么。",
+      "sections": [
+        {
+          "title": "先写用途",
+          "paragraphs": [
+            "标题说明页面内容；简介说明可做的事。按钮使用“打开作品”“阅读指南”“下载源码”等明确动作，避免交付口吻和空泛评价。"
+          ]
+        },
+        {
+          "title": "区分事实与计划",
+          "paragraphs": [
+            "已可访问的内容与计划中的功能分开写。开发候选不能写成正式版本；没有数据支持时不标注完成率、性能提升或模型评分。"
+          ]
+        },
+        {
+          "title": "一处维护，多处链接",
+          "paragraphs": [
+            "README 提供总览与启动入口；项目概览解释用途；资料页提供操作步骤；更新页记录变化。维护日志和历史报告留在 docs/，不重复铺到访客页面。"
+          ]
+        },
+        {
+          "title": "保留来源",
+          "paragraphs": [
+            "保留署名、许可、素材来源和历史链接。实验展示说明提示词、模型与已知设置，不将推测写成记录。"
+          ]
+        },
+        {
+          "title": "语言入口与原文",
+          "paragraphs": [
+            "中文 README 的网站页面入口使用 lang=zh，英文 README 使用 lang=en。网页按钮和提示补齐对应译文；原始提示词、代码、许可及未翻译文章保留原文，不把中文隐藏来冒充翻译完成。"
+          ]
+        }
+      ],
+      "sources": []
+    },
+    {
+      "id": "contributing",
+      "title": "贡献与原创开源范围",
+      "summary": "贡献流程、启动说明和精确许可边界的中英文入口。",
+      "sections": [
+        {
+          "title": "从一项明确的贡献开始",
+          "paragraphs": [
+            "先阅读贡献指南，选择项目和版本，再在 Issue 说明计划。普通贡献者使用 Fork 与功能分支；网页任务卡不会自动认领 GitHub Issue。"
+          ]
+        },
+        {
+          "title": "安全问题私下反馈",
+          "paragraphs": [
+            "涉及密钥泄露、任意代码执行、用户数据或发布权限的问题，请通过 hfutqdm@163.com 私下联系维护者。不要在公开 Issue、PR 或讨论中发布可利用细节、令牌或私人数据；普通玩法问题、功能建议或文档错误使用 Issue 模板。",
+            "运行外部贡献代码前，先审阅代码、工作流与构建脚本。低权限 CI 检查通过不代表代码可信；未经审阅的代码不得在持有部署密钥或写权限的环境中执行，也不要在个人电脑上直接运行不理解的脚本。"
+          ]
+        },
+        {
+          "title": "原创授权与第三方素材分开",
+          "paragraphs": [
+            "固定基线清单列出 348 项原创 MIT 组成部分、85 项保留上游许可、2 项保留 Q咪 CC BY-NC 声明和 2529 项 unknown / NOASSERTION。它不是全仓 MIT，第三方素材、混合游戏和未知下载不因此获得新授权。",
+            "开源文档中英文版本使用同一清单、证据和排除范围；原始提示词、上游通知和未翻译历史文章保留原文。"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "贡献指南 · 中文",
+          "href": "https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/blob/main/CONTRIBUTING.md"
+        },
+        {
+          "label": "贡献指南 · English",
+          "href": "https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/blob/main/CONTRIBUTING.en.md"
+        },
+        {
+          "label": "安全反馈指南 · 中文",
+          "href": "https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/blob/main/SECURITY.md"
+        },
+        {
+          "label": "安全反馈指南 · English",
+          "href": "https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/blob/main/SECURITY.en.md"
+        },
+        {
+          "label": "许可审计 · 中文",
+          "href": "https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/blob/main/docs/oss/README.md"
+        },
+        {
+          "label": "许可审计 · English",
+          "href": "https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/blob/main/docs/oss/README.en.md"
+        }
+      ]
+    },
+    {
+      "id": "font-licenses",
+      "title": "网站字体与许可",
+      "summary": "说明与参考资料。",
+      "sections": [],
+      "readingDocument": true,
+      "parentDoc": "architecture",
+      "versioned": false,
+      "sources": []
+    },
+    {
+      "id": "font-ofl",
+      "title": "LXGW WenKai · SIL Open Font License 1.1",
+      "summary": "说明与参考资料。",
+      "sections": [],
+      "readingDocument": true,
+      "parentDoc": "font-licenses",
+      "versioned": false,
+      "sources": []
+    }
+  ],
+  "layout": "website",
+  "startDocuments": [
+    "start",
+    "content",
+    "publishing"
+  ],
+  "documentationGroups": [
+    {
+      "label": "01 / START",
+      "title": "入门与结构",
+      "documents": [
+        "start",
+        "architecture",
+        "contributing"
+      ]
+    },
+    {
+      "label": "02 / EDIT",
+      "title": "内容与扩展",
+      "documents": [
+        "content",
+        "add-project",
+        "writing"
+      ]
+    },
+    {
+      "label": "03 / PUBLISH",
+      "title": "构建与发布",
+      "documents": [
+        "publishing"
+      ]
+    }
+  ],
+  "publicSite": true
+}

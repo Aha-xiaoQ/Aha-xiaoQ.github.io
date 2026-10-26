@@ -1,0 +1,2524 @@
+{
+  "schemaVersion": 2,
+  "level": "4-3",
+  "stage": {
+    "id": "template-4-3",
+    "title": "4-3 · 区域 1（地形检查）",
+    "driver": "platform-v1",
+    "status": "draft",
+    "entryRoom": "area-0",
+    "entrySpawn": "inspection-start",
+    "rooms": {
+      "area-0": "classic-4-3-area-0"
+    },
+    "characters": [
+      "lab-runner",
+      "lab-scout"
+    ],
+    "requiredCapabilities": [
+      "jump"
+    ],
+    "overlays": {},
+    "audio": "map-kit-silent",
+    "note": "分区几何检查，不是整关通关。原房间连接、条件循环与未实现机制保留在模板 topology / coverage；静态机关只用于检查位置。"
+  },
+  "inspectionStages": [
+    {
+      "id": "template-4-3",
+      "title": "4-3 · 区域 1（地形检查）",
+      "driver": "platform-v1",
+      "status": "draft",
+      "entryRoom": "area-0",
+      "entrySpawn": "inspection-start",
+      "rooms": {
+        "area-0": "classic-4-3-area-0"
+      },
+      "characters": [
+        "lab-runner",
+        "lab-scout"
+      ],
+      "requiredCapabilities": [
+        "jump"
+      ],
+      "overlays": {},
+      "audio": "map-kit-silent",
+      "note": "分区几何检查，不是整关通关。原房间连接、条件循环与未实现机制保留在模板 topology / coverage；静态机关只用于检查位置。"
+    }
+  ],
+  "maps": [
+    {
+      "id": "classic-4-3-area-0",
+      "title": "4-3 · 区域 1",
+      "tileSize": 16,
+      "width": 2560,
+      "height": 240,
+      "provenance": {
+        "kind": "transcribed",
+        "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+        "review": "pending",
+        "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+      },
+      "geometry": [
+        {
+          "id": "r000",
+          "x": 0,
+          "y": 208,
+          "w": 240,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r001",
+          "x": 256,
+          "y": 208,
+          "w": 80,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r002",
+          "x": 304,
+          "y": 80,
+          "w": 80,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r004",
+          "x": 368,
+          "y": 144,
+          "w": 112,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r007",
+          "x": 512,
+          "y": 64,
+          "w": 48,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r008",
+          "x": 576,
+          "y": 192,
+          "w": 112,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r012",
+          "x": 624,
+          "y": 80,
+          "w": 80,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r014",
+          "x": 688,
+          "y": 32,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r015",
+          "x": 704,
+          "y": 144,
+          "w": 48,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r017-left",
+          "x": 768,
+          "y": 84,
+          "w": 48,
+          "h": 8,
+          "collision": "oneway"
+        },
+        {
+          "id": "r017-right",
+          "x": 880,
+          "y": 124,
+          "w": 48,
+          "h": 8,
+          "collision": "oneway"
+        },
+        {
+          "id": "r018",
+          "x": 816,
+          "y": 128,
+          "w": 48,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r019",
+          "x": 928,
+          "y": 168,
+          "w": 48,
+          "h": 8,
+          "collision": "oneway",
+          "motion": {
+            "axis": "y",
+            "min": 64,
+            "max": 176,
+            "speed": 0.75
+          }
+        },
+        {
+          "id": "r020",
+          "x": 992,
+          "y": 76,
+          "w": 48,
+          "h": 8,
+          "collision": "oneway",
+          "motion": {
+            "axis": "y",
+            "min": 32,
+            "max": 144,
+            "speed": 0.75
+          }
+        },
+        {
+          "id": "r021",
+          "x": 1040,
+          "y": 208,
+          "w": 80,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r022",
+          "x": 1072,
+          "y": 112,
+          "w": 48,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r025",
+          "x": 1120,
+          "y": 48,
+          "w": 48,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r027",
+          "x": 1152,
+          "y": 144,
+          "w": 48,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r029",
+          "x": 1184,
+          "y": 80,
+          "w": 80,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r031-left",
+          "x": 1280,
+          "y": 84,
+          "w": 48,
+          "h": 8,
+          "collision": "oneway"
+        },
+        {
+          "id": "r031-right",
+          "x": 1408,
+          "y": 140,
+          "w": 48,
+          "h": 8,
+          "collision": "oneway"
+        },
+        {
+          "id": "r032",
+          "x": 1344,
+          "y": 144,
+          "w": 48,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r033-left",
+          "x": 1456,
+          "y": 84,
+          "w": 48,
+          "h": 8,
+          "collision": "oneway"
+        },
+        {
+          "id": "r033-right",
+          "x": 1536,
+          "y": 148,
+          "w": 48,
+          "h": 8,
+          "collision": "oneway"
+        },
+        {
+          "id": "r035",
+          "x": 1584,
+          "y": 176,
+          "w": 48,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r036-left",
+          "x": 1632,
+          "y": 84,
+          "w": 48,
+          "h": 8,
+          "collision": "oneway"
+        },
+        {
+          "id": "r036-right",
+          "x": 1728,
+          "y": 148,
+          "w": 48,
+          "h": 8,
+          "collision": "oneway"
+        },
+        {
+          "id": "r037",
+          "x": 1680,
+          "y": 160,
+          "w": 48,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r038",
+          "x": 1808,
+          "y": 144,
+          "w": 80,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r040",
+          "x": 1872,
+          "y": 96,
+          "w": 48,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r041",
+          "x": 1936,
+          "y": 208,
+          "w": 112,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r042",
+          "x": 2080,
+          "y": 160,
+          "w": 80,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r043",
+          "x": 2176,
+          "y": 74,
+          "w": 48,
+          "h": 8,
+          "collision": "oneway",
+          "motion": {
+            "axis": "y",
+            "min": 32,
+            "max": 192,
+            "speed": 0.75
+          }
+        },
+        {
+          "id": "r044",
+          "x": 2256,
+          "y": 208,
+          "w": 304,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r045-base",
+          "x": 2352,
+          "y": 192,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        }
+      ],
+      "objects": [
+        {
+          "id": "r003-0-0",
+          "kind": "coin",
+          "x": 322,
+          "y": 66,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r003-1-0",
+          "kind": "coin",
+          "x": 338,
+          "y": 66,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r003-2-0",
+          "kind": "coin",
+          "x": 354,
+          "y": 66,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r005-0-0",
+          "kind": "coin",
+          "x": 386,
+          "y": 130,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r005-1-0",
+          "kind": "coin",
+          "x": 402,
+          "y": 130,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r005-2-0",
+          "kind": "coin",
+          "x": 418,
+          "y": 130,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r005-3-0",
+          "kind": "coin",
+          "x": 434,
+          "y": 130,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r010",
+          "kind": "coin",
+          "x": 604,
+          "y": 178,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r013",
+          "kind": "coin",
+          "x": 642,
+          "y": 178,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r016",
+          "kind": "coin",
+          "x": 770,
+          "y": 114,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r023-0-0",
+          "kind": "coin",
+          "x": 1074,
+          "y": 98,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r023-1-0",
+          "kind": "coin",
+          "x": 1090,
+          "y": 98,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r023-2-0",
+          "kind": "coin",
+          "x": 1106,
+          "y": 98,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r026-0-0",
+          "kind": "coin",
+          "x": 1122,
+          "y": 34,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r026-1-0",
+          "kind": "coin",
+          "x": 1138,
+          "y": 34,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r026-2-0",
+          "kind": "coin",
+          "x": 1154,
+          "y": 34,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r028",
+          "kind": "coin",
+          "x": 1170,
+          "y": 130,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r034",
+          "kind": "coin",
+          "x": 1540,
+          "y": 114,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r039-0-0",
+          "kind": "coin",
+          "x": 1810,
+          "y": 130,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r039-1-0",
+          "kind": "coin",
+          "x": 1826,
+          "y": 130,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r039-2-0",
+          "kind": "coin",
+          "x": 1842,
+          "y": 130,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r039-3-0",
+          "kind": "coin",
+          "x": 1858,
+          "y": 130,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r039-4-0",
+          "kind": "coin",
+          "x": 1874,
+          "y": 130,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "inspection-start",
+          "kind": "spawn",
+          "x": 24,
+          "y": 184,
+          "w": 12,
+          "h": 24
+        }
+      ]
+    }
+  ],
+  "rooms": [
+    {
+      "roomId": "area-0",
+      "label": "区域 1",
+      "setting": "Overworld Shrooms",
+      "origin": {
+        "area": 0,
+        "part": "base"
+      },
+      "declaredWidth": null,
+      "underwater": false,
+      "inspectionOnly": true,
+      "previewSupported": true,
+      "map": {
+        "id": "classic-4-3-area-0",
+        "title": "4-3 · 区域 1",
+        "tileSize": 16,
+        "width": 2560,
+        "height": 240,
+        "provenance": {
+          "kind": "transcribed",
+          "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+          "review": "pending",
+          "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+        },
+        "geometry": [
+          {
+            "id": "r000",
+            "x": 0,
+            "y": 208,
+            "w": 240,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r001",
+            "x": 256,
+            "y": 208,
+            "w": 80,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r002",
+            "x": 304,
+            "y": 80,
+            "w": 80,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r004",
+            "x": 368,
+            "y": 144,
+            "w": 112,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r007",
+            "x": 512,
+            "y": 64,
+            "w": 48,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r008",
+            "x": 576,
+            "y": 192,
+            "w": 112,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r012",
+            "x": 624,
+            "y": 80,
+            "w": 80,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r014",
+            "x": 688,
+            "y": 32,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r015",
+            "x": 704,
+            "y": 144,
+            "w": 48,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r017-left",
+            "x": 768,
+            "y": 84,
+            "w": 48,
+            "h": 8,
+            "collision": "oneway"
+          },
+          {
+            "id": "r017-right",
+            "x": 880,
+            "y": 124,
+            "w": 48,
+            "h": 8,
+            "collision": "oneway"
+          },
+          {
+            "id": "r018",
+            "x": 816,
+            "y": 128,
+            "w": 48,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r019",
+            "x": 928,
+            "y": 168,
+            "w": 48,
+            "h": 8,
+            "collision": "oneway",
+            "motion": {
+              "axis": "y",
+              "min": 64,
+              "max": 176,
+              "speed": 0.75
+            }
+          },
+          {
+            "id": "r020",
+            "x": 992,
+            "y": 76,
+            "w": 48,
+            "h": 8,
+            "collision": "oneway",
+            "motion": {
+              "axis": "y",
+              "min": 32,
+              "max": 144,
+              "speed": 0.75
+            }
+          },
+          {
+            "id": "r021",
+            "x": 1040,
+            "y": 208,
+            "w": 80,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r022",
+            "x": 1072,
+            "y": 112,
+            "w": 48,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r025",
+            "x": 1120,
+            "y": 48,
+            "w": 48,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r027",
+            "x": 1152,
+            "y": 144,
+            "w": 48,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r029",
+            "x": 1184,
+            "y": 80,
+            "w": 80,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r031-left",
+            "x": 1280,
+            "y": 84,
+            "w": 48,
+            "h": 8,
+            "collision": "oneway"
+          },
+          {
+            "id": "r031-right",
+            "x": 1408,
+            "y": 140,
+            "w": 48,
+            "h": 8,
+            "collision": "oneway"
+          },
+          {
+            "id": "r032",
+            "x": 1344,
+            "y": 144,
+            "w": 48,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r033-left",
+            "x": 1456,
+            "y": 84,
+            "w": 48,
+            "h": 8,
+            "collision": "oneway"
+          },
+          {
+            "id": "r033-right",
+            "x": 1536,
+            "y": 148,
+            "w": 48,
+            "h": 8,
+            "collision": "oneway"
+          },
+          {
+            "id": "r035",
+            "x": 1584,
+            "y": 176,
+            "w": 48,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r036-left",
+            "x": 1632,
+            "y": 84,
+            "w": 48,
+            "h": 8,
+            "collision": "oneway"
+          },
+          {
+            "id": "r036-right",
+            "x": 1728,
+            "y": 148,
+            "w": 48,
+            "h": 8,
+            "collision": "oneway"
+          },
+          {
+            "id": "r037",
+            "x": 1680,
+            "y": 160,
+            "w": 48,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r038",
+            "x": 1808,
+            "y": 144,
+            "w": 80,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r040",
+            "x": 1872,
+            "y": 96,
+            "w": 48,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r041",
+            "x": 1936,
+            "y": 208,
+            "w": 112,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r042",
+            "x": 2080,
+            "y": 160,
+            "w": 80,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r043",
+            "x": 2176,
+            "y": 74,
+            "w": 48,
+            "h": 8,
+            "collision": "oneway",
+            "motion": {
+              "axis": "y",
+              "min": 32,
+              "max": 192,
+              "speed": 0.75
+            }
+          },
+          {
+            "id": "r044",
+            "x": 2256,
+            "y": 208,
+            "w": 304,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r045-base",
+            "x": 2352,
+            "y": 192,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          }
+        ],
+        "objects": [
+          {
+            "id": "r003-0-0",
+            "kind": "coin",
+            "x": 322,
+            "y": 66,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r003-1-0",
+            "kind": "coin",
+            "x": 338,
+            "y": 66,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r003-2-0",
+            "kind": "coin",
+            "x": 354,
+            "y": 66,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r005-0-0",
+            "kind": "coin",
+            "x": 386,
+            "y": 130,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r005-1-0",
+            "kind": "coin",
+            "x": 402,
+            "y": 130,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r005-2-0",
+            "kind": "coin",
+            "x": 418,
+            "y": 130,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r005-3-0",
+            "kind": "coin",
+            "x": 434,
+            "y": 130,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r010",
+            "kind": "coin",
+            "x": 604,
+            "y": 178,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r013",
+            "kind": "coin",
+            "x": 642,
+            "y": 178,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r016",
+            "kind": "coin",
+            "x": 770,
+            "y": 114,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r023-0-0",
+            "kind": "coin",
+            "x": 1074,
+            "y": 98,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r023-1-0",
+            "kind": "coin",
+            "x": 1090,
+            "y": 98,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r023-2-0",
+            "kind": "coin",
+            "x": 1106,
+            "y": 98,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r026-0-0",
+            "kind": "coin",
+            "x": 1122,
+            "y": 34,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r026-1-0",
+            "kind": "coin",
+            "x": 1138,
+            "y": 34,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r026-2-0",
+            "kind": "coin",
+            "x": 1154,
+            "y": 34,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r028",
+            "kind": "coin",
+            "x": 1170,
+            "y": 130,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r034",
+            "kind": "coin",
+            "x": 1540,
+            "y": 114,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r039-0-0",
+            "kind": "coin",
+            "x": 1810,
+            "y": 130,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r039-1-0",
+            "kind": "coin",
+            "x": 1826,
+            "y": 130,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r039-2-0",
+            "kind": "coin",
+            "x": 1842,
+            "y": 130,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r039-3-0",
+            "kind": "coin",
+            "x": 1858,
+            "y": 130,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r039-4-0",
+            "kind": "coin",
+            "x": 1874,
+            "y": 130,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "inspection-start",
+            "kind": "spawn",
+            "x": 24,
+            "y": 184,
+            "w": 12,
+            "h": 24
+          }
+        ]
+      },
+      "markers": [
+        {
+          "id": "r001-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Shroom",
+            "width": 40,
+            "x": 128,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r001"
+          },
+          "x": 256,
+          "y": 208
+        },
+        {
+          "id": "r002-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Shroom",
+            "width": 40,
+            "x": 152,
+            "y": 64
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r002"
+          },
+          "x": 304,
+          "y": 80
+        },
+        {
+          "id": "r004-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Shroom",
+            "width": 56,
+            "x": 184,
+            "y": 32
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r004"
+          },
+          "x": 368,
+          "y": 144
+        },
+        {
+          "id": "r006-0-0",
+          "kind": "enemy-koopa",
+          "source": {
+            "thing": "Koopa",
+            "smart": true,
+            "x": 224,
+            "y": 44
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r006"
+          },
+          "x": 448,
+          "y": 120
+        },
+        {
+          "id": "r006-1-0",
+          "kind": "enemy-koopa",
+          "source": {
+            "thing": "Koopa",
+            "smart": true,
+            "x": 232,
+            "y": 44
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r006"
+          },
+          "x": 464,
+          "y": 120
+        },
+        {
+          "id": "r007-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Shroom",
+            "width": 24,
+            "x": 256,
+            "y": 72
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r007"
+          },
+          "x": 512,
+          "y": 64
+        },
+        {
+          "id": "r008-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Shroom",
+            "width": 56,
+            "x": 288,
+            "y": 8
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r008"
+          },
+          "x": 576,
+          "y": 192
+        },
+        {
+          "id": "r009",
+          "kind": "enemy-koopa",
+          "source": {
+            "thing": "Koopa",
+            "smart": true,
+            "floating": true,
+            "jumping": true,
+            "begin": 32,
+            "end": 88,
+            "x": 288,
+            "y": 84
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r009"
+          },
+          "x": 576,
+          "y": 40
+        },
+        {
+          "id": "r011",
+          "kind": "enemy-koopa",
+          "source": {
+            "thing": "Koopa",
+            "smart": true,
+            "x": 312,
+            "y": 20
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r011"
+          },
+          "x": 624,
+          "y": 168
+        },
+        {
+          "id": "r012-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Shroom",
+            "width": 40,
+            "x": 312,
+            "y": 64
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r012"
+          },
+          "x": 624,
+          "y": 80
+        },
+        {
+          "id": "r014-contents",
+          "kind": "block-contents",
+          "source": {
+            "thing": "Block",
+            "contents": "Mushroom",
+            "x": 344,
+            "y": 88
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r014"
+          },
+          "x": 688,
+          "y": 32
+        },
+        {
+          "id": "r015-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Shroom",
+            "width": 24,
+            "x": 352,
+            "y": 32
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r015"
+          },
+          "x": 704,
+          "y": 144
+        },
+        {
+          "id": "r017",
+          "kind": "coupled-scale",
+          "source": {
+            "macro": "Scale",
+            "between": 56,
+            "dropRight": 44,
+            "x": 396,
+            "y": 86
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r017"
+          },
+          "x": 792,
+          "y": 36
+        },
+        {
+          "id": "r018-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Shroom",
+            "width": 24,
+            "x": 408,
+            "y": 40
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r018"
+          },
+          "x": 816,
+          "y": 128
+        },
+        {
+          "id": "r019-timing",
+          "kind": "platform-timing",
+          "source": {
+            "thing": "Platform",
+            "width": 24,
+            "floating": true,
+            "begin": 16,
+            "end": 72,
+            "x": 464,
+            "y": 20
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r019"
+          },
+          "x": 928,
+          "y": 168
+        },
+        {
+          "id": "r020-timing",
+          "kind": "platform-timing",
+          "source": {
+            "thing": "Platform",
+            "width": 24,
+            "floating": true,
+            "begin": 32,
+            "end": 88,
+            "x": 496,
+            "y": 66
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r020"
+          },
+          "x": 992,
+          "y": 76
+        },
+        {
+          "id": "r021-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Shroom",
+            "width": 40,
+            "x": 520,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r021"
+          },
+          "x": 1040,
+          "y": 208
+        },
+        {
+          "id": "r022-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Shroom",
+            "width": 24,
+            "x": 536,
+            "y": 48
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r022"
+          },
+          "x": 1072,
+          "y": 112
+        },
+        {
+          "id": "r024",
+          "kind": "enemy-koopa",
+          "source": {
+            "thing": "Koopa",
+            "smart": true,
+            "x": 544,
+            "y": 12
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r024"
+          },
+          "x": 1088,
+          "y": 184
+        },
+        {
+          "id": "r025-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Shroom",
+            "width": 24,
+            "x": 560,
+            "y": 80
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r025"
+          },
+          "x": 1120,
+          "y": 48
+        },
+        {
+          "id": "r027-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Shroom",
+            "width": 24,
+            "x": 576,
+            "y": 32
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r027"
+          },
+          "x": 1152,
+          "y": 144
+        },
+        {
+          "id": "r029-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Shroom",
+            "width": 40,
+            "x": 592,
+            "y": 64
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r029"
+          },
+          "x": 1184,
+          "y": 80
+        },
+        {
+          "id": "r030",
+          "kind": "enemy-koopa",
+          "source": {
+            "thing": "Koopa",
+            "smart": true,
+            "x": 624,
+            "y": 76
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r030"
+          },
+          "x": 1248,
+          "y": 56
+        },
+        {
+          "id": "r031",
+          "kind": "coupled-scale",
+          "source": {
+            "macro": "Scale",
+            "between": 64,
+            "dropRight": 52,
+            "x": 652,
+            "y": 86
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r031"
+          },
+          "x": 1304,
+          "y": 36
+        },
+        {
+          "id": "r032-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Shroom",
+            "x": 672,
+            "y": 32
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r032"
+          },
+          "x": 1344,
+          "y": 144
+        },
+        {
+          "id": "r033",
+          "kind": "coupled-scale",
+          "source": {
+            "macro": "Scale",
+            "dropRight": 56,
+            "x": 740,
+            "y": 86
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r033"
+          },
+          "x": 1480,
+          "y": 36
+        },
+        {
+          "id": "r035-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Shroom",
+            "width": 24,
+            "x": 792,
+            "y": 16
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r035"
+          },
+          "x": 1584,
+          "y": 176
+        },
+        {
+          "id": "r036",
+          "kind": "coupled-scale",
+          "source": {
+            "macro": "Scale",
+            "between": 48,
+            "dropRight": 56,
+            "x": 828,
+            "y": 86
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r036"
+          },
+          "x": 1656,
+          "y": 36
+        },
+        {
+          "id": "r037-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Shroom",
+            "width": 24,
+            "x": 840,
+            "y": 24
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r037"
+          },
+          "x": 1680,
+          "y": 160
+        },
+        {
+          "id": "r038-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Shroom",
+            "width": 40,
+            "x": 904,
+            "y": 32
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r038"
+          },
+          "x": 1808,
+          "y": 144
+        },
+        {
+          "id": "r040-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Shroom",
+            "width": 24,
+            "x": 936,
+            "y": 56
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r040"
+          },
+          "x": 1872,
+          "y": 96
+        },
+        {
+          "id": "r041-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Shroom",
+            "width": 56,
+            "x": 968,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r041"
+          },
+          "x": 1936,
+          "y": 208
+        },
+        {
+          "id": "r042-trunk",
+          "kind": "decorative-trunk",
+          "source": {
+            "macro": "Shroom",
+            "width": 40,
+            "x": 1040,
+            "y": 24
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r042"
+          },
+          "x": 2080,
+          "y": 160
+        },
+        {
+          "id": "r043-timing",
+          "kind": "platform-timing",
+          "source": {
+            "thing": "Platform",
+            "width": 24,
+            "floating": true,
+            "begin": 8,
+            "end": 88,
+            "x": 1088,
+            "y": 67
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r043"
+          },
+          "x": 2176,
+          "y": 74
+        },
+        {
+          "id": "r045",
+          "kind": "flagpole-finish",
+          "source": {
+            "macro": "EndOutsideCastle",
+            "large": true,
+            "walls": 3,
+            "transport": {
+              "map": "4-4"
+            },
+            "x": 1176,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r045"
+          },
+          "x": 2352,
+          "y": 208
+        },
+        {
+          "id": "r045-transport",
+          "kind": "source-transport-not-simulated",
+          "source": {
+            "macro": "EndOutsideCastle",
+            "large": true,
+            "walls": 3,
+            "transport": {
+              "map": "4-4"
+            },
+            "x": 1176,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r045"
+          },
+          "x": 2352,
+          "y": 208
+        }
+      ],
+      "semantics": [
+        {
+          "id": "r000",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 120,
+            "x": 0,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 0,
+            "y": 208,
+            "w": 240,
+            "h": 32
+          }
+        },
+        {
+          "id": "r001",
+          "kind": "ShroomTop",
+          "source": {
+            "macro": "Shroom",
+            "width": 40,
+            "x": 128,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 256,
+            "y": 208,
+            "w": 80,
+            "h": 16
+          }
+        },
+        {
+          "id": "r002",
+          "kind": "ShroomTop",
+          "source": {
+            "macro": "Shroom",
+            "width": 40,
+            "x": 152,
+            "y": 64
+          },
+          "referenceRect": {
+            "x": 304,
+            "y": 80,
+            "w": 80,
+            "h": 16
+          }
+        },
+        {
+          "id": "r004",
+          "kind": "ShroomTop",
+          "source": {
+            "macro": "Shroom",
+            "width": 56,
+            "x": 184,
+            "y": 32
+          },
+          "referenceRect": {
+            "x": 368,
+            "y": 144,
+            "w": 112,
+            "h": 16
+          }
+        },
+        {
+          "id": "r007",
+          "kind": "ShroomTop",
+          "source": {
+            "macro": "Shroom",
+            "width": 24,
+            "x": 256,
+            "y": 72
+          },
+          "referenceRect": {
+            "x": 512,
+            "y": 64,
+            "w": 48,
+            "h": 16
+          }
+        },
+        {
+          "id": "r008",
+          "kind": "ShroomTop",
+          "source": {
+            "macro": "Shroom",
+            "width": 56,
+            "x": 288,
+            "y": 8
+          },
+          "referenceRect": {
+            "x": 576,
+            "y": 192,
+            "w": 112,
+            "h": 16
+          }
+        },
+        {
+          "id": "r012",
+          "kind": "ShroomTop",
+          "source": {
+            "macro": "Shroom",
+            "width": 40,
+            "x": 312,
+            "y": 64
+          },
+          "referenceRect": {
+            "x": 624,
+            "y": 80,
+            "w": 80,
+            "h": 16
+          }
+        },
+        {
+          "id": "r014",
+          "kind": "Block",
+          "source": {
+            "thing": "Block",
+            "contents": "Mushroom",
+            "x": 344,
+            "y": 88
+          },
+          "referenceRect": {
+            "x": 688,
+            "y": 32,
+            "w": 16,
+            "h": 16
+          }
+        },
+        {
+          "id": "r015",
+          "kind": "ShroomTop",
+          "source": {
+            "macro": "Shroom",
+            "width": 24,
+            "x": 352,
+            "y": 32
+          },
+          "referenceRect": {
+            "x": 704,
+            "y": 144,
+            "w": 48,
+            "h": 16
+          }
+        },
+        {
+          "id": "r017-left",
+          "kind": "ScalePlatform",
+          "source": {
+            "x": 384,
+            "y": 62
+          },
+          "referenceRect": {
+            "x": 768,
+            "y": 84,
+            "w": 48,
+            "h": 8
+          }
+        },
+        {
+          "id": "r017-right",
+          "kind": "ScalePlatform",
+          "source": {
+            "x": 440,
+            "y": 42
+          },
+          "referenceRect": {
+            "x": 880,
+            "y": 124,
+            "w": 48,
+            "h": 8
+          }
+        },
+        {
+          "id": "r018",
+          "kind": "ShroomTop",
+          "source": {
+            "macro": "Shroom",
+            "width": 24,
+            "x": 408,
+            "y": 40
+          },
+          "referenceRect": {
+            "x": 816,
+            "y": 128,
+            "w": 48,
+            "h": 16
+          }
+        },
+        {
+          "id": "r019",
+          "kind": "Platform",
+          "source": {
+            "thing": "Platform",
+            "width": 24,
+            "floating": true,
+            "begin": 16,
+            "end": 72,
+            "x": 464,
+            "y": 20
+          },
+          "referenceRect": {
+            "x": 928,
+            "y": 168,
+            "w": 48,
+            "h": 8
+          }
+        },
+        {
+          "id": "r020",
+          "kind": "Platform",
+          "source": {
+            "thing": "Platform",
+            "width": 24,
+            "floating": true,
+            "begin": 32,
+            "end": 88,
+            "x": 496,
+            "y": 66
+          },
+          "referenceRect": {
+            "x": 992,
+            "y": 76,
+            "w": 48,
+            "h": 8
+          }
+        },
+        {
+          "id": "r021",
+          "kind": "ShroomTop",
+          "source": {
+            "macro": "Shroom",
+            "width": 40,
+            "x": 520,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 1040,
+            "y": 208,
+            "w": 80,
+            "h": 16
+          }
+        },
+        {
+          "id": "r022",
+          "kind": "ShroomTop",
+          "source": {
+            "macro": "Shroom",
+            "width": 24,
+            "x": 536,
+            "y": 48
+          },
+          "referenceRect": {
+            "x": 1072,
+            "y": 112,
+            "w": 48,
+            "h": 16
+          }
+        },
+        {
+          "id": "r025",
+          "kind": "ShroomTop",
+          "source": {
+            "macro": "Shroom",
+            "width": 24,
+            "x": 560,
+            "y": 80
+          },
+          "referenceRect": {
+            "x": 1120,
+            "y": 48,
+            "w": 48,
+            "h": 16
+          }
+        },
+        {
+          "id": "r027",
+          "kind": "ShroomTop",
+          "source": {
+            "macro": "Shroom",
+            "width": 24,
+            "x": 576,
+            "y": 32
+          },
+          "referenceRect": {
+            "x": 1152,
+            "y": 144,
+            "w": 48,
+            "h": 16
+          }
+        },
+        {
+          "id": "r029",
+          "kind": "ShroomTop",
+          "source": {
+            "macro": "Shroom",
+            "width": 40,
+            "x": 592,
+            "y": 64
+          },
+          "referenceRect": {
+            "x": 1184,
+            "y": 80,
+            "w": 80,
+            "h": 16
+          }
+        },
+        {
+          "id": "r031-left",
+          "kind": "ScalePlatform",
+          "source": {
+            "x": 640,
+            "y": 62
+          },
+          "referenceRect": {
+            "x": 1280,
+            "y": 84,
+            "w": 48,
+            "h": 8
+          }
+        },
+        {
+          "id": "r031-right",
+          "kind": "ScalePlatform",
+          "source": {
+            "x": 704,
+            "y": 34
+          },
+          "referenceRect": {
+            "x": 1408,
+            "y": 140,
+            "w": 48,
+            "h": 8
+          }
+        },
+        {
+          "id": "r032",
+          "kind": "ShroomTop",
+          "source": {
+            "macro": "Shroom",
+            "x": 672,
+            "y": 32
+          },
+          "referenceRect": {
+            "x": 1344,
+            "y": 144,
+            "w": 48,
+            "h": 16
+          }
+        },
+        {
+          "id": "r033-left",
+          "kind": "ScalePlatform",
+          "source": {
+            "x": 728,
+            "y": 62
+          },
+          "referenceRect": {
+            "x": 1456,
+            "y": 84,
+            "w": 48,
+            "h": 8
+          }
+        },
+        {
+          "id": "r033-right",
+          "kind": "ScalePlatform",
+          "source": {
+            "x": 768,
+            "y": 30
+          },
+          "referenceRect": {
+            "x": 1536,
+            "y": 148,
+            "w": 48,
+            "h": 8
+          }
+        },
+        {
+          "id": "r035",
+          "kind": "ShroomTop",
+          "source": {
+            "macro": "Shroom",
+            "width": 24,
+            "x": 792,
+            "y": 16
+          },
+          "referenceRect": {
+            "x": 1584,
+            "y": 176,
+            "w": 48,
+            "h": 16
+          }
+        },
+        {
+          "id": "r036-left",
+          "kind": "ScalePlatform",
+          "source": {
+            "x": 816,
+            "y": 62
+          },
+          "referenceRect": {
+            "x": 1632,
+            "y": 84,
+            "w": 48,
+            "h": 8
+          }
+        },
+        {
+          "id": "r036-right",
+          "kind": "ScalePlatform",
+          "source": {
+            "x": 864,
+            "y": 30
+          },
+          "referenceRect": {
+            "x": 1728,
+            "y": 148,
+            "w": 48,
+            "h": 8
+          }
+        },
+        {
+          "id": "r037",
+          "kind": "ShroomTop",
+          "source": {
+            "macro": "Shroom",
+            "width": 24,
+            "x": 840,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 1680,
+            "y": 160,
+            "w": 48,
+            "h": 16
+          }
+        },
+        {
+          "id": "r038",
+          "kind": "ShroomTop",
+          "source": {
+            "macro": "Shroom",
+            "width": 40,
+            "x": 904,
+            "y": 32
+          },
+          "referenceRect": {
+            "x": 1808,
+            "y": 144,
+            "w": 80,
+            "h": 16
+          }
+        },
+        {
+          "id": "r040",
+          "kind": "ShroomTop",
+          "source": {
+            "macro": "Shroom",
+            "width": 24,
+            "x": 936,
+            "y": 56
+          },
+          "referenceRect": {
+            "x": 1872,
+            "y": 96,
+            "w": 48,
+            "h": 16
+          }
+        },
+        {
+          "id": "r041",
+          "kind": "ShroomTop",
+          "source": {
+            "macro": "Shroom",
+            "width": 56,
+            "x": 968,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 1936,
+            "y": 208,
+            "w": 112,
+            "h": 16
+          }
+        },
+        {
+          "id": "r042",
+          "kind": "ShroomTop",
+          "source": {
+            "macro": "Shroom",
+            "width": 40,
+            "x": 1040,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 2080,
+            "y": 160,
+            "w": 80,
+            "h": 16
+          }
+        },
+        {
+          "id": "r043",
+          "kind": "Platform",
+          "source": {
+            "thing": "Platform",
+            "width": 24,
+            "floating": true,
+            "begin": 8,
+            "end": 88,
+            "x": 1088,
+            "y": 67
+          },
+          "referenceRect": {
+            "x": 2176,
+            "y": 74,
+            "w": 48,
+            "h": 8
+          }
+        },
+        {
+          "id": "r044",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 152,
+            "x": 1128,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 2256,
+            "y": 208,
+            "w": 304,
+            "h": 32
+          }
+        },
+        {
+          "id": "r045-base",
+          "kind": "Stone",
+          "source": {
+            "macro": "EndOutsideCastle",
+            "large": true,
+            "walls": 3,
+            "transport": {
+              "map": "4-4"
+            },
+            "x": 1176,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 2352,
+            "y": 192,
+            "w": 16,
+            "h": 16
+          }
+        }
+      ],
+      "sourceRecordCount": 46
+    }
+  ],
+  "topology": {
+    "locations": [
+      {
+        "area": 0,
+        "entry": "Plain"
+      }
+    ],
+    "areas": [
+      {
+        "area": 0,
+        "setting": "Overworld Shrooms",
+        "underwater": false,
+        "exit": null,
+        "sections": []
+      }
+    ],
+    "links": [
+      {
+        "from": {
+          "area": 0,
+          "part": "base",
+          "record": "r045"
+        },
+        "kind": "world",
+        "target": {
+          "map": "4-4"
+        }
+      }
+    ],
+    "issues": []
+  },
+  "coverage": {
+    "placementRecords": 46,
+    "areas": 1,
+    "sectionViews": 0,
+    "views": 1,
+    "geometry": 35,
+    "objects": 24,
+    "pending": [
+      "block-contents",
+      "coupled-scale",
+      "decorative-trunk",
+      "enemy-koopa",
+      "flagpole-finish",
+      "platform-timing",
+      "source-transport-not-simulated"
+    ],
+    "details": [
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r001-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r002-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r004-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r006-0-0",
+        "kind": "enemy-koopa"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r006-1-0",
+        "kind": "enemy-koopa"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r007-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r008-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r009",
+        "kind": "enemy-koopa"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r011",
+        "kind": "enemy-koopa"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r012-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r014-contents",
+        "kind": "block-contents"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r015-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r017",
+        "kind": "coupled-scale"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r018-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r019-timing",
+        "kind": "platform-timing"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r020-timing",
+        "kind": "platform-timing"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r021-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r022-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r024",
+        "kind": "enemy-koopa"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r025-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r027-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r029-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r030",
+        "kind": "enemy-koopa"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r031",
+        "kind": "coupled-scale"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r032-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r033",
+        "kind": "coupled-scale"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r035-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r036",
+        "kind": "coupled-scale"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r037-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r038-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r040-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r041-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r042-trunk",
+        "kind": "decorative-trunk"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r043-timing",
+        "kind": "platform-timing"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r045",
+        "kind": "flagpole-finish"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r045-transport",
+        "kind": "source-transport-not-simulated"
+      }
+    ],
+    "geometryReview": "reference-transcribed-pending-original-review",
+    "playability": "partition-inspection-not-level-completion",
+    "underwaterAreas": 0,
+    "sourceIssues": 0
+  },
+  "source": {
+    "repository": "umaim/Mario",
+    "commit": "980c275358704a49f868567aeec5bdfb347c4781",
+    "path": "Source/settings/maps.js",
+    "gitBlob": "657d750ad65bb06c0e63a3d8958736f9236ec3c0",
+    "range": "Worlds 1–8 gameplay layout transcription",
+    "url": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+    "method": "Manual transcription of gameplay placement records, area locations and section definitions. Pure background scenery omitted; not a byte-identical source export or original-game certification.",
+    "omittedVisuals": [
+      "Pattern",
+      "DecorativeBack",
+      "DecorativeDot",
+      "CustomText"
+    ]
+  }
+}

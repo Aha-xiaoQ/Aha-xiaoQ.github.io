@@ -1,0 +1,595 @@
+globalThis.SITE_DATA = {
+  "profile": {
+    "displayName": "在下_小Q",
+    "publicRole": "项目、工具与游戏",
+    "publicStatement": "做项目，也做工具，偶尔做点游戏。",
+    "publicIntro": "欢迎来逛。",
+    "interests": [],
+    "now": {
+      "label": "重点作品",
+      "sourceId": "game-mario-mix-isaac",
+      "title": "混合马里奥 · 以撒篇｜库巴，时代变了",
+      "summary": "以撒带着眼泪闯进蘑菇王国。收集道具、叠加弹幕、凑齐套装，挑战四位 BOSS，再把满屏火力带到库巴面前。",
+      "updatedAt": "2026-10-25",
+      "href": "/games/mario-mix-isaac/",
+      "entryLabel": "混合马里奥 · 以撒篇｜库巴，时代变了",
+      "items": []
+    },
+    "copy": {
+      "role": "homepage-studio-v2",
+      "heroStatement": {
+        "role": "heroStatement",
+        "text": "做项目，也做工具，偶尔做点游戏。"
+      },
+      "worksHeading": {
+        "role": "worksHeading",
+        "text": "往里逛逛"
+      },
+      "worksIntro": {
+        "role": "worksIntro",
+        "text": "浏览作品，查看源码与开发记录。"
+      },
+      "viewpoint": {
+        "role": "viewpoint",
+        "text": "欢迎来逛。"
+      },
+      "contactIntro": {
+        "role": "contactIntro",
+        "text": "可以在 GitHub、Bilibili 或通过邮箱找到我。"
+      }
+    },
+    "links": [
+      {
+        "label": "GitHub",
+        "kind": "external",
+        "value": "https://github.com/Aha-xiaoQ",
+        "url": "https://github.com/Aha-xiaoQ"
+      },
+      {
+        "label": "Bilibili",
+        "kind": "external",
+        "value": "https://space.bilibili.com/22673233?spm_id_from=333.1007.0.0",
+        "url": "https://space.bilibili.com/22673233?spm_id_from=333.1007.0.0"
+      },
+      {
+        "label": "邮箱",
+        "kind": "email",
+        "value": "hfutqdm@163.com",
+        "url": "mailto:hfutqdm@163.com"
+      }
+    ],
+    "visibility": "public"
+  },
+  "items": [
+    {
+      "id": "game-mario-mix-isaac",
+      "slug": "mario-mix-isaac",
+      "primaryType": "game",
+      "relatedIds": [],
+      "title": "混合马里奥 · 以撒篇｜库巴，时代变了",
+      "summary": "以撒带着眼泪闯进蘑菇王国。收集道具、叠加弹幕、凑齐套装，挑战四位 BOSS，再把满屏火力带到库巴面前。",
+      "lifecycleStatus": "active",
+      "visibility": "public",
+      "accessMode": "online",
+      "createdAt": "2026-10-25",
+      "updatedAt": "2026-10-25",
+      "displayOrder": 110,
+      "categories": [
+        "side-scrolling"
+      ],
+      "tags": [
+        "以撒",
+        "道具组合",
+        "弹幕与套装"
+      ],
+      "cover": "games/mario-mix-isaac/cover.png",
+      "evidenceIds": [],
+      "detailUrl": "/games/mario-mix-isaac/",
+      "localUrl": "games/mario-mix-isaac/play.html",
+      "downloadUrl": "/release-assets/mario-mix-isaac-0.9.13/MarioMix_Isaac_0.9.13_Game.zip",
+      "downloadLabel": "下载离线游戏（0.9.13）",
+      "downloadInstructions": "下载后解压，用近期版本 Chrome 或 Edge 打开 play.html。在线与离线均为 0.9.13。",
+      "videoSlot": true,
+      "videoUrl": "https://www.bilibili.com/video/BV1NvnU6KEWn/"
+    },
+    {
+      "id": "game-mario-mix-xiaoq",
+      "slug": "mario-mix-xiaoq",
+      "primaryType": "game",
+      "relatedIds": [],
+      "title": "混合马里奥在下_小Q版",
+      "summary": "九位角色，九种打法，同一个蘑菇王国。钻进管道挑战专属隐藏关，寻找彩蛋、解锁成就，再一路救出公主。",
+      "lifecycleStatus": "active",
+      "visibility": "public",
+      "accessMode": "online",
+      "createdAt": "2026-10-11",
+      "updatedAt": "2026-10-16",
+      "displayOrder": 100,
+      "categories": [
+        "side-scrolling"
+      ],
+      "tags": [
+        "九位角色",
+        "隐藏关",
+        "彩蛋与成就"
+      ],
+      "cover": "games/mario-mix-xiaoq/cover.png",
+      "evidenceIds": [],
+      "detailUrl": "/games/mario-mix-xiaoq/",
+      "localUrl": "games/mario-mix-xiaoq/play.html",
+      "downloadUrl": "/release-assets/mario-mix-xiaoq-0.8.14/MarioMix_XiaoQ_0.8.14_Game.zip",
+      "downloadLabel": "下载离线游戏（0.8.14）",
+      "downloadInstructions": "下载后解压，用近期版本 Chrome 或 Edge 打开 play.html。离线下载为 0.8.14；本次修复请使用在线试玩。",
+      "videoSlot": true,
+      "videoUrl": "https://www.bilibili.com/video/BV1gNpj6WE32/"
+    },
+    {
+      "id": "game-mario-minecraft",
+      "slug": "mario-minecraft",
+      "primaryType": "game",
+      "relatedIds": [],
+      "title": "自制马里奥4 | 我的世界横版闯关",
+      "summary": "穿过雨夜森林、乘矿车深入矿洞，在下界躲过恶魂，解开红石音符机关，再用三叉戟迎战末影龙。",
+      "lifecycleStatus": "active",
+      "visibility": "public",
+      "accessMode": "online",
+      "createdAt": "2026-10-19",
+      "updatedAt": "2026-10-19",
+      "displayOrder": 91,
+      "categories": [
+        "side-scrolling"
+      ],
+      "tags": [
+        "我的世界联动",
+        "矿车与红石",
+        "自制关卡"
+      ],
+      "cover": "/assets/lab/mario-minecraft-cover.png",
+      "evidenceIds": [],
+      "detailUrl": "/games/mario-minecraft/",
+      "localUrl": "/experiments/releases/mario-minecraft/game.html",
+      "downloadUrl": "/experiments/releases/mario-minecraft/game.html",
+      "downloadLabel": "下载 HTML",
+      "downloadInstructions": "下载 HTML 后，用近期版本 Chrome 或 Edge 打开。",
+      "videoSlot": true,
+      "videoUrl": "https://www.bilibili.com/video/BV1fknG69EZL/"
+    },
+    {
+      "id": "game-badapple-mario",
+      "slug": "badapple-mario",
+      "primaryType": "game",
+      "relatedIds": [],
+      "title": "自制马里奥3 | Bad Apple!! 音乐小剧场",
+      "summary": "跟着 Bad Apple!! 的节拍跳跃、下蹲与发射火球，看金币和砖块把平面舞台展开成立体音乐剧。",
+      "lifecycleStatus": "active",
+      "visibility": "public",
+      "accessMode": "online",
+      "createdAt": "2026-10-11",
+      "updatedAt": "2026-10-11",
+      "displayOrder": 90,
+      "categories": [
+        "side-scrolling"
+      ],
+      "tags": [
+        "节奏跑酷音乐剧",
+        "自制关卡"
+      ],
+      "cover": "/assets/lab/badapple-mario-cover.png",
+      "evidenceIds": [],
+      "detailUrl": "/games/badapple-mario/",
+      "localUrl": "/experiments/releases/badapple-mario/game.html",
+      "downloadUrl": "/experiments/releases/badapple-mario/game.html",
+      "downloadLabel": "下载 HTML",
+      "downloadInstructions": "下载 HTML 后，用近期版本 Chrome 或 Edge 打开。",
+      "videoSlot": true,
+      "videoUrl": "https://www.bilibili.com/video/BV1L1p36DETJ/"
+    },
+    {
+      "id": "game-mario-midnight-kitchen",
+      "slug": "mario-midnight-kitchen",
+      "primaryType": "game",
+      "relatedIds": [],
+      "title": "自制马里奥2 | 小小梦魇 · 午夜厨房",
+      "summary": "误入小小梦魇的厨房：引开厨师、躲进桌底、推箱开门，再与小六一起乘吊钩离开。",
+      "lifecycleStatus": "active",
+      "visibility": "public",
+      "accessMode": "online",
+      "createdAt": "2026-10-10",
+      "updatedAt": "2026-10-10",
+      "displayOrder": 89,
+      "categories": [
+        "side-scrolling"
+      ],
+      "tags": [
+        "3D 潜行游戏",
+        "自制关卡"
+      ],
+      "cover": "/assets/lab/mario-midnight-kitchen-cover.png",
+      "evidenceIds": [],
+      "detailUrl": "/games/mario-midnight-kitchen/",
+      "localUrl": "/experiments/releases/mario-midnight-kitchen/game.html",
+      "downloadUrl": "/experiments/releases/mario-midnight-kitchen/game.html",
+      "downloadLabel": "下载 HTML",
+      "downloadInstructions": "下载 HTML 后，用近期版本 Chrome 或 Edge 打开。",
+      "videoSlot": true,
+      "videoUrl": "https://www.bilibili.com/video/BV18BpG6LEaF/"
+    },
+    {
+      "id": "game-five-regions",
+      "slug": "five-regions",
+      "primaryType": "game",
+      "relatedIds": [],
+      "title": "自制马里奥1：我们一起打蜜蜂",
+      "summary": "穿过五扇门，挑战不同机关，收集五枚粉币，带着钥匙抵达终点。",
+      "lifecycleStatus": "active",
+      "visibility": "public",
+      "accessMode": "online",
+      "createdAt": "2026-10-08",
+      "updatedAt": "2026-10-08",
+      "categories": [
+        "side-scrolling"
+      ],
+      "tags": [
+        "自制关卡",
+        "机关挑战",
+        "浏览器游戏"
+      ],
+      "cover": "games/five-regions/cover.png",
+      "evidenceIds": [
+        "evidence-five-regions"
+      ],
+      "detailUrl": "/games/five-regions/",
+      "localUrl": "games/five-regions/play.html",
+      "downloadUrl": "downloads/games/Five_Regions_1.10.36.html",
+      "downloadLabel": "下载 HTML",
+      "downloadInstructions": "下载后用浏览器打开 HTML 文件，即可离线游玩。",
+      "videoSlot": true,
+      "videoUrl": "https://www.bilibili.com/video/BV1cHH965ECn/",
+      "videoLabel": "B站观看"
+    },
+    {
+      "id": "game-mario-mix-4",
+      "slug": "mario-mix-4",
+      "primaryType": "game",
+      "relatedIds": [],
+      "title": "混合马里奥 IV · 索尼克 × 奥日",
+      "summary": "第四期 · 索尼克与奥日加入马里奥 1-4，切换角色、穿过城堡关卡，完成营救公主的冒险。",
+      "lifecycleStatus": "active",
+      "visibility": "public",
+      "accessMode": "online",
+      "createdAt": "2026-09-20",
+      "updatedAt": "2026-09-20",
+      "categories": [
+        "side-scrolling"
+      ],
+      "tags": [
+        "横版闯关",
+        "像素平台",
+        "浏览器游戏"
+      ],
+      "cover": "games/mario-mix-4/cover.png?v=episode04-r43",
+      "evidenceIds": [
+        "evidence-mario-mix-4"
+      ],
+      "detailUrl": "games/mario-mix-4/",
+      "localUrl": "games/mario-mix-4/play.html",
+      "downloadUrl": "downloads/games/mario-mix-4.zip",
+      "videoSlot": true,
+      "videoUrl": "https://www.bilibili.com/video/BV1JBhh6iEXS/"
+    },
+    {
+      "id": "game-mario-mix-3",
+      "slug": "mario-mix-3",
+      "primaryType": "game",
+      "relatedIds": [],
+      "title": "混合马里奥Ⅲ · 泰拉瑞亚",
+      "summary": "第三期 · 泰拉瑞亚旅途的开始，把泰拉瑞亚带进马里奥 1-3，挑战地表、地底、坐骑与武器，面对克苏鲁之眼和独眼巨鹿。",
+      "lifecycleStatus": "active",
+      "visibility": "public",
+      "accessMode": "online",
+      "createdAt": "2026-09-13",
+      "updatedAt": "2026-09-13",
+      "categories": [
+        "side-scrolling"
+      ],
+      "tags": [
+        "横版闯关",
+        "像素平台",
+        "浏览器游戏"
+      ],
+      "cover": "games/mario-mix-3/cover.png?v=video03-r31",
+      "evidenceIds": [
+        "evidence-mario-mix-3"
+      ],
+      "detailUrl": "games/mario-mix-3/",
+      "localUrl": "games/mario-mix-3/play.html",
+      "videoUrl": "https://www.bilibili.com/video/BV1cCYi6xEPz/",
+      "downloadUrl": "downloads/games/mario-mix-3.zip"
+    },
+    {
+      "id": "game-mario-mix-2",
+      "slug": "mario-mix-2",
+      "primaryType": "game",
+      "relatedIds": [],
+      "title": "混合马里奥Ⅱ · 忍者龙剑传 × 坦克大战",
+      "summary": "第二期 · 忍者龙剑传与坦克大战加入冒险，接力闯过 1-2，救回公主。",
+      "lifecycleStatus": "released",
+      "visibility": "public",
+      "accessMode": "online",
+      "createdAt": "2026-09-09",
+      "updatedAt": "2026-09-09",
+      "categories": [
+        "side-scrolling"
+      ],
+      "tags": [
+        "横版闯关",
+        "角色切换",
+        "浏览器游戏"
+      ],
+      "cover": "games/mario-mix-2/cover.jpg?v=dd5b8227f5b3e07a8da6",
+      "evidenceIds": [],
+      "detailUrl": "games/mario-mix-2/",
+      "localUrl": "games/mario-mix-2/play.html",
+      "videoUrl": "https://www.bilibili.com/video/BV1erYt69EFP/",
+      "downloadUrl": "downloads/games/mario-mix-2.zip"
+    },
+    {
+      "id": "game-mario-mix",
+      "slug": "mario-mix",
+      "primaryType": "game",
+      "relatedIds": [],
+      "title": "混合马里奥",
+      "summary": "马里奥、魂斗罗比尔和洛克人闯进经典1-1，不同角色带来各自的武器、动作与敌人。",
+      "lifecycleStatus": "released",
+      "visibility": "public",
+      "accessMode": "online",
+      "createdAt": "2026-09-06",
+      "updatedAt": "2026-09-06",
+      "categories": [
+        "side-scrolling"
+      ],
+      "tags": [
+        "横版闯关",
+        "角色切换",
+        "浏览器游戏"
+      ],
+      "cover": "games/mario-mix/cover.jpg?v=dd5b8227f5b3e07a8da6",
+      "evidenceIds": [],
+      "detailUrl": "games/mario-mix/",
+      "localUrl": "games/mario-mix/play.html",
+      "videoUrl": "https://www.bilibili.com/video/BV1g9bx6PEwL/",
+      "downloadUrl": "downloads/games/mario-mix.zip"
+    },
+    {
+      "id": "project-q-mimi",
+      "slug": "q-mimi",
+      "primaryType": "project",
+      "relatedIds": [],
+      "title": "Q咪 · 蓝黄小猫宠物",
+      "summary": "戴着黄金像素 Q 的蓝黄小猫。看看它眨眼、挥爪和转头，也可以下载宠物素材。",
+      "lifecycleStatus": "released",
+      "visibility": "public",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "categories": [],
+      "tags": [
+        "桌面宠物",
+        "角色动画"
+      ],
+      "evidenceIds": [],
+      "detailUrl": "projects/q-mimi/"
+    },
+    {
+      "id": "project-q-workflow",
+      "slug": "q-workflow",
+      "primaryType": "project",
+      "relatedIds": [],
+      "title": "小Q工作流 · v1.1-beta",
+      "summary": "给 AI 编程助手用的项目工作流：用文件记录任务状态，把恢复进度、检查与复盘接起来。开源测试版，附安装指南。",
+      "lifecycleStatus": "released",
+      "visibility": "public",
+      "createdAt": "2026-09-06",
+      "updatedAt": "2026-09-06",
+      "categories": [],
+      "tags": [
+        "开源",
+        "AI 工作流",
+        "Beta"
+      ],
+      "evidenceIds": [],
+      "detailUrl": "https://github.com/Aha-xiaoQ/q-workflow-hub"
+    },
+    {
+      "id": "game-pipebound",
+      "slug": "pipebound",
+      "primaryType": "game",
+      "relatedIds": [],
+      "title": "PIPEBOUND 1-1",
+      "summary": "第一期 · 一句话生成的横版闯关游戏。跳跃、收集金币，走到关卡终点。",
+      "lifecycleStatus": "released",
+      "visibility": "public",
+      "accessMode": "online",
+      "createdAt": "2026-09-06",
+      "updatedAt": "2026-09-06",
+      "verifiedAt": "2026-09-06",
+      "categories": [
+        "side-scrolling"
+      ],
+      "tags": [
+        "横版闯关",
+        "浏览器游戏"
+      ],
+      "cover": "assets/games/pipebound-cover.jpg?v=dd5b8227f5b3e07a8da6",
+      "evidenceIds": [
+        "evidence-pipebound"
+      ],
+      "detailUrl": "games/pipebound/",
+      "localUrl": "games/pipebound/play.html",
+      "videoUrl": "https://www.bilibili.com/video/BV1A3t166EKH/",
+      "downloadUrl": "downloads/games/pipebound.zip"
+    },
+    {
+      "id": "game-mario-classic",
+      "slug": "mario-classic",
+      "primaryType": "game",
+      "relatedIds": [],
+      "title": "超级马里奥 1-1",
+      "summary": "第二期 · 经典关卡还原。熟悉的角色、跳跃与道具，配合原版风格的画面和声音。",
+      "lifecycleStatus": "released",
+      "visibility": "public",
+      "accessMode": "online",
+      "createdAt": "2026-09-06",
+      "updatedAt": "2026-09-06",
+      "verifiedAt": "2026-09-06",
+      "categories": [
+        "side-scrolling"
+      ],
+      "tags": [
+        "横版闯关",
+        "像素平台",
+        "浏览器游戏"
+      ],
+      "cover": "assets/games/mario-classic-cover.jpg?v=dd5b8227f5b3e07a8da6",
+      "evidenceIds": [
+        "evidence-mario-classic"
+      ],
+      "detailUrl": "games/mario-classic/",
+      "localUrl": "games/mario-classic/play.html",
+      "videoUrl": "https://www.bilibili.com/video/BV1Ujbj6qEeh/",
+      "downloadUrl": "downloads/games/mario-classic.zip"
+    }
+  ],
+  "notes": [],
+  "tools": [
+    {
+      "id": "oscilloscope-music-player",
+      "primaryType": "tool",
+      "visibility": "public",
+      "lifecycleStatus": "active",
+      "accessMode": "download",
+      "createdAt": "2026-10-06",
+      "updatedAt": "2026-10-06",
+      "preview": "assets/lab/oscilloscope-music.png",
+      "previewAlt": "四通道示波器整机：黄色人物 XY 轨迹、绿色频谱、蓝色包络与红色 PWM。",
+      "title": "仿真示波器音乐播放器",
+      "status": "本地播放器",
+      "summary": "导入自己的音乐或视频，在四通道示波器上查看 XY、频谱、包络与 PWM，调节旋钮并导出画面。播放器在电脑本机运行。",
+      "url": "/notes/lab/docs/oscilloscope-music/",
+      "detailUrl": "/notes/lab/docs/oscilloscope-music/",
+      "linkLabel": "使用与下载",
+      "videoSlot": true,
+      "videoUrl": "https://www.bilibili.com/video/BV1b7pF63Ei7/"
+    },
+    {
+      "id": "mario-map-workshop",
+      "preview": "assets/illustrations/mario-map-workshop.png",
+      "previewAlt": "马里奥地图工坊：地块画板、地图画布与试玩设置",
+      "title": "马里奥地图工坊",
+      "status": "1.11.0 · 地图编辑 · AI 辅助制图",
+      "summary": "绘制地图，放置地形、敌人与奖励，边编辑边试玩。用 AI 辅助制图，保存工程并导出自己的关卡。",
+      "url": "/tools/mario-map-workshop-2-0/",
+      "linkLabel": "在线制图",
+      "videoSlot": true,
+      "videoUrl": "https://www.bilibili.com/video/BV1kLha63EyV/",
+      "detailUrl": "/tools/mario-map-workshop-2-0/",
+      "guide": {
+        "heading": "开始制图",
+        "intro": "使用在线编辑器绘制地图，放置地形、敌人与奖励，并随时试玩。源码包暂不提供下载。",
+        "usageHeading": "如何使用",
+        "steps": [
+          "打开下方在线地图工坊。",
+          "选择参考底图或创建地图，编辑地形、敌人与奖励。",
+          "试玩检查关卡，保存工程，或导出 HTML 离线试玩。"
+        ],
+        "skillHeading": "用 AI 辅助制图",
+        "skillIntro": "AI 辅助制图相关源码与 Skill 随源码包暂停提供；当前可使用在线编辑和试玩功能。",
+        "onlineHeading": "在线地图工坊",
+        "onlineIntro": "直接体验地图编辑、试玩和 HTML 离线导出。",
+        "onlineLabel": "打开在线地图工坊",
+        "onlineUrl": "/packages/mario-mix-worlds/atlas/editor.html",
+        "exampleHeading": "作品范例 · 五门挑战",
+        "exampleIntro": "用地图工坊制作的独立关卡，包含五种机关挑战。可试玩、下载单文件 HTML，并观看完整通关实况。",
+        "exampleLabel": "查看自制马里奥1：我们一起打蜜蜂",
+        "exampleUrl": "/games/five-regions/",
+        "licenseNote": "试玩与离线 HTML 中的第三方内容不因此获得统一开源许可。"
+      },
+      "videoLabel": "旧版演示视频",
+      "updatedAt": "2026-10-19"
+    },
+    {
+      "id": "quina-optics",
+      "preview": "assets/previews/quina-optics.webp",
+      "previewAlt": "光学与机械实验平台：扫描光谱仪、光谱曲线与转轴拆装入口",
+      "title": "启娜的光之工坊 · 拆开一束光",
+      "status": "在线实验",
+      "summary": "调节光栅与狭缝，观察光谱变化；拆开转轴、查看轴承内部，让蜗杆与蜗轮联动。光学为近似仿真，机械为自主工程示意；建议在电脑或横屏设备上体验。",
+      "url": "tools/quina-optics/",
+      "linkLabel": "进入实验平台 →",
+      "videoUrl": "https://www.bilibili.com/video/BV1JQbs61EJ3/"
+    }
+  ],
+  "methods": [],
+  "evidence": [
+    {
+      "id": "evidence-five-regions",
+      "sourceItemId": "game-five-regions",
+      "accessNote": "方向键移动，空格键跳跃，↑ 进门。骑云进入射击区后自动开火。"
+    },
+    {
+      "id": "evidence-mario-mix-4",
+      "type": "playable",
+      "label": "混合马里奥 IV · 索尼克 × 奥日 浏览器版本",
+      "url": "games/mario-mix-4/play.html",
+      "sourceItemId": "game-mario-mix-4",
+      "verifiedAt": "2026-09-20",
+      "visibility": "public",
+      "accessNote": "建议使用桌面浏览器；操作方式以游戏内说明为准。",
+      "startSteps": [
+        "点击试玩游戏，按页面提示选择角色并开始。"
+      ],
+      "failureNote": "浏览器未播放声音时，先与游戏页面交互，再检查音量。"
+    },
+    {
+      "id": "evidence-pipebound",
+      "type": "playable",
+      "label": "PIPEBOUND 1-1 浏览器版本",
+      "url": "games/pipebound/play.html",
+      "sourceItemId": "game-pipebound",
+      "verifiedAt": "2026-09-06",
+      "visibility": "public",
+      "accessNote": "直接在浏览器中运行。",
+      "startSteps": [
+        "点击开始，按游戏内提示操作。"
+      ],
+      "failureNote": "建议使用桌面浏览器。"
+    },
+    {
+      "id": "evidence-mario-classic",
+      "type": "playable",
+      "label": "超级马里奥 1-1 浏览器版本",
+      "url": "games/mario-classic/play.html",
+      "sourceItemId": "game-mario-classic",
+      "verifiedAt": "2026-09-06",
+      "visibility": "public",
+      "accessNote": "首次加载音乐与音效需要联网；音频未就绪时可静音试玩。",
+      "startSteps": [
+        "等待音频加载，或选择静音试玩。"
+      ],
+      "failureNote": "若音频加载失败，可在游戏中重试。"
+    },
+    {
+      "id": "evidence-mario-mix-3",
+      "type": "playable",
+      "label": "混合马里奥Ⅲ · 泰拉瑞亚 浏览器版本",
+      "url": "games/mario-mix-3/play.html",
+      "sourceItemId": "game-mario-mix-3",
+      "verifiedAt": "2026-09-13",
+      "visibility": "public",
+      "accessNote": "建议使用桌面浏览器；可用键鼠或手柄游玩。",
+      "startSteps": [
+        "点击试玩游戏，按页面提示选择角色并开始。"
+      ],
+      "failureNote": "若浏览器未加载音频，可刷新页面后重试。"
+    }
+  ]
+};

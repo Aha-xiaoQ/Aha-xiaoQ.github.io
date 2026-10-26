@@ -1,0 +1,1911 @@
+{
+  "schemaVersion": 2,
+  "level": "3-2",
+  "stage": {
+    "id": "template-3-2",
+    "title": "3-2 · 区域 1（地形检查）",
+    "driver": "platform-v1",
+    "status": "draft",
+    "entryRoom": "area-0",
+    "entrySpawn": "inspection-start",
+    "rooms": {
+      "area-0": "classic-3-2-area-0"
+    },
+    "characters": [
+      "lab-runner",
+      "lab-scout"
+    ],
+    "requiredCapabilities": [
+      "jump"
+    ],
+    "overlays": {},
+    "audio": "map-kit-silent",
+    "note": "分区几何检查，不是整关通关。原房间连接、条件循环与未实现机制保留在模板 topology / coverage；静态机关只用于检查位置。"
+  },
+  "inspectionStages": [
+    {
+      "id": "template-3-2",
+      "title": "3-2 · 区域 1（地形检查）",
+      "driver": "platform-v1",
+      "status": "draft",
+      "entryRoom": "area-0",
+      "entrySpawn": "inspection-start",
+      "rooms": {
+        "area-0": "classic-3-2-area-0"
+      },
+      "characters": [
+        "lab-runner",
+        "lab-scout"
+      ],
+      "requiredCapabilities": [
+        "jump"
+      ],
+      "overlays": {},
+      "audio": "map-kit-silent",
+      "note": "分区几何检查，不是整关通关。原房间连接、条件循环与未实现机制保留在模板 topology / coverage；静态机关只用于检查位置。"
+    }
+  ],
+  "maps": [
+    {
+      "id": "classic-3-2-area-0",
+      "title": "3-2 · 区域 1",
+      "tileSize": 16,
+      "width": 3584,
+      "height": 240,
+      "provenance": {
+        "kind": "transcribed",
+        "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+        "review": "pending",
+        "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+      },
+      "geometry": [
+        {
+          "id": "r000",
+          "x": 0,
+          "y": 208,
+          "w": 1280,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r005",
+          "x": 784,
+          "y": 192,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r007",
+          "x": 960,
+          "y": 160,
+          "w": 16,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r008",
+          "x": 960,
+          "y": 96,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r011",
+          "x": 1200,
+          "y": 176,
+          "w": 16,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r012",
+          "x": 1232,
+          "y": 144,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r013",
+          "x": 1232,
+          "y": 80,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r015",
+          "x": 1264,
+          "y": 176,
+          "w": 16,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r016",
+          "x": 1312,
+          "y": 208,
+          "w": 656,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r020",
+          "x": 2000,
+          "y": 208,
+          "w": 48,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r021",
+          "x": 2016,
+          "y": 176,
+          "w": 16,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r022",
+          "x": 2016,
+          "y": 96,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r023",
+          "x": 2080,
+          "y": 208,
+          "w": 1504,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r029",
+          "x": 2704,
+          "y": 160,
+          "w": 32,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r033",
+          "x": 3072,
+          "y": 192,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        },
+        {
+          "id": "r034",
+          "x": 3088,
+          "y": 176,
+          "w": 16,
+          "h": 32,
+          "collision": "solid"
+        },
+        {
+          "id": "r035",
+          "x": 3104,
+          "y": 160,
+          "w": 16,
+          "h": 48,
+          "collision": "solid"
+        },
+        {
+          "id": "r036",
+          "x": 3120,
+          "y": 144,
+          "w": 16,
+          "h": 64,
+          "collision": "solid"
+        },
+        {
+          "id": "r037",
+          "x": 3136,
+          "y": 128,
+          "w": 16,
+          "h": 80,
+          "collision": "solid"
+        },
+        {
+          "id": "r038",
+          "x": 3152,
+          "y": 112,
+          "w": 16,
+          "h": 96,
+          "collision": "solid"
+        },
+        {
+          "id": "r039",
+          "x": 3168,
+          "y": 96,
+          "w": 16,
+          "h": 112,
+          "collision": "solid"
+        },
+        {
+          "id": "r040",
+          "x": 3184,
+          "y": 80,
+          "w": 32,
+          "h": 128,
+          "collision": "solid"
+        },
+        {
+          "id": "r041-base",
+          "x": 3344,
+          "y": 192,
+          "w": 16,
+          "h": 16,
+          "collision": "solid"
+        }
+      ],
+      "objects": [
+        {
+          "id": "r006-0-0",
+          "kind": "coin",
+          "x": 882,
+          "y": 146,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r006-1-0",
+          "kind": "coin",
+          "x": 898,
+          "y": 146,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r006-2-0",
+          "kind": "coin",
+          "x": 914,
+          "y": 146,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r028-0-0",
+          "kind": "coin",
+          "x": 2690,
+          "y": 98,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r028-1-0",
+          "kind": "coin",
+          "x": 2706,
+          "y": 98,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r028-2-0",
+          "kind": "coin",
+          "x": 2722,
+          "y": 98,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "r028-3-0",
+          "kind": "coin",
+          "x": 2738,
+          "y": 98,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "id": "inspection-start",
+          "kind": "spawn",
+          "x": 24,
+          "y": 184,
+          "w": 12,
+          "h": 24
+        }
+      ]
+    }
+  ],
+  "rooms": [
+    {
+      "roomId": "area-0",
+      "label": "区域 1",
+      "setting": "Overworld Night Alt",
+      "origin": {
+        "area": 0,
+        "part": "base"
+      },
+      "declaredWidth": null,
+      "underwater": false,
+      "inspectionOnly": true,
+      "previewSupported": true,
+      "map": {
+        "id": "classic-3-2-area-0",
+        "title": "3-2 · 区域 1",
+        "tileSize": 16,
+        "width": 3584,
+        "height": 240,
+        "provenance": {
+          "kind": "transcribed",
+          "source": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+          "review": "pending",
+          "note": "固定社区版本的参考转录。分段以局部坐标保存；不代表原作保真验收或完整可玩关卡。"
+        },
+        "geometry": [
+          {
+            "id": "r000",
+            "x": 0,
+            "y": 208,
+            "w": 1280,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r005",
+            "x": 784,
+            "y": 192,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r007",
+            "x": 960,
+            "y": 160,
+            "w": 16,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r008",
+            "x": 960,
+            "y": 96,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r011",
+            "x": 1200,
+            "y": 176,
+            "w": 16,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r012",
+            "x": 1232,
+            "y": 144,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r013",
+            "x": 1232,
+            "y": 80,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r015",
+            "x": 1264,
+            "y": 176,
+            "w": 16,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r016",
+            "x": 1312,
+            "y": 208,
+            "w": 656,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r020",
+            "x": 2000,
+            "y": 208,
+            "w": 48,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r021",
+            "x": 2016,
+            "y": 176,
+            "w": 16,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r022",
+            "x": 2016,
+            "y": 96,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r023",
+            "x": 2080,
+            "y": 208,
+            "w": 1504,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r029",
+            "x": 2704,
+            "y": 160,
+            "w": 32,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r033",
+            "x": 3072,
+            "y": 192,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          },
+          {
+            "id": "r034",
+            "x": 3088,
+            "y": 176,
+            "w": 16,
+            "h": 32,
+            "collision": "solid"
+          },
+          {
+            "id": "r035",
+            "x": 3104,
+            "y": 160,
+            "w": 16,
+            "h": 48,
+            "collision": "solid"
+          },
+          {
+            "id": "r036",
+            "x": 3120,
+            "y": 144,
+            "w": 16,
+            "h": 64,
+            "collision": "solid"
+          },
+          {
+            "id": "r037",
+            "x": 3136,
+            "y": 128,
+            "w": 16,
+            "h": 80,
+            "collision": "solid"
+          },
+          {
+            "id": "r038",
+            "x": 3152,
+            "y": 112,
+            "w": 16,
+            "h": 96,
+            "collision": "solid"
+          },
+          {
+            "id": "r039",
+            "x": 3168,
+            "y": 96,
+            "w": 16,
+            "h": 112,
+            "collision": "solid"
+          },
+          {
+            "id": "r040",
+            "x": 3184,
+            "y": 80,
+            "w": 32,
+            "h": 128,
+            "collision": "solid"
+          },
+          {
+            "id": "r041-base",
+            "x": 3344,
+            "y": 192,
+            "w": 16,
+            "h": 16,
+            "collision": "solid"
+          }
+        ],
+        "objects": [
+          {
+            "id": "r006-0-0",
+            "kind": "coin",
+            "x": 882,
+            "y": 146,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r006-1-0",
+            "kind": "coin",
+            "x": 898,
+            "y": 146,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r006-2-0",
+            "kind": "coin",
+            "x": 914,
+            "y": 146,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r028-0-0",
+            "kind": "coin",
+            "x": 2690,
+            "y": 98,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r028-1-0",
+            "kind": "coin",
+            "x": 2706,
+            "y": 98,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r028-2-0",
+            "kind": "coin",
+            "x": 2722,
+            "y": 98,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "r028-3-0",
+            "kind": "coin",
+            "x": 2738,
+            "y": 98,
+            "w": 10,
+            "h": 14
+          },
+          {
+            "id": "inspection-start",
+            "kind": "spawn",
+            "x": 24,
+            "y": 184,
+            "w": 12,
+            "h": 24
+          }
+        ]
+      },
+      "markers": [
+        {
+          "id": "r001",
+          "kind": "enemy-koopa",
+          "source": {
+            "thing": "Koopa",
+            "x": 136,
+            "y": 12
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r001"
+          },
+          "x": 272,
+          "y": 184
+        },
+        {
+          "id": "r002-0-0",
+          "kind": "enemy-goomba",
+          "source": {
+            "thing": "Goomba",
+            "x": 192,
+            "y": 8
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r002"
+          },
+          "x": 384,
+          "y": 192
+        },
+        {
+          "id": "r002-1-0",
+          "kind": "enemy-goomba",
+          "source": {
+            "thing": "Goomba",
+            "x": 204,
+            "y": 8
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r002"
+          },
+          "x": 408,
+          "y": 192
+        },
+        {
+          "id": "r002-2-0",
+          "kind": "enemy-goomba",
+          "source": {
+            "thing": "Goomba",
+            "x": 216,
+            "y": 8
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r002"
+          },
+          "x": 432,
+          "y": 192
+        },
+        {
+          "id": "r003-0-0",
+          "kind": "enemy-koopa",
+          "source": {
+            "thing": "Koopa",
+            "x": 264,
+            "y": 12
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r003"
+          },
+          "x": 528,
+          "y": 184
+        },
+        {
+          "id": "r003-1-0",
+          "kind": "enemy-koopa",
+          "source": {
+            "thing": "Koopa",
+            "x": 276,
+            "y": 12
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r003"
+          },
+          "x": 552,
+          "y": 184
+        },
+        {
+          "id": "r003-2-0",
+          "kind": "enemy-koopa",
+          "source": {
+            "thing": "Koopa",
+            "x": 288,
+            "y": 12
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r003"
+          },
+          "x": 576,
+          "y": 184
+        },
+        {
+          "id": "r004-0-0",
+          "kind": "enemy-koopa",
+          "source": {
+            "thing": "Koopa",
+            "x": 344,
+            "y": 12
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r004"
+          },
+          "x": 688,
+          "y": 184
+        },
+        {
+          "id": "r004-1-0",
+          "kind": "enemy-koopa",
+          "source": {
+            "thing": "Koopa",
+            "x": 356,
+            "y": 12
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r004"
+          },
+          "x": 712,
+          "y": 184
+        },
+        {
+          "id": "r008-contents",
+          "kind": "block-contents",
+          "source": {
+            "thing": "Block",
+            "contents": "Mushroom",
+            "x": 480,
+            "y": 56
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r008"
+          },
+          "x": 960,
+          "y": 96
+        },
+        {
+          "id": "r009",
+          "kind": "enemy-koopa",
+          "source": {
+            "thing": "Koopa",
+            "x": 528,
+            "y": 12
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r009"
+          },
+          "x": 1056,
+          "y": 184
+        },
+        {
+          "id": "r010-0-0",
+          "kind": "enemy-goomba",
+          "source": {
+            "thing": "Goomba",
+            "x": 568,
+            "y": 8
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r010"
+          },
+          "x": 1136,
+          "y": 192
+        },
+        {
+          "id": "r010-1-0",
+          "kind": "enemy-goomba",
+          "source": {
+            "thing": "Goomba",
+            "x": 580,
+            "y": 8
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r010"
+          },
+          "x": 1160,
+          "y": 192
+        },
+        {
+          "id": "r010-2-0",
+          "kind": "enemy-goomba",
+          "source": {
+            "thing": "Goomba",
+            "x": 592,
+            "y": 8
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r010"
+          },
+          "x": 1184,
+          "y": 192
+        },
+        {
+          "id": "r012-contents",
+          "kind": "block-contents",
+          "source": {
+            "thing": "Brick",
+            "contents": "Coin",
+            "x": 616,
+            "y": 32
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r012"
+          },
+          "x": 1232,
+          "y": 144
+        },
+        {
+          "id": "r013-contents",
+          "kind": "block-contents",
+          "source": {
+            "thing": "Brick",
+            "contents": "Star",
+            "x": 616,
+            "y": 64
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r013"
+          },
+          "x": 1232,
+          "y": 80
+        },
+        {
+          "id": "r014",
+          "kind": "enemy-koopa",
+          "source": {
+            "thing": "Koopa",
+            "x": 624,
+            "y": 12
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r014"
+          },
+          "x": 1248,
+          "y": 184
+        },
+        {
+          "id": "r017",
+          "kind": "enemy-koopa",
+          "source": {
+            "thing": "Koopa",
+            "jumping": true,
+            "x": 736,
+            "y": 34
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r017"
+          },
+          "x": 1472,
+          "y": 140
+        },
+        {
+          "id": "r018",
+          "kind": "enemy-koopa",
+          "source": {
+            "thing": "Koopa",
+            "x": 888,
+            "y": 12
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r018"
+          },
+          "x": 1776,
+          "y": 184
+        },
+        {
+          "id": "r019-0-0",
+          "kind": "enemy-goomba",
+          "source": {
+            "thing": "Goomba",
+            "x": 952,
+            "y": 8
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r019"
+          },
+          "x": 1904,
+          "y": 192
+        },
+        {
+          "id": "r019-1-0",
+          "kind": "enemy-goomba",
+          "source": {
+            "thing": "Goomba",
+            "x": 964,
+            "y": 8
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r019"
+          },
+          "x": 1928,
+          "y": 192
+        },
+        {
+          "id": "r019-2-0",
+          "kind": "enemy-goomba",
+          "source": {
+            "thing": "Goomba",
+            "x": 976,
+            "y": 8
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r019"
+          },
+          "x": 1952,
+          "y": 192
+        },
+        {
+          "id": "r024",
+          "kind": "enemy-koopa",
+          "source": {
+            "thing": "Koopa",
+            "x": 1072,
+            "y": 12
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r024"
+          },
+          "x": 2144,
+          "y": 184
+        },
+        {
+          "id": "r025-0-0",
+          "kind": "enemy-koopa",
+          "source": {
+            "thing": "Koopa",
+            "x": 1120,
+            "y": 12
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r025"
+          },
+          "x": 2240,
+          "y": 184
+        },
+        {
+          "id": "r025-1-0",
+          "kind": "enemy-koopa",
+          "source": {
+            "thing": "Koopa",
+            "x": 1132,
+            "y": 12
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r025"
+          },
+          "x": 2264,
+          "y": 184
+        },
+        {
+          "id": "r025-2-0",
+          "kind": "enemy-koopa",
+          "source": {
+            "thing": "Koopa",
+            "x": 1144,
+            "y": 12
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r025"
+          },
+          "x": 2288,
+          "y": 184
+        },
+        {
+          "id": "r026-0-0",
+          "kind": "enemy-koopa",
+          "source": {
+            "thing": "Koopa",
+            "x": 1200,
+            "y": 12
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r026"
+          },
+          "x": 2400,
+          "y": 184
+        },
+        {
+          "id": "r026-1-0",
+          "kind": "enemy-koopa",
+          "source": {
+            "thing": "Koopa",
+            "x": 1212,
+            "y": 12
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r026"
+          },
+          "x": 2424,
+          "y": 184
+        },
+        {
+          "id": "r027-0-0",
+          "kind": "enemy-koopa",
+          "source": {
+            "thing": "Koopa",
+            "x": 1296,
+            "y": 12
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r027"
+          },
+          "x": 2592,
+          "y": 184
+        },
+        {
+          "id": "r027-1-0",
+          "kind": "enemy-koopa",
+          "source": {
+            "thing": "Koopa",
+            "x": 1308,
+            "y": 12
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r027"
+          },
+          "x": 2616,
+          "y": 184
+        },
+        {
+          "id": "r027-2-0",
+          "kind": "enemy-koopa",
+          "source": {
+            "thing": "Koopa",
+            "x": 1320,
+            "y": 12
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r027"
+          },
+          "x": 2640,
+          "y": 184
+        },
+        {
+          "id": "r029-plant",
+          "kind": "enemy-piranha",
+          "source": {
+            "macro": "Pipe",
+            "height": 24,
+            "piranha": true,
+            "x": 1352,
+            "y": 24
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r029"
+          },
+          "x": 2704,
+          "y": 160
+        },
+        {
+          "id": "r030",
+          "kind": "enemy-koopa",
+          "source": {
+            "thing": "Koopa",
+            "x": 1400,
+            "y": 12
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r030"
+          },
+          "x": 2800,
+          "y": 184
+        },
+        {
+          "id": "r031-0-0",
+          "kind": "enemy-goomba",
+          "source": {
+            "thing": "Goomba",
+            "x": 1432,
+            "y": 8
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r031"
+          },
+          "x": 2864,
+          "y": 192
+        },
+        {
+          "id": "r031-1-0",
+          "kind": "enemy-goomba",
+          "source": {
+            "thing": "Goomba",
+            "x": 1444,
+            "y": 8
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r031"
+          },
+          "x": 2888,
+          "y": 192
+        },
+        {
+          "id": "r031-2-0",
+          "kind": "enemy-goomba",
+          "source": {
+            "thing": "Goomba",
+            "x": 1456,
+            "y": 8
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r031"
+          },
+          "x": 2912,
+          "y": 192
+        },
+        {
+          "id": "r032-0-0",
+          "kind": "enemy-goomba",
+          "source": {
+            "thing": "Goomba",
+            "x": 1504,
+            "y": 8
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r032"
+          },
+          "x": 3008,
+          "y": 192
+        },
+        {
+          "id": "r032-1-0",
+          "kind": "enemy-goomba",
+          "source": {
+            "thing": "Goomba",
+            "x": 1516,
+            "y": 8
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r032"
+          },
+          "x": 3032,
+          "y": 192
+        },
+        {
+          "id": "r032-2-0",
+          "kind": "enemy-goomba",
+          "source": {
+            "thing": "Goomba",
+            "x": 1528,
+            "y": 8
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r032"
+          },
+          "x": 3056,
+          "y": 192
+        },
+        {
+          "id": "r041",
+          "kind": "flagpole-finish",
+          "source": {
+            "macro": "EndOutsideCastle",
+            "transport": {
+              "map": "3-3"
+            },
+            "x": 1672,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r041"
+          },
+          "x": 3344,
+          "y": 208
+        },
+        {
+          "id": "r041-transport",
+          "kind": "source-transport-not-simulated",
+          "source": {
+            "macro": "EndOutsideCastle",
+            "transport": {
+              "map": "3-3"
+            },
+            "x": 1672,
+            "y": 0
+          },
+          "sourcePath": {
+            "area": 0,
+            "part": "base",
+            "record": "r041"
+          },
+          "x": 3344,
+          "y": 208
+        }
+      ],
+      "semantics": [
+        {
+          "id": "r000",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 640,
+            "x": 0,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 0,
+            "y": 208,
+            "w": 1280,
+            "h": 32
+          }
+        },
+        {
+          "id": "r005",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 392,
+            "y": 8
+          },
+          "referenceRect": {
+            "x": 784,
+            "y": 192,
+            "w": 16,
+            "h": 16
+          }
+        },
+        {
+          "id": "r007",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 24,
+            "x": 480,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 960,
+            "y": 160,
+            "w": 16,
+            "h": 48
+          }
+        },
+        {
+          "id": "r008",
+          "kind": "Block",
+          "source": {
+            "thing": "Block",
+            "contents": "Mushroom",
+            "x": 480,
+            "y": 56
+          },
+          "referenceRect": {
+            "x": 960,
+            "y": 96,
+            "w": 16,
+            "h": 16
+          }
+        },
+        {
+          "id": "r011",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 16,
+            "x": 600,
+            "y": 16
+          },
+          "referenceRect": {
+            "x": 1200,
+            "y": 176,
+            "w": 16,
+            "h": 32
+          }
+        },
+        {
+          "id": "r012",
+          "kind": "Brick",
+          "source": {
+            "thing": "Brick",
+            "contents": "Coin",
+            "x": 616,
+            "y": 32
+          },
+          "referenceRect": {
+            "x": 1232,
+            "y": 144,
+            "w": 16,
+            "h": 16
+          }
+        },
+        {
+          "id": "r013",
+          "kind": "Brick",
+          "source": {
+            "thing": "Brick",
+            "contents": "Star",
+            "x": 616,
+            "y": 64
+          },
+          "referenceRect": {
+            "x": 1232,
+            "y": 80,
+            "w": 16,
+            "h": 16
+          }
+        },
+        {
+          "id": "r015",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 16,
+            "x": 632,
+            "y": 16
+          },
+          "referenceRect": {
+            "x": 1264,
+            "y": 176,
+            "w": 16,
+            "h": 32
+          }
+        },
+        {
+          "id": "r016",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 328,
+            "x": 656,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 1312,
+            "y": 208,
+            "w": 656,
+            "h": 32
+          }
+        },
+        {
+          "id": "r020",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 24,
+            "x": 1000,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 2000,
+            "y": 208,
+            "w": 48,
+            "h": 32
+          }
+        },
+        {
+          "id": "r021",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 16,
+            "x": 1008,
+            "y": 16
+          },
+          "referenceRect": {
+            "x": 2016,
+            "y": 176,
+            "w": 16,
+            "h": 32
+          }
+        },
+        {
+          "id": "r022",
+          "kind": "Brick",
+          "source": {
+            "thing": "Brick",
+            "x": 1008,
+            "y": 56
+          },
+          "referenceRect": {
+            "x": 2016,
+            "y": 96,
+            "w": 16,
+            "h": 16
+          }
+        },
+        {
+          "id": "r023",
+          "kind": "Floor",
+          "source": {
+            "macro": "Floor",
+            "width": 752,
+            "x": 1040,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 2080,
+            "y": 208,
+            "w": 1504,
+            "h": 32
+          }
+        },
+        {
+          "id": "r029",
+          "kind": "PipeVertical",
+          "source": {
+            "height": 24,
+            "piranha": true,
+            "x": 1352,
+            "y": 24,
+            "thing": "PipeVertical",
+            "width": 16
+          },
+          "referenceRect": {
+            "x": 2704,
+            "y": 160,
+            "w": 32,
+            "h": 48
+          }
+        },
+        {
+          "id": "r033",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "x": 1536,
+            "y": 8
+          },
+          "referenceRect": {
+            "x": 3072,
+            "y": 192,
+            "w": 16,
+            "h": 16
+          }
+        },
+        {
+          "id": "r034",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 16,
+            "x": 1544,
+            "y": 16
+          },
+          "referenceRect": {
+            "x": 3088,
+            "y": 176,
+            "w": 16,
+            "h": 32
+          }
+        },
+        {
+          "id": "r035",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 24,
+            "x": 1552,
+            "y": 24
+          },
+          "referenceRect": {
+            "x": 3104,
+            "y": 160,
+            "w": 16,
+            "h": 48
+          }
+        },
+        {
+          "id": "r036",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 32,
+            "x": 1560,
+            "y": 32
+          },
+          "referenceRect": {
+            "x": 3120,
+            "y": 144,
+            "w": 16,
+            "h": 64
+          }
+        },
+        {
+          "id": "r037",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 40,
+            "x": 1568,
+            "y": 40
+          },
+          "referenceRect": {
+            "x": 3136,
+            "y": 128,
+            "w": 16,
+            "h": 80
+          }
+        },
+        {
+          "id": "r038",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 48,
+            "x": 1576,
+            "y": 48
+          },
+          "referenceRect": {
+            "x": 3152,
+            "y": 112,
+            "w": 16,
+            "h": 96
+          }
+        },
+        {
+          "id": "r039",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "height": 56,
+            "x": 1584,
+            "y": 56
+          },
+          "referenceRect": {
+            "x": 3168,
+            "y": 96,
+            "w": 16,
+            "h": 112
+          }
+        },
+        {
+          "id": "r040",
+          "kind": "Stone",
+          "source": {
+            "thing": "Stone",
+            "width": 16,
+            "height": 64,
+            "x": 1592,
+            "y": 64
+          },
+          "referenceRect": {
+            "x": 3184,
+            "y": 80,
+            "w": 32,
+            "h": 128
+          }
+        },
+        {
+          "id": "r041-base",
+          "kind": "Stone",
+          "source": {
+            "macro": "EndOutsideCastle",
+            "transport": {
+              "map": "3-3"
+            },
+            "x": 1672,
+            "y": 0
+          },
+          "referenceRect": {
+            "x": 3344,
+            "y": 192,
+            "w": 16,
+            "h": 16
+          }
+        }
+      ],
+      "sourceRecordCount": 42
+    }
+  ],
+  "topology": {
+    "locations": [
+      {
+        "area": 0,
+        "entry": "Plain"
+      }
+    ],
+    "areas": [
+      {
+        "area": 0,
+        "setting": "Overworld Night Alt",
+        "underwater": false,
+        "exit": null,
+        "sections": []
+      }
+    ],
+    "links": [
+      {
+        "from": {
+          "area": 0,
+          "part": "base",
+          "record": "r041"
+        },
+        "kind": "world",
+        "target": {
+          "map": "3-3"
+        }
+      }
+    ],
+    "issues": []
+  },
+  "coverage": {
+    "placementRecords": 42,
+    "areas": 1,
+    "sectionViews": 0,
+    "views": 1,
+    "geometry": 23,
+    "objects": 8,
+    "pending": [
+      "block-contents",
+      "enemy-goomba",
+      "enemy-koopa",
+      "enemy-piranha",
+      "flagpole-finish",
+      "source-transport-not-simulated"
+    ],
+    "details": [
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r001",
+        "kind": "enemy-koopa"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r002-0-0",
+        "kind": "enemy-goomba"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r002-1-0",
+        "kind": "enemy-goomba"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r002-2-0",
+        "kind": "enemy-goomba"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r003-0-0",
+        "kind": "enemy-koopa"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r003-1-0",
+        "kind": "enemy-koopa"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r003-2-0",
+        "kind": "enemy-koopa"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r004-0-0",
+        "kind": "enemy-koopa"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r004-1-0",
+        "kind": "enemy-koopa"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r008-contents",
+        "kind": "block-contents"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r009",
+        "kind": "enemy-koopa"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r010-0-0",
+        "kind": "enemy-goomba"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r010-1-0",
+        "kind": "enemy-goomba"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r010-2-0",
+        "kind": "enemy-goomba"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r012-contents",
+        "kind": "block-contents"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r013-contents",
+        "kind": "block-contents"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r014",
+        "kind": "enemy-koopa"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r017",
+        "kind": "enemy-koopa"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r018",
+        "kind": "enemy-koopa"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r019-0-0",
+        "kind": "enemy-goomba"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r019-1-0",
+        "kind": "enemy-goomba"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r019-2-0",
+        "kind": "enemy-goomba"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r024",
+        "kind": "enemy-koopa"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r025-0-0",
+        "kind": "enemy-koopa"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r025-1-0",
+        "kind": "enemy-koopa"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r025-2-0",
+        "kind": "enemy-koopa"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r026-0-0",
+        "kind": "enemy-koopa"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r026-1-0",
+        "kind": "enemy-koopa"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r027-0-0",
+        "kind": "enemy-koopa"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r027-1-0",
+        "kind": "enemy-koopa"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r027-2-0",
+        "kind": "enemy-koopa"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r029-plant",
+        "kind": "enemy-piranha"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r030",
+        "kind": "enemy-koopa"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r031-0-0",
+        "kind": "enemy-goomba"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r031-1-0",
+        "kind": "enemy-goomba"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r031-2-0",
+        "kind": "enemy-goomba"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r032-0-0",
+        "kind": "enemy-goomba"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r032-1-0",
+        "kind": "enemy-goomba"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r032-2-0",
+        "kind": "enemy-goomba"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r041",
+        "kind": "flagpole-finish"
+      },
+      {
+        "roomId": "area-0",
+        "sourceRecord": "r041-transport",
+        "kind": "source-transport-not-simulated"
+      }
+    ],
+    "geometryReview": "reference-transcribed-pending-original-review",
+    "playability": "partition-inspection-not-level-completion",
+    "underwaterAreas": 0,
+    "sourceIssues": 0
+  },
+  "source": {
+    "repository": "umaim/Mario",
+    "commit": "980c275358704a49f868567aeec5bdfb347c4781",
+    "path": "Source/settings/maps.js",
+    "gitBlob": "657d750ad65bb06c0e63a3d8958736f9236ec3c0",
+    "range": "Worlds 1–8 gameplay layout transcription",
+    "url": "https://github.com/umaim/Mario/blob/980c275358704a49f868567aeec5bdfb347c4781/Source/settings/maps.js",
+    "method": "Manual transcription of gameplay placement records, area locations and section definitions. Pure background scenery omitted; not a byte-identical source export or original-game certification.",
+    "omittedVisuals": [
+      "Pattern",
+      "DecorativeBack",
+      "DecorativeDot",
+      "CustomText"
+    ]
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "title": "开发",
+  "intro": "浏览项目进展、阅读开发资料，或在实验室查看提示词与实际作品。",
+  "projects": [
+    {
+      "id": "lab",
+      "file": "content/development/projects/lab.json"
+    },
+    {
+      "id": "mario-mix",
+      "file": "content/development/projects/mario-mix.json"
+    },
+    {
+      "id": "pixel-workshop",
+      "file": "content/development/projects/pixel-workshop.json"
+    }
+  ],
+  "aliases": [
+    {
+      "from": "/dev/",
+      "projectId": "mario-mix",
+      "view": "overview"
+    },
+    {
+      "from": "/dev/index.html",
+      "projectId": "mario-mix",
+      "view": "overview"
+    },
+    {
+      "from": "/dev/mario-mix/",
+      "projectId": "mario-mix",
+      "view": "overview"
+    },
+    {
+      "from": "/dev/mario-mix/index.html",
+      "projectId": "mario-mix",
+      "view": "overview"
+    },
+    {
+      "from": "/dev/guide.html",
+      "projectId": "mario-mix",
+      "view": "contribute"
+    },
+    {
+      "from": "/dev/tasks/",
+      "projectId": "mario-mix",
+      "view": "tasks"
+    },
+    {
+      "from": "/dev/docs/",
+      "projectId": "mario-mix",
+      "view": "docs"
+    },
+    {
+      "from": "/dev/docs/architecture/",
+      "projectId": "mario-mix",
+      "view": "docs",
+      "doc": "architecture"
+    },
+    {
+      "from": "/dev/docs/reference/",
+      "projectId": "mario-mix",
+      "view": "docs",
+      "doc": "reference"
+    },
+    {
+      "from": "/dev/updates/",
+      "projectId": "mario-mix",
+      "view": "updates"
+    },
+    {
+      "from": "/dev/contribute/",
+      "projectId": "mario-mix",
+      "view": "contribute"
+    }
+  ]
+}

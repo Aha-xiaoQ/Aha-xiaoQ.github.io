@@ -1,0 +1,48 @@
+{
+  "projectId": "pixel-workshop",
+  "guide": {
+    "id": "architecture",
+    "title": "网站结构",
+    "summary": "了解页面、内容与脚本的职责，按模块查找源码。",
+    "sections": [
+      {
+        "title": "页面与共享界面",
+        "paragraphs": [
+          "index.html、projects/、games/、tools/、about/ 和 notes/ 提供可直接访问的页面。assets/ 维护共享样式、交互与站内导航。原有页面地址保留。"
+        ]
+      },
+      {
+        "title": "内容来源",
+        "paragraphs": [
+          "content/ 保存作品、项目与状态数据；config/ 保存资料登记和发布配置。notes/ 与搜索索引主要由脚本生成，不作为文案的首选编辑位置。"
+        ]
+      },
+      {
+        "title": "开发页加载",
+        "paragraphs": [
+          "目录与摘要在构建时合并；文章正文在打开文章时读取。导航意图预加载尊重节省流量设置，动画不会随目录页面自动启动。"
+        ]
+      },
+      {
+        "title": "项目工程",
+        "paragraphs": [
+          "packages/ 保存游戏和工具的独立工程；games/ 保存对应介绍与试玩入口。各工程的素材、依赖和运行方式以自身说明为准。"
+        ]
+      },
+      {
+        "title": "框架、内容与发布",
+        "paragraphs": [
+          "运行、构建、校验和打包的入口由 config/site-platform.json 统一登记。旧命令继续有效；模块职责和生成文件归属见源码中的 docs/platform/。",
+          "语言与字体由共享模块处理；新增内容先登记译文，再生成页面并检查缺字与回退。",
+          "站内导航由一个路由模块负责，搜索与资料模块只管理自身内容和资源。异步结果只更新当前页面；离开页面后，旧事件和回调不得改写地址、抢走焦点或重新挂载内容。"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "label": "字体与许可",
+        "href": "/notes/pixel-workshop/docs/font-licenses/"
+      }
+    ]
+  }
+}

@@ -1,0 +1,868 @@
+{
+  "type": "map",
+  "version": "1.10",
+  "orientation": "orthogonal",
+  "renderorder": "right-down",
+  "width": 77,
+  "height": 15,
+  "tilewidth": 16,
+  "tileheight": 16,
+  "infinite": false,
+  "nextlayerid": 4,
+  "nextobjectid": 45,
+  "tilesets": [],
+  "layers": [
+    {
+      "id": 1,
+      "name": "collision",
+      "type": "objectgroup",
+      "visible": true,
+      "opacity": 1,
+      "x": 0,
+      "y": 0,
+      "draworder": "index",
+      "objects": [
+        {
+          "id": 1,
+          "name": "r000",
+          "type": "solid",
+          "x": 0,
+          "y": 208,
+          "width": 64,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r000\",\"x\":0,\"y\":208,\"w\":64,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "r001",
+          "type": "solid",
+          "x": 80,
+          "y": 208,
+          "width": 1152,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r001\",\"x\":80,\"y\":208,\"w\":1152,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "name": "r002",
+          "type": "oneway",
+          "x": 240,
+          "y": 144,
+          "width": 32,
+          "height": 8,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r002\",\"x\":240,\"y\":144,\"w\":32,\"h\":8,\"collision\":\"oneway\"}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "objects",
+      "type": "objectgroup",
+      "visible": true,
+      "opacity": 1,
+      "x": 0,
+      "y": 0,
+      "draworder": "index",
+      "objects": [
+        {
+          "id": 4,
+          "name": "r003-0-0",
+          "type": "coin",
+          "x": 240,
+          "y": 80,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-0-0\",\"kind\":\"coin\",\"x\":240,\"y\":80,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "name": "r003-1-0",
+          "type": "coin",
+          "x": 250,
+          "y": 80,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-1-0\",\"kind\":\"coin\",\"x\":250,\"y\":80,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "name": "r003-2-0",
+          "type": "coin",
+          "x": 260,
+          "y": 80,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-2-0\",\"kind\":\"coin\",\"x\":260,\"y\":80,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "name": "r003-3-0",
+          "type": "coin",
+          "x": 270,
+          "y": 80,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-3-0\",\"kind\":\"coin\",\"x\":270,\"y\":80,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "name": "r003-4-0",
+          "type": "coin",
+          "x": 280,
+          "y": 80,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-4-0\",\"kind\":\"coin\",\"x\":280,\"y\":80,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "name": "r003-5-0",
+          "type": "coin",
+          "x": 290,
+          "y": 80,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-5-0\",\"kind\":\"coin\",\"x\":290,\"y\":80,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "name": "r003-6-0",
+          "type": "coin",
+          "x": 300,
+          "y": 80,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-6-0\",\"kind\":\"coin\",\"x\":300,\"y\":80,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "name": "r003-7-0",
+          "type": "coin",
+          "x": 310,
+          "y": 80,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-7-0\",\"kind\":\"coin\",\"x\":310,\"y\":80,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "name": "r003-8-0",
+          "type": "coin",
+          "x": 320,
+          "y": 80,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-8-0\",\"kind\":\"coin\",\"x\":320,\"y\":80,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "name": "r003-9-0",
+          "type": "coin",
+          "x": 330,
+          "y": 80,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-9-0\",\"kind\":\"coin\",\"x\":330,\"y\":80,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 14,
+          "name": "r003-10-0",
+          "type": "coin",
+          "x": 340,
+          "y": 80,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-10-0\",\"kind\":\"coin\",\"x\":340,\"y\":80,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 15,
+          "name": "r003-11-0",
+          "type": "coin",
+          "x": 350,
+          "y": 80,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-11-0\",\"kind\":\"coin\",\"x\":350,\"y\":80,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 16,
+          "name": "r003-12-0",
+          "type": "coin",
+          "x": 360,
+          "y": 80,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-12-0\",\"kind\":\"coin\",\"x\":360,\"y\":80,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 17,
+          "name": "r003-13-0",
+          "type": "coin",
+          "x": 370,
+          "y": 80,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-13-0\",\"kind\":\"coin\",\"x\":370,\"y\":80,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 18,
+          "name": "r003-14-0",
+          "type": "coin",
+          "x": 380,
+          "y": 80,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-14-0\",\"kind\":\"coin\",\"x\":380,\"y\":80,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 19,
+          "name": "r003-15-0",
+          "type": "coin",
+          "x": 390,
+          "y": 80,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-15-0\",\"kind\":\"coin\",\"x\":390,\"y\":80,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 20,
+          "name": "r004-0-0",
+          "type": "coin",
+          "x": 512,
+          "y": 48,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r004-0-0\",\"kind\":\"coin\",\"x\":512,\"y\":48,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 21,
+          "name": "r004-1-0",
+          "type": "coin",
+          "x": 522,
+          "y": 48,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r004-1-0\",\"kind\":\"coin\",\"x\":522,\"y\":48,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 22,
+          "name": "r004-2-0",
+          "type": "coin",
+          "x": 532,
+          "y": 48,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r004-2-0\",\"kind\":\"coin\",\"x\":532,\"y\":48,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 23,
+          "name": "r005-0-0",
+          "type": "coin",
+          "x": 576,
+          "y": 64,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005-0-0\",\"kind\":\"coin\",\"x\":576,\"y\":64,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 24,
+          "name": "r005-1-0",
+          "type": "coin",
+          "x": 586,
+          "y": 64,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005-1-0\",\"kind\":\"coin\",\"x\":586,\"y\":64,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 25,
+          "name": "r005-2-0",
+          "type": "coin",
+          "x": 596,
+          "y": 64,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005-2-0\",\"kind\":\"coin\",\"x\":596,\"y\":64,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 26,
+          "name": "r005-3-0",
+          "type": "coin",
+          "x": 606,
+          "y": 64,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005-3-0\",\"kind\":\"coin\",\"x\":606,\"y\":64,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 27,
+          "name": "r005-4-0",
+          "type": "coin",
+          "x": 616,
+          "y": 64,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005-4-0\",\"kind\":\"coin\",\"x\":616,\"y\":64,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 28,
+          "name": "r005-5-0",
+          "type": "coin",
+          "x": 626,
+          "y": 64,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005-5-0\",\"kind\":\"coin\",\"x\":626,\"y\":64,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 29,
+          "name": "r005-6-0",
+          "type": "coin",
+          "x": 636,
+          "y": 64,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005-6-0\",\"kind\":\"coin\",\"x\":636,\"y\":64,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 30,
+          "name": "r005-7-0",
+          "type": "coin",
+          "x": 646,
+          "y": 64,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005-7-0\",\"kind\":\"coin\",\"x\":646,\"y\":64,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 31,
+          "name": "r005-8-0",
+          "type": "coin",
+          "x": 656,
+          "y": 64,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005-8-0\",\"kind\":\"coin\",\"x\":656,\"y\":64,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 32,
+          "name": "r005-9-0",
+          "type": "coin",
+          "x": 666,
+          "y": 64,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005-9-0\",\"kind\":\"coin\",\"x\":666,\"y\":64,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 33,
+          "name": "r005-10-0",
+          "type": "coin",
+          "x": 676,
+          "y": 64,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005-10-0\",\"kind\":\"coin\",\"x\":676,\"y\":64,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 34,
+          "name": "r005-11-0",
+          "type": "coin",
+          "x": 686,
+          "y": 64,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005-11-0\",\"kind\":\"coin\",\"x\":686,\"y\":64,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 35,
+          "name": "r005-12-0",
+          "type": "coin",
+          "x": 696,
+          "y": 64,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005-12-0\",\"kind\":\"coin\",\"x\":696,\"y\":64,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 36,
+          "name": "r005-13-0",
+          "type": "coin",
+          "x": 706,
+          "y": 64,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005-13-0\",\"kind\":\"coin\",\"x\":706,\"y\":64,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 37,
+          "name": "r005-14-0",
+          "type": "coin",
+          "x": 716,
+          "y": 64,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005-14-0\",\"kind\":\"coin\",\"x\":716,\"y\":64,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 38,
+          "name": "r005-15-0",
+          "type": "coin",
+          "x": 726,
+          "y": 64,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005-15-0\",\"kind\":\"coin\",\"x\":726,\"y\":64,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 39,
+          "name": "r006-0-0",
+          "type": "coin",
+          "x": 848,
+          "y": 48,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r006-0-0\",\"kind\":\"coin\",\"x\":848,\"y\":48,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 40,
+          "name": "r006-1-0",
+          "type": "coin",
+          "x": 858,
+          "y": 48,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r006-1-0\",\"kind\":\"coin\",\"x\":858,\"y\":48,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 41,
+          "name": "r006-2-0",
+          "type": "coin",
+          "x": 868,
+          "y": 48,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r006-2-0\",\"kind\":\"coin\",\"x\":868,\"y\":48,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 42,
+          "name": "inspection-start",
+          "type": "spawn",
+          "x": 24,
+          "y": 184,
+          "width": 12,
+          "height": 24,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"inspection-start\",\"kind\":\"spawn\",\"x\":24,\"y\":184,\"w\":12,\"h\":24}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "pending-mechanics",
+      "type": "objectgroup",
+      "visible": true,
+      "opacity": 1,
+      "x": 0,
+      "y": 0,
+      "draworder": "index",
+      "objects": [
+        {
+          "id": 43,
+          "name": "r002-transport",
+          "type": "source-transport-not-simulated",
+          "x": 240,
+          "y": 144,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r002-transport\",\"kind\":\"source-transport-not-simulated\",\"source\":{\"thing\":\"Platform\",\"width\":16,\"transport\":true,\"x\":120,\"y\":32},\"sourcePath\":{\"area\":2,\"part\":\"base\",\"record\":\"r002\"},\"x\":240,\"y\":144}"
+            }
+          ]
+        },
+        {
+          "id": 44,
+          "name": "r002-motion",
+          "type": "ride-platform",
+          "x": 240,
+          "y": 144,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r002-motion\",\"kind\":\"ride-platform\",\"source\":{\"thing\":\"Platform\",\"width\":16,\"transport\":true,\"x\":120,\"y\":32},\"sourcePath\":{\"area\":2,\"part\":\"base\",\"record\":\"r002\"},\"x\":240,\"y\":144}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "properties": [
+    {
+      "name": "room",
+      "type": "string",
+      "value": "area-2"
+    },
+    {
+      "name": "underwater",
+      "type": "bool",
+      "value": false
+    },
+    {
+      "name": "inspectionOnly",
+      "type": "bool",
+      "value": true
+    },
+    {
+      "name": "referenceReview",
+      "type": "string",
+      "value": "pending"
+    }
+  ]
+}

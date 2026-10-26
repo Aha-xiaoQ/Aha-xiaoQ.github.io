@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="512" height="512" role="img" aria-labelledby="title desc">
+  <title id="title">Xiao Q soft material pixel logo v10</title>
+  <desc id="desc">Blue-body, warm yellow-tail pixel Q on an opaque pearl rounded-square carrier with a scale-stable top-left sheen, lower-right depth, and soft two-level grounding shadow.</desc>
+  <defs>
+    <linearGradient id="carrier-surface" x1="0.08" y1="0.06" x2="0.92" y2="0.94">
+      <stop offset="0" stop-color="#FBFDFC"/>
+      <stop offset="0.38" stop-color="#F5F9F8"/>
+      <stop offset="0.76" stop-color="#EDF4F2"/>
+      <stop offset="1" stop-color="#E1ECE9"/>
+    </linearGradient>
+    <radialGradient id="carrier-sheen" cx="0.26" cy="0.18" r="0.68">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.40"/>
+      <stop offset="0.38" stop-color="#FFFFFF" stop-opacity="0.13"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="carrier-depth" x1="0.10" y1="0.06" x2="0.90" y2="0.94">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.16"/>
+      <stop offset="0.48" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="0.80" stop-color="#86A29A" stop-opacity="0.08"/>
+      <stop offset="1" stop-color="#56706B" stop-opacity="0.18"/>
+    </linearGradient>
+    <filter id="carrier-cast-shadow" x="-26%" y="-26%" width="152%" height="160%" color-interpolation-filters="sRGB">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="9.2" result="ambient-blur"/>
+      <feOffset in="ambient-blur" dx="0" dy="7" result="ambient-offset"/>
+      <feFlood flood-color="#5D7073" flood-opacity="0.16" result="ambient-color"/>
+      <feComposite in="ambient-color" in2="ambient-offset" operator="in" result="ambient-shadow"/>
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3.4" result="contact-blur"/>
+      <feOffset in="contact-blur" dx="0.8" dy="3" result="contact-offset"/>
+      <feFlood flood-color="#53666A" flood-opacity="0.24" result="contact-color"/>
+      <feComposite in="contact-color" in2="contact-offset" operator="in" result="contact-shadow"/>
+      <feMerge>
+        <feMergeNode in="ambient-shadow"/>
+        <feMergeNode in="contact-shadow"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect x="6" y="6" width="244" height="244" rx="70" fill="#6C7D80" filter="url(#carrier-cast-shadow)"/>
+  <rect x="6" y="6" width="244" height="244" rx="70" fill="url(#carrier-surface)"/>
+  <rect x="6" y="6" width="244" height="244" rx="70" fill="url(#carrier-sheen)"/>
+  <rect x="6" y="6" width="244" height="244" rx="70" fill="url(#carrier-depth)"/>
+  <g transform="translate(56 56) scale(16)" shape-rendering="crispEdges">
+    <g id="q-body" fill="#009FE8">
+      <rect x="2" y="0" width="1" height="1"/><rect x="3" y="0" width="1" height="1"/><rect x="4" y="0" width="1" height="1"/><rect x="5" y="0" width="1" height="1"/>
+      <rect x="1" y="1" width="1" height="1"/><rect x="6" y="1" width="1" height="1"/>
+      <rect x="0" y="2" width="1" height="1"/><rect x="7" y="2" width="1" height="1"/>
+      <rect x="0" y="3" width="1" height="1"/><rect x="7" y="3" width="1" height="1"/>
+      <rect x="0" y="4" width="1" height="1"/><rect x="7" y="4" width="1" height="1"/>
+      <rect x="0" y="5" width="1" height="1"/><rect x="7" y="5" width="1" height="1"/>
+      <rect x="0" y="6" width="1" height="1"/><rect x="7" y="6" width="1" height="1"/>
+      <rect x="1" y="7" width="1" height="1"/><rect x="2" y="8" width="1" height="1"/><rect x="3" y="8" width="1" height="1"/><rect x="4" y="8" width="1" height="1"/><rect x="5" y="8" width="1" height="1"/>
+    </g>
+    <g id="q-tail" fill="#F2C43E">
+      <rect x="5" y="6" width="1" height="1"/><rect x="6" y="7" width="1" height="1"/><rect x="7" y="8" width="1" height="1"/><rect x="8" y="8" width="1" height="1"/>
+    </g>
+  </g>
+</svg>

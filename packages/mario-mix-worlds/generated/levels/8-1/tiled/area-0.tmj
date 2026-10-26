@@ -1,0 +1,2895 @@
+{
+  "type": "map",
+  "version": "1.10",
+  "orientation": "orthogonal",
+  "renderorder": "right-down",
+  "width": 402,
+  "height": 15,
+  "tilewidth": 16,
+  "tileheight": 16,
+  "infinite": false,
+  "nextlayerid": 4,
+  "nextobjectid": 154,
+  "tilesets": [],
+  "layers": [
+    {
+      "id": 1,
+      "name": "collision",
+      "type": "objectgroup",
+      "visible": true,
+      "opacity": 1,
+      "x": 0,
+      "y": 0,
+      "draworder": "index",
+      "objects": [
+        {
+          "id": 1,
+          "name": "r000",
+          "type": "solid",
+          "x": 0,
+          "y": 208,
+          "width": 736,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r000\",\"x\":0,\"y\":208,\"w\":736,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "r004",
+          "type": "solid",
+          "x": 560,
+          "y": 144,
+          "width": 32,
+          "height": 64,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r004\",\"x\":560,\"y\":144,\"w\":32,\"h\":64,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "name": "r006",
+          "type": "solid",
+          "x": 752,
+          "y": 208,
+          "width": 16,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r006\",\"x\":752,\"y\":208,\"w\":16,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "name": "r007",
+          "type": "solid",
+          "x": 784,
+          "y": 208,
+          "width": 32,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r007\",\"x\":784,\"y\":208,\"w\":32,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "name": "r008",
+          "type": "solid",
+          "x": 832,
+          "y": 208,
+          "width": 32,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r008\",\"x\":832,\"y\":208,\"w\":32,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "name": "r009",
+          "type": "solid",
+          "x": 880,
+          "y": 208,
+          "width": 32,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r009\",\"x\":880,\"y\":208,\"w\":32,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "name": "r010",
+          "type": "solid",
+          "x": 928,
+          "y": 208,
+          "width": 1776,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r010\",\"x\":928,\"y\":208,\"w\":1776,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "name": "r014",
+          "type": "solid",
+          "x": 1216,
+          "y": 144,
+          "width": 32,
+          "height": 64,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r014\",\"x\":1216,\"y\":144,\"w\":32,\"h\":64,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "name": "r017",
+          "type": "solid",
+          "x": 1312,
+          "y": 160,
+          "width": 32,
+          "height": 48,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r017\",\"x\":1312,\"y\":160,\"w\":32,\"h\":48,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "name": "r019",
+          "type": "solid",
+          "x": 1504,
+          "y": 144,
+          "width": 32,
+          "height": 64,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r019\",\"x\":1504,\"y\":144,\"w\":32,\"h\":64,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "name": "r021",
+          "type": "solid",
+          "x": 1664,
+          "y": 144,
+          "width": 32,
+          "height": 64,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r021\",\"x\":1664,\"y\":144,\"w\":32,\"h\":64,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "name": "r024",
+          "type": "solid",
+          "x": 1840,
+          "y": 176,
+          "width": 32,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r024\",\"x\":1840,\"y\":176,\"w\":32,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "name": "r028",
+          "type": "solid",
+          "x": 2240,
+          "y": 160,
+          "width": 32,
+          "height": 48,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r028\",\"x\":2240,\"y\":160,\"w\":32,\"h\":48,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 14,
+          "name": "r030",
+          "type": "solid",
+          "x": 2448,
+          "y": 144,
+          "width": 16,
+          "height": 64,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r030\",\"x\":2448,\"y\":144,\"w\":16,\"h\":64,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 15,
+          "name": "r031-0-0",
+          "type": "solid",
+          "x": 2464,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r031-0-0\",\"x\":2464,\"y\":80,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 16,
+          "name": "r031-1-0",
+          "type": "solid",
+          "x": 2480,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r031-1-0\",\"x\":2480,\"y\":80,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 17,
+          "name": "r031-2-0",
+          "type": "solid",
+          "x": 2496,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r031-2-0\",\"x\":2496,\"y\":80,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 18,
+          "name": "r031-3-0",
+          "type": "solid",
+          "x": 2512,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r031-3-0\",\"x\":2512,\"y\":80,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 19,
+          "name": "r033",
+          "type": "solid",
+          "x": 2528,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r033\",\"x\":2528,\"y\":80,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 20,
+          "name": "r034-0-0",
+          "type": "solid",
+          "x": 2544,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r034-0-0\",\"x\":2544,\"y\":80,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 21,
+          "name": "r034-1-0",
+          "type": "solid",
+          "x": 2560,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r034-1-0\",\"x\":2560,\"y\":80,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 22,
+          "name": "r034-2-0",
+          "type": "solid",
+          "x": 2576,
+          "y": 80,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r034-2-0\",\"x\":2576,\"y\":80,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 23,
+          "name": "r036",
+          "type": "solid",
+          "x": 2608,
+          "y": 144,
+          "width": 16,
+          "height": 64,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r036\",\"x\":2608,\"y\":144,\"w\":16,\"h\":64,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 24,
+          "name": "r037",
+          "type": "solid",
+          "x": 2720,
+          "y": 208,
+          "width": 16,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r037\",\"x\":2720,\"y\":208,\"w\":16,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 25,
+          "name": "r038",
+          "type": "solid",
+          "x": 2752,
+          "y": 208,
+          "width": 32,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r038\",\"x\":2752,\"y\":208,\"w\":32,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 26,
+          "name": "r040",
+          "type": "solid",
+          "x": 2800,
+          "y": 208,
+          "width": 16,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r040\",\"x\":2800,\"y\":208,\"w\":16,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 27,
+          "name": "r041",
+          "type": "solid",
+          "x": 2832,
+          "y": 208,
+          "width": 32,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r041\",\"x\":2832,\"y\":208,\"w\":32,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 28,
+          "name": "r043",
+          "type": "solid",
+          "x": 2832,
+          "y": 208,
+          "width": 32,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r043\",\"x\":2832,\"y\":208,\"w\":32,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 29,
+          "name": "r044",
+          "type": "solid",
+          "x": 2880,
+          "y": 208,
+          "width": 272,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r044\",\"x\":2880,\"y\":208,\"w\":272,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 30,
+          "name": "r045-0-0",
+          "type": "solid",
+          "x": 2944,
+          "y": 128,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r045-0-0\",\"x\":2944,\"y\":128,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 31,
+          "name": "r045-1-0",
+          "type": "solid",
+          "x": 2960,
+          "y": 128,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r045-1-0\",\"x\":2960,\"y\":128,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 32,
+          "name": "r046",
+          "type": "solid",
+          "x": 2976,
+          "y": 128,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r046\",\"x\":2976,\"y\":128,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 33,
+          "name": "r047-0-0",
+          "type": "solid",
+          "x": 2992,
+          "y": 128,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r047-0-0\",\"x\":2992,\"y\":128,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 34,
+          "name": "r047-1-0",
+          "type": "solid",
+          "x": 3008,
+          "y": 128,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r047-1-0\",\"x\":3008,\"y\":128,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 35,
+          "name": "r047-2-0",
+          "type": "solid",
+          "x": 3024,
+          "y": 128,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r047-2-0\",\"x\":3024,\"y\":128,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 36,
+          "name": "r047-3-0",
+          "type": "solid",
+          "x": 3040,
+          "y": 128,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r047-3-0\",\"x\":3040,\"y\":128,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 37,
+          "name": "r047-4-0",
+          "type": "solid",
+          "x": 3056,
+          "y": 128,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r047-4-0\",\"x\":3056,\"y\":128,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 38,
+          "name": "r048",
+          "type": "solid",
+          "x": 3168,
+          "y": 208,
+          "width": 16,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r048\",\"x\":3168,\"y\":208,\"w\":16,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 39,
+          "name": "r049",
+          "type": "solid",
+          "x": 3200,
+          "y": 208,
+          "width": 16,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r049\",\"x\":3200,\"y\":208,\"w\":16,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 40,
+          "name": "r050",
+          "type": "solid",
+          "x": 3232,
+          "y": 208,
+          "width": 304,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r050\",\"x\":3232,\"y\":208,\"w\":304,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 41,
+          "name": "r052",
+          "type": "solid",
+          "x": 3360,
+          "y": 176,
+          "width": 16,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r052\",\"x\":3360,\"y\":176,\"w\":16,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 42,
+          "name": "r054",
+          "type": "solid",
+          "x": 3632,
+          "y": 208,
+          "width": 160,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r054\",\"x\":3632,\"y\":208,\"w\":160,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 43,
+          "name": "r056",
+          "type": "solid",
+          "x": 3808,
+          "y": 208,
+          "width": 32,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r056\",\"x\":3808,\"y\":208,\"w\":32,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 44,
+          "name": "r057",
+          "type": "solid",
+          "x": 3808,
+          "y": 160,
+          "width": 32,
+          "height": 48,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r057\",\"x\":3808,\"y\":160,\"w\":32,\"h\":48,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 45,
+          "name": "r058",
+          "type": "solid",
+          "x": 3872,
+          "y": 208,
+          "width": 16,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r058\",\"x\":3872,\"y\":208,\"w\":16,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 46,
+          "name": "r059",
+          "type": "solid",
+          "x": 3936,
+          "y": 208,
+          "width": 704,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r059\",\"x\":3936,\"y\":208,\"w\":704,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 47,
+          "name": "r060",
+          "type": "solid",
+          "x": 3936,
+          "y": 128,
+          "width": 32,
+          "height": 80,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r060\",\"x\":3936,\"y\":128,\"w\":32,\"h\":80,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 48,
+          "name": "r065",
+          "type": "solid",
+          "x": 4400,
+          "y": 192,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r065\",\"x\":4400,\"y\":192,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 49,
+          "name": "r066",
+          "type": "solid",
+          "x": 4416,
+          "y": 176,
+          "width": 16,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r066\",\"x\":4416,\"y\":176,\"w\":16,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 50,
+          "name": "r067",
+          "type": "solid",
+          "x": 4432,
+          "y": 160,
+          "width": 16,
+          "height": 48,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r067\",\"x\":4432,\"y\":160,\"w\":16,\"h\":48,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 51,
+          "name": "r068",
+          "type": "solid",
+          "x": 4448,
+          "y": 144,
+          "width": 16,
+          "height": 64,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r068\",\"x\":4448,\"y\":144,\"w\":16,\"h\":64,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 52,
+          "name": "r069",
+          "type": "solid",
+          "x": 4464,
+          "y": 128,
+          "width": 16,
+          "height": 80,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r069\",\"x\":4464,\"y\":128,\"w\":16,\"h\":80,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 53,
+          "name": "r070",
+          "type": "solid",
+          "x": 4480,
+          "y": 112,
+          "width": 16,
+          "height": 96,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r070\",\"x\":4480,\"y\":112,\"w\":16,\"h\":96,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 54,
+          "name": "r074",
+          "type": "solid",
+          "x": 4688,
+          "y": 208,
+          "width": 32,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r074\",\"x\":4688,\"y\":208,\"w\":32,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 55,
+          "name": "r075",
+          "type": "solid",
+          "x": 4768,
+          "y": 208,
+          "width": 256,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r075\",\"x\":4768,\"y\":208,\"w\":256,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 56,
+          "name": "r076-0-0",
+          "type": "solid",
+          "x": 4848,
+          "y": 176,
+          "width": 16,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r076-0-0\",\"x\":4848,\"y\":176,\"w\":16,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 57,
+          "name": "r076-1-0",
+          "type": "solid",
+          "x": 4912,
+          "y": 176,
+          "width": 16,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r076-1-0\",\"x\":4912,\"y\":176,\"w\":16,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 58,
+          "name": "r079",
+          "type": "solid",
+          "x": 5104,
+          "y": 208,
+          "width": 16,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r079\",\"x\":5104,\"y\":208,\"w\":16,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 59,
+          "name": "r081",
+          "type": "solid",
+          "x": 5200,
+          "y": 208,
+          "width": 544,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r081\",\"x\":5200,\"y\":208,\"w\":544,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 60,
+          "name": "r084",
+          "type": "solid",
+          "x": 5504,
+          "y": 160,
+          "width": 32,
+          "height": 48,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r084\",\"x\":5504,\"y\":160,\"w\":32,\"h\":48,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 61,
+          "name": "r085",
+          "type": "solid",
+          "x": 5680,
+          "y": 176,
+          "width": 32,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r085\",\"x\":5680,\"y\":176,\"w\":32,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 62,
+          "name": "r086",
+          "type": "solid",
+          "x": 5760,
+          "y": 208,
+          "width": 16,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r086\",\"x\":5760,\"y\":208,\"w\":16,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 63,
+          "name": "r087",
+          "type": "solid",
+          "x": 5760,
+          "y": 176,
+          "width": 16,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r087\",\"x\":5760,\"y\":176,\"w\":16,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 64,
+          "name": "r088",
+          "type": "solid",
+          "x": 5792,
+          "y": 208,
+          "width": 16,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r088\",\"x\":5792,\"y\":208,\"w\":16,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 65,
+          "name": "r089",
+          "type": "solid",
+          "x": 5792,
+          "y": 144,
+          "width": 16,
+          "height": 64,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r089\",\"x\":5792,\"y\":144,\"w\":16,\"h\":64,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 66,
+          "name": "r090",
+          "type": "solid",
+          "x": 5824,
+          "y": 208,
+          "width": 16,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r090\",\"x\":5824,\"y\":208,\"w\":16,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 67,
+          "name": "r091",
+          "type": "solid",
+          "x": 5824,
+          "y": 112,
+          "width": 16,
+          "height": 96,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r091\",\"x\":5824,\"y\":112,\"w\":16,\"h\":96,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 68,
+          "name": "r092",
+          "type": "solid",
+          "x": 5856,
+          "y": 208,
+          "width": 576,
+          "height": 32,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r092\",\"x\":5856,\"y\":208,\"w\":576,\"h\":32,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 69,
+          "name": "r093",
+          "type": "solid",
+          "x": 5856,
+          "y": 80,
+          "width": 32,
+          "height": 128,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r093\",\"x\":5856,\"y\":80,\"w\":32,\"h\":128,\"collision\":\"solid\"}"
+            }
+          ]
+        },
+        {
+          "id": 70,
+          "name": "r094-base",
+          "type": "solid",
+          "x": 6016,
+          "y": 192,
+          "width": 16,
+          "height": 16,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r094-base\",\"x\":6016,\"y\":192,\"w\":16,\"h\":16,\"collision\":\"solid\"}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "objects",
+      "type": "objectgroup",
+      "visible": true,
+      "opacity": 1,
+      "x": 0,
+      "y": 0,
+      "draworder": "index",
+      "objects": [
+        {
+          "id": 71,
+          "name": "r012",
+          "type": "coin",
+          "x": 1026,
+          "y": 130,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r012\",\"kind\":\"coin\",\"x\":1026,\"y\":130,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 72,
+          "name": "r018",
+          "type": "coin",
+          "x": 1426,
+          "y": 130,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r018\",\"kind\":\"coin\",\"x\":1426,\"y\":130,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 73,
+          "name": "r020",
+          "type": "coin",
+          "x": 1572,
+          "y": 130,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r020\",\"kind\":\"coin\",\"x\":1572,\"y\":130,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 74,
+          "name": "r023-0-0",
+          "type": "coin",
+          "x": 1746,
+          "y": 66,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r023-0-0\",\"kind\":\"coin\",\"x\":1746,\"y\":66,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 75,
+          "name": "r023-1-0",
+          "type": "coin",
+          "x": 1762,
+          "y": 66,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r023-1-0\",\"kind\":\"coin\",\"x\":1762,\"y\":66,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 76,
+          "name": "r053-0-0",
+          "type": "coin",
+          "x": 3570,
+          "y": 130,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r053-0-0\",\"kind\":\"coin\",\"x\":3570,\"y\":130,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 77,
+          "name": "r053-1-0",
+          "type": "coin",
+          "x": 3586,
+          "y": 130,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r053-1-0\",\"kind\":\"coin\",\"x\":3586,\"y\":130,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 78,
+          "name": "r072-0-0",
+          "type": "coin",
+          "x": 4530,
+          "y": 130,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r072-0-0\",\"kind\":\"coin\",\"x\":4530,\"y\":130,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 79,
+          "name": "r072-1-0",
+          "type": "coin",
+          "x": 4546,
+          "y": 130,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r072-1-0\",\"kind\":\"coin\",\"x\":4546,\"y\":130,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 80,
+          "name": "r073-0-0",
+          "type": "coin",
+          "x": 4658,
+          "y": 130,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r073-0-0\",\"kind\":\"coin\",\"x\":4658,\"y\":130,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 81,
+          "name": "r073-1-0",
+          "type": "coin",
+          "x": 4738,
+          "y": 130,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r073-1-0\",\"kind\":\"coin\",\"x\":4738,\"y\":130,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 82,
+          "name": "r078-0-0",
+          "type": "coin",
+          "x": 5058,
+          "y": 130,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r078-0-0\",\"kind\":\"coin\",\"x\":5058,\"y\":130,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 83,
+          "name": "r078-1-0",
+          "type": "coin",
+          "x": 5074,
+          "y": 130,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r078-1-0\",\"kind\":\"coin\",\"x\":5074,\"y\":130,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 84,
+          "name": "r080-0-0",
+          "type": "coin",
+          "x": 5138,
+          "y": 130,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r080-0-0\",\"kind\":\"coin\",\"x\":5138,\"y\":130,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 85,
+          "name": "r080-1-0",
+          "type": "coin",
+          "x": 5154,
+          "y": 130,
+          "width": 10,
+          "height": 14,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r080-1-0\",\"kind\":\"coin\",\"x\":5154,\"y\":130,\"w\":10,\"h\":14}"
+            }
+          ]
+        },
+        {
+          "id": 86,
+          "name": "inspection-start",
+          "type": "spawn",
+          "x": 24,
+          "y": 184,
+          "width": 12,
+          "height": 24,
+          "rotation": 0,
+          "visible": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"inspection-start\",\"kind\":\"spawn\",\"x\":24,\"y\":184,\"w\":12,\"h\":24}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "pending-mechanics",
+      "type": "objectgroup",
+      "visible": true,
+      "opacity": 1,
+      "x": 0,
+      "y": 0,
+      "draworder": "index",
+      "objects": [
+        {
+          "id": 87,
+          "name": "r001",
+          "type": "enemy-beetle",
+          "x": 288,
+          "y": 191,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r001\",\"kind\":\"enemy-beetle\",\"source\":{\"thing\":\"Beetle\",\"x\":144,\"y\":8.5},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r001\"},\"x\":288,\"y\":191}"
+            }
+          ]
+        },
+        {
+          "id": 88,
+          "name": "r002-0-0",
+          "type": "enemy-goomba",
+          "x": 368,
+          "y": 192,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r002-0-0\",\"kind\":\"enemy-goomba\",\"source\":{\"thing\":\"Goomba\",\"x\":184,\"y\":8},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r002\"},\"x\":368,\"y\":192}"
+            }
+          ]
+        },
+        {
+          "id": 89,
+          "name": "r002-1-0",
+          "type": "enemy-goomba",
+          "x": 392,
+          "y": 192,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r002-1-0\",\"kind\":\"enemy-goomba\",\"source\":{\"thing\":\"Goomba\",\"x\":196,\"y\":8},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r002\"},\"x\":392,\"y\":192}"
+            }
+          ]
+        },
+        {
+          "id": 90,
+          "name": "r002-2-0",
+          "type": "enemy-goomba",
+          "x": 416,
+          "y": 192,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r002-2-0\",\"kind\":\"enemy-goomba\",\"source\":{\"thing\":\"Goomba\",\"x\":208,\"y\":8},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r002\"},\"x\":416,\"y\":192}"
+            }
+          ]
+        },
+        {
+          "id": 91,
+          "name": "r003-0-0",
+          "type": "enemy-goomba",
+          "x": 480,
+          "y": 192,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-0-0\",\"kind\":\"enemy-goomba\",\"source\":{\"thing\":\"Goomba\",\"x\":240,\"y\":8},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r003\"},\"x\":480,\"y\":192}"
+            }
+          ]
+        },
+        {
+          "id": 92,
+          "name": "r003-1-0",
+          "type": "enemy-goomba",
+          "x": 504,
+          "y": 192,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-1-0\",\"kind\":\"enemy-goomba\",\"source\":{\"thing\":\"Goomba\",\"x\":252,\"y\":8},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r003\"},\"x\":504,\"y\":192}"
+            }
+          ]
+        },
+        {
+          "id": 93,
+          "name": "r003-2-0",
+          "type": "enemy-goomba",
+          "x": 528,
+          "y": 192,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r003-2-0\",\"kind\":\"enemy-goomba\",\"source\":{\"thing\":\"Goomba\",\"x\":264,\"y\":8},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r003\"},\"x\":528,\"y\":192}"
+            }
+          ]
+        },
+        {
+          "id": 94,
+          "name": "r004-plant",
+          "type": "enemy-piranha",
+          "x": 560,
+          "y": 144,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r004-plant\",\"kind\":\"enemy-piranha\",\"source\":{\"macro\":\"Pipe\",\"height\":32,\"piranha\":true,\"x\":280,\"y\":32},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r004\"},\"x\":560,\"y\":144}"
+            }
+          ]
+        },
+        {
+          "id": 95,
+          "name": "r005-0-0",
+          "type": "enemy-koopa",
+          "x": 688,
+          "y": 184,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005-0-0\",\"kind\":\"enemy-koopa\",\"source\":{\"thing\":\"Koopa\",\"x\":344,\"y\":12},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r005\"},\"x\":688,\"y\":184}"
+            }
+          ]
+        },
+        {
+          "id": 96,
+          "name": "r005-1-0",
+          "type": "enemy-koopa",
+          "x": 712,
+          "y": 184,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r005-1-0\",\"kind\":\"enemy-koopa\",\"source\":{\"thing\":\"Koopa\",\"x\":356,\"y\":12},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r005\"},\"x\":712,\"y\":184}"
+            }
+          ]
+        },
+        {
+          "id": 97,
+          "name": "r011",
+          "type": "enemy-koopa",
+          "x": 976,
+          "y": 184,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r011\",\"kind\":\"enemy-koopa\",\"source\":{\"thing\":\"Koopa\",\"x\":488,\"y\":12},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r011\"},\"x\":976,\"y\":184}"
+            }
+          ]
+        },
+        {
+          "id": 98,
+          "name": "r013-0-0",
+          "type": "enemy-goomba",
+          "x": 1104,
+          "y": 192,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r013-0-0\",\"kind\":\"enemy-goomba\",\"source\":{\"thing\":\"Goomba\",\"x\":552,\"y\":8},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r013\"},\"x\":1104,\"y\":192}"
+            }
+          ]
+        },
+        {
+          "id": 99,
+          "name": "r013-1-0",
+          "type": "enemy-goomba",
+          "x": 1128,
+          "y": 192,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r013-1-0\",\"kind\":\"enemy-goomba\",\"source\":{\"thing\":\"Goomba\",\"x\":564,\"y\":8},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r013\"},\"x\":1128,\"y\":192}"
+            }
+          ]
+        },
+        {
+          "id": 100,
+          "name": "r013-2-0",
+          "type": "enemy-goomba",
+          "x": 1152,
+          "y": 192,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r013-2-0\",\"kind\":\"enemy-goomba\",\"source\":{\"thing\":\"Goomba\",\"x\":576,\"y\":8},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r013\"},\"x\":1152,\"y\":192}"
+            }
+          ]
+        },
+        {
+          "id": 101,
+          "name": "r014-plant",
+          "type": "enemy-piranha",
+          "x": 1216,
+          "y": 144,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r014-plant\",\"kind\":\"enemy-piranha\",\"source\":{\"macro\":\"Pipe\",\"height\":32,\"piranha\":true,\"x\":608,\"y\":32},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r014\"},\"x\":1216,\"y\":144}"
+            }
+          ]
+        },
+        {
+          "id": 102,
+          "name": "r015",
+          "type": "hidden-block",
+          "x": 1280,
+          "y": 128,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r015\",\"kind\":\"hidden-block\",\"source\":{\"thing\":\"Block\",\"contents\":\"Mushroom1Up\",\"hidden\":true,\"x\":640,\"y\":40},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r015\"},\"x\":1280,\"y\":128}"
+            }
+          ]
+        },
+        {
+          "id": 103,
+          "name": "r016",
+          "type": "enemy-beetle",
+          "x": 1296,
+          "y": 191,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r016\",\"kind\":\"enemy-beetle\",\"source\":{\"thing\":\"Beetle\",\"x\":648,\"y\":8.5},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r016\"},\"x\":1296,\"y\":191}"
+            }
+          ]
+        },
+        {
+          "id": 104,
+          "name": "r017-plant",
+          "type": "enemy-piranha",
+          "x": 1312,
+          "y": 160,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r017-plant\",\"kind\":\"enemy-piranha\",\"source\":{\"macro\":\"Pipe\",\"height\":24,\"piranha\":true,\"x\":656,\"y\":24},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r017\"},\"x\":1312,\"y\":160}"
+            }
+          ]
+        },
+        {
+          "id": 105,
+          "name": "r019-plant",
+          "type": "enemy-piranha",
+          "x": 1504,
+          "y": 144,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r019-plant\",\"kind\":\"enemy-piranha\",\"source\":{\"macro\":\"Pipe\",\"height\":32,\"piranha\":true,\"x\":752,\"y\":32},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r019\"},\"x\":1504,\"y\":144}"
+            }
+          ]
+        },
+        {
+          "id": 106,
+          "name": "r021-transport",
+          "type": "source-transport-not-simulated",
+          "x": 1664,
+          "y": 144,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r021-transport\",\"kind\":\"source-transport-not-simulated\",\"source\":{\"height\":32,\"piranha\":true,\"transport\":2,\"x\":832,\"y\":32,\"thing\":\"PipeVertical\",\"width\":16},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r021\"},\"x\":1664,\"y\":144}"
+            }
+          ]
+        },
+        {
+          "id": 107,
+          "name": "r021-plant",
+          "type": "enemy-piranha",
+          "x": 1664,
+          "y": 144,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r021-plant\",\"kind\":\"enemy-piranha\",\"source\":{\"macro\":\"Pipe\",\"height\":32,\"piranha\":true,\"transport\":2,\"x\":832,\"y\":32},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r021\"},\"x\":1664,\"y\":144}"
+            }
+          ]
+        },
+        {
+          "id": 108,
+          "name": "r022-0-0",
+          "type": "enemy-goomba",
+          "x": 1728,
+          "y": 192,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r022-0-0\",\"kind\":\"enemy-goomba\",\"source\":{\"thing\":\"Goomba\",\"x\":864,\"y\":8},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r022\"},\"x\":1728,\"y\":192}"
+            }
+          ]
+        },
+        {
+          "id": 109,
+          "name": "r022-1-0",
+          "type": "enemy-goomba",
+          "x": 1752,
+          "y": 192,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r022-1-0\",\"kind\":\"enemy-goomba\",\"source\":{\"thing\":\"Goomba\",\"x\":876,\"y\":8},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r022\"},\"x\":1752,\"y\":192}"
+            }
+          ]
+        },
+        {
+          "id": 110,
+          "name": "r022-2-0",
+          "type": "enemy-goomba",
+          "x": 1776,
+          "y": 192,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r022-2-0\",\"kind\":\"enemy-goomba\",\"source\":{\"thing\":\"Goomba\",\"x\":888,\"y\":8},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r022\"},\"x\":1776,\"y\":192}"
+            }
+          ]
+        },
+        {
+          "id": 111,
+          "name": "r024-plant",
+          "type": "enemy-piranha",
+          "x": 1840,
+          "y": 176,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r024-plant\",\"kind\":\"enemy-piranha\",\"source\":{\"macro\":\"Pipe\",\"height\":16,\"piranha\":true,\"entrance\":1,\"x\":920,\"y\":16},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r024\"},\"x\":1840,\"y\":176}"
+            }
+          ]
+        },
+        {
+          "id": 112,
+          "name": "r025",
+          "type": "enemy-koopa",
+          "x": 1904,
+          "y": 184,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r025\",\"kind\":\"enemy-koopa\",\"source\":{\"thing\":\"Koopa\",\"x\":952,\"y\":12},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r025\"},\"x\":1904,\"y\":184}"
+            }
+          ]
+        },
+        {
+          "id": 113,
+          "name": "r026-0-0",
+          "type": "enemy-koopa",
+          "x": 1984,
+          "y": 184,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r026-0-0\",\"kind\":\"enemy-koopa\",\"source\":{\"thing\":\"Koopa\",\"x\":992,\"y\":12},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r026\"},\"x\":1984,\"y\":184}"
+            }
+          ]
+        },
+        {
+          "id": 114,
+          "name": "r026-1-0",
+          "type": "enemy-koopa",
+          "x": 2008,
+          "y": 184,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r026-1-0\",\"kind\":\"enemy-koopa\",\"source\":{\"thing\":\"Koopa\",\"x\":1004,\"y\":12},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r026\"},\"x\":2008,\"y\":184}"
+            }
+          ]
+        },
+        {
+          "id": 115,
+          "name": "r026-2-0",
+          "type": "enemy-koopa",
+          "x": 2032,
+          "y": 184,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r026-2-0\",\"kind\":\"enemy-koopa\",\"source\":{\"thing\":\"Koopa\",\"x\":1016,\"y\":12},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r026\"},\"x\":2032,\"y\":184}"
+            }
+          ]
+        },
+        {
+          "id": 116,
+          "name": "r027-0-0",
+          "type": "enemy-koopa",
+          "x": 2080,
+          "y": 184,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r027-0-0\",\"kind\":\"enemy-koopa\",\"source\":{\"thing\":\"Koopa\",\"x\":1040,\"y\":12},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r027\"},\"x\":2080,\"y\":184}"
+            }
+          ]
+        },
+        {
+          "id": 117,
+          "name": "r027-1-0",
+          "type": "enemy-koopa",
+          "x": 2104,
+          "y": 184,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r027-1-0\",\"kind\":\"enemy-koopa\",\"source\":{\"thing\":\"Koopa\",\"x\":1052,\"y\":12},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r027\"},\"x\":2104,\"y\":184}"
+            }
+          ]
+        },
+        {
+          "id": 118,
+          "name": "r027-2-0",
+          "type": "enemy-koopa",
+          "x": 2128,
+          "y": 184,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r027-2-0\",\"kind\":\"enemy-koopa\",\"source\":{\"thing\":\"Koopa\",\"x\":1064,\"y\":12},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r027\"},\"x\":2128,\"y\":184}"
+            }
+          ]
+        },
+        {
+          "id": 119,
+          "name": "r028-plant",
+          "type": "enemy-piranha",
+          "x": 2240,
+          "y": 160,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r028-plant\",\"kind\":\"enemy-piranha\",\"source\":{\"macro\":\"Pipe\",\"height\":24,\"piranha\":true,\"x\":1120,\"y\":24},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r028\"},\"x\":2240,\"y\":160}"
+            }
+          ]
+        },
+        {
+          "id": 120,
+          "name": "r029-0-0",
+          "type": "enemy-goomba",
+          "x": 2368,
+          "y": 192,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r029-0-0\",\"kind\":\"enemy-goomba\",\"source\":{\"thing\":\"Goomba\",\"x\":1184,\"y\":8},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r029\"},\"x\":2368,\"y\":192}"
+            }
+          ]
+        },
+        {
+          "id": 121,
+          "name": "r029-1-0",
+          "type": "enemy-goomba",
+          "x": 2392,
+          "y": 192,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r029-1-0\",\"kind\":\"enemy-goomba\",\"source\":{\"thing\":\"Goomba\",\"x\":1196,\"y\":8},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r029\"},\"x\":2392,\"y\":192}"
+            }
+          ]
+        },
+        {
+          "id": 122,
+          "name": "r029-2-0",
+          "type": "enemy-goomba",
+          "x": 2416,
+          "y": 192,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r029-2-0\",\"kind\":\"enemy-goomba\",\"source\":{\"thing\":\"Goomba\",\"x\":1208,\"y\":8},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r029\"},\"x\":2416,\"y\":192}"
+            }
+          ]
+        },
+        {
+          "id": 123,
+          "name": "r032",
+          "type": "hidden-block",
+          "x": 2528,
+          "y": 144,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r032\",\"kind\":\"hidden-block\",\"source\":{\"thing\":\"Block\",\"hidden\":true,\"x\":1264,\"y\":32},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r032\"},\"x\":2528,\"y\":144}"
+            }
+          ]
+        },
+        {
+          "id": 124,
+          "name": "r033-contents",
+          "type": "block-contents",
+          "x": 2528,
+          "y": 80,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r033-contents\",\"kind\":\"block-contents\",\"source\":{\"thing\":\"Brick\",\"contents\":\"Mushroom\",\"x\":1264,\"y\":64},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r033\"},\"x\":2528,\"y\":80}"
+            }
+          ]
+        },
+        {
+          "id": 125,
+          "name": "r035",
+          "type": "enemy-koopa",
+          "x": 2576,
+          "y": 144,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r035\",\"kind\":\"enemy-koopa\",\"source\":{\"thing\":\"Koopa\",\"jumping\":true,\"x\":1288,\"y\":32},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r035\"},\"x\":2576,\"y\":144}"
+            }
+          ]
+        },
+        {
+          "id": 126,
+          "name": "r039",
+          "type": "enemy-koopa",
+          "x": 2752,
+          "y": 144,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r039\",\"kind\":\"enemy-koopa\",\"source\":{\"thing\":\"Koopa\",\"jumping\":true,\"x\":1376,\"y\":32},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r039\"},\"x\":2752,\"y\":144}"
+            }
+          ]
+        },
+        {
+          "id": 127,
+          "name": "r042",
+          "type": "enemy-koopa",
+          "x": 2832,
+          "y": 152,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r042\",\"kind\":\"enemy-koopa\",\"source\":{\"thing\":\"Koopa\",\"jumping\":true,\"x\":1416,\"y\":28},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r042\"},\"x\":2832,\"y\":152}"
+            }
+          ]
+        },
+        {
+          "id": 128,
+          "name": "r046-contents",
+          "type": "block-contents",
+          "x": 2976,
+          "y": 128,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r046-contents\",\"kind\":\"block-contents\",\"source\":{\"thing\":\"Brick\",\"contents\":\"Star\",\"x\":1488,\"y\":40},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r046\"},\"x\":2976,\"y\":128}"
+            }
+          ]
+        },
+        {
+          "id": 129,
+          "name": "r051-0-0",
+          "type": "enemy-koopa",
+          "x": 3312,
+          "y": 184,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r051-0-0\",\"kind\":\"enemy-koopa\",\"source\":{\"thing\":\"Koopa\",\"x\":1656,\"y\":12},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r051\"},\"x\":3312,\"y\":184}"
+            }
+          ]
+        },
+        {
+          "id": 130,
+          "name": "r051-1-0",
+          "type": "enemy-koopa",
+          "x": 3336,
+          "y": 184,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r051-1-0\",\"kind\":\"enemy-koopa\",\"source\":{\"thing\":\"Koopa\",\"x\":1668,\"y\":12},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r051\"},\"x\":3336,\"y\":184}"
+            }
+          ]
+        },
+        {
+          "id": 131,
+          "name": "r055-0-0",
+          "type": "enemy-goomba",
+          "x": 3712,
+          "y": 192,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r055-0-0\",\"kind\":\"enemy-goomba\",\"source\":{\"thing\":\"Goomba\",\"x\":1856,\"y\":8},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r055\"},\"x\":3712,\"y\":192}"
+            }
+          ]
+        },
+        {
+          "id": 132,
+          "name": "r055-1-0",
+          "type": "enemy-goomba",
+          "x": 3736,
+          "y": 192,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r055-1-0\",\"kind\":\"enemy-goomba\",\"source\":{\"thing\":\"Goomba\",\"x\":1868,\"y\":8},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r055\"},\"x\":3736,\"y\":192}"
+            }
+          ]
+        },
+        {
+          "id": 133,
+          "name": "r055-2-0",
+          "type": "enemy-goomba",
+          "x": 3760,
+          "y": 192,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r055-2-0\",\"kind\":\"enemy-goomba\",\"source\":{\"thing\":\"Goomba\",\"x\":1880,\"y\":8},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r055\"},\"x\":3760,\"y\":192}"
+            }
+          ]
+        },
+        {
+          "id": 134,
+          "name": "r057-plant",
+          "type": "enemy-piranha",
+          "x": 3808,
+          "y": 160,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r057-plant\",\"kind\":\"enemy-piranha\",\"source\":{\"macro\":\"Pipe\",\"height\":24,\"piranha\":true,\"x\":1904,\"y\":24},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r057\"},\"x\":3808,\"y\":160}"
+            }
+          ]
+        },
+        {
+          "id": 135,
+          "name": "r061",
+          "type": "enemy-beetle",
+          "x": 4064,
+          "y": 191,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r061\",\"kind\":\"enemy-beetle\",\"source\":{\"thing\":\"Beetle\",\"x\":2032,\"y\":8.5},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r061\"},\"x\":4064,\"y\":191}"
+            }
+          ]
+        },
+        {
+          "id": 136,
+          "name": "r062-0-0",
+          "type": "enemy-goomba",
+          "x": 4112,
+          "y": 192,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r062-0-0\",\"kind\":\"enemy-goomba\",\"source\":{\"thing\":\"Goomba\",\"x\":2056,\"y\":8},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r062\"},\"x\":4112,\"y\":192}"
+            }
+          ]
+        },
+        {
+          "id": 137,
+          "name": "r062-1-0",
+          "type": "enemy-goomba",
+          "x": 4136,
+          "y": 192,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r062-1-0\",\"kind\":\"enemy-goomba\",\"source\":{\"thing\":\"Goomba\",\"x\":2068,\"y\":8},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r062\"},\"x\":4136,\"y\":192}"
+            }
+          ]
+        },
+        {
+          "id": 138,
+          "name": "r062-2-0",
+          "type": "enemy-goomba",
+          "x": 4160,
+          "y": 192,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r062-2-0\",\"kind\":\"enemy-goomba\",\"source\":{\"thing\":\"Goomba\",\"x\":2080,\"y\":8},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r062\"},\"x\":4160,\"y\":192}"
+            }
+          ]
+        },
+        {
+          "id": 139,
+          "name": "r063-0-0",
+          "type": "enemy-goomba",
+          "x": 4224,
+          "y": 192,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r063-0-0\",\"kind\":\"enemy-goomba\",\"source\":{\"thing\":\"Goomba\",\"x\":2112,\"y\":8},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r063\"},\"x\":4224,\"y\":192}"
+            }
+          ]
+        },
+        {
+          "id": 140,
+          "name": "r063-1-0",
+          "type": "enemy-goomba",
+          "x": 4248,
+          "y": 192,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r063-1-0\",\"kind\":\"enemy-goomba\",\"source\":{\"thing\":\"Goomba\",\"x\":2124,\"y\":8},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r063\"},\"x\":4248,\"y\":192}"
+            }
+          ]
+        },
+        {
+          "id": 141,
+          "name": "r063-2-0",
+          "type": "enemy-goomba",
+          "x": 4272,
+          "y": 192,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r063-2-0\",\"kind\":\"enemy-goomba\",\"source\":{\"thing\":\"Goomba\",\"x\":2136,\"y\":8},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r063\"},\"x\":4272,\"y\":192}"
+            }
+          ]
+        },
+        {
+          "id": 142,
+          "name": "r064-0-0",
+          "type": "enemy-goomba",
+          "x": 4352,
+          "y": 192,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r064-0-0\",\"kind\":\"enemy-goomba\",\"source\":{\"thing\":\"Goomba\",\"x\":2176,\"y\":8},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r064\"},\"x\":4352,\"y\":192}"
+            }
+          ]
+        },
+        {
+          "id": 143,
+          "name": "r064-1-0",
+          "type": "enemy-goomba",
+          "x": 4376,
+          "y": 192,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r064-1-0\",\"kind\":\"enemy-goomba\",\"source\":{\"thing\":\"Goomba\",\"x\":2188,\"y\":8},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r064\"},\"x\":4376,\"y\":192}"
+            }
+          ]
+        },
+        {
+          "id": 144,
+          "name": "r071",
+          "type": "enemy-beetle",
+          "x": 4528,
+          "y": 191,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r071\",\"kind\":\"enemy-beetle\",\"source\":{\"thing\":\"Beetle\",\"x\":2264,\"y\":8.5},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r071\"},\"x\":4528,\"y\":191}"
+            }
+          ]
+        },
+        {
+          "id": 145,
+          "name": "r077",
+          "type": "enemy-koopa",
+          "x": 4880,
+          "y": 184,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r077\",\"kind\":\"enemy-koopa\",\"source\":{\"thing\":\"Koopa\",\"x\":2440,\"y\":12},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r077\"},\"x\":4880,\"y\":184}"
+            }
+          ]
+        },
+        {
+          "id": 146,
+          "name": "r082",
+          "type": "enemy-koopa",
+          "x": 5312,
+          "y": 184,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r082\",\"kind\":\"enemy-koopa\",\"source\":{\"thing\":\"Koopa\",\"x\":2656,\"y\":12},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r082\"},\"x\":5312,\"y\":184}"
+            }
+          ]
+        },
+        {
+          "id": 147,
+          "name": "r083-0-0",
+          "type": "enemy-koopa",
+          "x": 5424,
+          "y": 184,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r083-0-0\",\"kind\":\"enemy-koopa\",\"source\":{\"thing\":\"Koopa\",\"x\":2712,\"y\":12},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r083\"},\"x\":5424,\"y\":184}"
+            }
+          ]
+        },
+        {
+          "id": 148,
+          "name": "r083-1-0",
+          "type": "enemy-koopa",
+          "x": 5448,
+          "y": 184,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r083-1-0\",\"kind\":\"enemy-koopa\",\"source\":{\"thing\":\"Koopa\",\"x\":2724,\"y\":12},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r083\"},\"x\":5448,\"y\":184}"
+            }
+          ]
+        },
+        {
+          "id": 149,
+          "name": "r083-2-0",
+          "type": "enemy-koopa",
+          "x": 5472,
+          "y": 184,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r083-2-0\",\"kind\":\"enemy-koopa\",\"source\":{\"thing\":\"Koopa\",\"x\":2736,\"y\":12},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r083\"},\"x\":5472,\"y\":184}"
+            }
+          ]
+        },
+        {
+          "id": 150,
+          "name": "r084-plant",
+          "type": "enemy-piranha",
+          "x": 5504,
+          "y": 160,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r084-plant\",\"kind\":\"enemy-piranha\",\"source\":{\"macro\":\"Pipe\",\"height\":24,\"piranha\":true,\"x\":2752,\"y\":24},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r084\"},\"x\":5504,\"y\":160}"
+            }
+          ]
+        },
+        {
+          "id": 151,
+          "name": "r085-plant",
+          "type": "enemy-piranha",
+          "x": 5680,
+          "y": 176,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r085-plant\",\"kind\":\"enemy-piranha\",\"source\":{\"macro\":\"Pipe\",\"height\":16,\"piranha\":true,\"x\":2840,\"y\":16},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r085\"},\"x\":5680,\"y\":176}"
+            }
+          ]
+        },
+        {
+          "id": 152,
+          "name": "r094",
+          "type": "flagpole-finish",
+          "x": 6016,
+          "y": 208,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r094\",\"kind\":\"flagpole-finish\",\"source\":{\"macro\":\"EndOutsideCastle\",\"transport\":{\"map\":\"8-2\"},\"x\":3008,\"y\":0},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r094\"},\"x\":6016,\"y\":208}"
+            }
+          ]
+        },
+        {
+          "id": 153,
+          "name": "r094-transport",
+          "type": "source-transport-not-simulated",
+          "x": 6016,
+          "y": 208,
+          "width": 0,
+          "height": 0,
+          "rotation": 0,
+          "visible": true,
+          "point": true,
+          "properties": [
+            {
+              "name": "sourceJson",
+              "type": "string",
+              "value": "{\"id\":\"r094-transport\",\"kind\":\"source-transport-not-simulated\",\"source\":{\"macro\":\"EndOutsideCastle\",\"transport\":{\"map\":\"8-2\"},\"x\":3008,\"y\":0},\"sourcePath\":{\"area\":0,\"part\":\"base\",\"record\":\"r094\"},\"x\":6016,\"y\":208}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "properties": [
+    {
+      "name": "room",
+      "type": "string",
+      "value": "area-0"
+    },
+    {
+      "name": "underwater",
+      "type": "bool",
+      "value": false
+    },
+    {
+      "name": "inspectionOnly",
+      "type": "bool",
+      "value": true
+    },
+    {
+      "name": "referenceReview",
+      "type": "string",
+      "value": "pending"
+    }
+  ]
+}

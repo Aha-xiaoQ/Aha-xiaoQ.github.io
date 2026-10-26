@@ -1,0 +1,2014 @@
+{
+  "schemaVersion": 1,
+  "id": "mario-mix",
+  "title": "混合马里奥",
+  "category": "game",
+  "visibility": "public",
+  "stage": "混合马里奥与自制关卡",
+  "updatedAt": "2026-10-25",
+  "summary": "十位角色的混合冒险与独立自制关卡。以撒篇现已加入，试玩游戏，查看制作记录与源码。",
+  "intro": "混合马里奥在下_小Q版包含十位角色、经典关卡、角色专属隐藏关、彩蛋与成就。以撒篇带来可叠加的武器、六组套装与四位 BOSS；自制马里奥系列还包括五门挑战、午夜厨房潜行、Bad Apple!! 音乐小剧场，以及深入《我的世界》的方块冒险。",
+  "highlights": [
+    "以撒加入混合马里奥：收集道具、叠加弹幕、挑战四位 BOSS，再向库巴展示满装备的火力。",
+    "自制马里奥 1—4 提供独立试玩和下载；第 4 期演示视频已在 B 站发布。",
+    "视频：第四期 · 索尼克 × 奥日 可观看视频；马里奥地图工坊 可观看视频。"
+  ],
+  "links": [
+    {
+      "label": "混合马里奥 · 以撒篇｜库巴，时代变了",
+      "href": "/games/mario-mix-isaac/"
+    },
+    {
+      "label": "以撒篇 · 视频",
+      "href": "https://www.bilibili.com/video/BV1NvnU6KEWn/"
+    },
+    {
+      "label": "混合马里奥在下_小Q版",
+      "href": "/games/mario-mix-xiaoq/"
+    },
+    {
+      "label": "混合马里奥在下_小Q版 · 视频",
+      "href": "https://www.bilibili.com/video/BV1gNpj6WE32/"
+    },
+    {
+      "label": "自制马里奥4 | 我的世界横版闯关",
+      "href": "/games/mario-minecraft/"
+    },
+    {
+      "label": "自制马里奥4 | 我的世界横版闯关 · 视频",
+      "href": "https://www.bilibili.com/video/BV1fknG69EZL/"
+    },
+    {
+      "label": "自制马里奥3 | Bad Apple!! 音乐小剧场",
+      "href": "/games/badapple-mario/"
+    },
+    {
+      "label": "自制马里奥2 | 小小梦魇 · 午夜厨房",
+      "href": "/games/mario-midnight-kitchen/"
+    },
+    {
+      "label": "自制马里奥1：我们一起打蜜蜂",
+      "href": "/games/five-regions/"
+    },
+    {
+      "label": "自制马里奥1：我们一起打蜜蜂 · 视频",
+      "href": "https://www.bilibili.com/video/BV1cHH965ECn/"
+    },
+    {
+      "label": "试玩第四期 · 索尼克 × 奥日",
+      "href": "/games/mario-mix-4/play.html"
+    },
+    {
+      "label": "第四期介绍",
+      "href": "/games/mario-mix-4/"
+    },
+    {
+      "label": "第四期源码分发状态",
+      "href": "/notes/mario-mix/docs/episode-4-source/"
+    },
+    {
+      "label": "马里奥地图工坊",
+      "href": "/tools/mario-map-workshop-2-0/"
+    },
+    {
+      "label": "试玩线上第三期",
+      "href": "/games/mario-mix-3/play.html"
+    },
+    {
+      "label": "获取开发源码",
+      "href": "/notes/mario-mix/docs/terra-source/"
+    },
+    {
+      "label": "参与开发",
+      "href": "/notes/mario-mix/docs/terra-collaboration/"
+    },
+    {
+      "label": "关卡与地图模板",
+      "href": "/notes/mario-mix/docs/terra-stages/"
+    },
+    {
+      "label": "第四期 · 索尼克 × 奥日 · 视频",
+      "href": "https://www.bilibili.com/video/BV1JBhh6iEXS/"
+    },
+    {
+      "label": "马里奥地图工坊 · 视频",
+      "href": "https://www.bilibili.com/video/BV1kLha63EyV/"
+    }
+  ],
+  "participation": {
+    "mode": "preparing",
+    "summary": "可参与设备测试、说明补充和小范围代码改进。先查看任务，再到 Issue 中确认范围。",
+    "issueUrl": "https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/issues/new",
+    "repository": "https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io"
+  },
+  "state": {
+    "adapter": "project-v1",
+    "path": "content/development/states/mario-mix-public.json"
+  },
+  "updates": [
+    {
+      "id": "mario-mix-isaac",
+      "date": "2026-10-25",
+      "title": "混合马里奥 · 以撒篇｜库巴，时代变了",
+      "status": "released",
+      "kind": "content",
+      "summary": "以撒篇 0.9.13 上线：十位角色、32 个经典关卡，新增道具组合、六组套装与四位 BOSS。提供在线试玩、离线游戏和网站源码，宣传片已在 B 站发布。",
+      "public": true
+    },
+    {
+      "id": "map-workshop-1-11-0",
+      "date": "2026-10-19",
+      "title": "马里奥地图工坊 1.11.0",
+      "status": "released",
+      "kind": "content",
+      "summary": "地图工坊 2.0 下载包更新至实现 1.11.0：新增可选 Minecraft 房间设置与逐房间音乐，改进试玩和离线导出；包内包含完整源码、图像、音频与 AI 制图 Skill。旧版在线体验保持原版本。",
+      "public": true
+    },
+    {
+      "id": "mario-minecraft",
+      "date": "2026-10-19",
+      "title": "自制马里奥4 | 我的世界横版闯关",
+      "status": "released",
+      "kind": "content",
+      "summary": "自制马里奥第 4 期：雨夜森林、矿洞矿车、下界与末地冒险。提供 HTML 试玩、源码和音频素材包；演示视频已在 B 站发布。",
+      "public": true
+    },
+    {
+      "id": "mario-web-r12",
+      "date": "2026-10-16",
+      "revision": 26,
+      "title": "混合马里奥：加载、操作与瞄准修复",
+      "status": "released",
+      "kind": "content",
+      "summary": "开局优先准备必要画面，背景音乐不再阻塞进入；增加加载进度与超时重试，保留手机操作、全屏成就、天空出口和坦克卡关修复。泰拉瑞亚隐藏关按 J 自动瞄准，按住鼠标左键手动瞄准。",
+      "public": true
+    },
+    {
+      "id": "mario-background-0814",
+      "date": "2026-10-12",
+      "revision": 25,
+      "title": "混合马里奥：按需加载与后台预取",
+      "status": "released",
+      "kind": "content",
+      "summary": "进入菜单时只加载必要素材，选定角色后准备开局资源，其余角色与隐藏关素材在后台预取；保留手机触控修复、失败重试和素材缓存。",
+      "public": true
+    },
+    {
+      "id": "mario-mobile-0813",
+      "date": "2026-10-12",
+      "revision": 24,
+      "title": "混合马里奥：手机操作与加载优化",
+      "status": "released",
+      "kind": "content",
+      "summary": "修复手机虚拟 A 键开始时误触返回的问题；首开下载量减少 28.4%，加入加载进度、失败重试与素材缓存。",
+      "public": true
+    },
+    {
+      "id": "mario-mix-xiaoq",
+      "date": "2026-10-11",
+      "title": "混合马里奥在下_小Q版",
+      "status": "released",
+      "kind": "content",
+      "summary": "九位角色的混合冒险，提供浏览器试玩、离线游戏与源码。演示视频已在 B 站发布。",
+      "revision": 23,
+      "public": true
+    },
+    {
+      "id": "badapple-mario",
+      "date": "2026-10-11",
+      "title": "自制马里奥3 | Bad Apple!! 音乐小剧场",
+      "status": "released",
+      "summary": "新增完整音乐关、游戏源码与演示介绍：跟随节拍跳跃、下蹲和发射火球，后半段展开立体舞台。完整视频已在哔哩哔哩发布。",
+      "kind": "content",
+      "public": true
+    },
+    {
+      "id": "mario-midnight-kitchen",
+      "date": "2026-10-10",
+      "title": "自制马里奥2 | 小小梦魇 · 午夜厨房",
+      "status": "released",
+      "summary": "新增可玩的 3D 厨房潜行关卡与游戏源码；马里奥在出口遇见小六，两人一起随吊钩离开。完整视频已在哔哩哔哩发布。",
+      "kind": "content",
+      "public": true
+    },
+    {
+      "id": "map-workshop-source-20261008",
+      "date": "2026-10-08",
+      "title": "马里奥地图工坊",
+      "status": "released",
+      "summary": "地图编辑、AI 辅助制图与离线导出。提供下载和使用说明，也可打开旧版在线体验或试玩五门挑战范例。",
+      "kind": "content",
+      "public": true
+    },
+    {
+      "id": "five-regions-20261008",
+      "date": "2026-10-08",
+      "title": "自制马里奥1：我们一起打蜜蜂",
+      "status": "released",
+      "summary": "五种机关挑战，支持浏览器试玩与单文件 HTML 下载。完整通关实况已在 B 站发布。",
+      "kind": "content",
+      "public": true
+    },
+    {
+      "id": "episode4-source-s01",
+      "date": "2026-09-21",
+      "title": "混合马里奥第四期：索尼克 × 奥日",
+      "status": "released",
+      "summary": "索尼克与奥日城堡关开放独立试玩，并提供 R43 源码下载与运行说明。",
+      "kind": "content",
+      "public": true
+    },
+    {
+      "id": "map-workshop-20260920",
+      "date": "2026-09-20",
+      "title": "地图工坊测试版",
+      "status": "released",
+      "summary": "从 32 关参考底图开始编辑、保存和试玩，可选择马里奥或魂斗罗比尔，支持手柄与单关或连续版离线导出。复杂机关与隐藏路线仍在完善。",
+      "kind": "content",
+      "public": true
+    },
+    {
+      "id": "player-ui-r22",
+      "kind": "release",
+      "revision": 22,
+      "date": "2026-09-19",
+      "title": "开发源码 0.4.3",
+      "summary": "角色选择、操作说明、设置与 HUD 已整理。此源码为开发候选，和已发布试玩分别维护。",
+      "status": "local-review",
+      "public": true
+    }
+  ],
+  "docs": [
+    {
+      "id": "terra-source",
+      "title": "第三期开发源码",
+      "summary": "历史开发候选 0.4.3。混合源码包已撤下，暂不重新提供源码下载；试玩与 HTML 下载保留。",
+      "action": {
+        "label": "查看源码开放范围",
+        "href": "/notes/pixel-workshop/docs/source-distributions/"
+      },
+      "sections": [
+        {
+          "title": "源码开放范围",
+          "paragraphs": [
+            "原有混合源码包已撤下，其中包含尚未完成权利核实的代码或素材，已停止提供下载。在线试玩与游戏离线包独立维护，不代表其全部内容适用 MIT 许可。",
+            "源码暂不重新发布；历史开发说明保留作版本参考，不能据此推定获得第三方内容授权。"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "代码贡献指南",
+          "href": "/notes/mario-mix/docs/terra-collaboration/"
+        },
+        {
+          "label": "当前界面与模块约定",
+          "href": "/notes/mario-mix/docs/terra-ui-contract/"
+        },
+        {
+          "label": "当前测试记录",
+          "href": "/notes/mario-mix/docs/terra-test-m07/"
+        },
+        {
+          "label": "发布前验收清单",
+          "href": "/notes/mario-mix/docs/terra-acceptance-m07/"
+        }
+      ]
+    },
+    {
+      "id": "episode-4-source",
+      "title": "第四期源码分发状态",
+      "summary": "混合源码包已撤下，暂不重新提供源码下载；试玩与 HTML 下载保留。",
+      "action": {
+        "label": "查看源码开放范围",
+        "href": "/notes/pixel-workshop/docs/source-distributions/"
+      },
+      "sections": [
+        {
+          "title": "源码开放范围",
+          "paragraphs": [
+            "原有混合源码包已撤下，其中包含尚未完成权利核实的代码或素材，已停止提供下载。在线试玩与游戏离线包独立维护，不代表其全部内容适用 MIT 许可。",
+            "源码暂不重新发布；历史开发说明保留作版本参考，不能据此推定获得第三方内容授权。"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "源码分发状态",
+          "href": "/notes/pixel-workshop/docs/source-distributions/"
+        },
+        {
+          "label": "第四期游戏介绍",
+          "href": "/games/mario-mix-4/"
+        },
+        {
+          "label": "试玩第四期",
+          "href": "/games/mario-mix-4/play.html"
+        },
+        {
+          "label": "第三期开发源码（独立维护）",
+          "href": "/notes/mario-mix/docs/terra-source/"
+        },
+        {
+          "label": "源码校验元数据",
+          "href": "/downloads/source/MarioMix_Episode4_R43_Source.json"
+        }
+      ]
+    },
+    {
+      "id": "terra-collaboration",
+      "title": "代码贡献指南",
+      "summary": "选择任务、修改源码、提交测试与 PR。",
+      "sections": [
+        {
+          "title": "从一个小任务开始",
+          "paragraphs": [
+            "在源码根目录运行 npm run tasks，或从项目任务页选择一项改进。在 Issue 中说明方案并确认范围后创建功能分支。设备复验、按键标签、文档说明都可以单独提交。"
+          ]
+        },
+        {
+          "title": "交付可以验证的改动",
+          "paragraphs": [
+            "修改 src/ 或 content/，不要编辑 dist/。提交源码和对应测试，写清实际行为差异、候选校验值和未验证设备，不把全仓格式化或其他玩法一起提交。"
+          ],
+          "code": "npm run verify\nnpm run pack"
+        },
+        {
+          "title": "审核与发布",
+          "paragraphs": [
+            "通过测试才进入人工审阅。设备、自然通关、音频和素材许可需单独核验；代码合并不是发布批准。保留原 NOTICE，不添加未经核验的新素材。"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "下载当前源码",
+          "href": "/notes/mario-mix/docs/terra-source/"
+        },
+        {
+          "label": "模块地图与职责",
+          "href": "/notes/mario-mix/docs/terra-modules/"
+        },
+        {
+          "label": "完整贡献指南",
+          "href": "/notes/mario-mix/docs/terra-contributing/"
+        },
+        {
+          "label": "发布前检查清单",
+          "href": "/notes/mario-mix/docs/terra-publish/"
+        }
+      ]
+    },
+    {
+      "id": "terra-stages",
+      "title": "地图工坊与关卡模板（实验）",
+      "summary": "编辑地图、试玩马里奥，保存工程并下载离线版本；也可获取开发模板。",
+      "sections": [
+        {
+          "title": "打开地图工坊",
+          "paragraphs": [
+            "从工具页进入地图工坊，选择“从底图创建”，按世界与关卡加载副本；也可以新建空白地图。原始参考地图保持不变。",
+            "支持地形、平台、管道、敌人和奖励编辑；保存 .qmap.json 工程可继续制作。试玩使用马里奥运行器，支持键盘、触屏与外接手柄。"
+          ]
+        },
+        {
+          "title": "试玩与离线下载",
+          "paragraphs": [
+            "可下载当前地图的独立 HTML，也可下载按关卡顺序推进的连续版并自由选关。离线初始生命默认 3 条，可设为 1–30 条；开发者试玩可开启附近安全位置复活。",
+            "全屏、音乐与音效、制作信息和像素字体包含在试玩中。离线 HTML 用于游玩，继续编辑请另存工程文件。"
+          ]
+        },
+        {
+          "title": "开发模板与已知边界",
+          "paragraphs": [
+            "32 关共 63 个参考区域，另保留循环城堡的分段视图。马里奥试玩已接入奖励、弹簧、平台、游泳、管道、藤蔓和城堡结算等机制；这些功能仍需逐关核验，不代表原版逐帧一致。",
+            "地图工坊可选择马里奥或魂斗罗比尔试玩，并导出离线关卡。第三期开发模板使用独立通用运行器；完整泰拉角色与索尼克、奥日尚不能直接用于任意地图。"
+          ],
+          "code": "npm run check\nnpm test\nnpm run atlas"
+        }
+      ],
+      "sources": [
+        {
+          "label": "完整开发与贡献说明",
+          "href": "/notes/mario-mix/docs/worlds-start/"
+        },
+        {
+          "label": "地图坐标与来源核验",
+          "href": "/notes/mario-mix/docs/worlds-map-contract/"
+        },
+        {
+          "label": "后续工作清单",
+          "href": "/notes/mario-mix/docs/worlds-roadmap/"
+        },
+        {
+          "label": "第三期当前源码",
+          "href": "/notes/mario-mix/docs/terra-source/"
+        }
+      ],
+      "kind": "level-atlas"
+    },
+    {
+      "id": "episode-4",
+      "title": "第四期 · 索尼克与奥日",
+      "summary": "第四期独立试玩与视频入口。已上线游戏和开发候选分别维护。",
+      "action": {
+        "label": "试玩第四期",
+        "href": "/games/mario-mix-4/play.html"
+      },
+      "sections": [
+        {
+          "title": "试玩范围",
+          "paragraphs": [
+            "索尼克与奥日加入马里奥 1-4，切换角色，穿过城堡关卡并营救公主。",
+            "操作方式、声音设置和素材说明见游戏内菜单。"
+          ]
+        },
+        {
+          "title": "视频入口",
+          "paragraphs": [
+            "第四期 · 索尼克 × 奥日：从下方链接观看视频。",
+            "马里奥地图工坊：从下方链接观看视频。"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "第四期游戏介绍",
+          "href": "/games/mario-mix-4/"
+        },
+        {
+          "label": "第四期源码分发状态",
+          "href": "/notes/mario-mix/docs/episode-4-source/"
+        },
+        {
+          "label": "第四期 · 索尼克 × 奥日 · 视频",
+          "href": "https://www.bilibili.com/video/BV1JBhh6iEXS/"
+        },
+        {
+          "label": "马里奥地图工坊 · 视频",
+          "href": "https://www.bilibili.com/video/BV1kLha63EyV/"
+        }
+      ]
+    },
+    {
+      "id": "terra-history",
+      "title": "历史源码与版本记录",
+      "summary": "保留原源码快照与阶段记录，用于版本比对。",
+      "archived": true,
+      "sections": [
+        {
+          "title": "使用当前资料",
+          "paragraphs": [
+            "新贡献从当前源码页开始。R15 是 0.4.1 的资料修订，游戏候选与 M05 相同。旧下载保留，历史验收结果仅适用于当时的候选。"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "源码开放范围",
+          "href": "/notes/pixel-workshop/docs/source-distributions/"
+        },
+        {
+          "label": "源码开放范围",
+          "href": "/notes/pixel-workshop/docs/source-distributions/"
+        },
+        {
+          "label": "源码开放范围",
+          "href": "/notes/pixel-workshop/docs/source-distributions/"
+        },
+        {
+          "label": "M05 UI 变更记录",
+          "href": "/notes/mario-mix/docs/terra-changelog-m05/"
+        },
+        {
+          "label": "源码开放范围",
+          "href": "/notes/pixel-workshop/docs/source-distributions/"
+        },
+        {
+          "label": "源码开放范围",
+          "href": "/notes/pixel-workshop/docs/source-distributions/"
+        },
+        {
+          "label": "源码开放范围",
+          "href": "/notes/pixel-workshop/docs/source-distributions/"
+        },
+        {
+          "label": "M04 变更记录",
+          "href": "/notes/mario-mix/docs/terra-changelog-m04/"
+        },
+        {
+          "label": "源码开放范围",
+          "href": "/notes/pixel-workshop/docs/source-distributions/"
+        }
+      ]
+    },
+    {
+      "id": "worlds-start",
+      "title": "地图开发工具 W02 · 0.2.0",
+      "summary": "说明与参考资料。",
+      "sections": [],
+      "readingDocument": true,
+      "parentDoc": "terra-stages",
+      "versioned": false,
+      "sources": []
+    },
+    {
+      "id": "worlds-map-contract",
+      "title": "地图坐标、分段与核验约定",
+      "summary": "说明与参考资料。",
+      "sections": [],
+      "readingDocument": true,
+      "parentDoc": "terra-stages",
+      "versioned": false,
+      "sources": []
+    },
+    {
+      "id": "worlds-roadmap",
+      "title": "后续路线",
+      "summary": "说明与参考资料。",
+      "sections": [],
+      "readingDocument": true,
+      "parentDoc": "terra-stages",
+      "versioned": false,
+      "sources": []
+    },
+    {
+      "id": "terra-ui-contract",
+      "title": "玩家界面契约 · M07",
+      "summary": "说明与参考资料。",
+      "sections": [],
+      "readingDocument": true,
+      "parentDoc": "terra-source",
+      "versioned": false,
+      "sources": []
+    },
+    {
+      "id": "terra-test-m07",
+      "title": "M07 历史测试记录",
+      "summary": "历史版本的开发资料。",
+      "sections": [],
+      "readingDocument": true,
+      "parentDoc": "terra-source",
+      "versioned": true,
+      "sources": []
+    },
+    {
+      "id": "terra-acceptance-m07",
+      "title": "M07 实机验收",
+      "summary": "说明与参考资料。",
+      "sections": [],
+      "readingDocument": true,
+      "parentDoc": "terra-source",
+      "versioned": false,
+      "sources": []
+    },
+    {
+      "id": "terra-modules",
+      "title": "模块登记（自动生成）",
+      "summary": "说明与参考资料。",
+      "sections": [],
+      "readingDocument": true,
+      "parentDoc": "terra-collaboration",
+      "versioned": false,
+      "sources": []
+    },
+    {
+      "id": "terra-contributing",
+      "title": "参与第三期开发",
+      "summary": "说明与参考资料。",
+      "sections": [],
+      "readingDocument": true,
+      "parentDoc": "terra-collaboration",
+      "versioned": false,
+      "sources": []
+    },
+    {
+      "id": "terra-publish",
+      "title": "M06 / 0.4.2 历史发布指南",
+      "summary": "历史版本的开发资料。",
+      "sections": [],
+      "readingDocument": true,
+      "parentDoc": "terra-collaboration",
+      "versioned": true,
+      "sources": []
+    },
+    {
+      "id": "terra-changelog-m05",
+      "title": "M05 / 0.4.1 · UI 精修",
+      "summary": "历史版本的开发资料。",
+      "sections": [],
+      "readingDocument": true,
+      "parentDoc": "terra-history",
+      "versioned": true,
+      "sources": []
+    },
+    {
+      "id": "terra-changelog-m04",
+      "title": "M04 / R13 · 发布前收尾",
+      "summary": "历史版本的开发资料。",
+      "sections": [],
+      "readingDocument": true,
+      "parentDoc": "terra-history",
+      "versioned": true,
+      "sources": []
+    },
+    {
+      "id": "episode-one-start",
+      "title": "混合马里奥 · 协作工程 R05",
+      "summary": "历史版本的开发资料。",
+      "sections": [],
+      "readingDocument": true,
+      "parentDoc": "engineering",
+      "versioned": true,
+      "sources": []
+    },
+    {
+      "id": "episode-one-contributing",
+      "title": "贡献混合马里奥",
+      "summary": "历史版本的开发资料。",
+      "sections": [],
+      "readingDocument": true,
+      "parentDoc": "engineering",
+      "versioned": true,
+      "sources": []
+    },
+    {
+      "id": "episode-one-architecture",
+      "title": "第一条可协作源码通道",
+      "summary": "历史版本的开发资料。",
+      "sections": [],
+      "readingDocument": true,
+      "parentDoc": "engineering",
+      "versioned": true,
+      "sources": []
+    },
+    {
+      "id": "stage-add-level",
+      "title": "新增关卡草稿",
+      "summary": "历史版本的开发资料。",
+      "sections": [],
+      "readingDocument": true,
+      "parentDoc": "terra-chapters",
+      "versioned": true,
+      "sources": []
+    },
+    {
+      "id": "stage-contract",
+      "title": "地图、角色、关卡与适配层契约 v0.1",
+      "summary": "历史版本的开发资料。",
+      "sections": [],
+      "readingDocument": true,
+      "parentDoc": "terra-chapters",
+      "versioned": true,
+      "sources": []
+    },
+    {
+      "id": "stage-acceptance",
+      "title": "新关卡提交门槛",
+      "summary": "历史版本的开发资料。",
+      "sections": [],
+      "readingDocument": true,
+      "parentDoc": "terra-chapters",
+      "versioned": true,
+      "sources": []
+    },
+    {
+      "id": "terra-acceptance-m06",
+      "title": "0.4.2 发布前验收",
+      "summary": "历史版本的开发资料。",
+      "sections": [],
+      "readingDocument": true,
+      "parentDoc": "terra-history",
+      "versioned": true,
+      "sources": []
+    },
+    {
+      "id": "terra-known-limits",
+      "title": "当前已知限制 · 0.4.3",
+      "summary": "历史版本的开发资料。",
+      "sections": [],
+      "readingDocument": true,
+      "parentDoc": "terra-history",
+      "versioned": true,
+      "sources": []
+    },
+    {
+      "id": "terra-test-m06",
+      "title": "M06 / 0.4.2 历史测试记录",
+      "summary": "历史版本的开发资料。",
+      "sections": [],
+      "readingDocument": true,
+      "parentDoc": "terra-history",
+      "versioned": true,
+      "sources": []
+    },
+    {
+      "id": "terra-test-m05",
+      "title": "M05 / 0.4.1 历史测试记录",
+      "summary": "历史版本的开发资料。",
+      "sections": [],
+      "readingDocument": true,
+      "parentDoc": "terra-history",
+      "versioned": true,
+      "sources": []
+    },
+    {
+      "id": "terra-upstream-notice",
+      "title": "NOTICE.txt",
+      "summary": "历史版本的开发资料。",
+      "sections": [],
+      "readingDocument": true,
+      "parentDoc": "terra-history",
+      "versioned": true,
+      "sources": []
+    },
+    {
+      "id": "episode-one-work-items",
+      "title": "首批可认领任务",
+      "summary": "历史版本的开发资料。",
+      "sections": [],
+      "readingDocument": true,
+      "parentDoc": "engineering",
+      "versioned": true,
+      "sources": []
+    },
+    {
+      "id": "episode-one-acceptance",
+      "title": "验收分层：哪些测试说明了什么",
+      "summary": "历史版本的开发资料。",
+      "sections": [],
+      "readingDocument": true,
+      "parentDoc": "engineering",
+      "versioned": true,
+      "sources": []
+    },
+    {
+      "id": "episode-one-governance",
+      "title": "协作角色、审核和发布",
+      "summary": "历史版本的开发资料。",
+      "sections": [],
+      "readingDocument": true,
+      "parentDoc": "engineering",
+      "versioned": true,
+      "sources": []
+    },
+    {
+      "id": "episode-one-licensing",
+      "title": "许可与素材：未决项仍然是未决项",
+      "summary": "历史版本的开发资料。",
+      "sections": [],
+      "readingDocument": true,
+      "parentDoc": "engineering",
+      "versioned": true,
+      "sources": []
+    },
+    {
+      "id": "episode-one-handoff-r05",
+      "title": "R05 历史工程说明",
+      "summary": "历史版本的开发资料。",
+      "sections": [],
+      "readingDocument": true,
+      "parentDoc": "engineering",
+      "versioned": true,
+      "sources": []
+    },
+    {
+      "id": "stage-add-character",
+      "title": "增加原型角色方案",
+      "summary": "历史版本的开发资料。",
+      "sections": [],
+      "readingDocument": true,
+      "parentDoc": "terra-chapters",
+      "versioned": true,
+      "sources": []
+    },
+    {
+      "id": "stage-readiness",
+      "title": "关卡接口的能力与限制 · 0.4.1",
+      "summary": "历史版本的开发资料。",
+      "sections": [],
+      "readingDocument": true,
+      "parentDoc": "terra-chapters",
+      "versioned": true,
+      "sources": []
+    }
+  ],
+  "currentRelease": {
+    "version": "0.4.3",
+    "status": "local-review",
+    "updateId": "player-ui-r22",
+    "documentId": "terra-source",
+    "sourceHref": "/notes/pixel-workshop/docs/source-distributions/",
+    "manifestHref": "/downloads/source/MarioMix_Terraria_M07_Source.json",
+    "sourceAvailability": "withdrawn",
+    "sourceInfoHref": "/notes/pixel-workshop/docs/source-distributions/"
+  },
+  "chapterPlan": {
+    "schemaVersion": 1,
+    "revision": 22,
+    "updatedAt": "2026-09-21",
+    "guideHref": "/notes/mario-mix/docs/terra-stages/",
+    "starterHref": "/notes/pixel-workshop/docs/source-distributions/",
+    "instructionsHref": "/notes/mario-mix/docs/worlds-start/",
+    "levels": [
+      {
+        "id": "1-1",
+        "title": "地上原野",
+        "characters": [
+          "魂斗罗 · 比尔",
+          "洛克人"
+        ],
+        "status": "released",
+        "summary": "不同武器与射击方式，闯过熟悉的地上关卡。",
+        "playHref": "/games/mario-mix/play.html",
+        "introHref": "/games/mario-mix/",
+        "templateStatus": "reference-draft",
+        "templateHref": "/downloads/maps/MarioMix_Map_1-1_W02.zip",
+        "missing": [
+          "原版逐格核验",
+          "道具方块与敌人行为",
+          "角色跨图适配"
+        ],
+        "owner": "",
+        "issueUrl": null,
+        "areaCount": 2,
+        "sectionViews": 0,
+        "previews": [
+          {
+            "title": "1-1 / area-0 · Overworld",
+            "src": "/assets/chapters/maps/1-1-area-0.svg",
+            "width": 3792
+          },
+          {
+            "title": "1-1 / area-1 · Underworld",
+            "src": "/assets/chapters/maps/1-1-area-1.svg",
+            "width": 272
+          }
+        ]
+      },
+      {
+        "id": "1-2",
+        "title": "地下通道",
+        "characters": [
+          "忍者龙剑传",
+          "坦克大战"
+        ],
+        "status": "released",
+        "summary": "忍者与坦克接力，横版动作与俯视战斗交替。",
+        "playHref": "/games/mario-mix-2/play.html",
+        "introHref": "/games/mario-mix-2/",
+        "templateStatus": "reference-draft",
+        "templateHref": "/downloads/maps/MarioMix_Map_1-2_W02.zip",
+        "missing": [
+          "循环升降台",
+          "跳关连接",
+          "敌人行为"
+        ],
+        "owner": "",
+        "issueUrl": null,
+        "areaCount": 4,
+        "sectionViews": 0,
+        "previews": [
+          {
+            "title": "1-2 / area-0 · Overworld",
+            "src": "/assets/chapters/maps/1-2-area-0.svg",
+            "width": 384
+          },
+          {
+            "title": "1-2 / area-1 · Underworld",
+            "src": "/assets/chapters/maps/1-2-area-1.svg",
+            "width": 3040
+          },
+          {
+            "title": "1-2 / area-2 · Underworld",
+            "src": "/assets/chapters/maps/1-2-area-2.svg",
+            "width": 272
+          },
+          {
+            "title": "1-2 / area-3 · Overworld",
+            "src": "/assets/chapters/maps/1-2-area-3.svg",
+            "width": 928
+          }
+        ]
+      },
+      {
+        "id": "1-3",
+        "title": "树梢高地",
+        "characters": [
+          "泰拉瑞亚"
+        ],
+        "status": "released",
+        "summary": "探索地表与地下，收集装备，挑战地下 Boss。",
+        "playHref": "/games/mario-mix-3/play.html",
+        "introHref": "/games/mario-mix-3/",
+        "templateStatus": "reference-draft",
+        "templateHref": "/downloads/maps/MarioMix_Map_1-3_W02.zip",
+        "missing": [
+          "平台运动时序",
+          "飞行敌人",
+          "泰拉角色跨图适配"
+        ],
+        "owner": "",
+        "issueUrl": null,
+        "areaCount": 1,
+        "sectionViews": 0,
+        "previews": [
+          {
+            "title": "1-3 / area-0 · Overworld",
+            "src": "/assets/chapters/maps/1-3-area-0.svg",
+            "width": 2800
+          }
+        ]
+      },
+      {
+        "id": "1-4",
+        "title": "城堡回廊",
+        "characters": [
+          "索尼克",
+          "奥日"
+        ],
+        "status": "released",
+        "summary": "第四期独立试玩已上线：索尼克与奥日挑战 1-4。通用角色迁移、原版保真和多设备体验仍需分别验收。",
+        "playHref": "/games/mario-mix-4/play.html",
+        "introHref": "/games/mario-mix-4/",
+        "templateStatus": "reference-draft",
+        "templateHref": "/downloads/maps/MarioMix_Map_1-4_W02.zip",
+        "missing": [
+          "通用模板的旋转火焰棒与城堡 Boss、断桥结算",
+          "通用框架角色迁移与完整动作适配",
+          "参考底图与原版保真复核",
+          "自然通关、音频与多设备复验"
+        ],
+        "owner": "",
+        "issueUrl": null,
+        "areaCount": 1,
+        "sectionViews": 0,
+        "previews": [
+          {
+            "title": "1-4 / area-0 · Castle",
+            "src": "/assets/chapters/maps/1-4-area-0.svg",
+            "width": 2560
+          }
+        ]
+      },
+      {
+        "id": "2-1",
+        "title": "原野与天空支路",
+        "characters": [],
+        "status": "planned",
+        "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+        "playHref": null,
+        "introHref": null,
+        "templateStatus": "reference-draft",
+        "templateHref": "/downloads/maps/MarioMix_Map_2-1_W02.zip",
+        "missing": [
+          "原版地图独立核验",
+          "正式角色与机关接入",
+          "自然流程与实机验收"
+        ],
+        "owner": "",
+        "issueUrl": null,
+        "areaCount": 3,
+        "sectionViews": 0,
+        "previews": [
+          {
+            "title": "2-1 / area-0 · Overworld",
+            "src": "/assets/chapters/maps/2-1-area-0.svg",
+            "width": 3616
+          },
+          {
+            "title": "2-1 / area-1 · Sky",
+            "src": "/assets/chapters/maps/2-1-area-1.svg",
+            "width": 1152
+          },
+          {
+            "title": "2-1 / area-2 · Underworld",
+            "src": "/assets/chapters/maps/2-1-area-2.svg",
+            "width": 272
+          }
+        ]
+      },
+      {
+        "id": "2-2",
+        "title": "水下航道",
+        "characters": [],
+        "status": "planned",
+        "summary": "水下路线与出入口已整理，适合研究游泳、浮力与水中战斗。",
+        "playHref": null,
+        "introHref": null,
+        "templateStatus": "reference-draft",
+        "templateHref": "/downloads/maps/MarioMix_Map_2-2_W02.zip",
+        "missing": [
+          "游泳与水流驱动",
+          "水下敌人行为",
+          "原版核验与房间衔接"
+        ],
+        "owner": "",
+        "issueUrl": null,
+        "areaCount": 3,
+        "sectionViews": 0,
+        "previews": [
+          {
+            "title": "2-2 / area-0 · Overworld",
+            "src": "/assets/chapters/maps/2-2-area-0.svg",
+            "width": 384
+          },
+          {
+            "title": "2-2 / area-1 · Underwater",
+            "src": "/assets/chapters/maps/2-2-area-1.svg",
+            "width": 3312
+          },
+          {
+            "title": "2-2 / area-2 · Overworld",
+            "src": "/assets/chapters/maps/2-2-area-2.svg",
+            "width": 928
+          }
+        ]
+      },
+      {
+        "id": "2-3",
+        "title": "飞鱼长桥",
+        "characters": [],
+        "status": "planned",
+        "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+        "playHref": null,
+        "introHref": null,
+        "templateStatus": "reference-draft",
+        "templateHref": "/downloads/maps/MarioMix_Map_2-3_W02.zip",
+        "missing": [
+          "原版地图独立核验",
+          "正式角色与机关接入",
+          "自然流程与实机验收"
+        ],
+        "owner": "",
+        "issueUrl": null,
+        "areaCount": 1,
+        "sectionViews": 0,
+        "previews": [
+          {
+            "title": "2-3 / area-0 · Overworld",
+            "src": "/assets/chapters/maps/2-3-area-0.svg",
+            "width": 3872
+          }
+        ]
+      },
+      {
+        "id": "2-4",
+        "title": "熔岩与升降台",
+        "characters": [],
+        "status": "planned",
+        "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+        "playHref": null,
+        "introHref": null,
+        "templateStatus": "reference-draft",
+        "templateHref": "/downloads/maps/MarioMix_Map_2-4_W02.zip",
+        "missing": [
+          "原版地图独立核验",
+          "正式角色与机关接入",
+          "自然流程与实机验收"
+        ],
+        "owner": "",
+        "issueUrl": null,
+        "areaCount": 1,
+        "sectionViews": 0,
+        "previews": [
+          {
+            "title": "2-4 / area-0 · Castle",
+            "src": "/assets/chapters/maps/2-4-area-0.svg",
+            "width": 2560
+          }
+        ]
+      },
+      {
+        "id": "3-1",
+        "title": "夜间原野",
+        "characters": [],
+        "status": "planned",
+        "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+        "playHref": null,
+        "introHref": null,
+        "templateStatus": "reference-draft",
+        "templateHref": "/downloads/maps/MarioMix_Map_3-1_W02.zip",
+        "missing": [
+          "原版地图独立核验",
+          "正式角色与机关接入",
+          "自然流程与实机验收"
+        ],
+        "owner": "",
+        "issueUrl": null,
+        "areaCount": 3,
+        "sectionViews": 0,
+        "previews": [
+          {
+            "title": "3-1 / area-0 · Overworld Night Alt",
+            "src": "/assets/chapters/maps/3-1-area-0.svg",
+            "width": 3520
+          },
+          {
+            "title": "3-1 / area-1 · Underworld",
+            "src": "/assets/chapters/maps/3-1-area-1.svg",
+            "width": 272
+          },
+          {
+            "title": "3-1 / area-2 · Sky Night",
+            "src": "/assets/chapters/maps/3-1-area-2.svg",
+            "width": 1408
+          }
+        ]
+      },
+      {
+        "id": "3-2",
+        "title": "夜行长路",
+        "characters": [],
+        "status": "planned",
+        "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+        "playHref": null,
+        "introHref": null,
+        "templateStatus": "reference-draft",
+        "templateHref": "/downloads/maps/MarioMix_Map_3-2_W02.zip",
+        "missing": [
+          "原版地图独立核验",
+          "正式角色与机关接入",
+          "自然流程与实机验收"
+        ],
+        "owner": "",
+        "issueUrl": null,
+        "areaCount": 1,
+        "sectionViews": 0,
+        "previews": [
+          {
+            "title": "3-2 / area-0 · Overworld Night Alt",
+            "src": "/assets/chapters/maps/3-2-area-0.svg",
+            "width": 3584
+          }
+        ]
+      },
+      {
+        "id": "3-3",
+        "title": "树顶与平衡台",
+        "characters": [],
+        "status": "planned",
+        "summary": "平台位置与高度已整理，可据此设计角色的跳跃与空中能力。",
+        "playHref": null,
+        "introHref": null,
+        "templateStatus": "reference-draft",
+        "templateHref": "/downloads/maps/MarioMix_Map_3-3_W02.zip",
+        "missing": [
+          "原版地图独立核验",
+          "正式角色与机关接入",
+          "自然流程与实机验收"
+        ],
+        "owner": "",
+        "issueUrl": null,
+        "areaCount": 1,
+        "sectionViews": 0,
+        "previews": [
+          {
+            "title": "3-3 / area-0 · Overworld Night",
+            "src": "/assets/chapters/maps/3-3-area-0.svg",
+            "width": 2816
+          }
+        ]
+      },
+      {
+        "id": "3-4",
+        "title": "火焰城堡",
+        "characters": [],
+        "status": "planned",
+        "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+        "playHref": null,
+        "introHref": null,
+        "templateStatus": "reference-draft",
+        "templateHref": "/downloads/maps/MarioMix_Map_3-4_W02.zip",
+        "missing": [
+          "原版地图独立核验",
+          "正式角色与机关接入",
+          "自然流程与实机验收"
+        ],
+        "owner": "",
+        "issueUrl": null,
+        "areaCount": 1,
+        "sectionViews": 0,
+        "previews": [
+          {
+            "title": "3-4 / area-0 · Castle",
+            "src": "/assets/chapters/maps/3-4-area-0.svg",
+            "width": 2560
+          }
+        ]
+      },
+      {
+        "id": "4-1",
+        "title": "云下原野",
+        "characters": [],
+        "status": "planned",
+        "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+        "playHref": null,
+        "introHref": null,
+        "templateStatus": "reference-draft",
+        "templateHref": "/downloads/maps/MarioMix_Map_4-1_W02.zip",
+        "missing": [
+          "原版地图独立核验",
+          "正式角色与机关接入",
+          "自然流程与实机验收"
+        ],
+        "owner": "",
+        "issueUrl": null,
+        "areaCount": 2,
+        "sectionViews": 0,
+        "previews": [
+          {
+            "title": "4-1 / area-0 · Overworld",
+            "src": "/assets/chapters/maps/4-1-area-0.svg",
+            "width": 3840
+          },
+          {
+            "title": "4-1 / area-1 · Underworld",
+            "src": "/assets/chapters/maps/4-1-area-1.svg",
+            "width": 272
+          }
+        ]
+      },
+      {
+        "id": "4-2",
+        "title": "地下岔路与跳关区",
+        "characters": [],
+        "status": "planned",
+        "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+        "playHref": null,
+        "introHref": null,
+        "templateStatus": "reference-draft",
+        "templateHref": "/downloads/maps/MarioMix_Map_4-2_W02.zip",
+        "missing": [
+          "原版地图独立核验",
+          "正式角色与机关接入",
+          "自然流程与实机验收"
+        ],
+        "owner": "",
+        "issueUrl": null,
+        "areaCount": 5,
+        "sectionViews": 0,
+        "previews": [
+          {
+            "title": "4-2 / area-0 · Overworld",
+            "src": "/assets/chapters/maps/4-2-area-0.svg",
+            "width": 384
+          },
+          {
+            "title": "4-2 / area-1 · Underworld",
+            "src": "/assets/chapters/maps/4-2-area-1.svg",
+            "width": 3584
+          },
+          {
+            "title": "4-2 / area-2 · Underworld",
+            "src": "/assets/chapters/maps/4-2-area-2.svg",
+            "width": 272
+          },
+          {
+            "title": "4-2 / area-3 · Overworld",
+            "src": "/assets/chapters/maps/4-2-area-3.svg",
+            "width": 928
+          },
+          {
+            "title": "4-2 / area-4 · Overworld",
+            "src": "/assets/chapters/maps/4-2-area-4.svg",
+            "width": 1024
+          }
+        ]
+      },
+      {
+        "id": "4-3",
+        "title": "蘑菇高台",
+        "characters": [],
+        "status": "planned",
+        "summary": "平台位置与高度已整理，可据此设计角色的跳跃与空中能力。",
+        "playHref": null,
+        "introHref": null,
+        "templateStatus": "reference-draft",
+        "templateHref": "/downloads/maps/MarioMix_Map_4-3_W02.zip",
+        "missing": [
+          "原版地图独立核验",
+          "正式角色与机关接入",
+          "自然流程与实机验收"
+        ],
+        "owner": "",
+        "issueUrl": null,
+        "areaCount": 1,
+        "sectionViews": 0,
+        "previews": [
+          {
+            "title": "4-3 / area-0 · Overworld Shrooms",
+            "src": "/assets/chapters/maps/4-3-area-0.svg",
+            "width": 2560
+          }
+        ]
+      },
+      {
+        "id": "4-4",
+        "title": "双段循环城堡",
+        "characters": [],
+        "status": "planned",
+        "summary": "保留分段条件与返回关系，适合设计路线判断和城堡机关。",
+        "playHref": null,
+        "introHref": null,
+        "templateStatus": "reference-draft",
+        "templateHref": "/downloads/maps/MarioMix_Map_4-4_W02.zip",
+        "missing": [
+          "条件分段与循环路线",
+          "城堡机关与结算",
+          "原版地图独立核验"
+        ],
+        "owner": "",
+        "issueUrl": null,
+        "areaCount": 1,
+        "sectionViews": 7,
+        "previews": [
+          {
+            "title": "4-4 / area-0 · Castle",
+            "src": "/assets/chapters/maps/4-4-area-0.svg",
+            "width": 3072
+          },
+          {
+            "title": "4-4 / area-0-section-0-before · Castle",
+            "src": "/assets/chapters/maps/4-4-area-0-section-0-before.svg",
+            "width": 800
+          },
+          {
+            "title": "4-4 / area-0-section-0-stretch · Castle",
+            "src": "/assets/chapters/maps/4-4-area-0-section-0-stretch.svg",
+            "width": 256
+          },
+          {
+            "title": "4-4 / area-0-section-0-after · Castle",
+            "src": "/assets/chapters/maps/4-4-area-0-section-0-after.svg",
+            "width": 256
+          },
+          {
+            "title": "4-4 / area-0-section-1-before · Castle",
+            "src": "/assets/chapters/maps/4-4-area-0-section-1-before.svg",
+            "width": 672
+          },
+          {
+            "title": "4-4 / area-0-section-1-stretch · Castle",
+            "src": "/assets/chapters/maps/4-4-area-0-section-1-stretch.svg",
+            "width": 256
+          },
+          {
+            "title": "4-4 / area-0-section-1-after · Castle",
+            "src": "/assets/chapters/maps/4-4-area-0-section-1-after.svg",
+            "width": 272
+          },
+          {
+            "title": "4-4 / area-0-section-2-before · Castle",
+            "src": "/assets/chapters/maps/4-4-area-0-section-2-before.svg",
+            "width": 512
+          }
+        ]
+      },
+      {
+        "id": "5-1",
+        "title": "炮台原野",
+        "characters": [],
+        "status": "planned",
+        "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+        "playHref": null,
+        "introHref": null,
+        "templateStatus": "reference-draft",
+        "templateHref": "/downloads/maps/MarioMix_Map_5-1_W02.zip",
+        "missing": [
+          "原版地图独立核验",
+          "正式角色与机关接入",
+          "自然流程与实机验收"
+        ],
+        "owner": "",
+        "issueUrl": null,
+        "areaCount": 2,
+        "sectionViews": 0,
+        "previews": [
+          {
+            "title": "5-1 / area-0 · Overworld Alt",
+            "src": "/assets/chapters/maps/5-1-area-0.svg",
+            "width": 3584
+          },
+          {
+            "title": "5-1 / area-1 · Underworld",
+            "src": "/assets/chapters/maps/5-1-area-1.svg",
+            "width": 272
+          }
+        ]
+      },
+      {
+        "id": "5-2",
+        "title": "高台与水下支路",
+        "characters": [],
+        "status": "planned",
+        "summary": "平台位置与高度已整理，可据此设计角色的跳跃与空中能力。",
+        "playHref": null,
+        "introHref": null,
+        "templateStatus": "reference-draft",
+        "templateHref": "/downloads/maps/MarioMix_Map_5-2_W02.zip",
+        "missing": [
+          "原版地图独立核验",
+          "正式角色与机关接入",
+          "自然流程与实机验收"
+        ],
+        "owner": "",
+        "issueUrl": null,
+        "areaCount": 3,
+        "sectionViews": 0,
+        "previews": [
+          {
+            "title": "5-2 / area-0 · Overworld Alt",
+            "src": "/assets/chapters/maps/5-2-area-0.svg",
+            "width": 3584
+          },
+          {
+            "title": "5-2 / area-1 · Underwater",
+            "src": "/assets/chapters/maps/5-2-area-1.svg",
+            "width": 1040
+          },
+          {
+            "title": "5-2 / area-2 · Sky",
+            "src": "/assets/chapters/maps/5-2-area-2.svg",
+            "width": 1232
+          }
+        ]
+      },
+      {
+        "id": "5-3",
+        "title": "树顶弹幕",
+        "characters": [],
+        "status": "planned",
+        "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+        "playHref": null,
+        "introHref": null,
+        "templateStatus": "reference-draft",
+        "templateHref": "/downloads/maps/MarioMix_Map_5-3_W02.zip",
+        "missing": [
+          "原版地图独立核验",
+          "正式角色与机关接入",
+          "自然流程与实机验收"
+        ],
+        "owner": "",
+        "issueUrl": null,
+        "areaCount": 1,
+        "sectionViews": 0,
+        "previews": [
+          {
+            "title": "5-3 / area-0 · Overworld",
+            "src": "/assets/chapters/maps/5-3-area-0.svg",
+            "width": 2800
+          }
+        ]
+      },
+      {
+        "id": "5-4",
+        "title": "双倍火焰城堡",
+        "characters": [],
+        "status": "planned",
+        "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+        "playHref": null,
+        "introHref": null,
+        "templateStatus": "reference-draft",
+        "templateHref": "/downloads/maps/MarioMix_Map_5-4_W02.zip",
+        "missing": [
+          "原版地图独立核验",
+          "正式角色与机关接入",
+          "自然流程与实机验收"
+        ],
+        "owner": "",
+        "issueUrl": null,
+        "areaCount": 1,
+        "sectionViews": 0,
+        "previews": [
+          {
+            "title": "5-4 / area-0 · Castle",
+            "src": "/assets/chapters/maps/5-4-area-0.svg",
+            "width": 2560
+          }
+        ]
+      },
+      {
+        "id": "6-1",
+        "title": "夜间阶梯",
+        "characters": [],
+        "status": "planned",
+        "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+        "playHref": null,
+        "introHref": null,
+        "templateStatus": "reference-draft",
+        "templateHref": "/downloads/maps/MarioMix_Map_6-1_W02.zip",
+        "missing": [
+          "原版地图独立核验",
+          "正式角色与机关接入",
+          "自然流程与实机验收"
+        ],
+        "owner": "",
+        "issueUrl": null,
+        "areaCount": 1,
+        "sectionViews": 0,
+        "previews": [
+          {
+            "title": "6-1 / area-0 · Overworld Night",
+            "src": "/assets/chapters/maps/6-1-area-0.svg",
+            "width": 3296
+          }
+        ]
+      },
+      {
+        "id": "6-2",
+        "title": "多入口管道原野",
+        "characters": [],
+        "status": "planned",
+        "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+        "playHref": null,
+        "introHref": null,
+        "templateStatus": "reference-draft",
+        "templateHref": "/downloads/maps/MarioMix_Map_6-2_W02.zip",
+        "missing": [
+          "原版地图独立核验",
+          "正式角色与机关接入",
+          "自然流程与实机验收"
+        ],
+        "owner": "",
+        "issueUrl": null,
+        "areaCount": 5,
+        "sectionViews": 0,
+        "previews": [
+          {
+            "title": "6-2 / area-0 · Overworld Night",
+            "src": "/assets/chapters/maps/6-2-area-0.svg",
+            "width": 3840
+          },
+          {
+            "title": "6-2 / area-1 · Underworld",
+            "src": "/assets/chapters/maps/6-2-area-1.svg",
+            "width": 272
+          },
+          {
+            "title": "6-2 / area-2 · Underwater",
+            "src": "/assets/chapters/maps/6-2-area-2.svg",
+            "width": 2464
+          },
+          {
+            "title": "6-2 / area-3 · Sky Night",
+            "src": "/assets/chapters/maps/6-2-area-3.svg",
+            "width": 1408
+          },
+          {
+            "title": "6-2 / area-4 · Underworld",
+            "src": "/assets/chapters/maps/6-2-area-4.svg",
+            "width": 272
+          }
+        ]
+      },
+      {
+        "id": "6-3",
+        "title": "夜间平衡台",
+        "characters": [],
+        "status": "planned",
+        "summary": "平台位置与高度已整理，可据此设计角色的跳跃与空中能力。",
+        "playHref": null,
+        "introHref": null,
+        "templateStatus": "reference-draft",
+        "templateHref": "/downloads/maps/MarioMix_Map_6-3_W02.zip",
+        "missing": [
+          "原版地图独立核验",
+          "正式角色与机关接入",
+          "自然流程与实机验收"
+        ],
+        "owner": "",
+        "issueUrl": null,
+        "areaCount": 1,
+        "sectionViews": 0,
+        "previews": [
+          {
+            "title": "6-3 / area-0 · Overworld Night Alt2",
+            "src": "/assets/chapters/maps/6-3-area-0.svg",
+            "width": 3072
+          }
+        ]
+      },
+      {
+        "id": "6-4",
+        "title": "交错火焰城堡",
+        "characters": [],
+        "status": "planned",
+        "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+        "playHref": null,
+        "introHref": null,
+        "templateStatus": "reference-draft",
+        "templateHref": "/downloads/maps/MarioMix_Map_6-4_W02.zip",
+        "missing": [
+          "原版地图独立核验",
+          "正式角色与机关接入",
+          "自然流程与实机验收"
+        ],
+        "owner": "",
+        "issueUrl": null,
+        "areaCount": 1,
+        "sectionViews": 0,
+        "previews": [
+          {
+            "title": "6-4 / area-0 · Castle",
+            "src": "/assets/chapters/maps/6-4-area-0.svg",
+            "width": 2560
+          }
+        ]
+      },
+      {
+        "id": "7-1",
+        "title": "炮台与锤兵",
+        "characters": [],
+        "status": "planned",
+        "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+        "playHref": null,
+        "introHref": null,
+        "templateStatus": "reference-draft",
+        "templateHref": "/downloads/maps/MarioMix_Map_7-1_W02.zip",
+        "missing": [
+          "原版地图独立核验",
+          "正式角色与机关接入",
+          "自然流程与实机验收"
+        ],
+        "owner": "",
+        "issueUrl": null,
+        "areaCount": 2,
+        "sectionViews": 0,
+        "previews": [
+          {
+            "title": "7-1 / area-0 · Overworld Alt",
+            "src": "/assets/chapters/maps/7-1-area-0.svg",
+            "width": 3312
+          },
+          {
+            "title": "7-1 / area-1 · Underworld",
+            "src": "/assets/chapters/maps/7-1-area-1.svg",
+            "width": 272
+          }
+        ]
+      },
+      {
+        "id": "7-2",
+        "title": "水下回廊",
+        "characters": [],
+        "status": "planned",
+        "summary": "水下路线与出入口已整理，适合研究游泳、浮力与水中战斗。",
+        "playHref": null,
+        "introHref": null,
+        "templateStatus": "reference-draft",
+        "templateHref": "/downloads/maps/MarioMix_Map_7-2_W02.zip",
+        "missing": [
+          "游泳与水流驱动",
+          "水下敌人行为",
+          "原版核验与房间衔接"
+        ],
+        "owner": "",
+        "issueUrl": null,
+        "areaCount": 3,
+        "sectionViews": 0,
+        "previews": [
+          {
+            "title": "7-2 / area-0 · Overworld",
+            "src": "/assets/chapters/maps/7-2-area-0.svg",
+            "width": 384
+          },
+          {
+            "title": "7-2 / area-1 · Underwater",
+            "src": "/assets/chapters/maps/7-2-area-1.svg",
+            "width": 3280
+          },
+          {
+            "title": "7-2 / area-2 · Overworld",
+            "src": "/assets/chapters/maps/7-2-area-2.svg",
+            "width": 672
+          }
+        ]
+      },
+      {
+        "id": "7-3",
+        "title": "飞鱼与长桥",
+        "characters": [],
+        "status": "planned",
+        "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+        "playHref": null,
+        "introHref": null,
+        "templateStatus": "reference-draft",
+        "templateHref": "/downloads/maps/MarioMix_Map_7-3_W02.zip",
+        "missing": [
+          "原版地图独立核验",
+          "正式角色与机关接入",
+          "自然流程与实机验收"
+        ],
+        "owner": "",
+        "issueUrl": null,
+        "areaCount": 1,
+        "sectionViews": 0,
+        "previews": [
+          {
+            "title": "7-3 / area-0 · Overworld",
+            "src": "/assets/chapters/maps/7-3-area-0.svg",
+            "width": 3872
+          }
+        ]
+      },
+      {
+        "id": "7-4",
+        "title": "多段循环城堡",
+        "characters": [],
+        "status": "planned",
+        "summary": "保留分段条件与返回关系，适合设计路线判断和城堡机关。",
+        "playHref": null,
+        "introHref": null,
+        "templateStatus": "reference-draft",
+        "templateHref": "/downloads/maps/MarioMix_Map_7-4_W02.zip",
+        "missing": [
+          "条件分段与循环路线",
+          "城堡机关与结算",
+          "原版地图独立核验"
+        ],
+        "owner": "",
+        "issueUrl": null,
+        "areaCount": 1,
+        "sectionViews": 18,
+        "previews": [
+          {
+            "title": "7-4 / area-0 · Castle",
+            "src": "/assets/chapters/maps/7-4-area-0.svg",
+            "width": 4192
+          },
+          {
+            "title": "7-4 / area-0-section-0-before · Castle",
+            "src": "/assets/chapters/maps/7-4-area-0-section-0-before.svg",
+            "width": 256
+          },
+          {
+            "title": "7-4 / area-0-section-0-stretch · Castle",
+            "src": "/assets/chapters/maps/7-4-area-0-section-0-stretch.svg",
+            "width": 256
+          },
+          {
+            "title": "7-4 / area-0-section-0-after · Castle",
+            "src": "/assets/chapters/maps/7-4-area-0-section-0-after.svg",
+            "width": 256
+          },
+          {
+            "title": "7-4 / area-0-section-1-before · Castle",
+            "src": "/assets/chapters/maps/7-4-area-0-section-1-before.svg",
+            "width": 256
+          },
+          {
+            "title": "7-4 / area-0-section-1-stretch · Castle",
+            "src": "/assets/chapters/maps/7-4-area-0-section-1-stretch.svg",
+            "width": 256
+          },
+          {
+            "title": "7-4 / area-0-section-1-after · Castle",
+            "src": "/assets/chapters/maps/7-4-area-0-section-1-after.svg",
+            "width": 256
+          },
+          {
+            "title": "7-4 / area-0-section-2-stretch · Castle",
+            "src": "/assets/chapters/maps/7-4-area-0-section-2-stretch.svg",
+            "width": 256
+          },
+          {
+            "title": "7-4 / area-0-section-2-after · Castle",
+            "src": "/assets/chapters/maps/7-4-area-0-section-2-after.svg",
+            "width": 256
+          },
+          {
+            "title": "7-4 / area-0-section-3-before · Castle",
+            "src": "/assets/chapters/maps/7-4-area-0-section-3-before.svg",
+            "width": 272
+          },
+          {
+            "title": "7-4 / area-0-section-3-stretch · Castle",
+            "src": "/assets/chapters/maps/7-4-area-0-section-3-stretch.svg",
+            "width": 256
+          },
+          {
+            "title": "7-4 / area-0-section-3-after · Castle",
+            "src": "/assets/chapters/maps/7-4-area-0-section-3-after.svg",
+            "width": 256
+          },
+          {
+            "title": "7-4 / area-0-section-4-before · Castle",
+            "src": "/assets/chapters/maps/7-4-area-0-section-4-before.svg",
+            "width": 256
+          },
+          {
+            "title": "7-4 / area-0-section-4-stretch · Castle",
+            "src": "/assets/chapters/maps/7-4-area-0-section-4-stretch.svg",
+            "width": 256
+          },
+          {
+            "title": "7-4 / area-0-section-4-after · Castle",
+            "src": "/assets/chapters/maps/7-4-area-0-section-4-after.svg",
+            "width": 256
+          },
+          {
+            "title": "7-4 / area-0-section-5-before · Castle",
+            "src": "/assets/chapters/maps/7-4-area-0-section-5-before.svg",
+            "width": 256
+          },
+          {
+            "title": "7-4 / area-0-section-5-stretch · Castle",
+            "src": "/assets/chapters/maps/7-4-area-0-section-5-stretch.svg",
+            "width": 256
+          },
+          {
+            "title": "7-4 / area-0-section-5-after · Castle",
+            "src": "/assets/chapters/maps/7-4-area-0-section-5-after.svg",
+            "width": 256
+          },
+          {
+            "title": "7-4 / area-0-section-6-before · Castle",
+            "src": "/assets/chapters/maps/7-4-area-0-section-6-before.svg",
+            "width": 1056
+          }
+        ]
+      },
+      {
+        "id": "8-1",
+        "title": "长距离跳跃原野",
+        "characters": [],
+        "status": "planned",
+        "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+        "playHref": null,
+        "introHref": null,
+        "templateStatus": "reference-draft",
+        "templateHref": "/downloads/maps/MarioMix_Map_8-1_W02.zip",
+        "missing": [
+          "原版地图独立核验",
+          "正式角色与机关接入",
+          "自然流程与实机验收"
+        ],
+        "owner": "",
+        "issueUrl": null,
+        "areaCount": 2,
+        "sectionViews": 0,
+        "previews": [
+          {
+            "title": "8-1 / area-0 · Overworld",
+            "src": "/assets/chapters/maps/8-1-area-0.svg",
+            "width": 6432
+          },
+          {
+            "title": "8-1 / area-1 · Underworld",
+            "src": "/assets/chapters/maps/8-1-area-1.svg",
+            "width": 272
+          }
+        ]
+      },
+      {
+        "id": "8-2",
+        "title": "炮台与断续台阶",
+        "characters": [],
+        "status": "planned",
+        "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+        "playHref": null,
+        "introHref": null,
+        "templateStatus": "reference-draft",
+        "templateHref": "/downloads/maps/MarioMix_Map_8-2_W02.zip",
+        "missing": [
+          "原版地图独立核验",
+          "正式角色与机关接入",
+          "自然流程与实机验收"
+        ],
+        "owner": "",
+        "issueUrl": null,
+        "areaCount": 2,
+        "sectionViews": 0,
+        "previews": [
+          {
+            "title": "8-2 / area-0 · Overworld",
+            "src": "/assets/chapters/maps/8-2-area-0.svg",
+            "width": 3936
+          },
+          {
+            "title": "8-2 / area-1 · Underworld",
+            "src": "/assets/chapters/maps/8-2-area-1.svg",
+            "width": 272
+          }
+        ]
+      },
+      {
+        "id": "8-3",
+        "title": "城墙与锤兵",
+        "characters": [],
+        "status": "planned",
+        "summary": "地形、对象位置与路线记录已整理，角色方案待定。",
+        "playHref": null,
+        "introHref": null,
+        "templateStatus": "reference-draft",
+        "templateHref": "/downloads/maps/MarioMix_Map_8-3_W02.zip",
+        "missing": [
+          "原版地图独立核验",
+          "正式角色与机关接入",
+          "自然流程与实机验收"
+        ],
+        "owner": "",
+        "issueUrl": null,
+        "areaCount": 1,
+        "sectionViews": 0,
+        "previews": [
+          {
+            "title": "8-3 / area-0 · Overworld",
+            "src": "/assets/chapters/maps/8-3-area-0.svg",
+            "width": 3840
+          }
+        ]
+      },
+      {
+        "id": "8-4",
+        "title": "管道迷宫与水下城堡",
+        "characters": [],
+        "status": "planned",
+        "summary": "保留分段条件与返回关系，适合设计路线判断和城堡机关。",
+        "playHref": null,
+        "introHref": null,
+        "templateStatus": "reference-draft",
+        "templateHref": "/downloads/maps/MarioMix_Map_8-4_W02.zip",
+        "missing": [
+          "条件分段与循环路线",
+          "城堡机关与结算",
+          "原版地图独立核验"
+        ],
+        "owner": "",
+        "issueUrl": null,
+        "areaCount": 5,
+        "sectionViews": 8,
+        "previews": [
+          {
+            "title": "8-4 / area-0 · Castle",
+            "src": "/assets/chapters/maps/8-4-area-0.svg",
+            "width": 1440
+          },
+          {
+            "title": "8-4 / area-0-section-0-stretch · Castle",
+            "src": "/assets/chapters/maps/8-4-area-0-section-0-stretch.svg",
+            "width": 256
+          },
+          {
+            "title": "8-4 / area-0-section-0-after · Castle",
+            "src": "/assets/chapters/maps/8-4-area-0-section-0-after.svg",
+            "width": 848
+          },
+          {
+            "title": "8-4 / area-1 · Castle",
+            "src": "/assets/chapters/maps/8-4-area-1.svg",
+            "width": 976
+          },
+          {
+            "title": "8-4 / area-1-section-0-before · Castle",
+            "src": "/assets/chapters/maps/8-4-area-1-section-0-before.svg",
+            "width": 656
+          },
+          {
+            "title": "8-4 / area-1-section-0-stretch · Castle",
+            "src": "/assets/chapters/maps/8-4-area-1-section-0-stretch.svg",
+            "width": 256
+          },
+          {
+            "title": "8-4 / area-1-section-0-after · Castle",
+            "src": "/assets/chapters/maps/8-4-area-1-section-0-after.svg",
+            "width": 256
+          },
+          {
+            "title": "8-4 / area-2 · Castle",
+            "src": "/assets/chapters/maps/8-4-area-2.svg",
+            "width": 896
+          },
+          {
+            "title": "8-4 / area-2-section-0-before · Castle",
+            "src": "/assets/chapters/maps/8-4-area-2-section-0-before.svg",
+            "width": 528
+          },
+          {
+            "title": "8-4 / area-2-section-0-stretch · Castle",
+            "src": "/assets/chapters/maps/8-4-area-2-section-0-stretch.svg",
+            "width": 256
+          },
+          {
+            "title": "8-4 / area-2-section-0-after · Castle",
+            "src": "/assets/chapters/maps/8-4-area-2-section-0-after.svg",
+            "width": 256
+          },
+          {
+            "title": "8-4 / area-3 · Underwater Castle",
+            "src": "/assets/chapters/maps/8-4-area-3.svg",
+            "width": 1152
+          },
+          {
+            "title": "8-4 / area-4 · Castle",
+            "src": "/assets/chapters/maps/8-4-area-4.svg",
+            "width": 976
+          }
+        ]
+      }
+    ]
+  },
+  "publicStage": "混合马里奥与自制关卡",
+  "publicSite": true
+}
