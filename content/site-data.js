@@ -62,6 +62,25 @@ globalThis.SITE_DATA = {
   },
   "items": [
     {
+      "id": "project-card-workshop",
+      "slug": "card-workshop",
+      "primaryType": "project",
+      "relatedIds": [],
+      "title": "卡牌工坊",
+      "summary": "小栖的数字卡片收藏：十二月光、黄道秘藏与生肖剧场。在线欣赏，也能下载离线收藏。",
+      "lifecycleStatus": "released",
+      "visibility": "public",
+      "createdAt": "2026-11-01",
+      "updatedAt": "2026-11-01",
+      "categories": [],
+      "tags": [
+        "数字卡片",
+        "互动收藏"
+      ],
+      "evidenceIds": [],
+      "detailUrl": "projects/card-workshop/"
+    },
+    {
       "id": "game-mario-mix-isaac",
       "slug": "mario-mix-isaac",
       "primaryType": "game",
