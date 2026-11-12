@@ -5,7 +5,7 @@
   "category": "experiment",
   "visibility": "public",
   "stage": "交互动画与视频作品",
-  "updatedAt": "2026-11-04",
+  "updatedAt": "2026-11-12",
   "summary": "交互动画、音乐影像与主题节目。看作品，也看创作记录。",
   "intro": "这里收录交互动画、音乐影像与主题节目。原始代码实验提供在线体验与源文件；视频作品提供完整成片的观看入口。",
   "highlights": [
@@ -14,6 +14,10 @@
     "视频成片与原始代码实验分别展示。"
   ],
   "links": [
+    {
+      "label": "Bad Apple!! 但是GPT手搓版",
+      "href": "/notes/lab/docs/badapple-anime/"
+    },
     {
       "label": "米塔小剧场 | 和平模式卡在了99%",
       "href": "/notes/lab/docs/miside-peace-99/"
@@ -74,6 +78,14 @@
     "path": "content/development/states/lab-public.json"
   },
   "updates": [
+    {
+      "id": "badapple-anime",
+      "date": "2026-11-12",
+      "title": "Bad Apple!! 但是GPT手搓版",
+      "status": "released",
+      "summary": "经典黑白影绘与彩色动画同屏对照，右上角的 Q 版角色随人物出场切换。 完整视频已在哔哩哔哩发布。",
+      "public": true
+    },
     {
       "id": "miside-peace-99",
       "date": "2026-11-04",
@@ -140,6 +152,19 @@
     }
   ],
   "docs": [
+    {
+      "id": "badapple-anime",
+      "title": "Bad Apple!! 但是GPT手搓版",
+      "summary": "经典黑白影绘与彩色动画同屏对照，右上角的 Q 版角色随人物出场切换。",
+      "sections": [],
+      "sources": [],
+      "archived": false,
+      "kind": "lab-video",
+      "action": {
+        "label": "观看视频",
+        "href": "https://www.bilibili.com/video/BV1EuWZ6dEQU/"
+      }
+    },
     {
       "id": "miside-peace-99",
       "title": "米塔小剧场 | 和平模式卡在了99%",
