@@ -25,7 +25,7 @@ export function documentDirectory(p){
  const history=p.docs.filter(d=>d.archived||d.readingDocument&&d.versioned);
  const groups=p.documentationGroups?p.documentationGroups.map(group=>[group.label,group.title,group.documents]):
   p.layout==='experiments'?[['EXPERIMENTS','实验记录',docs.map(d=>d.id)]]:
-  [['01 / SOURCE','源码与运行',docs.filter(d=>d.action||/(?:source|start)/.test(d.id)).map(d=>d.id)],['02 / BUILD','关卡、工具与接入',docs.filter(d=>/(?:stages|map|world|architecture|reference|contribut)/.test(d.id)).map(d=>d.id)]];
+  [['01 / PLAY','试玩与使用',docs.filter(d=>d.action||/(?:source|start)/.test(d.id)).map(d=>d.id)],['02 / BUILD','关卡、工具与接入',docs.filter(d=>/(?:stages|map|world|architecture|reference|contribut)/.test(d.id)).map(d=>d.id)]];
  const used=new Set();const blocks=[];
  for(const[k,t,ids]of groups){const rows=docs.filter(d=>ids.includes(d.id)&&!used.has(d.id));rows.forEach(d=>used.add(d.id));if(rows.length)blocks.push(`<section class="section q-doc-group">${head(k,t)}<div class="j-shortcuts">${rows.map(d=>docCard(p,d)).join('')}</div></section>`);}
  const rest=docs.filter(d=>!used.has(d.id));if(rest.length)blocks.push(`<section class="section q-doc-group">${head('REFERENCE','项目说明与参考')}<div class="j-shortcuts">${rest.map(d=>docCard(p,d)).join('')}</div></section>`);

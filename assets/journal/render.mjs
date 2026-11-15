@@ -1,12 +1,12 @@
 /* public-edition:R24 */
-import {isPublicUpdate} from './update-audience.mjs?v=source-boundary-ab7d295ba272';
-import {developmentNav,labSpotlight,projectNavigation,projectOverview,projectDocument,documentDirectory} from './public-layout.mjs?v=source-boundary-ab7d295ba272';
-import {renderMarkdown} from './markdown.mjs?v=source-boundary-ab7d295ba272';
-import {readingLink,readingDocument} from './documents.mjs?v=source-boundary-ab7d295ba272';
-import {chapterSummary,chapterAtlas} from '../chapters/view.mjs?v=source-boundary-ab7d295ba272';
-import {tocMarkup} from '../experience/model.mjs?v=source-boundary-ab7d295ba272';
-import {esc,safeLink,projectURL,STATUS_LABELS,CATEGORY_LABELS,filterTasks,visibleTasks,canClaim,projectStage,updateOrder,legacyProject} from './model.mjs?v=source-boundary-ab7d295ba272';
-import '../ui/site-actions.js?v=source-boundary-ab7d295ba272';
+import {isPublicUpdate} from './update-audience.mjs?v=release-r24-2e31ab575481';
+import {developmentNav,labSpotlight,projectNavigation,projectOverview,projectDocument,documentDirectory} from './public-layout.mjs?v=release-r24-2e31ab575481';
+import {renderMarkdown} from './markdown.mjs?v=release-r24-2e31ab575481';
+import {readingLink,readingDocument} from './documents.mjs?v=release-r24-2e31ab575481';
+import {chapterSummary,chapterAtlas} from '../chapters/view.mjs?v=release-r24-2e31ab575481';
+import {tocMarkup} from '../experience/model.mjs?v=release-r24-2e31ab575481';
+import {esc,safeLink,projectURL,STATUS_LABELS,CATEGORY_LABELS,filterTasks,visibleTasks,canClaim,projectStage,updateOrder,legacyProject} from './model.mjs?v=release-r24-2e31ab575481';
+import '../ui/site-actions.js?v=release-r24-2e31ab575481';
 const A=globalThis.SITE_ACTIONS;
 const EMBLEMS=Object.freeze({game:['PLAY','controller'],web:['BUILD','web-studio'],tool:['TOOLS','workflow'],experiment:['LAB','experiment'],other:['CREATE','workflow']});
 // R12: compact identifiers for the two existing categories; no banner slogans.
@@ -85,7 +85,7 @@ function docsPage(p,r){
  if(!r.doc)return documentDirectory(p);
  if(r.doc){const d=p.docs.find(d=>d.id===r.doc);if(d.readingDocument){const body=readingDocument(p.id,d.id);const parent=p.docs.find(x=>x.id===d.parentDoc);return `<article class="section j-reading j-document"><p>${link('返回项目资料',projectURL(p.id,'docs'))}${parent?' · '+link(parent.title,projectURL(p.id,'docs',parent.id)):''}</p>${d.versioned?'<div class="entry j-notice"><strong>历史版本资料</strong><p>本文对应标题中标注的版本；当前源码和适用范围请查看项目资料。</p></div>':''}<div class="j-markdown">${renderMarkdown(body.markdown,{resolveLink:href=>readingLink(href,body.source),omitFirstHeading:true})}</div><p>${link('返回项目资料',projectURL(p.id,'docs'))}</p></article>`;}const action=p.currentRelease&&p.currentRelease.sourceAvailability!=='withdrawn'&&d.id===p.currentRelease.documentId?{label:`下载源码（${p.currentRelease.version}）`,href:p.currentRelease.sourceHref}:d.action;return `<article class="section j-reading"><p>${link('返回项目资料',projectURL(p.id,'docs'))}</p>${d.archived?`<div class="entry j-notice"><strong>历史资料，仅供追溯</strong><p>本文保留当时的版本与结论。请从项目资料页获取当前源码。</p></div>`:''}${action?`<div class="actions">${link(action.label,action.href,'button')}</div>`:''}${p.currentRelease&&d.id===p.currentRelease.documentId?`<p class="j-try-work">只想先玩一玩？${link('打开已发布试玩',p.links.find(l=>/^\/games\/[^/]+\/play\.html$/.test(l.href))?.href||'/games/')}。源码版本与适用范围见上方说明。</p>`:''}${d.kind==='level-atlas'?chapterAtlas(p.chapterPlan):''}${tocMarkup(d.sections)}${d.sections.map((s,i)=>`<section><h2 id="guide-section-${i+1}" tabindex="-1">${esc(s.title)}</h2>${s.paragraphs.map(x=>`<p>${esc(x)}</p>`).join('')}${s.code?`<div data-code-example><pre tabindex="0" aria-label="可复制的命令"><code>${esc(s.code)}</code></pre><button class="button button--quiet" type="button" data-copy-code>复制命令</button><p class="j-small" role="status" data-copy-status></p></div>`:''}</section>`).join('')}${d.sources?.length?'<section><h2>继续阅读</h2>'+d.sources.map(l=>link(l.label,l.href)).join('<br>')+'</section>':''}</article>`;}
  const current=p.docs.filter(d=>!d.archived&&!d.readingDocument),history=p.docs.filter(d=>d.archived&&!d.readingDocument);
- return `<section class="section">${sectionHead('DEVELOP','从当前版本开始','下载源码，运行项目，再选择一个明确的改动。')}<div class="j-shortcuts" data-current-docs>${current.map(d=>`<article class="entry j-destination"><a ${A.attributes(projectURL(p.id,'docs',d.id),{className:'j-destination-link',ariaLabel:d.title})}><h3>${esc(d.title)}</h3><p>${esc(d.summary)}</p><span class="j-destination-label">${d.action?'下载与运行':'阅读指南'}</span></a></article>`).join('')||'<p>资料正在整理。</p>'}</div>${history.length?`<details class="j-legacy-details" data-history-docs><summary>历史版本与过程资料（${history.length}）</summary><p>保留旧链接和决策依据，不作为当前开发入口。</p><ul>${history.map(d=>`<li>${link(d.title,projectURL(p.id,'docs',d.id))}</li>`).join('')}</ul></details>`:''}</section>`;
+ return `<section class="section">${sectionHead('DEVELOP','从当前版本开始','查看玩法说明、操作指南与制作记录。')}<div class="j-shortcuts" data-current-docs>${current.map(d=>`<article class="entry j-destination"><a ${A.attributes(projectURL(p.id,'docs',d.id),{className:'j-destination-link',ariaLabel:d.title})}><h3>${esc(d.title)}</h3><p>${esc(d.summary)}</p><span class="j-destination-label">${d.action?'前往体验':'阅读指南'}</span></a></article>`).join('')||'<p>资料正在整理。</p>'}</div>${history.length?`<details class="j-legacy-details" data-history-docs><summary>历史版本与过程资料（${history.length}）</summary><p>保留旧链接和决策依据，不作为当前开发入口。</p><ul>${history.map(d=>`<li>${link(d.title,projectURL(p.id,'docs',d.id))}</li>`).join('')}</ul></details>`:''}</section>`;
 }
 
 // Reviewed source guides have parallel editions; the locale owner selects the URL.
