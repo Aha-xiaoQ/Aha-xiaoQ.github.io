@@ -57,6 +57,7 @@ export function validateExperiment(input) {
   if (isVideo) {
     experimentVideoURL(input.video);
     validateExperimentResources(input);
+    if(input.assetProject!==undefined&&(input.id!=='badapple-anime'||input.assetProject!=='/projects/badapple-characters/'))throw Error('Invalid asset project');
     if(input.modDownload!==undefined)validateModDownload(input.modDownload);
     if (input.sourceVideos !== undefined) {
       if (!Array.isArray(input.sourceVideos) || input.sourceVideos.length < 1 || input.sourceVideos.length > 8) throw Error('Invalid source video credits');

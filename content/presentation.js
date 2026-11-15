@@ -1,4 +1,3 @@
-// Runtime presentation registry.
 globalThis.SITE_PRESENTATION = {
   "schemaVersion": 1,
   "entries": {
@@ -194,6 +193,16 @@ globalThis.SITE_PRESENTATION = {
       "rendering": "auto",
       "tone": "dark",
       "categoryLabel": "数字卡片"
+    },
+    "project-badapple-characters": {
+      "kind": "image",
+      "preset": "character-paper",
+      "src": "projects/badapple-characters/cover.webp",
+      "alt": "Bad Apple 动漫角色设定图：灵梦、魔理沙等角色的多视图。",
+      "fit": "contain",
+      "rendering": "auto",
+      "tone": "paper",
+      "categoryLabel": "角色素材"
     }
   }
 };

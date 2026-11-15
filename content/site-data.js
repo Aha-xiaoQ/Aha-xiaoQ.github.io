@@ -79,6 +79,26 @@ globalThis.SITE_DATA = {
   },
   "items": [
     {
+      "id": "project-badapple-characters",
+      "slug": "badapple-characters",
+      "primaryType": "project",
+      "relatedIds": [],
+      "title": "Bad Apple 角色素材库",
+      "summary": "按角色查找动漫设定图与 Q 版循环动图，预览、单个保存或整包下载。",
+      "lifecycleStatus": "released",
+      "visibility": "public",
+      "createdAt": "2026-11-15",
+      "updatedAt": "2026-11-15",
+      "categories": [],
+      "tags": [
+        "角色素材",
+        "动漫设定",
+        "Q 版动画"
+      ],
+      "evidenceIds": [],
+      "detailUrl": "projects/badapple-characters/"
+    },
+    {
       "id": "project-card-workshop",
       "slug": "card-workshop",
       "primaryType": "project",
