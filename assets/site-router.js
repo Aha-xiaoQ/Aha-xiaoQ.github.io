@@ -42,6 +42,7 @@
   const assetHref = (name) => {
     const url = new URL(name, routerURL);
     url.search = routerURL.search;
+    if (name === "promo.css") url.search = "?v=322b24a3e0e7ed9c"; // Home stylesheet content version.
     return url.href;
   };
   let experienceModule;

@@ -102,6 +102,7 @@
             <a class="path path--about" href="about/index.html"><span>04</span><strong>关于我</strong></a>
           </div>
         </section>
+${profile.latestVideos?.length ? `<section class="section" data-latest-videos><div class="shell"><div class="section-head"><div><p class="eyebrow">LATEST VIDEOS</p><h2>最新视频</h2></div><a class="j-link" href="/notes/lab/">查看全部作品</a></div><div class="entry-grid">${profile.latestVideos.map(e=>`<a class="entry" href="${esc(e.href)}"><p class="entry__kind">${esc(e.date)}</p><h3>${esc(e.title)}</h3><span class="entry__link">查看作品</span></a>`).join('')}</div></div></section>` : ''}
       </main>
 
       <footer class="footer">
