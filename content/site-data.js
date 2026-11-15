@@ -58,7 +58,24 @@ globalThis.SITE_DATA = {
         "url": "mailto:hfutqdm@163.com"
       }
     ],
-    "visibility": "public"
+    "visibility": "public",
+    "latestVideos": [
+      {
+        "title": "非凡之爱 ｜ 大肥鱼x豆包",
+        "href": "/notes/lab/docs/no-ordinary-love/",
+        "date": "2026-11-15"
+      },
+      {
+        "title": "只狼MOD | 小六大战苇名弦一郎",
+        "href": "/notes/lab/docs/sekiro-six/",
+        "date": "2026-11-15"
+      },
+      {
+        "title": "Bad Apple!! 但是GPT手搓版",
+        "href": "/notes/lab/docs/badapple-anime/",
+        "date": "2026-11-12"
+      }
+    ]
   },
   "items": [
     {

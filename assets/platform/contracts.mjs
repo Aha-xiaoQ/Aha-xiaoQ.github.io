@@ -33,6 +33,12 @@ export function validateExperimentResources(record) {
   }
   return record;
 }
+export function validateModDownload(m) {
+  if (!m || Object.keys(m).some(k=>!['label','href','version','bytes','sha256','guide'].includes(k))) throw Error('Invalid MOD download');
+  assertText(m.label,'MOD label',60); assertText(m.version,'MOD version',24);
+  if(!/^https:\/\/github\.com\/Aha-xiaoQ\/Aha-xiaoQ\.github\.io\/releases\/download\/[a-z0-9-]+\/[A-Za-z0-9_.-]+\.zip$/.test(m.href)||!Number.isSafeInteger(m.bytes)||m.bytes<1||m.bytes>1024**3||!(/^[a-f0-9]{64}$/).test(m.sha256)||m.guide!=='/downloads/sekiro-six/README.md')throw Error('Unsafe MOD download');
+  return m;
+}
 export function validateExperiment(input) {
   if (!input || input.schemaVersion !== 1 || (!identifier(input.id)||input.id.length>60||['updates','contribute','archive','index','projects','manage'].includes(input.id))) throw Error('Invalid experiment identity');
   if (input.kind !== undefined && !['html','video'].includes(input.kind)) throw Error('Invalid experiment kind');
@@ -51,6 +57,7 @@ export function validateExperiment(input) {
   if (isVideo) {
     experimentVideoURL(input.video);
     validateExperimentResources(input);
+    if(input.modDownload!==undefined)validateModDownload(input.modDownload);
     if (input.sourceVideos !== undefined) {
       if (!Array.isArray(input.sourceVideos) || input.sourceVideos.length < 1 || input.sourceVideos.length > 8) throw Error('Invalid source video credits');
       const sourceIds = new Set();
