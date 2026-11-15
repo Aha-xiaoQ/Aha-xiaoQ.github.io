@@ -2,38 +2,34 @@
   "projectId": "pixel-workshop",
   "guide": {
     "id": "start",
-    "title": "本地启动",
-    "summary": "从完整仓库启动网站，了解开发入口与常用命令。",
+    "title": "浏览与反馈",
+    "summary": "找到网站作品、地图工坊与问题反馈入口。",
     "sections": [
       {
-        "title": "获取并启动",
+        "title": "体验作品",
         "paragraphs": [
-          "需要 Node.js 22 或更新版本。从仓库根目录启动；网站脚本无需安装第三方 npm 依赖。"
-        ],
-        "code": "git clone https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io.git\ncd Aha-xiaoQ.github.io\nnpm run dev"
-      },
-      {
-        "title": "访问页面",
-        "paragraphs": [
-          "在浏览器打开 http://127.0.0.1:4173/。开发栏目为 /notes/，实验室为 /notes/lab/。请使用本地 HTTP 服务，不要直接双击网站的 index.html。",
-          "端口占用时运行 npm run dev -- --port 4174。Windows 也可使用根目录的 start-dev.cmd。"
+          "游戏、工具和视频作品分别从对应栏目进入。地图工坊可在浏览器中编辑和试玩关卡。"
         ]
       },
       {
-        "title": "选择下一步",
+        "title": "反馈问题",
         "paragraphs": [
-          "日常预览使用 npm run dev；修改后用 npm run platform:build 重新生成页面；提交前运行 npm run platform:verify。内容编辑、接入项目和发布细节分别见对应指南。"
+          "请提供页面地址、设备、浏览器以及能够重复问题的操作步骤。涉及账号或安全信息时请私下联系维护者。"
         ]
       }
     ],
     "sources": [
       {
-        "label": "内容编辑",
-        "href": "/notes/pixel-workshop/docs/content/"
+        "label": "试玩游戏",
+        "href": "/games/"
       },
       {
-        "label": "构建与发布",
-        "href": "/notes/pixel-workshop/docs/publishing/"
+        "label": "地图工坊",
+        "href": "/tools/mario-map-workshop-2-0/"
+      },
+      {
+        "label": "问题反馈",
+        "href": "https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/issues/new"
       }
     ]
   }

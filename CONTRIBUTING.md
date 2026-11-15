@@ -1,11 +1,11 @@
-# 参与项目 / Contributing
+# 体验与反馈
 
-完整游戏开发工程暂不公开，混合源码包不重新发布。欢迎通过[网站](https://aha-xiaoq.github.io/)体验、提交问题、文字反馈和地图建议。代码协作请先与维护者确认具体范围。旧的工程启动命令不适用于此运行仓库。
+欢迎试玩、创作地图，也欢迎告诉我们哪里还可以改进。
 
-This repository contains the static website and retained playable deliveries. Full game engineering and mixed source packages are not currently distributed. Please discuss a specific contribution with the maintainer before submitting code or third-party material.
+- [试玩游戏](https://aha-xiaoq.github.io/games/)
+- [地图工坊](https://aha-xiaoq.github.io/tools/mario-map-workshop-2-0/)
+- [问题与建议](https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/issues/new)
 
-- [源码状态与许可边界](docs/oss/README.md)
-- [版权与使用说明](RIGHTS.md)
-- [安全反馈](SECURITY.md)
+反馈问题时，请附上作品地址、设备、浏览器与复现步骤；截图或短视频也很有帮助。具体协作请先与维护者确认范围。
 
-未经核验的代码、图片、音乐或地图不得作为本站自有源码发布。提供来源和适用许可，保留作者及原声明；AI辅助、免费可用和署名不能代替授权。
+各作品与素材分别列出来源和使用条件，引用前请查看对应说明并保留作者署名。[版权与使用说明](https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/blob/main/RIGHTS.md)

@@ -1,3 +1,4 @@
+// Runtime presentation registry.
 globalThis.SITE_PRESENTATION = {
   "schemaVersion": 1,
   "entries": {
@@ -203,6 +204,16 @@ globalThis.SITE_PRESENTATION = {
       "rendering": "auto",
       "tone": "paper",
       "categoryLabel": "角色素材"
+    },
+    "project-ai-character-atlas": {
+      "kind": "image",
+      "preset": "interface",
+      "src": "projects/ai-character-atlas/images/claude-q.webp",
+      "alt": "AI 角色图鉴中的 Claude 形象",
+      "fit": "contain",
+      "rendering": "auto",
+      "tone": "dark",
+      "categoryLabel": "角色图鉴"
     }
   }
 };

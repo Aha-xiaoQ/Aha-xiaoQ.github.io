@@ -23,7 +23,7 @@ const sectionHead=(k,title,desc='')=>`<div class="section-head"><div><p class="e
 export function metadata(r,projects,catalog){
  const p=projects.find(x=>x.id===r.projectId&&x.visibility!=='draft');
  if(r.projectId&&!p||r.view==='not-found')return {title:'未找到这条记录',intro:'项目可能尚未公开，或链接有误。已有作品与记录仍可从开发栏目找到。',eyebrow:'IN THE MAKING',notFound:true};
- if(!p){const title=r.view==='updates'?'近期更新':r.view==='contribute'?'一起参与':'开发';return {title,intro:r.view==='contribute'?'反馈、测试、设计与代码，选择熟悉的方式参与。':(r.view==='index'?'游戏、工具和网站的开发记录。查看进展、阅读开发资料，或参与一项改进。':catalog.intro),eyebrow:'IN THE MAKING'};}
+ if(!p){const title=r.view==='updates'?'近期更新':r.view==='contribute'?'一起参与':'开发';return {title,intro:r.view==='contribute'?'体验作品、分享建议，一起把内容做得更好。':(r.view==='index'?'游戏、工具和网站的开发记录。查看进展、阅读开发资料，或参与一项改进。':catalog.intro),eyebrow:'IN THE MAKING'};}
  const d=r.doc?p.docs.find(d=>d.id===r.doc):null;
  if(r.doc&&!d)return {title:'资料尚未收录',intro:'请返回项目资料页查看已有内容。',eyebrow:'IN THE MAKING',notFound:true};
  const viewNames={tasks:'任务与反馈',docs:'开发资料',updates:'更新记录',contribute:'反馈与贡献',manage:'交接与管理'};
@@ -94,7 +94,8 @@ function sourceGuideLink(label,path,cls='j-link'){
  const en='https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/blob/main/'+path+'.en.md';
  return link(label,zh,cls).replace('<a ','<a data-locale-href-zh="'+esc(zh)+'" data-locale-href-en="'+esc(en)+'" ');
 }
-function contributePage(p){return `<section class="section j-reading"><h2>${p?'从一项小改动开始':'选择你熟悉的方式'}</h2><p>${esc(p?.participation.summary||'不必先掌握整个项目。先选择感兴趣的作品，把一次体验、一个问题或一条清楚的建议带回来。')}</p><div class="j-contribute-options"><article class="entry"><h3>体验与反馈</h3><p>说明版本、设备与复现步骤，让另一个人也能看到同样的问题。</p></article><article class="entry"><h3>文档与设计</h3><p>改进不清楚的说明，补充素材来源，或提出有依据的交互建议。</p></article><article class="entry"><h3>代码与测试</h3><p>先讨论较大的改动。一项 PR 尽量只解决一件事，并附验证方式。</p></article></div><section><h2>参与之前</h2><p>先阅读项目范围，在 Issue 中说明计划；认领情况以维护者确认的记录为准。</p><p>请保留素材来源与许可说明。AI 辅助内容也需要提交者理解、检查并对结果负责。</p><div class="j-contribute-guides">${sourceGuideLink('阅读贡献指南','CONTRIBUTING')}${sourceGuideLink('本地启动说明','docs/collab/GETTING_STARTED')}</div><div class="actions j-contribute-actions">${p?link('查看任务',projectURL(p.id,'tasks'),'button')+link('前往仓库讨论',p.participation.issueUrl,'button button--quiet'):link('选择项目','/notes/','button')}</div></section></section>`;}
+function contributePage(p){return `<section class="section j-reading"><h2>分享你的体验与想法</h2><p>${esc(p?.participation.summary||'选择感兴趣的游戏、工具或作品，把体验中遇到的问题、想法和建议告诉我们。')}</p><div class="j-contribute-options"><article class="entry"><h3>体验与反馈</h3><p>附上作品地址、设备、浏览器和复现步骤，截图或短视频也很有帮助。</p></article><article class="entry"><h3>内容与设计</h3><p>指出说明中的错误、补充素材出处，或分享更易用的交互建议。</p></article><article class="entry"><h3>地图与创意</h3><p>在地图工坊尝试自己的关卡，也可以分享想看到的角色、玩法和作品主题。</p></article></div><section><h2>联系与使用说明</h2><p>普通问题和建议可提交到问题反馈页；具体协作请先与维护者确认范围。</p><p>引用素材时请查看对应作品的来源与使用条件，并保留作者署名。</p><div class="actions j-contribute-actions">${link('问题反馈',p?.participation.issueUrl||'https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/issues/new','button')}${link('地图工坊','/tools/mario-map-workshop-2-0/','button button--quiet')}${link('AI角色素材使用说明','/projects/ai-character-atlas/rights.html','button button--quiet')}</div></section></section>`;}
+
 function managePage(){return '';}
 export function render(r,{projects,catalog,states={},errors={},notes=[],publicMode=Boolean(globalThis.SITE_RELEASE?.publicMode)}){
  if(publicMode && r.view==='manage')r={view:'not-found'};

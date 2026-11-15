@@ -25,7 +25,9 @@ export const EXPERIMENTS = [
         "label": "非凡之爱 No Ordinary Love 参考影像",
         "bvid": "BV1Q3WB6QE4u"
       }
-    ]
+    ],
+    "assetProject": "/projects/ai-character-atlas/archive.html",
+    "assetDescription": "查找豆包、大肥鱼与 Claude 的采用造型和配套视角，按角色下载原图。"
   },
   {
     "schemaVersion": 1,

@@ -327,3 +327,57 @@ globalThis.SITE_EN = Object.freeze({
   "风见幽香": "Yuuka",
   "艾丽": "Elly"
 });
+
+/* AI atlas display messages. */
+globalThis.SITE_EN = Object.freeze({...globalThis.SITE_EN, ...{
+  "橙色长发配日芒花饰，黑白缎带、层叠长裙与金色链饰，搭配白手套和日芒纹书册。": "Long orange hair, a sunburst ornament, black-and-white ribbons, a layered dress and gold chains, with a white glove and sunburst book.",
+  "白发、龙角与尖耳，白紫色翅膀和龙尾，搭配简洁的白色连衣裙。": "White hair, dragon horns and pointed ears, white-and-purple wings and a dragon tail, paired with a simple white dress.",
+  "蓝色长发、鲸鳍耳与鲸尾，白色头饰和围裙组成“大肥鱼”的鲸鱼女仆造型。": "Long blue hair, whale-fin ears and a whale tail, with a white headpiece and apron: the whale-maid interpretation known as Big Whale.",
+  "深棕色偏分短发、醒目的红围巾和黑色衣裤。保留熟悉的配色，重新演绎真人面容。": "Side-parted dark brown bob, a vivid red scarf and black clothing. Familiar colors with our own live-action face design.",
+  "蓝紫渐变长发、猫耳和猫尾，粉金异色瞳与四芒星装饰，搭配蓝紫白服装。": "Blue-to-purple hair, cat ears and a tail, pink-and-gold eyes and four-point stars, with a blue, purple and white outfit.",
+  "白色长发与蕾丝头饰，棱镜彩光、深蓝蝴蝶结和 K 字吊坠，搭配星空披肩与银色长笛。": "White hair and a lace headpiece, prism colors, a navy bow and K pendant, with a starry cape and silver flute.",
+  "AI 角色图鉴": "AI Character Atlas",
+  "AI 角色图鉴 · 在下_小Q": "AI Character Atlas · Xiao Q",
+  "熟悉的轮廓，三种不同的模样。": "Familiar silhouettes. Three different interpretations.",
+  "从 Q 版的可爱轮廓，到常规立绘，再到真人演绎。收录十位 AI 拟人角色，看看发型、服装与小装饰如何串起同一个角色。": "From chibi silhouettes to illustrated characters and live-action interpretations. Explore ten AI personas through their hairstyles, outfits and signature details.",
+  "10 位角色 · 30 张主设定图": "10 characters · 30 main design images",
+  "选择角色": "Choose a character",
+  "选择形象版本": "Choose an interpretation",
+  "角色图鉴": "Character atlas",
+  "Q 版": "Chibi",
+  "常规版": "Illustrated",
+  "真人版": "Live action",
+  "造型细节": "Signature details",
+  "参考来源": "Design references",
+  "查看来源 ↗": "View source ↗",
+  "打开完整图片 ↗": "Open full image ↗",
+  "真人设定补充": "More live-action designs",
+  "多视角设定": "Multiple views",
+  "背面与表情": "Back view and expressions",
+  "关于这组形象": "About these designs",
+  "关于图鉴": "About the atlas",
+  "Q 版与常规版沿用所参考社区造型的辨识元素；真人版保留外形与装饰，面容由我们重新设计。": "Chibi and illustrated versions retain recognizable elements from the referenced community designs. Live-action versions reinterpret the faces while preserving the silhouettes and accessories.",
+  "本页展示 AI 辅助生成的同人设计探索，并非产品官方形象或原作者原稿。多视角与表情图用于展示设计方向，细节仍在完善。": "These AI-assisted fan designs are visual explorations, not official product characters or the original artists’ artwork. Multiple views and expressions illustrate the design direction; details are still being refined.",
+  "图片为本站的视觉演绎；参考造型与角色的相关权利归原权利方。来源链接用于溯源，不代表素材可以自由再分发或商用。": "Images are this site’s visual interpretations. Rights in referenced designs and characters remain with their respective holders. Source links provide attribution, not permission for redistribution or commercial reuse.",
+  "版权与使用说明": "Rights and reuse",
+  "红围巾豆包": "Red-scarf Doubao",
+  "豆包": "Doubao",
+  "设计探索": "Design study",
+  "ZipZipPipe 社区设计": "Community design by ZipZipPipe",
+  "上善无形及社区二创": "Shangshan Wuxing and community interpretations",
+  "青时晚作品中的红围巾演出造型": "Red-scarf performance look in Qingshiwan’s fan video",
+  "收藏十位 AI 拟人角色的 Q 版、常规版与真人演绎，浏览设定图和造型来源。": "Explore chibi, illustrated and live-action interpretations of ten AI personas, with design images and source credits.",
+  "AI 拟人": "AI personas",
+  "查看 AI 角色图鉴": "Explore AI Character Atlas",
+  "AI 角色图鉴中的 Claude 形象": "Claude in the AI Character Atlas",
+  "启用 JavaScript 后可切换角色与版本。": "Enable JavaScript to switch characters and interpretations.",
+  "图片暂时无法加载，可尝试打开完整图片。": "This image could not be loaded. Try opening the full image.",
+  "金色双马尾、蓝眼、尖耳、小皇冠与蝙蝠翼发饰；黑酒红长裙配星轨金饰和 X 形双刃斧。": "Blonde twin ponytails, blue eyes, pointed ears, a small crown and batwing hair ornaments; a black-and-burgundy gown with gold orbital jewelry and an X-shaped axe.",
+  "深色长发与狐耳、额头眼罩、Z 徽章和双铃；黑白蓝层叠裙，只有一条白尖黑狐尾。": "Dark hair and fox ears, a sleep mask on the forehead, Z badges and two bells; a layered black, white and blue dress with one black fox tail and a white tip.",
+  "蓝紫长发与单侧辫、斜戴小帽、立领长裙、宽袖、折扇和小手包；辫子在角色左侧。": "Periwinkle hair with a braid on her left, a tilted small hat, high-collared dress, draped sleeves, folding fan and small purse.",
+  "珊瑚橙短发、米白贝雷帽、工牌与格纹裙；摄制包、场记板、录音机与海螺组成创作者装束。": "Coral-orange bob, ivory beret, staff badge and plaid skirt; a production bag, clapperboard, recorder and conch complete the creator outfit.",
+  "千问": "Qwen"
+}});
+
+/* Character library links. */
+globalThis.SITE_EN = Object.freeze({...globalThis.SITE_EN, "查找豆包、大肥鱼与 Claude 的采用造型和配套视角，按角色下载原图。": "Find selected character designs and matching views for Doubao, DeepSeek and Claude, with original downloads."});

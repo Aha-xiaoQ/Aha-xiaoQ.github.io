@@ -82,6 +82,25 @@ globalThis.SITE_DATA = {
   },
   "items": [
     {
+      "id": "project-ai-character-atlas",
+      "slug": "ai-character-atlas",
+      "primaryType": "project",
+      "relatedIds": [],
+      "title": "AI 角色图鉴",
+      "summary": "收藏十位 AI 拟人角色的 Q 版、常规版与真人演绎，浏览设定图和造型来源。",
+      "lifecycleStatus": "active",
+      "visibility": "public",
+      "createdAt": "2026-11-08",
+      "updatedAt": "2026-11-15",
+      "categories": [],
+      "tags": [
+        "角色图鉴",
+        "AI 拟人"
+      ],
+      "evidenceIds": [],
+      "detailUrl": "projects/ai-character-atlas/"
+    },
+    {
       "id": "project-badapple-characters",
       "slug": "badapple-characters",
       "primaryType": "project",
