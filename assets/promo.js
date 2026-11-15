@@ -69,7 +69,7 @@
         </nav>
       </header>
 
-      <main class="shell stage" id="main" tabindex="-1">
+      <main id="main" tabindex="-1"><div class="home-hero"><div class="shell stage">
         <aside class="corner-clock" aria-label="日期、时间和历史上的今天">
           <div class="clock-meta"><b data-date>${dateText()}</b></div>
           <time data-clock>${clockText()}</time>
@@ -85,8 +85,8 @@
             <h1 id="site-name">在下_<em>小Q</em></h1>
             <p>${esc(profile.publicStatement)}</p>
           </div>
-          <a class="primary-path" href="${esc(focusHref)}"><span>重点入口</span><strong>${esc(focusLabel)}</strong></a>
-          ${nowBlock()}
+          <a class="primary-path" href="${esc(focusHref)}"><span>重点入口</span><strong>${esc(focusLabel)}</strong>${profile.now?.updatedAt ? `<time datetime="${esc(profile.now.updatedAt)}">${esc(profile.now.updatedAt)}</time>` : ""}</a>
+
         </section>
 
         <figure class="pixel-scene">
@@ -102,7 +102,8 @@
             <a class="path path--about" href="about/index.html"><span>04</span><strong>关于我</strong></a>
           </div>
         </section>
-${profile.latestVideos?.length ? `<section class="section" data-latest-videos><div class="shell"><div class="section-head"><div><p class="eyebrow">LATEST VIDEOS</p><h2>最新视频</h2></div><a class="j-link" href="/notes/lab/">查看全部作品</a></div><div class="entry-grid">${profile.latestVideos.map(e=>`<a class="entry" href="${esc(e.href)}"><p class="entry__kind">${esc(e.date)}</p><h3>${esc(e.title)}</h3><span class="entry__link">查看作品</span></a>`).join('')}</div></div></section>` : ''}
+</div></div>
+${profile.latestVideos?.length ? `<section class="section" data-latest-videos><div class="shell"><div class="section-head"><div><p class="eyebrow">LATEST VIDEOS</p><h2>最新视频</h2></div><a class="j-link" href="/notes/lab/">查看全部作品</a></div><div class="entry-grid">${profile.latestVideos.map(e=>`<a class="entry" href="${esc(e.href)}">${e.cover ? `<div class="home-video-cover"><img src="${esc(e.cover)}" alt="" width="640" height="360" loading="lazy"></div>` : ""}<div class="home-video-copy"><p class="entry__kind">${esc(e.date)}</p><h3>${esc(e.title)}</h3><span class="entry__link">查看作品<span aria-hidden="true">↗</span></span></div></a>`).join('')}</div></div></section>` : ''}
       </main>
 
       <footer class="footer">

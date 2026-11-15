@@ -25,6 +25,9 @@ to content additions, generated pages, layout repairs and publishing work.
   affected breakpoint widths; test both languages for changed navigation. Verify
   intended rows, alignment, card styles, overlap and overflow visually. A passing
   HTTP request, full-page screenshot or scroll-width check alone is insufficient.
+  For navigation changes, also click successive sections before entry animation
+  finishes and use browser back/forward. URL, page body and the single current
+  navigation marker must agree; decorative transitions must not absorb input.
 - Keep text/font coverage, asset URLs and cache/import-map versions consistent.
   Use existing build/publication commands and update all intended destinations
   from the same reviewed source. Verify each deployment separately.

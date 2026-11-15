@@ -42,7 +42,7 @@
   const assetHref = (name) => {
     const url = new URL(name, routerURL);
     url.search = routerURL.search;
-    if (name === "promo.css") url.search = "?v=322b24a3e0e7ed9c"; // Home stylesheet content version.
+    if (name === "promo.css") url.search = "?v=af87a6f7f17a7c4d"; // Home stylesheet content version.
     return url.href;
   };
   let experienceModule;
@@ -186,10 +186,17 @@
     if (document.querySelector("#q-router-style")) return;
     const style = document.createElement("style");
     style.id = "q-router-style";
+    // Route snapshots must not intercept a second navigation click. The header
+    // shows only the committed route, without fading an obsolete selected tab.
     // Keep the old screen visible while the new route is prepared, then let
     // the two already-rendered layers crossfade. This is the same visual
     // contract as a real app shell: no blank frame and no loading placeholder.
-    style.textContent = `::view-transition-old(root){animation:q-vt-out 240ms cubic-bezier(.22,.61,.36,1) both}::view-transition-new(root){animation:q-vt-in 280ms cubic-bezier(.22,.61,.36,1) both}::view-transition-old(q-header),::view-transition-new(q-header){animation-duration:220ms}::view-transition-old(q-footer),::view-transition-new(q-footer){animation-duration:220ms}.topbar,.site-header{view-transition-name:q-header}.footer,.site-footer{view-transition-name:q-footer}@keyframes q-vt-out{to{opacity:0;transform:translateX(-14px)}}@keyframes q-vt-in{from{opacity:0;transform:translateX(14px)}}#q-route-old{position:fixed;z-index:99;inset:0;overflow:hidden;pointer-events:none;background-color:var(--ink,#111315);background-repeat:no-repeat;background-position:0 0,61% center;background-size:auto,cover;opacity:1;transform:translateX(0);transition:opacity 190ms ease,transform 220ms cubic-bezier(.22,.61,.36,1)}#q-route-old.q-route-old--out{opacity:0;transform:translateX(-10px)}#app.q-route-new{opacity:.96;transform:translateX(10px);transition:opacity 190ms ease,transform 220ms cubic-bezier(.22,.61,.36,1)}#app.q-route-new.q-route-new--in{opacity:1;transform:translateX(0)}@media(prefers-reduced-motion:reduce){#q-route-old,#q-route-old.q-route-old--out,#app.q-route-new,#app.q-route-new.q-route-new--in,::view-transition-old(root),::view-transition-new(root){opacity:1;transform:none;animation:none;transition:none}}`;
+    style.textContent = `
+/* Only live content moves. Navigation reflects the committed URL immediately. */
+#app.q-route-new #main{opacity:.96;transform:translateX(10px);transition:opacity 190ms ease,transform 220ms ease}
+#app.q-route-new.q-route-new--in #main{opacity:1;transform:translateX(0)}
+@media(prefers-reduced-motion:reduce){#app.q-route-new #main,#app.q-route-new.q-route-new--in #main{opacity:1;transform:none;animation:none;transition:none}}
+`;
     document.head.append(style);
   };
   const renderRoute = (info) => {
@@ -230,7 +237,7 @@
   window.addEventListener('scroll',()=>{if(scrollTick)return;scrollTick=requestAnimationFrame(()=>{scrollTick=0;saveView();});},{passive:true});
   document.addEventListener('focusin',()=>{if(app.querySelector('#main')?.contains(document.activeElement))saveView();});
   if('scrollRestoration' in history)history.scrollRestoration='manual';
-  let navigating=false,navigationSequence=0,activeTransition;
+  let navigating=false,navigationSequence=0;
   const showFailure=(url,options)=>{
     let box=app.querySelector(':scope > .q-resource-error');if(!box){box=document.createElement('section');box.className='q-resource-error';box.setAttribute('role','alert');app.prepend(box);}
     box.replaceChildren();const p=document.createElement('p');p.textContent='页面暂时无法打开。已有内容仍可阅读。';const b=document.createElement('button');b.type='button';b.className='button button--quiet';b.textContent='重试加载';b.onclick=()=>navigate(new URL(url),{...options,force:true});const a=document.createElement('a');a.className='button button--quiet';a.textContent='直接打开页面';a.href=String(url);a.dataset.routerIgnore='';box.append(p,b,a);
@@ -257,7 +264,7 @@
     if(historyMode!=="none"||preserveView)saveView();
     const targetView=(historyMode==='none'||preserveView)?plainState().qView:null;
     if(historyMode==='none')viewSuspended=true;
-    const navigationId=++navigationSequence;navigating=true;activeTransition?.skipTransition?.();app.classList.remove('q-route-new','q-route-new--in');
+    const navigationId=++navigationSequence;navigating=true;app.classList.remove('q-route-new','q-route-new--in');
     const commit=()=>{
       if(navigationId!==navigationSequence)return;
       try {
@@ -280,10 +287,7 @@
     }
     catch{if(navigationId!==navigationSequence)return false;navigating=false;showFailure(url,{historyMode,preserveView});return false;}
     if(navigationId!==navigationSequence)return false;
-    if(typeof document.startViewTransition==='function'&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
-      const transition=document.startViewTransition(commit);activeTransition=transition;
-      transition.finished.finally(()=>{if(navigationId!==navigationSequence)return;navigating=false;globalThis.SITE_MOTION?.mount({entry:false});}).catch(()=>{});return true;
-    }
+    // Keep navigation live during rapid clicks; animate real content only.
     commit();app.classList.add('q-route-new');requestAnimationFrame(()=>{if(navigationId!==navigationSequence)return;app.classList.add('q-route-new--in');setTimeout(()=>{if(navigationId!==navigationSequence)return;app.classList.remove('q-route-new','q-route-new--in');navigating=false;globalThis.SITE_MOTION?.mount({entry:false});},240);});return true;
   };
   globalThis.SITE_ROUTER={version:"site-r46",navigate};

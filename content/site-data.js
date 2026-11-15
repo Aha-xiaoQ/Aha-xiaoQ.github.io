@@ -63,17 +63,20 @@ globalThis.SITE_DATA = {
       {
         "title": "非凡之爱 ｜ 大肥鱼x豆包",
         "href": "/notes/lab/docs/no-ordinary-love/",
-        "date": "2026-11-15"
+        "date": "2026-11-15",
+        "cover": "/assets/lab/no-ordinary-love-cover.jpg"
       },
       {
         "title": "只狼MOD | 小六大战苇名弦一郎",
         "href": "/notes/lab/docs/sekiro-six/",
-        "date": "2026-11-15"
+        "date": "2026-11-15",
+        "cover": "/assets/lab/sekiro-six-cover.jpg"
       },
       {
         "title": "Bad Apple!! 但是GPT手搓版",
         "href": "/notes/lab/docs/badapple-anime/",
-        "date": "2026-11-12"
+        "date": "2026-11-12",
+        "cover": "/assets/lab/badapple-anime-cover.webp"
       }
     ]
   },
