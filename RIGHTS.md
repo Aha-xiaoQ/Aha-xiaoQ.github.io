@@ -39,13 +39,3 @@ MIT-covered original components include the existing site implementation, the li
 Acorn retains its original MIT attribution. Font software and captured OFL fixtures retain their original font licenses; ChillBitmap/Misaki embedded font modules are not converted to MIT. Community Mario MIT notices do not clear underlying game characters, maps, artwork or audio. The Thorlabs PDF, optical GLB/PNG/BOM/ZIP, mixed game files and unverified archives receive no new grant. Existing Q咪 CC BY-NC 4.0 material notices remain, with the local archive notice and sprite identity verified; independent-repository comparison and coordinated changes remain separate.
 
 The manifest is an honest scoped provenance review, not a declaration that all repository rights are cleared. Public availability, credit, free play, fan-work descriptions or AI assistance do not themselves establish permission. Uses permitted by law are unaffected. For permissions or rights concerns, contact [hfutqdm@163.com](mailto:hfutqdm@163.com).
-# Current source distribution status (2026-10-26)
-
-Source downloads are temporarily withdrawn. Online play and HTML/offline game
-downloads remain under their existing rights restrictions, not a new blanket
-open-source grant. See [source distribution status](docs/oss/SOURCE_DISTRIBUTION.md).
-Current-file removal does not purge Git history or previously distributed copies.
-
-## Runtime-tree clarification / 运行树说明
-
-The Acorn scripts/vendor paths and development/test commands above describe historical engineering evidence. Full game engineering is retained locally and is not included in this static runtime tree. Existing grants and notices retain their exact original scopes; this change is not a blanket relicensing. Current source status: [SOURCE_DISTRIBUTION](docs/oss/SOURCE_DISTRIBUTION.md).
