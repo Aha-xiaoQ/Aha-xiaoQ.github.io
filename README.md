@@ -1,12 +1,21 @@
-# 在下_小Q · 网站运行发布
+# 在下_小Q · Pixel Workshop
 
-这里保存网站运行内容、在线试玩和普通离线游戏下载。完整游戏开发工程和混合源码包暂不公开。
+小Q的个人作品网站，收录浏览器游戏、实用工具、制作记录与交互实验。
 
-- [访问网站](https://aha-xiaoq.github.io/)
-- [游戏](https://aha-xiaoq.github.io/games/index.html)
-- [版权与使用范围](RIGHTS.md)
-- [源码分发状态](docs/oss/SOURCE_DISTRIBUTION.md)
+[访问网站](https://aha-xiaoq.github.io/) · [项目](https://aha-xiaoq.github.io/projects/) · [游戏](https://aha-xiaoq.github.io/games/) · [工具](https://aha-xiaoq.github.io/tools/)
 
-现有游戏中的角色、音乐、美术、地图和部分混合实现仍有未解决的权利问题；保留试玩不代表整款游戏原创、已获授权或可自由再分发。HTML/JavaScript 运行文件仍可被读取。既有明确许可及第三方通知保留各自范围。
+## 玩一玩，做点新东西
 
-This is a static runtime distribution, not the full game development repository. Existing scoped licences and unresolved third-party rights are documented above.
+- **混合马里奥**：体验不同角色的能力，探索经典关卡与自制冒险。
+- **马里奥地图工坊**：参考原生地图，自由布置地形、敌人与奖励，边编辑边试玩。
+- **工具与实验**：体验光之工坊、仿真示波器音乐播放器等交互作品。
+
+在游戏详情页点击“开始试玩”即可游玩；支持离线体验的作品可从详情页下载，按页面说明打开。操作方法、演示视频和作品说明见各自页面。
+
+## 交流与反馈
+
+欢迎分享体验和作品。遇到问题时，请提供页面地址、设备、浏览器与复现步骤，方便定位。
+
+[留言墙](https://aha-xiaoq.github.io/guestbook/) · [提交问题](https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/issues)
+
+作品中的第三方素材与通用组件保留各自的版权、许可和署名，具体见作品说明与 [版权说明](RIGHTS.md)。
