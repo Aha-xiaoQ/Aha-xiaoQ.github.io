@@ -54,7 +54,7 @@ export function experimentGallery(){
 }
 function sourceVideoCredits(e){
  if(!e.sourceVideos?.length)return '';
- return `<p class="j-small">影像素材：${e.sourceVideos.map(source=>a(source.label,experimentVideoURL({provider:'bilibili',bvid:source.bvid}),'j-link','target="_blank" rel="noopener noreferrer" data-router-ignore')+' <code translate="no">'+esc(source.bvid)+'</code>').join(' · ')}</p>`;
+ return `<p class="j-small">${esc(e.sourceCreditLabel||'影像素材')}：${e.sourceVideos.map(source=>a(source.label,experimentVideoURL({provider:'bilibili',bvid:source.bvid}),'j-link','target="_blank" rel="noopener noreferrer" data-router-ignore')+' <code translate="no">'+esc(source.bvid)+'</code>').join(' · ')}</p>`;
 }
 function modDownloadSection(e){
  if(!e.modDownload)return '';const m=validateModDownload(e.modDownload);

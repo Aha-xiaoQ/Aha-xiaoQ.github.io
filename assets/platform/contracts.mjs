@@ -59,6 +59,10 @@ export function validateExperiment(input) {
     validateExperimentResources(input);
     if(input.assetProject!==undefined&&(input.id!=='badapple-anime'||input.assetProject!=='/projects/badapple-characters/'))throw Error('Invalid asset project');
     if(input.modDownload!==undefined)validateModDownload(input.modDownload);
+    if (input.sourceCreditLabel !== undefined) {
+      assertText(input.sourceCreditLabel,'source credit heading',30);
+      if (!input.sourceVideos?.length) throw Error('Source credit heading requires references');
+    }
     if (input.sourceVideos !== undefined) {
       if (!Array.isArray(input.sourceVideos) || input.sourceVideos.length < 1 || input.sourceVideos.length > 8) throw Error('Invalid source video credits');
       const sourceIds = new Set();

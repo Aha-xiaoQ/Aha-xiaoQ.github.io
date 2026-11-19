@@ -35,6 +35,11 @@ to content additions, generated pages, layout repairs and publishing work.
   of visitor pages and downloads. Preserve useful usage instructions, provenance
   and third-party notices. Changes to these repository rules are part of source
   review, not visible visitor UI.
+- For every website video and asset upload, review the actual visitor-facing
+  page, translations, titles, covers, captions, download labels and filenames.
+  Keep internal revision codes, production-stage notes, test results and local
+  paths in the project workbench. Use public work names and include the
+  playback or download information, credits and licenses visitors need.
 - Record source revision, changed routes, checks, known gaps and deployment
   receipts in the existing task workbench. Distinguish edited, tested and live.
   A local check or one successful destination does not prove both sites updated.

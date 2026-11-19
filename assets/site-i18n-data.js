@@ -381,3 +381,47 @@ globalThis.SITE_EN = Object.freeze({...globalThis.SITE_EN, ...{
 
 /* Character library links. */
 globalThis.SITE_EN = Object.freeze({...globalThis.SITE_EN, "查找豆包、大肥鱼与 Claude 的采用造型和配套视角，按角色下载原图。": "Find selected character designs and matching views for Doubao, DeepSeek and Claude, with original downloads."});
+
+/* Video and player entries. */
+globalThis.SITE_EN = Object.freeze({
+  ...globalThis.SITE_EN,
+  "鹈鹕骑车六千年 · GPT-6.2 Sol": "Six Thousand Years of Pelicans on Bicycles · GPT-6.2 Sol",
+  "一条路穿过二十道画框。鹈鹕从撒哈拉岩壁骑到代码编辑器。": "One road crosses twenty frames, from Saharan rock art to a code editor.",
+  "代码动画": "Code animation",
+  "深蓝色封面上，一只白鹈鹕骑着复古自行车，左侧写有「鹈鹕骑车六千年」。": "A white pelican rides a vintage bicycle beside the title on a deep blue cover.",
+  "同一段踩踏动作贯穿二十幕。车架、轮组与鹈鹕随画风变形，镜头跟着车轮穿过画框。": "The same pedaling motion runs through twenty scenes. The pelican, frame and wheels take on each medium as the camera follows them through the picture frames.",
+  "片长 2 分 17 秒，配有原创音乐。": "Running time: 2:17, with an original score.",
+  "创意来源 · 鹈鹕骑车艺术史": "Creative reference · Pelicans on bicycles through art history",
+  "创意参考：": "Creative reference:",
+  "配乐来源：": "Music credit:",
+  "打开 HTML 播放器": "Open HTML player",
+  "下载源码 ZIP": "Download source ZIP",
+  "观看 鹈鹕骑车六千年 · GPT-6.2 Sol 视频（在新标签页打开）": "Watch Six Thousand Years of Pelicans on Bicycles · GPT-6.2 Sol (opens in a new tab)",
+  "鹈鹕骑车六千年 · GPT-6.2 Astra": "Six Thousand Years of Pelicans on Bicycles · GPT-6.2 Astra",
+  "带前灯和货架的旅行车，把鹈鹕从岩壁一路载到电脑屏幕。": "A touring bicycle with a headlamp and rack takes the pelican from a rock wall to a computer screen.",
+  "米白与夜蓝相接的封面，画着骑旅行车的鹈鹕和一弯月亮。": "A pelican on a touring bicycle beneath a crescent moon on a cream and navy cover.",
+  "从宋画峡谷到汴河河港，旅行车的前灯跟着鹈鹕穿过画卷。": "From a gorge in a Song-dynasty painting to a port on the Bian River, a touring bike’s headlamp follows the pelican through the scroll.",
+  "片长 3 分 06 秒，配有原创音乐。": "Running time: 3:06, with an original score.",
+  "观看 鹈鹕骑车六千年 · GPT-6.2 Astra 视频（在新标签页打开）": "Watch Six Thousand Years of Pelicans on Bicycles · GPT-6.2 Astra (opens in a new tab)",
+  "鹈鹕骑车六千年 · GPT-6 Astra": "Six Thousand Years of Pelicans on Bicycles · GPT-6 Astra",
+  "沿路的鱼、星星和围观者，一起见证这部虚构的骑行艺术史。": "Fish, stars and curious bystanders witness this imagined history of cycling in art.",
+  "星月夜版块的蓝色画面里，一只鹈鹕骑车从旋涡与星星下经过。": "A pelican rides beneath swirls and stars in the blue Starry Night scene.",
+  "约 1 分 16 秒，一颗星星搭上车。再往前，默片里的影子亮成示波器的荧光。": "At around 1:16, a star hitches a ride. Further along, a silent-film silhouette lights up on an oscilloscope.",
+  "观看 鹈鹕骑车六千年 · GPT-6 Astra 视频（在新标签页打开）": "Watch Six Thousand Years of Pelicans on Bicycles · GPT-6 Astra (opens in a new tab)",
+  "非凡之爱 | 猫和老鼠混剪": "No Ordinary Love | Tom and Jerry Edit",
+  "把《猫和老鼠》的镜头剪进《No Ordinary Love》，让追逐、错愕和温情跟着歌曲接力。": "A Tom and Jerry edit set to No Ordinary Love, with chases, surprises and tenderness following the song.",
+  "音乐混剪": "Music fan edit",
+  "橙色封面上有《非凡之爱》的片名，以及两个《猫和老鼠》的画面。": "An orange cover with the No Ordinary Love title and two Tom and Jerry frames.",
+  "作品将《猫和老鼠》片段按音乐的速度和情绪重新编排。": "Tom and Jerry clips are recut to the tempo and mood of the track.",
+  "全片约 1 分 29 秒。音乐为 antrofrog 的《No Ordinary Love》。角色、音乐和原始影像权利归各自权利人。": "Running time: about 1:29. Music: No Ordinary Love by antrofrog. Character, music and footage rights remain with their respective owners.",
+  "《非凡之爱》参考影像": "No Ordinary Love reference video",
+  "观看 非凡之爱 | 猫和老鼠混剪 视频（在新标签页打开）": "Watch No Ordinary Love | Tom and Jerry Edit (opens in a new tab)",
+  "在下_小Q的个人网站 · 导览": "A Tour of Aha_xiaoQ’s Website",
+  "走一遍小 Q 个人网站当时的首页、项目和游戏入口。": "A look at the homepage, projects and game links of Xiao Q’s website as they appeared at the time.",
+  "网站导览": "Website tour",
+  "深蓝像素风封面展示个人网站头像、四个栏目按钮和桌面电脑。": "A pixel-art cover showing a profile avatar, four site sections and a desktop computer.",
+  "这段录屏记录的是 2026 年 9 月的网站界面。策划与录屏由在下_小Q完成，网站与剪辑使用 GPT-6 Astra / Codex。": "This screen recording captures the September 2026 site. Planning and recording: Aha_xiaoQ. Site and edit: GPT-6 Astra / Codex.",
+  "全片约 1 分 08 秒。配音为启娜（晓伊音色），字体为霞鹜文楷，配乐为《七里香》8-bit 版。": "Running time: about 1:08. Voice: Qina (Xiaoyi voice). Typeface: LXGW WenKai. Music: 8-bit rendition of Qi Li Xiang.",
+  "《七里香》8-bit 版": "Qi Li Xiang, 8-bit rendition",
+  "观看 在下_小Q的个人网站 · 导览 视频（在新标签页打开）": "Watch A Tour of Aha_xiaoQ’s Website (opens in a new tab)"
+});

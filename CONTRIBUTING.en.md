@@ -9,3 +9,5 @@ Try the games, create a map, or tell us what could work better.
 Include the page URL, device, browser and steps to reproduce. Screenshots or short clips help. Contact the maintainer to discuss a specific collaboration.
 
 Works and assets have individual source credits and usage terms. Check the relevant notes before reuse and keep creator credits. [Rights and usage](https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/blob/main/RIGHTS.md)
+
+For every video, cover or asset submission, check page copy, translations, captions, download names and cover text. Use the public work name and keep internal revision labels, production notes and test records in the project workbench. Include the usage instructions, credits and licenses visitors need.

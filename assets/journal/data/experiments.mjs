@@ -2,6 +2,169 @@ export const EXPERIMENTS = [
   {
     "schemaVersion": 1,
     "kind": "video",
+    "id": "pelican-6000-gpt-6-2-sol",
+    "title": "鹈鹕骑车六千年 · GPT-6.2 Sol",
+    "subtitle": "一条路穿过二十道画框。鹈鹕从撒哈拉岩壁骑到代码编辑器。",
+    "visibility": "public",
+    "createdAt": "2026-11-18",
+    "updatedAt": "2026-11-18",
+    "medium": "VIDEO",
+    "format": "代码动画",
+    "video": {
+      "provider": "bilibili",
+      "bvid": "BV1tAsS6DEU5"
+    },
+    "cover": {
+      "src": "/assets/lab/pelican-6000-gpt-6-2-sol-cover.jpg",
+      "alt": "深蓝色封面上，一只白鹈鹕骑着复古自行车，左侧写有「鹈鹕骑车六千年」。"
+    },
+    "provenance": "同一段踩踏动作贯穿二十幕。车架、轮组与鹈鹕随画风变形，镜头跟着车轮穿过画框。",
+    "verification": "片长 2 分 17 秒，配有原创音乐。",
+    "sourceVideos": [
+      {
+        "label": "创意来源 · 鹈鹕骑车艺术史",
+        "bvid": "BV1pLnw6YEzq"
+      }
+    ],
+    "resources": [
+      {
+        "role": "html",
+        "label": "打开 HTML 播放器",
+        "href": "/experiments/releases/pelican-6000-gpt-6-2-sol/pelican-6000-gpt-6-2-sol.html",
+        "bytes": 1365686,
+        "sha256": "6368bd0c4b88ff15afef5cc520e2b6fd3d63d3fd7f975f35142be386044ebef0"
+      },
+      {
+        "role": "source",
+        "label": "下载源码 ZIP",
+        "href": "/experiments/releases/pelican-6000-gpt-6-2-sol/pelican-6000-gpt-6-2-sol-source.zip",
+        "bytes": 1648502,
+        "sha256": "c0c8751c3eaff2ee2efa4195c32eac28af9a45766c68e4e5c987b361faade3df"
+      }
+    ],
+    "sourceCreditLabel": "创意参考"
+  },
+  {
+    "schemaVersion": 1,
+    "kind": "video",
+    "id": "pelican-6000-gpt-6-2-astra",
+    "title": "鹈鹕骑车六千年 · GPT-6.2 Astra",
+    "subtitle": "带前灯和货架的旅行车，把鹈鹕从岩壁一路载到电脑屏幕。",
+    "visibility": "public",
+    "createdAt": "2026-11-18",
+    "updatedAt": "2026-11-18",
+    "medium": "VIDEO",
+    "format": "代码动画",
+    "video": {
+      "provider": "bilibili",
+      "bvid": "BV1eXsU6tEMR"
+    },
+    "cover": {
+      "src": "/assets/lab/pelican-6000-gpt-6-2-astra-cover.jpg",
+      "alt": "米白与夜蓝相接的封面，画着骑旅行车的鹈鹕和一弯月亮。"
+    },
+    "provenance": "从宋画峡谷到汴河河港，旅行车的前灯跟着鹈鹕穿过画卷。",
+    "verification": "片长 3 分 06 秒，配有原创音乐。",
+    "sourceVideos": [
+      {
+        "label": "创意来源 · 鹈鹕骑车艺术史",
+        "bvid": "BV1pLnw6YEzq"
+      }
+    ],
+    "resources": [
+      {
+        "role": "html",
+        "label": "打开 HTML 播放器",
+        "href": "/experiments/releases/pelican-6000-gpt-6-2-astra/pelican-6000-gpt-6-2-astra.html",
+        "bytes": 1838279,
+        "sha256": "8e59d8d003125f8c7b542401e7cedf16b34e5d0ee4fe08abca33b327101cd776"
+      },
+      {
+        "role": "source",
+        "label": "下载源码 ZIP",
+        "href": "/experiments/releases/pelican-6000-gpt-6-2-astra/pelican-6000-gpt-6-2-astra-source.zip",
+        "bytes": 2045317,
+        "sha256": "d4107c7a2212554a89d8b6884053b81a1856bdb32539f220271b6c679ca908a0"
+      }
+    ],
+    "sourceCreditLabel": "创意参考"
+  },
+  {
+    "schemaVersion": 1,
+    "kind": "video",
+    "id": "pelican-6000-gpt-6-astra",
+    "title": "鹈鹕骑车六千年 · GPT-6 Astra",
+    "subtitle": "沿路的鱼、星星和围观者，一起见证这部虚构的骑行艺术史。",
+    "visibility": "public",
+    "createdAt": "2026-11-18",
+    "updatedAt": "2026-11-18",
+    "medium": "VIDEO",
+    "format": "代码动画",
+    "video": {
+      "provider": "bilibili",
+      "bvid": "BV1JHsS6BExY"
+    },
+    "cover": {
+      "src": "/assets/lab/pelican-6000-gpt-6-astra-cover.jpg",
+      "alt": "星月夜版块的蓝色画面里，一只鹈鹕骑车从旋涡与星星下经过。"
+    },
+    "provenance": "约 1 分 16 秒，一颗星星搭上车。再往前，默片里的影子亮成示波器的荧光。",
+    "verification": "片长 3 分 06 秒，配有原创音乐。",
+    "sourceVideos": [
+      {
+        "label": "创意来源 · 鹈鹕骑车艺术史",
+        "bvid": "BV1pLnw6YEzq"
+      }
+    ],
+    "resources": [
+      {
+        "role": "html",
+        "label": "打开 HTML 播放器",
+        "href": "/experiments/releases/pelican-6000-gpt-6-astra/pelican-6000-gpt-6-astra.html",
+        "bytes": 1730430,
+        "sha256": "f11278406d0dca2ef60d01cb047bc8327de8777dbdda149de0a704e164fc833d"
+      },
+      {
+        "role": "source",
+        "label": "下载源码 ZIP",
+        "href": "/experiments/releases/pelican-6000-gpt-6-astra/pelican-6000-gpt-6-astra-source.zip",
+        "bytes": 1951046,
+        "sha256": "ac1150222a9e4cccbd0a54e882af232245c84dd91d3cb99011658c84694d2d28"
+      }
+    ],
+    "sourceCreditLabel": "创意参考"
+  },
+  {
+    "schemaVersion": 1,
+    "kind": "video",
+    "id": "no-ordinary-love-tom-jerry",
+    "title": "非凡之爱 | 猫和老鼠混剪",
+    "subtitle": "把《猫和老鼠》的镜头剪进《No Ordinary Love》，让追逐、错愕和温情跟着歌曲接力。",
+    "visibility": "public",
+    "createdAt": "2026-11-17",
+    "updatedAt": "2026-11-17",
+    "medium": "VIDEO",
+    "format": "音乐混剪",
+    "video": {
+      "provider": "bilibili",
+      "bvid": "BV1iMsN6zEht"
+    },
+    "cover": {
+      "src": "/assets/lab/no-ordinary-love-tom-jerry-cover.jpg",
+      "alt": "橙色封面上有《非凡之爱》的片名，以及两个《猫和老鼠》的画面。"
+    },
+    "provenance": "作品将《猫和老鼠》片段按音乐的速度和情绪重新编排。",
+    "verification": "全片约 1 分 29 秒。音乐为 antrofrog 的《No Ordinary Love》。角色、音乐和原始影像权利归各自权利人。",
+    "sourceVideos": [
+      {
+        "label": "《非凡之爱》参考影像",
+        "bvid": "BV1Q3WB6QE4u"
+      }
+    ]
+  },
+  {
+    "schemaVersion": 1,
+    "kind": "video",
     "id": "no-ordinary-love",
     "title": "非凡之爱 ｜ 大肥鱼x豆包",
     "subtitle": "大肥鱼与豆包一起演绎《No Ordinary Love》，一段音乐短片。",
@@ -502,5 +665,34 @@ export const EXPERIMENTS = [
         "sha256": "be887d2ca180e2e0b7849d816075b03dc19347eb0b25e627111422d8d00a6da1"
       }
     ]
+  },
+  {
+    "schemaVersion": 1,
+    "kind": "video",
+    "id": "xiaoq-website-tour",
+    "title": "在下_小Q的个人网站 · 导览",
+    "subtitle": "走一遍小 Q 个人网站当时的首页、项目和游戏入口。",
+    "visibility": "public",
+    "createdAt": "2026-09-21",
+    "updatedAt": "2026-09-21",
+    "medium": "VIDEO",
+    "format": "网站导览",
+    "video": {
+      "provider": "bilibili",
+      "bvid": "BV1jyhh6aECk"
+    },
+    "cover": {
+      "src": "/assets/lab/xiaoq-website-tour-cover.jpg",
+      "alt": "深蓝像素风封面展示个人网站头像、四个栏目按钮和桌面电脑。"
+    },
+    "provenance": "这段录屏记录的是 2026 年 9 月的网站界面。策划与录屏由在下_小Q完成，网站与剪辑使用 GPT-6 Astra / Codex。",
+    "verification": "全片约 1 分 08 秒。配音为启娜（晓伊音色），字体为霞鹜文楷，配乐为《七里香》8-bit 版。",
+    "sourceVideos": [
+      {
+        "label": "《七里香》8-bit 版",
+        "bvid": "BV1xtL36mEJB"
+      }
+    ],
+    "sourceCreditLabel": "配乐来源"
   }
 ];

@@ -61,22 +61,22 @@ globalThis.SITE_DATA = {
     "visibility": "public",
     "latestVideos": [
       {
-        "title": "非凡之爱 ｜ 大肥鱼x豆包",
-        "href": "/notes/lab/docs/no-ordinary-love/",
-        "date": "2026-11-15",
-        "cover": "/assets/lab/no-ordinary-love-cover.jpg"
+        "title": "鹈鹕骑车六千年 · GPT-6.2 Sol",
+        "href": "/notes/lab/docs/pelican-6000-gpt-6-2-sol/",
+        "date": "2026-11-18",
+        "cover": "/assets/lab/pelican-6000-gpt-6-2-sol-cover.jpg"
       },
       {
-        "title": "只狼MOD | 小六大战苇名弦一郎",
-        "href": "/notes/lab/docs/sekiro-six/",
-        "date": "2026-11-15",
-        "cover": "/assets/lab/sekiro-six-cover.jpg"
+        "title": "鹈鹕骑车六千年 · GPT-6.2 Astra",
+        "href": "/notes/lab/docs/pelican-6000-gpt-6-2-astra/",
+        "date": "2026-11-18",
+        "cover": "/assets/lab/pelican-6000-gpt-6-2-astra-cover.jpg"
       },
       {
-        "title": "Bad Apple!! 但是GPT手搓版",
-        "href": "/notes/lab/docs/badapple-anime/",
-        "date": "2026-11-12",
-        "cover": "/assets/lab/badapple-anime-cover.webp"
+        "title": "鹈鹕骑车六千年 · GPT-6 Astra",
+        "href": "/notes/lab/docs/pelican-6000-gpt-6-astra/",
+        "date": "2026-11-18",
+        "cover": "/assets/lab/pelican-6000-gpt-6-astra-cover.jpg"
       }
     ]
   },
