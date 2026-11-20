@@ -61,22 +61,22 @@ globalThis.SITE_DATA = {
     "visibility": "public",
     "latestVideos": [
       {
+        "title": "小六和Mono才是天下第一好~",
+        "href": "/notes/lab/docs/six-mono-best-friends/",
+        "date": "2026-11-20",
+        "cover": "/assets/lab/six-mono-best-friends-cover.jpg"
+      },
+      {
+        "title": "【Astra 6.2】AI区天下第一好 | 豆包 x 大肥鱼",
+        "href": "/notes/lab/docs/doubao-dafeiyu-best-friends/",
+        "date": "2026-11-20",
+        "cover": "/assets/lab/doubao-dafeiyu-best-friends-cover.jpg"
+      },
+      {
         "title": "鹈鹕骑车六千年 · GPT-6.2 Sol",
         "href": "/notes/lab/docs/pelican-6000-gpt-6-2-sol/",
         "date": "2026-11-18",
         "cover": "/assets/lab/pelican-6000-gpt-6-2-sol-cover.jpg"
-      },
-      {
-        "title": "鹈鹕骑车六千年 · GPT-6.2 Astra",
-        "href": "/notes/lab/docs/pelican-6000-gpt-6-2-astra/",
-        "date": "2026-11-18",
-        "cover": "/assets/lab/pelican-6000-gpt-6-2-astra-cover.jpg"
-      },
-      {
-        "title": "鹈鹕骑车六千年 · GPT-6 Astra",
-        "href": "/notes/lab/docs/pelican-6000-gpt-6-astra/",
-        "date": "2026-11-18",
-        "cover": "/assets/lab/pelican-6000-gpt-6-astra-cover.jpg"
       }
     ]
   },
