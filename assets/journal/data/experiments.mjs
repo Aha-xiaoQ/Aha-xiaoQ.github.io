@@ -18,7 +18,7 @@ export const EXPERIMENTS = [
       "src": "/assets/lab/six-mono-best-friends-cover.jpg",
       "alt": "黄雨衣的小六和纸袋头的 Mono 在庭院跳舞，两侧有小熊、音乐盒和雪花电视。"
     },
-    "provenance": "在下_小Q制作的《小小梦魇》同人短片。留意旧旅行箱旁的小熊与手摇音乐盒、右侧的电视与棋子，以及月洞门内的提灯。",
+    "provenance": "在下_小Q制作的《小小梦魇》同人短片。留意旧旅行箱旁的小熊与手摇音乐盒、右侧的电视与棋子，以及月洞门内的提灯。模型使用 Tripo，场景、动作和剪辑由 Astra 6.2 协助完成。",
     "verification": "角色与道具设计来自《小小梦魇》系列。舞蹈改编自《DeepSeek和Claude天下第一好》，沿用参考短片配乐。相关权利归各自权利人。"
   },
   {
@@ -40,8 +40,8 @@ export const EXPERIMENTS = [
       "src": "/assets/lab/doubao-dafeiyu-best-friends-cover.jpg",
       "alt": "豆包和大肥鱼在红墙月洞门前跳舞，庭院里散落着金色银杏叶。"
     },
-    "provenance": "在下_小Q制作的 3D 舞蹈短片。用 Blender 编排两人的转身、牵手和踢步。",
-    "verification": "舞蹈改编自《DeepSeek和Claude天下第一好》，沿用参考短片配乐。角色形象与配乐的权利归各自权利人。"
+    "provenance": "在下_小Q制作的 3D 舞蹈短片。用 Blender 编排两人的转身、牵手和踢步。模型使用 Tripo，场景、动作和剪辑由 Astra 6.2 协助完成。",
+    "verification": "形象来源为 @ZipZipPipe。舞蹈改编自《DeepSeek和Claude天下第一好》，沿用参考短片配乐。角色形象与配乐的权利归各自权利人。"
   },
   {
     "schemaVersion": 1,
