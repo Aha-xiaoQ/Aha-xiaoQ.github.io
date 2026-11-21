@@ -5,6 +5,7 @@
   const key = 'q-site-auto-update';
   const marker = '_site_v';
   let touched = false, pending = '', checking = false, lastCheck = 0, banner;
+  let routeChanged = false;
   const english = () => document.documentElement.lang.startsWith('en');
   const inputSelector = 'input,textarea,select,[contenteditable]:not([contenteditable="false"])';
   document.addEventListener('input', e => { if (e.target.closest?.(inputSelector)) touched = true; }, true);
@@ -17,10 +18,10 @@
   const target = version => { const u = new URL(location.href); u.searchParams.set(marker, version); return u; };
   const attempted = version => {
     if (new URL(location.href).searchParams.get(marker) === version) return true;
-    try { return sessionStorage.getItem(key) === version; } catch { return false; }
+    try { return sessionStorage.getItem(key + ':' + location.pathname) === version; } catch { return false; }
   };
   const reload = version => {
-    try { sessionStorage.setItem(key, version); } catch { /* URL also breaks loops. */ }
+    try { sessionStorage.setItem(key + ':' + location.pathname, version); } catch { /* URL also breaks loops. */ }
     location.replace(target(version).href);
   };
   const show = () => {
@@ -45,7 +46,7 @@
     banner.append(text, update, later);document.body.append(banner);
   };
   async function check(initial = false) {
-    if (checking || (!initial && Date.now() - lastCheck < 30000)) return;
+    if (checking || (!initial && !routeChanged && Date.now() - lastCheck < 30000)) return;
     checking = true;lastCheck = Date.now();
     const controller = new AbortController();const timer = setTimeout(() => controller.abort(), 5000);
     try {
@@ -55,16 +56,17 @@
       const {version} = await response.json();
       if (typeof version !== 'string' || !/^[a-f0-9]{20}$/.test(version)) return;
       if (version === current) {
+        pending = '';
         // Remove only our own query parameter after successful activation.
         const u = new URL(location.href);
         if (u.searchParams.get(marker) === current) {u.searchParams.delete(marker);history.replaceState(history.state, '', u.href);}
         return;
       }
       pending = version;
-      if (initial && !unsafe() && !attempted(version)) reload(version);
+      if ((initial || routeChanged) && !unsafe() && !attempted(version)) reload(version);
       else show();
     } catch { /* Offline, timeout, malformed response: leave the page usable. */ }
-    finally { clearTimeout(timer);checking = false; }
+    finally { clearTimeout(timer);checking = false;routeChanged = false; }
   }
   window.SITE_FRESHNESS = {check: () => check(false)};
   const start = () => check(true);
@@ -72,5 +74,12 @@
   window.addEventListener('pageshow', e => {if(e.persisted) check(false);});
   document.addEventListener('visibilitychange', () => {if(document.visibilityState === 'visible') check(false);});
   document.addEventListener('click', e => {if(e.target.closest?.('a[href]')) check(false);}, true);
+  // Query the live build after the router commits the destination, including
+  // when the click already has a version check in flight.
+  window.addEventListener('xiaoq:pageview', () => {
+    routeChanged = true;
+    if (pending && !unsafe() && !attempted(pending)) reload(pending);
+    else check();
+  });
   setInterval(() => {if(document.visibilityState === 'visible') check(false);}, 60000);
 })();
