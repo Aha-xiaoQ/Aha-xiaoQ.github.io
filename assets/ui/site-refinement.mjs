@@ -3,11 +3,16 @@ export const MENU_QUERY = '(max-width: 720px)';
 const controllers = new Map();
 let menuSerial = 0;
 const language = doc => doc.documentElement.lang.toLowerCase().startsWith('en') ? 'en' : 'zh';
+const navigationSections = Object.freeze({
+  home:'home', projects:'projects', games:'games', detail:'games', 'play-guide':'games', visitorHelp:'games',
+  tools:'tools', method:'tools', toolGuide:'tools', notes:'notes', dev:'notes', journal:'notes',
+  about:'about', guestbook:'about', search:null, notFound:null,
+});
 export function mainSection(pathname) {
   const path = String(pathname || '/').replace(/\/index\.html$/, '/');
   if (path === '/') return 'home';
   const first = path.split('/').filter(Boolean)[0];
-  return ({projects:'projects',games:'games',tools:'tools',method:'tools',notes:'notes',dev:'notes',about:'about',guestbook:'about','play-guide':'games'})[first] || null;
+  return Object.hasOwn(navigationSections,first) ? navigationSections[first] : null;
 }
 function createNavigation(header, nav, doc) {
   const win = doc.defaultView;
@@ -59,7 +64,10 @@ export function mountNavigation(scope=globalThis.document) {
   scope.querySelectorAll('.site-header .bar,.topbar').forEach(header=>{
     const nav=Array.from(header.children).find(n=>n.tagName==='NAV' && n.querySelector('a[data-nav-key]'));
     if(!nav || !header.querySelector('.q-header-tools'))return;
-    const section=mainSection(doc.defaultView.location.pathname);
+    // The shell publishes the page it rendered. A preview URL or a pending
+    // history transition can temporarily name a different page.
+    const page=doc.body?.dataset.page;
+    const section=Object.hasOwn(navigationSections,page) ? navigationSections[page] : mainSection(doc.defaultView.location.pathname);
     nav.querySelectorAll('a[data-nav-key]').forEach(a=>{if(a.dataset.navKey===section)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
     const current=controllers.get(header);
     if(current && (current.nav!==nav || !current.button.isConnected)){current.dispose();controllers.delete(header);}

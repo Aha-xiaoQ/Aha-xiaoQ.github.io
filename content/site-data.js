@@ -7,12 +7,12 @@ globalThis.SITE_DATA = {
     "interests": [],
     "now": {
       "label": "重点作品",
-      "sourceId": "game-mario-mix-isaac",
-      "title": "混合马里奥 · 以撒篇｜库巴，时代变了",
-      "summary": "以撒带着眼泪闯进蘑菇王国。收集道具、叠加弹幕、凑齐套装，挑战四位 BOSS，再把满屏火力带到库巴面前。",
-      "updatedAt": "2026-10-25",
-      "href": "/games/mario-mix-isaac/",
-      "entryLabel": "混合马里奥 · 以撒篇｜库巴，时代变了",
+      "sourceId": "game-mario-mix-kunio",
+      "title": "混合马里奥 · 热血格斗传说",
+      "summary": "国夫一行闯进蘑菇王国，挑战双虎道场、热血足球、街篮和大运动会。",
+      "updatedAt": "2026-11-21",
+      "href": "/games/mario-mix-kunio/",
+      "entryLabel": "混合马里奥 · 热血格斗传说",
       "items": []
     },
     "copy": {
@@ -61,22 +61,22 @@ globalThis.SITE_DATA = {
     "visibility": "public",
     "latestVideos": [
       {
-        "title": "小六和Mono才是天下第一好~",
-        "href": "/notes/lab/docs/six-mono-best-friends/",
-        "date": "2026-11-20",
-        "cover": "/assets/lab/six-mono-best-friends-cover.jpg"
+        "title": "混合马里奥 · 热血格斗传说",
+        "href": "/games/mario-mix-kunio/",
+        "date": "2026-11-21",
+        "cover": "/games/mario-mix-kunio/cover.jpg"
       },
       {
-        "title": "【Astra 6.2】AI区天下第一好 | 豆包 x 大肥鱼",
-        "href": "/notes/lab/docs/doubao-dafeiyu-best-friends/",
-        "date": "2026-11-20",
-        "cover": "/assets/lab/doubao-dafeiyu-best-friends-cover.jpg"
+        "title": "混合马里奥 · 忍者神龟3 曼哈顿计划",
+        "href": "/games/mario-mix-tmnt3/",
+        "date": "2026-11-21",
+        "cover": "/games/mario-mix-tmnt3/cover.jpg"
       },
       {
-        "title": "鹈鹕骑车六千年 · GPT-6.2 Sol",
-        "href": "/notes/lab/docs/pelican-6000-gpt-6-2-sol/",
-        "date": "2026-11-18",
-        "cover": "/assets/lab/pelican-6000-gpt-6-2-sol-cover.jpg"
+        "title": "米塔MMD · 爱杀宝贝ED",
+        "href": "/notes/lab/docs/mita-kill-me-baby-ed/",
+        "date": "2026-11-21",
+        "cover": "/assets/lab/mita-kill-me-baby-ed-cover.jpg"
       }
     ]
   },
@@ -138,6 +138,66 @@ globalThis.SITE_DATA = {
       ],
       "evidenceIds": [],
       "detailUrl": "projects/card-workshop/"
+    },
+    {
+      "id": "game-mario-mix-kunio",
+      "slug": "mario-mix-kunio",
+      "primaryType": "game",
+      "relatedIds": [],
+      "title": "混合马里奥 · 热血格斗传说",
+      "summary": "国夫一行闯进蘑菇王国，挑战双虎道场、热血足球、街篮和大运动会。",
+      "lifecycleStatus": "active",
+      "visibility": "public",
+      "accessMode": "online",
+      "createdAt": "2026-11-21",
+      "updatedAt": "2026-11-21",
+      "displayOrder": 120,
+      "categories": [
+        "side-scrolling"
+      ],
+      "tags": [
+        "热血伙伴",
+        "四项隐藏挑战"
+      ],
+      "cover": "games/mario-mix-kunio/cover.jpg",
+      "evidenceIds": [],
+      "detailUrl": "/games/mario-mix-kunio/",
+      "localUrl": "/games/mario-mix-classic-adventure/play.html?v=43903a953b127074",
+      "downloadUrl": "https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/releases/download/mario-mix-classic-adventure-20261121/MarioMix-Classic-Adventure.html",
+      "downloadLabel": "下载 HTML",
+      "downloadInstructions": "下载后用 Chrome 或 Edge 打开 HTML 文件，即可离线试玩。",
+      "videoSlot": true,
+      "videoUrl": "https://www.bilibili.com/video/BV1uNyazKE4m/"
+    },
+    {
+      "id": "game-mario-mix-tmnt3",
+      "slug": "mario-mix-tmnt3",
+      "primaryType": "game",
+      "relatedIds": [],
+      "title": "混合马里奥 · 忍者神龟3 曼哈顿计划",
+      "summary": "四只神龟在 1-1 换人闯关，钻进水管登上战舰，迎战牛头首领。",
+      "lifecycleStatus": "active",
+      "visibility": "public",
+      "accessMode": "online",
+      "createdAt": "2026-11-21",
+      "updatedAt": "2026-11-21",
+      "displayOrder": 119,
+      "categories": [
+        "side-scrolling"
+      ],
+      "tags": [
+        "忍者神龟",
+        "战舰隐藏关"
+      ],
+      "cover": "games/mario-mix-tmnt3/cover.jpg",
+      "evidenceIds": [],
+      "detailUrl": "/games/mario-mix-tmnt3/",
+      "localUrl": "/games/mario-mix-classic-adventure/play.html?v=43903a953b127074",
+      "downloadUrl": "https://github.com/Aha-xiaoQ/Aha-xiaoQ.github.io/releases/download/mario-mix-classic-adventure-20261121/MarioMix-Classic-Adventure.html",
+      "downloadLabel": "下载 HTML",
+      "downloadInstructions": "下载后用 Chrome 或 Edge 打开 HTML 文件，即可离线试玩。",
+      "videoSlot": true,
+      "videoUrl": "https://www.bilibili.com/video/BV1hFyazBEXX/"
     },
     {
       "id": "game-mario-mix-isaac",

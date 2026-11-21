@@ -46,7 +46,7 @@ export function updateRows(projects,{projectId,limit=100,audience='all'}={}){
  if(!['all','public'].includes(audience))throw Error('Unknown update audience');
  const rows=projects.filter(p=>p.visibility!=='draft'&&(!projectId||p.id===projectId)).flatMap(p=>p.updates.filter(u=>audience==='all'||isPublicUpdate(u,p)).map(u=>({...u,project:p}))).sort(updateOrder).slice(0,limit);
  if(!rows.length)return '<p class="j-empty-text">还没有公开的更新记录。</p>';
- return '<ol class="j-update-list">'+rows.map(u=>`<li><time datetime="${u.date}">${esc(u.date)}</time><div><div class="j-meta"><span>${esc(u.project.title)}</span><span class="j-stage">${esc(updateLabels[u.status])}</span></div><h3>${link(u.title,projectURL(u.project.id,'updates'),'j-title-link')}</h3><p>${esc(u.summary)}</p></div></li>`).join('')+'</ol>';
+ return '<ol class="j-update-list">'+rows.map(u=>`<li><time datetime="${u.date}">${esc(u.date)}</time><div><div class="j-meta"><span>${esc(u.project.title)}</span><span class="j-stage">${esc(updateLabels[u.status])}</span></div><h3>${link(u.title,u.href||projectURL(u.project.id,'updates'),'j-title-link')}</h3><p>${esc(u.summary)}</p></div></li>`).join('')+'</ol>';
 }
 function notesSection(notes){
  const list=notes.filter(n=>n.visibility==='public');if(!list.length)return '';

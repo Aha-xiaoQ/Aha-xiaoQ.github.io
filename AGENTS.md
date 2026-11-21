@@ -44,6 +44,13 @@ to content additions, generated pages, layout repairs and publishing work.
   receipts in the existing task workbench. Distinguish edited, tested and live.
   A local check or one successful destination does not prove both sites updated.
 
+- Add one shelf card and one detail route for each game video. Preserve earlier
+  episode records, covers and video destinations. Sibling releases can share a
+  playable HTML and its download. Put game updates under the game project and
+  lab works under the lab. Verify both the owner's updates and the combined
+  recent-updates page list each title once and link to its own work. Check the
+  home latest/featured links, search and both prerendered and hydrated routes.
+
 When installed, use `q-html-interface-design` for targeted rendered checks and
 `q-code-lifecycle` website release checks. Video-related updates also use
 `q-video-publishing`. These supplement this repository contract; they do not

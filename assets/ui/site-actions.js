@@ -2,7 +2,7 @@
  * No DOM mutation, listeners, navigation interception, or runtime dependencies. */
 (function(root){
  'use strict';
- const version='site-actions-video-r2';
+ const version='site-actions-video-r3';
  if(root.SITE_ACTIONS?.version===version)return;
  const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  function label(value){return String(value??'').trim().replace(/^[←↖]\s*/u,'').replace(/\s*[→↗↓↘]\s*$/u,'').trim();}
@@ -20,8 +20,9 @@
   // Large ZIPs use this site's repository at an immutable commit. A remote link
   // keeps native HTTP download behavior; the download attribute is same-origin only.
   const ownedArchive=/^https:\/\/raw\.githubusercontent\.com\/Aha-xiaoQ\/Aha-xiaoQ\.github\.io\/[a-f0-9]{40}\/release-assets\/[A-Za-z0-9][A-Za-z0-9._-]*\/[A-Za-z0-9][A-Za-z0-9._-]*\.zip$/.test(href);
-  const info=inspect(href),isDownload=download&&(info.kind==='internal'||ownedArchive),blank=newTab&&info.kind==='external';
-  if(download&&!isDownload)throw Error('Downloads must use a same-site path or an immutable owned archive');
+  const gameRelease=/^https:\/\/github\.com\/Aha-xiaoQ\/Aha-xiaoQ\.github\.io\/releases\/download\/mario-mix-classic-adventure-\d{8}\/MarioMix-Classic-Adventure\.html$/.test(href);
+  const info=inspect(href),isDownload=download&&(info.kind==='internal'||ownedArchive||gameRelease),blank=newTab&&info.kind==='external';
+  if(download&&!isDownload)throw Error('Unsupported download location');
   const kind=isDownload?'download':info.kind;
   let result=`class="${esc(className)}" href="${esc(href)}" data-action-kind="${kind}"`;
   if(variant){if(!['primary','secondary','quiet','text','card'].includes(variant))throw Error('Unknown action variant');result+=` data-action-variant="${variant}"`;}

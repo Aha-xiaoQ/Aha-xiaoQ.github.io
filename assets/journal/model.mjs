@@ -34,6 +34,10 @@ export function validateProject(p){
  array(p.highlights,'highlights');if(p.highlights.length>3)throw Error('概览最多三个重点。');p.highlights.forEach(x=>text(x,'highlight',160));
  array(p.docs,'docs');const docIds=new Set();for(const d of p.docs){if(!validId(d.id)||docIds.has(d.id))throw Error('文档 ID 无效或重复。');docIds.add(d.id);if(d.archived!==undefined&&typeof d.archived!=='boolean')throw Error('archived must be boolean');if(d.action){text(d.action.label,'主要动作',32);if(!safeLink(d.action.href))throw Error('主要动作URL无效');}text(d.title,'文档标题',48);text(d.summary,'文档介绍',160);array(d.sections,'文档章节');for(const s of d.sections){text(s.title,'章节标题',64);array(s.paragraphs,'章节正文');s.paragraphs.forEach(x=>text(x,'正文',2000));if(s.code!=null)text(s.code,'代码示例',3000);}if(d.sources){array(d.sources,'sources');for(const l of d.sources)if(!safeLink(l.href))throw Error('文档来源 URL 无效。');}}
  array(p.updates,'updates');const updateIds=new Set();for(const u of p.updates){if(!validId(u.id)||updateIds.has(u.id))throw Error('更新 ID 无效或重复。');updateIds.add(u.id);date(u.date,'更新日期');if(u.revision!==undefined&&(!Number.isSafeInteger(u.revision)||u.revision<1))throw Error('更新修订号无效');text(u.title,'更新标题',64);text(u.summary,'更新说明',400);if(!['released','local-review','planned'].includes(u.status))throw Error('更新必须明确已发布 / 本地待验收 / 计划。');}
+ for (const update of p.updates) {
+   if (update.publishedTime !== undefined && !/^(?:[01]\d|2[0-3]):[0-5]\d$/.test(update.publishedTime)) throw Error('更新的发布时间无效');
+   if (update.href !== undefined && (!safeLink(update.href) || !update.href.startsWith('/'))) throw Error('更新的作品地址无效');
+ }
  const revisions=p.updates.filter(u=>u.revision!==undefined).map(u=>u.revision);if(new Set(revisions).size!==revisions.length)throw Error('更新修订号重复');
  if(p.currentRelease){const r=p.currentRelease;if(!validId(r.documentId)||!/^\d+\.\d+\.\d+$/.test(r.version)||!['local-review','released','planned'].includes(r.status)||(r.documentationRevision!==undefined&&(!Number.isSafeInteger(r.documentationRevision)||r.documentationRevision<1))||!safeLink(r.sourceHref)||!safeLink(r.manifestHref))throw Error('当前版本字段无效');const u=p.updates.find(u=>u.id===r.updateId);if(!u||u.status!==r.status)throw Error('当前版本与更新记录不一致');const d=p.docs.find(d=>d.id===r.documentId);if(!d||!d.action||(r.sourceAvailability==='withdrawn'?(!safeLink(r.sourceInfoHref)||d.action.href!==r.sourceInfoHref):d.action.href!==r.sourceHref))throw Error('当前源码下载不一致');}
  if(p.archivedState&&(!['legacy-a','legacy-b'].includes(p.archivedState.adapter)||!localPath(p.archivedState.path)||!['native','clarity'].includes(p.archivedState.runtime)))throw Error('历史状态来源无效');
@@ -87,7 +91,7 @@ export function mergeDraft(base,incoming,projectId){
 export function projectStage(p){if(typeof p.publicStage==='string'&&p.publicStage.trim())return p.publicStage;if(p.publicSite===true)return p.stage;return p.currentRelease?`开发版 ${p.currentRelease.version} · ${{'local-review':'待验收',released:'已发布',planned:'计划中'}[p.currentRelease.status]}`:p.stage;}
 export function updateOrder(a,b){
  const cmp=(x,y)=>x<y?-1:x>y?1:0;
- return cmp(b.date,a.date)||(Number.isSafeInteger(b.revision)?b.revision:0)-(Number.isSafeInteger(a.revision)?a.revision:0)||cmp(a.project.id,b.project.id)||cmp(a.id,b.id);
+ return cmp(b.date,a.date)||cmp(b.publishedTime||'',a.publishedTime||'')||(Number.isSafeInteger(b.revision)?b.revision:0)-(Number.isSafeInteger(a.revision)?a.revision:0)||cmp(a.project.id,b.project.id)||cmp(a.id,b.id);
 }
 export function legacyProject(p){return p.archivedState?{...p,state:p.archivedState}:p.state.adapter!=='project-v1'?p:null;}
 
