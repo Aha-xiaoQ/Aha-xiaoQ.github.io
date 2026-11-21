@@ -11,7 +11,13 @@
   document.addEventListener('input', e => { if (e.target.closest?.(inputSelector)) touched = true; }, true);
   document.addEventListener('change', e => { if (e.target.closest?.(inputSelector)) touched = true; }, true);
   // Be conservative around guestbook editors and embedded interactive surfaces.
-  const unsafe = () => touched || Boolean(document.querySelector('dialog[open],iframe')) ||
+  const interactiveFrame = frame => {
+    if (document.activeElement === frame) return true;
+    const {width, height} = frame.getBoundingClientRect();
+    return width > 1 && height > 1 && getComputedStyle(frame).visibility === 'visible';
+  };
+  const unsafe = () => touched || Boolean(document.querySelector('dialog[open]')) ||
+    [...document.querySelectorAll('iframe')].some(interactiveFrame) ||
     [...document.querySelectorAll('textarea,input:not([type=hidden]):not([type=button]):not([type=submit]),[contenteditable]:not([contenteditable="false"])')]
       .some(el => el.tagName === 'INPUT' && ['checkbox','radio','color','range'].includes(el.type)
         ? el.checked || el.value !== el.defaultValue : Boolean((el.value ?? el.textContent)?.trim()));
