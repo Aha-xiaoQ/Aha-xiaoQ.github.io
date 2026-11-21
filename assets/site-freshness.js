@@ -8,8 +8,12 @@
   let routeChanged = false;
   const english = () => document.documentElement.lang.startsWith('en');
   const inputSelector = 'input,textarea,select,[contenteditable]:not([contenteditable="false"])';
-  document.addEventListener('input', e => { if (e.target.closest?.(inputSelector)) touched = true; }, true);
-  document.addEventListener('change', e => { if (e.target.closest?.(inputSelector)) touched = true; }, true);
+  const markEdit = e => {
+    const control = e.target.closest?.(inputSelector);
+    if (control && !control.closest('.q-bgm')) touched = true;
+  };
+  document.addEventListener('input', markEdit, true);
+  document.addEventListener('change', markEdit, true);
   // Be conservative around guestbook editors and embedded interactive surfaces.
   const interactiveFrame = frame => {
     if (document.activeElement === frame) return true;
@@ -19,8 +23,8 @@
   const unsafe = () => touched || Boolean(document.querySelector('dialog[open]')) ||
     [...document.querySelectorAll('iframe')].some(interactiveFrame) ||
     [...document.querySelectorAll('textarea,input:not([type=hidden]):not([type=button]):not([type=submit]),[contenteditable]:not([contenteditable="false"])')]
-      .some(el => el.tagName === 'INPUT' && ['checkbox','radio','color','range'].includes(el.type)
-        ? el.checked || el.value !== el.defaultValue : Boolean((el.value ?? el.textContent)?.trim()));
+      .some(el => !el.closest('.q-bgm') && (el.tagName === 'INPUT' && ['checkbox','radio','color','range'].includes(el.type)
+        ? el.checked !== el.defaultChecked || el.value !== el.defaultValue : Boolean((el.value ?? el.textContent)?.trim())));
   const target = version => { const u = new URL(location.href); u.searchParams.set(marker, version); return u; };
   const attempted = version => {
     if (new URL(location.href).searchParams.get(marker) === version) return true;
