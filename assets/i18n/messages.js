@@ -1433,6 +1433,18 @@ globalThis.SITE_LOCALE_MESSAGES = Object.freeze({
     "观看 混合马里奥 · 忍者神龟3 曼哈顿计划 视频": "Watch Mario Mix · Teenage Mutant Ninja Turtles III",
     "观看 混合马里奥 · 忍者神龟3 曼哈顿计划 视频（在新标签页打开）": "Watch Mario Mix · Teenage Mutant Ninja Turtles III (opens in a new tab)",
     "米塔MMD · 爱杀宝贝ED": "MiSide MMD · Kill Me Baby Ending Dance",
+    "【小六 x Mono】把回忆拼好给你": "[Six x Mono] Putting the Memories Back Together for You",
+
+    "一张合照少了一角。小六和 Mono 坐着门板漂过苍白之城，穿过医院，再一次来到断桥边。": "A corner is missing from a photograph. Six and Mono drift toward the Pale City on a door, pass through the hospital, and return to the broken bridge.",
+
+    "3D 动画 MV": "3D animated music video",
+
+    "《把回忆拼好给你》小六与 Mono 音乐短片封面": "Cover of Six and Mono’s music video",
+
+    "在下_小Q出品，GPT 6.2 Astra 制作。画面取材自《小小梦魇Ⅱ》，歌曲采用 CICI 演唱的《把回忆拼好给你》DJ 变速版。": "Produced by 在下_小Q with GPT 6.2 Astra. Inspired by Little Nightmares II, with the DJ edit of CICI’s performance of the song.",
+
+    "《小小梦魇Ⅱ》的角色和场景设计、歌曲及录音的相关权利归各自权利人。": "Rights to the characters, setting, song and recording belong to their respective owners.",
+
     "两位米塔跳起《爱杀宝贝》的片尾舞。": "Two MiSide characters dance to the ending of Kill Me Baby.",
     "MMD 舞蹈短片": "MMD dance short",
     "两位米塔在粉色背景前同时抬腿。": "Two MiSide characters kick in unison against a pink backdrop.",

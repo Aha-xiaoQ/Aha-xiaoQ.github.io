@@ -5,7 +5,7 @@
   "category": "experiment",
   "visibility": "public",
   "stage": "交互动画与视频作品",
-  "updatedAt": "2026-11-21",
+  "updatedAt": "2026-11-22",
   "summary": "交互动画、音乐影像与主题节目。看作品，也看创作记录。",
   "intro": "这里收录交互动画、音乐影像与主题节目。原始代码实验提供在线体验与源文件；视频作品提供完整成片的观看入口。",
   "highlights": [
@@ -14,6 +14,10 @@
     "视频成片与原始代码实验分别展示。"
   ],
   "links": [
+    {
+      "label": "【小六 x Mono】把回忆拼好给你",
+      "href": "/notes/lab/docs/six-mono-memories/"
+    },
     {
       "label": "米塔MMD · 爱杀宝贝ED",
       "href": "/notes/lab/docs/mita-kill-me-baby-ed/"
@@ -118,6 +122,15 @@
     "path": "content/development/states/lab-public.json"
   },
   "updates": [
+    {
+      "id": "six-mono-memories",
+      "date": "2026-11-22",
+      "href": "/notes/lab/docs/six-mono-memories/",
+      "title": "【小六 x Mono】把回忆拼好给你",
+      "status": "released",
+      "summary": "一张合照少了一角。小六和 Mono 坐着门板漂过苍白之城，穿过医院，再一次来到断桥边。",
+      "public": true
+    },
     {
       "id": "mita-kill-me-baby-ed",
       "date": "2026-11-21",
@@ -274,6 +287,19 @@
     }
   ],
   "docs": [
+    {
+      "id": "six-mono-memories",
+      "title": "【小六 x Mono】把回忆拼好给你",
+      "summary": "一张合照少了一角。小六和 Mono 坐着门板漂过苍白之城，穿过医院，再一次来到断桥边。",
+      "sections": [],
+      "sources": [],
+      "archived": false,
+      "kind": "lab-video",
+      "action": {
+        "label": "观看视频",
+        "href": "https://www.bilibili.com/video/BV15RygzHEdo/"
+      }
+    },
     {
       "id": "badapple-anime",
       "title": "Bad Apple!! 但是GPT手搓版",

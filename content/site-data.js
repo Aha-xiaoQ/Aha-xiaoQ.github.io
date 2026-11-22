@@ -61,6 +61,12 @@ globalThis.SITE_DATA = {
     "visibility": "public",
     "latestVideos": [
       {
+        "title": "【小六 x Mono】把回忆拼好给你",
+        "href": "/notes/lab/docs/six-mono-memories/",
+        "date": "2026-11-22",
+        "cover": "/assets/lab/six-mono-memories-cover.jpg"
+      },
+      {
         "title": "混合马里奥 · 热血格斗传说",
         "href": "/games/mario-mix-kunio/",
         "date": "2026-11-21",
@@ -71,12 +77,6 @@ globalThis.SITE_DATA = {
         "href": "/games/mario-mix-tmnt3/",
         "date": "2026-11-21",
         "cover": "/games/mario-mix-tmnt3/cover.jpg"
-      },
-      {
-        "title": "米塔MMD · 爱杀宝贝ED",
-        "href": "/notes/lab/docs/mita-kill-me-baby-ed/",
-        "date": "2026-11-21",
-        "cover": "/assets/lab/mita-kill-me-baby-ed-cover.jpg"
       }
     ]
   },

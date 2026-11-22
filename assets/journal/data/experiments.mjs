@@ -2,6 +2,28 @@ export const EXPERIMENTS = [
   {
     "schemaVersion": 1,
     "kind": "video",
+    "id": "six-mono-memories",
+    "title": "【小六 x Mono】把回忆拼好给你",
+    "subtitle": "一张合照少了一角。小六和 Mono 坐着门板漂过苍白之城，穿过医院，再一次来到断桥边。",
+    "visibility": "public",
+    "createdAt": "2026-11-22",
+    "updatedAt": "2026-11-22",
+    "medium": "VIDEO",
+    "format": "3D 动画 MV",
+    "video": {
+      "provider": "bilibili",
+      "bvid": "BV15RygzHEdo"
+    },
+    "cover": {
+      "src": "/assets/lab/six-mono-memories-cover.jpg",
+      "alt": "《把回忆拼好给你》小六与 Mono 音乐短片封面"
+    },
+    "provenance": "在下_小Q出品，GPT 6.2 Astra 制作。画面取材自《小小梦魇Ⅱ》，歌曲采用 CICI 演唱的《把回忆拼好给你》DJ 变速版。",
+    "verification": "《小小梦魇Ⅱ》的角色和场景设计、歌曲及录音的相关权利归各自权利人。"
+  },
+  {
+    "schemaVersion": 1,
+    "kind": "video",
     "id": "mita-kill-me-baby-ed",
     "title": "米塔MMD · 爱杀宝贝ED",
     "subtitle": "两位米塔跳起《爱杀宝贝》的片尾舞。",
