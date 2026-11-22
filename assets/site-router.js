@@ -193,6 +193,7 @@
     // contract as a real app shell: no blank frame and no loading placeholder.
     style.textContent = `
 /* Only live content moves. Navigation reflects the committed URL immediately. */
+#app header nav a[aria-busy="true"]{cursor:progress;text-decoration:underline dotted;text-underline-offset:.3em}
 #app.q-route-new #main{opacity:.96;transform:translateX(10px);transition:opacity 190ms ease,transform 220ms ease}
 #app.q-route-new.q-route-new--in #main{opacity:1;transform:translateX(0)}
 @media(prefers-reduced-motion:reduce){#app.q-route-new #main,#app.q-route-new.q-route-new--in #main{opacity:1;transform:none;animation:none;transition:none}}
@@ -238,6 +239,13 @@
   document.addEventListener('focusin',()=>{if(app.querySelector('#main')?.contains(document.activeElement))saveView();});
   if('scrollRestoration' in history)history.scrollRestoration='manual';
   let navigating=false,navigationSequence=0;
+  let pendingLink=null;
+  const markPending = link => {
+    pendingLink?.removeAttribute('aria-busy');
+    pendingLink=link;
+    pendingLink?.setAttribute('aria-busy','true');
+  };
+  const routePath = pathname => pathname.replace(/\/index\.html$/, '/');
   const showFailure=(url,options)=>{
     let box=app.querySelector(':scope > .q-resource-error');if(!box){box=document.createElement('section');box.className='q-resource-error';box.setAttribute('role','alert');app.prepend(box);}
     box.replaceChildren();const p=document.createElement('p');p.textContent='页面暂时无法打开。已有内容仍可阅读。';const b=document.createElement('button');b.type='button';b.className='button button--quiet';b.textContent='重试加载';b.onclick=()=>navigate(new URL(url),{...options,force:true});const a=document.createElement('a');a.className='button button--quiet';a.textContent='直接打开页面';a.href=String(url);a.dataset.routerIgnore='';box.append(p,b,a);
@@ -245,6 +253,8 @@
   const restoreView=(url,view,id)=>requestAnimationFrame(()=>requestAnimationFrame(()=>{
     if(id!==navigationSequence)return;
     viewSuspended=false;
+    // A visitor may already have reopened the mobile menu since this commit.
+    if(app.querySelector('header [aria-expanded="true"][data-site-menu]'))return;
     let target=null;if(url.hash)try{target=document.getElementById(decodeURIComponent(url.hash.slice(1)));}catch{}
     if(target){if(!target.hasAttribute('tabindex'))target.tabIndex=-1;target.focus({preventScroll:true});target.scrollIntoView({block:'start',behavior:'instant'});return;}
     const main=app.querySelector('#main');let focus=null;
@@ -252,7 +262,7 @@
     else if(view?.focus?.href)focus=[...(main?.querySelectorAll('a[href]')||[])].filter(a=>a.getAttribute('href')===view.focus.href)[view.focus.index||0];
     (focus||main)?.focus({preventScroll:true});window.scrollTo({top:view?.y||0,left:view?.x||0,behavior:'instant'});saveView();
   }));
-  const navigate=async(url,{historyMode="push",force=false,preserveView=false}={})=>{
+  const navigate=async(url,{historyMode="push",force=false,preserveView=false,navLink=null}={})=>{
     try { url=new URL(url,location.href); } catch { return false; }
     if(url.origin!==location.origin || !['push','replace','none'].includes(historyMode))return false;
     const info=routeInfo(url.pathname);if(!info)return false;
@@ -260,18 +270,28 @@
     if(historyMode==='none'&&!preserveView&&!navigating&&renderedPath===url.pathname&&renderedSearch===url.search){
       restoreView(url,plainState().qView,navigationSequence);return true;
     }
-    if(!force&&url.pathname===location.pathname&&url.search===location.search&&!url.hash)return false;
+    const samePage=routePath(url.pathname)===routePath(location.pathname) && url.search===location.search && url.hash===location.hash;
+    if(!force && samePage && routePath(renderedPath)===routePath(location.pathname)){
+      // A click back to the displayed section supersedes an outstanding load, too.
+      if(navigating){
+        ++navigationSequence;
+        navigating=false;viewSuspended=false;
+        markPending(null);
+        app.classList.remove('q-route-new','q-route-new--in');
+      }
+      return false;
+    }
     if(historyMode!=="none"||preserveView)saveView();
     const targetView=(historyMode==='none'||preserveView)?plainState().qView:null;
     if(historyMode==='none')viewSuspended=true;
-    const navigationId=++navigationSequence;navigating=true;app.classList.remove('q-route-new','q-route-new--in');
+    const navigationId=++navigationSequence;navigating=true;markPending(navLink);app.classList.remove('q-route-new','q-route-new--in');
     const commit=()=>{
       if(navigationId!==navigationSequence)return;
       try {
         applyStyles(info.kind);
         if(historyMode==='push')history.pushState({qView:{x:0,y:0,focus:null}},'',url.href);
         else if(historyMode==='replace')history.replaceState({...plainState(),qView:{x:0,y:0,focus:null}},'',url.href);
-        renderedPath=location.pathname;renderedSearch=location.search;renderRoute(info);restoreView(url,targetView,navigationId);window.dispatchEvent(new CustomEvent('xiaoq:pageview'));
+        markPending(null);renderedPath=location.pathname;renderedSearch=location.search;renderRoute(info);restoreView(url,targetView,navigationId);window.dispatchEvent(new CustomEvent('xiaoq:pageview'));
       } catch {
         // A partial script load must never leave old content under a new URL/style.
         // Reuse the same history entry and the complete static document fallback.
@@ -279,13 +299,25 @@
         location.replace(url.href);
       }
     };
+    let headerTimeout;
     try{
       const renderer=info.kind==='home'?globalThis.SITE_PROMO_RENDER:globalThis.SITE_SHELL_RENDER;
       if(typeof renderer!=='function')throw Error('Page renderer unavailable');
-      await Promise.all([styleFor(info.kind),prepareJournal(info),prepareExperience(info)]);
+      const ready=Promise.all([styleFor(info.kind),prepareJournal(info),prepareExperience(info)]);
+      // Full HTML entries are available even when a SPA resource stalls.
+      // Preserve a playing soundtrack on slow connections.
+      if(navLink && !globalThis.SITE_BGM?.state?.playing){
+        const stalled=new Promise((_,reject)=>{
+          headerTimeout=setTimeout(()=>reject(new Error('Navigation resources stalled')),2000);
+        });
+        await Promise.race([ready,stalled]);
+      }else await ready;
       if(info.canonical){url=new URL(url.href);url.pathname=info.canonical;}
     }
-    catch{if(navigationId!==navigationSequence)return false;navigating=false;showFailure(url,{historyMode,preserveView});return false;}
+    catch{if(navigationId!==navigationSequence)return false;navigating=false;markPending(null);
+      if(navLink){location.assign(url.href);return false;}
+      showFailure(url,{historyMode,preserveView});return false;}
+    finally{clearTimeout(headerTimeout);}
     if(navigationId!==navigationSequence)return false;
     // Keep navigation live during rapid clicks; animate real content only.
     commit();app.classList.add('q-route-new');requestAnimationFrame(()=>{if(navigationId!==navigationSequence)return;app.classList.add('q-route-new--in');setTimeout(()=>{if(navigationId!==navigationSequence)return;app.classList.remove('q-route-new','q-route-new--in');navigating=false;globalThis.SITE_MOTION?.mount({entry:false});},240);});return true;
@@ -298,7 +330,11 @@
   if(document.body.dataset.page==='home')warmHomeAssets();
   syncJournalNavigation();
   const initial = routeInfo(location.pathname), initialSequence = navigationSequence;
-  // Destination styles are requested when their route is used.
+  // Journal entries use the content shell. Prepare the homepage CSS in the
+  // background so returning home does not start a stylesheet/import chain.
+  if(initial?.page==='journal' && !navigator.connection?.saveData){
+    styleFor('home').catch(()=>{});
+  }
   if (initial) Promise.all([styleFor(initial.kind),prepareJournal(initial),prepareExperience(initial)]).then(() => {
     if(navigationSequence!==initialSequence)return;
     const current = routeInfo(location.pathname);
@@ -323,7 +359,14 @@
     }
   });
   // Intent preloading precedes a click, but never downloads an article or an animation.
-  const journalIntent=event=>{const a=event.target?.closest?.('a[href]');if(!a||a.hasAttribute('download')||a.hasAttribute('data-router-ignore'))return;const u=new URL(a.href,location.href);if(u.origin===location.origin&&/^\/(?:notes|dev)(?:\/|$)/.test(u.pathname))warmJournal();};
+  const journalIntent=event=>{
+    const a=event.target?.closest?.('a[href]');if(!a||a.hasAttribute('download')||a.hasAttribute('data-router-ignore'))return;
+    const u=new URL(a.href,location.href);if(u.origin!==location.origin)return;
+    if(a.matches('header nav a[data-nav-key]') && !navigator.connection?.saveData){
+      const info=routeInfo(u.pathname);if(info)styleFor(info.kind).catch(()=>{});
+    }
+    if(/^\/(?:notes|dev)(?:\/|$)/.test(u.pathname))warmJournal();
+  };
   document.addEventListener('pointerover',journalIntent,{passive:true});
   document.addEventListener('focusin',journalIntent);
   if(initial?.page!=='journal'){
@@ -339,7 +382,7 @@
     if (url.pathname === location.pathname && url.search === location.search && url.hash) { saveView(); return; }
     saveView();
     event.preventDefault();
-    void navigate(url);
+    void navigate(url,{navLink:link.matches('header nav a[data-nav-key]')?link:null});
   }, true);
   window.addEventListener('pagehide',saveView);
   window.addEventListener("popstate", () => { void navigate(new URL(location.href), { historyMode: "none", force: true }); });
