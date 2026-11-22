@@ -79,7 +79,7 @@
   };
   const syncJournalMetadata = info => {
     if(info?.page!=="journal"||!globalThis.SITE_JOURNAL)return;
-    const meta=globalThis.SITE_JOURNAL.describe(location.pathname),title=meta.title+' · 在下_小Q';document.title=title;
+    const meta=info.journalMeta||globalThis.SITE_JOURNAL.describe(info.journalPath),title=meta.title+' · 在下_小Q';document.title=title;
     for(const [kind,key,value]of [['name','description',meta.intro],['property','og:title',title],['property','og:description',meta.intro],['name','twitter:title',title],['name','twitter:description',meta.intro]]){
       let n=document.querySelector('meta['+kind+'="'+key+'"]');if(!n){n=document.createElement('meta');n.setAttribute(kind,key);document.head.append(n);}n.content=value;
     }
@@ -211,7 +211,7 @@
     if (info.kind === "home") {
       globalThis.SITE_PROMO_RENDER?.(app);
     } else {
-      globalThis.SITE_SHELL_RENDER?.({ targetRoot: app, nextPage: info.page, nextBase: baseForPath(location.pathname), nextItemSlug: info.itemSlug || "" });
+      globalThis.SITE_SHELL_RENDER?.({ targetRoot: app, nextPage: info.page, journalMeta: info.journalMeta, nextBase: baseForPath(location.pathname), nextItemSlug: info.itemSlug || "" });
     }
     document.title = info.title;
     globalThis.SITE_I18N?.route(info);
@@ -235,7 +235,7 @@
     if(a){const href=a.getAttribute('href'),links=[...main.querySelectorAll('a[href]')].filter(x=>x.getAttribute('href')===href);return {href,index:links.indexOf(a)};}return null;
   };
   const saveView=()=>{if(viewSuspended||renderedPath!==location.pathname)return;renderedSearch=location.search;const state=plainState();history.replaceState({...state,qView:{x:scrollX,y:scrollY,focus:contentFocus()||state.qView?.focus||null}},'',location.href);};
-  window.addEventListener('scroll',()=>{if(scrollTick)return;scrollTick=requestAnimationFrame(()=>{scrollTick=0;saveView();});},{passive:true});
+  window.addEventListener('scroll',()=>{if(scrollTick)return;scrollTick=setTimeout(()=>{scrollTick=0;saveView();},250);},{passive:true});
   document.addEventListener('focusin',()=>{if(app.querySelector('#main')?.contains(document.activeElement))saveView();});
   if('scrollRestoration' in history)history.scrollRestoration='manual';
   let navigating=false,navigationSequence=0;
@@ -291,6 +291,11 @@
         applyStyles(info.kind);
         if(historyMode==='push')history.pushState({qView:{x:0,y:0,focus:null}},'',url.href);
         else if(historyMode==='replace')history.replaceState({...plainState(),qView:{x:0,y:0,focus:null}},'',url.href);
+        // A browser can silently ignore a History API write after frequent scrolling.
+        if(historyMode!=='none' && location.href!==url.href){
+          if(historyMode==='replace')location.replace(url.href);else location.assign(url.href);
+          return;
+        }
         markPending(null);renderedPath=location.pathname;renderedSearch=location.search;renderRoute(info);restoreView(url,targetView,navigationId);window.dispatchEvent(new CustomEvent('xiaoq:pageview'));
       } catch {
         // A partial script load must never leave old content under a new URL/style.

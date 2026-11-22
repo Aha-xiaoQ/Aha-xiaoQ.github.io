@@ -42,7 +42,7 @@ export async function prepare(info){
  try{data=await loadCatalog();delete info.journalError;}catch(error){info.journalError=error.message;info.title='记录暂时无法读取 · 在下_小Q';return;}
  const r=route(info.journalPath||location.pathname,data.catalog),p=data.projects.find(p=>p.id===r.projectId&&p.visibility!=='draft');
  if(p&&r.view==='docs'&&r.doc){try{await prepareGuide(p,r.doc);}catch(error){info.journalError=error.message;return;}}
- info.journalRoute=r;const meta=metadata(r,data.projects,data.catalog);info.title=meta.title+' · 在下_小Q';if(r.canonical)info.canonical=r.canonical;
+ info.journalRoute=r;const meta=metadata(r,data.projects,data.catalog);info.journalMeta=meta;info.title=meta.title+' · 在下_小Q';if(r.canonical)info.canonical=r.canonical;
  if(p&&['tasks','manage'].includes(r.view)){
   if(!states.has(p.id))try{states.set(p.id,normalizeState(await getJSON(p.state.path),p));errors.delete(p.id);}catch(e){errors.set(p.id,e.message);}
   if(r.view==='manage'&&legacyProject(p)&&!legacyByProject.has(p.id))try{legacyByProject.set(p.id,await prepareLegacy(legacyProject(p),r));}catch(e){errors.set('legacy:'+p.id,e.message);}
@@ -129,6 +129,15 @@ export function mount(app,info={}){
  const r=info.journalRoute||route(location.pathname,snapshot.catalog),p=snapshot.projects.find(p=>p.id===r.projectId&&p.visibility!=='draft'),key=[r.projectId||'all',r.view,r.doc||''].join('/');
  let node=nodes.get(key);if(node?.querySelector('.j-error')&&p&&!errors.has(p.id)){nodes.delete(key);node=null;}
  if(!node){const box=document.createElement('div');box.innerHTML=render(r,{...snapshot,states:Object.fromEntries(states),errors:Object.fromEntries(errors),notes:globalThis.SITE_DATA?.notes||[]});node=box.firstElementChild;bind(node,r,p);nodes.set(key,node);}
+ const hero=app.querySelector('.page-head');
+ if(hero){
+  const meta=info.journalMeta||metadata(r,snapshot.projects,snapshot.catalog);
+  for(const [selector,value] of [['.eyebrow',meta.eyebrow],['h1',meta.title],['.lede',meta.intro]]){
+   const element=hero.querySelector(selector);
+   if(element&&element.textContent!==value)element.textContent=value;
+  }
+  globalThis.SITE_I18N?.apply(hero);
+ }
  host.replaceChildren(node);current=node;bindExperiments(node);
  if(r.view==='index'&&!r.projectId){const q=new URL(location.href).searchParams,f=node._catalogFilter;Object.assign(f,{q:(q.get('q')||'').slice(0,100),category:q.get('category')||'all',page:Math.max(1,Math.floor(Number(q.get('page')))||1)});if(!['all','archived',...snapshot.projects.map(x=>x.category)].includes(f.category))f.category='all';node.querySelector('[data-project-search]').value=f.q;node.querySelectorAll('[data-category]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.category===f.category)));node._refreshProjects();}
  if(p&&r.view==='tasks'&&states.has(p.id)){
