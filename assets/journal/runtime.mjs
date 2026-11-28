@@ -128,7 +128,7 @@ export function mount(app,info={}){
  if(!snapshot||info.journalError){showRetry(host,app,info);return;}
  const r=info.journalRoute||route(location.pathname,snapshot.catalog),p=snapshot.projects.find(p=>p.id===r.projectId&&p.visibility!=='draft'),key=[r.projectId||'all',r.view,r.doc||''].join('/');
  let node=nodes.get(key);if(node?.querySelector('.j-error')&&p&&!errors.has(p.id)){nodes.delete(key);node=null;}
- if(!node){const box=document.createElement('div');box.innerHTML=render(r,{...snapshot,states:Object.fromEntries(states),errors:Object.fromEntries(errors),notes:globalThis.SITE_DATA?.notes||[]});node=box.firstElementChild;bind(node,r,p);nodes.set(key,node);}
+ if(!node){const box=document.createElement('div');box.innerHTML=render(r,{...snapshot,states:Object.fromEntries(states),errors:Object.fromEntries(errors),notes:globalThis.SITE_DATA?.notes||[],works:globalThis.SITE_DATA?.items||[]});node=box.firstElementChild;bind(node,r,p);nodes.set(key,node);}
  const hero=app.querySelector('.page-head');
  if(hero){
   const meta=info.journalMeta||metadata(r,snapshot.projects,snapshot.catalog);

@@ -4,6 +4,7 @@
 
 - All website text, including headings and the clock, uses self-hosted LXGW WenKai.
 - Regular and Medium WOFF2 web fonts are subsetted for website text; original glyph outlines and spacing are preserved.
+- The supplemental Regular and Medium glyphs for site copy are subsetted from LXGW WenKai v1.522, the same version as the primary site faces.
 - Upstream: https://github.com/lxgw/LxgwWenKai
 - SIL Open Font License 1.1: `fonts/LXGWWenKai-OFL.txt` accompanies the fonts.
 - The older LXGW Bright record below is retained for provenance; it is no longer the website face.

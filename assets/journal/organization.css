@@ -18,8 +18,8 @@
 .journal .q-lab-go{font-size:.9rem;white-space:nowrap}
 .journal .q-lab-card{display:grid;grid-template-columns:minmax(200px,.72fr) minmax(0,1.28fr);overflow:hidden;padding:0;margin-bottom:1.5rem}
 .journal .q-lab-visual{min-height:300px;background:var(--accent,#e93646);color:#fff;padding:2.2rem;display:flex;flex-direction:column;justify-content:space-between}
-.journal .q-lab-visual>span,.journal .q-lab-visual small{font:700 .75rem/1.8 system-ui,sans-serif;letter-spacing:.2em}
-.journal .q-lab-visual strong{font:900 clamp(3rem,7vw,6rem)/1 system-ui,sans-serif;letter-spacing:-.07em;transform:rotate(-7deg)}
+.journal .q-lab-visual>span,.journal .q-lab-visual small{font:700 .75rem/1.8 var(--font-body);letter-spacing:.2em}
+.journal .q-lab-visual strong{font:700 clamp(3rem,7vw,6rem)/1 var(--font-body);letter-spacing:-.07em;transform:rotate(-7deg)}
 .journal .q-lab-visual strong span{font-size:.5em;vertical-align:top;margin-left:.15em}
 .journal .q-lab-copy{padding:2.1rem}
 .journal .q-lab-copy h2{font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.3;margin:.6rem 0}

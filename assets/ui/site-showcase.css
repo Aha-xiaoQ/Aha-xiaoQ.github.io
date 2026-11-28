@@ -10,10 +10,10 @@
 #app .q-identity-card{position:relative;isolation:isolate;margin:0;background:var(--paper);color:var(--bg);padding:20px 14px 16px;border:1px solid var(--paper);box-shadow:8px 8px 0 var(--accent);transform:rotate(-2deg);max-width:310px;width:100%}
 #app .q-identity-card::before{content:"";position:absolute;width:66px;height:24px;top:-13px;left:40%;background:var(--accent);border:2px solid var(--bg);transform:rotate(6deg);pointer-events:none}
 #app .q-identity-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;font-size:15px;line-height:1.5}
-#app .q-identity-top b{font:700 24px/1 ui-monospace,monospace}
+#app .q-identity-top b{font:700 24px/1 var(--font-body)}
 #app .q-identity-card img{width:100%;height:auto;aspect-ratio:1;object-fit:contain;image-rendering:pixelated;border:1px solid var(--bg)}
 #app .q-identity-card figcaption{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:14px;line-height:1.5;flex-wrap:wrap;font-size:16px}
-#app .q-identity-card small{font:12px/1.5 ui-monospace,monospace}
+#app .q-identity-card small{font:12px/1.5 var(--font-body)}
 #app .q-about-copy{min-width:0;padding-block:10px}
 #app .q-about-copy>.eyebrow,#app .q-about-connect>header>.eyebrow{color:var(--accent);font-size:14px;letter-spacing:.12em;line-height:1.6}
 #app .q-about-hello{font-size:clamp(26px,3vw,38px);line-height:1.5;margin:18px 0 10px}
@@ -30,7 +30,7 @@
 #app .q-note-card::after{content:"";position:absolute;bottom:0;right:0;width:36px;height:36px;background:var(--accent);clip-path:polygon(100% 0,100% 100%,0 100%);pointer-events:none}
 #app .q-note-card p{font-size:18px;line-height:1.85;max-width:32em;padding-right:36px}
 #app .q-note-card strong{font-size:18px;line-height:1.6;align-self:flex-start;margin-top:auto;padding-bottom:4px;border-bottom:3px solid var(--accent);font-weight:500}
-#app .q-note-stamp{position:absolute;top:22px;right:23px;color:var(--accent);border:1px dashed var(--accent);padding:6px 10px;transform:rotate(8deg);font:700 26px/1 ui-monospace,monospace}
+#app .q-note-stamp{position:absolute;top:22px;right:23px;color:var(--accent);border:1px dashed var(--accent);padding:6px 10px;transform:rotate(8deg);font:700 26px/1 var(--font-body)}
 #app .q-contact-book{min-width:0}
 #app .q-contact-book>p{font-size:15px;line-height:1.6;color:var(--muted);margin-bottom:10px}
 #app .q-contact-route{display:grid;grid-template-columns:22px minmax(70px,1fr) minmax(0,1fr);gap:14px;align-items:center;border-top:1px solid var(--line);min-height:58px;padding:12px 10px;text-decoration:none;transition:background-color 140ms ease}

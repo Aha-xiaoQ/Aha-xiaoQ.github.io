@@ -62,9 +62,10 @@ globalThis.SITE_DATA = {
     "latestVideos": [
       {
         "title": "【杂交游戏】黑神话 · 只狼 （搞笑版）",
-        "href": "/notes/black-myth-sekiro/",
+        "href": "/games/black-myth-sekiro/",
         "date": "2026-11-28",
-        "cover": "/assets/previews/black-myth-sekiro-video-cover.webp"
+        "cover": "/assets/previews/black-myth-sekiro-video-cover.webp",
+        "linkLabel": "查看视频"
       },
       {
         "title": "【小小梦魇混剪】别松手",
@@ -138,6 +139,41 @@ globalThis.SITE_DATA = {
       ],
       "evidenceIds": [],
       "detailUrl": "projects/card-workshop/"
+    },
+    {
+      "id": "game-black-myth-sekiro",
+      "slug": "black-myth-sekiro",
+      "primaryType": "game",
+      "title": "【杂交游戏】黑神话 · 只狼 （搞笑版）",
+      "summary": "狼闯入卧虎寺，与虎先锋在血池交手。",
+      "lifecycleStatus": "released",
+      "visibility": "public",
+      "accessMode": "video",
+      "updatedAt": "2026-11-28",
+      "createdAt": "2026-11-28",
+      "displayOrder": 130,
+      "categories": [
+        "action-duel"
+      ],
+      "tags": [
+        "弹反",
+        "忍杀"
+      ],
+      "cover": "assets/previews/black-myth-sekiro-video-cover.webp",
+      "detailUrl": "/games/black-myth-sekiro/",
+      "videoSlot": true,
+      "videoUrl": "https://www.bilibili.com/video/BV1821KzNEWG/",
+      "searchTags": [
+        "游戏视频",
+        "只狼",
+        "黑神话",
+        "虎先锋",
+        "Sekiro",
+        "Tiger Vanguard",
+        "卧虎寺"
+      ],
+      "intro": "这段实机录像把《只狼》的弹反与忍杀放进了《黑神话：悟空》的虎先锋战。狼在卧虎寺的血池里迎战虎先锋，抓住出招的时机弹开攻击，积累对手的体幹，再近身忍杀。",
+      "publishedTime": "11:20"
     },
     {
       "id": "game-mario-mix-kunio",

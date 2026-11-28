@@ -62,7 +62,7 @@
     const item = data.items.find(entry => entry.slug === itemSlug && entry.visibility === 'public' && entry.lifecycleStatus !== 'archived');
     if (!item) return head('ARCHIVED', '该游戏已下架', '请到游戏页查看当前作品。') + '<main id="main" tabindex="-1"><div class="shell"><a class="button" href="/games/">查看游戏</a></div></main>';
     const proof = (data.evidence || []).find(entry => (item.evidenceIds || []).includes(entry.id));
-    return head('GAME',item.title,item.summary) + globalThis.SITE_JOURNEY.gameMain(item, proof);
+    return head(item.accessMode === 'video' ? 'VIDEO' : 'GAME',item.title,item.summary) + globalThis.SITE_JOURNEY.gameMain(item, proof);
   };
   const renderVisitorHelp = () => head('GET STARTED','试玩帮助','体验作品、查看源码，遇到问题也有去处。') + '<main id="main" tabindex="-1"><div class="shell">'+globalThis.SITE_JOURNEY.helpPage()+'</div></main>';
   const renderNotFound = () => head('NOT FOUND','页面未找到','这个地址没有对应的公开页面。') + '<main id="main" tabindex="-1"><div class="shell">'+globalThis.SITE_JOURNEY.notFound()+'</div></main>';

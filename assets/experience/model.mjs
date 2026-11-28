@@ -1,5 +1,5 @@
 /** Pure search contract. The index contains curated public summaries, never tasks or saved drafts. */
-export const TYPES=Object.freeze({all:'全部',game:'游戏',project:'项目',tool:'工具',guide:'资料',note:'笔记'});
+export const TYPES=Object.freeze({all:'全部',game:'游戏',video:'视频',project:'项目',tool:'工具',guide:'资料',note:'笔记'});
 export const esc=(s='')=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export const normalize=s=>String(s||'').normalize('NFKC').toLowerCase().replace(/\s+/g,' ').trim();
 export function safeURL(value){
@@ -19,7 +19,7 @@ export function validateIndex(data){
 export function makeIndex({site={},projects=[]}={}){
  const entries=[],urls=new Set();
  function add(e){e.href=canonical(e.href);if(!e.href||urls.has(e.href))return;urls.add(e.href);entries.push({...e,summary:String(e.summary||'').slice(0,1800),tags:(e.tags||[]).filter(t=>typeof t==='string').slice(0,20)});}
- for(const x of site.items||[]){if(x.visibility!=='public'||x.lifecycleStatus==='archived')continue;let href=x.detailUrl||x.localUrl;if(href&&!/^https:|^\//.test(href))href='/'+href;add({id:'work:'+x.id,type:x.primaryType==='game'?'game':'project',title:x.title,summary:x.summary,href,tags:x.tags});}
+ for(const x of site.items||[]){if(x.visibility!=='public'||x.lifecycleStatus==='archived')continue;let href=x.detailUrl||x.localUrl;if(href&&!/^https:|^\//.test(href))href='/'+href;add({id:'work:'+x.id,type:x.accessMode==='video'?'video':x.primaryType==='game'?'game':'project',title:x.title,summary:x.summary,href,tags:[...(x.tags||[]),...(x.searchTags||[])]});}
  for(const x of site.tools||[]){if(x.visibility&&x.visibility!=='public'||x.lifecycleStatus==='archived')continue;let href=x.url;if(href&&!/^https:|^\//.test(href))href='/'+href;add({id:'tool:'+x.id,type:'tool',title:x.title,summary:x.summary,href,tags:x.tags});}
  for(const p of projects){if(p.visibility!=='public')continue;add({id:'project:'+p.id,type:'project',title:p.title+' · 开发',summary:p.summary,href:'/notes/'+p.id+'/',tags:[p.category,'源码','开发']});
   for(const d of p.docs||[]){if(d.archived)continue;add({id:'guide:'+p.id+':'+d.id,type:'guide',title:d.title,summary:d.summary,href:'/notes/'+p.id+'/docs/'+d.id+'/',tags:[p.title,...(d.sections||[]).map(s=>s.title)]});}

@@ -1,4 +1,12 @@
 globalThis.SITE_EN = Object.freeze({
+  "查看视频": "View video",
+  "这段实机录像把《只狼》的弹反与忍杀放进了《黑神话：悟空》的虎先锋战。狼在卧虎寺的血池里迎战虎先锋，抓住出招的时机弹开攻击，积累对手的体幹，再近身忍杀。": "This gameplay recording brings Sekiro’s deflections and deathblows to the Tiger Vanguard fight from Black Myth: Wukong. In the blood pool at Crouching Tiger Temple, Wolf times his deflections to build his opponent’s posture and close in for a deathblow.",
+  "查看新作品、功能更新与后续计划。": "Browse new releases, features and upcoming plans.",
+  "忍杀": "Deathblow",
+  "游戏介绍：【杂交游戏】黑神话 · 只狼 （搞笑版）": "About Black Myth × Sekiro (Comedy Cut)",
+  "游戏视频": "Game videos",
+  "视频": "Video",
+  "观看 【杂交游戏】黑神话 · 只狼 （搞笑版） 视频": "Watch Black Myth × Sekiro (Comedy Cut)",
   "预览暂不可用": "Preview unavailable",
   "作品介绍与入口仍可使用": "Project details and links are still available.",
   "混合马里奥Ⅳ · 索尼克 × 奥日": "Mario Mix IV · Sonic × Ori",

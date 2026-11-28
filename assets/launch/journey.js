@@ -26,6 +26,12 @@
       </section></div></section>`;
   }
   function gameMain(item, proof = null) {
+    if (item.accessMode === 'video') {
+      const poster = root.SITE_ACTIONS.videoPanel(item, {cover: local(item.cover), eager: true});
+      return `<main id="main" tabindex="-1"><section class="section"><div class="shell q-game-intro">
+        <div class="q-game-media">${poster}</div><section class="q-launch-panel" aria-labelledby="game-about">
+        <h2 id="game-about">游戏介绍</h2><p>${escape(item.intro || item.summary)}</p></section></div></section></main>`;
+    }
     const rights = ['mario-classic', 'mario-mix', 'mario-mix-2', 'mario-mix-3'].includes(item.slug)
       ? '<p>采用经典角色、图像与音乐素材，相关权利归各自权利人所有；素材来源及代码许可说明见试玩页。</p><p>非官方同人作品 · 免费试玩 · 仅供娱乐。</p><p>字体：霞鹜文楷</p>'
       : item.slug === 'pipebound' ? '<p>重新绘制的像素画面与独立实现的横版玩法。项目不属于任天堂官方作品。</p><p>非官方同人作品 · 免费试玩 · 仅供娱乐。</p><p>字体：霞鹜文楷</p>' : '';

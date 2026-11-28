@@ -12,7 +12,7 @@
 #main .pw-media--pixel-window{background:var(--bg);border:1px solid var(--line)}
 #main .pw-media--pixel-window::after{content:"";position:absolute;inset:6px;border:1px solid var(--paper);pointer-events:none;opacity:.32}
 #main .pw-media--blueprint{background-color:var(--bg);background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:24px 24px}
-#main .pw-media-diagram{width:78%;display:flex;align-items:center;justify-content:space-between;gap:7px;color:var(--paper);font:600 11px/1.8 ui-monospace,Consolas,monospace}
+#main .pw-media-diagram{width:78%;display:flex;align-items:center;justify-content:space-between;gap:7px;color:var(--paper);font:600 11px/1.8 var(--font-body)}
 #main .pw-media-diagram span{display:block;border:1px solid var(--line);padding:12px 10px;flex:1;min-width:0;position:relative}
 #main .pw-media-diagram span:nth-of-type(2){border-color:var(--accent);box-shadow:3px 3px 0 var(--accent)}
 #main .pw-media-diagram b{font-size:clamp(10px,1.1vw,16px);letter-spacing:.07em;font-weight:700}

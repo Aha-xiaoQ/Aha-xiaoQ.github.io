@@ -28,6 +28,9 @@ to content additions, generated pages, layout repairs and publishing work.
   For navigation changes, also click successive sections before entry animation
   finishes and use browser back/forward. URL, page body and the single current
   navigation marker must agree; decorative transitions must not absorb input.
+- Check the served Regular and Medium WenKai faces against visible Chinese and
+  English copy, including rare characters in titles, controls and card labels.
+  Shared UI components inherit the site font on direct loads and after navigation.
 - Keep text/font coverage, asset URLs and cache/import-map versions consistent.
   Use existing build/publication commands and update all intended destinations
   from the same reviewed source. Verify each deployment separately.
@@ -46,8 +49,15 @@ to content additions, generated pages, layout repairs and publishing work.
 
 - Add one shelf card and one detail route for each game video. Preserve earlier
   episode records, covers and video destinations. Sibling releases can share a
-  playable HTML and its download. Put game updates under the game project and
-  lab works under the lab. Verify both the owner's updates and the combined
+  playable HTML and its download. A game recording offered as video only belongs
+  in the standard game-card list and in video search. Keep its Game overview
+  and Watch video actions, write its own introduction, and include the dated
+  release once in the combined updates feed. All cards share the responsive
+  grid and its equal-height rows. Verify both language settings at narrow and
+  wide widths. The overview links to the original video.
+  A development entry, source, download or playable build needs a separately
+  requested public project. Put updates to existing development projects under
+  their owner and lab works under the lab. Verify both the owner's updates and the combined
   recent-updates page list each title once and link to its own work. Check the
   home latest/featured links, search and both prerendered and hydrated routes.
 

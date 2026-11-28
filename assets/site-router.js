@@ -42,7 +42,8 @@
   const assetHref = (name) => {
     const url = new URL(name, routerURL);
     url.search = routerURL.search;
-    if (name === "promo.css") url.search = "?v=af87a6f7f17a7c4d"; // Home stylesheet content version.
+    if (name === "promo.css") url.search = "?v=4ba5631e0869f3ec";
+    if (name === "site-shell.css") url.search = "?v=ba96e22ba16be52f";
     return url.href;
   };
   let experienceModule;
@@ -52,7 +53,7 @@
     let link=document.querySelector('[data-journal-css]');
     if(link)link=renewStylesheet(link);
     if(link?.sheet)return Promise.resolve();
-    if(!link){link=document.createElement('link');link.rel='stylesheet';link.href=new URL('journal/journal.css?v=source-boundary-ab7d295ba272',routerURL).href;link.dataset.journalCss='';document.head.append(link);}
+    if(!link){link=document.createElement('link');link.rel='stylesheet';link.href=new URL('journal/journal.css?v=91ddca9dda1c9b32',routerURL).href;link.dataset.journalCss='';document.head.append(link);}
     return waitForLink(link);
   };
   const importJournal=()=>journalModule ||= import(new URL('journal/runtime.mjs?v=source-boundary-ab7d295ba272',routerURL).href).catch(error=>{journalModule=null;throw error;});

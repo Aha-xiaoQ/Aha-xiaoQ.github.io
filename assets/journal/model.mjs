@@ -91,7 +91,7 @@ export function mergeDraft(base,incoming,projectId){
 export function projectStage(p){if(typeof p.publicStage==='string'&&p.publicStage.trim())return p.publicStage;if(p.publicSite===true)return p.stage;return p.currentRelease?`开发版 ${p.currentRelease.version} · ${{'local-review':'待验收',released:'已发布',planned:'计划中'}[p.currentRelease.status]}`:p.stage;}
 export function updateOrder(a,b){
  const cmp=(x,y)=>x<y?-1:x>y?1:0;
- return cmp(b.date,a.date)||cmp(b.publishedTime||'',a.publishedTime||'')||(Number.isSafeInteger(b.revision)?b.revision:0)-(Number.isSafeInteger(a.revision)?a.revision:0)||cmp(a.project.id,b.project.id)||cmp(a.id,b.id);
+ return cmp(b.date,a.date)||cmp(b.publishedTime||'',a.publishedTime||'')||(Number.isSafeInteger(b.revision)?b.revision:0)-(Number.isSafeInteger(a.revision)?a.revision:0)||cmp(a.ownerId??a.project?.id??'',b.ownerId??b.project?.id??'')||cmp(a.id,b.id);
 }
 export function legacyProject(p){return p.archivedState?{...p,state:p.archivedState}:p.state.adapter!=='project-v1'?p:null;}
 
