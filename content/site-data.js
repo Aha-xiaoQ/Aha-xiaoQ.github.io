@@ -7,12 +7,12 @@ globalThis.SITE_DATA = {
     "interests": [],
     "now": {
       "label": "重点作品",
-      "sourceId": "game-mario-mix-kunio",
-      "title": "混合马里奥 · 热血格斗传说",
-      "summary": "国夫一行闯进蘑菇王国，挑战双虎道场、热血足球、街篮和大运动会。",
-      "updatedAt": "2026-11-21",
-      "href": "/games/mario-mix-kunio/",
-      "entryLabel": "混合马里奥 · 热血格斗传说",
+      "sourceId": "game-black-myth-sekiro",
+      "title": "黑神话 · 只狼",
+      "summary": "狼闯入卧虎寺，与虎先锋在血池交手。看完整对决，也可以亲自出刀、弹反，再找机会忍杀。",
+      "updatedAt": "2026-11-28",
+      "href": "/games/black-myth-sekiro/",
+      "entryLabel": "黑神话 · 只狼",
       "items": []
     },
     "copy": {
@@ -61,26 +61,58 @@ globalThis.SITE_DATA = {
     "visibility": "public",
     "latestVideos": [
       {
-        "title": "【小六 x Mono】把回忆拼好给你",
-        "href": "/notes/lab/docs/six-mono-memories/",
-        "date": "2026-11-22",
-        "cover": "/assets/lab/six-mono-memories-cover.jpg"
+        "title": "【杂交游戏】黑神话 · 只狼 （搞笑版）",
+        "href": "/games/black-myth-sekiro/",
+        "date": "2026-11-28",
+        "cover": "/assets/previews/black-myth-sekiro-video-cover.webp"
       },
       {
-        "title": "混合马里奥 · 热血格斗传说",
-        "href": "/games/mario-mix-kunio/",
-        "date": "2026-11-21",
-        "cover": "/games/mario-mix-kunio/cover.jpg"
+        "title": "【小小梦魇混剪】别松手",
+        "href": "/notes/lab/docs/little-nightmares-dont-let-go/",
+        "date": "2026-11-27",
+        "cover": "/assets/lab/little-nightmares-dont-let-go-cover.webp"
       },
       {
-        "title": "混合马里奥 · 忍者神龟3 曼哈顿计划",
-        "href": "/games/mario-mix-tmnt3/",
-        "date": "2026-11-21",
-        "cover": "/games/mario-mix-tmnt3/cover.jpg"
+        "title": "【米塔/Miside混剪】mita mita oo ee oo",
+        "href": "/notes/lab/docs/miside-mita-oo-ee-oo/",
+        "date": "2026-11-26",
+        "cover": "/assets/lab/miside-mita-oo-ee-oo-cover.webp"
       }
     ]
   },
   "items": [
+    {
+      "id": "game-black-myth-sekiro",
+      "slug": "black-myth-sekiro",
+      "primaryType": "game",
+      "relatedIds": [],
+      "title": "黑神话 · 只狼",
+      "summary": "狼闯入卧虎寺，与虎先锋在血池交手。看完整对决，也可以亲自出刀、弹反，再找机会忍杀。",
+      "lifecycleStatus": "active",
+      "visibility": "public",
+      "accessMode": "online",
+      "createdAt": "2026-11-28",
+      "updatedAt": "2026-11-28",
+      "displayOrder": 130,
+      "categories": [
+        "action-duel"
+      ],
+      "tags": [
+        "弹反",
+        "体幹"
+      ],
+      "cover": "assets/previews/black-myth-sekiro-video-cover.webp",
+      "evidenceIds": [
+        "evidence-black-myth-sekiro"
+      ],
+      "detailUrl": "/games/black-myth-sekiro/",
+      "localUrl": "/games/black-myth-sekiro/play.html",
+      "downloadUrl": "/games/black-myth-sekiro/play.html",
+      "downloadLabel": "下载 HTML",
+      "downloadInstructions": "下载后，直接用支持 WebGL 2 的浏览器打开这个 HTML 文件。",
+      "videoSlot": true,
+      "videoUrl": "https://www.bilibili.com/video/BV1821KzNEWG/"
+    },
     {
       "id": "project-ai-character-atlas",
       "slug": "ai-character-atlas",
@@ -668,6 +700,11 @@ globalThis.SITE_DATA = {
   ],
   "methods": [],
   "evidence": [
+    {
+      "id": "evidence-black-myth-sekiro",
+      "sourceItemId": "game-black-myth-sekiro",
+      "accessNote": "使用带键盘、支持 WebGL 2 的浏览器游玩，可直接挑战或观看开场。"
+    },
     {
       "id": "evidence-five-regions",
       "sourceItemId": "game-five-regions",

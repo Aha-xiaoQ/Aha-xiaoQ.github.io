@@ -5,6 +5,7 @@ globalThis.SITE_TAXONOMY = {
   accessMode: ["online", "local", "unavailable"],
   noteType: ["build-log", "article", "video", "release"],
   gameCategories: [
+    { id: "action-duel", label: "三维动作", description: "锁定对手，在三维场地中移动、出刀和弹反。" },
     { id: "voxel-exploration", label: "体素探索", description: "第一人称体素世界，重点是探索、采集与战斗。" },
     { id: "side-scrolling", label: "横版闯关", description: "横向关卡节奏，重点是跳跃、道具与敌人反馈。" }
   ],

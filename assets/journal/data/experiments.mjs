@@ -2,6 +2,83 @@ export const EXPERIMENTS = [
   {
     "schemaVersion": 1,
     "kind": "video",
+    "id": "little-nightmares-dont-let-go",
+    "title": "【小小梦魇混剪】别松手",
+    "subtitle": "从贪颚号到苍白之城，再到《小小梦魇Ⅲ》，三部游戏里那些伸向同伴的手，剪进了同一首歌。含剧情剧透与双语字幕。",
+    "visibility": "public",
+    "createdAt": "2026-11-27",
+    "updatedAt": "2026-11-27",
+    "medium": "VIDEO",
+    "format": "游戏剧情混剪",
+    "video": {
+      "provider": "bilibili",
+      "bvid": "BV1ug1JzTEbD"
+    },
+    "cover": {
+      "src": "/assets/lab/little-nightmares-dont-let-go-cover.webp",
+      "alt": "《别松手》小小梦魇混剪封面"
+    },
+    "provenance": "画面来自《小小梦魇》Ⅰ、Ⅱ、Ⅲ及《贪颚号的秘密》DLC，影像来源包括万代南梦宫预告片、Spazbo4 与 World of Longplays。配乐为 JT Music 与 Andrea Storm Kaden 的《Nightmares Never End》。字幕使用思源黑体和霞鹜文楷。",
+    "verification": "影像、角色、音乐及录音的相关权利归各自权利人。"
+  },
+  {
+    "schemaVersion": 1,
+    "kind": "video",
+    "id": "miside-mita-oo-ee-oo",
+    "title": "【米塔/Miside混剪】mita mita oo ee oo",
+    "subtitle": "跟着「oo ee oo」的副歌，在《米塔》的实机片段里认认不同的米塔。",
+    "visibility": "public",
+    "createdAt": "2026-11-26",
+    "updatedAt": "2026-11-26",
+    "medium": "VIDEO",
+    "format": "游戏音乐混剪",
+    "video": {
+      "provider": "bilibili",
+      "bvid": "BV1oi1JzEErv"
+    },
+    "cover": {
+      "src": "/assets/lab/miside-mita-oo-ee-oo-cover.webp",
+      "alt": "米塔音乐混剪封面"
+    },
+    "provenance": "游戏为 AIHASTO 的《米塔》。实机录像来自糖三角流口水，AI 翻唱版本由 saberjyb 发布。原曲为 Anamanaguchi 与初音未来的《Miku》。字幕使用思源黑体。",
+    "verification": "影像、角色、音乐及录音的相关权利归各自权利人。",
+    "sourceVideos": [
+      {
+        "label": "实机录像 · 糖三角流口水",
+        "bvid": "BV1ETrSY2E5B"
+      },
+      {
+        "label": "翻唱音源 · saberjyb",
+        "bvid": "BV1QwGRzXEkL"
+      }
+    ],
+    "sourceCreditLabel": "实机与翻唱来源"
+  },
+  {
+    "schemaVersion": 1,
+    "kind": "video",
+    "id": "tom-jerry-lanqiji",
+    "title": "【烂奇迹】汤姆：我又双叒叕不小心惹了上帝",
+    "subtitle": "汤姆唱一句，杰瑞回敬一招。《猫和老鼠》的追逐和反击，跟着《烂奇迹（不小心惹了上帝）》逐句上演。",
+    "visibility": "public",
+    "createdAt": "2026-11-26",
+    "updatedAt": "2026-11-26",
+    "medium": "VIDEO",
+    "format": "动画音乐混剪",
+    "video": {
+      "provider": "bilibili",
+      "bvid": "BV1TYyyzvE5S"
+    },
+    "cover": {
+      "src": "/assets/lab/tom-jerry-lanqiji-cover.webp",
+      "alt": "《烂奇迹》汤姆和杰瑞混剪封面"
+    },
+    "provenance": "画面选自《猫和老鼠》动画。歌曲为杨羊烊的《烂奇迹（不小心惹了上帝）》，剪辑由 GPT 完成。",
+    "verification": "影像、角色、音乐及录音的相关权利归各自权利人。"
+  },
+  {
+    "schemaVersion": 1,
+    "kind": "video",
     "id": "six-mono-memories",
     "title": "【小六 x Mono】把回忆拼好给你",
     "subtitle": "一张合照少了一角。小六和 Mono 坐着门板漂过苍白之城，穿过医院，再一次来到断桥边。",

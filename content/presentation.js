@@ -214,6 +214,14 @@ globalThis.SITE_PRESENTATION = {
       "rendering": "auto",
       "tone": "dark",
       "categoryLabel": "角色图鉴"
+    },
+    "game-black-myth-sekiro": {
+      "kind": "image",
+      "preset": "poster",
+      "src": "assets/previews/black-myth-sekiro-video-cover.webp",
+      "alt": "狼与虎先锋在卧虎寺对战的视频封面",
+      "fit": "contain",
+      "rendering": "auto"
     }
   }
 };
